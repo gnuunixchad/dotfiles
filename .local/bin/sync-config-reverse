@@ -1,0 +1,18 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+# sync-config-reverse
+# sync config files from backup to system
+
+# DON't add `--delete`
+# source path must have an ending `/`
+
+# dotfiles
+rsync -avh --progress /home/nate/doc/dotfiles/home/nate/ $HOME
+
+# datafiles
+rsync -avh --progress /home/nate/doc/datafiles/home/nate/ $HOME
+rsync -avh --progress /home/nate/doc/datafiles/bookmarks /home/nate/doc/bookmarks/bookmarks
+
+rm $HOME/.local/share/calcurse/apts
+calcurse -i $HOME/.config/calcurse/calendar.ical

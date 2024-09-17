@@ -1,0 +1,22 @@
+# put followings in a file and encrypt it
+# set my_pass = "password"
+source "gpg -dq $HOME/.config/mutt/account1.gpg |"
+
+set imap_user = "someone@outlook.com"
+set imap_pass = $my_pass
+
+set folder = "imaps://outlook.office365.com"
+set spoolfile = "+INBOX"
+set postponed = "+Drafts"
+set record = "+Sent Items"
+set trash = "+Deleted Items"
+#mailboxes ="INBOX" ="Junk Email" ="Drafts" ="Sent Items"="Deleted Items" ="Archive" ="Trash"
+# check for all IMAP folders
+set imap_check_subscribed
+
+# store message headers locally
+set header_cache = "~/.cache/mutt/account1/headers"
+# store message locally
+set message_cachedir = "~/.cache/mutt/account1/bodies"
+
+set certificate_file = "~/.cache/mutt/account1/certificates"

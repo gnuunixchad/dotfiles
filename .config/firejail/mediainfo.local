@@ -1,0 +1,7 @@
+include whitelist-common.local
+
+include whitelist-player-mus.local
+include whitelist-player-pic.local
+include whitelist-player-vid.local
+
+net none

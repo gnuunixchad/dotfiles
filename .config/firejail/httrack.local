@@ -1,0 +1,4 @@
+include whitelist-common.local
+include blacklist-gpg.local
+
+whitelist ${HOME}/doc/httrack

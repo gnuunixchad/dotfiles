@@ -1,0 +1,34 @@
+include whitelist-common.local
+include whitelist-player-pic.local
+
+# copied from /etc/firejail/feh.profile
+include disable-common.inc
+include disable-devel.inc
+include disable-exec.inc
+include disable-interpreters.inc
+include disable-programs.inc
+include disable-shell.inc
+
+caps.drop all
+net none
+no3d
+nodvd
+nogroups
+noinput
+nonewprivs
+noroot
+nosound
+notv
+nou2f
+novideo
+protocol unix
+seccomp
+
+private-cache
+private-dev
+private-tmp
+
+dbus-user none
+dbus-system none
+
+restrict-namespaces

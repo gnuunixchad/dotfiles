@@ -1,0 +1,10 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# select an image for sway's wallpaper with imv
+
+notify-send -u low -r 438 "[Shift+w] to set wallpaper"
+
+# to execute a shell command inside imv, use `firejail --noprofile imv` to avoid permission issues
+find $HOME/pic/wallpapers -type f | grep -e .jpeg -e .jpg -e .png -e .gif | shuf | firejail --noprofile imv 
+

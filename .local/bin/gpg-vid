@@ -1,0 +1,20 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# decrypt the .gpg file and pipe to mpv, without writing to the disk
+# the video file has to be streamable, triming a mp4 file with ffmpeg could make it non-streamable
+# ffmpeg -ss 10 -i input.mp4 -c copy output.mp4
+# fix it by copy the movflags of the orgianl file
+# ffmpeg -i output.mp4 -c copy -movflags faststart new_output.mp4
+# output.mp4 is non-streamable
+# input.mp4 and new_output.mp4 are streamable
+tmp_gpg=/tmp/tmp_gpg
+
+#gpg -d $1 | mpv - --loop
+gpg --pinentry-mode loopback -d $1 > $tmp_gpg
+
+gpg-connect-agent reloadagent /bye
+
+mpv --loop $tmp_gpg
+
+rm $tmp_gpg

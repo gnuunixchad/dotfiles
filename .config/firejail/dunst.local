@@ -1,0 +1,3 @@
+include blacklist-gpg.local
+
+net none

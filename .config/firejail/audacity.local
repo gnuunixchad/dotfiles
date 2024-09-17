@@ -1,0 +1,4 @@
+include whitelist-common.local
+include whitelist-player-mus.local
+include blacklist-gpg.local
+net none

@@ -1,0 +1,9 @@
+include whitelist-common.local
+include blacklist-gpg.local
+
+whitelist ${HOME}/doc/note
+whitelist ${HOME}/doc/code
+whitelist ${HOME}/doc/git
+whitelist ${HOME}/doc/git-oc
+whitelist ${HOME}/doc/git-doc
+whitelist ${HOME}/.local/bin

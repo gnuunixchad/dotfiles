@@ -1,0 +1,76 @@
+[options]
+
+# Suppress built-in key bindings, and specify them explicitly in this
+# config file.
+suppress_default_binds = true
+
+[aliases]
+# Define aliases here. Any arguments passed to an alias are appended to the
+# command.
+# alias = command to run
+
+[binds]
+# Define some key bindings
+q = quit
+y = exec echo working!
+
+# Image navigation
+<Left> = prev
+<bracketleft> = prev
+<Right> = next
+<bracketright> = next
+gg = goto 1
+<Shift+G> = goto -1
+
+p = prev
+n = next
+
+# Panning
+j = pan 0 -50
+k = pan 0 50
+h = pan 50 0
+l = pan -50 0
+
+# Zooming
+<Up> = zoom 1
+<Shift+plus> = zoom 1
+i = zoom 1
+<Down> = zoom -1
+<minus> = zoom -1
+o = zoom -1
+
+# Rotate Clockwise by 90 degrees
+#<Ctrl+r> = rotate by 90
+r = rotate by 90
+<Ctrl+r> = rotate by -90
+
+# Other commands
+<Shift+X> = close
+#f = fullscreen
+d = overlay
+I = exec echo $imv_current_file
+c = center
+s = scaling next
+<Shift+S> = upscaling next
+a = zoom actual
+zz = reset
+
+f = flip horizontal
+v = flip vertical
+
+# imv.local firejail profile conflits exec commands in imv
+# to execute a shell command inside imv, use `firejail --noprofile imv` to avoid permission issues
+# set wallpaper in sway
+<Shift+W> = exec cp -f "$imv_current_file" /home/nate/.local/share/wallpaper && swaymsg "output * bg ~/.local/share/wallpaper fill"
+#<Shift+W> = exec ~/.local/bin/setwall "$imv_current_file"
+#
+# delete current 
+#<Shift+D> = exec rm "$imv_current_file"; exit
+
+# Gif playback
+<period> = next_frame
+<space> = toggle_playing
+
+# Slideshow control
+t = slideshow +1
+<Shift+T> = slideshow -1

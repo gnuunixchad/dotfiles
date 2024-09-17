@@ -1,0 +1,5 @@
+whitelist ${HOME}/doc
+read-only ${HOME}/doc
+
+whitelist ${HOME}/mnt
+read-only ${HOME}/mnt

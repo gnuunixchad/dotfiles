@@ -1,0 +1,12 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# clear the cached gpg passphrase in gpg agent
+
+msg='gpg-connect-agent reloadagent /bye'
+echo $msg
+
+gpg-connect-agent reloadagent /bye
+
+notify-send -u low -i 412 "gpg agent cache cleared" "$msg"
+

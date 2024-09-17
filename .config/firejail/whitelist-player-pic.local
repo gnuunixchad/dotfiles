@@ -1,0 +1,2 @@
+whitelist ${HOME}/pic
+read-only ${HOME}/pic

@@ -1,0 +1,14 @@
+include whitelist-common.local
+blacklist ${HOME}/mus/.gpg
+blacklist ${HOME}/pic/.gpg
+blacklist ${HOME}/vid/.gpg
+
+whitelist ${HOME}/doc/office
+
+whitelist ${HOME}/doc/.gpg
+read-only ${HOME}/doc/.gpg
+
+whitelist ${HOME}/repo/extensions/libreoffice
+read-only ${HOME}/repo/extensions/libreoffice
+
+net none

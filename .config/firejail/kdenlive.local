@@ -1,0 +1,5 @@
+include whitelist-common.local
+include whitelist-player-pic.local
+include blacklist-gpg.local
+
+net none

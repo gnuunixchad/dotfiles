@@ -1,0 +1,18 @@
+# allow access to /media, must use with whitelist to ensure security
+ignore disable-mnt
+# whitelist httrack
+whitelist ${HOME}/doc/httrack
+read-only ${HOME}/doc/httrack
+
+whitelist ${HOME}/dls
+whitelist /data/tmp
+include blacklist-gpg.local
+
+whitelist ${HOME}/repo/extensions/firefox
+read-only ${HOME}/repo/extensions/firefox
+
+whitelist ${HOME}/doc/arch-wiki
+read-only ${HOME}/doc/arch-wiki
+
+whitelist ${HOME}/doc/code/playground
+read-only ${HOME}/doc/code/playground

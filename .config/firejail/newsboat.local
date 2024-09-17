@@ -1,0 +1,6 @@
+include whitelist-common.local
+include blacklist-gpg.local
+
+whitelist ${HOME}/doc/articles
+
+private-bin less,w3m

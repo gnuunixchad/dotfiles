@@ -1,0 +1,2 @@
+whitelist ${HOME}/dls
+whitelist /data/tmp

@@ -1,0 +1,24 @@
+#!/bin/bash
+# sync-config
+# @author nate zhou
+# @since 2024
+
+
+read -p "Continue? (y/n): " choice
+if [[ $choice == "y" || $choice == "Y" ]]; then
+    rsync -avh --delete --progress --relative --exclude .git/ --exclude .config/gtk-2.0/gtkfilechooser.ini ~/.local/bin ~/.bashrc ~/.inputrc ~/.profile ~/.gnupg/gpg.conf ~/.config/calcurse/conf ~/.config/dunst ~/.config/fcitx5/{config,profile} ~/.config/firejail ~/.config/foot ~/.config/{gtk-2.0,gtk-3.0,gtk-4.0} ~/.config/imv ~/.config/mpd/mpd.conf ~/.config/mpv ~/.config/mutt/{account.example,muttrc,mailcap} ~/.config/ncmpcpp/{config,bindings} ~/.config/newsboat/config ~/.config/nvim/init.vim ~/.config/qt5ct/qt5ct.conf ~/.config/qt6ct/qt6ct.conf ~/.config/ranger ~/.config/sway ~/.config/swaylock ~/.config/task/taskrc ~/.config/waybar ~/.config/wget ~/.config/zathura ~/.config/user.js ~/.config/smb.conf ~/.config/code-flags.conf ~/.config/Code\ -\ OSS/User/{keybindings.json,settings.json} ~/.config/ttyper ~/.config/git/config.example ~/.ssh/config.example ~/.config/newsboat/urls.example ~/doc/dotfiles/
+
+    rsync -avh --delete --progress ~/doc/dotfiles/home/nate/ ~/doc/note/usr/swayarch/
+
+    # sync sway dotfiles git repo
+    # exclude install_sway.md to not delete it in destination path
+    rsync -avh --delete --progress --exclude .git --exclude install_sway.md ~/doc/dotfiles/home/nate/ ~/doc/git/swayarch/
+
+    # data  files
+    rsync -avh --delete --progress --relative --exclude .git/ ~/.local/app ~/.local/sbin ~/.local/share/nvim ~/.ssh/config ~/.config/btop/btop.conf ~/.config/calcurse/calendar.ical ~/.config/cls ~/.config/git ~/.config/mpd/playlists ~/.config/newsboat/urls ~/.config/task/task ~/.config/mutt/{account1,account1.gpg} ~/.vscode-oss/extensions ~/doc/datafiles/
+    # sync bookmark file
+    rsync -avh --delete --progress --exclude .git/ ~/doc/bookmarks/ ~/doc/datafiles/bookmarks
+else
+    echo "aborted"
+    exit 0
+fi

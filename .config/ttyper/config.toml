@@ -1,0 +1,58 @@
+# the language used when one is not manually specified
+default_language = "english1000"
+
+[theme]
+# default style (this includes empty cells)
+default = "none"
+
+# title text styling
+title = "white;bold"
+
+## test styles ##
+
+# input box border
+input_border = "cyan"
+# prompt box border
+prompt_border = "yellow"
+
+# border type
+border_type = "rounded"
+
+# correctly typed words
+prompt_correct = "yellow;dim"
+# incorrectly typed words
+prompt_incorrect = "red"
+# untyped words
+prompt_untyped = "gray"
+
+# correctly typed letters in current word
+prompt_current_correct = "yellow;"
+# incorrectly typed letters in current word
+prompt_current_incorrect = "red;bold"
+# untyped letters in current word
+prompt_current_untyped = "yellow;bold"
+
+# cursor character
+prompt_cursor = "none;reversed"
+
+## results styles ##
+
+# overview text
+results_overview = "cyan;bold"
+# overview border
+results_overview_border = "cyan"
+
+# worst keys text
+results_worst_keys = "cyan;bold"
+# worst keys border
+results_worst_keys_border = "cyan"
+
+# results chart default (includes plotted data)
+results_chart = "cyan"
+# results chart x-axis label
+results_chart_x = "cyan"
+# results chart y-axis label
+results_chart_y = "gray;italic"
+
+# restart/quit prompt in results ui
+results_restart_prompt = "gray;italic"

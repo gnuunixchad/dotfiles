@@ -1,0 +1,195 @@
+// @auther nate zhou
+// @since 2023
+[
+	// # vim extension
+	// ## toggle vim extension
+    {
+        "key": "ctrl+alt+`",
+        "command": "toggleVim"
+    },
+
+    	// ## disable rarely used key bindings for conflicting
+    {
+        "key": "ctrl+w",
+        "command": "-extension.vim_ctrl+w",
+        "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-extension.vim_ctrl+b",
+        "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+    },
+
+
+    	// # terminal
+    	// ## toggle terminal
+    {
+        "key": "ctrl+enter",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    	// ## new terminal session
+    {
+        "key": "ctrl+shift+enter",
+        "command": "workbench.action.terminal.new",
+        "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+    },
+
+    	// ## kill current terminal session when focused on terminal
+    {
+        "key": "ctrl+w",
+        "command": "workbench.action.terminal.kill",
+        "when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+
+    	// ## focus previous terminal session
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    },
+
+    	// ## focus next terminal session
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+    },
+    	// ## move focus from terminal to editor
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+
+
+    	// # split editor && workbenchs
+	// an editor group is like a tabed window in i3wm, it has tabs, and can be tilled with other editor groups
+
+	// ## new editor group
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.newGroupRight"
+    },
+
+
+    	// ## move focus to a split of editor group, when not focusing on terminal
+	// ## could use default `ctrl + 1/2/3/4` as well
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.focusLeftGroup",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.focusBelowGroup",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.focusAboveGroup",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.focusRightGroup",
+        "when": "!terminalFocus"
+    },
+
+	// ## move editor group's position with `ctrl+k` `h/j/k/l`
+	// m for Move
+    {
+        "key": "ctrl+m h",
+        "command": "workbench.action.moveActiveEditorGroupLeft"
+    },
+    {
+        "key": "ctrl+m j",
+        "command": "workbench.action.moveActiveEditorGroupDown"
+    },
+    {
+        "key": "ctrl+m k",
+        "command": "workbench.action.moveActiveEditorGroupUp"
+    },
+    {
+        "key": "ctrl+m l",
+        "command": "workbench.action.moveActiveEditorGroupRight"
+    },
+
+
+    	// ## move an editor to another editor group split
+	// ### to next group
+    {
+        "key": "ctrl+m n",
+        "command": "workbench.action.moveEditorToNextGroup"
+    },
+    	// ### to previous group
+    {
+        "key": "ctrl+m p",
+        "command": "workbench.action.moveEditorToPreviousGroup"
+    },
+
+
+    	// #UI
+	// focus on side bar
+    {
+        "key": "ctrl+shift+b",
+        "command": "workbench.action.focusSideBar"
+    },
+
+    	// open && focuse console: PROBLEMS
+    {
+        "key": "ctrl+shift+p",
+        "command": "workbench.panel.markers.view.focus"
+    },
+    	// open && focus console: OUTPUT
+    {
+        "key": "ctrl+shift+o",
+        "command": "workbench.panel.output.focus"
+    },
+    	// open && focus console: DEBUG CONSOLE
+    {
+        "key": "ctrl+shift+d",
+        "command": "workbench.panel.repl.view.focus"
+    },
+
+	// # coding 
+	// ## code Fix
+	// o for Open
+    {
+        "key": "ctrl+o f",
+        "command": "editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    	// ## code Hover
+    {
+        "key": "ctrl+o h",
+        "command": "editor.action.showHover",
+        "when": "editorTextFocus"
+    },
+    	// ## code floating Definition
+    {
+        "key": "ctrl+o d",
+        "command": "editor.action.revealDefinition",
+        "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    },
+    	// ## code open Reference file
+    {
+        "key": "ctrl+o r",
+        "command": "editor.action.goToReferences",
+        "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+    },
+
+
+	// # code suggestion
+	// ## use tab select suggestion, instead of up/down
+    {
+        "key": "tab",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+      },
+        {
+        "key": "ctrl+tab",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    }
+]

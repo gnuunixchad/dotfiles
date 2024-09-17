@@ -1,0 +1,28 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# depends on id3v2
+# add title tags to audio files, using the file name except the extension
+
+# ATTENTION: doesn't work as expected on CJK characters
+echo "Only perform on music that has empty title id3 tags."
+
+add_title() {
+    file="$1"
+    
+    filename=$(basename "$file")
+
+    # bash's brace expansion (another example is `mkdir {2007..2009}-{01..12}`)
+    # remove the shortest suffix pattern that matches the pattern .* (i.e., any
+    # characters followed by a dot) from the value of the filename variable.
+    title="${filename%.*}"
+    
+    id3v2 -t "$title" "$file"
+}
+
+for file in "$@"; do
+    add_title "$file"
+done
+
+
+

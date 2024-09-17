@@ -1,0 +1,2 @@
+whitelist ${HOME}/mus
+read-only ${HOME}/mus

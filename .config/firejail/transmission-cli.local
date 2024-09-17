@@ -1,0 +1,2 @@
+include whitelist-common.local
+include blacklist-gpg.local

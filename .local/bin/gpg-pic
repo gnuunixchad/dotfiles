@@ -1,0 +1,13 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# decrypt the .gpg file and pipe to fim, without writing to the disk
+
+# there's virtually no image viewer that can view more than one image from the standard output, if the size of the image are the same, consider conver to gif. Otherwise pdf or a tarball.
+
+#gpg -d $1 | fim -i
+
+# use mpv to display one single jpeg/png or gif image
+gpg --pinentry-mode loopback -d $1 | mpv - --loop --pause
+
+gpg-connect-agent reloadagent /bye

@@ -1,0 +1,15 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# easily shred files inside directory, used in ranger `@` `:shell shred-dir %s`
+
+# shred dir/*/** recursively shred the files
+shred -u $1/*/**
+# shred files
+shred -u $1/*
+# trying to rmdir
+rmdir $1
+# tryiing to rmdir if contains subdirs
+rm -r $1
+
+notify-send -u low -i 1092 "shred-dir finished"

@@ -1,0 +1,8 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# decrypt the .gpg file and pipe to less, without writing to the disk
+
+gpg --pinentry-mode loopback -d $1 | less
+
+gpg-connect-agent reloadagent /bye

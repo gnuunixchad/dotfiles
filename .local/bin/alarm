@@ -1,0 +1,40 @@
+#!/bin/bash
+# terminal alarm/timer
+# @author nate zhou
+# @since 2023
+# usage: `alarm posivie_integer "description"`
+
+send_notification() {
+    notify-send -u normal -r 10 "alarm ended ($due_time)" "$alarm_description\nduration: ${minutes}m"
+}
+
+# 1st arguments must be a positive integer
+validate_argument() {
+    if [[ $1 =~ ^[0-9]+$ ]] && [[ $1 -gt 0 ]]; then
+        return 0
+    else
+        echo "Invalid argument: $1. Positive integer?"
+        exit 1
+    fi
+}
+
+if [[ $# -eq 2 ]]; then
+    validate_argument "$1"
+    minutes=$1
+    alarm_description=$2
+
+    due_time=$(date -d "+$minutes minutes" +%H:%M)
+
+    # creating notification
+    echo "$alarm_description" | tee /dev/tty | xargs -I {} notify-send -u low -r 10 "alarm (due $due_time)" {}
+
+    # ending notification
+    # notify-send -r ID, same ID let the ending notification
+    # replace the creating notification, instead of stacking
+    # argument in minutes is converted to in seconds for sleep command
+    sleep "${minutes}m" && send_notification
+
+else
+    echo "Invalid arguments. Usage: $0 <minutes> <description>"
+    exit 1
+fi

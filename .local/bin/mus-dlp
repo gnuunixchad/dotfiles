@@ -1,0 +1,13 @@
+#!/bin/bash
+# download music by yt-dlp with preferred formats
+# @author nate zhou
+# @since 2023
+
+# `yt-dlp --list-formats URL` to get details
+# 251 downloads best audio only (opus)
+# opus and ogg doesn't support id3v2 tag
+# convert to mp3
+
+echo "yt-dlp -f 251 -x --audio-format mp3 $@";
+
+yt-dlp --embed-metadata --cookies-from-browser firefox -f 251 -x --audio-format mp3 $@ && notify-send -u low -r 6 "mus-dlp: finished"

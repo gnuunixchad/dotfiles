@@ -1,0 +1,11 @@
+#no-unlock-indicator
+
+ignore-empty-password
+
+daemonize
+
+show-failed-attempts
+
+indicator-caps-lock
+
+image="$HOME/.local/share/lockscreen"

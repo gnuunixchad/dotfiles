@@ -1,0 +1,21 @@
+# allow access to /media, must use with whitelist to ensure security
+ignore disable-mnt
+# whitelist pic mus vid
+include whitelist-common.local
+
+include whitelist-player-mus.local
+include whitelist-player-pic.local
+include whitelist-player-vid.local
+
+# allow video files in home
+whitelist ${HOME}/*.mkv
+whitelist ${HOME}/*.mp4
+whitelist ${HOME}/*.webm
+whitelist ${HOME}/*.gif
+whitelist ${HOME}/*.mp3
+
+# whitelist for mpv video progress history
+whitelist ${HOME}/.local/state/mpv
+whitelist ${HOME}/.cache/mpv
+
+net none

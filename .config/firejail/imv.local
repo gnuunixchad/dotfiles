@@ -1,0 +1,4 @@
+read-only ${HOME}/pic/.nsfw
+noblacklist ${HOME}/pic/.nsfw
+read-only ${HOME}/pic/.nsfw/etc
+noblacklist ${HOME}/pic/.nsfw/etc
