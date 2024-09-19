@@ -33,6 +33,7 @@ firejail
 foot
 fzf
 gammastep
+gimp
 git
 gnome-themes-extra
 grim
@@ -70,12 +71,14 @@ ntp
 nvidia-open-dkms
 nvidia-utils
 nvtop
+ollama
 openbsd-netcat
 openjdk-src
 openssh
 pacman-contrib
 perl-image-exiftool
 perl-rename
+pfetch
 pipewire
 pipewire-alsa
 pipewire-pulse
@@ -113,7 +116,7 @@ wmenu
 wtype
 xdg-desktop-portal
 xorg-xwayland
-yay-bin
+yay
 yt-dlp
 zathura
 zathura-pdf-mupdf
