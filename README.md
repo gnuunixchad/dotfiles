@@ -297,6 +297,8 @@ login as root
 
     ### personal tools
     neomutt newsboat task calcurse
+    ### normie's email client due to compulsory oauth2 
+    thunderbird thunderbird-dark-reader
 
     ### coding
     (code on archlinux official repo is actually the free software Code-OSS, instead of proprietary VSCode)
