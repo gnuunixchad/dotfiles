@@ -128,10 +128,11 @@
         "interval":5,
         //"format-wifi": "{bandwidthDownBytes}🡻 {bandwidthUpBytes}🡱 {signalStrength}% ",
         "format-wifi": "{signalStrength}% ",
-        "format-ethernet": "{cidr} ",
+        "format-ethernet": "{ifname} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Network ⚠",
+        //"format-disconnected": "Network  ",
+        "format-disconnected": "  ",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
