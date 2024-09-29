@@ -253,7 +253,7 @@ login as root
     vim neovim ranger fzf tmux git rsync openssh openbsd-netcat udisks2 zip unzip tree calc pacman-contrib archlinux-contrib
 
     ### system configuration
-    networkmanager brightnessctl tlp ntp ufw firejail
+    networkmanager brightnessctl tlp ntp ufw firejail cronie
 
     ### system monitoring
     btop ncdu iftop sysstat smartmontools
