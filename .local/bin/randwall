@@ -4,7 +4,6 @@
 # randwall
 # random wallpaper
 # use cron to refresh wallpaper everyday
-
 # get one random image file from my wallpapers collection
 random_wallpaper=$(find $HOME/pic/wallpapers -type f | grep -v -e /linux/ -v -e /maplestory/ -v -e /fantasy/ | grep -e .jpeg -e .jpg -e .png -e .gif | shuf -n 1)
 
@@ -12,4 +11,5 @@ random_wallpaper=$(find $HOME/pic/wallpapers -type f | grep -v -e /linux/ -v -e 
 cp -f $random_wallpaper $HOME/.local/share/wallpaper;
 
 # refresh swaybg
-swaymsg "output * bg ~/.local/share/wallpaper fill"
+# without SWAYSOCK variable, swaymsg couldn't connect to the socket running from a cron job
+SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock swaymsg "output * bg ~/.local/share/wallpaper fill"
