@@ -1,5 +1,4 @@
 [options]
-
 # Suppress built-in key bindings, and specify them explicitly in this
 # config file.
 suppress_default_binds = true
@@ -13,6 +12,11 @@ suppress_default_binds = true
 # Define some key bindings
 q = quit
 y = exec echo working!
+
+# background color for transparent/black png
+b = background checks
+# background color to default black
+<Shift+B> = background 000000
 
 # Image navigation
 <Left> = prev
