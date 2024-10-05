@@ -2,6 +2,7 @@ adobe-source-code-pro-fonts
 adwaita-qt5
 adwaita-qt6
 android-file-transfer
+arch-install-scripts
 arch-wiki-docs
 archlinux-contrib
 base
@@ -16,6 +17,7 @@ cliphist
 code
 cronie
 cryptsetup
+dosfstools
 dunst
 efibootmgr
 fcitx5
@@ -88,6 +90,7 @@ qt5ct
 ranger-git
 rsync
 samba
+scrcpy
 slurp
 smartmontools
 sway-git
