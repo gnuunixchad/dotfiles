@@ -102,7 +102,9 @@ alias dict='dict -d gcide | less -F';
 
 alias less="less -F";
 
+#alias poweroff="systemctl poweroff";
 alias hibernate="systemctl hibernate";
+#alias reboot="systemctl reboot";
 
 #alias i3lock="i3lock -e -f --color 000000";
 
@@ -124,7 +126,7 @@ alias fv="fzf --preview 'cat {}' | xargs nvim";
 alias iostat="iostat -t 2";
 
 # start sway with ssh agent
-alias sw="ssh-agent -t 30m sway";
+alias sw="ssh-agent -t 30m sway --unsupported-gpu";
 
 # preventing nested ranger instances, form arch wiki
 ranger() {
@@ -134,3 +136,7 @@ ranger() {
         exit
     fi
 }
+
+# Export GPG_TTY and update GPG agent startup TTY
+#export GPG_TTY=$(tty)
+#unset DISPLAY
