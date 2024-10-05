@@ -1,17 +1,15 @@
-@title: Arch Linux Installation With Sway Wayland Compositor
-@author: nate zhou
-@since: 2024-08-07
+@title: Arch Linux Installation With Sway Wayland Compositor  
+@author: nate zhou  
+@since: 2024-08-07  
 
-disclaimer: 
+Video Chanel(Chinese): [unixchad on bilibili](https://space.bilibili.com/34569411)
 
-This only serves as a record rather than a guide or tutorial. 
-
+Disclaimer:  
+This only serves as a record rather than a guide or tutorial.  
 It is based on the [arch wiki](https://wiki.archlinux.org/title/Installation_guide), which is the better guide, if not the best.
-
 # 0.install info
 partition:  LVM on LUKS
 boot:       GRUB, UEFI, Secure Boot disabled)
-
 ```
  lsblk example:
     NAME              SIZE  TYPE  MOUNTPOINTS
@@ -24,7 +22,6 @@ boot:       GRUB, UEFI, Secure Boot disabled)
     └─nvme0n1p3     399.9G  part  
       └─crypthome   399.9G  crypt /home
 ```
-
 # 1. archiso
 ## 1.1 ventoy
 w    bootable iso usb drive created with ventoy-1.0.99
