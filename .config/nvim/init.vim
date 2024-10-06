@@ -21,6 +21,9 @@ set clipboard=unnamedplus
 "set cursorline
 "set cursorcolumn
 
+match ExtraWhitespace /\s\+$/ " space at the end of lines
+highlight ExtraWhitespace ctermbg=gray guibg=gray " highlight all trailing spaces
+
 " %F full file path | %f relative path to working directory | %m modified flag | %r read-only flag
 "set statusline+=%f\ %h%m%r\ %{FugitiveStatusline()}%=\ %y\ [%{&fileformat}]\ [%{&encoding}]\ \ %-8.(%l,%c%)\ %P
 " set statusline+=%f\ %h%m%r%=\ %{FugitiveStatusline()}\ %y\ [%{&encoding}]\ \ %-8.(%l,%c%)\ %P
