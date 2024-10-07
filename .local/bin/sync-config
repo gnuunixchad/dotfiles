@@ -18,7 +18,9 @@ if [[ $choice == "y" || $choice == "Y" ]]; then
     crontab -l > ~/doc/datafiles/crontab
 
     # data  files
-    rsync -avh --delete --progress --relative --exclude .git/ ~/.local/app ~/.local/sbin ~/.local/share/nvim ~/.ssh/config ~/.config/btop/btop.conf ~/.config/calcurse/calendar.ical ~/.config/cls ~/.config/git ~/.config/mpd/playlists ~/.config/newsboat/urls ~/.config/task/task ~/.config/mutt/{account1,account1.gpg} ~/.vscode-oss/extensions ~/doc/datafiles/
+    rsync -avh --delete --progress --relative ~/.local/sbin/.git/ ~/.local/app ~/.local/sbin ~/.local/share/nvim ~/.ssh/config ~/.config/btop/btop.conf ~/.config/calcurse/calendar.ical ~/.config/cls ~/.config/git ~/.config/mpd/playlists ~/.config/newsboat/urls ~/.config/task/task ~/.config/mutt/{account1,account1.gpg} ~/.vscode-oss/extensions ~/doc/datafiles/
+    # neovim plugins
+    rsync -avh --delete --progress --relative --exclude .git/ ~/.local/share/nvim ~/doc/datafiles/.local/share/nvim
     # sync bookmark file
     rsync -avh --delete --progress --exclude .git/ ~/doc/bookmarks/ ~/doc/datafiles/bookmarks
 else
