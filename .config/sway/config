@@ -171,6 +171,8 @@ input "type:keyboard" {
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+    bindsym $mod+z workspace number 0
+    bindsym $mod+Shift+z move container to workspace number 0
 
     #binding workspaces to monitors
     #workspace 1 output eDP-1
@@ -225,6 +227,7 @@ input "type:keyboard" {
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
+    #bindsym $mod+f exec ~/.local/bin/maximize
 
     # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+f floating toggle
@@ -390,6 +393,11 @@ mode $mode_cursor {
     bindsym u seat - cursor move 0 +10
     bindsym i seat - cursor move 0 -10
     bindsym o seat - cursor move +10 0
+
+    bindsym $mod+grave seat - cursor set 0 0
+    bindsym $mod+slash seat - cursor set 9999 9999
+    bindsym grave seat - cursor set 0 0
+    bindsym slash seat - cursor set 9999 9999
 
     # Left click (click won't work as a keybindings if with $mod key)
     bindsym comma seat - cursor press button1, seat - cursor release button1
