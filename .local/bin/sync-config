@@ -23,6 +23,8 @@ if [[ $choice == "y" || $choice == "Y" ]]; then
     rsync -avh --delete --progress --relative --exclude .git/ ~/.local/share/nvim ~/doc/datafiles/.local/share/nvim
     # sync bookmark file
     rsync -avh --delete --progress --exclude .git/ ~/doc/bookmarks/ ~/doc/datafiles/bookmarks
+    # censor private address from bookmarks and write to bookmarks-on-screen
+    grep -n "##############################below-are-private##############################" ~/doc/bookmarks/bookmarks | cut -d: -f1 | xargs -I {} sed -n '1,{}p' ~/doc/bookmarks/bookmarks > ~/doc/bookmarks/bookmarks-on-screen
 else
     echo "aborted"
     exit 0
