@@ -171,8 +171,8 @@ input "type:keyboard" {
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-    bindsym $mod+z workspace number 0
-    bindsym $mod+Shift+z move container to workspace number 0
+    bindsym $mod+z move container to workspace number 0; workspace number 0
+    bindsym $mod+Shift+z workspace number 0
 
     #binding workspaces to monitors
     #workspace 1 output eDP-1
