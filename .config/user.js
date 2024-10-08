@@ -70,3 +70,6 @@ user_pref("extensions.webextensions.ExtensionStorageIDB.migrated.uBlock0@raymond
 
 // disabled for wayland with nvidia
 //user_pref("layout.css.devPixelsPerPx", "0.95");
+
+// proxy
+user_pref("network.proxy.share_proxy_settings", true);
