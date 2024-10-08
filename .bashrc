@@ -87,9 +87,11 @@ alias free="free -h";
 alias gs="git status";
 alias gd="git diff";
 alias gds="git diff --staged";
+alias gdw="git diff --word-diff"
+alias gl="git log"
 alias gla="git log --graph --all --abbrev-commit";
 alias gln="git log --pretty=oneline --name-only";
-alias gf="git log --follow -p";
+alias glf="git log --follow -p";
 
 #alias x="startx";
 
