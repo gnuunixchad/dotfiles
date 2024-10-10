@@ -413,6 +413,7 @@ bindsym $mod+semicolon mode $mode_cursor
 
 bindsym $mod+grave seat - cursor set 0 0
 bindsym $mod+slash seat - cursor set 9999 9999
+bindsym $mod+backslash seat - cursor set 9999 0
 
 # move cursor without touching arrow keys
 bindsym $mod+CONTROL+h exec wtype -k 'Left'
