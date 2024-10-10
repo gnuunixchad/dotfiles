@@ -10,16 +10,16 @@
 #def_key "up"
 #  scroll_up
 #
-#def_key "shift-up"
-#  select_item
-#  scroll_up
+def_key "K"
+  select_item
+  scroll_up
 #
 #def_key "down"
 #  scroll_down
 #
-#def_key "shift-down"
-#  select_item
-#  scroll_down
+def_key "J"
+  select_item
+  scroll_down
 #
 #def_key "["
 #  scroll_up_album
@@ -75,8 +75,8 @@
 #def_key "delete"
 #  delete_browser_items
 #
-#def_key "delete"
-#  delete_stored_playlist
+def_key "d"
+  delete_stored_playlist
 #
 #def_key "right"
 #  next_column
@@ -418,11 +418,11 @@ def_key "ctrl-u"
 def_key "ctrl-d"
     page_down
 #push_characters "jjjjjjjjjjjjjjj"
-def_key "u"
-    page_up
+#def_key "u"
+#    page_up
 #push_characters "kkkkkkkkkkkkkkk"
-def_key "d"
-    page_down
+#def_key "d"
+#    page_down
 #push_characters "jjjjjjjjjjjjjjj"
 def_key "h"
     previous_column
@@ -456,8 +456,8 @@ def_key "m"
   toggle_media_library_columns_mode
 def_key "t"
   show_tag_editor
-def_key "v"
-  show_visualizer
+#def_key "v"
+#  show_visualizer
 def_key "G"
   move_end
 def_key "g"
