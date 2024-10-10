@@ -282,6 +282,8 @@ include /etc/sway/config.d/*
 
 ### autostart
 #
+exec --no-startup-id "clsd"
+
 # redshift fork on wayland
 exec --no-startup-id "gammastep -O 5000"
 
