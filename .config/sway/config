@@ -341,6 +341,7 @@ bindsym $mod+Control+Right exec --no-startup-id playerctl next
 bindsym $mod+Control+Up exec --no-startup-id playerctl play-pause
 
 bindsym $mod+r exec --no-startup-id foot ranger
+bindsym $mod+CONTROL+m exec --no-startup-id foot ncmpcpp
 
 # mpc
 #bindsym $mod+Shift+comma exec --no-startup-id mpc prev
@@ -381,6 +382,10 @@ mode $mode_cursor {
     bindsym minus exec wtype -k "F11" ; mode "default"
     bindsym equal exec wtype -k "F12" ; mode "default"
 
+    bindsym $mod+$left seat - cursor move -50 0
+    bindsym $mod+$down seat - cursor move 0 +50
+    bindsym $mod+$up seat - cursor move 0 -50
+    bindsym $mod+$right seat - cursor move +50 0
     bindsym $left seat - cursor move -50 0
     bindsym $down seat - cursor move 0 +50
     bindsym $up seat - cursor move 0 -50
@@ -398,12 +403,16 @@ mode $mode_cursor {
 
     bindsym $mod+grave seat - cursor set 0 0
     bindsym $mod+slash seat - cursor set 9999 9999
+    bindsym $mod+backslash seat - cursor set 9999 0
     bindsym grave seat - cursor set 0 0
     bindsym slash seat - cursor set 9999 9999
+    bindsym backslash seat - cursor set 9999 0
 
     # Left click (click won't work as a keybindings if with $mod key)
+    bindsym $mod+comma seat - cursor press button1, seat - cursor release button1
     bindsym comma seat - cursor press button1, seat - cursor release button1
     # Right click
+    bindsym $mod+period seat - cursor press button3, seat - cursor release button3
     bindsym period seat - cursor press button3, seat - cursor release button3
 
     bindsym g exec wtype -k 'Home'
