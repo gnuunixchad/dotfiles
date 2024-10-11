@@ -1,0 +1,10 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# thumbshot
+# take a screen shot for video's thumbnail background
+# changing resolution to 800x600 and take a screenshot with grim
+# reload sway config to restore resolution
+waybar_config=$HOME/.config/waybar/config.jsonc
+
+swaymsg "output eDP-1 mode --custom 800x600@60.000Hz pos 0 0"
