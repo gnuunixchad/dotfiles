@@ -1,0 +1,29 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023,2024
+# dw, dunst weather
+# @depends: libnotify, dunst, updw
+
+# use notification software like dunst to show weather info from local cache downloaded by my another script updw
+# running with dmenu/wmenu is recommended
+
+if [[ -f $HOME/.cache/wttr ]]; then
+
+    wttr=$(cat $HOME/.cache/wttr)
+
+    # check if the file is empty
+    if [[ -z $wttr ]]; then
+        msg="~/.cache/wttr is empty, try running updw ?"
+        notify-send -u low -r 23 "$msg"
+        echo $msg
+    else
+        msg=$wttr
+        notify-send -u low -r 24 "Weather" "$msg"
+        echo $msg
+    fi
+
+else
+    msg="~/.cache/wttr does not exist, try running updw ?"
+    notify-send -u low -r 23 "Weather" "$msg"
+    echo $msg
+fi
