@@ -152,7 +152,7 @@ w    bootable iso usb drive created with ventoy-1.0.99
 
     chmod 400 cryptkey
 
-    cryptsetup luksAddkey /dev/nvme0n1p3 /root/cryptkey
+    cryptsetup luksAddKey /dev/nvme0n1p3 /root/cryptkey
 
     blkid >> /etc/crypttab
 
@@ -162,8 +162,8 @@ w    bootable iso usb drive created with ventoy-1.0.99
         crypthome <uuid> /root/cryptkey luks,discard
         (uuid of the luks containers)
 ## 1.15.1 (optional) kill no longer used key slot
-    cryptsetup luksDumpkey /dev/nvme0n1p3 | less
-    cryptsetup luksKillslot /dev/nvme0n1p3 1
+    cryptsetup luksDump /dev/nvme0n1p3 | less
+    cryptsetup luksKillSlot /dev/nvme0n1p3 1
 ## 1.16 create initial ramdisk environment
     `vim /etc/mkinicpio.conf`
 
