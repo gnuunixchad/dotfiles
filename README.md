@@ -439,3 +439,28 @@ remove unused packages weekly by `paccache` command from `pacman-contrib` packag
 ### 2.6.13 electron software (code/codium) themes on wayland
     make sure xdg-desktop-portal package is installed and run:
         gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+### 2.6.14 (optional) nvidia fix hibernation
+    (linux-lts 6.6.56-1 nvidia-open-dkms 560.35.03-16)
+    sudo systemctl enable nvidia-suspend.service
+    sudo systemctl enable nvidia-hibernate.service
+    sudo systemctl enable nvidia-resume.service
+    sudo systemctl enable nvidia-powerd.service
+### 2.6.15 (optional) change default power button behavior
+    sudo cp /etc/systemd/logind.conf /etc/systemd/logind.conf~
+    sudo vim /etc/systemd/logind.conf
+
+    uncomment and modify line to:
+    HandlePowerKey=hibernate
+
+# 3.0 (optional) restore files from a backup media
+    unlock and mount the backup disk
+        udisksctl unlock -b /dev/sdx1
+        udisksctl mount -b /dev/dm-x
+
+    sync to home directory
+        rsync -avh --delete --progress /run/media/nate/usb-ssd0/back/{aur,doc,mus,pic,repo,vid} /home/nate/
+
+    unmount and lock the device
+        udisksctl unmount -b /dev/dm-x
+        udisksctl lock -b /dev/sdx1
+        udisksctl poweroff -b /dev/sdx
