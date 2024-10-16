@@ -19,7 +19,11 @@ refresh_bg() {
     SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock swaymsg "output * bg \"$wallpaper_path\" fill"
 }
 
+# don't do anything if mpvpaper is running
+if pgrep -x "mpvpaper" > /dev/null
+then
+    exit 1
 # refresh wallpaper if haven't been yet today or wallpaper hasn't been set
-if [[ $date_last_bg != $date_today || ! -f $wallpaper_path ]]; then
+elif [[ $date_last_bg != $date_today || ! -f $wallpaper_path ]]; then
     refresh_bg
 fi
