@@ -298,9 +298,9 @@ exec --no-startup-id "wl-paste --watch cliphist store"
 bindsym $mod+b exec --no-startup-id 'cliphist list | wmenu -l 9 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S 249988 -s 000000 | cliphist decode | wl-copy'
 
 # address & bookmarks
-bindsym $mod+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks | grep -vE "^#|^[[:space:]]*$" | wmenu -l 9 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S 86ae71 -s 000000 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
+bindsym $mod+Shift+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks | grep -vE "^#|^[[:space:]]*$" | wmenu -l 9 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S 86ae71 -s 000000 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
 ### bookmarks-on-screen for privacy when recording videos
-bindsym $mod+Shift+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks-on-screen | grep -vE "^#|^[[:space:]]*$" | wmenu -l 9 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S 86ae71 -s 000000 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
+bindsym $mod+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks-on-screen | grep -vE "^#|^[[:space:]]*$" | wmenu -l 9 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S 86ae71 -s 000000 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
 
 ### keybindings
 #
