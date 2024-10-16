@@ -4,7 +4,7 @@
 # decrypt the .gpg file and pipe to a viewer, without writing to the disk
 
 usage() {
-    echo -e "usage:\tgpg-doc image.*.gpg\n\twmenu as passphrase prompt to temporarily view the encrypted files"
+    echo -e "usage:\tgpg-doc file.*.gpg\n\twmenu as passphrase prompt to temporarily view the encrypted files"
 }
 
 # print help menu if no arguments is provided
@@ -15,6 +15,11 @@ fi
 
 # use wmenu as passphrase prompt
 gpg_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "Enter the gpg passphrase")
+
+# don't do anything if exiting wmenu without any input
+if  [[ -z "$gpg_passphrase" ]]; then
+    exit 1
+fi
 
 if [[ $1 == *".epub.gpg" || $1 == *".pdf.gpg" ]]; then
     # ebooks with zathura

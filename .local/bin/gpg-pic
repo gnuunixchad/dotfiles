@@ -24,6 +24,11 @@ fi
 # use wmenu as passphrase prompt
 gpg_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "Enter the gpg passphrase")
 
+# don't do anything if exiting wmenu without any input
+if  [[ -z "$gpg_passphrase" ]]; then
+    exit 1
+fi
+
     echo "$gpg_passphrase" | gpg --batch --passphrase-fd 0 -d "$1" | mpv - --loop --no-resume-playback
 
 # clean cached passphrase
