@@ -3,35 +3,11 @@
 # @since 2024
 # open text file with neovim with wmenu 
 
-search_path=("$HOME/.config/btop/btop.conf" 
-             "$HOME/.config/epr/"
-             "$HOME/.config/cava/config"
-             "$HOME/.config/cmus/hyper.theme"
-             "$HOME/.config/dunst/dunstrc"
-             "$HOME/.config/firejail/"
-             "$HOME/.config/flameshot"
-             "$HOME/.config/foot/foot.ini"
-             "$HOME/.config/geary/user-style.css"
-             "$HOME/.config/git/"
-             "$HOME/.config/i3/"
-             "$HOME/.config/i3status/"
-             "$HOME/.config/mpv/*.conf"
-             "$HOME/.config/neofetch/config.conf"
-             "$HOME/.config/newsboat/"
-             "$HOME/.config/nsxiv/"
-             "$HOME/.config/nvim"
-             "$HOME/.config/parcellite"
-             "$HOME/.config/ranger/"
-             "$HOME/.config/sway/"
-             "$HOME/.config/task/taskrc"
-             "$HOME/.config/VSCodium/User/keybindings.json"
-             "$HOME/.config/VSCodium/User/settings.json"
-             "$HOME/.config/wget/wgetrc"
-             "$HOME/.config/pfetch"
-             "$HOME/.config/picom.conf"
-             "$HOME/.config/user.js"
-             "$HOME/.config/zathura"
+search_path=("$HOME/.config/" 
+
              "$HOME/.ssh/config"
+             "$HOME/.gnupg/gpg.conf"
+
              "$HOME/.bashrc"
              "$HOME/.inputrc"
              "$HOME/.profile"
@@ -45,16 +21,13 @@ search_path=("$HOME/.config/btop/btop.conf"
 
              #"$doc/contacts/"
              #"$doc/dict/"
-             #"$doc/datafiles/bookmarks/bookmarks"
-             #"$doc/lyrics/"
-             #"$doc/reading/"
-             #"$doc/records/"
-             #"$doc/thoughts/"
+             "$doc/bookmarks/bookmarks"
+             "$doc/lyrics/"
             )
 
-selected_file=$(find "${search_path[@]}" -type f | grep -ve "/sbin/auto-rice/nate" -ve "/.git/" | wmenu -i -l 10 -f "SourceCodePro bold 13" -N 242424 -n eeeeee -S 128569 -s 000000 | xargs -I {} foot nvim {})
+    selected_file=$(find "${search_path[@]}" -type f | grep -ve "/sbin/auto-rice/nate" -ve "/.git/" | wmenu -i -l 10 -f "SourceCodePro bold 13" -N 242424 -n eeeeee -S 128569 -s 000000 )
 
 # don't open vim if none file selected
 if [ -n "$selected_file" ]; then
-    xterm -e nvim "$selected_file"
+    foot nvim "$selected_file"
 fi
