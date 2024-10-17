@@ -114,6 +114,8 @@ input "type:keyboard" {
 
     # refresh wallpaper
     bindsym $mod+Shift+r exec swaymsg "output * bg ~/.local/share/wallpaper fill"
+    # refresh live wallpaper
+    bindsym $mod+CONTROL+r exec $HOME/.local/bin/mpvpaper-run
 
     # Exit sway (logs you out of your Wayland session)
     #bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
