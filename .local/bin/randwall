@@ -19,10 +19,10 @@ refresh_bg() {
     SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock swaymsg "output * bg \"$wallpaper_path\" fill"
 }
 
-# don't do anything if mpvpaper is running
+# kill live wallpaper if it's is running
 if pgrep -x "mpvpaper" > /dev/null
 then
-    exit 1
-else
-    refresh_bg
+    killall -e "mpvpaper"
 fi
+
+refresh_bg
