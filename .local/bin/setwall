@@ -7,6 +7,12 @@
 # in ranger, '@` and type 'setwall` or `:shell setwall %s` will set the current selection as the new wallpaper
 cp -f $1 $HOME/.local/share/wallpaper;
 
+# kill live wallpaper if it's is running
+if pgrep -x "mpvpaper" > /dev/null
+then
+    killall -e "mpvpaper"
+fi
+
 # refresh feh from i3 automatically, same as $mod+shift+r
 #i3-msg restart;
 swaymsg "output * bg ~/.local/share/wallpaper fill"
