@@ -23,6 +23,9 @@ if [[ $choice == "y" || $choice == "Y" ]]; then
     # crontab
     crontab -l > ~/doc/datafiles/crontab
 
+    # yay
+    rsync -avh --delete --progress $HOME/.cache/yay/ $HOME/repo/linux/yay/
+
     # data  files
     rsync -avh --delete --progress --relative ~/.local/sbin/.git/ ~/.local/app ~/.local/sbin ~/.local/share/nvim ~/.ssh/config ~/.config/btop/btop.conf ~/.config/calcurse/calendar.ical ~/.config/cls ~/.config/git ~/.config/mpd/playlists ~/.config/newsboat/urls ~/.config/task/task ~/.config/mutt/{account1,account1.gpg} ~/.vscode-oss/extensions ~/doc/datafiles/
 
