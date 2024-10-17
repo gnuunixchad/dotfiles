@@ -1,0 +1,20 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# lsupdates
+# list updatable packages through xdg notification
+# @depends checkupdates-cron*
+
+log_cache="$HOME/.cache/checkupdates-cron.log"
+err_cache="$HOME/.cache/checkupdates-cron.err"
+
+# if cache files don't exist, call checkupdates-cron once
+if [[ ! -f "$log_cache" ]]; then
+    $HOME/.local/bin/checkupdates-cron
+fi
+
+pkg_count=$(cat "$log_cache" | wc -w )
+pkg_list=$(cat "$log_cache")
+err_msg=$(cat "$err_cache")
+
+notify-send -u low -r 181 "lsupdates" "available updates: $pkg_count\n$pkg_list\n$err_msg"
