@@ -12,7 +12,10 @@ rsync -avh --progress /home/nate/doc/dotfiles/home/nate/ $HOME
 
 # datafiles
 rsync -avh --progress /home/nate/doc/datafiles/home/nate/ $HOME
-rsync -avh --progress /home/nate/doc/datafiles/bookmarks /home/nate/doc/bookmarks/bookmarks
+rsync -avh --progress /home/nate/doc/datafiles/bookmarks/ /home/nate/doc/bookmarks/bookmarks/
+
+# yay cache
+rsync -avh --progress $HOME/repo/linux/yay/ $HOME/.cache/yay/
 
 rm $HOME/.local/share/calcurse/apts
 calcurse -i $HOME/.config/calcurse/calendar.ical
