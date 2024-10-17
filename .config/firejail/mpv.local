@@ -16,6 +16,7 @@ whitelist ${HOME}/*.mp3
 
 # whitelist for mpv video progress history
 whitelist ${HOME}/.local/state/mpv
+whitelist ${HOME}/.local/share/wallpaper
 whitelist ${HOME}/.cache/mpv
 
 net none
