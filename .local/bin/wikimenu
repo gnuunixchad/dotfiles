@@ -1,0 +1,24 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# wikimenu
+# search arch-wiki-docs package's files in wmenu and open in firefox
+
+wiki_path_share=/usr/share/doc/arch-wiki/html/en/
+wiki_path_local=$HOME/doc/arch-wiki/
+
+if [[ -d "$wiki_path_share" ]]; then
+    wiki_path="$wiki_path_share"
+else
+    wiki_path="$wiki_path_local"
+fi
+
+selected_page=$(find "$wiki_path" -type f | wmenu -l 10 -i -p "Arch Wiki" -f "SourceCodePro medium 13")
+
+
+# don't do anything if exiting wmenu without any input
+if  [[ -n "$selected_page" ]]; then
+    firefox file://"$selected_page"
+fi
+
+
