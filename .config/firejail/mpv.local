@@ -19,4 +19,7 @@ whitelist ${HOME}/.local/state/mpv
 whitelist ${HOME}/.local/share/wallpaper
 whitelist ${HOME}/.cache/mpv
 
+whitelist ${HOME}/smb
+whitelist ${HOME}/mnt
+
 net none
