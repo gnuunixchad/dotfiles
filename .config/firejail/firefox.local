@@ -17,3 +17,6 @@ read-only ${HOME}/doc/arch-wiki
 
 whitelist ${HOME}/doc/code/playground
 read-only ${HOME}/doc/code/playground
+
+whitelist ${HOME}/vid/unixchad
+read-only ${HOME}/vid/unixchad
