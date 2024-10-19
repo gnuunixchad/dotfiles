@@ -78,8 +78,6 @@ alias grep="grep --color=auto";
 
 alias whatis="whatis -l";
 
-alias cal="ncal -b";
-
 alias du="du -h";
 alias df="df -h -x tmpfs";
 alias free="free -h";
