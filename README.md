@@ -2,10 +2,16 @@
 @author: nate zhou  
 @since: 2024-08-07  
 
-Video Chanel(Chinese): [unixchad on bilibili](https://space.bilibili.com/34569411)
+You can find this repository on:  
+[unixchad on codeberg](https://codeberg.org/unixchad/dotfiles)  
+[gnuunixchad on github](https://github.com/gnuunixchad/dotfiles)  
 
-Disclaimer:  
-This only serves as a record rather than a guide or tutorial.  
+My Video Chanels(Chinese):  
+[unixchad on bilibili](https://space.bilibili.com/34569411)  
+[unixchad on ixigua](https://www.ixigua.com/home/59251857670)  
+
+**Disclaimer**:  
+This file only serves as a record rather than a guide or tutorial.  
 It is based on the [arch wiki](https://wiki.archlinux.org/title/Installation_guide), which is the better guide, if not the best.
 # 0.install info
 partition:  LVM on LUKS
