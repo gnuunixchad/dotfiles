@@ -253,7 +253,7 @@ login as root
     `nmcli device wifi connect <ssid> password <password> hidden yes`
 ## 2.5 install user packages
     ### basic tools
-    vim neovim ranger fzf tmux git rsync openssh openbsd-netcat udisks2 zip unzip tree calc pacman-contrib archlinux-contrib arch-install-scripts dosfstools
+    vim neovim ranger fzf tmux git rsync openssh openbsd-netcat udisks2 zip unzip tree calc pacman-contrib archlinux-contrib arch-install-scripts dosfstools exfat-utils
 
     ### system configuration
     networkmanager brightnessctl tlp ntp ufw firejail cronie
@@ -269,7 +269,7 @@ login as root
 
     ### window manager/wayland compositor suite
     (choose pipewire packages when asking for dependencies for audio server)
-    foot sway swaybg swayidle swaylock waybar wmenu wtype wl-clipboard wlroots xorg-xwayland cliphist dunst gammastep slurp grim wf-recorder
+    foot sway swaybg swayidle swaylock waybar wmenu wtype wl-clipboard wlroots xorg-xwayland cliphist dunst gammastep slurp grim wf-recorder wl-mirror
 
     ### audio server
     pipewire pipewire-alsa pipewire-pulse pipewire-jack
@@ -337,7 +337,7 @@ login as root
     makepkg
     sudo pacman -U yay-bin-xxx.pkg.tar.zst
 
-    yay -Syu brn2 ranger-git sway-git fcitx5-skin-fluentdark-git adwaita-qt5 adwaita-qt6
+    yay -Syu brn2 ranger-git sway-git fcitx5-skin-fluentdark-git adwaita-qt5 adwaita-qt6 mpvpaper
 
 ## 2.6 config softwares
 ### 2.6.0 pacman

@@ -20,6 +20,7 @@ cryptsetup
 dosfstools
 dunst
 efibootmgr
+exfat-utils
 fcitx5
 fcitx5-chinese-addons
 fcitx5-configtool
@@ -60,6 +61,7 @@ mediainfo
 mpc
 mpd
 mpv
+mpvpaper
 ncdu
 ncmpcpp
 neomutt
@@ -118,6 +120,7 @@ w3m
 waybar
 wf-recorder
 wl-clipboard
+wl-mirror
 wmenu
 wtype
 xdg-desktop-portal
