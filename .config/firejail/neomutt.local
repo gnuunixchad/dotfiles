@@ -1,5 +1,11 @@
 include whitelist-common.local
 include blacklist-gpg.local
 
-#whitelist ${HOME}/.cache/mutt
+whitelist ${HOME}/.config/nvim
+whitelist ${HOME}/.config/vim
+
+noblacklist ${HOME}/.cache/mutt
+noblacklist ${HOME}/mail/
+noblacklist ${HOME}/doc/mail
+whitelist ${HOME}/doc/mail
 #whitelist ${HOME}/.config/mutt
