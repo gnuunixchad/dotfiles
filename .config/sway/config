@@ -358,18 +358,17 @@ bindsym $mod+CONTROL+g exec --no-startup-id slurp -ro | grim -g - && notify-send
 ## take a screenshot with all monitors
 bindsym $mod+Shift+g exec --no-startup-id grim && notify-send -u low -r 88 "grim" "Screenshot taken."
 
-# CapsLock as a key modifier
-bindsym Control+e exec wtype -k 'Escape'
-
-#
-#
-# Use keyboard as mouse
-#
+# variables need be defined before being used
 set $mode_cursor "  "
+set $mode_arrow "⬋⬈"
+
+# Use keyboard as mouse
+bindsym $mod+semicolon mode $mode_cursor
 mode $mode_cursor {
     bindsym Escape mode "default" 
     bindsym Space mode "default"
     bindsym $mod+semicolon mode "default"
+    bindsym $mod+apostrophe mode $mode_arrow
 
     bindsym 1 exec wtype -k "F1" ; mode "default"
     bindsym 2 exec wtype -k "F2" ; mode "default"
@@ -393,11 +392,6 @@ mode $mode_cursor {
     bindsym $up seat - cursor move 0 -50
     bindsym $right seat - cursor move +50 0
 
-    bindsym Shift+$left seat - cursor move -10 0
-    bindsym Shift+$down seat - cursor move 0 +10
-    bindsym Shift+$up seat - cursor move 0 -10
-    bindsym Shift+$right seat - cursor move +10 0
-
     bindsym y seat - cursor move -10 0
     bindsym u seat - cursor move 0 +10
     bindsym i seat - cursor move 0 -10
@@ -416,13 +410,7 @@ mode $mode_cursor {
     # Right click
     bindsym $mod+period seat - cursor press button3, seat - cursor release button3
     bindsym period seat - cursor press button3, seat - cursor release button3
-
-    bindsym g exec wtype -k 'Home'
-    bindsym e exec wtype -k 'End'
-    bindsym p exec wtype -k 'Page_up'
-    bindsym n exec wtype -k 'Page_down'
     }
-bindsym $mod+semicolon mode $mode_cursor
 
 bindsym $mod+grave seat - cursor set 0 0
 bindsym $mod+slash seat - cursor set 9999 9999
@@ -434,7 +422,28 @@ bindsym $mod+CONTROL+j exec wtype -k 'Down'
 bindsym $mod+CONTROL+k exec wtype -k 'Up'
 bindsym $mod+CONTROL+l exec wtype -k 'Right'
 
-#bindsym $mod+CONTROL+g exec wtype -k 'Home'
-#bindsym $mod+CONTROL+e exec wtype -k 'End'
+# arrow keys keybindings
+bindsym $mod+apostrophe mode $mode_arrow
+mode $mode_arrow {
+    bindsym Escape mode "default"
+    bindsym Space mode "default"
+    bindsym $mod+apostrophe mode "default"
+    bindsym $mod+semicolon mode $mode_cursor
+
+    bindsym h exec wtype -k "Left"
+    bindsym j exec wtype -k "Down"
+    bindsym k exec wtype -k "Up"
+    bindsym l exec wtype -k "Right"
+
+    bindsym 0 exec wtype -k 'Home'
+    bindsym 4 exec wtype -k 'End'
+    bindsym p exec wtype -k "Page_up"
+    bindsym n exec wtype -k "Page_down"
+
+    bindsym e exec wtype -k "Escape"
+    bindsym d exec wtype -k "Delete"
+    }
+
 bindsym $mod+CONTROL+p exec wtype -k 'Page_up'
 bindsym $mod+CONTROL+n exec wtype -k 'Page_down'
+bindsym Control+e exec wtype -k 'Escape'
