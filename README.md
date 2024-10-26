@@ -337,7 +337,7 @@ login as root
     makepkg
     sudo pacman -U yay-bin-xxx.pkg.tar.zst
 
-    yay -Syu brn2 ranger-git sway-git fcitx5-skin-fluentdark-git adwaita-qt5 adwaita-qt6 mpvpaper
+    yay -Syu brn2 ranger-git sway-git fcitx5-skin-fluentdark-git adwaita-qt5 adwaita-qt6 mpvpaper cli-visualizer epub-thumbnailer-git
 
 ## 2.6 config softwares
 ### 2.6.0 pacman

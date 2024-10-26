@@ -13,6 +13,7 @@ brn2-git
 btop
 calc
 calcurse
+cli-visualizer
 cliphist
 code
 cronie
@@ -20,6 +21,7 @@ cryptsetup
 dosfstools
 dunst
 efibootmgr
+epub-thumbnailer-git
 exfat-utils
 fcitx5
 fcitx5-chinese-addons
