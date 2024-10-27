@@ -30,7 +30,7 @@ boot:       GRUB, UEFI, Secure Boot disabled)
 ```
 # 1. archiso
 ## 1.1 ventoy
-w    bootable iso usb drive created with ventoy-1.0.99
+    bootable iso usb drive created with ventoy-1.0.99
 ## 1.2 increase console font
     `setfont /usr/share/kbd/consolefonts/iso01-12x22.psfu.gz`
 ## 1.3 connect to wifi (hidden)
@@ -328,7 +328,7 @@ login as root
 
     ### features: get sixel image preview in foot
     ranger-git
-    
+
     ### fix: replace ranger's bulkrename (broken due to ncurses update)
     brn2-git
 
@@ -341,7 +341,7 @@ login as root
 
 ## 2.6 config softwares
 ### 2.6.0 pacman
-remove unused packages weekly by `paccache` command from `pacman-contrib` package. (default keeps the last 3 versions of a package)
+    remove unused packages weekly by `paccache` command from `pacman-contrib` package. (default keeps the last 3 versions of a package)
     systemctl enable --now paccache.timer
 ### 2.6.1 tlp battery charing threshold
     sudo vim /etc/tlp.conf
