@@ -249,7 +249,7 @@ login as root
 ## 2.4 enable networkmanager and connect to hidden wifi
     `systemctl enable --now NetworkManager.service` (`.service` can be omitted)
 
-    run the following twice, as the first attemp would failed for ssid not found
+    run the following twice, as the first attemp would fail for ssid not found
     `nmcli device wifi connect <ssid> password <password> hidden yes`
 ## 2.5 install user packages
     ### basic tools
