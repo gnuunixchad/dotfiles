@@ -6,5 +6,5 @@
 notify-send -u low -r 438 "[Shift+w] to set wallpaper"
 
 # to execute a shell command inside imv, use `firejail --noprofile imv` to avoid permission issues
-find $HOME/pic/wallpapers -type f | grep -e .jpeg -e .jpg -e .png -ve .gif | shuf | firejail --noprofile imv 
+find $HOME/pic/wallpapers -type f | grep -e .jpeg -e .jpg -e .png | shuf | firejail --noprofile imv 
 
