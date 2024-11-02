@@ -1,0 +1,14 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# lsoutput
+# list output
+
+# check if on sway (sway process exists and currently in a wayland session)
+if  pgrep -x "sway" > /dev/null  && [ ! -z $WAYLAND_DISPLAY ]; then
+    # -p, --pretty output, friendly for grep
+    swaymsg -t get_outputs -p | grep Output
+else
+    # if not on sway, check edid
+    find /sys/devices/ -name "edid" | awk -F '/' '{print $8}' | awk -F'-' '{ for (i=2; i<=NF; i++) { printf "%s", $i (i==NF ? RS : FS) } }'
+fi
