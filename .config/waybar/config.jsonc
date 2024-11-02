@@ -25,8 +25,8 @@
         "backlight",
         "pulseaudio",
         "clock",
-        "idle_inhibitor",
-        "tray"
+        "idle_inhibitor"
+        //"tray"
     ],
 
     "sway/mode": {
