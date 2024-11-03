@@ -5,4 +5,4 @@
 # record the selected output on wayland
 
 # -a audio, -g geometry; -ro requires selecting one of the predefined rectangles for all outputs
-wf-recorder -a -g "$(slurp -ro)" --file=recording.mp4
+wf-recorder --audio=rnnoise_source -g "$(slurp -ro)" --file=recording.mp4
