@@ -13,6 +13,10 @@ My Video Channel(Chinese):
 **Disclaimer**:  
 This file only serves as a record rather than a guide or tutorial.  
 It is based on the [arch wiki](https://wiki.archlinux.org/title/Installation_guide), which is the better guide, if not the best.
+
+![preview1](20241017-mpv-shot0001.jpg)
+![preview2](20241031_13h46m33s_grim.png)
+
 # 0.install info
 partition:  LVM on LUKS
 boot:       GRUB, UEFI, Secure Boot disabled)
