@@ -16,38 +16,38 @@ It is based on the [arch wiki](https://wiki.archlinux.org/title/Installation_gui
 
 <details><summary>软件推荐 Softwares I use</summary>
 
-发行版: Arch + Parabola GNU/Linux-libre
-视频录制: wf-recorder + slurp
-屏幕截图: grim + slurp
-视频剪辑: ffmpeg
-视频封面: imagemagick(bash script)
-数字安全: firejail + cryptsetup + gpg + ufw
-窗口管理器: sway
-任务状态栏: waybar
-命令解释器: bash
-终端模拟器: foot
-音频服务器: pipewire
-应用启动器: wmenu
-历史剪切板: wmenu + wl-clipboard + cliphist
-地址收藏夹: wmenu + wtype
-文本编辑器: neovim
-邮件客户端: neomutt
-代码编辑器: code-oss / vscodium
-图片查看器: imv
-视频播放器: mpv
-音乐播放器: mpd + mpc + ncmpcpp
-电子书浏览: zathura + zathura-pdf-mupdf
-输入法引擎: fcitx5 + fcitx5-chinese-addons
-浏览器插件: darkreader + tridactyl + ublock-origin
-本地 AI : ollama
-RSS 订阅: newsboat
-ToDo列表: task(taskwarrior)
-日程管理: calcurse
-文件管理: ranger + GNU coreutils
-文件下载: transmission-cli + httrack + yt-dlp
-定时任务: crontab(cronie)
-文件共享: termux(rsync + ssh) + samba + aft-mtp-mount
-打字练习: gtypist + ttyper
+发行版: Arch + Parabola GNU/Linux-libre  
+视频录制: wf-recorder + slurp  
+屏幕截图: grim + slurp  
+视频剪辑: ffmpeg  
+视频封面: imagemagick(bash script)  
+数字安全: firejail + cryptsetup + gpg + ufw  
+窗口管理器: sway  
+任务状态栏: waybar  
+命令解释器: bash  
+终端模拟器: foot  
+音频服务器: pipewire  
+应用启动器: wmenu  
+历史剪切板: wmenu + wl-clipboard + cliphist  
+地址收藏夹: wmenu + wtype  
+文本编辑器: neovim  
+邮件客户端: neomutt  
+代码编辑器: code-oss / vscodium  
+图片查看器: imv  
+视频播放器: mpv  
+音乐播放器: mpd + mpc + ncmpcpp  
+电子书浏览: zathura + zathura-pdf-mupdf  
+输入法引擎: fcitx5 + fcitx5-chinese-addons  
+浏览器插件: darkreader + tridactyl + ublock-origin  
+本地 AI : ollama  
+RSS 订阅: newsboat  
+ToDo列表: task(taskwarrior)  
+日程管理: calcurse  
+文件管理: ranger + GNU coreutils  
+文件下载: transmission-cli + httrack + yt-dlp  
+定时任务: crontab(cronie)  
+文件共享: termux(rsync + ssh) + samba + aft-mtp-mount  
+打字练习: gtypist + ttyper  
 </details>
 
 ![preview1](20241017-mpv-shot0001.jpg)
