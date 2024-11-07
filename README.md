@@ -2,18 +2,6 @@
 @author: nate zhou  
 @since: 2024-08-07  
 
-You can find this repository on:  
-[unixchad on codeberg](https://codeberg.org/unixchad/dotfiles)  
-[gnuunixchad on github](https://github.com/gnuunixchad/dotfiles)  
-
-My Video Channel(Chinese):  
-[unixchad on bilibili](https://space.bilibili.com/34569411)  
-[unixchad on ixigua](https://www.ixigua.com/home/59251857670)  
-
-**Disclaimer**:  
-This file only serves as a record rather than a guide or tutorial.  
-It is based on the [arch wiki](https://wiki.archlinux.org/title/Installation_guide), which is the better guide, if not the best.
-
 <details><summary>软件推荐 Softwares I use</summary>
 
 发行版: Arch + Parabola GNU/Linux-libre  
@@ -49,6 +37,19 @@ ToDo列表: task(taskwarrior)
 文件共享: termux(rsync + ssh) + samba + aft-mtp-mount  
 打字练习: gtypist + ttyper  
 </details>
+
+You can find this repository on:  
+[unixchad on codeberg](https://codeberg.org/unixchad/dotfiles)  
+[gnuunixchad on github](https://github.com/gnuunixchad/dotfiles)  
+
+My Video Channel(Chinese):  
+[unixchad on bilibili](https://space.bilibili.com/34569411)  
+[unixchad on ixigua](https://www.ixigua.com/home/59251857670)  
+
+**Disclaimer**:  
+This file only serves as a record rather than a guide or tutorial.  
+It is based on the [arch wiki](https://wiki.archlinux.org/title/Installation_guide), which is the better guide, if not the best.
+
 
 ![preview1](20241017-mpv-shot0001.jpg)
 ![preview2](20241031_13h46m33s_grim.png)
