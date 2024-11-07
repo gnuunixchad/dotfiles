@@ -30,7 +30,6 @@
     ],
     "sway/workspaces": {
 	"window-rewrite": {},
-	// The rest of your stuff for hyprland/workspaces
 },
 
     "sway/mode": {
