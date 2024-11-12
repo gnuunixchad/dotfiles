@@ -48,13 +48,13 @@ output * bg ~/.local/share/wallpaper fill
 #output eDP-1 scale 2 resolution 1920x1080
 
 # use the monitor name instead of id because sometimes the eDP-1 would turn in to eDP-2 due to wl-roots bug
-output 'Chimei Innolux Corporation 0x1540 Unknown' scale 1.05 mode --custom 1600x900@60.000Hz pos 1600 0
+output 'Chimei Innolux Corporation 0x1540 Unknown' scale 1 mode --custom 1600x900@60.000Hz pos 0 0
 
 #internal monitor of y70014isk
-output 'AU Optronics 0x243D Unknown' scale 1.05 mode --custom 1600x900@60.000Hz pos 1600 0
+output 'AU Optronics 0x243D Unknown' scale 1 mode --custom 1600x900@60.000Hz pos 0 0
 
 #to calculate the position for multiple monitors, the origion is in the top left, x increases on the right, y increases on the downside
-output 'Lenovo Group Limited LEN LS2023wA 05559D4930167' resolution 1600x900@60.000Hz pos 0 0
+output 'Lenovo Group Limited LEN LS2023wA 05559D4930167' resolution 1600x900@60.000Hz pos 1600 0
 
 ### Idle configuration
 #
@@ -188,16 +188,27 @@ input "type:keyboard" {
     #workspace 9 output DP-1
     #workspace 10 output DP-1
 
-    workspace 1 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
-    workspace 2 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
-    workspace 3 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
-    workspace 4 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
-    workspace 5 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
-    workspace 6 output 'Chimei Innolux Corporation 0x1540 Unknown'
-    workspace 7 output 'Chimei Innolux Corporation 0x1540 Unknown'
-    workspace 8 output 'Chimei Innolux Corporation 0x1540 Unknown'
-    workspace 9 output 'Chimei Innolux Corporation 0x1540 Unknown'
-    workspace 10 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    #workspace 1 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    #workspace 2 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    #workspace 3 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    #workspace 4 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    #workspace 5 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    #workspace 6 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    #workspace 7 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    #workspace 8 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    #workspace 9 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    #workspace 10 output 'Chimei Innolux Corporation 0x1540 Unknown'
+
+    workspace 10 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    workspace 9 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    workspace 8 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    workspace 7 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    workspace 6 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    workspace 5 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    workspace 4 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    workspace 3 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    workspace 2 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    workspace 1 output 'Chimei Innolux Corporation 0x1540 Unknown'
 
     #next/previous workspace
     bindsym $mod+comma workspace prev_on_output
