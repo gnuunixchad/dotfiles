@@ -122,7 +122,7 @@ alias epr-zh="firejail --profile=$HOME/.config/firejail/epr-zh.local epr-zh";
 
 alias yt-dlp="yt-dlp --embed-metadata --cookies-from-browser firefox";
 
-alias fv="fzf --preview 'cat {}' | xargs nvim";
+alias fzf="/usr/bin/fzf --preview 'cat {}'"
 
 alias iostat="iostat -t 2";
 
