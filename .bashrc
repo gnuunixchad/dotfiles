@@ -141,3 +141,6 @@ ranger() {
 # Export GPG_TTY and update GPG agent startup TTY
 #export GPG_TTY=$(tty)
 #unset DISPLAY
+
+# fzf bash embed
+eval "$(fzf --bash)"
