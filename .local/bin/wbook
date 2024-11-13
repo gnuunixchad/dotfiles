@@ -1,0 +1,15 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# open ebooks with zathura with wmenu 
+
+search_path=("$HOME/doc/books" 
+            #"/more/paths"
+            )
+
+    selected_file=$(find "${search_path[@]}" -type f | grep -e .epub$ -e .pdf$  | wmenu -i -l 10 -f "SourceCodePro bold 13" -N 242424 -n eeeeee -S 538590 -s 000000 )
+
+# don't open zathura if none file selected
+if [ -n "$selected_file" ]; then
+    zathura "$selected_file"
+fi

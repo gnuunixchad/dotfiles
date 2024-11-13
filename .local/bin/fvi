@@ -1,0 +1,11 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# fvi
+# fuzzy finder piping to text editor (vim)
+
+selected_file=$(/usr/bin/fzf --preview 'cat {}')
+
+if [ -n "$selected_file" ]; then
+    $EDITOR "$selected_file"
+fi
