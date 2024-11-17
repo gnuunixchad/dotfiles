@@ -35,8 +35,9 @@ shopt -s globstar
 
 # 00 white| 30 black | 31 red | 32 green | 33 yellow | 34 blue | 35 magenta | 36 cyan | 37 gray|
 
+source /usr/share/git/completion/git-prompt.sh # git prompt
 #PS1='[\u@\h \W]\$ '
-PS1='\[\033[31m\][\[\033[00m\]\u\[\033[31m\]@\[\033[00m\]\h \W\[\033[31m\]]\[\033[00m\]\$ '
+PS1='\[\033[01;31m\]\[\033[01;00m\]\[\033[01;41m\]\u\[\033[01;41m\]@\[\033[01;41m\]\h\[\033[00;00m\] \[\033[01;32m\]\W\[\033[00;33m\]$(__git_ps1 " (%s)")\[\033[01;31m\]\[\033[00;00m\] \$ '
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -144,3 +145,4 @@ ranger() {
 
 # fzf bash embed
 eval "$(fzf --bash)"
+

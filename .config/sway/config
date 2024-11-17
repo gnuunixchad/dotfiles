@@ -20,7 +20,7 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wmenu-run -f "SourceCodePro bold 13" -i -N 242424 -n eeeeee -S 8533ff -s 000000 | xargs swaymsg exec --
+set $menu wmenu-run -f "SourceCodePro bold 13" -i -N 242424 -n eeeeee -S 8be9fd -s 000000 | xargs swaymsg exec --
 
 # hide title bar
 font pango:monospace 0.001
@@ -91,10 +91,12 @@ input "type:keyboard" {
     # Start a terminal
     bindsym $mod+Return exec $term
 
-    bindsym $mod+Shift+Return exec $term -T floating_term
+    bindsym $mod+Shift+Return exec $term -T floating_term -c "$HOME/.config/foot/float.ini"
     for_window [title="floating_term"] floating enable
     #bindsym $mod+Shift+Return exec $term -T scratchpad_term
     #for_window [title="scratchpad"] move scratchpad
+    bindsym $mod+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/float.ini vis -c "$HOME"/.config/vis/config_rnnoise_source
+    for_window [title="vis_for_recording"] floating enable, sticky enable, move position 1080px 470px, resize set 300px 200 px
 
     # Kill focused window
     bindsym $mod+q kill
@@ -279,7 +281,8 @@ bar {
 }
 
 # titlebar color
-client.focused		#FF6358 #ff6358 #fdf6e3 #119490
+#client.focused		#FF6358 #ff6358 #fdf6e3 #119490
+client.focused		#119490 #119490 #fdf6e3 #bd93f9
 client.focused_inactive #222222 #222222 #F1F1F1 #222222
 
 # focus follows mouse
@@ -308,12 +311,12 @@ exec --no-startup-id "fcitx5 -d"
 exec --no-startup-id "wl-paste --watch cliphist store"
 
 # use wmenu to select form the clipboard
-bindsym $mod+b exec --no-startup-id 'cliphist list | wmenu -l 9 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S 249988 -s 000000 | cliphist decode | wl-copy'
+bindsym $mod+b exec --no-startup-id 'cliphist list | wmenu -l 6 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S ffb86c -s 000000 | cliphist decode | wl-copy'
 
 # address & bookmarks
-bindsym $mod+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks | grep -vE "^#|^[[:space:]]*$" | wmenu -l 9 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S 86ae71 -s 000000 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
+bindsym $mod+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks | grep -vE "^#|^[[:space:]]*$" | wmenu -l 6 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S 86df71 -s 000000 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
 ### bookmarks-on-screen for privacy when recording videos
-bindsym $mod+Shift+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks-on-screen | grep -vE "^#|^[[:space:]]*$" | wmenu -l 9 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S 86ae71 -s 000000 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
+bindsym $mod+Shift+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks-on-screen | grep -vE "^#|^[[:space:]]*$" | wmenu -l 6 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S 86ae71 -s 000000 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
 
 ### keybindings
 #
@@ -353,8 +356,8 @@ bindsym $mod+Control+Left exec --no-startup-id playerctl previous
 bindsym $mod+Control+Right exec --no-startup-id playerctl next
 bindsym $mod+Control+Up exec --no-startup-id playerctl play-pause
 
-bindsym $mod+r exec --no-startup-id foot ranger
-bindsym $mod+CONTROL+m exec --no-startup-id foot ncmpcpp
+bindsym $mod+r exec --no-startup-id $term ranger
+bindsym $mod+CONTROL+m exec --no-startup-id $term ncmpcpp
 
 # mpc
 #bindsym $mod+Shift+comma exec --no-startup-id mpc prev

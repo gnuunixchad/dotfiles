@@ -10,14 +10,14 @@
 ##command pacmd list-sinks  | grep -e 'name:'  -e 'index'
 #audio.pulse.source=0
 # noise-suppression-for-voice
-audio.pulse.source=rnnoise_source
+#audio.pulse.source=rnnoise_source
 
 ##Defaults to "/tmp/mpd.fifo"
 #mpd.fifo.path=/tmp/mpd.fifo
 
 ##If set to false the visualizers will use mono mode instead of stereo. Some visualizers will
 ##behave differently when mono is enabled. For example, spectrum show two sets of bars.
-#audio.stereo.enabled=false
+audio.stereo.enabled=true
 
 ##Specifies how often the visualizer will change in seconds. 0 means do not rotate. Default is 0.
 #visualizer.rotation.secs=10
@@ -33,7 +33,8 @@ visualizer.scaling.multiplier=1.0
 
 ##Configures the visualizers and the order they are in. Available visualizers are spectrum,lorenz,ellipse.
 ##Defaults to spectrum,ellipse,lorenz
-visualizers=ellipse,spectrum,lorenz
+#visualizers=ellipse,spectrum,lorenz
+visualizers=spectrum,ellipse,lorenz
 
 
 ##Configures what character the spectrum visualizer will use. Specifying a space (e.g " ") means the
