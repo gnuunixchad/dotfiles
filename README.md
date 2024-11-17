@@ -6,9 +6,10 @@
 
 发行版: Arch + Parabola GNU/Linux-libre  
 视频录制: wf-recorder + slurp  
+音频录制: pw-record + noise-suppression-for-voice  
 屏幕截图: grim + slurp  
-视频剪辑: ffmpeg  
-视频封面: imagemagick(bash script)  
+视频剪辑: kdenlive +/ ffmpeg  
+视频封面: gimp +/ imagemagick(bash script)  
 数字安全: firejail + cryptsetup + gpg + ufw  
 窗口管理器: sway  
 任务状态栏: waybar  
