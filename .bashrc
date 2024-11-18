@@ -35,8 +35,16 @@ shopt -s globstar
 
 # 00 white| 30 black | 31 red | 32 green | 33 yellow | 34 blue | 35 magenta | 36 cyan | 37 gray|
 
-source /usr/share/git/completion/git-prompt.sh # git prompt
 #PS1='[\u@\h \W]\$ '
+
+source /usr/share/git/completion/git-prompt.sh # git prompt
+GIT_PS1_SHOWDIRTYSTATE=1 # + for staged, * if unstaged.
+GIT_PS1_SHOWSTASHSTATE=1 # $ if something is stashed.
+GIT_PS1_SHOWUNTRACKEDFILES=1 # % if there are untracked files. 
+GIT_PS1_SHOWUPSTREAM=1 	# <, >, <> behind, ahead, or diverged from upstream.
+GIT_PS1_STATESEPARATOR=" " 	# separator between branch name and state symbols
+GIT_PS1_DESCRIBE_STYLE=1 	# show commit relative to tag or branch, when detached HEAD
+GIT_PS1_SHOWCOLORHINTS=1 # display in color 
 PS1='\[\033[01;31m\]\[\033[01;00m\]\[\033[01;41m\]\u\[\033[01;41m\]@\[\033[01;41m\]\h\[\033[00;00m\] \[\033[01;32m\]\W\[\033[00;33m\]$(__git_ps1 " (%s)")\[\033[01;31m\]\[\033[00;00m\] \$ '
 
 # enable color support of ls and also add handy aliases
@@ -145,4 +153,3 @@ ranger() {
 
 # fzf bash embed
 eval "$(fzf --bash)"
-
