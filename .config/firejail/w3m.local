@@ -6,3 +6,6 @@ whitelist ${HOME}/doc/httrack
 read-only ${HOME}/doc/httrack
 whitelist ${HOME}/doc/arch-wiki
 read-only ${HOME}/doc/arch-wiki
+
+# allow arch-wiki-docs directory for wikiman
+whitelist /usr/share/doc/arch-wiki
