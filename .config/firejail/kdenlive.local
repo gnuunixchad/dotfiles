@@ -2,12 +2,19 @@
 ignore disable-mnt
 # whitelist pic mus vid
 include whitelist-common.local
-
+#
 include whitelist-player-mus.local
 include whitelist-player-pic.local
 include whitelist-player-vid.local
 
 include blacklist-gpg.local
+
+whitelist ${HOME}/.cache/kdenlive
+# fix greyed out "add title clip" button caused by other whitelists
+# kdenlive.profile has 'noblacklist' which would be overrided by 'whitelist'
+whitelist ${HOME}/.config/kdenliverc
+whitelist ${HOME}/.local/share/kdenlive
+whitelist ${HOME}/.local/share/kxmlgui5/kdenlive
 
 # allow video files in home
 whitelist ${HOME}/*.mkv
