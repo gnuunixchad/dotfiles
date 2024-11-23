@@ -51,6 +51,7 @@ imagemagick
 imv
 intel-ucode
 jdk-openjdk
+kdenlive
 libnotify
 libreoffice-still
 linux-firmware
@@ -62,10 +63,8 @@ mediainfo
 mpc
 mpd
 mpv
-mpvpaper
 ncdu
 ncmpcpp
-neomutt
 neovim
 networkmanager
 newsboat
@@ -117,13 +116,15 @@ vim
 virtualbox
 virtualbox-guest-iso
 w3m
-waybar
+waybar-git
 wf-recorder
+wikiman
 wl-clipboard
 wl-mirror
 wmenu
 wtype
 xdg-desktop-portal
+xorg-xwayland
 yay
 yt-dlp
 zathura
