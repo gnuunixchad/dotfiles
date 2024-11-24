@@ -16,14 +16,11 @@ whitelist ${HOME}/.config/kdenliverc
 whitelist ${HOME}/.local/share/kdenlive
 whitelist ${HOME}/.local/share/kxmlgui5/kdenlive
 
-# allow video files in home
-whitelist ${HOME}/*.mkv
-whitelist ${HOME}/*.mp4
-whitelist ${HOME}/*.webm
-whitelist ${HOME}/*.gif
-whitelist ${HOME}/*.mp3
-
 whitelist ${HOME}/smb
 whitelist ${HOME}/mnt
+
+# below not working, disable kdenlive for firejail temporally in /etc/firejail/firecfg.config
+# pyton-vosk for speech to text
+#private-bin python,python3,pip,pip3,mediainfo
 
 net none
