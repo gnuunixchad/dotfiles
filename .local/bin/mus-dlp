@@ -10,4 +10,4 @@
 
 echo "yt-dlp -f 251 -x --audio-format mp3 $@";
 
-yt-dlp --embed-metadata --cookies-from-browser firefox -f 251 -x --audio-format mp3 $@ && notify-send -u low -r 6 "mus-dlp: finished"
+yt-dlp --cookies-from-browser firefox -f 251 -x --audio-format mp3 $@ && notify-send -u low -r 6 "mus-dlp: finished"
