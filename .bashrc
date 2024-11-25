@@ -131,7 +131,8 @@ alias epr-zh="firejail --profile=$HOME/.config/firejail/epr-zh.local epr-zh";
 
 alias yt-dlp="yt-dlp --embed-metadata --cookies-from-browser firefox";
 
-alias fzf="/usr/bin/fzf --preview 'cat {}'"
+#alias fzf="/usr/bin/fzf --preview 'cat {}'"
+alias fzf="/usr/bin/fzf --reverse --color=16 --preview-window=65%:wrap:border-sharp: --preview 'cat {}'"
 
 alias iostat="iostat -t 2";
 
