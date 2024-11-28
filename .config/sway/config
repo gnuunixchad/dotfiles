@@ -97,6 +97,8 @@ input "type:keyboard" {
     #for_window [title="scratchpad"] move scratchpad
     bindsym $mod+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/float.ini vis -c "$HOME"/.config/vis/config_rnnoise_source
     for_window [title="vis_for_recording"] floating enable, sticky enable, move position 1080px 470px, resize set 300px 200 px
+    # swayimg floating window border
+    for_window [app_id=swayimgapp] border pixel 1
 
     # Kill focused window
     bindsym $mod+q kill
