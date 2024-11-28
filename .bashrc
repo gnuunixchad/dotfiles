@@ -80,7 +80,7 @@ alias mv="mv -i";
 
 alias vim="nvim";
 alias mutt="neomutt";
-alias brn="brn2";
+alias brn="brn2 -s";
 
 alias diff="diff --color=auto";
 alias grep="grep --color=auto";
