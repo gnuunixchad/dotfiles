@@ -1,3 +1,4 @@
+# swayimg config with vim-like keybindings
 # @author nate zhou (codeberg.org/unixchad)
 # @since 2024       (github.com/gnuunixchad)
 
@@ -23,7 +24,7 @@ app_id = swayimg
 ################################################################################
 [viewer]
 # Window background color (RGBA)
-window = #00000000
+window = #191919
 # Background for transparent images (grid/RGBA)
 transparency = grid
 # Default image scale (optimal/fit/width/height/fill/real)
@@ -31,7 +32,7 @@ scale = optimal
 # Fix position of the image on the window surface (yes/no)
 fixed = yes
 # Anti-aliasing (yes/no)
-antialiasing = no
+antialiasing = yes
 # Run slideshow at startup (yes/no)
 slideshow = no
 # Slideshow image display time (seconds)
@@ -54,13 +55,13 @@ fill = no
 # Use anti-aliasing for thumbnails (yes/no)
 antialiasing = no
 # Background color of the window (RGBA)
-window = #00000000
+window = #191919
 # Background color of the tile (RGBA)
 background = #202020ff
 # Background color of the selected tile (RGBA)
 select = #404040ff
 # Border color of the selected tile (RGBA)
-border = #000000ff
+border = #119490
 # Shadow color of the selected tile (RGBA)
 shadow = #000000ff
 
@@ -82,13 +83,13 @@ all = yes
 ################################################################################
 [font]
 # Font name
-name = monospace
+name = SourceCodePro
 # Font size (pt)
-size = 14
+size = 13
 # Font color (RGBA)
-color = #ccccccff
+color = #FFFFFF
 # Shadow color (RGBA)
-shadow = #000000a0
+shadow = #000000
 
 ################################################################################
 # Image meta info scheme (format, size, EXIF, etc)
@@ -97,9 +98,9 @@ shadow = #000000a0
 # Show on startup (yes/no)
 show = no
 # Timeout to hide info (seconds, 0 to always show)
-info_timeout = 5
+info_timeout = 0
 # Timeout to hide status message (seconds)
-status_timeout = 3
+status_timeout = 0
 
 # Display scheme for viewer mode (position = content)
 [info.viewer]
@@ -125,11 +126,11 @@ Shift+G = last_file
 p = prev_file
 n = next_file
 Shift+n = next_dir
-< = prev_frame
-> = next_frame
+comma = prev_frame
+period = next_frame
 c = skip_file
 Shift+s = slideshow
-s = animation
+a = animation
 Return = mode
 h = step_left 10
 l = step_right 10
@@ -152,7 +153,7 @@ r = rotate_left
 Ctrl +r = rotate_right
 v = flip_vertical
 x = flip_horizontal
-a = antialiasing
+Shift + a = antialiasing
 Shift + r = reload
 m = info
 Shift+d = exec rm "%"; skip_file
@@ -185,15 +186,10 @@ p = page_up
 n = page_down
 c = skip_file
 Return = mode
-a = antialiasing
+Shift + a = antialiasing
 r = reload
 m = info
 Shift+d = exec rm "%"; skip_file
 Shift+w = exec setwall "%";
 Escape = exit
 q = exit
-# Mouse related
-ScrollLeft = step_right
-ScrollRight = step_left
-ScrollUp = step_up
-ScrollDown = step_down
