@@ -139,6 +139,8 @@ alias iostat="iostat -t 2";
 # start sway with ssh agent
 alias sw="ssh-agent -t 60m sway --unsupported-gpu";
 
+alias img="swayimg";
+
 # preventing nested ranger instances, form arch wiki
 ranger() {
     if [ -z "$RANGER_LEVEL" ]; then
