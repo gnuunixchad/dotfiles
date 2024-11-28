@@ -4,7 +4,7 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     //"height": 26, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 6, // Gaps between modules (4px)
+    "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
@@ -12,6 +12,7 @@
         "sway/window"
     ],
     "modules-center": [
+        //"mpd",
         "sway/mode",
         "privacy"
     ],
@@ -19,7 +20,7 @@
         "network",
         "disk",
         "memory",
-        "cpu",
+        //"cpu",
         "temperature",
         "battery",
         "backlight",
@@ -31,16 +32,17 @@
     "sway/workspaces": {
 	"window-rewrite": {},
 },
-
     "sway/mode": {
         "format": "{}",
-        // "format": "<span style=\"italic\">{}</span>"
-
+    },
+    "sway/window":{
+        "icon":true,
+        "icon-size":16
     },
     "sway/scratchpad": {
         "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
+        "show-empty": true,
+        "format-icons": [""],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
@@ -80,16 +82,22 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
+        "icon-size":16, 
         "spacing": 10
     },
     "clock": {
         "timezone": "Asia/Singapore",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        //"format": "{:%H:%M}  ",
         "format": "{:%b-%d %a %H:%M}",
-        //"format": "{:%m-%d %a %H:%M}",
         "format-alt": "{:%Y-%m-%d}",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#99ffdd'><b><u>{}</u></b></span>"
+            }
+        },
     },
     "cpu": {
         "format": "{usage}% ",
@@ -136,7 +144,6 @@
         "format-linked": "{ifname} (No IP) ",
         //"format-disconnected": "Network  ",
         "format-disconnected": "  ",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -155,7 +162,6 @@
             "car": "",
             "default": ["", "", ""]
         },
-        //"on-click": "pavucontrol"
     },
     //The privacy module displays if any application is capturing audio, sharing the screen or playing audio.
     "privacy": {
@@ -185,5 +191,4 @@
         "format": "{percentage_used}% 🗁",
         "path": "/"
     },
-
 }
