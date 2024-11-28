@@ -92,11 +92,13 @@ qt5-x11extras
 ranger-git
 rsync
 samba
+scrcpy
 slurp
 smartmontools
 sway
 swaybg
 swayidle
+swayimg
 swaylock
 sysstat
 task
