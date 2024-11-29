@@ -1,3 +1,8 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
 # put followings in a file and encrypt it
 # set my_pass = "password"
 source "gpg -dq $HOME/.config/mutt/account1.gpg |"

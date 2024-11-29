@@ -22,7 +22,7 @@
 文本编辑器: neovim  
 邮件客户端: neomutt  
 代码编辑器: code-oss / vscodium  
-图片查看器: imv  
+图片查看器: swayimg  
 视频播放器: mpv  
 音乐播放器: mpd + mpc + ncmpcpp  
 电子书浏览: zathura + zathura-pdf-mupdf  
@@ -294,6 +294,7 @@ login as root
     run the following twice, as the first attemp would fail for ssid not found
     `nmcli device wifi connect <ssid> password <password> hidden yes`
 ## 2.5 install user packages
+    (package list update at [packages.list](packages.list))
     ### basic tools
     vim neovim ranger fzf tmux git rsync openssh openbsd-netcat udisks2 zip unzip tree calc pacman-contrib archlinux-contrib arch-install-scripts dosfstools exfat-utils
 
@@ -320,7 +321,7 @@ login as root
     adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-font-awesome ttf-nerd-fonts-symbols
 
     ### file viewer
-    imv zathura zathura-pdf-mupdf
+    swayimg zathura zathura-pdf-mupdf
 
     ### typing practice in terminal
     ttyper

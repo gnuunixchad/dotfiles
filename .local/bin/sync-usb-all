@@ -2,6 +2,8 @@
 # sync-usb
 # @author nate zhou
 # @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 
 my_source_path="$HOME/doc $HOME/mus $HOME/pic $HOME/vid $HOME/repo"
 my_destination="/run/media/nate/usb-*/back/"

@@ -1,3 +1,6 @@
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+#
 # read html emails with w3m
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
 # open pdf attachment with zathura

@@ -1,13 +1,12 @@
 " @author nate zhou
-" @since 2023, 2024
+" @since 2023,2024
+" codeberg.org/unixchad/dotfiles
+" github.com/gnuunixchad/dotfiles
 
 colorscheme vim
-
 syntax on
-" set spell
 set ignorecase      " case insensitive searching
-set smartcase       " lower case search case insensitive; if upper case exists, case sensitive; "used with set ignorecase
-
+set smartcase       " lower case search case insensitive; if upper case exists, case sensitive;
 set background=dark
 set nohlsearch
 set cc=80
@@ -20,12 +19,9 @@ set relativenumber
 set clipboard=unnamedplus
 "set cursorline
 "set cursorcolumn
-
 match ExtraWhitespace /\s\+$/ " space at the end of lines
 highlight ExtraWhitespace ctermbg=gray guibg=gray " highlight all trailing spaces
 
-" %F full file path | %f relative path to working directory | %m modified flag | %r read-only flag
-" set statusline+=%f\ %h%m%r\ %{FugitiveStatusline()}%=\ %y\ [%{&fileformat}]\ [%{&encoding}]\ \ %-8.(%l,%c%)\ %P
 set statusline+=%f\ %h%m%r%=\ %{FugitiveStatusline()}\ %y\ [%{&encoding}]\ \ %-8.(%l,%c%)\ %P
 
 let mapleader=" " " set space as leader key

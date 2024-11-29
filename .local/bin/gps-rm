@@ -1,6 +1,8 @@
 #!/bin/bash
 # @author nate zhou
 # @since 2023
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 # gps-rm
 
 echo "removes GPS metadata for images, and videos like mp4"

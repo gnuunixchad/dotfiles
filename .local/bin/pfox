@@ -5,5 +5,7 @@
 #
 # @author nate zhou
 # @since 2023
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 
 firefox --private-window;

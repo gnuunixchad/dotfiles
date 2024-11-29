@@ -1,18 +1,13 @@
 # @author nate zhou
-# @since 2023, 2024
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 
-# color (color 12 defined in ~/.Xresources)
-#color background         default   default
-#color listnormal         default   default
-#color listnormal_unread  default   default
-#color listfocus          white     color12
-#color listfocus_unread   white     color12
-#color info               white     color12
-#color article            default   default
-
-highlight article "^(Title):.*$" color11 default
-highlight article "https?://[^ ]+" color13 default
-highlight article "\\[image\\ [0-9]+\\]" color10 default
+color listnormal_unread  green   default
+color listfocus          white   color12
+color listfocus_unread   white   color12
+color info               default color12
+color article            default default
 
 # movement
 bind-key h quit
@@ -22,11 +17,9 @@ bind-key l open
 bind-key g home
 bind-key G end
 
-# loading feeds in parallel
-reload-threads 100
-
-use-proxy yes
-proxy localhost:PORT
-
-# browser
 browser "w3m %u"
+refresh-on-startup yes
+reload-threads 100 # loading feeds in parallel
+
+#use-proxy yes
+#proxy localhost:PORT

@@ -1,7 +1,12 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
 # source the user and password
+source "~/.config/mutt/account1"
 
 #unset record
-source "~/.config/mutt/account1"
 
 folder-hook 'account1' 'source ~/.config/mutt/account1'
 #folder-hook 'account2' 'source ~/.config/mutt/account2'

@@ -2,6 +2,8 @@
 # create a backup of the file
 # @authoer natezhou
 # @since 2023
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 
 echo "creating a backup as $1~"
 cp -i $1 ./$1~

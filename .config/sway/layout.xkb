@@ -1,3 +1,8 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
 # used by sway to swap keys
 
 xkb_keymap {

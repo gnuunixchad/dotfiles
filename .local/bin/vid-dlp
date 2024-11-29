@@ -2,6 +2,8 @@
 # download videos with subtitles by yt-dlp with preferred formats
 # @author nate zhou
 # @since 2023
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 
 # use `yt-dlp --list-formats URL` to show available formats number
 # 247 `webm 1280x720 30fps`

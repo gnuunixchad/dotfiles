@@ -1,6 +1,8 @@
 #!/bin/bash
 # @author nate zhou
 # @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 # decrypt the .gpg file and pipe to fim, without writing to the disk
 
 # there's virtually no image viewer that can view more than one image from the 

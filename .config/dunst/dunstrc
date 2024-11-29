@@ -1,4 +1,7 @@
-# See dunst(5) for all configuration options
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 
 [global]
     ### Display ###

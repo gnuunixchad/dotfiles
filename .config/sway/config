@@ -1,9 +1,7 @@
-# nate's config for sway
-# @since 2024-08
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 
 ### Variables
 #

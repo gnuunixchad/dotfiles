@@ -1,6 +1,8 @@
 #!/bin/bash
 # @author nate zhou
 # @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 # thumbcrop
 # crop thumbnails from 1200x900(4:3) to 1200x675(16:9)
 # because bilibili uses two different ratios

@@ -1,3 +1,8 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
 include blacklist-gpg.local
 
 net none

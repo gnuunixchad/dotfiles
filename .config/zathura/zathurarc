@@ -1,3 +1,8 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
 set recolor true
 # set background to a dark color
 set recolor-lightcolor "#191919"

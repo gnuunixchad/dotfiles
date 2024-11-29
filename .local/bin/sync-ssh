@@ -3,6 +3,8 @@
 # sync everything to backup server with rsync and ssh
 # @author nate zhou
 # @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 
 #echo;
 echo "rsync -avh --delete --progress /home/nate/{doc,mus,pic,vid,repo} nate@192.168.31.15:/home/nate";

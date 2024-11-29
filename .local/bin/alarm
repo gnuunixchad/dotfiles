@@ -2,6 +2,8 @@
 # terminal alarm/timer
 # @author nate zhou
 # @since 2023
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 # usage: `alarm posivie_integer "description"`
 
 send_notification() {

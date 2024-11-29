@@ -2,6 +2,8 @@
 # download music by yt-dlp with preferred formats
 # @author nate zhou
 # @since 2023
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 
 # `yt-dlp --list-formats URL` to get details
 # 251 downloads best audio only (opus)

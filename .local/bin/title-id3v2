@@ -1,6 +1,8 @@
 #!/bin/bash
 # @author nate zhou
 # @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 # depends on id3v2
 # add title tags to audio files, using the file name except the extension
 

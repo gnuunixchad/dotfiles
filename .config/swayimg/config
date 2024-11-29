@@ -1,6 +1,8 @@
 # swayimg config with vim-like keybindings
-# @author nate zhou (codeberg.org/unixchad)
-# @since 2024       (github.com/gnuunixchad)
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 
 ################################################################################
 # General configuration
@@ -53,7 +55,7 @@ cache = 100
 # Fill the entire tile with thumbnail (yes/no)
 fill = no
 # Use anti-aliasing for thumbnails (yes/no)
-antialiasing = no
+antialiasing = yes
 # Background color of the window (RGBA)
 window = #191919
 # Background color of the tile (RGBA)

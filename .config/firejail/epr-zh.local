@@ -1,3 +1,8 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
 # for epr(https://github.com/wustho/epr) epub reader
 # run with `firejail --profile=$HOME/.config/firejial/epr-zh.local epr-zh`
 # put in ranger's rc.conf and create alias in.bashrc

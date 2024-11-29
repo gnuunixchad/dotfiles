@@ -2,6 +2,8 @@
 # set wallpaper for i3wm
 # @author nate zhou
 # @since 2023
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 
 
 # in ranger, '@` and type 'setwall` or `:shell setwall %s` will set the current selection as the new wallpaper

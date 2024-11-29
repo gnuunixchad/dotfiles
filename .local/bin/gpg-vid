@@ -1,6 +1,8 @@
 #!/bin/bash
 # @author nate zhou
 # @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
 # decrypt the .gpg file and pipe to mpv, without writing to the disk
 # the video file has to be streamable, triming a mp4 file with ffmpeg could make it non-streamable
 # fix it by copy the movflags of the orgianl file
