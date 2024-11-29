@@ -27,7 +27,7 @@ search_path=("$HOME/.config/"
              "$doc/lyrics/"
             )
 
-    selected_file=$(find "${search_path[@]}" -type f | grep -ve "/sbin/auto-rice/nate" -ve "/.git/" | wmenu -i -l 10 -f "SourceCodePro bold 13" -N 242424 -n eeeeee -S 128569 -s 000000 )
+    selected_file=$(find "${search_path[@]}" -type f | grep -ve "/sbin/auto-rice/nate" -ve "/.git/" | wmenu -p "wvim: " -i -l 10 -f "SourceCodePro Medium 13" )
 
 # don't open vim if none file selected
 if [ -n "$selected_file" ]; then

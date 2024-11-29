@@ -18,12 +18,13 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wmenu-run -f "SourceCodePro bold 13" -i -N 242424 -n eeeeee -S 8be9fd -s 000000 | xargs swaymsg exec --
+set $menu wmenu-run -f "SourceCodePro Medium 13" -i | xargs swaymsg exec --
 
 # hide title bar
 font pango:monospace 0.001
 titlebar_padding 1
 titlebar_border_thickness 0
+for_window [class=".*"] border pixel 3
 
 # gaps
 gaps inner 4
@@ -90,16 +91,16 @@ input "type:keyboard" {
     bindsym $mod+Return exec $term
 
     bindsym $mod+Shift+Return exec $term -T "Floating Tmux" -c "$HOME/.config/foot/float.ini" tmux
-    for_window [title="Floating Tmux"] floating enable, resize set width 800 px, resize set height 600 px
+    for_window [title="Floating Tmux"] floating enable, resize set width 800 px, resize set height 600 px, border pixel 2
 
     #bindsym $mod+Control+Return exec exec $term -T scratchpad_term -c "$HOME/.config/foot/float.ini" tmux
     bindsym $mod+Control+Return exec $term -T "Scratchpad Tmux" -c "$HOME/.config/foot/float.ini" tmux
-    for_window [title="Scratchpad Tmux"] resize set width 800 px, resize set height 600 px, move scratchpad
+    for_window [title="Scratchpad Tmux"] resize set width 800 px, resize set height 600 px, move scratchpad, border pixel 2
 
     bindsym $mod+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config_rnnoise_source
-    for_window [title="vis_for_recording"] floating enable, sticky enable, move position 1080px 470px, resize set 300px 200px, border pixel 1
+    for_window [title="vis_for_recording"] floating enable, sticky enable, move position 67 ppt 58 ppt , resize set 300px 200px, border pixel 1
     # swayimg floating window border; or handled with client.inactive
-    #for_window [app_id=swayimgapp] border pixel 1
+    for_window [app_id=swayimgapp] border pixel 1
 
     # Kill focused window
     bindsym $mod+q kill
@@ -284,10 +285,11 @@ bar {
 }
 
 # titlebar color
+#<colorclass> <border> <background> <text> <indicator> <child_border>
 #client.focused		#FF6358 #ff6358 #fdf6e3 #119490
-client.focused		#119490 #119490 #fdf6e3 #bd93f9
-client.focused_inactive #ffb86c #ffb86c #F1F1F1 #222222
-client.unfocused    #222222 #222222 #F1F1F1 #222222
+client.focused		#9962b7 #9962b7 #F1F1F1 #e6da00
+client.focused_inactive #0092cc #0092cc #F1F1F1 #0092cc
+client.unfocused    #bbccdd #bbccdd #F1F1F1 #bbccdd
 
 # focus follows mouse
 focus_follows_mouse no
@@ -315,12 +317,15 @@ exec --no-startup-id "fcitx5 -d"
 exec --no-startup-id "wl-paste --watch cliphist store"
 
 # use wmenu to select form the clipboard
-bindsym $mod+b exec --no-startup-id 'cliphist list | wmenu -l 6 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S ffb86c -s 000000 | cliphist decode | wl-copy'
+bindsym $mod+b exec --no-startup-id 'cliphist list | wmenu -p "cliphist: " -l 6 -f "SourceCodePro Medium 13" -i | cliphist decode | wl-copy'
 
 # address & bookmarks
-bindsym $mod+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks | grep -vE "^#|^[[:space:]]*$" | wmenu -l 6 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S 86df71 -s 000000 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
+bindsym $mod+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks | grep -vE "^#|^[[:space:]]*$" | wmenu -p "bookmarks: " -l 6 -f "SourceCodePro Medium 13" -i | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
 ### bookmarks-on-screen for privacy when recording videos
-bindsym $mod+Shift+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks-on-screen | grep -vE "^#|^[[:space:]]*$" | wmenu -l 6 -f "SourceCodePro Medium 13" -i -N 242424 -n eeeeee -S 86ae71 -s 000000 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
+bindsym $mod+Shift+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks-on-screen | grep -vE "^#|^[[:space:]]*$" | wmenu -p "bookmarks-on-screen" -l 6 -f "SourceCodePro Medium 13" -i | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
+bindsym $mod+CONTROL+a exec --no-startup-id ~/.local/bin/awiki
+bindsym $mod+CONTROL+w exec --no-startup-id ~/.local/bin/wvim
+bindsym $mod+CONTROL+b exec --no-startup-id ~/.local/bin/wbook
 
 ### keybindings
 #
@@ -377,8 +382,9 @@ bindsym $mod+CONTROL+g exec --no-startup-id slurp -ro | grim -g - && notify-send
 bindsym $mod+Shift+g exec --no-startup-id grim && notify-send -u low -r 88 "grim" "Screenshot taken."
 
 # variables need be defined before being used
-set $mode_cursor "  "
-set $mode_arrow "⬋⬈"
+# depends on font awesome
+set $mode_cursor ""
+set $mode_arrow ""
 
 # Use keyboard as mouse
 bindsym $mod+semicolon mode $mode_cursor

@@ -1,4 +1,4 @@
--- Name:         vim
+-- Name:         chad (based on vim.lua)
 -- Description:  Vim's default color scheme
 -- Author:       Bram Moolenaar <Bram@vim.org>
 -- Maintainer:   The Vim Project <https://github.com/vim/vim>
@@ -36,7 +36,7 @@ hi('IncSearch',    { reverse = true,                    cterm = { reverse = true
 hi('ModeMsg',      { bold = true,                       cterm = { bold = true } })
 hi('NonText',      { fg = 'Blue', bold = true,          ctermfg = 'Blue' })
 hi('PmenuSbar',    { bg = 'Grey',                       ctermbg = 'Grey' })
-hi('StatusLine',   { reverse = false, bold = true,       cterm = { reverse = false, bold = true }})
+hi('StatusLine',   { bg = 'Black', reverse = false, bold = true,       cterm = { reverse = false, bold = true }})
 hi('StatusLineNC', { reverse = false,                    cterm = { reverse = false } })
 hi('TabLineFill',  { reverse = true,                    cterm = { reverse = true } })
 hi('TabLineSel',   { bold = true,                       cterm = { bold = true } })

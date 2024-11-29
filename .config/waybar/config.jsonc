@@ -16,16 +16,16 @@
         "sway/scratchpad",
         "sway/window"
     ],
-    "modules-center": [
-        //"mpd",
+    "modules-center":[
         "sway/mode",
         "privacy"
     ],
     "modules-right": [
+        "custom/updates",
         "network",
         "disk",
         "memory",
-        //"cpu",
+        "cpu",
         "temperature",
         "battery",
         "backlight",
@@ -41,8 +41,8 @@
         "format": "{}",
     },
     "sway/window":{
-        "icon":true,
-        "icon-size":16
+        "icon":false,
+        "icon-size":18
     },
     "sway/scratchpad": {
         "format": "{icon} {count}",
@@ -50,34 +50,6 @@
         "format-icons": [""],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
-    },
-    "mpd": {
-        "format": "{stateIcon} {title} ",
-        "format-paused": "{stateIcon} {title} ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 5,
-        //"max-length": 20,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -87,7 +59,7 @@
         }
     },
     "tray": {
-        "icon-size":16, 
+        "icon-size":16,
         "spacing": 10
     },
     "clock": {
@@ -105,11 +77,11 @@
         },
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}% ",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% "
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -196,4 +168,14 @@
         "format": "{percentage_used}% 🗁",
         "path": "/"
     },
+    "custom/updates": {
+        "format": "{} {icon}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "",
+            "updated": "",
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300"
+    }
 }

@@ -3,7 +3,7 @@
 # @since 2024
 # codeberg.org/unixchad/dotfiles
 # github.com/gnuunixchad/dotfiles
-# wikimenu
+# awiki
 # search arch-wiki-docs package's files in wmenu and open in firefox
 
 wiki_path_share=/usr/share/doc/arch-wiki/html/en/
@@ -15,7 +15,7 @@ else
     wiki_path="$wiki_path_local"
 fi
 
-selected_page=$(find "$wiki_path" -type f | wmenu -l 10 -i -p "Arch Wiki" -f "SourceCodePro medium 13")
+selected_page=$(find "$wiki_path" -type f | wmenu -l 10 -i -p "awiki: " -f "SourceCodePro Medium 13")
 
 
 # don't do anything if exiting wmenu without any input

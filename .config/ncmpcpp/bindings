@@ -13,6 +13,7 @@ def_key "d"
   delete_stored_playlist
 def_key "f"
   seek_forward
+def_key "b"
   seek_backward
 def_key "R"
   toggle_random
