@@ -295,6 +295,7 @@ login as root
     `nmcli device wifi connect <ssid> password <password> hidden yes`
 ## 2.5 install user packages
 package list update at [package.list](./package.list)
+
     ### basic tools
     vim neovim ranger fzf tmux git rsync openssh openbsd-netcat udisks2 zip unzip tree calc pacman-contrib archlinux-contrib arch-install-scripts dosfstools exfat-utils
 
