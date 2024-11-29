@@ -48,7 +48,6 @@ httrack
 id3v2
 iftop
 imagemagick
-imv
 intel-ucode
 jdk-openjdk
 kdenlive
@@ -92,7 +91,6 @@ qt5-x11extras
 ranger-git
 rsync
 samba
-scrcpy
 slurp
 smartmontools
 sway
@@ -119,6 +117,7 @@ virtualbox
 virtualbox-guest-iso
 w3m
 waybar-git
+waybar-module-pacman-updates-git
 wf-recorder
 wikiman
 wl-clipboard
