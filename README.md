@@ -294,7 +294,7 @@ login as root
     run the following twice, as the first attemp would fail for ssid not found
     `nmcli device wifi connect <ssid> password <password> hidden yes`
 ## 2.5 install user packages
-    (package list update at [packages.list](packages.list))
+package list update at [package.list](./package.list)
     ### basic tools
     vim neovim ranger fzf tmux git rsync openssh openbsd-netcat udisks2 zip unzip tree calc pacman-contrib archlinux-contrib arch-install-scripts dosfstools exfat-utils
 
