@@ -33,13 +33,13 @@ shopt -s globstar           # enable "**" wildcard for more subdir
 shopt -s checkwinsize       # check window size after each command
 
 source /usr/share/git/completion/git-prompt.sh      # git prompt
-GIT_PS1_SHOWDIRTYSTATE=1        # + for staged, * if unstaged.
+GIT_PS1_SHOWDIRTYSTATE=1        # + for staged, * if unstaged
 GIT_PS1_SHOWSTASHSTATE=1        # $ if something is stashed.
-GIT_PS1_SHOWUNTRACKEDFILES=1    # % if there are untracked files. 
+GIT_PS1_SHOWUNTRACKEDFILES=1    # % if there are untracked files
 GIT_PS1_SHOWUPSTREAM=1 	        # <, >, <> behind, ahead, or diverged from upstream.
 GIT_PS1_STATESEPARATOR=" " 	    # separator between branch name and state symbols
 GIT_PS1_DESCRIBE_STYLE=1 	    # show commit relative to tag or branch, when detached HEAD
-GIT_PS1_SHOWCOLORHINTS=1        # display in color 
+GIT_PS1_SHOWCOLORHINTS=1        # display in color
 
 # ANSI color: 00 white, 30 black, 31 red, 32 green,
 #             33 yellow, 34 blue, 35 magenta, 36 cyan, 37 gray

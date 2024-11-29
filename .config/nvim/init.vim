@@ -3,7 +3,7 @@
 " codeberg.org/unixchad/dotfiles
 " github.com/gnuunixchad/dotfiles
 
-colorscheme vim
+colorscheme chad
 syntax on
 set ignorecase      " case insensitive searching
 set smartcase       " lower case search case insensitive; if upper case exists, case sensitive;
@@ -17,12 +17,13 @@ set smartindent		" aware indentations for newline insert
 set number
 set relativenumber
 set clipboard=unnamedplus
-"set cursorline
-"set cursorcolumn
+set cursorline
+set cursorcolumn
 match ExtraWhitespace /\s\+$/ " space at the end of lines
 highlight ExtraWhitespace ctermbg=gray guibg=gray " highlight all trailing spaces
 
-set statusline+=%f\ %h%m%r%=\ %{FugitiveStatusline()}\ %y\ [%{&encoding}]\ \ %-8.(%l,%c%)\ %P
+"set statusline+=%f\ %h%m%r%=\ %{FugitiveStatusline()}\ %y\ %-8.(%l,%c%)\ %P
+set statusline+=%f\ %h%m%r%=\ %{FugitiveStatusline()}\ %-8.(%l,%c%)\ %P
 
 let mapleader=" " " set space as leader key
 

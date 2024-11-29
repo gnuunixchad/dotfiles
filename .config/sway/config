@@ -46,13 +46,13 @@ output * bg ~/.local/share/wallpaper fill
 #output eDP-1 scale 2 resolution 1920x1080
 
 # use the monitor name instead of id because sometimes the eDP-1 would turn in to eDP-2 due to wl-roots bug
-output 'Chimei Innolux Corporation 0x1540 Unknown' scale 1 mode --custom 1600x900@60.000Hz pos 0 0
+output 'Chimei Innolux Corporation 0x1540 Unknown' scale 1.25 mode --custom 1920x1080@60.000Hz pos 0 0
 
 #internal monitor of y70014isk
-output 'AU Optronics 0x243D Unknown' scale 1 mode --custom 1600x900@60.000Hz pos 0 0
+output 'AU Optronics 0x243D Unknown' scale 1.25 mode --custom 1920x1080@60.000Hz pos 0 0
 
 #to calculate the position for multiple monitors, the origion is in the top left, x increases on the right, y increases on the downside
-output 'Lenovo Group Limited LEN LS2023wA 05559D4930167' resolution 1600x900@60.000Hz pos 1600 0
+output 'Lenovo Group Limited LEN LS2023wA 05559D4930167' resolution 1600x900@60.000Hz pos 1536 0
 
 ### Idle configuration
 #
@@ -89,15 +89,15 @@ input "type:keyboard" {
     # Start a terminal
     bindsym $mod+Return exec $term
 
-    bindsym $mod+Shift+Return exec $term -T floating_term -c "$HOME/.config/foot/float.ini"
-    for_window [title="floating_term"] floating enable
+    bindsym $mod+Shift+Return exec $term -T "Floating Tmux" -c "$HOME/.config/foot/float.ini" tmux
+    for_window [title="Floating Tmux"] floating enable, resize set width 800 px, resize set height 600 px
 
-    bindsym $mod+Control+Return exec exec $term -T scratchpad_term -c "$HOME/.config/foot/float.ini" tmux
-    exec $term -T scratchpad_term -c "$HOME/.config/foot/float.ini" tmux
-    for_window [title="scratchpad_term"] move scratchpad, move position center, resize set 800px 600px
+    #bindsym $mod+Control+Return exec exec $term -T scratchpad_term -c "$HOME/.config/foot/float.ini" tmux
+    bindsym $mod+Control+Return exec $term -T "Scratchpad Tmux" -c "$HOME/.config/foot/float.ini" tmux
+    for_window [title="Scratchpad Tmux"] resize set width 800 px, resize set height 600 px, move scratchpad
 
-    bindsym $mod+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/float.ini vis -c "$HOME"/.config/vis/config_rnnoise_source
-    for_window [title="vis_for_recording"] floating enable, sticky enable, move position 1080px 470px, resize set 300px 200px
+    bindsym $mod+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config_rnnoise_source
+    for_window [title="vis_for_recording"] floating enable, sticky enable, move position 1080px 470px, resize set 300px 200px, border pixel 1
     # swayimg floating window border; or handled with client.inactive
     #for_window [app_id=swayimgapp] border pixel 1
 
@@ -270,7 +270,7 @@ input "type:keyboard" {
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+w scratchpad show
+    bindsym $mod+w scratchpad show, resize set 1000 750, move position center
 
 # resize windows
 bindsym $mod+y resize shrink width 10px
