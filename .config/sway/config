@@ -232,8 +232,8 @@ input "type:keyboard" {
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
     #bindsym $mod+b splith
-    bindsym $mod+v splitv
-    bindsym $mod+x splith
+    bindsym $mod+x splitv
+    bindsym $mod+v splith
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
