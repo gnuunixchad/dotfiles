@@ -15,7 +15,7 @@ else
     wiki_path="$wiki_path_local"
 fi
 
-selected_page=$(find "$wiki_path" -type f | wmenu -l 10 -i -p "awiki: " -f "SourceCodePro Medium 13")
+selected_page=$(find "$wiki_path" -type f | wmenu -l 6 -i -p "wwiki: " -f "SourceCodePro Medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
 
 
 # don't do anything if exiting wmenu without any input

@@ -104,7 +104,7 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 2
+    frame_width = 3
 
     # Defines color of the frame around the notification window.
     frame_color = "#3399ff"
@@ -113,7 +113,7 @@
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
     # Click events on gaps do not currently propagate to applications below.
-    gap_size = 0
+    gap_size = 3
 
     # Define a color for the separator.
     # possible values are:
@@ -339,7 +339,7 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#222222"
     foreground = "#ffffff"
-    frame_color= "#dda215"
+    frame_color= "#005577"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
@@ -347,7 +347,7 @@
 [urgency_normal]
     background = "#222222"
     foreground = "#ffffff"
-    frame_color = "#a8557a"
+    frame_color = "#6f3f89"
     timeout = 10
     override_pause_level = 30
     # Icon for notifications with normal urgency, uncomment to enable
@@ -356,137 +356,8 @@
 [urgency_critical]
     background = "#222222"
     foreground = "#ffffff"
-    frame_color = "#ff0000"
+    frame_color = "#e6da00"
     timeout = 0
     override_pause_level = 60
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
-
-# Every section that isn't one of the above is interpreted as a rules to
-# override settings for certain messages.
-#
-# Messages can be matched by
-#    appname (discouraged, see desktop_entry)
-#    body
-#    category
-#    desktop_entry
-#    icon
-#    match_transient
-#    msg_urgency
-#    stack_tag
-#    summary
-#
-# and you can override the
-#    background
-#    foreground
-#    format
-#    frame_color
-#    fullscreen
-#    new_icon
-#    set_stack_tag
-#    set_transient
-#    set_category
-#    timeout
-#    urgency
-#    icon_position
-#    skip_display
-#    history_ignore
-#    action_name
-#    word_wrap
-#    ellipsize
-#    alignment
-#    hide_text
-#    override_pause_level
-#
-# Shell-like globbing will get expanded.
-#
-# Instead of the appname filter, it's recommended to use the desktop_entry filter.
-# GLib based applications export their desktop-entry name. In comparison to the appname,
-# the desktop-entry won't get localized.
-#
-# You can also allow a notification to appear even when paused. Notification will appear whenever notification's override_pause_level >= dunst's paused level.
-# This can be used to set partial pause modes, where more urgent notifications get through, but less urgent stay paused. To do that, you can override the following in the rules:
-# override_pause_level = X
-
-# SCRIPTING
-# You can specify a script that gets run when the rule matches by
-# setting the "script" option.
-# The script will be called as follows:
-#   script appname summary body icon urgency
-# where urgency can be "LOW", "NORMAL" or "CRITICAL".
-#
-# NOTE: It might be helpful to run dunst -print in a terminal in order
-# to find fitting options for rules.
-
-# Disable the transient hint so that idle_threshold cannot be bypassed from the
-# client
-#[transient_disable]
-#    match_transient = yes
-#    set_transient = no
-#
-# Make the handling of transient notifications more strict by making them not
-# be placed in history.
-#[transient_history_ignore]
-#    match_transient = yes
-#    history_ignore = yes
-
-# fullscreen values
-# show: show the notifications, regardless if there is a fullscreen window opened
-# delay: displays the new notification, if there is no fullscreen window active
-#        If the notification is already drawn, it won't get undrawn.
-# pushback: same as delay, but when switching into fullscreen, the notification will get
-#           withdrawn from screen again and will get delayed like a new notification
-#[fullscreen_delay_everything]
-#    fullscreen = delay
-#[fullscreen_show_critical]
-#    msg_urgency = critical
-#    fullscreen = show
-
-#[espeak]
-#    summary = "*"
-#    script = dunst_espeak.sh
-
-#[script-test]
-#    summary = "*script*"
-#    script = dunst_test.sh
-
-#[ignore]
-#    # This notification will not be displayed
-#    summary = "foobar"
-#    skip_display = true
-
-#[history-ignore]
-#    # This notification will not be saved in history
-#    summary = "foobar"
-#    history_ignore = yes
-
-#[skip-display]
-#    # This notification will not be displayed, but will be included in the history
-#    summary = "foobar"
-#    skip_display = yes
-
-#[signed_on]
-#    appname = Pidgin
-#    summary = "*signed on*"
-#    urgency = low
-#
-#[signed_off]
-#    appname = Pidgin
-#    summary = *signed off*
-#    urgency = low
-#
-#[says]
-#    appname = Pidgin
-#    summary = *says*
-#    urgency = critical
-#
-#[twitter]
-#    appname = Pidgin
-#    summary = *twitter.com*
-#    urgency = normal
-#
-#[stack-volumes]
-#    appname = "some_volume_notifiers"
-#    set_stack_tag = "volume"
-#
-# vim: ft=cfg

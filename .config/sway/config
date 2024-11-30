@@ -18,7 +18,7 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wmenu-run -f "SourceCodePro Medium 13" -i | xargs swaymsg exec --
+set $menu wmenu-run -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | xargs swaymsg exec --
 
 # hide title bar
 font pango:monospace 0.001
@@ -98,6 +98,7 @@ input "type:keyboard" {
     for_window [title="Scratchpad Tmux"] resize set width 800 px, resize set height 600 px, move scratchpad, border pixel 2
 
     bindsym $mod+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config_rnnoise_source
+    bindsym $mod+CONTROL+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config
     for_window [title="vis_for_recording"] floating enable, sticky enable, move position 67 ppt 58 ppt , resize set 300px 200px, border pixel 1
     # swayimg floating window border; or handled with client.inactive
     for_window [app_id=swayimgapp] border pixel 1
@@ -317,14 +318,14 @@ exec --no-startup-id "fcitx5 -d"
 exec --no-startup-id "wl-paste --watch cliphist store"
 
 # use wmenu to select form the clipboard
-bindsym $mod+b exec --no-startup-id 'cliphist list | wmenu -p "cliphist: " -l 6 -f "SourceCodePro Medium 13" -i | cliphist decode | wl-copy'
+bindsym $mod+b exec --no-startup-id 'cliphist list | wmenu -p "cliphist: " -l 6 -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | cliphist decode | wl-copy'
 
 # address & bookmarks
-bindsym $mod+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks | grep -vE "^#|^[[:space:]]*$" | wmenu -p "bookmarks: " -l 6 -f "SourceCodePro Medium 13" -i | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
+bindsym $mod+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks | grep -vE "^#|^[[:space:]]*$" | wmenu -p "bookmarks: " -l 6 -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
 ### bookmarks-on-screen for privacy when recording videos
-bindsym $mod+Shift+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks-on-screen | grep -vE "^#|^[[:space:]]*$" | wmenu -p "bookmarks-on-screen" -l 6 -f "SourceCodePro Medium 13" -i | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
-bindsym $mod+CONTROL+a exec --no-startup-id ~/.local/bin/awiki
-bindsym $mod+CONTROL+w exec --no-startup-id ~/.local/bin/wvim
+bindsym $mod+Shift+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks-on-screen | grep -vE "^#|^[[:space:]]*$" | wmenu -p "bookmarks-on-screen" -l 6 -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
+bindsym $mod+CONTROL+w exec --no-startup-id ~/.local/bin/wwiki
+bindsym $mod+CONTROL+v exec --no-startup-id ~/.local/bin/wvim
 bindsym $mod+CONTROL+b exec --no-startup-id ~/.local/bin/wbook
 
 ### keybindings

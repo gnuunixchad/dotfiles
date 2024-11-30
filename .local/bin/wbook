@@ -9,7 +9,7 @@ search_path=("$HOME/doc/ebooks"
             #"/more/paths"
             )
 
-    selected_file=$(find "${search_path[@]}" -type f | grep -e .epub$ -e .pdf$  | wmenu -p "wbook" -i -l 10 -f "SourceCodePro bold 13" )
+            selected_file=$(find "${search_path[@]}" -type f | grep -e .epub$ -e .pdf$  | wmenu -p "wbook" -i -l 6 -f "SourceCodePro bold 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
 
 # don't open zathura if none file selected
 if [ -n "$selected_file" ]; then

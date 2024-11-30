@@ -24,7 +24,7 @@ if [ $# -eq 0 ]; then
 fi
 
 # use wmenu as passphrase prompt
-gpg_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "Enter the gpg passphrase")
+gpg_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "[gpg-pic] passphrase: " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
 
 # don't do anything if exiting wmenu without any input
 if  [[ -z "$gpg_passphrase" ]]; then

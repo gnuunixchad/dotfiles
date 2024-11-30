@@ -1,59 +1,21 @@
-@title: Arch Linux Installation With Sway Wayland Compositor  
-@author: nate zhou  
-@since: 2024-08-07  
+# My Arch Installation
+![preview1](./images/20241130_13h15m07s_grim.png)
+![preview2](./images/20241130_13h15m07s_grim.png)
+![preview3](./images/20241130_13h52m20s_grim.png)
 
-<details><summary>软件推荐 Softwares I use</summary>
-
-发行版: Arch + Parabola GNU/Linux-libre  
-视频录制: wf-recorder + slurp  
-音频录制: pw-record + noise-suppression-for-voice  
-屏幕截图: grim + slurp  
-视频剪辑: kdenlive +/ ffmpeg  
-视频封面: gimp +/ imagemagick(bash script)  
-数字安全: firejail + cryptsetup + gpg + ufw  
-窗口管理器: sway  
-任务状态栏: waybar  
-命令解释器: bash  
-终端模拟器: foot  
-音频服务器: pipewire  
-应用启动器: wmenu  
-历史剪切板: wmenu + wl-clipboard + cliphist  
-地址收藏夹: wmenu + wtype  
-文本编辑器: neovim  
-邮件客户端: neomutt  
-代码编辑器: code-oss / vscodium  
-图片查看器: swayimg  
-视频播放器: mpv  
-音乐播放器: mpd + mpc + ncmpcpp  
-电子书浏览: zathura + zathura-pdf-mupdf  
-输入法引擎: fcitx5 + fcitx5-chinese-addons  
-浏览器插件: darkreader + tridactyl + ublock-origin  
-本地 AI : ollama  
-RSS 订阅: newsboat  
-ToDo列表: task(taskwarrior)  
-日程管理: calcurse  
-文件管理: ranger + GNU coreutils  
-文件下载: transmission-cli + httrack + yt-dlp  
-定时任务: crontab(cronie)  
-文件共享: termux(rsync + ssh) + samba + aft-mtp-mount  
-打字练习: gtypist + ttyper  
-</details>
+[Software I use](./package.list)
 
 You can find this repository on:  
 [unixchad on codeberg](https://codeberg.org/unixchad/dotfiles)  
 [gnuunixchad on github](https://github.com/gnuunixchad/dotfiles)  
 
-My Video Channel(Chinese):  
+Video Channel(Chinese):  
 [unixchad on bilibili](https://space.bilibili.com/34569411)  
 [unixchad on ixigua](https://www.ixigua.com/home/59251857670)  
 
 **Disclaimer**:  
 This file only serves as a record rather than a guide or tutorial.  
 It is based on the [arch wiki](https://wiki.archlinux.org/title/Installation_guide), which is the better guide, if not the best.
-
-
-![preview1](20241017-mpv-shot0001.jpg)
-![preview2](20241031_13h46m33s_grim.png)
 
 # 0.install info
 partition:  LVM on LUKS
