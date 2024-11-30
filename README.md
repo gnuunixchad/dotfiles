@@ -1,8 +1,8 @@
 # My Arch Installation
-![preview1](./images/20241130_17h33m40s_grim.png)
-![preview2](./images/20241130_17h16m05s_grim.png)
-![preview3](./images/20241130_16h51m35s_grim.png)
-![preview4](./images/20241130_16h57m02s_grim.png)
+![preview1](./images/20241130_17h54m41s_grim.png)
+![preview2](./images/20241130_17h33m40s_grim.png)
+![preview3](./images/20241130_17h16m05s_grim.png)
+![preview4](./images/20241130_16h51m35s_grim.png)
 
 [Software I use](./package.list)
 
