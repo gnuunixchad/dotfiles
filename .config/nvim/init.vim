@@ -3,7 +3,7 @@
 " codeberg.org/unixchad/dotfiles
 " github.com/gnuunixchad/dotfiles
 
-colorscheme chad
+colorscheme unixchad
 syntax on
 set ignorecase      " case insensitive searching
 set smartcase       " lower case search case insensitive; if upper case exists, case sensitive;
@@ -19,6 +19,7 @@ set relativenumber
 set clipboard=unnamedplus
 set cursorline
 set cursorcolumn
+set mouse=          " disable mouse clicks
 match ExtraWhitespace /\s\+$/ " space at the end of lines
 highlight ExtraWhitespace ctermbg=gray guibg=gray " highlight all trailing spaces
 

@@ -22,3 +22,9 @@ display_volume_level = yes
 display_bitrate = yes
 external_editor = nvim
 use_console_editor = yes
+
+### color ###
+main_window_color = 188
+##af5fff
+current_item_prefix = $(135)$r 
+current_item_inactive_column_prefix = $(75)$r

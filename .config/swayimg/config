@@ -63,7 +63,7 @@ background = #202020ff
 # Background color of the selected tile (RGBA)
 select = #404040ff
 # Border color of the selected tile (RGBA)
-border = #119490
+border = #6f3f89
 # Shadow color of the selected tile (RGBA)
 shadow = #000000ff
 

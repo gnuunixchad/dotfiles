@@ -4,12 +4,7 @@
 # codeberg.org/unixchad/dotfiles
 # github.com/gnuunixchad/dotfiles
 
-# executed by login shells, ignored if ~/.bash_profile exists
-
 # default file permission
-# umask     permission
-# 022       755 (default user on debian)
-# 027       750 (default root on debian)
 umask 022
 
 # if running bash

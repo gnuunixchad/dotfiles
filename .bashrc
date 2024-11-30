@@ -4,8 +4,6 @@
 # codeberg.org/unixchad/dotfiles
 # github.com/gnuunixchad/dotfiles
 
-# environment virables should be .profile or .bash_profile
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -41,10 +39,8 @@ GIT_PS1_STATESEPARATOR=" " 	    # separator between branch name and state symbol
 GIT_PS1_DESCRIBE_STYLE=1 	    # show commit relative to tag or branch, when detached HEAD
 GIT_PS1_SHOWCOLORHINTS=1        # display in color
 
-# ANSI color: 00 white, 30 black, 31 red, 32 green,
-#             33 yellow, 34 blue, 35 magenta, 36 cyan, 37 gray
 #PS1='[\u@\h \W]\$ '
-PS1='\[\033[01;31m\]\[\033[01;00m\]\[\033[01;41m\]\u\[\033[01;41m\]@\[\033[01;41m\]\h\[\033[00;00m\] \[\033[01;32m\]\W\[\033[00;00m\]$(__git_ps1 " (%s)")\[\033[01;31m\]\[\033[00;00m\] \$ '
+PS1='\[\033[00;31m\]\[\033[00;00m\]\[\033[00;45m\]\u\[\033[00;45m\]@\[\033[00;45m\]\h\[\033[00;00m\] \[\033[01;32m\]\W\[\033[00;00m\]$(__git_ps1 " (%s)")\[\033[01;31m\]\[\033[00;00m\] \$ '
 
 ### BASH ALIAS ###
 ### think twice ###

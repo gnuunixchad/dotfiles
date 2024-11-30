@@ -1,16 +1,13 @@
--- Name:         chad (based on vim.lua)
--- Description:  Vim's default color scheme
--- Author:       Bram Moolenaar <Bram@vim.org>
--- Maintainer:   The Vim Project <https://github.com/vim/vim>
+-- Name:         chad (edited on top with vim.lua by Bram Moolenaar)
 -- Website:      https://github.com/vim/vim
--- License:      Same as Vim
--- Last Updated: 2023 Aug 10
 
--- This is Vim's default color scheme. It doesn't define the Normal
--- highlighting, it uses whatever the colors used to be.
+--  @authoer natezhou
+--  @since 2023
+--  codeberg.org/unixchad/dotfiles
+--  github.com/gnuunixchad/dotfiles
 
 vim.cmd.highlight('clear')
-vim.g.colors_name = 'vim'
+vim.g.colors_name = 'unixchad'
 
 local hi = function(name, val)
   -- Force links
@@ -36,8 +33,8 @@ hi('IncSearch',    { reverse = true,                    cterm = { reverse = true
 hi('ModeMsg',      { bold = true,                       cterm = { bold = true } })
 hi('NonText',      { fg = 'Blue', bold = true,          ctermfg = 'Blue' })
 hi('PmenuSbar',    { bg = 'Grey',                       ctermbg = 'Grey' })
-hi('StatusLine',   { bg = 'Black', reverse = false, bold = true,       cterm = { reverse = false, bold = true }})
-hi('StatusLineNC', { reverse = false,                    cterm = { reverse = false } })
+hi('StatusLine',   { fg = 'White', bg = '#6f3f89', reverse = false, bold = true,       cterm = { reverse = false, bold = true }})
+hi('StatusLineNC', { fg = 'White', bg = '#045575', reverse = false,                    cterm = { reverse = false } })
 hi('TabLineFill',  { reverse = true,                    cterm = { reverse = true } })
 hi('TabLineSel',   { bold = true,                       cterm = { bold = true } })
 hi('TermCursor',   { reverse = true,                    cterm = { reverse = true } })
@@ -207,59 +204,17 @@ hi('@lsp.type.type',          { link = 'Type' })
 hi('@lsp.type.typeParameter', { link = 'TypeDef' })
 hi('@lsp.type.variable',      { link = 'Identifier' })
 
-if vim.o.background == 'light' then
-  -- Default colors only used with a light background.
-  hi('ColorColumn',  { bg = 'LightRed',                            ctermbg = 'LightRed' })
-  --hi('CursorColumn', { bg = 'Grey90',                              ctermbg = 'LightGrey' })
-  --hi('CursorLine',   { bg = 'Grey90',                              cterm = { underline = true } })
-   hi('CursorLine', { cterm = { underline = true } })
-  hi('CursorLineNr', { fg = 'Brown', bold = true,                  ctermfg = 'Brown', cterm = { underline = true } })
-  hi('DiffAdd',      { bg = 'LightBlue',                           ctermbg = 'LightBlue' })
-  hi('DiffChange',   { bg = 'LightMagenta',                        ctermbg = 'LightMagenta' })
-  hi('DiffDelete',   { fg = 'Blue', bg = 'LightCyan', bold = true, ctermfg = 'Blue', ctermbg = 'LightCyan' })
-  hi('Directory',    { fg = 'Blue',                                ctermfg = 'DarkBlue' })
-  hi('FoldColumn',   { fg = 'DarkBlue', bg = 'Grey',               ctermfg = 'DarkBlue', ctermbg = 'Grey' })
-  hi('Folded',       { fg = 'DarkBlue', bg = 'LightGrey',          ctermfg = 'DarkBlue', ctermbg = 'Grey' })
-  hi('LineNr',       { fg = 'Brown',                               ctermfg = 'Brown' })
-  hi('MatchParen',   { bg = 'Cyan',                                ctermbg = 'Cyan' })
-  hi('MoreMsg',      { fg = 'SeaGreen', bold = true,               ctermfg = 'DarkGreen' })
-  hi('Pmenu',        { bg = 'LightMagenta',                        ctermfg = 'Black', ctermbg = 'LightMagenta' })
-  hi('PmenuSel',     { bg = 'Grey',                                ctermfg = 'Black', ctermbg = 'LightGrey' })
-  hi('PmenuThumb',   { bg = 'Black',                               ctermbg = 'Black' })
-  hi('Question',     { fg = 'SeaGreen', bold = true,               ctermfg = 'DarkGreen' })
-  hi('Search',       { bg = 'Yellow',                              ctermbg = 'Yellow' })
-  hi('SignColumn',   { fg = 'DarkBlue', bg = 'Grey',               ctermfg = 'DarkBlue', ctermbg = 'Grey' })
-  hi('SpecialKey',   { fg = 'Blue',                                ctermfg = 'DarkBlue' })
-  hi('SpellBad',     { sp = 'Red', undercurl = true,               ctermbg = 'LightRed' })
-  hi('SpellCap',     { sp = 'Blue', undercurl = true,              ctermbg = 'LightBlue' })
-  hi('SpellLocal',   { sp = 'DarkCyan', undercurl = true,          ctermbg = 'Cyan' })
-  hi('SpellRare',    { sp = 'Magenta', undercurl = true,           ctermbg = 'LightMagenta' })
-  hi('TabLine',      { bg = 'LightGrey', underline = true,         ctermfg = 'Black', ctermbg = 'LightGrey', cterm = { underline = true } })
-  hi('Title',        { fg = 'Magenta', bold = true,                ctermfg = 'DarkMagenta' })
-  hi('Visual',       { fg = 'Black', bg = 'LightGrey',             ctermfg = 'Black', ctermbg = 'Grey' })
-  hi('WarningMsg',   { fg = 'Red',                                 ctermfg = 'DarkRed' })
-  hi('Comment',      { fg = 'Blue',                                ctermfg = 'DarkBlue' })
-  hi('Constant',     { fg = 'Magenta',                             ctermfg = 'DarkRed' })
-  hi('Special',      { fg = '#6a5acd',                             ctermfg = 'DarkMagenta' })
-  hi('Identifier',   { fg = 'DarkCyan',                            ctermfg = 'DarkCyan' })
-  hi('Statement',    { fg = 'Brown', bold = true,                  ctermfg = 'Brown' })
-  hi('PreProc',      { fg = '#6a0dad',                             ctermfg = 'DarkMagenta' })
-  hi('Type',         { fg = 'SeaGreen', bold = true,               ctermfg = 'DarkGreen' })
-  hi('Underlined',   { fg = 'SlateBlue', underline = true,         ctermfg = 'DarkMagenta', cterm = { underline = true } })
-  hi('Ignore',       {                                             ctermfg = 'White' })
-else
-  -- Default colors only used with a dark background.
   hi('ColorColumn',  { bg = 'DarkRed',                            ctermbg = 'DarkRed' })
   --hi('CursorColumn', { bg = 'Grey40',                             ctermbg = 'DarkGrey' })
   --hi('CursorLine',   { bg = 'Grey40',                             cterm = { underline = true } })
-  hi('CursorLineNr', { fg = 'Yellow', bold = true,                ctermfg = 'Yellow', cterm = { underline = true } })
+  hi('CursorLineNr', { fg = 'White', bold = true,                ctermfg = 'White', cterm = { underline = true } })
   hi('DiffAdd',      { bg = 'DarkBlue',                           ctermbg = 'DarkBlue' })
   hi('DiffChange',   { bg = 'DarkMagenta',                        ctermbg = 'DarkMagenta' })
   hi('DiffDelete',   { fg = 'Blue', bg = 'DarkCyan', bold = true, ctermfg = 'Blue', ctermbg = 'DarkCyan' })
   hi('Directory',    { fg = 'Cyan',                               ctermfg = 'LightCyan' })
   hi('FoldColumn',   { fg = 'Cyan', bg = 'Grey',                  ctermfg = 'Cyan', ctermbg = 'DarkGrey' })
   hi('Folded',       { fg = 'Cyan', bg = 'DarkGrey',              ctermfg = 'Cyan', ctermbg = 'DarkGrey' })
-  hi('LineNr',       { fg = 'Yellow',                             ctermfg = 'Yellow' })
+  hi('LineNr',       { fg = 'Grey', bold = false,               ctermfg = 'Grey' })
   hi('MatchParen',   { bg = 'DarkCyan',                           ctermbg = 'DarkCyan' })
   hi('MoreMsg',      { fg = 'SeaGreen', bold = true,              ctermfg = 'LightGreen' })
   hi('Pmenu',        { bg = 'Magenta',                            ctermfg = 'Black', ctermbg = 'Magenta' })
@@ -276,15 +231,14 @@ else
   hi('TabLine',      { bg = 'DarkGrey', underline = true,         ctermfg = 'White', ctermbg = 'DarkGrey', cterm = { underline = true } })
   hi('Title',        { fg = 'Magenta', bold = true,               ctermfg = 'LightMagenta' })
   hi('Visual',       { fg = 'LightGrey', bg = '#575757',          ctermfg = 'Black', ctermbg = 'Grey' })
-  hi('WarningMsg',   { fg = 'Red',                                ctermfg = 'LightRed' })
-  hi('Comment',      { fg = '#80a0ff',                            ctermfg = 'Cyan' })
-  hi('Constant',     { fg = '#ffa0a0',                            ctermfg = 'Magenta' })
+  hi('WarningMsg',   { fg = '#e6da00',                                ctermfg = 'LightRed' })
+  hi('Comment',      { fg = 'Grey',                            ctermfg = 'Grey' })
+  hi('Constant',     { fg = '#ffff60',                            ctermfg = 'Magenta' })
   hi('Special',      { fg = 'Orange',                             ctermfg = 'LightRed' })
-  hi('Identifier',   { fg = '#40ffff',                            ctermfg = 'Cyan', cterm = { bold = true } })
-  hi('Statement',    { fg = '#ffff60', bold = true,               ctermfg = 'Yellow' })
+  hi('Identifier',   { fg = '#ff5577',                            ctermfg = 'Cyan', cterm = { bold = true } })
+  hi('Statement',    { fg = '#40ffba', bold = true,               ctermfg = 'Yellow' })
   hi('PreProc',      { fg = '#ff80ff',                            ctermfg = 'LightBlue' })
   hi('Type',         { fg = '#60ff60', bold = true,               ctermfg = 'LightGreen' })
   hi('Underlined',   { fg = '#80a0ff', underline = true,          ctermfg = 'LightBlue', cterm = { underline = true } })
   hi('Ignore',       {                                            ctermfg = 'Black' })
-end
 --stylua: ignore end
