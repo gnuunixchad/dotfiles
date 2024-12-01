@@ -28,6 +28,7 @@ export TERM=xterm-256color
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8   # locale
 export EDITOR=/bin/nvim
+export BROWSER="firefox"
 export XDG_DOWNLOAD_DIR="$HOME/dls"
 export XDG_DOCUMENTS_DIR="$HOME/doc"
 export XDG_MUSIC_DIR="$HOME/mus"
@@ -41,6 +42,11 @@ export XDG_DATA_HOME="$HOME/.local/share"   # analogous to /usr/share
 export CALCHISTFILE="$XDG_CACHE_HOME/calc_history"
 export CUDA_CACHE_PATH="$XDG_HOME_HOME/nv"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOPATH="$XDG_DATA_HOME/go"
+export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 
 ### IME ###
 # fcitx
