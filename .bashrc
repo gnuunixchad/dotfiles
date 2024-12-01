@@ -65,3 +65,11 @@ cl() {
 		echo "bash: cl: $dir: Directory not found"
 	fi
 }
+# sync notification
+sync() {
+    if [ "$XDG_SESSION_TYPE" = "tty" ]; then
+        /usr/bin/sync
+    else
+        /usr/bin/sync && notify-send -u low -r 3412 'sync finished'
+    fi
+}

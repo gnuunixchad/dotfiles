@@ -30,7 +30,6 @@ alias less="less -F"
 alias iostat="iostat -t 2"
 alias mpv="mpv --loop"
 alias fzf="/usr/bin/fzf --reverse --color=16 --preview-window=65%:wrap:border-sharp: --preview 'cat {}'"
-alias sync="sync && notify-send -u low -r 3412 'sync finished'"
 ### abbreviation ###
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -63,3 +62,4 @@ alias glf="git log --follow -p"
 #alias dict='dict -d gcide | less -F'
 #alias mupdf="mupdf -I -C cccccc -r 140 -S13"
 #alias fim="fim -a --no-commandline --no-etc-rc-file --no-stat-push"
+#alias sync="sync && notify-send -u low -r 3412 'sync finished'"
