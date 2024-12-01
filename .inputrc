@@ -11,8 +11,14 @@ $include /etc/inputrc
 set editing-mode vi
 # vi mode indicator
 set show-mode-in-prompt on
-set vi-ins-mode-string \1\e[6 q\2
-set vi-cmd-mode-string \1\e[2 q\2
+#The Virtual Console uses different escape codes
+$if term=linux
+	set vi-ins-mode-string \1\e[?0c\2
+	set vi-cmd-mode-string \1\e[?8c\2
+$else
+	set vi-ins-mode-string \1\e[6 q\2
+	set vi-cmd-mode-string \1\e[2 q\2
+$endif
 
 set completion-ignore-case on
 # Color the common prefix
@@ -21,6 +27,8 @@ set colored-completion-prefix On
 set menu-complete-display-prefix On
 # colorized completion
 set colored-stats On
+# set visible-stats
+set visible-stats On
 # faster completion
 set show-all-if-unmodified on
 #set show-all-if-ambiguous on
@@ -30,3 +38,5 @@ set visible-stats On
 # Mark symlinked directories (symlink@)
 set mark-symlinked-directories On
 
+# disabling C-c to echo (^C)
+set echo-control-characters off

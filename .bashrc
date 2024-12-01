@@ -55,3 +55,13 @@ ranger() {
         exit
     fi
 }
+# cd and ls in one
+cl() {
+	local dir="$1"
+	local dir="${dir:=$HOME}"
+	if [[ -d "$dir" ]]; then
+		cd "$dir" >/dev/null; ls
+	else
+		echo "bash: cl: $dir: Directory not found"
+	fi
+}
