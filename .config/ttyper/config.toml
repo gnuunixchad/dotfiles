@@ -16,9 +16,9 @@ title = "white;bold"
 ## test styles ##
 
 # input box border
-input_border = "cyan"
+input_border = "yellow"
 # prompt box border
-prompt_border = "yellow"
+prompt_border = "magenta"
 
 # border type
 border_type = "rounded"

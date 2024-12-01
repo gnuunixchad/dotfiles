@@ -3,10 +3,10 @@
 # codeberg.org/unixchad/dotfiles
 # github.com/gnuunixchad/dotfiles
 
-color listnormal_unread  green   default
-color listfocus          white   color12
-color listfocus_unread   white   color12
-color info               default color12
+color listnormal_unread  color13 default
+color listfocus          white   color5
+color listfocus_unread   white   color5
+color info               default color5
 color article            default default
 
 # movement
