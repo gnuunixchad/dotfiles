@@ -99,7 +99,7 @@ input "type:keyboard" {
 
     bindsym $mod+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config_rnnoise_source
     bindsym $mod+CONTROL+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config
-    for_window [title="vis_for_recording"] floating enable, sticky enable, move position 67 ppt 58 ppt , resize set 300px 200px, border pixel 1
+    for_window [title="vis_for_recording"] floating enable, sticky enable, move position 68 ppt 58 ppt , resize set 240px 180px, border pixel 1
     # swayimg floating window border; or handled with client.inactive
     for_window [app_id=swayimgapp] border pixel 1
 
@@ -272,7 +272,7 @@ input "type:keyboard" {
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+w scratchpad show, resize set 1000 750, move position center
+    bindsym $mod+w scratchpad show, resize set 1024 768, move position center
 
 # resize windows
 bindsym $mod+y resize shrink width 10px
@@ -382,7 +382,8 @@ bindsym $mod+Shift+p exec --no-startup-id mpc toggle
 ## take a screenshot with a selected part
 bindsym $mod+g exec --no-startup-id slurp | grim -g - && notify-send -u low -r 88 "grim" "Screenshot taken."
 # take a screenshot with selected monitor
-bindsym $mod+CONTROL+g exec --no-startup-id slurp -ro | grim -g - && notify-send -u low -r 88 "grim" "Screenshot taken."
+#bindsym $mod+CONTROL+g exec --no-startup-id slurp -ro | grim -g - && notify-send -u low -r 88 "grim" "Screenshot taken."
+bindsym $mod+CONTROL+g exec --no-startup-id ~/.local/bin/wshot
 ## take a screenshot with all monitors
 bindsym $mod+Shift+g exec --no-startup-id grim && notify-send -u low -r 88 "grim" "Screenshot taken."
 

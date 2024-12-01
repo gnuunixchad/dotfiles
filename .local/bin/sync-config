@@ -7,6 +7,7 @@
 
 read -p "Continue? (y/n): " choice
 if [[ $choice == "y" || $choice == "Y" ]]; then
+    cp -f ~/.config/nvim/init.vim ~/.config/vim/vimrc
     rsync -avh --delete --progress --relative --exclude .config/gtk-2.0/gtkfilechooser.ini ~/.local/bin ~/.bashrc ~/.bash_aliases ~/.zshrc ~/.inputrc ~/.profile ~/.gnupg/gpg.conf ~/.config/calcurse/conf ~/.config/dunst ~/.config/fcitx5/{config,profile} ~/.config/firejail ~/.config/foot ~/.config/{gtk-2.0,gtk-3.0,gtk-4.0} ~/.config/imv ~/.config/mpd/mpd.conf ~/.config/mpv ~/.config/mutt/{account.example,muttrc,mailcap} ~/.config/ncmpcpp/{config,bindings} ~/.config/newsboat/config.example ~/.config/nvim/{init.vim,colors} ~/.config/vim/vimrc ~/.config/qt5ct/qt5ct.conf ~/.config/qt6ct/qt6ct.conf ~/.config/ranger ~/.config/sway ~/.config/swaylock ~/.config/task/taskrc ~/.config/waybar ~/.config/wget ~/.config/zathura ~/.config/user.js.example ~/.config/smb.conf ~/.config/code-flags.conf ~/.config/Code\ -\ OSS/User/{keybindings.json,settings.json} ~/.config/ttyper ~/.config/git/config.example ~/.ssh/config.example ~/.config/newsboat/urls.example ~/.config/vis/{colors/,config} ~/.config/pipewire/ ~/.config/wikiman/ ~/.config/swayimg/ ~/.config/tmux/ ~/doc/dotfiles/
 
     rsync -avh --delete --progress ~/doc/dotfiles/home/nate/ ~/doc/note/usr/swayarch/

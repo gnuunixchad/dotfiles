@@ -36,10 +36,10 @@ send_msg()
     fi
 }
 
-lsblk_result=$(lsblk -rpo "name,type,size,uuid,label,mountpoint,fstype" | tail -n +2)
+lsblk_result=$(lsblk -rpo "name,type,size,uuid,label,mountpoint,fstype" | tail -n +2 | grep -ve ' disk ' -ve SWAP -ve /boot -ve /mapper/ )
 
 if [[ "$XDG_SESSION_TYPE" != "tty" ]]; then
-    selected=$(echo "$lsblk_result" | wmenu -p "amount: " -l 9 -f "SourceCodePro medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
+    selected=$(echo "$lsblk_result" | wmenu -p "amount: " -l 6 -f "SourceCodePro medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
 else
     # use fzf to select a partition if in tty
     selected=$(echo "$lsblk_result" | fzf --prompt 'amount: ')

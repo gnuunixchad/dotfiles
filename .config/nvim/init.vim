@@ -61,7 +61,7 @@ map <leader>v :vsplit<CR>
 """"""""""""""""""""""plugins"""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-plug plugins
 call plug#begin()
-Plug 'preservim/nerdtree'
+"Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive' " git
 Plug 'ap/vim-css-color'
 call plug#end()

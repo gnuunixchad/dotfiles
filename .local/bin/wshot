@@ -1,0 +1,11 @@
+#!/bin/sh
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# wshot
+# wmenu script to take a screenshot with selected output in sway
+
+selected_output=$(swaymsg -t get_outputs -p | grep Output | wmenu -p "wshot: " -l 3 -f "SourceCodePro medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | awk '{print $2}' )
+
+grim -o $selected_output && notify-send -u low "wshot" "Screenshot taken on $selected_output"
