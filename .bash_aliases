@@ -30,6 +30,7 @@ alias less="less -F"
 alias iostat="iostat -t 2"
 alias mpv="mpv --loop"
 alias fzf="/usr/bin/fzf --reverse --color=16 --preview-window=65%:wrap:border-sharp: --preview 'cat {}'"
+alias sync="~/.local/bin/sync-notify"
 ### abbreviation ###
 alias ..='cd ..'
 alias ...='cd ../..'
