@@ -45,6 +45,10 @@ GIT_PS1_SHOWCOLORHINTS=1        # display in color
 
 #PS1='[\u@\h \W]\$ '
 PS1='\[\033[00;31m\]\[\033[00;00m\]\[\033[00;45m\]\u\[\033[00;45m\]@\[\033[00;45m\]\h\[\033[00;00m\] \[\033[01;32m\]\W\[\033[00;00m\]$(__git_ps1 " (%s)")\[\033[01;31m\]\[\033[00;00m\] \$ '
+# different color for ssh
+if [[ -n "$SSH_CONNECTION" ]]; then
+    export PS1='\[\033[00;31m\]\[\033[00;00m\]\[\033[00;41m\]\u\[\033[00;41m\]@\[\033[00;41m\]\h\[\033[00;00m\] \[\033[01;32m\]\W\[\033[00;00m\]$(__git_ps1 " (%s)")\[\033[01;31m\]\[\033[00;00m\] \$ '
+fi
 
 ### SHELL FUNCTIONS ###
 # preventing nested ranger
