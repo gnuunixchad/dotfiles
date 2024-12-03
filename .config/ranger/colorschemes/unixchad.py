@@ -14,7 +14,7 @@ from ranger.gui.color import (
 )
 
 
-class Default(ColorScheme):
+class Unixchad(ColorScheme):
     progress_bar_color = blue
 
     def use(self, context):  # pylint: disable=too-many-branches,too-many-statements
@@ -28,21 +28,24 @@ class Default(ColorScheme):
                 attr = reverse
             else:
                 attr = normal
-            if context.empty or context.error:
-                bg = red
+            if context.empty:
+                bg = 240
+            if context.error:
+                bg = 52
             if context.border:
-                fg = white
+                fg = 111
             if context.media:
+                if context.video:
+                    fg = 177
                 if context.image:
-                    fg = yellow
+                    fg = 177
                 else:
-                    fg = magenta
+                    fg = 10
             if context.container:
                 fg = red
             if context.directory:
                 attr |= bold
-                fg = blue
-                fg += BRIGHT
+                fg = 74
             elif context.executable and not \
                     any((context.media, context.container,
                          context.fifo, context.socket)):
@@ -86,7 +89,7 @@ class Default(ColorScheme):
                     attr |= bold
                 if context.marked:
                     attr |= bold
-                    fg = yellow
+                    fg = 135
             if context.badinfo:
                 if attr & reverse:
                     bg = magenta
@@ -101,20 +104,18 @@ class Default(ColorScheme):
                 fg = red if context.bad else white
                 bg = magenta
             elif context.directory:
-                fg = green
-                fg += BRIGHT
+                fg = 2
+                attr |= bold
             elif context.tab:
                 if context.good:
                     bg = magenta
             elif context.link:
                 fg = cyan
-            attr |= bold
 
         elif context.in_statusbar:
             if context.permissions:
                 if context.good:
-                    fg = yellow
-                    fg += BRIGHT
+                    fg = 225
                 elif context.bad:
                     fg = magenta
             if context.marked:
