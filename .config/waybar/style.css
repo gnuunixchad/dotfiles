@@ -81,7 +81,7 @@ button:hover {
     margin: 0 0px;
     border-radius: 4px;
     background-color: #005577;
-    box-shadow: inset 0 2px #bbccdd;
+    box-shadow: inset 0 -2px #bbccdd;
     color: #eeeeee;
 }
 
@@ -95,7 +95,8 @@ button:hover {
 #idle_inhibitor{
     padding: 0 2px;
     margin: 0 0px;
-    box-shadow: inset 0 2px #bbccdd;
+    box-shadow: inset 0 -2px #bbccdd;
+    background-color: #005577;
     border-radius: 2px;
 }
 
@@ -133,7 +134,7 @@ button:hover {
 
 #tray,
 #idle_inhibitor.activated {
-    box-shadow: inset 0 2px #bbccdd;
+    box-shadow: inset 0 -2px #bbccdd;
     background-color: #bbccdd;
     color: #333333
 }
