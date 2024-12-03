@@ -275,10 +275,10 @@ package list update at [package.list](./package.list)
 
     ### window manager/wayland compositor suite
     (choose pipewire packages when asking for dependencies for audio server)
-    foot sway swaybg swayidle swaylock waybar wmenu wtype wl-clipboard wlroots xorg-xwayland cliphist dunst gammastep slurp grim wf-recorder wl-mirror
+    foot sway autotiling swaybg swayidle swaylock waybar wmenu wtype wl-clipboard wlroots xorg-xwayland cliphist dunst gammastep slurp grim wf-recorder wl-mirror
 
     ### audio server
-    pipewire pipewire-alsa pipewire-pulse pipewire-jack noise-suppression-for-voice
+    pipewire pipewire-alsa pipewire-pulse pipewire-jack noise-suppression-for-voice pulsemixer
 
     ### fonts
     adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-font-awesome ttf-nerd-fonts-symbols
@@ -314,7 +314,7 @@ package list update at [package.list](./package.list)
     jdk-openjdk openjdk-src code
 
     ### themes
-    xdg-desktop-portal lxappearance gnome-themes-extra qt5ct
+    xdg-desktop-portal gnome-themes-extra
 
     ### video driver (nvidia only)
     nvidia-open-dkms nvidia-utils nvtop
@@ -323,7 +323,7 @@ package list update at [package.list](./package.list)
     libreoffice-still gimp
 
     ### (optional) media editor
-    kdenlive obs-studio xdg-desktop-portal-wlr
+    kdenlive
 ## 2.5.1 (optional) install sway from aur
     ### not in official arch repository
     yay-bin
@@ -343,7 +343,7 @@ package list update at [package.list](./package.list)
     makepkg
     sudo pacman -U yay-bin-xxx.pkg.tar.zst
 
-    yay -Syu brn2 ranger-git sway-git fcitx5-skin-fluentdark-git adwaita-qt5 adwaita-qt6 mpvpaper cli-visualizer epub-thumbnailer-git
+    yay -Syu brn2 ranger-git sway-git fcitx5-skin-fluentdark-git adwaita-qt5 adwaita-qt6 cli-visualizer epub-thumbnailer-git
 
 ## 2.6 config softwares
 ### 2.6.0 pacman
