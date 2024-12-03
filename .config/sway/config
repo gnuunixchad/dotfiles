@@ -90,8 +90,8 @@ input "type:keyboard" {
     # Start a terminal
     bindsym $mod+Return exec $term
 
-    bindsym $mod+Shift+Return exec $term -T "Floating Tmux" -c "$HOME/.config/foot/float.ini" tmux
-    for_window [title="Floating Tmux"] floating enable, resize set width 800 px, resize set height 600 px, border pixel 2
+    bindsym $mod+Shift+Return exec $term -T "Floating Term" -c "$HOME/.config/foot/float.ini"
+    for_window [title="Floating Term"] floating enable, resize set width 800 px, resize set height 600 px, border pixel 2
 
     #bindsym $mod+Control+Return exec exec $term -T scratchpad_term -c "$HOME/.config/foot/float.ini" tmux
     bindsym $mod+Control+Return exec $term -T "Scratchpad Tmux" -c "$HOME/.config/foot/float.ini" tmux
