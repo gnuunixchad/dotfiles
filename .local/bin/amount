@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 # @author nate zhou
 # @since 2024
 # codeberg.org/unixchad/dotfiles
 # github.com/gnuunixchad/dotfiles
 # amount: interactively mount partitions based on selection
-#         - unlock beforehand if the partition is decrypted(LUKS)
+#         - unlock beforehand if the partition is encrypted(LUKS)
 #         - use wmenu for selection and passphrase prompt in wayland
 #         - use fzf for selection in tty
 # flock is the opposite script
