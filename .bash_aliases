@@ -1,4 +1,3 @@
-#!/bin/sh
 # .bash_aliases
 # @author nate zhou
 # @since 2023,2024
