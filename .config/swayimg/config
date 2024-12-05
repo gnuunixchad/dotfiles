@@ -88,7 +88,7 @@ all = yes
 # Font name
 name = SourceCodePro
 # Font size (pt)
-size = 28
+size = 14
 # Font color (RGBA)
 color = #FFFFFF
 # Shadow color (RGBA)
