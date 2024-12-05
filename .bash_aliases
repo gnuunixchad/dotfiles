@@ -24,6 +24,7 @@ alias ll.='ls -lh -d .*'
 alias whatis="whatis -l"
 alias du="du -h"
 alias df="df -h -x tmpfs"
+alias lsblk="lsblk -o name,mountpoints,type,size"
 alias free="free -h"
 alias less="less -F"
 alias iostat="iostat -t 2"

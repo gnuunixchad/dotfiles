@@ -61,6 +61,7 @@ window = #191919
 # Background color of the tile (RGBA)
 background = #202020ff
 # Background color of the selected tile (RGBA)
+#select = #404040ff
 select = #404040ff
 # Border color of the selected tile (RGBA)
 border = #6f3f89
@@ -87,7 +88,7 @@ all = yes
 # Font name
 name = SourceCodePro
 # Font size (pt)
-size = 13
+size = 28
 # Font color (RGBA)
 color = #FFFFFF
 # Shadow color (RGBA)
@@ -146,6 +147,8 @@ o = zoom -10
 w = zoom width
 #Shift+w = zoom height
 Shift+w = exec setwall "%";
+Shift+w = exec ~/.local/bin/setwall "%";
+Shift+y = exec cp "%" ~/tmp;
 z = zoom fit
 f = zoom fill
 0 = zoom real
@@ -192,6 +195,7 @@ Shift + a = antialiasing
 r = reload
 m = info
 Shift+d = exec rm "%"; skip_file
-Shift+w = exec setwall "%";
+Shift+w = exec ~/.local/bin/setwall "%";
+Shift+y = exec cp "%" ~/tmp;
 Escape = exit
 q = exit

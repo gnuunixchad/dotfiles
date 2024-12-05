@@ -27,8 +27,8 @@ titlebar_border_thickness 0
 for_window [class=".*"] border pixel 3
 
 # gaps
-gaps inner 4
-gaps outer 0
+#gaps inner 4
+#gaps outer 0
 #smart_gaps on
 
 ### Output configuration
@@ -60,9 +60,9 @@ output 'Lenovo Group Limited LEN LS2023wA 05559D4930167' resolution 1600x900@60.
 #
 # swaylock is configured at ~/.config/swaylock/config
 exec swayidle -w \
-         timeout 300 'brightnessctl set 4% -s' resume 'brightnessctl -r'\
-         timeout 600 'swaylock' \
-         timeout 900 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         timeout 600 'brightnessctl set 4% -s' resume 'brightnessctl -r'\
+         timeout 900 'swaylock' \
+         timeout 960 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock' 
 
 ### Input configuration
@@ -95,7 +95,7 @@ input "type:keyboard" {
 
     #bindsym $mod+Control+Return exec exec $term -T scratchpad_term -c "$HOME/.config/foot/float.ini" tmux
     bindsym $mod+Control+Return exec $term -T "Scratchpad Tmux" -c "$HOME/.config/foot/float.ini" tmux
-    for_window [title="Scratchpad Tmux"] resize set width 800 px, resize set height 600 px, move scratchpad, border pixel 2
+    for_window [title="Scratchpad Tmux"]  move scratchpad, border pixel 2
 
     bindsym $mod+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config_rnnoise_source
     bindsym $mod+CONTROL+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config
@@ -272,7 +272,7 @@ input "type:keyboard" {
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+w scratchpad show, resize set 1024 768, move position center
+    bindsym $mod+w scratchpad show, resize set 1024 733, move position center
 
 # resize windows
 bindsym $mod+y resize shrink width 10px
@@ -287,10 +287,10 @@ bar {
 
 # titlebar color
 #<colorclass> <border> <background> <text> <indicator> <child_border>
-#client.focused		#FF6358 #ff6358 #fdf6e3 #119490
-client.focused		#9962b7 #9962b7 #F1F1F1 #e6da00
-client.focused_inactive #0092cc #0092cc #F1F1F1 #0092cc
-client.unfocused    #bbccdd #bbccdd #F1F1F1 #bbccdd
+#client.focused		        #FF6358 #ff6358 #fdf6e3 #119490
+client.focused		        #9962b7 #9962b7 #F1F1F1 #e6da00
+client.focused_inactive     #0092cc #0092cc #F1F1F1 #0092cc
+client.unfocused            #bbccdd #bbccdd #F1F1F1 #bbccdd
 
 # focus follows mouse
 focus_follows_mouse no
@@ -305,7 +305,7 @@ include /etc/sway/config.d/*
 
 ### autostart
 # autotiling on odd workspaces
-exec_always autotiling -w 1 3 5 7 9
+#exec_always autotiling -w 1 3 5 7 9
 
 exec --no-startup-id "clsd"
 
