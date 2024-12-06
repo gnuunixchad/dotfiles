@@ -5,7 +5,6 @@ android-file-transfer
 arch-install-scripts
 arch-wiki-docs
 archlinux-contrib
-autotiling
 base
 base-devel
 bash-completion
@@ -54,9 +53,9 @@ jdk-openjdk
 kdenlive
 libnotify
 libreoffice-still
+linux
 linux-firmware
-linux-lts
-linux-lts-headers
+linux-headers
 lvm2
 man-db
 mediainfo
@@ -74,7 +73,7 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 ntp
-nvidia-open-dkms
+nvidia-open
 nvidia-utils
 nvtop
 ollama

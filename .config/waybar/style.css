@@ -114,12 +114,13 @@ button {
 }
 
 #window {
-    margin: 0 4px;
+    margin: 0 2px;
 	background-color: transparent;
 }
 
 #workspaces {
     padding: 0 2px;
+    margin: 0 0px;
     font-size: 14px;
 }
 

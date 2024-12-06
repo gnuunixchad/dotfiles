@@ -112,7 +112,7 @@ boot:       GRUB, UEFI, Secure Boot disabled)
     `Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch`
 
     install packages
-    `pacstrap -K /mnt base base-devel linux-lts linux-lts-headers linux-firmware intel-ucode cryptsetup lvm2 vim neovim networkmanager man-db bash-completion`
+    `pacstrap -K /mnt base base-devel linux linux-headers linux-firmware intel-ucode cryptsetup lvm2 vim neovim networkmanager man-db bash-completion`
 
     (explaining packages
         base            minimal package set to define a basic arch linux installation
@@ -275,7 +275,7 @@ package list update at [package.list](./package.list)
 
     ### window manager/wayland compositor suite
     (choose pipewire packages when asking for dependencies for audio server)
-    foot sway autotiling swaybg swayidle swaylock waybar wmenu wtype wl-clipboard wlroots xorg-xwayland cliphist dunst gammastep slurp grim wf-recorder wl-mirror
+    foot sway swaybg swayidle swaylock waybar wmenu wtype wl-clipboard xorg-xwayland cliphist dunst gammastep slurp grim wf-recorder wl-mirror
 
     ### audio server
     pipewire pipewire-alsa pipewire-pulse pipewire-jack noise-suppression-for-voice pulsemixer
@@ -286,17 +286,17 @@ package list update at [package.list](./package.list)
     ### file viewer
     swayimg zathura zathura-pdf-mupdf
 
-    ### typing practice in terminal
+    ### touch typing in a terminal
     ttyper
 
     ### multi-media player
     mpv ncmpcpp mpd mpc
 
     ### multi-media editor
-    ffmpeg iffmpegthumbnailer id3v2 imagemagick mediainfo perl-image-exiftool perl-rename 
+    ffmpeg ffmpegthumbnailer id3v2 imagemagick mediainfo perl-image-exiftool perl-rename
 
     ### virtualization
-    virtualbox virtualbox-guest-iso virt-manager qemu
+    virtualbox virtualbox-guest-iso (virt-manager qemu-base libvirt virt-install dnsmasq openbsd-netcat bridge-utils)
 
     ### input method engine
     fcitx5 fcitx5-chinese-addons fcitx5-configtool fcitx5-gtk fcitx5-qt
@@ -317,7 +317,7 @@ package list update at [package.list](./package.list)
     xdg-desktop-portal gnome-themes-extra
 
     ### video driver (nvidia only)
-    nvidia-open-dkms nvidia-utils nvtop
+    nvidia-open nvidia-utils nvtop
 
     ### editor
     libreoffice-still gimp
