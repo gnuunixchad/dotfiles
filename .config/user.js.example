@@ -4,6 +4,7 @@
 // codeberg.org/unixchad/dotfiles
 // github.com/gnuunixchad/dotfiles
 
+user_pref("layout.css.devPixelsPerPx", "0.95");
 user_pref("font.name.serif.x-western", "JetBrains Mono"); // font
 user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org"); // theme
 user_pref("browser.search.region", "US"); //region

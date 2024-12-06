@@ -15,11 +15,13 @@
     "modules-left": [
         "sway/workspaces",
         "sway/scratchpad",
+        "tray",
         "sway/window"
     ],
     "modules-center":[
         "sway/mode",
-        "privacy",
+        "privacy"
+        //"sway/window"
     ],
     "modules-right": [
         "custom/updates",
@@ -35,7 +37,6 @@
         "battery",
         "clock",
         "idle_inhibitor"
-        //"tray"
     ],
     "sway/workspaces": {
 	"window-rewrite": {},
@@ -44,7 +45,6 @@
         "format": "{}",
     },
     "sway/window":{
-        //"max-length": 100,
         "expand": true,
         //"all-outputs": true,
         "icon":false,
@@ -148,7 +148,6 @@
     "privacy": {
     	"icon-spacing": 4,
     	"icon-size": 18,
-    	"transition-duration": 250,
     	"modules": [
     		{
     			"type": "screenshare",

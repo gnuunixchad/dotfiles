@@ -25,6 +25,7 @@ button {
 
 #workspaces button {
     padding: 0 2px;
+    margin: 0 0px;
     border-radius: 2px;
     color: #ffffff;
 }
@@ -114,6 +115,7 @@ button {
 
 #window {
     margin: 0 4px;
+	background-color: transparent;
 }
 
 #workspaces {
@@ -141,6 +143,7 @@ button {
 
 #tray {
     background-color: #bbccdd;
+    margin: 0 2px;
 }
 
 #idle_inhibitor {
