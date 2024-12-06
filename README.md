@@ -243,6 +243,8 @@ login as root
     `sudo vim /etc/vconsole.conf`
     append:
         FONT=iso01-12x22
+    for HiDPI:
+        FONT=latarcyrheb-sun32
 ## 2.3 copy the default bashrc
     `cp /etc/bash.bashrc /root/.bashrc`
     (or from /etc/skel/.bashrc)

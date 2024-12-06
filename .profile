@@ -23,7 +23,6 @@ if [ -d "$HOME/.local/sbin" ] ; then
     PATH="$HOME/.local/sbin:$PATH"
 fi
 
-
 ### ENVIRONMENT VARIABLES ###
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
@@ -69,4 +68,3 @@ export GTK_THEME=Adwaita-dark # for firejail'ed libreoffice
 ### WAYLAND ###
 export ELECTRON_OZONE_PLATFORM_HINT=wayland # electron
 export WLR_NO_HARDWARE_CURSORS=1 # external monitor cursor on nvidia
-

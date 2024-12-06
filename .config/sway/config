@@ -98,7 +98,8 @@ input "type:keyboard" {
 
     #bindsym $mod+Control+Return exec exec $term -T scratchpad_term -c "$HOME/.config/foot/float.ini" tmux
     bindsym $mod+Control+Return exec $term -T "Scratchpad Tmux" -c "$HOME/.config/foot/float.ini" tmux
-    for_window [title="Scratchpad Tmux"]  move scratchpad, border pixel 2
+    exec $term -T "Scratchpad Tmux" -c "$HOME/.config/foot/float.ini" tmux
+    for_window [title="Scratchpad Tmux"]  move scratchpad, border pixel 1
 
     bindsym $mod+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config_rnnoise_source
     bindsym $mod+CONTROL+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config
@@ -183,8 +184,8 @@ input "type:keyboard" {
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-    bindsym $mod+z move container to workspace z; workspace z
-    bindsym $mod+Shift+z workspace z
+    bindsym $mod+z move container to workspace 11; workspace 11
+    bindsym $mod+Shift+z workspace 11
 
     #binding workspaces to monitors
     #workspace 1 output eDP-1
@@ -209,16 +210,16 @@ input "type:keyboard" {
     #workspace 9 output 'Chimei Innolux Corporation 0x1540 Unknown'
     #workspace 10 output 'Chimei Innolux Corporation 0x1540 Unknown'
 
-    workspace 10 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
-    workspace 9 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
-    workspace 8 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
-    workspace 7 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
-    workspace 6 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
-    workspace 5 output 'Chimei Innolux Corporation 0x1540 Unknown'
-    workspace 4 output 'Chimei Innolux Corporation 0x1540 Unknown'
-    workspace 3 output 'Chimei Innolux Corporation 0x1540 Unknown'
-    workspace 2 output 'Chimei Innolux Corporation 0x1540 Unknown'
     workspace 1 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    workspace 2 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    workspace 3 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    workspace 4 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    workspace 5 output 'Chimei Innolux Corporation 0x1540 Unknown'
+    workspace 6 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    workspace 7 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    workspace 8 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    workspace 9 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+    workspace 10 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
 
     #next/previous workspace
     bindsym $mod+comma workspace prev_on_output
@@ -275,7 +276,7 @@ input "type:keyboard" {
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+w scratchpad show, resize set 1024 733, move position center
+    bindsym $mod+w scratchpad show, resize set 1000 700, move position center
 
 # resize windows
 bindsym $mod+y resize shrink width 10px
