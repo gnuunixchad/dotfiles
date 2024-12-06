@@ -13,7 +13,6 @@ brn2-git
 btop
 calc
 calcurse
-cli-visualizer
 cliphist
 code
 cronie
@@ -39,7 +38,7 @@ firejail
 foot
 fzf
 gammastep
-gimp-devel
+gimp
 git
 gnome-themes-extra
 grim
@@ -83,7 +82,6 @@ openssh
 pacman-contrib
 perl-image-exiftool
 perl-rename
-pfetch
 pipewire
 pipewire-alsa
 pipewire-pulse
@@ -117,7 +115,7 @@ vim
 virtualbox
 virtualbox-guest-iso
 w3m
-waybar-git
+waybar
 waybar-module-pacman-updates-git
 wf-recorder
 wikiman

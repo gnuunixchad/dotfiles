@@ -54,7 +54,7 @@ output * bg ~/.local/share/wallpaper fill
 #output 'Lenovo Group Limited LEN LS2023wA 05559D4930167' resolution 1600x900@60.000Hz pos 1536 0
 output 'Chimei Innolux Corporation 0x1540 Unknown' scale 1 mode --custom 1600x900@60.000Hz pos 0 0
 #internal monitor of y70014isk
-output 'AU Optronics 0x243D Unknown' scale 1 mode --custom 1600x900@60.000Hz pos 0 0
+output 'AU Optronics 0x243D Unknown' scale 1 mode 1600x900@60.000Hz pos 0 0
 #to calculate the position for multiple monitors, the origion is in the top left, x increases on the right, y increases on the downside
 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167' resolution 1600x900@60.000Hz pos 1600 0
 

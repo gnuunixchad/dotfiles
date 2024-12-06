@@ -345,7 +345,7 @@ package list update at [package.list](./package.list)
     makepkg
     sudo pacman -U yay-bin-xxx.pkg.tar.zst
 
-    yay -Syu brn2 ranger-git sway-git fcitx5-skin-fluentdark-git adwaita-qt5 adwaita-qt6 cli-visualizer epub-thumbnailer-git
+    yay -Syu brn2-git ranger-git fcitx5-skin-fluentdark-git adwaita-qt5 adwaita-qt6 epub-thumbnailer-git
 
 ## 2.6 config softwares
 ### 2.6.0 pacman
