@@ -1,0 +1,19 @@
+#!/bin/env bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+rsync --dry-run -avh --delete --progress /var/cache/pacman/pkg/ $HOME/repo/linux/pacman/
+rsync --dry-run -avh --delete --progress $HOME/.cache/yay/ $HOME/repo/linux/yay/
+
+read -p "Continue? (y/n): " choice
+if [[ $choice == "y" || $choice == "Y" ]]; then
+    # pacman
+    rsync -avh --delete --progress /var/cache/pacman/pkg/ $HOME/repo/linux/pacman/
+    # yay
+    rsync -avh --delete --progress $HOME/.cache/yay/ $HOME/repo/linux/yay/
+else
+    echo "aborted"
+    exit 0
+fi
