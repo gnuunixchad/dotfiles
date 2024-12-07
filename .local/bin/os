@@ -57,6 +57,7 @@ print_help() {
     -d  disk usage on /
     -h  show this help
     -l  upgradable pkg count
+    -o  OS release name
     -t  cpu temperature\n"
     exit 0
 }
@@ -86,9 +87,6 @@ while getopts ":adtlo" opt; do
             ;;
         l)
             print_upgradable
-            ;;
-        o)
-            print_os
             ;;
     esac
 done
