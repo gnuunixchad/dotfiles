@@ -29,6 +29,11 @@ if [ -x /usr/bin/bat ]; then
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 fi
 
+# show os info on login
+if [ -x ~/.local/bin/os ] ; then
+    ~/.local/bin/os -ld
+fi
+
 ### ENVIRONMENT VARIABLES ###
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
