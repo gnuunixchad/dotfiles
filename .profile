@@ -23,6 +23,12 @@ if [ -d "$HOME/.local/sbin" ] ; then
     PATH="$HOME/.local/sbin:$PATH"
 fi
 
+# colorful manpage with bat
+if [ -x /usr/bin/bat ]; then
+    export MANROFFOPT="-c"
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
 ### ENVIRONMENT VARIABLES ###
 export TERM=xterm-256color
 export LANG=en_US.UTF-8

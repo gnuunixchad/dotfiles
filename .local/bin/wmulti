@@ -1,0 +1,18 @@
+#!/bin/env bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# bookmark with multiple paragraphs for wmenu
+
+
+multi_dir=~/doc/bookmarks/multi/
+selected=$(ls "$multi_dir" | wmenu  -p "wmulti: " -l 6 -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff )
+echo $selected
+
+if [[ "$selected" == *"author-year" ]]; then
+    this_year=$(date +%G)
+    cat "$multi_dir""$selected" | sed "s/YEAR/$this_year/" | wl-copy
+else
+    cat "$multi_dir""$selected" | wl-copy
+fi

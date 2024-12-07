@@ -23,6 +23,9 @@ if [ -f "$HOME/.bash_aliases" ]; then
 fi
 ### SHELL OPTIONS ###
 set -o vi                   # vi keybindins
+bind -m vi-command 'Control-l: clear-screen' # command mode clear
+bind -m vi-insert 'Control-l: clear-screen'  # insert mode clear
+
 eval "$(fzf --bash)"        # fzf keybindings
 
 HISTCONTROL=ignoreboth      # ignore identical or empty lines in history
@@ -58,16 +61,6 @@ ranger() {
     else
         exit
     fi
-}
-# cd and ls in one
-cl() {
-	local dir="$1"
-	local dir="${dir:=$HOME}"
-	if [[ -d "$dir" ]]; then
-		cd "$dir" >/dev/null; ls
-	else
-		echo "bash: cl: $dir: Directory not found"
-	fi
 }
 # print the 16 terminal colors
 colors() {

@@ -325,11 +325,15 @@ exec --no-startup-id "wl-paste --watch cliphist store"
 
 # use wmenu to select form the clipboard
 bindsym $mod+b exec --no-startup-id 'cliphist list | wmenu -p "cliphist: " -l 6 -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | cliphist decode | wl-copy'
+### multiple lines bookmarks
+bindsym $mod+Shift+b exec --no-startup-id ~/.local/bin/wmulti
 
 # address & bookmarks
 bindsym $mod+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks | grep -vE "^#|^[[:space:]]*$" | wmenu -p "bookmarks: " -l 6 -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
 ### bookmarks-on-screen for privacy when recording videos
 bindsym $mod+Shift+a exec --no-startup-id cat ~/doc/bookmarks/bookmarks-on-screen | grep -vE "^#|^[[:space:]]*$" | wmenu -p "bookmarks-on-screen" -l 6 -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
+
+# more wmenu scripts
 bindsym $mod+CONTROL+w exec --no-startup-id ~/.local/bin/wwiki
 bindsym $mod+CONTROL+v exec --no-startup-id ~/.local/bin/wvim
 bindsym $mod+CONTROL+b exec --no-startup-id ~/.local/bin/wbook
