@@ -7,7 +7,7 @@
 
 k_result=$(uname -r)
 p_result=$(pacman -Q | wc -l)
-u_result=$(uptime -p)
+u_result=$(uptime -p | sed 's/up //' | sed 's/ days/ D/' | sed 's/ hours/ H/' | sed 's/ minutes/ min/')
 m_result=$(free -h | awk 'NR==2 {print $3 "/" $2}')
 s_result=$(free -h | awk 'NR==3 {print $3 "/" $2}')
 
