@@ -17,7 +17,7 @@ a_unlock()
     if [[ "$XDG_SESSION_TYPE" = "tty" ]]; then
         udisksctl unlock -b "$selected_partition"
     else # use wmenu as passphrase prompt if not in tty
-       wmenu_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 14" -p "[udisksctl] passphrase: " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
+       wmenu_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "[udisksctl] passphrase: " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
        udisksctl unlock -b "$selected_partition" --key-file <(echo -n "$wmenu_passphrase")
     fi
 }
