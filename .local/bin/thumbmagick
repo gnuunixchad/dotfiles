@@ -3,7 +3,7 @@
 # @since 2024
 # codeberg.org/unixchad/dotfiles
 # github.com/gnuunixchad/dotfiles
-# thumbmagick -- thumbnail creation automated using imagemagick 
+# thumbmagick -- thumbnail creation automated using imagemagick
 
 # known issues:
 #       CJK characters and ASCII characters width
@@ -100,11 +100,11 @@ Words3=$(echo -n $Text_line3 | wc -m)
 Width1=$(( $Words1 * $FontSize ))
 Width2=$(( $Words2 * $FontSize ))
 Width3=$(( $Words3 * $FontSize ))
-# calculate rectangle's  A/B point position on x-axis 
+# calculate rectangle's  A/B point position on x-axis
 #  -----------------1200------------------
 #  |                                     |   Xb-Xa=$Width
 #  9      A(Xa,Ya)--$Width--------       |   (Xa+Xb)/2=600
-#  0      |         C(600,Yc)    |       |     
+#  0      |         C(600,Yc)    |       |
 #  0      -----------------------B(Xb,Yb)|   Xb=($Width+1200)/2
 #  |                                     |   Xa=1200-Xb
 #  --------------------------------------

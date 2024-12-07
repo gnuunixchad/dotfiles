@@ -7,9 +7,13 @@
 
 k_result=$(uname -r)
 p_result=$(pacman -Q | wc -l)
-u_result=$(uptime -p | sed 's/up //' | sed 's/ days/ D/' | sed 's/ hours/ H/' | sed 's/ minutes/ min/')
+u_result=$(uptime -p | sed 's/up //; s/ day/d/; s/ hours/h/; s/ minutes/m/')
 m_result=$(free -h | awk 'NR==2 {print $3 "/" $2}')
 s_result=$(free -h | awk 'NR==3 {print $3 "/" $2}')
+d_result=$(df -h | grep ' /$' | awk '{print $3 "/" $2}')
+t_result=$(sed 's/000$//' /sys/class/thermal/thermal_zone0/temp )
+o_result=$(grep ^NAME="*" /etc/os-release | grep -o '"[^"]*"' | tr -d '"' )
+l_result=$(awk 'NR==1' ~/.cache/checkupdates-cron.log | wc -w)
 
 print_colors() {
     printf "colors:    "
@@ -21,9 +25,72 @@ print_colors() {
     done
 }
 
+print_based() {
 echo "kernel:    $k_result"
 echo "package:   $p_result"
 echo "uptime:    $u_result"
 echo "memory:    $m_result"
 echo "swap:      $s_result"
+}
+
+print_disk() {
+echo "disk:      $d_result"
+}
+
+print_temperature() {
+echo "temp:      $t_result"°C
+}
+
+print_upgradable() {
+    if [[ -f ~/.cache/checkupdates-cron.log ]]; then
+        echo "updates:   $l_result"
+    fi
+}
+
+print_os() {
+echo "OS:        $o_result"
+}
+
+print_help() {
+    printf "os [OPTIONS]
+    -a  show all
+    -d  disk usage on /
+    -h  show this help
+    -l  upgradable pkg count
+    -t  cpu temperature\n"
+    exit 0
+}
+
+
+if [[ "$@" == *-h* ]]; then
+    print_help
+fi
+if [[ "$@" == *o* ]] || [[ "$@" == *a* ]]; then
+    print_os
+fi
+
+print_based
+
+while getopts ":adtlo" opt; do
+    case ${opt} in
+        a)
+            print_disk
+            print_temperature
+            print_upgradable
+            ;;
+        d)
+            print_disk
+            ;;
+        t)
+            print_temperature
+            ;;
+        l)
+            print_upgradable
+            ;;
+        o)
+            print_os
+            ;;
+    esac
+done
+
 print_colors
