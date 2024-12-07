@@ -9,7 +9,7 @@ my_source_path="$HOME/doc $HOME/mus $HOME/pic $HOME/vid $HOME/repo"
 my_destination="/run/media/nate/usb-*/back/"
 
 # change ext4 partition label with `e2label /dev/mapper/NAME NEW_NAME`
-echo "rsync -avh --delete --progress --exclude=vid/movies --exclude=tmp $my_source_path $my_destination"
+echo "rsync -avh --delete --progress --exclude=vid/movies --exclude=repo/yay --exclude=repo/pacman $my_source_path $my_destination"
 rsync --dry-run -avh --delete --progress --exclude=vid/movies --exclude=tmp $my_source_path $my_destination 
 
 read -p "Continue? (y/n): " choice
