@@ -8,6 +8,7 @@ archlinux-contrib
 base
 base-devel
 bash-completion
+bat
 brightnessctl
 brn2-git
 btop
