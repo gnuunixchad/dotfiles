@@ -15,5 +15,8 @@ whitelist ${HOME}/.cache/ranger
 whitelist ${HOME}/mus
 whitelist ${HOME}/vid
 whitelist ${HOME}/pic
+whitelist ${HOME}/dls
+whitelist ${HOME}/mnt
+whitelist ${HOME}/tmp
 
 net none
