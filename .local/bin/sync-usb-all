@@ -5,7 +5,7 @@
 # codeberg.org/unixchad/dotfiles
 # github.com/gnuunixchad/dotfiles
 
-my_source_path="$HOME/doc $HOME/mus $HOME/pic $HOME/vid $HOME/repo"
+my_source_path="$HOME/doc $HOME/mus $HOME/pic $HOME/vid $HOME/repo $HOME/virt"
 my_destination="/run/media/nate/usb-*/back/"
 
 # change ext4 partition label with `e2label /dev/mapper/NAME NEW_NAME`
