@@ -21,8 +21,11 @@ It is based on the [arch wiki](https://wiki.archlinux.org/title/Installation_gui
 partition:  LVM on LUKS
 boot:       GRUB, UEFI, Secure Boot disabled)
 ```
- lsblk example:
+lsblk example:
     NAME              SIZE  TYPE  MOUNTPOINTS
+    nvme1n1         931.5G  disk  
+    └─nvme1n1p1     931.5G  part  
+      └─cryptdata   931.5G  crypt /data
     nvme0n1         476.9G  disk  
     ├─nvme0n1p1         1G  part  /boot
     ├─nvme0n1p2        76G  part  
@@ -46,6 +49,10 @@ boot:       GRUB, UEFI, Secure Boot disabled)
 
     connect hidden wifi
     `iwctl --passphrase <passphrase> station <device> connect-hidden <ssid>`
+
+    (optional) check connection
+    `ip a`
+    `ping -c 3 archlinux.org`
 ## 1.4 update the system clock
     `timedatectl set-timezon Region/City`
 
@@ -54,8 +61,17 @@ boot:       GRUB, UEFI, Secure Boot disabled)
 ## 1.5 (optional) partition disk(s)
     (optional) read `fdisk`'s manual
     `fdisk /dev/nvme0n1 <<< m | less`
-
     `<<<` is the "here string", this command send `m` to `fdisk /dev/nvme0n1` and piping to `less`, useful when console screen isn't enough
+    
+    subcommands
+    `p` print
+    `F` Free
+    `d` delete
+    `n` new
+    `t` type
+    `w` write
+    `q` quit
+
 ## 1.6 (optional) format partition(s)
     format the bootloader's partition
     `mkfs.fat -F 32 /dev/nvme0n1p1`
@@ -66,6 +82,7 @@ boot:       GRUB, UEFI, Secure Boot disabled)
     unlock the encrypted partitions
     `cryptsetup open /dev/nvme0n1p2 cryptlvm`
     `cryptsetup open /dev/nvme0n1p3 crypthome`
+    `cryptsetup open /dev/nvme1n1p1 cryptdata`
 
     create physical volume for LVM on the top of the LUKS container
     `pvcreate /dev/mapper/cryptlvm`
@@ -90,13 +107,16 @@ boot:       GRUB, UEFI, Secure Boot disabled)
     `mount /dev/vg0/root /mnt` 
 
     create mount points for other partitions
-    `mkdir -p /mnt/{boot,home}`
+    `mkdir -p /mnt/{boot,home,data}`
 
     mount boot (esp, not encrypted)
     `mount /dev/nvme0n1p1 /mnt/boot` 
 
     mount home (ext4 on luks)
     `mount /dev/mapper/crypthome /mnt/home`
+
+    mount data (ext4 on luks on another ssd)
+    `mount /dev/mapper/cryptdata /mnt/data`
 
     enable swap (swap on lvm on luks)
     `swapon /dev/vg0/swap`
@@ -117,7 +137,7 @@ boot:       GRUB, UEFI, Secure Boot disabled)
     (explaining packages
         base            minimal package set to define a basic arch linux installation
         base-devel      basic tools to build arch linux packages
-        linux-lts       kernel
+        linux       kernel
         intel-ucode     ucode for intel cpu, amd cpu install `amd-ucode`
         lvm2            if this package is not installed, root filesystem on the logical volume won't be able to be used
         man-db          database for `man`
@@ -186,7 +206,7 @@ boot:       GRUB, UEFI, Secure Boot disabled)
         - lvm2 (load logical volumes)
         - filesystems
         - resume
-        - fsck
+        - fsck (filesystem check)
 
     build initramfs image(s) according to all presets
     `mkinitcpio -P`
@@ -234,7 +254,9 @@ boot:       GRUB, UEFI, Secure Boot disabled)
         umoun -R /mnt
         swapoff -a
 
+    leave archiso
         reboot
+
 # 2. post installation
 login as root
 ## 2.1 setfont again temporally
@@ -276,7 +298,6 @@ package list update at [package.list](./package.list)
     w3m firefox firefox-dark-reader firefox-tridactyl firefox-ublock-origin
 
     ### window manager/wayland compositor suite
-    (choose pipewire packages when asking for dependencies for audio server)
     foot sway swaybg swayidle swaylock waybar wmenu wtype wl-clipboard xorg-xwayland cliphist dunst gammastep slurp grim wf-recorder wl-mirror
 
     ### audio server
@@ -296,9 +317,10 @@ package list update at [package.list](./package.list)
 
     ### multi-media editor
     ffmpeg ffmpegthumbnailer id3v2 imagemagick mediainfo perl-image-exiftool perl-rename
+    kdenlive gimp
 
     ### virtualization
-    virtualbox virtualbox-guest-iso (virt-manager qemu-base libvirt virt-install dnsmasq openbsd-netcat bridge-utils)
+    virt-manager qemu-base libvirt virt-install dnsmasq openbsd-netcat bridge-utils
 
     ### input method engine
     fcitx5 fcitx5-chinese-addons fcitx5-configtool fcitx5-gtk fcitx5-qt
@@ -307,45 +329,33 @@ package list update at [package.list](./package.list)
     yt-dlp transmission-cli httrack
 
     ### personal tools
-    neomutt newsboat task calcurse
-    ### normie's email client due to compulsory oauth2 
-    thunderbird thunderbird-dark-reader
+    newsboat task calcurse thunderbird thunderbird-dark-reader
 
     ### coding
     (code on archlinux official repo is actually the free software Code-OSS, instead of proprietary VSCode)
     jdk-openjdk openjdk-src code
 
     ### themes
-    xdg-desktop-portal gnome-themes-extra
+    gnome-themes-extra (nwg-look)
 
     ### video driver (nvidia only)
     nvidia-open nvidia-utils nvtop
 
-    ### editor
-    libreoffice-still gimp
+    ### office suite
+    libreoffice-still
 
-    ### (optional) media editor
-    kdenlive
 ## 2.5.1 (optional) install sway from aur
-    ### not in official arch repository
-    yay-bin
+    yay
     fcitx5-skin-fluentdark-git
-
-    ### fix: fcitx display
-    sway-git
-
-    ### features: get sixel image preview in foot
     ranger-git
-
-    ### fix: replace ranger's bulkrename (broken due to ncurses update)
     brn2-git
-
+    gimp-devel
+    waybar-module-pacman-updates-git
+    adwaita-qt5 adwaita-qt5
 ### [example] compile and install
     git clone https://aur.archlinux.org/yay-bin.git
     makepkg
     sudo pacman -U yay-bin-xxx.pkg.tar.zst
-
-    yay -Syu brn2-git ranger-git fcitx5-skin-fluentdark-git adwaita-qt5 adwaita-qt6 epub-thumbnailer-git
 
 ## 2.6 config softwares
 ### 2.6.0 pacman
@@ -357,7 +367,7 @@ package list update at [package.list](./package.list)
     sudo systemctl enable --now tlp.service
 ### 2.6.2 mandb database update
     sudo mandb
-### 2.6.3 (optional) change grub resolution
+### 2.6.3 grub resolution
     sudo vim /etc/default/grub
     GRUB_GFXMODE=1366x768
 ### 2.6.5 calcurse import calendar
@@ -367,7 +377,7 @@ package list update at [package.list](./package.list)
     copy smb.conf to /etc/samba/smb.conf
         curl 'https://git.samba.org/samba.git/?p=samba.git;a=blob_plain;f=examples/smb.conf.default' sudo tee /etc/samba/smb.conf
 
-    adding a user to samba server
+    adding a linux user to samba server
         sudo smbpasswd -a nate
 
     enable smb service
@@ -440,6 +450,7 @@ package list update at [package.list](./package.list)
         sudo ufw allow from 192.168.0.0/16 to any app CIFS
 
     enable ufw
+        sudo ufw enable
         sudo systemctl enable --now ufw.service
 ### 2.6.11 firejail sandbox
     (optional) comment out `mkdir` lines to disable creating empty directories on starting up softwares
@@ -448,13 +459,18 @@ package list update at [package.list](./package.list)
 
     start firejail
         `sudo firecfg`
-### 2.6.12 virtualbox setup
-    sudo usermod -aG vboxusers nate
+### 2.6.12 libvirt/kvm/qemu
+    sudo usermod nate -aG kvm,libvirt (take effect on relog)
+    sudo ufw allow in on virbr0 from any to any
+    in /etc/libvirt/network.conf, append
+        firewall_backend = "iptables"
+    sudo systemctl enable --now libvirtd
+    sudo virsh net-define /etc/libvirt/qemu/networks/default.xml
+    sudo virsh net-autostart defaul
 ### 2.6.13 electron software (code/codium) themes on wayland
     make sure xdg-desktop-portal package is installed and run:
         gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 ### 2.6.14 (optional) nvidia fix hibernation
-    (linux-lts 6.6.56-1 nvidia-open-dkms 560.35.03-16)
     sudo systemctl enable nvidia-suspend.service
     sudo systemctl enable nvidia-hibernate.service
     sudo systemctl enable nvidia-resume.service

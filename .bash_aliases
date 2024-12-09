@@ -53,6 +53,7 @@ alias brn="brn2 -s"
 alias yt-dlp="yt-dlp --embed-metadata --cookies-from-browser firefox"
 alias epr="firejail --profile=$HOME/.config/firejail/epr.local epr"
 alias epr-zh="firejail --profile=$HOME/.config/firejail/epr-zh.local epr-zh"
+alias tmux-ks="tmux kill-server"
 ### git ###
 alias gs="git status"
 alias gd="git diff"

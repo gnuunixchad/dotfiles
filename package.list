@@ -9,6 +9,7 @@ base
 base-devel
 bash-completion
 bat
+bridge-utils
 brightnessctl
 brn2-git
 btop
@@ -18,6 +19,7 @@ cliphist
 code
 cronie
 cryptsetup
+dnsmasq
 dosfstools
 dunst
 efibootmgr
@@ -39,7 +41,7 @@ firejail
 foot
 fzf
 gammastep
-gimp
+gimp-devel
 git
 gnome-themes-extra
 grim
@@ -53,6 +55,7 @@ jdk-openjdk
 kdenlive
 libnotify
 libreoffice-still
+libvirt
 linux
 linux-firmware
 linux-headers
@@ -87,6 +90,7 @@ pipewire
 pipewire-alsa
 pipewire-pulse
 pulsemixer
+qemu-base
 qt5-x11extras
 ranger-git
 rsync
@@ -113,8 +117,8 @@ udisks2
 ufw
 unzip
 vim
-virtualbox
-virtualbox-guest-iso
+virt-install
+virt-manager
 w3m
 waybar
 waybar-module-pacman-updates-git
@@ -124,8 +128,6 @@ wl-clipboard
 wl-mirror
 wmenu
 wtype
-xdg-desktop-portal
-xorg-xwayland
 yay
 yt-dlp
 zathura
