@@ -467,6 +467,8 @@ package list update at [package.list](./package.list)
     sudo systemctl enable --now libvirtd
     sudo virsh net-define /etc/libvirt/qemu/networks/default.xml
     sudo virsh net-autostart defaul
+    (firejail)
+    uncomment dnsmasq in /etc/firejail/firecfg.config
 ### 2.6.13 electron software (code/codium) themes on wayland
     make sure xdg-desktop-portal package is installed and run:
         gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
