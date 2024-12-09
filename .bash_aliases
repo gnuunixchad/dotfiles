@@ -39,14 +39,14 @@ alias sync="~/.local/bin/sync-notify"
 ### abbreviation ###
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ?='pwd'
+alias ??='realpath'
 alias sw="ssh-agent -t 60m sway --unsupported-gpu" # start with ssh agent
 alias vm="virt-manager"
 alias hibernate="systemctl hibernate"
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
 alias vim="nvim"
-alias ed="ed -p :"
-alias mutt="neomutt"
 alias swayimg="swayimg --class swayimgapp" # sway window border per app_id
 alias p="source $HOME/.local/sbin/prox"
 alias P="getprox";
@@ -78,6 +78,7 @@ alias Bd="cd ~/doc"
 alias BB="cd ~/doc/bookmarks"
 alias Be="cd ~/doc/ebooks "
 alias Bg="cd ~/doc/git"
+alias B.="cd ~/doc/git/dotfiles"
 alias BG="cd ~/doc/gimp"
 alias Bn="cd ~/doc/note"
 alias Bm="cd ~/mus"
@@ -86,7 +87,7 @@ alias Bp="cd ~/pic"
 alias Bw="cd ~/pic/wallpapers"
 alias Bv="cd ~/vid"
 alias Bu="cd ~/vid/unixchad"
-
+alias BV="cd ~/virt"
 ### legacy ###
 #alias x="startx"
 #alias i3lock="i3lock -e -f --color 000000"
@@ -96,3 +97,5 @@ alias Bu="cd ~/vid/unixchad"
 #alias fim="fim -a --no-commandline --no-etc-rc-file --no-stat-push"
 #alias sync="sync && notify-send -u low -r 3412 'sync finished'"
 #alias bat="bat --style='plain,changes,rule,snip'"
+#alias ed="ed -p :"
+#alias mutt="neomutt"
