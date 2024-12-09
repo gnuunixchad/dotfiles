@@ -40,6 +40,7 @@ alias hibernate="systemctl hibernate"
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
 alias vim="nvim"
+alias ed="ed -p :"
 alias mutt="neomutt"
 alias swayimg="swayimg --class swayimgapp" # sway window border per app_id
 alias p="source $HOME/.local/sbin/prox"
