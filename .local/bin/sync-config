@@ -29,7 +29,7 @@ if [[ $choice == "y" || $choice == "Y" ]]; then
 
 
     # data  files
-    rsync -avh --delete --progress --relative ~/.local/sbin/.git/ ~/.local/app ~/.local/sbin ~/.local/share/nvim ~/.ssh/config ~/.config/btop/btop.conf ~/.config/calcurse/calendar.ical ~/.config/cls ~/.config/git ~/.config/mpd/playlists ~/.config/newsboat/urls ~/.config/task/task ~/.config/mutt/{account1,account1.gpg} ~/.vscode-oss/extensions ~/.config/kdenliverc ~/doc/datafiles/
+    rsync -avh --delete --progress --relative ~/.local/sbin/.git/ ~/.local/app ~/.local/sbin ~/.local/share/nvim ~/.ssh/config ~/.config/btop/btop.conf ~/.config/calcurse/calendar.ical ~/.config/cls ~/.config/git ~/.config/mpd/playlists ~/.config/newsboat/urls ~/.config/task/task ~/.config/mutt/{account1,account1.gpg} ~/.vscode-oss/extensions ~/.config/kdenliverc ~/.config/btop/btop.conf ~/doc/datafiles/
 
     # neovim plugins
     rsync -avh --delete --progress --relative --exclude .git/ ~/.local/share/nvim ~/doc/datafiles/home/nate/.local/share/nvim

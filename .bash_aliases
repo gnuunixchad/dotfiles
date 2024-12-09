@@ -40,6 +40,7 @@ alias sync="~/.local/bin/sync-notify"
 alias ..='cd ..'
 alias ...='cd ../..'
 alias sw="ssh-agent -t 60m sway --unsupported-gpu" # start with ssh agent
+alias vm="virt-manager"
 alias hibernate="systemctl hibernate"
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"

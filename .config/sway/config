@@ -94,17 +94,19 @@ input "type:keyboard" {
     # Start a terminal
     bindsym $mod+Return exec $term
 
-    bindsym $mod+Shift+Return exec $term -T "Floating Term" -c "$HOME/.config/foot/float.ini"
+    #bindsym $mod+Shift+Return exec $term -T "Floating Term" -c "$HOME/.config/foot/float.ini"
+    # footclient doesn't support -c
+    bindsym $mod+Shift+Return exec $term -T "Floating Term"
     for_window [title="Floating Term"] floating enable, resize set width 800 px, resize set height 600 px, border pixel 2
 
     #bindsym $mod+Control+Return exec exec $term -T scratchpad_term -c "$HOME/.config/foot/float.ini" tmux
-    bindsym $mod+Control+Return exec $term -T "Scratchpad Tmux" -c "$HOME/.config/foot/float.ini" tmux
-    exec $term -T "Scratchpad Tmux" -c "$HOME/.config/foot/float.ini" tmux
+    bindsym $mod+Control+Return exec $term -T "Scratchpad Tmux" tmux
+    exec $term -T "Scratchpad Tmux" tmux
     for_window [title="Scratchpad Tmux"]  move scratchpad, border pixel 1
 
-    bindsym $mod+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config_rnnoise_source
-    bindsym $mod+CONTROL+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config
-    for_window [title="vis_for_recording"] floating enable, sticky enable, move position 68 ppt 58 ppt , resize set 240px 180px, border pixel 1
+    #bindsym $mod+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config_rnnoise_source
+    #bindsym $mod+CONTROL+Shift+v exec $term -T vis_for_recording -c "$HOME"/.config/foot/vis.ini vis -c "$HOME"/.config/vis/config
+    #for_window [title="vis_for_recording"] floating enable, sticky enable, move position 68 ppt 58 ppt , resize set 240px 180px, border pixel 1
     # swayimg floating window border; or handled with client.inactive
     for_window [app_id=swayimgapp] border pixel 1
 
@@ -381,6 +383,9 @@ bindsym $mod+Control+Up exec --no-startup-id playerctl play-pause
 
 bindsym $mod+r exec --no-startup-id $term ranger
 bindsym $mod+CONTROL+m exec --no-startup-id $term ncmpcpp
+bindsym $mod+CONTROL+n exec --no-startup-id $term newsboat
+bindsym $mod+CONTROL+c exec --no-startup-id $term calcurse
+bindsym $mod+CONTROL+t exec --no-startup-id $term btop
 
 # mpc
 #bindsym $mod+Shift+comma exec --no-startup-id mpc prev
@@ -483,6 +488,6 @@ mode $mode_arrow {
     bindsym d exec wtype -k "Delete"
     }
 
-bindsym $mod+CONTROL+p exec wtype -k 'Page_up'
-bindsym $mod+CONTROL+n exec wtype -k 'Page_down'
+#bindsym $mod+CONTROL+p exec wtype -k 'Page_up'
+#bindsym $mod+CONTROL+n exec wtype -k 'Page_down'
 bindsym Control+e exec wtype -k 'Escape'
