@@ -11,20 +11,20 @@ search_path=("$HOME/.config/"
              "$HOME/.gnupg/gpg.conf"
 
              "$HOME/.bashrc"
+             "$HOME/.bash_aliases"
              "$HOME/.inputrc"
              "$HOME/.profile"
-             "$HOME/.Xauthority"
-             "$HOME/.Xmodmap"
-             "$HOME/.Xresources"
-             "$HOME/.xsession"
+             #"$HOME/.Xauthority"
+             #"$HOME/.Xmodmap"
+             #"$HOME/.Xresources"
+             #"$HOME/.xsession"
 
              "$HOME/.local/bin"
              "$HOME/.local/sbin"
 
-             #"$doc/contacts/"
-             #"$doc/dict/"
-             "$doc/bookmarks/bookmarks"
-             "$doc/lyrics/"
+             #"doc/contacts/"
+             #"doc/dict/"
+             #"doc/bookmarks/bookmarks"
             )
 
             selected_file=$(find "${search_path[@]}" -type f | grep -ve "/sbin/auto-rice/nate" -ve "/.git/"  -ve ".config/fcitx5/" -ve ".config/fcitx/" -ve ".config/cls/" -ve ".config/mutt/pass" -ve ".config/mutt/unixchad" -ve ".config/ibus/" -ve ".config/btop/" -ve ".config/calcurse/" -ve ".config/Code - OSS/" -ve ".config/dconf/" -ve "-flags.conf" -ve ".config/epr/" -ve ".config/GIMP/" -ve ".config/gtk-"  -ve ".config/libreoffice/" -ve ".config/kdenlive" -ve ".config/VirtualBox/" -ve ".config/VSCodium/" | sort | wmenu -p "wvim: " -i -l 6 -f "SourceCodePro Medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff )
