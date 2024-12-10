@@ -14,6 +14,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls -F --color=auto --group-directories-first'
 fi
 alias diff="diff --color=auto"
+alias vdiff="nvim -d"
 alias grep="grep --color=auto"
 ### output format ###
 alias ll='ls -lh'
@@ -21,6 +22,7 @@ alias la='ls -A'
 alias lla='ls -lhA'
 alias l.='ls -d .*'
 alias ll.='ls -lh -d .*'
+alias bat="bat --style='plain,changes,rule,snip'"
 alias whatis="whatis -l"
 alias du="du -h -d 1"
 alias dU="du -h -d 1 | sort -rh"
@@ -31,12 +33,19 @@ alias free="free -h"
 alias less="less -F"
 alias iostat="iostat -t 2"
 alias mpv="mpv --loop"
-alias fzf="/usr/bin/fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --reverse --color=16 --preview-window=65%:wrap:border-sharp: --preview 'cat {}'"
+alias wmenu="wmenu -f 'SourceCodePro Medium 13' -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff"
+alias fzf="/usr/bin/fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --reverse --color=16 --preview-window=65%:wrap:border-sharp: --preview 'bat --color=always --style=plain,changes {}'"
+alias fimg="find -type f \( -name "*.png" -o -name "*.jpeg" -o -name "*.jpg" \) | fzf --preview 'catimg -w100 {}' --preview-window=90%:bottom: --bind='enter:execute(swayimg {})'"
+alias fvi="fzf --bind='enter:execute(nvim {+})'"
+alias ftree="realpath * | fzf --prompt='ftree: ' --reverse --preview 'tree -L1 {}'"
 alias fptree="pacman -Qq | fzf --prompt='reverse depends: ' --preview-window=70%:bottom: --preview 'pactree -rd2 {}'"
 alias fpinfo="pacman -Qq | fzf --prompt='package info: ' --preview-window=70%:bottom: --preview 'pacman -Qi {}'"
-alias fpcache="pacman -Qq | fzf --prompt='package cache: ' --preview-window=70%:bottom: --preview 'ls /var/cache/pacman/pkg/{}-*.pkg.tar.zst'"
+alias fpcache="pacman -Qq | fzf --prompt='package cache: ' --preview-window=70%:bottom: --preview 'ls /var/cache/pacman/pkg/{}-[0-9]*.pkg.tar.zst'"
+alias fgl="git log | grep '^commit ' | cut -d' ' -f2 | fzf --preview 'git show {} | bat --color=always --style=plain,changes ' --preview-window=90% | wl-copy"
+alias fgln="git log | grep '^commit '| cut -d' ' -f2 | fzf --preview 'git log --name-only {}'"
 alias sync="~/.local/bin/sync-notify"
 ### abbreviation ###
+alias .s='. ~/.profile && . ~/.bashrc && . ~/.bash_aliases'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ?='pwd'
@@ -96,6 +105,5 @@ alias BV="cd ~/virt"
 #alias mupdf="mupdf -I -C cccccc -r 140 -S13"
 #alias fim="fim -a --no-commandline --no-etc-rc-file --no-stat-push"
 #alias sync="sync && notify-send -u low -r 3412 'sync finished'"
-#alias bat="bat --style='plain,changes,rule,snip'"
 #alias ed="ed -p :"
 #alias mutt="neomutt"

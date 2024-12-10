@@ -3,7 +3,7 @@
 " codeberg.org/unixchad/dotfiles
 " github.com/gnuunixchad/dotfiles
 
-colorscheme unixchad
+"colorscheme unixchad
 syntax on
 set ignorecase      " case insensitive searching
 set smartcase       " lower case search case insensitive; if upper case exists, case sensitive;
@@ -19,9 +19,9 @@ set relativenumber
 set clipboard=unnamedplus
 set cursorline
 set cursorcolumn
-set mouse=          " disable mouse clicks
-match ExtraWhitespace /\s\+$/ " space at the end of lines
-highlight ExtraWhitespace ctermbg=gray guibg=gray " highlight all trailing spaces
+"set mouse=          " disable mouse clicks
+"match ExtraWhitespace /\s\+$/ " space at the end of lines
+"highlight ExtraWhitespace ctermbg=gray guibg=gray " highlight all trailing spaces
 
 "set statusline+=%f\ %h%m%r%=\ %{FugitiveStatusline()}\ %y\ %-8.(%l,%c%)\ %P
 set statusline+=%f\ %h%m%r%=\ %{FugitiveStatusline()}\ %-8.(%l,%c%)\ %P
@@ -60,11 +60,11 @@ map <leader>v :vsplit<CR>
 
 """"""""""""""""""""""plugins"""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-plug plugins
-call plug#begin()
-"Plug 'preservim/nerdtree'
-Plug 'tpope/vim-fugitive' " git
-Plug 'ap/vim-css-color'
-call plug#end()
+"call plug#begin()
+""Plug 'preservim/nerdtree'
+"Plug 'tpope/vim-fugitive' " git
+"Plug 'ap/vim-css-color'
+"call plug#end()
 
 " nerdtree keybindings
 nnoremap <leader>n :NERDTreeToggle<CR>

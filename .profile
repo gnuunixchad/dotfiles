@@ -45,6 +45,7 @@ export XDG_DOCUMENTS_DIR="$HOME/doc"
 export XDG_MUSIC_DIR="$HOME/mus"
 export XDG_PICTURES_DIR="$HOME/pic"
 export XDG_VIDEOS_DIR="$HOME/vid"
+export FZF_DEFAULT_OPTS_FILE="$HOME/.config/fzf/fzfrc"
 ### CLEAN-UP HOME ###
 export XDG_CONFIG_HOME="$HOME/.config"      # analogous to /etc
 export XDG_CACHE_HOME="$HOME/.cache"        # analogous to /var/cache
