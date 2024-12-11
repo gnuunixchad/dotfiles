@@ -29,7 +29,7 @@ bind -m vi-insert 'Control-l: clear-screen'  # insert mode clear
 eval "$(fzf --bash)"        # fzf keybindings
 
 HISTCONTROL=ignoreboth      # ignore identical or empty lines in history
-HISTSIZE=20000
+HISTSIZE=2000
 HISTFILESIZE=40000
 
 shopt -s histappend         # append instead of overwrite history
