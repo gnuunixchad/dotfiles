@@ -1,4 +1,4 @@
-# .bash_aliases
+#l .bash_aliases
 # @author nate zhou
 # @since 2023,2024
 # codeberg.org/unixchad/dotfiles
@@ -78,6 +78,7 @@ alias fglf=" fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --preview 'git log
 ### teleport ###
 alias Bc="cd ~/.config"
 alias BC="cd ~/.cache"
+alias By="cd ~/.cache/yay"
 alias Bl="cd ~/.local"
 alias Bb="cd ~/.local/bin"
 alias Bs="cd ~/smb"
