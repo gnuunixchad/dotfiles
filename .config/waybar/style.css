@@ -1,0 +1,173 @@
+/* @author nate zhou
+// @since 2023,2024
+// codeberg.org/unixchad/dotfiles
+// github.com/gnuunixchad/dotfiles
+*/
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: Noto, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    /*min-height: 28px;*/
+}
+
+window#waybar {
+    background-color: rgba(26, 26, 26, 100);
+    font-size: 13px;
+    color: #ffffff;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 0px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+#workspaces button {
+    padding: 0 2px;
+    margin: 0 0px;
+    border-radius: 2px;
+    color: #ffffff;
+}
+
+#workspaces button.focused {
+    background-color: #6f3f89;
+    box-shadow: inset 0 -0px #bbccdd;
+}
+
+/* inactive workspace visible on another monitor*/
+#workspaces button.visible:not(.focused) {
+    background-color: #005577;
+    box-shadow: inset 0 -0px #bbccdd;
+}
+
+#workspaces button.urgent {
+    background-color: #c85577;
+}
+
+#mode {
+    color: black;
+    background-color: #bbccdd;
+    border-radius: 2px;
+    padding: 0 6px;
+    margin: 0 0px;
+}
+
+#custom-updates,
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#updates,
+#pulseaudio{
+    padding: 0 4px;
+    margin: 0 0px;
+    border-radius: 2px;
+    background-color: #005577;
+    color: #f1f1f1;
+    font-size: 14px;
+}
+
+#network.disconnected {
+    background-color: #414141;
+}
+
+#battery.discharging {
+    background-color: #414141;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #c85577;
+}
+
+#pulseaudio.muted {
+    background-color: #414141;
+}
+
+#privacy
+{padding: 0 0px;
+    margin: 0 2px;
+    border-radius: 3px;
+}
+
+#scratchpad{
+    padding: 0 2px;
+    margin: 0 0px;
+    box-shadow: inset 0 -0px #bbccdd;
+    background-color: #005577;
+    font-size: 14px;
+    border-radius: 2px;
+}
+#scratchpad.empty {
+	background-color: transparent;
+    box-shadow: inset 0 0px #bbccdd;
+}
+
+#window {
+    margin: 0 2px;
+	background-color: transparent;
+}
+
+#workspaces {
+    padding: 0 2px;
+    margin: 0 0px;
+    font-size: 14px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#tray,
+#idle_inhibitor{
+    padding: 0 4px;
+    margin: 0 0px;
+    font-size: 16px;
+    border-radius: 2px;
+}
+
+#tray {
+    background-color: #bbccdd;
+    margin: 0 2px;
+}
+
+#idle_inhibitor {
+
+    background-color: #005577;
+    color: #ffffff;
+}
+
+#idle_inhibitor.activated {
+    background-color: #6f3f89;
+    color: #ffffff
+}
+
+#privacy-item {
+    padding: 0 2px;
+    border-radius: 2px;
+    color: white;
+}
+
+#privacy-item.screenshare {
+    background-color: #0f914e;
+}
+
+#privacy-item.audio-in {
+    background-color: #9c1a3b;
+    color: #eeeeee;
+}
+
+#privacy-item.audio-out {
+    background-color: #e6da00;
+    color: #191919;
+}

@@ -1,0 +1,9 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+blacklist ${HOME}/doc/.gpg
+blacklist ${HOME}/mus/.gpg
+blacklist ${HOME}/pic/.gpg
+blacklist ${HOME}/vid/.gpg

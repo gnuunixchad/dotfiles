@@ -1,0 +1,8 @@
+#!/bin/bash
+# launch firefox with nfox profile
+# @authoer nate zhou
+# @since 2023, 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+firefox -P nfox;

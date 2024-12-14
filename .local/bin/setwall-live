@@ -1,0 +1,13 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# setwall-live
+# set live wallpaper for sway using mpvpaper
+
+
+# in ranger, '@` and type 'setwall` or `:shell setwall %s` will set the current selection as the new wallpaper
+
+wallpaper=$HOME/.local/share/wallpaper
+cp -f "$1" "$wallpaper"
+
+mpvpaper -p -o "--loop" '*' "$wallpaper" &

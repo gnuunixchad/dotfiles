@@ -1,0 +1,13 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# decrypt the .gpg file and pipe to tar
+# after reading the untar'ed files, remember to `shred -u *`
+
+# tar -xvf - reading from standard input instead of a file
+gpg --pinentry-mode loopback -d $1 | tar -xvf - && notify-send -u normal "gpg-untar" "untarted, shred -u /*/** later" && gpg-connect-agent reloadagent /bye
+
+# do not give replace id to this notification
+# put $1 in the notification to make each notification different, so it also won't override

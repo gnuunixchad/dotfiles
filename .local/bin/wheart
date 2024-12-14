@@ -1,0 +1,19 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# open text files in heart/ with neovim, using wmenu or fzf as interface
+
+heart=~/doc/heart
+
+if [[ "$XDG_SESSION_TYPE" = "wayland" ]]; then
+    selected_file=$( git --git-dir="$heart"/.git --work-tree="$heart" ls-tree -r HEAD --name-only | grep -ve .png$ -ve .local/share/lockscreen$ -ve ^LICENSE$ -ve .md$ -ve .list$ | sort | wmenu -p "vheart: " -i -l 6 -f "SourceCodePro Medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff )
+else
+    selected_file=$( git --git-dir="$heart"/.git --work-tree="$heart" ls-tree -r HEAD --name-only | grep -ve .png$ -ve .local/share/lockscreen$ -ve ^LICENSE$ -ve .md$ -ve .list$ | sort | fzf --prompt "vheart: " )
+fi
+
+# don't open vim if none file selected
+if [ -n "$selected_file" ]; then
+    foot nvim "$selected_file"
+fi

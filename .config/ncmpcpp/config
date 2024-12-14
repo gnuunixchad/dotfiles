@@ -1,0 +1,30 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+ncmpcpp_directory = ~/.config/ncmpcpp
+lyrics_directory = ~/mus/.lyrics
+mpd_host = localhost
+mpd_port = 6600
+mpd_connection_timeout = 5
+mpd_music_dir = ~/mus
+mpd_crossfade_time = 5
+startup_screen = media_library
+startup_slave_screen = ""
+startup_slave_screen_focus = no
+locked_screen_width_part = 50
+ask_for_locked_screen_width_part = yes
+jump_to_now_playing_song_at_start = yes
+ask_before_clearing_playlists = yes
+clock_display_seconds = no
+display_volume_level = yes
+display_bitrate = yes
+external_editor = nvim
+use_console_editor = yes
+
+### color ###
+main_window_color = 188
+##af5fff
+current_item_prefix = $(135)$r 
+current_item_inactive_column_prefix = $(75)$r

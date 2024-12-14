@@ -1,0 +1,15 @@
+#!/bin/bash
+# download videos with subtitles by yt-dlp with preferred formats
+# @author nate zhou
+# @since 2023
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+# use `yt-dlp --list-formats URL` to show available formats number
+# 247 `webm 1280x720 30fps`
+# 250 reasonable opus audio
+# yt-dlp will use ffmpeg combine them
+# exiftool can list file creating data (somehow related to the video upload date)
+echo "yt-dlp --embed-metadata --no-embed-info-json --write-subs --sub-lang en -f 247+250 URL";
+
+yt-dlp --cookies-from-browser firefox --embed-metadata --no-embed-info-json --write-subs --sub-lang en -f 247+250 $@ && notify-send -u low -r 7 "vid-dlp: finished"

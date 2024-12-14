@@ -1,0 +1,12 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+include whitelist-common.local
+include blacklist-gpg.local
+
+whitelist ${HOME}/doc/code
+
+whitelist ${HOME}/repo/extensions/codium
+read-only ${HOME}/repo/extensions/codium

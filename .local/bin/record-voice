@@ -1,0 +1,9 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# record-voice
+# record pipewire input voice
+
+pw-record --target rnnoise_source ~/record.mp3

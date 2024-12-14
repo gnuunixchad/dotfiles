@@ -1,0 +1,37 @@
+#!/bin/bash
+# @ author nate zhou
+# @ since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# checkupdates-cron
+# check available pacman packages and write the number to a cache file
+# @depends pacman-contrib, dunst, cronie, lsupdates*
+
+log_cache="$HOME/.cache/checkupdates-cron.log"
+err_cache="$HOME/.cache/checkupdates-cron.err"
+
+# modified time in seconds since the Epoch
+update_time=$(stat -c "%Y" "$log_cache")
+# seconds since the Epoch
+current_time=$(date +%s)
+update_frequency=43200 # in seconds, 43200s = 12H
+
+update_cache() {
+# redirect stdout to the cache file, translate newline to space
+checkupdates --nocolor | awk '{print $1}' | tr '\n' ' ' > "$log_cache"
+# redirect stderr to the cache file
+checkupdates --nocolor 2> "$err_cache"
+}
+
+# if cache doesn't exist, init by calling update_cache()
+if [[ ! -f "$log_cache" ]]; then
+    update_cache
+fi
+
+# check last update time
+if [[ $(("$current_time" - "$update_time")) -gt "$update_frequency" ]]; then
+    update_cache
+else
+    echo "Already updated within past $(($update_frequency/3600)) hours"
+    exit 1
+fi

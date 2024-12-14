@@ -1,0 +1,30 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+# allow access to /media, must use with whitelist to ensure security
+#ignore disable-mnt
+# whitelist pic mus vid
+#include whitelist-common.local
+#
+#include whitelist-player-mus.local
+#include whitelist-player-pic.local
+#include whitelist-player-vid.local
+
+#include blacklist-gpg.local
+#blacklist ${HOME}/doc
+#blacklist ${HOME}/repo
+
+#whitelist ${HOME}/.cache/kdenlive
+# fix greyed out "add title clip" button caused by other whitelists
+# kdenlive.profile has 'noblacklist' which would be overrided by 'whitelist'
+#whitelist ${HOME}/.config/kdenliverc
+#whitelist ${HOME}/.local/share/kdenlive
+#whitelist ${HOME}/.local/share/kxmlgui5/kdenlive
+
+# below not working, disable kdenlive for firejail temporally in /etc/firejail/firecfg.config
+# pyton-vosk for speech to text
+#private-bin python,python3,pip,pip3,mediainfo
+
+net none

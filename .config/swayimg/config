@@ -1,0 +1,201 @@
+# swayimg config with vim-like keybindings
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+################################################################################
+# General configuration
+################################################################################
+[general]
+# Mode at startup (viewer/gallery)
+mode = viewer
+# Window position (parent or absolute coordinates, e.g. 100,200)
+position = parent
+# Window size (fullscreen/parent/image, or absolute size, e.g. 800,600)
+size = parent
+# Action performed by SIGUSR1 signal (same format as for key bindings)
+sigusr1 = reload
+# Action performed by SIGUSR2 signal (same format as for key bindings)
+sigusr2 = next_file
+# Application ID and window class name
+app_id = swayimg
+
+################################################################################
+# Viewer mode configuration
+################################################################################
+[viewer]
+# Window background color (RGBA)
+window = #191919
+# Background for transparent images (grid/RGBA)
+transparency = grid
+# Default image scale (optimal/fit/width/height/fill/real)
+scale = optimal
+# Fix position of the image on the window surface (yes/no)
+fixed = yes
+# Anti-aliasing (yes/no)
+antialiasing = yes
+# Run slideshow at startup (yes/no)
+slideshow = no
+# Slideshow image display time (seconds)
+slideshow_time = 3
+# Number of previously viewed images to store in cache
+history = 1
+# Number of preloaded images (read ahead)
+preload = 1
+
+################################################################################
+# Gallery mode configuration
+################################################################################
+[gallery]
+# Max size of the thumbnail (pixels)
+size = 200
+# Max number of thumbnails in cache, 0 to unlimit
+cache = 100
+# Fill the entire tile with thumbnail (yes/no)
+fill = no
+# Use anti-aliasing for thumbnails (yes/no)
+antialiasing = yes
+# Background color of the window (RGBA)
+window = #191919
+# Background color of the tile (RGBA)
+background = #202020ff
+# Background color of the selected tile (RGBA)
+#select = #404040ff
+select = #404040ff
+# Border color of the selected tile (RGBA)
+border = #6f3f89
+# Shadow color of the selected tile (RGBA)
+shadow = #000000ff
+
+################################################################################
+# Image list configuration
+################################################################################
+[list]
+# Default order (none/alpha/reverse/random)
+order = alpha
+# Looping list of images (yes/no)
+loop = yes
+# Read directories recursively (yes/no)
+recursive = no
+# Open all files in the start directory (yes/no)
+all = yes
+
+################################################################################
+# Font configuration
+################################################################################
+[font]
+# Font name
+name = SourceCodePro
+# Font size (pt)
+size = 14
+# Font color (RGBA)
+color = #FFFFFF
+# Shadow color (RGBA)
+shadow = #000000
+
+################################################################################
+# Image meta info scheme (format, size, EXIF, etc)
+################################################################################
+[info]
+# Show on startup (yes/no)
+show = no
+# Timeout to hide info (seconds, 0 to always show)
+info_timeout = 0
+# Timeout to hide status message (seconds)
+status_timeout = 0
+
+# Display scheme for viewer mode (position = content)
+[info.viewer]
+top_left = +name,+format,+filesize,+imagesize,+exif
+top_right = index
+bottom_left = scale,frame
+bottom_right = status
+
+# Display scheme for gallery mode (position = content)
+[info.gallery]
+top_left = none
+top_right = none
+bottom_left = none
+bottom_right = name,status
+
+################################################################################
+# Viewer mode key binding configuration: key = action [parameters]
+################################################################################
+[keys.viewer]
+Shift + question = help
+g = first_file
+Shift+G = last_file
+p = prev_file
+n = next_file
+Shift+n = next_dir
+comma = prev_frame
+period = next_frame
+c = skip_file
+Shift+s = slideshow
+a = animation
+Return = mode
+h = step_left 10
+l = step_right 10
+k = step_up 10
+j = step_down 10
+Equal = zoom +10
+Plus = zoom +10
+i = zoom +10
+Minus = zoom -10
+o = zoom -10
+w = zoom width
+#Shift+w = zoom height
+Shift+w = exec setwall "%";
+Shift+w = exec ~/.local/bin/setwall "%";
+Shift+y = exec cp "%" ~/tmp;
+z = zoom fit
+f = zoom fill
+0 = zoom real
+BackSpace = zoom optimal
+Alt+s = scale
+r = rotate_left
+Ctrl +r = rotate_right
+v = flip_vertical
+x = flip_horizontal
+Shift + a = antialiasing
+Shift + r = reload
+m = info
+Shift+d = exec rm "%"; skip_file
+Escape = exit
+q = exit
+# Mouse related
+ScrollLeft = step_right 5
+ScrollRight = step_left 5
+ScrollUp = step_up 5
+ScrollDown = step_down 5
+Ctrl+ScrollUp = zoom +10
+Ctrl+ScrollDown = zoom -10
+Shift+ScrollUp = prev_file
+Shift+ScrollDown = next_file
+Alt+ScrollUp = prev_frame
+Alt+ScrollDown = next_frame
+
+################################################################################
+# Gallery mode key binding configuration: key = action [parameters]
+################################################################################
+[keys.gallery]
+Shift + question = help
+g = first_file
+G = last_file
+h = step_left
+l = step_right
+k = step_up
+j = step_down
+p = page_up
+n = page_down
+c = skip_file
+Return = mode
+Shift + a = antialiasing
+r = reload
+m = info
+Shift+d = exec rm "%"; skip_file
+Shift+w = exec ~/.local/bin/setwall "%";
+Shift+y = exec cp "%" ~/tmp;
+Escape = exit
+q = exit

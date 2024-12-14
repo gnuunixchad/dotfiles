@@ -1,0 +1,13 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+include whitelist-common.local
+include blacklist-gpg.local
+
+whitelist ${HOME}/repo/iso
+read-only ${HOME}/repo/iso
+
+whitelist ${HOME}/vm/vbox
+whitelist /data/vm/vbox

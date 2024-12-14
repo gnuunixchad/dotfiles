@@ -1,0 +1,16 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+#no-unlock-indicator
+
+ignore-empty-password
+
+daemonize
+
+show-failed-attempts
+
+indicator-caps-lock
+
+image="$HOME/.local/share/lockscreen"

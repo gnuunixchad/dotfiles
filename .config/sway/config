@@ -1,0 +1,280 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+include /etc/sway/config.d/*
+# Mod4=super Mod1=alt
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term footclient
+set $menu wmenu-run -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | xargs swaymsg exec --
+set $wmenu wmenu -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff
+set $bookmarks ~/.local/bin/share/bookmarks
+set $mode_cursor ""
+set $mode_arrow ""
+
+bar {
+	swaybar_command waybar
+}
+
+#<colorclass> <border> <background> <text> <indicator> <child_border>
+client.focused		        #9962b7 #9962b7 #F1F1F1 #e6da00
+client.focused_inactive     #0092cc #0092cc #F1F1F1 #0092cc
+client.unfocused            #bbccdd #bbccdd #F1F1F1 #bbccdd
+font pango:monospace 0.001
+titlebar_padding 1
+titlebar_border_thickness 0
+floating_modifier $mod normal
+seat seat0 hide_cursor 3000
+
+focus_follows_mouse no
+mouse_warping none
+# automatically move to the workspace where new action was taken on
+focus_on_window_activation focus
+workspace_auto_back_and_forth yes
+
+#gaps inner 4
+for_window [class=".*"] border pixel 3
+for_window [title="Floating Term"] floating enable, resize set width 800 px, resize set height 600 px, border pixel 2
+for_window [title="Scratchpad Tmux"]  move scratchpad, border pixel 1
+for_window [app_id=swayimgapp] border pixel 1
+
+output * bg ~/.local/share/wallpaper fill
+output 'Chimei Innolux Corporation 0x1540 Unknown' scale 1 mode --custom 1600x900@60.000Hz pos 0 0
+output 'AU Optronics 0x243D Unknown' scale 1 mode --custom 1600x900@60.000Hz pos 0 0
+output 'Lenovo Group Limited LEN LS2023wA 05559D4930167' resolution 1600x900@60.000Hz pos 1600 0
+
+input "type:touchpad" tap enabled
+input "type:keyboard" {
+	repeat_delay 200
+	repeat_rate 30
+    xkb_file "~/.config/sway/layout.xkb"
+}
+
+# autostart
+exec swayidle -w \
+         timeout 600 'brightnessctl set 4% -s' resume 'brightnessctl -r'\
+         timeout 900 'swaylock' \
+         timeout 960 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock' 
+exec foot --server
+exec --no-startup-id "clsd"
+exec --no-startup-id "gammastep -O 5000"
+exec --no-startup-id "fcitx5 -d"
+exec --no-startup-id "wl-paste --watch cliphist store"
+
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec $term -T "Floating Term"
+bindsym $mod+Control+Return exec $term -T "Scratchpad Tmux" tmux
+bindsym $mod+q kill
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r exec swaymsg "output * bg ~/.local/share/wallpaper fill"
+bindsym $mod+Shift+e exec ~/.local/bin/swayexit
+# wmenu
+bindsym $mod+b exec --no-startup-id 'cliphist list | $wmenu -p "cliphist: " -l 6 | cliphist decode | wl-copy'
+bindsym $mod+Shift+b exec --no-startup-id ~/.local/bin/wmulti
+bindsym $mod+a exec --no-startup-id cat ~/.local/share/bookmarks/bookmarks | grep -vE "^#|^[[:space:]]*$" | $wmenu -p "bookmarks: " -l 6 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
+bindsym $mod+Shift+a exec --no-startup-id cat ~/.local/share/bookmarks/bookmarks-record | grep -vE "^#|^[[:space:]]*$" | $wmenu -p "bookmarks-record" -l 6 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
+bindsym $mod+CONTROL+w exec --no-startup-id ~/.local/bin/wwiki
+bindsym $mod+CONTROL+v exec --no-startup-id ~/.local/bin/wheart
+bindsym $mod+CONTROL+b exec --no-startup-id ~/.local/bin/wbook
+bindsym $mod+CONTROL+a exec --no-startup-id ~/.local/bin/amount
+bindsym $mod+CONTROL+f exec --no-startup-id ~/.local/bin/flocks
+# notification
+bindsym $mod+n exec --no-startup-id "dunstctl history-pop"
+bindsym $mod+Shift+n exec --no-startup-id "dunstctl close"
+bindsym $mod+BackSpace exec --no-startup-id "dunstctl close-all"
+# swaylock is configured at ~/.config/swaylock/config
+bindsym --release $mod+escape exec --no-startup-id "swaylock"
+# adjust window gaps
+bindsym $mod+CONTROL+minus exec --no-startup-id "swaymsg gaps inner current minus 2"
+bindsym $mod+CONTROL+equal exec --no-startup-id "swaymsg gaps inner current plus 2"
+# brightness
+bindsym $mod+bracketleft exec --no-startup-id brightnessctl set 2%-
+bindsym $mod+bracketright exec --no-startup-id brightnessctl set 2%+
+# audio output
+bindsym $mod+minus exec --no-startup-id pactl set-sink-volume 0 -2%
+bindsym $mod+equal exec --no-startup-id pactl set-sink-volume 0 +2%
+bindsym $mod+m exec --no-startup-id pactl set-sink-mute 0 toggle
+# audio input
+bindsym $mod+Shift+minus exec --no-startup-id pactl set-source-volume 0 -2%
+bindsym $mod+Shift+equal exec --no-startup-id pactl set-source-volume 0 +2%
+bindsym $mod+Shift+m exec --no-startup-id pactl set-source-mute 0 toggle
+bindsym $mod+Shift+p exec --no-startup-id mpc toggle
+# launcher
+bindsym $mod+r exec --no-startup-id $term ranger
+bindsym $mod+CONTROL+m exec --no-startup-id $term ncmpcpp
+bindsym $mod+CONTROL+n exec --no-startup-id $term newsboat
+bindsym $mod+CONTROL+c exec --no-startup-id $term calcurse
+bindsym $mod+CONTROL+t exec --no-startup-id $term btop
+## take a screenshot with a selected part
+bindsym $mod+g exec --no-startup-id slurp | grim -g - && notify-send -u low -r 88 "grim" "Screenshot taken."
+# take a screenshot with selected monitor
+bindsym $mod+CONTROL+g exec --no-startup-id ~/.local/bin/wshot
+## take a screenshot with all monitors
+bindsym $mod+Shift+g exec --no-startup-id grim && notify-send -u low -r 88 "grim" "Screenshot taken."
+# seat cursor
+bindsym $mod+grave seat - cursor set 0 0
+bindsym $mod+slash seat - cursor set 9999 9999
+# wtype
+bindsym $mod+CONTROL+h exec wtype -k 'Left'
+bindsym $mod+CONTROL+j exec wtype -k 'Down'
+bindsym $mod+CONTROL+k exec wtype -k 'Up'
+bindsym $mod+CONTROL+l exec wtype -k 'Right'
+bindsym Control+e exec wtype -k 'Escape'
+
+# Use keyboard as mouse
+bindsym $mod+semicolon mode $mode_cursor
+mode $mode_cursor {
+    bindsym Escape mode "default"
+    bindsym Space mode "default"
+    bindsym $mod+semicolon mode "default"
+    bindsym $mod+apostrophe mode $mode_arrow
+
+    bindsym 1 exec wtype -k "F1" ; mode "default"
+    bindsym 2 exec wtype -k "F2" ; mode "default"
+    bindsym 3 exec wtype -k "F3" ; mode "default"
+    bindsym 4 exec wtype -k "F4" ; mode "default"
+    bindsym 5 exec wtype -k "F5" ; mode "default"
+    bindsym 6 exec wtype -k "F6" ; mode "default"
+    bindsym 7 exec wtype -k "F7" ; mode "default"
+    bindsym 8 exec wtype -k "F8" ; mode "default"
+    bindsym 9 exec wtype -k "F9" ; mode "default"
+    bindsym 0 exec wtype -k "F10" ; mode "default"
+    bindsym minus exec wtype -k "F11" ; mode "default"
+    bindsym equal exec wtype -k "F12" ; mode "default"
+
+    bindsym $mod+$left seat - cursor move -50 0
+    bindsym $mod+$down seat - cursor move 0 +50
+    bindsym $mod+$up seat - cursor move 0 -50
+    bindsym $mod+$right seat - cursor move +50 0
+    bindsym $left seat - cursor move -50 0
+    bindsym $down seat - cursor move 0 +50
+    bindsym $up seat - cursor move 0 -50
+    bindsym $right seat - cursor move +50 0
+
+    bindsym y seat - cursor move -10 0
+    bindsym u seat - cursor move 0 +10
+    bindsym i seat - cursor move 0 -10
+    bindsym o seat - cursor move +10 0
+
+    bindsym $mod+grave seat - cursor set 0 0
+    bindsym $mod+slash seat - cursor set 9999 9999
+    bindsym grave seat - cursor set 0 0
+    bindsym slash seat - cursor set 9999 9999
+    bindsym backslash seat - cursor set 9999 0
+
+    # Left click (click won't work as a keybindings if with $mod key)
+    bindsym $mod+comma seat - cursor press button1, seat - cursor release button1
+    bindsym comma seat - cursor press button1, seat - cursor release button1
+    # Right click
+    bindsym $mod+period seat - cursor press button3, seat - cursor release button3
+    bindsym period seat - cursor press button3, seat - cursor release button3
+    }
+
+# arrow keys keybindings
+bindsym $mod+apostrophe mode $mode_arrow
+mode $mode_arrow {
+    bindsym Escape mode "default"
+    bindsym Space mode "default"
+    bindsym $mod+apostrophe mode "default"
+    bindsym $mod+semicolon mode $mode_cursor
+
+    bindsym h exec wtype -k "Left"
+    bindsym j exec wtype -k "Down"
+    bindsym k exec wtype -k "Up"
+    bindsym l exec wtype -k "Right"
+
+    bindsym 0 exec wtype -k 'Home'
+    bindsym 4 exec wtype -k 'End'
+    bindsym p exec wtype -k "Page_up"
+    bindsym n exec wtype -k "Page_down"
+
+    bindsym e exec wtype -k "Escape"
+    bindsym d exec wtype -k "Delete"
+    }
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+z move container to workspace 11; workspace 11
+bindsym $mod+Shift+z workspace 11
+
+bindsym $mod+tab workspace back_and_forth
+
+bindsym $mod+comma workspace prev_on_output
+bindsym $mod+period workspace next_on_output
+bindsym $mod+Shift+comma move container to workspace prev_on_output
+bindsym $mod+Shift+period move container to workspace next_on_output
+
+bindsym $mod+CONTROL+comma focus output left
+bindsym $mod+CONTROL+period focus output right
+bindsym $mod+CONTROL+tab focus output up
+
+bindsym $mod+x splitv
+bindsym $mod+v splith
+
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+f fullscreen
+
+bindsym $mod+Shift+f floating toggle
+bindsym $mod+Shift+s sticky toggle
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+p focus parent
+bindsym $mod+c focus child
+
+bindsym $mod+Shift+w move scratchpad
+bindsym $mod+w scratchpad show, resize set 1000 700, move position center
+
+bindsym $mod+y resize shrink width 10px
+bindsym $mod+u resize grow height 10px
+bindsym $mod+i resize shrink height 10px
+bindsym $mod+o resize grow width 10px
+
+workspace 1 output 'Chimei Innolux Corporation 0x1540 Unknown'
+workspace 2 output 'Chimei Innolux Corporation 0x1540 Unknown'
+workspace 3 output 'Chimei Innolux Corporation 0x1540 Unknown'
+workspace 4 output 'Chimei Innolux Corporation 0x1540 Unknown'
+workspace 5 output 'Chimei Innolux Corporation 0x1540 Unknown'
+workspace 6 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+workspace 7 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+workspace 8 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+workspace 9 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
+workspace 10 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167'
