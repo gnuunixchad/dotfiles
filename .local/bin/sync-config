@@ -14,8 +14,6 @@ if [[ $choice == "y" || $choice == "Y" ]]; then
 
     crontab -l > "$heart"/.config/crontab.backup && echo "crontab backup done" || echo "crontab backup failed"
 
-    rsync -R /etc/{default/grub,firejail/firecfg.config,samba/smb.conf,ssh/sshd_config,systemd/logind.conf,tlp.conf,vconsole.conf,libvirt/network.conf,ufw/{user.rules,user6.rules}} "$heart"/
-
     # censor bookmarks for screen casting
     grep -n "##############################below-are-private##############################" ~/doc/heart/.local/share/bookmarks/bookmarks | cut -d: -f1 | xargs -I {} sed -n '1,{}p' ~/doc/heart/.local/share/bookmarks/bookmarks > ~/doc/heart/.local/share/bookmarks/bookmarks-record && echo "bookmarks-record updated" || echo "bookmarks-record update failed"
 
