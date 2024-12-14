@@ -44,12 +44,12 @@ alias fpcache="pacman -Qq | fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --p
 alias sync="~/.local/bin/sync-notify"
 ### abbreviation ###
 alias .s='. ~/.bash_profile && . ~/.bashrc && . ~/.bash_aliases'
-alias heartstow='cd ~/doc/heart && stow --adopt -t ~ . && echo "heart is stowed"'
-alias heartunstow='cd ~/doc/heart && stow -D -t ~ . && echo "heart is unstowed"'
-alias heartrestow='cd ~/doc/heart && stow -R --adopt -t ~ . && echo "heart is stowed"'
-alias ollamastow='cd ~/pkg/ollama && stow --adopt -t ~ . && echo "ollama is stowed"'
-alias ollamarestow='cd ~/pkg/ollama && stow -R --adopt -t ~ . && echo "ollama is stowed"'
-alias ollamaunstow='cd ~/pkg/ollama && stow -D -t ~ . && echo "ollama is unstowed"'
+alias heartstow='cd ~/doc/heart && stow --adopt -t ~ . && cd - &>/dev/null && echo "heart is stowed"'
+alias heartunstow='cd ~/doc/heart && stow -D -t ~ . && cd - &>/dev/null && echo "heart is unstowed"'
+alias heartrestow='cd ~/doc/heart && stow -R --adopt -t ~ . && cd - &>/dev/null && echo "heart is stowed"'
+alias ollamastow='cd ~/pkg/ollama && stow --adopt -t ~ . && cd - &>/dev/null && echo "ollama is stowed"'
+alias ollamarestow='cd ~/pkg/ollama && stow -R --adopt -t ~ . && cd - &>/dev/null && echo "ollama is stowed"'
+alias ollamaunstow='cd ~/pkg/ollama && stow -D -t ~ . && cd - &>/dev/null && echo "ollama is unstowed"'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ?='pwd'
