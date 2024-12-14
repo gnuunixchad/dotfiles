@@ -41,6 +41,8 @@
 !.config/Code - OSS/User/settings.json
 !.config/dunst/
 !.config/dunst/dunstrc
+!/.config/fcitx5/
+!/.config/fcitx5/config
 !.config/firejail
 !.config/firejail/*
 !.config/foot/

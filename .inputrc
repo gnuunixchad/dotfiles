@@ -9,6 +9,11 @@
 $include /etc/inputrc
 
 set editing-mode vi
+
+# disable C-n C-p for tmux scrolling
+"\C-n": ""
+"\C-p": ""
+
 # vi mode indicator
 set show-mode-in-prompt on
 #The Virtual Console uses different escape codes

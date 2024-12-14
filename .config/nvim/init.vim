@@ -22,7 +22,7 @@ set cursorcolumn
 set mouse=          " disable mouse clicks
 match ExtraWhitespace /\s\+$/ " space at the end of lines
 highlight ExtraWhitespace ctermbg=gray guibg=gray " highlight all trailing spaces
-set statusline+=%f\ %h%m%r%=\ %{FugitiveStatusline()}\ %-8.(%l,%c%)\ %P
+"set statusline+=%f\ %h%m%r%=\ %{FugitiveStatusline()}\ %-8.(%l,%c%)\ %P
 let mapleader=" " " set space as leader key
 """"""""""""""""""""""custom keybindings"""""""""""""""""""""""""""""""""""""""
 " <CR> means carriage return
@@ -30,23 +30,32 @@ map <leader>s :set spell!<CR>
 map <leader>w :set wrap<CR>
 map <leader>f :FZF<CR>
 map <leader>c :set cursorcolumn!<CR>
+map <leader>h :set hlsearch!<CR>
+map <leader>t :tabnew<CR>
+map <leader>p :tabprev<CR>
+map <leader>n :tabnext<CR>
+map <leader>. :source ~/.config/nvim/init.vim<CR>
+map <leader>g :G<CR>
+map <leader>dx :Gdiffsplit<CR>
+map <leader>dv :Gvdiffsplit<CR>
+" split open
+map <leader>x :split<CR>
+map <leader>v :vsplit<CR>
 " split movement with ctrl+h/j/k/l
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 " split resize with ctrl+y/u/i/o
-map <C-y> <C-w><
-map <C-u> <C-w>-
-map <C-i> <C-w>=
-map <C-o> <C-w>>
-" split open
-map <leader>x :split<CR>
-map <leader>v :vsplit<CR>
-" automatically deletes trailing whitespace on save, .md need double spaces as line breaks
-" autocmd BufWritePre * %s/\s\+$//e
-" automatically run xrdb when Xresources are updated
-" autocmd BufWritePost ~/.Xresources !xrdb %
+map <C-y> :vertical resize -2<CR>
+map <C-u> :resize +2<CR>
+map <C-i> :resize -2<CR>
+map <C-o> :vertical resize +2<CR>
+" Indent selected lines with > and < keys
+xmap < <gv
+xmap > >gv
+""""""""""""""""""""""autocmd"""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd BufWritePost ~/.config/sway/config !swaymsg reload
 """"""""""""""""""""""plugins"""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-plug plugins
 call plug#begin()

@@ -30,7 +30,7 @@ if [ -x /usr/bin/bat ]; then
 fi
 
 # show os info on login
-if [ -x ~/.local/bin/os ] ; then
+if [ -x ~/.local/bin/osi ] ; then
     ~/.local/bin/os -ld
 fi
 

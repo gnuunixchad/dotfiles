@@ -40,7 +40,7 @@ workspace_auto_back_and_forth yes
 #gaps inner 4
 for_window [class=".*"] border pixel 3
 for_window [title="Floating Term"] floating enable, resize set width 800 px, resize set height 600 px, border pixel 2
-for_window [title="Scratchpad Tmux"]  move scratchpad, border pixel 1
+for_window [title="Scratchpad Tmux"]  move scratchpad
 for_window [app_id=swayimgapp] border pixel 1
 
 output * bg ~/.local/share/wallpaper fill
@@ -48,6 +48,7 @@ output 'Chimei Innolux Corporation 0x1540 Unknown' scale 1 mode --custom 1600x90
 output 'AU Optronics 0x243D Unknown' scale 1 mode --custom 1600x900@60.000Hz pos 0 0
 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167' resolution 1600x900@60.000Hz pos 1600 0
 
+bindsym $mod+backslash input type:touchpad events toggle enabled disabled, exec notify-send -u low "touchpad toggled"
 input "type:touchpad" tap enabled
 input "type:keyboard" {
 	repeat_delay 200
@@ -72,8 +73,8 @@ bindsym $mod+Shift+Return exec $term -T "Floating Term"
 bindsym $mod+Control+Return exec $term -T "Scratchpad Tmux" tmux
 bindsym $mod+q kill
 bindsym $mod+d exec $menu
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r exec swaymsg "output * bg ~/.local/share/wallpaper fill"
+bindsym $mod+Shift+r reload
+bindsym $mod+Control+r exec swaymsg "output * bg ~/.local/share/wallpaper fill"
 bindsym $mod+Shift+e exec ~/.local/bin/swayexit
 # wmenu
 bindsym $mod+b exec --no-startup-id 'cliphist list | $wmenu -p "cliphist: " -l 6 | cliphist decode | wl-copy'
@@ -113,11 +114,11 @@ bindsym $mod+CONTROL+n exec --no-startup-id $term newsboat
 bindsym $mod+CONTROL+c exec --no-startup-id $term calcurse
 bindsym $mod+CONTROL+t exec --no-startup-id $term btop
 ## take a screenshot with a selected part
-bindsym $mod+g exec --no-startup-id slurp | grim -g - && notify-send -u low -r 88 "grim" "Screenshot taken."
+bindsym $mod+g exec --no-startup-id slurp | grim -g - && notify-send -u low -r 88 "Screenshot taken."
 # take a screenshot with selected monitor
 bindsym $mod+CONTROL+g exec --no-startup-id ~/.local/bin/wshot
 ## take a screenshot with all monitors
-bindsym $mod+Shift+g exec --no-startup-id grim && notify-send -u low -r 88 "grim" "Screenshot taken."
+bindsym $mod+Shift+g exec --no-startup-id grim && notify-send -u low -r 88 "Screenshot taken."
 # seat cursor
 bindsym $mod+grave seat - cursor set 0 0
 bindsym $mod+slash seat - cursor set 9999 9999
@@ -256,12 +257,13 @@ bindsym $mod+f fullscreen
 bindsym $mod+Shift+f floating toggle
 bindsym $mod+Shift+s sticky toggle
 bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+c move position center
 
 bindsym $mod+p focus parent
 bindsym $mod+c focus child
 
 bindsym $mod+Shift+w move scratchpad
-bindsym $mod+w scratchpad show, resize set 1000 700, move position center
+bindsym $mod+w scratchpad show
 
 bindsym $mod+y resize shrink width 10px
 bindsym $mod+u resize grow height 10px

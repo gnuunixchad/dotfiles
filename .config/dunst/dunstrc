@@ -43,7 +43,7 @@
     scale = 0
 
     # Maximum number of notification (0 means no limit)
-    notification_limit = 30
+    notification_limit = 20
 
     ### Progress bar ###
 
@@ -97,7 +97,7 @@
     padding = 8
 
     # Horizontal padding.
-    horizontal_padding = 8
+    horizontal_padding = 4
 
     # Padding between text and icon.
     text_icon_padding = 0
@@ -113,7 +113,7 @@
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
     # Click events on gaps do not currently propagate to applications below.
-    gap_size = 3
+    gap_size = 1
 
     # Define a color for the separator.
     # possible values are:
@@ -129,7 +129,7 @@
     #  * urgency_ascending: sort by urgency (low then normal then critical)
     #  * urgency_descending: sort by urgency (critical then normal then low)
     #  * update: sort by update (most recent always at the top)
-    sort = yes
+    sort = update
 
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
@@ -184,7 +184,7 @@
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
-    alignment = left
+    alignment = center
 
     # Vertical alignment of message text and icon.
     # Possible values are "top", "center" and "bottom".
@@ -223,7 +223,7 @@
     # icon_theme = "Adwaita, breeze"
 
     # Align icons left/right/top/off
-    icon_position = left
+    icon_position = off
 
     # Scale small icons up to this size, set to 0 to disable. Helpful
     # for e.g. small files or high-dpi screens. In case of conflict,
@@ -243,7 +243,7 @@
     sticky_history = no
 
     # Maximum amount of notifications kept in history
-    history_length = 20
+    history_length = 30
 
     ### Misc/Advanced ###
 
@@ -267,7 +267,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 0
+    corner_radius = 6
 
     # Define which corners to round when drawing the window. If the corner radius
     # is set to 0 this option will be ignored.
@@ -319,9 +319,9 @@
     # * context_all: Open context menu for all notifications.
     # These values can be strung together for each mouse event, and
     # will be executed in sequence.
-    mouse_left_click = close_current
-    mouse_middle_click = do_action, close_current
-    mouse_right_click = close_all
+    mouse_left_click = open_url
+    mouse_middle_click = none
+    mouse_right_click = context_all
 
 # Experimental features that may or may not work correctly. Do not expect them
 # to have a consistent behaviour across releases.
@@ -340,7 +340,7 @@
     background = "#222222"
     foreground = "#ffffff"
     frame_color= "#005577"
-    timeout = 10
+    timeout = 7
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
@@ -348,7 +348,7 @@
     background = "#222222"
     foreground = "#ffffff"
     frame_color = "#6f3f89"
-    timeout = 10
+    timeout = 12
     override_pause_level = 30
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
