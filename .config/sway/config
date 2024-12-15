@@ -48,7 +48,8 @@ output 'Chimei Innolux Corporation 0x1540 Unknown' scale 1 mode --custom 1600x90
 output 'AU Optronics 0x243D Unknown' scale 1 mode --custom 1600x900@60.000Hz pos 0 0
 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167' resolution 1600x900@60.000Hz pos 1600 0
 
-bindsym $mod+backslash input type:touchpad events toggle enabled disabled, exec notify-send -u low "touchpad toggled"
+bindsym $mod+backslash input type:touchpad events toggle enabled, exec notify-send "touchpad enabled"
+bindsym $mod+Shift+backslash input type:touchpad events toggle disabled, exec notify-send "touchpad disabled"
 input "type:touchpad" tap enabled
 input "type:keyboard" {
 	repeat_delay 200
