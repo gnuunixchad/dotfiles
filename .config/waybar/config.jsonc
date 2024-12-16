@@ -10,7 +10,8 @@
     "modules-left": [
         "sway/workspaces",
         "sway/scratchpad",
-        "tray",
+        //"tray",
+        "mpd",
         "sway/window"
     ],
     "modules-center":[
@@ -19,10 +20,10 @@
     ],
     "modules-right": [
         "custom/updates",
+        "backlight",
         "network",
         "group/storage",
         "group/cpu",
-        "backlight",
         "pulseaudio",
         "battery",
         "clock",
@@ -131,6 +132,15 @@
             "default": ["", "", ""]
         },
     },
+    "mpd": {
+        "format": "🎜 {title}",
+        "title-len": 35,
+        "format-disconnected": "🎜",
+        "format-stopped": "🎜",
+        "unknown-tag": "?",
+        "interval": 5,
+    	"tooltip": false,
+    },
     "privacy": {
     	"icon-spacing": 4,
     	"icon-size": 18,
@@ -160,12 +170,8 @@
     },
     "custom/updates": {
         "tooltip": false,
-        "format": "{} {icon}",
+        "format": " {}",
         "return-type": "json",
-        "format-icons": {
-            "has-updates": "",
-            "updated": "",
-        },
         "exec-if": "which waybar-module-pacman-updates",
         "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300"
     },

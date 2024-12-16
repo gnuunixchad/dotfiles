@@ -10,9 +10,9 @@
 }
 
 window#waybar {
-    background-color: rgba(26, 26, 26, 100);
+    background-color: rgba(15, 15, 15, 1);
     font-size: 13px;
-    color: #ffffff;
+    color: #e1e1e1;
 }
 
 button {
@@ -27,7 +27,7 @@ button {
     padding: 0 2px;
     margin: 0 0px;
     border-radius: 2px;
-    color: #ffffff;
+    color: #e1e1e1;
 }
 
 #workspaces button.focused {
@@ -68,7 +68,7 @@ button {
     margin: 0 0px;
     border-radius: 2px;
     background-color: #005577;
-    color: #f1f1f1;
+    color: #e1e1e1;
     font-size: 14px;
 }
 
@@ -136,6 +136,28 @@ button {
     border-radius: 2px;
 }
 
+#mpd {
+    padding: 0 4px;
+    margin: 0 0px;
+    font-size: 12px;
+    border-radius: 2px;
+    background-color: #6f3f89;
+    color: #e1e1e1;
+}
+
+#mpd.disconnected {
+    background-color: #414141;
+}
+
+#mpd.paused {
+    background-color: #005577;
+}
+
+#mpd.stopped {
+    background-color: #005577;
+    font-size: 14px;
+}
+
 #tray {
     background-color: #bbccdd;
     margin: 0 2px;
@@ -144,12 +166,12 @@ button {
 #idle_inhibitor {
 
     background-color: #005577;
-    color: #ffffff;
+    color: #e1e1e1;
 }
 
 #idle_inhibitor.activated {
     background-color: #6f3f89;
-    color: #ffffff
+    color: #e1e1e1
 }
 
 #privacy-item {

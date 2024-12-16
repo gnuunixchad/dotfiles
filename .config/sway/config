@@ -30,6 +30,7 @@ titlebar_padding 1
 titlebar_border_thickness 0
 floating_modifier $mod normal
 seat seat0 hide_cursor 3000
+seat seat0 hide_cursor when-typing enable
 
 focus_follows_mouse no
 mouse_warping none
@@ -97,16 +98,19 @@ bindsym --release $mod+escape exec --no-startup-id "swaylock"
 bindsym $mod+CONTROL+minus exec --no-startup-id "swaymsg gaps inner current minus 2"
 bindsym $mod+CONTROL+equal exec --no-startup-id "swaymsg gaps inner current plus 2"
 # brightness
-bindsym $mod+bracketleft exec --no-startup-id brightnessctl set 2%-
-bindsym $mod+bracketright exec --no-startup-id brightnessctl set 2%+
+set $wob ~/.cache/wob.fifo
+exec_always mkfifo $wob
+exec tail -f $wob | wob
+bindsym $mod+bracketleft exec --no-startup-id brightnessctl set 2%- | awk -F'[()]' 'NR==3 {print $2}'| sed 's/%//' > $wob
+bindsym $mod+bracketright exec --no-startup-id brightnessctl set 2%+ | awk -F'[()]' 'NR==3 {print $2}'| sed 's/%//' > $wob
 # audio output
-bindsym $mod+minus exec --no-startup-id pactl set-sink-volume 0 -2%
-bindsym $mod+equal exec --no-startup-id pactl set-sink-volume 0 +2%
-bindsym $mod+m exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym $mod+minus exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wob
+bindsym $mod+equal exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g' > $wob
+bindsym $mod+m exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 # audio input
-bindsym $mod+Shift+minus exec --no-startup-id pactl set-source-volume 0 -2%
-bindsym $mod+Shift+equal exec --no-startup-id pactl set-source-volume 0 +2%
-bindsym $mod+Shift+m exec --no-startup-id pactl set-source-mute 0 toggle
+bindsym $mod+Shift+minus exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%- && wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | sed 's/[^0-9]//g' > $wob
+bindsym $mod+Shift+equal exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%+ && wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | sed 's/[^0-9]//g' > $wob
+bindsym $mod+Shift+m exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 bindsym $mod+Shift+p exec --no-startup-id mpc toggle
 # launcher
 bindsym $mod+r exec --no-startup-id $term ranger
