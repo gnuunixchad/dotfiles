@@ -286,7 +286,7 @@ package list update at [package.list](./package.list)
     w3m firefox firefox-dark-reader firefox-tridactyl firefox-ublock-origin
 
     ### window manager/wayland compositor suite
-    foot sway swaybg swayidle swaylock waybar wmenu wtype wl-clipboard xorg-xwayland cliphist dunst gammastep slurp grim wf-recorder wl-mirror
+    foot sway swaybg swayidle swaylock waybar wmenu wtype wl-clipboard xorg-xwayland cliphist dunst gammastep slurp grim wf-recorder wl-mirror wob
 
     ### audio server
     pipewire pipewire-alsa pipewire-pulse pipewire-jack noise-suppression-for-voice pulsemixer
@@ -295,7 +295,7 @@ package list update at [package.list](./package.list)
     adobe-source-code-pro-fonts noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-font-awesome ttf-nerd-fonts-symbols
 
     ### file viewer
-    swayimg zathura zathura-pdf-mupdf
+    swayimg zathura zathura-pdf-mupdf bat catimg
 
     ### touch typing in a terminal
     ttyper
