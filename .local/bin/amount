@@ -8,6 +8,7 @@
 #         - use wmenu for selection and passphrase prompt in wayland
 #         - use fzf for selection in tty
 # flocks is the opposite script
+# poff to interactively power off a block device
 
 selected_partion=""
 msg=""

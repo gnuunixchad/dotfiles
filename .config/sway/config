@@ -88,6 +88,7 @@ bindsym $mod+CONTROL+v exec --no-startup-id ~/.local/bin/wheart
 bindsym $mod+CONTROL+b exec --no-startup-id ~/.local/bin/wbook
 bindsym $mod+CONTROL+a exec --no-startup-id ~/.local/bin/amount
 bindsym $mod+CONTROL+f exec --no-startup-id ~/.local/bin/flocks
+bindsym $mod+CONTROL+p exec --no-startup-id ~/.local/bin/poff
 # notification
 bindsym $mod+n exec --no-startup-id "dunstctl history-pop"
 bindsym $mod+Shift+n exec --no-startup-id "dunstctl close"

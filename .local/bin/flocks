@@ -7,7 +7,8 @@
 #        - lock afterwards if the partition is decrypted(LUKS)
 #        - use wmenu for selection in wayland
 #        - use fzf for selection in tty
-# amount is  the opposite sciprt
+# amount is the opposite sciprt
+# poff to interactively power off a block device
 
 selected_partion=""
 msg=""
