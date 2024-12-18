@@ -24,8 +24,8 @@ xkb_keymap {
         replace key <RALT> { [ Super_R ] };
 
         #swap escape and capslock
-        #replace key <ESC> { [ Caps_Lock ] };
-        #replace key <CAPS> {  [ Escape ] };
+        replace key <ESC> { [ Caps_Lock ] };
+        replace key <CAPS> {  [ Escape ] };
     };
 };
 

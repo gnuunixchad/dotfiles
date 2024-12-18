@@ -22,6 +22,10 @@ blacklist ${HOME}/think
 blacklist ${HOME}/ebook
 blacklist ${HOME}/dict
 blacklist ${HOME}/unixchad
+noblacklist ${HOME}/.config/nvim
+read-only ${HOME}/.config/nvim
+noblacklist ${HOME}/doc/heart/.config/nvim
+read-only ${HOME}/doc/heart/.config/nvim
 
 #whitelist ${HOME}/repo/extensions/codium
 #read-only ${HOME}/repo/extensions/codium

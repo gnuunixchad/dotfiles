@@ -16,7 +16,7 @@ user_pref("browser.newtab.privateAllowed", true);
 user_pref("browser.download.dir", "/home/nate/dls"); // dls dir
 user_pref("browser.urlbar.placeholderName", "Bing"); // urlbar search engine
 user_pref("browser.urlbar.placeholderName.private", "Bing");
-//user_pref("layout.css.devPixelsPerPx", "0.95"); // buggy for wayland/nvidia
+user_pref("layout.css.devPixelsPerPx", "0.90"); // buggy with output scaling
 // telemetry
 user_pref("app.shield.optoutstudies.enabled", false);
 user_pref("datareporting.healthreport.uploadEnabled", false);

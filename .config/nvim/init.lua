@@ -83,4 +83,4 @@ call plug#end()
 -- Keybinding for triggering path completion with cmp-blink-cmp
 vim.api.nvim_set_keymap('i', '<C-p>', "v:lua.require'cmp'.complete()", {expr = true, noremap = true, silent = true})
 
-require('gitsigns').setup()
+--require('gitsigns').setup()

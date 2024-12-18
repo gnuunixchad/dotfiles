@@ -63,6 +63,7 @@ export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
+export GRIM_DEFAULT_DIR="$HOME/tmp"
 #export OLLAMA_MODELS="$XDG_DATA_HOME/ollama/models"
 
 ### IME ###
