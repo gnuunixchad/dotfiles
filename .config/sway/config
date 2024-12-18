@@ -51,7 +51,9 @@ output 'Chimei Innolux Corporation 0x1540 Unknown' scale 1 mode --custom 1600x90
 output 'AU Optronics 0x243D Unknown' scale 1 mode --custom 1600x900@60.000Hz pos 0 0
 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167' resolution 1600x900@60.000Hz pos 1600 0
 
-input "type:touchpad" tap enabled
+input "type:touchpad" tap disabled
+bindsym $mod+backslash input type:touchpad tap enabled, exec notify-send "tap enabled"
+bindsym $mod+Shift+backslash input type:touchpad tap disabled, exec notify-send "tap disabled"
 input "type:keyboard" {
 	repeat_delay 200
 	repeat_rate 30
@@ -70,6 +72,8 @@ exec --no-startup-id "clsd"
 exec --no-startup-id "gammastep -O 5000"
 exec --no-startup-id "fcitx5 -d"
 exec --no-startup-id "wl-paste --watch cliphist store"
+
+bindsym --release Caps_Lock exec "if [ $(cat /sys/class/leds/input*::capslock/brightness) == 0 ]; then notify-send -r 195 'CapsLock off'; else notify-send -r 195 'CapsLock on'; fi"
 
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term -T "Floating Term"

@@ -37,13 +37,13 @@
     #origin = top-center
 
     # Offset from the origin
-    offset = 0x6
+    offset = 0x8
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
 
     # Maximum number of notification (0 means no limit)
-    notification_limit = 20
+    notification_limit = 30
 
     ### Progress bar ###
 
