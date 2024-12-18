@@ -11,13 +11,13 @@ set $menu wmenu-run -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f8
 set $wmenu wmenu -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff
 set $bookmarks ~/.local/bin/share/bookmarks
 set $mode_cursor ""
-set $mode_cursor_msg num:F[n] Shift+hjkl:Slow mod+hjkl:Arrow d:Del n:PageUp p:PageDn
+set $mode_cursor_msg num:F[n] [d]Del \n [HJKL]:Slow \n Mod[hjkl]:Arrow \n [n]PageUp [p]PageDn
 set $mode_app ""
-set $mode_app_msg news[b]oat [c]alcurse cod[e] [f]irefox [g]imp [k]denlive [n]cmpcpp b[t]op
+set $mode_app_msg news[b]oat [c]alcurse \n cod[e] [f]irefox \n [g]imp [k]denlive \n [n]cmpcpp b[t]op
 set $mode_wmenu "W"
-set $mode_wmenu_msg w[w]iki w[h]eart w[b]ook [a]mount [f]locks [p]off w[s]hot w[c]ast
+set $mode_wmenu_msg w[w]iki w[h]eart w[b]ook \n [a]mount [f]locks [p]off \n w[s]hot w[c]ast w[m]ulti
 set $mode_z "Z"
-set $mode_z_msg [s]elwall d[w] [f]anmode enable[t]ap disable[T]ap enable[p]ad disable[P]ad
+set $mode_z_msg enable[t]ap disable[T]ap \n enable[p]ad disable[P]ad \n wipe[c]lipist d[w] 
 
 bar {
 	swaybar_command waybar
@@ -51,7 +51,7 @@ output 'Chimei Innolux Corporation 0x1540 Unknown' scale 1 mode --custom 1600x90
 output 'AU Optronics 0x243D Unknown' scale 1 mode --custom 1600x900@60.000Hz pos 0 0
 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167' resolution 1600x900@60.000Hz pos 1600 0
 
-input "type:touchpad" tap disabled
+input "type:touchpad" tap enabled
 input "type:keyboard" {
 	repeat_delay 200
 	repeat_rate 30
@@ -81,7 +81,6 @@ bindsym $mod+Control+r exec swaymsg "output * bg ~/.local/share/wallpaper fill"
 bindsym $mod+Shift+e exec ~/.local/bin/swayexit
 # wmenu
 bindsym $mod+b exec --no-startup-id 'cliphist list | $wmenu -p "cliphist: " -l 6 | cliphist decode | wl-copy'
-bindsym $mod+Shift+b exec --no-startup-id ~/.local/bin/wmulti
 bindsym $mod+a exec --no-startup-id cat ~/.local/share/bookmarks/bookmarks | grep -vE "^#|^[[:space:]]*$" | $wmenu -p "bookmarks: " -l 6 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
 bindsym $mod+Shift+a exec --no-startup-id cat ~/.local/share/bookmarks/bookmarks-record | grep -vE "^#|^[[:space:]]*$" | $wmenu -p "bookmarks-record" -l 6 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
 # notification
@@ -210,8 +209,9 @@ mode $mode_wmenu {
     bindsym a exec --no-startup-id ~/.local/bin/amount ; mode "default"; exec dunstctl close
     bindsym f exec --no-startup-id ~/.local/bin/flocks ; mode "default"; exec dunstctl close
     bindsym p exec --no-startup-id ~/.local/bin/poff ; mode "default"; exec dunstctl close
-    bindsym s exec --no-startup-id ~/.local/bin/wshot; mode "default"; exec dunstctl close
-    bindsym c exec --no-startup-id $term ~/.local/bin/wcast; mode "default"; exec dunstctl close
+    bindsym s exec --no-startup-id ~/.local/bin/wshot ; mode "default"; exec dunstctl close
+    bindsym c exec --no-startup-id $term ~/.local/bin/wcast ; mode "default"; exec dunstctl close
+    bindsym m exec --no-startup-id ~/.local/bin/wmulti ; mode "default"; exec dunstctl close
 }
 bindsym $mod+z mode $mode_z; exec notify-send -u normal -r 197 "$mode_z_msg"
 mode $mode_z {
@@ -222,13 +222,12 @@ mode $mode_z {
     bindsym $mod+apostrophe exec dunstctl close ; mode $mode_app ; exec notify-send -u normal -r 199 "$mode_app_msg"
     bindsym $mod+w exec dunstctl close ; mode $mode_wmenu ; exec notify-send -u normal -r 198 "$mode_wmenu_msg"
 
-    bindsym s exec ~/.local/bin/selwall ; mode "default"; exec dunstctl close
-    bindsym w exec ~/.local/bin/dw ; mode "default"; exec dunstctl close
-    bindsym f exec ~/.local/bin/fanmode ; mode "default"; exec dunstctl close
     bindsym t input type:touchpad tap enabled, exec notify-send "tap enabled" ; mode "default"; exec dunstctl close
     bindsym Shift+t input type:touchpad tap disabled, exec notify-send "tap disabled" ; mode "default"; exec dunstctl close
     bindsym p input type:touchpad events toggle enabled, exec notify-send "touchpad enabled" ; mode "default"; exec dunstctl close
     bindsym Shift+p input type:touchpad events toggle disabled, exec notify-send "touchpad disabled" ; mode "default"; exec dunstctl close
+    bindsym c exec cliphist wipe; mode "default"; exec dunstctl close
+    bindsym w exec ~/.local/bin/dw ; mode "default"; exec dunstctl close
 
 }
 
