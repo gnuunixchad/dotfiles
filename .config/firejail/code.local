@@ -3,10 +3,25 @@
 # codeberg.org/unixchad/dotfiles
 # github.com/gnuunixchad/dotfiles
 
-include whitelist-common.local
+#include whitelist-common.local
 include blacklist-gpg.local
 
-whitelist ${HOME}/doc/code
+#whitelist ${HOME}/doc/code
+blacklist ${HOME}/mus
+blacklist ${HOME}/pic
+blacklist ${HOME}/smb
+blacklist ${HOME}/vid
+blacklist ${HOME}/virt
+blacklist ${HOME}/note
+blacklist ${HOME}/bill
+blacklist ${HOME}/gimp
+blacklist ${HOME}/httrack
+blacklist ${HOME}/log
+blacklist ${HOME}/.old
+blacklist ${HOME}/think
+blacklist ${HOME}/ebook
+blacklist ${HOME}/dict
+blacklist ${HOME}/unixchad
 
-whitelist ${HOME}/repo/extensions/codium
-read-only ${HOME}/repo/extensions/codium
+#whitelist ${HOME}/repo/extensions/codium
+#read-only ${HOME}/repo/extensions/codium

@@ -10,9 +10,11 @@
     "keyboard.dispatch": "keyCode",
     // always turn on word wrap
     "editor.wordWrap": "on",
-    "editor.fontSize": 15,
-    "vim.neovimConfigPath": "~/.config/nvim/init.vim",
+    "editor.fontFamily": "Source Code Pro",
+    "vim.neovimConfigPath": "~/.config/nvim/init.lua",
     "vim.neovimPath": "/usr/bin/nvim",
-    "vim.neovimUseConfigFile": true
+    "vim.neovimUseConfigFile": true,
+    "editor.fontSize": 15,
+    "editor.cursorBlinking": "solid"
 
 }

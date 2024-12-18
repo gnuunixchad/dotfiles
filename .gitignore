@@ -76,6 +76,8 @@
 !.config/nvim/colors/
 !.config/nvim/colors/unixchad.lua
 !.config/nvim/init.vim
+!.config/nvim/init.vim~
+!.config/nvim/init.lua
 !.config/pipewire/
 !.config/pipewire/pipewire.conf.d/
 !.config/pipewire/pipewire.conf.d/99-input-denoising.conf
@@ -111,6 +113,8 @@
 !.config/wget/wgetrc
 !.config/wikiman/
 !.config/wikiman/wikiman.conf
+!.config/wob/
+!.config/wob/wob.ini
 !.config/zathura/
 !.config/zathura/zathurarc
 !.config/electron-flags.conf

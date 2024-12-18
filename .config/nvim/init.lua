@@ -11,7 +11,7 @@ vim.cmd [[syntax on]]
 vim.o.ignorecase = true           -- Case insensitive searching
 vim.o.smartcase = true            -- Smart case sensitivity
 vim.o.background = "dark"         -- Set background to dark
-vim.o.hlsearch = false            -- Disable search highlighting
+-- vim.o.hlsearch = false            -- Disable search highlighting
 vim.o.colorcolumn = "80"          -- Highlight column 80
 vim.o.expandtab = true            -- Expand tabs to spaces
 vim.o.tabstop = 4                 -- Spaces per tab
@@ -36,19 +36,19 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 -- Toggle options
-map("n", "<leader>s", ":set spell!<CR>", opts)          -- Toggle spell check
-map("n", "<leader>w", ":set wrap!<CR>", opts)          -- Toggle text wrap
+map("n", "<leader>s", ":set spell!<CR>", opts)        -- Toggle spell check
+map("n", "<leader>w", ":set wrap!<CR>", opts)         -- Toggle text wrap
 map("n", "<leader>f", ":FZF<CR>", opts)               -- Open FZF
 map("n", "<leader>c", ":set cursorcolumn!<CR>", opts) -- Toggle cursor column
 map("n", "<leader>h", ":set hlsearch!<CR>", opts)     -- Toggle search highlight
 
 -- Tab navigation
-map("n", "<leader>t", ":tabnew<CR>", opts) -- Open new tab
+map("n", "<leader>t", ":tabnew<CR>", opts)  -- Open new tab
 map("n", "<leader>p", ":tabprev<CR>", opts) -- Go to previous tab
 map("n", "<leader>n", ":tabnext<CR>", opts) -- Go to next tab
 
 -- Reload configuration
-map("n", "<leader>.", ":source ~/.config/nvim/init.lua<CR>", opts)
+map("n", "<leader>r", ":source ~/.config/nvim/init.lua<CR>", opts)
 
 -- Git commands
 map("n", "<leader>g", ":G<CR>", opts)                  -- Open Git status
@@ -71,20 +71,16 @@ map("n", "<C-u>", ":resize +2<CR>", opts)
 map("n", "<C-i>", ":resize -2<CR>", opts)
 map("n", "<C-o>", ":vertical resize +2<CR>", opts)
 
--- Indenting in visual mode
-map("x", "<", "<gv", opts)
-map("x", ">", ">gv", opts)
-
--- Autocommands
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = "~/.config/sway/config",
-  command = "!swaymsg reload"
-})
+--require("config.lazy")
 
 -- Plugins (using vim-plug)
 vim.cmd [[
 call plug#begin()
-Plug 'tpope/vim-fugitive' " Git integration
 Plug 'ap/vim-css-color'  " CSS color preview
+Plug 'tpope/vim-fugitive' " Git integration
 call plug#end()
 ]]
+-- Keybinding for triggering path completion with cmp-blink-cmp
+vim.api.nvim_set_keymap('i', '<C-p>', "v:lua.require'cmp'.complete()", {expr = true, noremap = true, silent = true})
+
+require('gitsigns').setup()
