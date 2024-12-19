@@ -13,7 +13,7 @@ date_last_bg=$(stat "$wallpaper_path" | grep "^Modify:" | awk '{print $2}')
 date_today=$(date -I)
 
 refresh_bg() {
-    random_wallpaper=$(find $HOME/pic/wallpapers -type f | grep -e earth -e photography -e spolight| grep -e .jpeg -e .jpg -e .png -e .gif | shuf -n 1)
+    random_wallpaper=$(find $HOME/pic/wallpapers -type f | grep -e earth -e photography -e spolight -e collection| grep -e .jpeg -e .jpg -e .png -e .gif | shuf -n 1)
     # set the selected image as sway background
     cp -f $random_wallpaper "$wallpaper_path";
     # refresh swaybg

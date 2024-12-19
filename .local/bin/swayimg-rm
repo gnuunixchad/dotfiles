@@ -9,7 +9,7 @@
 user_choice=$(echo -e "no\nyes" | wmenu -f "SourceCodePro medium 13" -p "rm? ($@)" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
 
 if [[ $user_choice == "yes" ]]; then
-    rm $@
+    rm "$@"
     notify-send -u low -r 3301 "swayimg"  "image removed"
 else
     exit 1
