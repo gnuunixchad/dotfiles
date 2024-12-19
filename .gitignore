@@ -10,11 +10,22 @@
 !install.md
 
 !etc/
+!etc/libvirt/
+!etc/libvirt/network.conf
+!etc/systemd/
+!etc/systemd/logind.conf
+!etc/tlp.conf
 !etc/samba/
 !etc/samba/smb.conf.example
 !etc/skel/
 !etc/skel/*
 !etc/vconsole.conf
+!usr/
+!usr/local/
+!usr/local/share/
+!usr/local/share/kbd/
+!usr/local/share/kbd/keymaps/
+!usr/local/share/kbd/keymaps/us-custom.map.gz
 
 !.bashrc
 !.bash_aliases

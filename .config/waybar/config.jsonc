@@ -134,7 +134,7 @@
     },
     "mpd": {
         "format": "🎜 {title}",
-        "title-len": 35,
+        "title-len": 50,
         "format-disconnected": "🎜",
         "format-stopped": "🎜",
         "unknown-tag": "?",

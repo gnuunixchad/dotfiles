@@ -16,6 +16,7 @@ fi
 alias diff="diff --color=auto"
 alias vdiff="nvim -d"
 alias grep="grep --color=auto"
+alias ip="ip -color=auto"
 ### output format ###
 alias ll='ls -lh'
 alias la='ls -A'

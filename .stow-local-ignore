@@ -6,5 +6,6 @@
 ^/LICENSE.*
 
 etc
+usr
 install.md
 package.list

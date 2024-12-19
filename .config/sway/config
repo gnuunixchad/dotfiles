@@ -13,7 +13,7 @@ set $bookmarks ~/.local/bin/share/bookmarks
 set $mode_cursor ""
 set $mode_cursor_msg num:F[n] [d]Del \n [HJKL]:Slow \n Mod[hjkl]:Arrow \n [n]PageUp [p]PageDn
 set $mode_app ""
-set $mode_app_msg news[b]oat [c]alcurse \n cod[e] [f]irefox \n [g]imp [k]denlive \n [n]cmpcpp b[t]op
+set $mode_app_msg news[b]oat [c]alcurse \n cod[e] [g]imp [k]denlive \n [n]cmpcpp b[t]op \n [f]irefox thunderbir[d]
 set $mode_wmenu "W"
 set $mode_wmenu_msg w[w]iki w[h]eart w[b]ook \n [a]mount [f]locks [p]off \n w[s]hot w[c]ast w[m]ulti
 set $mode_z "Z"
@@ -52,8 +52,8 @@ output 'AU Optronics 0x243D Unknown' scale 1 mode --custom 1600x900@60.000Hz pos
 output 'Lenovo Group Limited LEN LS2023wA 05559D4930167' resolution 1600x900@60.000Hz pos 1600 0
 
 input "type:touchpad" tap disabled
-bindsym $mod+backslash input type:touchpad tap enabled, exec notify-send "tap enabled"
-bindsym $mod+Shift+backslash input type:touchpad tap disabled, exec notify-send "tap disabled"
+bindsym $mod+backslash input type:touchpad tap enabled, exec notify-send -u low -r 242 "tap enabled"
+bindsym $mod+Shift+backslash input type:touchpad tap disabled, exec notify-send -u low -r 242 "tap disabled"
 input "type:keyboard" {
 	repeat_delay 200
 	repeat_rate 30
@@ -83,7 +83,8 @@ bindsym $mod+d exec $menu
 bindsym $mod+Shift+r reload
 bindsym $mod+Control+r exec swaymsg "output * bg ~/.local/share/wallpaper fill"
 bindsym $mod+Shift+e exec ~/.local/bin/swayexit
-# wmenu
+bindsym $mod+Shift+q exec ~/.local/bin/swayhibe
+# clipboard & bookmarks
 bindsym $mod+b exec --no-startup-id 'cliphist list | $wmenu -p "cliphist: " -l 6 | cliphist decode | wl-copy'
 bindsym $mod+a exec --no-startup-id cat ~/.local/share/bookmarks/bookmarks | grep -vE "^#|^[[:space:]]*$" | $wmenu -p "bookmarks: " -l 6 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
 bindsym $mod+Shift+a exec --no-startup-id cat ~/.local/share/bookmarks/bookmarks-record | grep -vE "^#|^[[:space:]]*$" | $wmenu -p "bookmarks-record" -l 6 | awk ' {sub(/[^|]*\|/, ""); print}' | xargs wtype
@@ -114,9 +115,9 @@ bindsym $mod+CONTROL+p exec --no-startup-id mpc toggle
 # launcher
 bindsym $mod+r exec --no-startup-id $term ranger
 ## take a screenshot with a selected part
-bindsym $mod+g exec --no-startup-id slurp | grim -g - && notify-send -u low -r 88 "Screenshot taken."
+bindsym $mod+g exec --no-startup-id slurp | grim -g - && notify-send -u low -r 88 "Screenshot taken on selected geometry"
 ## take a screenshot with all monitors
-bindsym $mod+Shift+g exec --no-startup-id grim && notify-send -u low -r 88 "Screenshot taken."
+bindsym $mod+Shift+g exec --no-startup-id grim && notify-send -u low -r 88 "Screenshot taken on all outputs"
 # seat cursor
 bindsym $mod+grave seat - cursor set 0 0
 bindsym $mod+slash seat - cursor set 9999 9999
@@ -128,27 +129,27 @@ bindsym $mod+CONTROL+l exec wtype -k 'Right'
 bindsym Control+e exec wtype -k 'Escape'
 
 # Use keyboard as mouse
-bindsym $mod+semicolon mode $mode_cursor ; exec notify-send -u normal -r 197 -t 0 "$mode_cursor_msg"
+bindsym $mod+semicolon mode $mode_cursor ; exec notify-send -u normal -r 197 -t 5000 "$mode_cursor_msg"; seat seat0 hide_cursor when-typing disable
 mode $mode_cursor {
-    bindsym Escape mode "default" ; exec dunstctl close
-    bindsym Space mode "default" ; exec dunstctl close
-    bindsym $mod+semicolon mode "default" ; exec dunstctl close
-    bindsym $mod+apostrophe exec dunstctl close ; mode $mode_app ; exec notify-send -u normal -r 199 "$mode_app_msg"
-    bindsym $mod+w exec dunstctl close ; mode $mode_wmenu ; exec notify-send -u normal -r 198 "$mode_wmenu_msg"
-    bindsym $mod+z exec dunstctl close ; mode $mode_z; exec notify-send -u normal -r 197 "$mode_z_msg"
+    bindsym Escape mode "default" ; exec dunstctl close 197; seat seat0 hide_cursor when-typing enable
+    bindsym Space mode "default" ; exec dunstctl close 197; seat seat0 hide_cursor when-typing enable
+    bindsym $mod+semicolon mode "default" ; exec dunstctl close 197; seat seat0 hide_cursor when-typing enable
+    bindsym $mod+apostrophe exec dunstctl close 197 ; mode $mode_app ; exec notify-send -u normal -r 199 -t 0 "$mode_app_msg"; seat seat0 hide_cursor when-typing enable
+    bindsym $mod+w exec dunstctl close 197 ; mode $mode_wmenu ; exec notify-send -u normal -r 198 -t 0 "$mode_wmenu_msg"; seat seat0 hide_cursor when-typing enable
+    bindsym $mod+z exec dunstctl close 196 ; mode $mode_z; exec notify-send -u normal -r 197 -t 0 "$mode_z_msg"; seat seat0 hide_cursor when-typing enable
 
-    bindsym 1 exec wtype -k "F1" ; mode "default"
-    bindsym 2 exec wtype -k "F2" ; mode "default"
-    bindsym 3 exec wtype -k "F3" ; mode "default"
-    bindsym 4 exec wtype -k "F4" ; mode "default"
-    bindsym 5 exec wtype -k "F5" ; mode "default"
-    bindsym 6 exec wtype -k "F6" ; mode "default"
-    bindsym 7 exec wtype -k "F7" ; mode "default"
-    bindsym 8 exec wtype -k "F8" ; mode "default"
-    bindsym 9 exec wtype -k "F9" ; mode "default"
-    bindsym 0 exec wtype -k "F10" ; mode "default"
-    bindsym minus exec wtype -k "F11" ; mode "default"
-    bindsym equal exec wtype -k "F12" ; mode "default"
+    bindsym 1 exec wtype -k "F1" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 2 exec wtype -k "F2" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 3 exec wtype -k "F3" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 4 exec wtype -k "F4" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 5 exec wtype -k "F5" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 6 exec wtype -k "F6" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 7 exec wtype -k "F7" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 8 exec wtype -k "F8" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 9 exec wtype -k "F9" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 0 exec wtype -k "F10" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym minus exec wtype -k "F11" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym equal exec wtype -k "F12" ; mode "default"; seat seat0 hide_cursor when-typing enable
     bindsym d wtype -k "Delete"
 
     bindsym h seat - cursor move -50 0
@@ -182,56 +183,57 @@ mode $mode_cursor {
 # app launcher
 bindsym $mod+apostrophe mode $mode_app ; exec notify-send -u normal -r 199 -t 0 "$mode_app_msg"
 mode $mode_app {
-    bindsym Escape mode "default" ; exec dunstctl close
-    bindsym Space mode "default" ; exec dunstctl close
-    bindsym $mod+apostrophe mode "default" ; exec dunstctl close
-    bindsym $mod+semicolon exec dunstctl close ; mode $mode_cursor ; exec notify-send -u normal -r 197 -t 0 "$mode_cursor_msg"
-    bindsym $mod+w mode $mode_wmenu ; exec dunstctl close ; exec notify-send -u normal -r 198 -t 0 "$mode_wmenu_msg"
-    bindsym $mod+z exec dunstctl close ; mode $mode_z; exec notify-send -u normal -r 197 "$mode_z_msg"
+    bindsym Escape mode "default" ; exec dunstctl close 199
+    bindsym Space mode "default" ; exec dunstctl close 199
+    bindsym $mod+apostrophe mode "default" ; exec dunstctl close 199
+    bindsym $mod+semicolon exec dunstctl close 199 ; mode $mode_cursor ; exec notify-send -u normal -r 197 -t 0 "$mode_cursor_msg"; seat seat0 hide_cursor when-typing disable
+    bindsym $mod+w mode $mode_wmenu ; exec dunstctl close 199 ; exec notify-send -u normal -r 198 -t 0 "$mode_wmenu_msg"
+    bindsym $mod+z exec dunstctl close ; mode $mode_z; exec notify-send -u normal -r 196 -t 0 "$mode_z_msg"
 
-    bindsym b exec --no-startup-id $term newsboat ; mode "default" ; exec dunstctl close 
-    bindsym c exec --no-startup-id $term calcurse ; mode "default" ; exec dunstctl close 
-    bindsym e exec --no-startup-id code ; mode "default" ; exec dunstctl close
-    bindsym f exec --no-startup-id firefox ; mode "default" ; exec dunstctl close
-    bindsym g exec --no-startup-id gimp ; mode "default" ; exec dunstctl close
-    bindsym k exec --no-startup-id kdenlive ; mode "default" ; exec dunstctl close
-    bindsym n exec --no-startup-id $term ncmpcpp ; mode "default" ; exec dunstctl close
-    bindsym t exec --no-startup-id $term btop ; mode "default" ; exec dunstctl close
+    bindsym b exec --no-startup-id $term newsboat ; mode "default" ; exec dunstctl close 199
+    bindsym c exec --no-startup-id $term calcurse ; mode "default" ; exec dunstctl close 199
+    bindsym e exec --no-startup-id code ; mode "default" ; exec dunstctl close 199
+    bindsym f exec --no-startup-id firefox ; mode "default" ; exec dunstctl close 199
+    bindsym g exec --no-startup-id gimp ; mode "default" ; exec dunstctl close 199
+    bindsym k exec --no-startup-id kdenlive ; mode "default" ; exec dunstctl close 199
+    bindsym n exec --no-startup-id $term ncmpcpp ; mode "default" ; exec dunstctl close 199
+    bindsym t exec --no-startup-id $term btop ; mode "default" ; exec dunstctl close 199
+    bindsym d exec --no-startup-id thunderbird ; mode "default" ; exec dunstctl close 199
     }
-bindsym $mod+w mode $mode_wmenu; exec notify-send -u normal -r 198 "$mode_wmenu_msg"
+bindsym $mod+w mode $mode_wmenu; exec notify-send -u normal -r 198 -t 0 "$mode_wmenu_msg"
 mode $mode_wmenu {
-    bindsym Escape mode "default" ; exec dunstctl close
-    bindsym Space mode "default" ; exec dunstctl close
-    bindsym $mod+w mode "default" ; exec dunstctl close
-    bindsym $mod+semicolon exec dunstctl close ; mode $mode_cursor ; exec notify-send -u normal -r 197 -t 0 "$mode_cursor_msg"
-    bindsym $mod+apostrophe exec dunstctl close ; mode $mode_app ; exec notify-send -u normal -r 199 "$mode_app_msg"
-    bindsym $mod+z exec dunstctl close ; mode $mode_z; exec notify-send -u normal -r 197 "$mode_z_msg"
+    bindsym Escape mode "default" ; exec dunstctl close 198
+    bindsym Space mode "default" ; exec dunstctl close 198
+    bindsym $mod+w mode "default" ; exec dunstctl close 198
+    bindsym $mod+semicolon exec dunstctl close 198 ; mode $mode_cursor ; exec notify-send -u normal -r 197 -t 0 "$mode_cursor_msg"; seat seat0 hide_cursor when-typing disable
+    bindsym $mod+apostrophe exec dunstctl close 198 ; mode $mode_app ; exec notify-send -u normal -r 199 -t 0 "$mode_app_msg"
+    bindsym $mod+z exec dunstctl close 198 ; mode $mode_z; exec notify-send -u normal -r 196 -t 0 "$mode_z_msg"
 
-    bindsym w exec --no-startup-id ~/.local/bin/wwiki ; mode "default"; exec dunstctl close
-    bindsym h exec --no-startup-id ~/.local/bin/wheart ; mode "default"; exec dunstctl close
-    bindsym b exec --no-startup-id ~/.local/bin/wbook ; mode "default"; exec dunstctl close
-    bindsym a exec --no-startup-id ~/.local/bin/amount ; mode "default"; exec dunstctl close
-    bindsym f exec --no-startup-id ~/.local/bin/flocks ; mode "default"; exec dunstctl close
-    bindsym p exec --no-startup-id ~/.local/bin/poff ; mode "default"; exec dunstctl close
-    bindsym s exec --no-startup-id ~/.local/bin/wshot ; mode "default"; exec dunstctl close
-    bindsym c exec --no-startup-id $term ~/.local/bin/wcast ; mode "default"; exec dunstctl close
-    bindsym m exec --no-startup-id ~/.local/bin/wmulti ; mode "default"; exec dunstctl close
+    bindsym w exec --no-startup-id ~/.local/bin/wwiki ; mode "default"; exec dunstctl close 198
+    bindsym h exec --no-startup-id ~/.local/bin/wheart ; mode "default"; exec dunstctl close 198
+    bindsym b exec --no-startup-id ~/.local/bin/wbook ; mode "default"; exec dunstctl close 198
+    bindsym a exec --no-startup-id ~/.local/bin/amount ; mode "default"; exec dunstctl close 198
+    bindsym f exec --no-startup-id ~/.local/bin/flocks ; mode "default"; exec dunstctl close 198
+    bindsym p exec --no-startup-id ~/.local/bin/poff ; mode "default"; exec dunstctl close 198
+    bindsym s exec --no-startup-id ~/.local/bin/wshot ; mode "default"; exec dunstctl close 198
+    bindsym c exec --no-startup-id $term ~/.local/bin/wcast ; mode "default"; exec dunstctl close 198
+    bindsym m exec --no-startup-id ~/.local/bin/wmulti ; mode "default"; exec dunstctl close 198
 }
-bindsym $mod+z mode $mode_z; exec notify-send -u normal -r 197 "$mode_z_msg"
+bindsym $mod+z mode $mode_z; exec notify-send -u normal -r 196 -t 0 "$mode_z_msg"
 mode $mode_z {
-    bindsym Escape mode "default" ; exec dunstctl close
-    bindsym Space mode "default" ; exec dunstctl close
-    bindsym $mod+z mode "default" ; exec dunstctl close
-    bindsym $mod+semicolon exec dunstctl close ; mode $mode_cursor ; exec notify-send -u normal -r 197 -t 0 "$mode_cursor_msg"
-    bindsym $mod+apostrophe exec dunstctl close ; mode $mode_app ; exec notify-send -u normal -r 199 "$mode_app_msg"
-    bindsym $mod+w exec dunstctl close ; mode $mode_wmenu ; exec notify-send -u normal -r 198 "$mode_wmenu_msg"
+    bindsym Escape mode "default" ; exec dunstctl close 196
+    bindsym Space mode "default" ; exec dunstctl close 196
+    bindsym $mod+z mode "default" ; exec dunstctl close 196
+    bindsym $mod+semicolon exec dunstctl close 196 ; mode $mode_cursor ; exec notify-send -u normal -r 197 -t 0 "$mode_cursor_msg"; seat seat0 hide_cursor when-typing disable
+    bindsym $mod+apostrophe exec dunstctl close 196 ; mode $mode_app ; exec notify-send -u normal -r 199 -t 0 "$mode_app_msg"
+    bindsym $mod+w exec dunstctl close 196 ; mode $mode_wmenu ; exec notify-send -u normal -r 198 -t 0 "$mode_wmenu_msg"
 
-    bindsym t input type:touchpad tap enabled, exec notify-send "tap enabled" ; mode "default"; exec dunstctl close
-    bindsym Shift+t input type:touchpad tap disabled, exec notify-send "tap disabled" ; mode "default"; exec dunstctl close
-    bindsym p input type:touchpad events toggle enabled, exec notify-send "touchpad enabled" ; mode "default"; exec dunstctl close
-    bindsym Shift+p input type:touchpad events toggle disabled, exec notify-send "touchpad disabled" ; mode "default"; exec dunstctl close
-    bindsym c exec cliphist wipe; mode "default"; exec dunstctl close
-    bindsym w exec ~/.local/bin/dw ; mode "default"; exec dunstctl close
+    bindsym t input type:touchpad tap enabled, exec notify-send "tap enabled" ; mode "default"; exec dunstctl close 196
+    bindsym Shift+t input type:touchpad tap disabled, exec notify-send "tap disabled" ; mode "default"; exec dunstctl close 196
+    bindsym p input type:touchpad events toggle enabled, exec notify-send "touchpad enabled" ; mode "default"; exec dunstctl close 196
+    bindsym Shift+p input type:touchpad events toggle disabled, exec notify-send "touchpad disabled" ; mode "default"; exec dunstctl close 196
+    bindsym c exec cliphist wipe; mode "default"; exec dunstctl close 196
+    bindsym w exec ~/.local/bin/dw ; mode "default"; exec dunstctl close 196
 
 }
 

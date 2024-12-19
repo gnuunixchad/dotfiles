@@ -3,4 +3,4 @@
 selected_output=$(swaymsg -t get_outputs -p | grep Output | wmenu -p "wshot: " -l 3 -f "SourceCodePro medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | awk '{print $2}' )
 
 #wf-recorder --no-damage -r 30 --audio=rnnoise_source -g "$(slurp -ro)" -f ~/recording.mp4
-wf-recorder --no-damage -r 30 --audio=rnnoise_source -o $selected_output -f ~/tmp/recording-$(date +%Y-%m-%d-%H-%m-%S).mp4
+wf-recorder --no-damage -r 30 --audio=rnnoise_source -o $selected_output -f ~/tmp/recording-$(date +%Y-%m-%d-%H-%m).mp4
