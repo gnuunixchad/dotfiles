@@ -50,6 +50,10 @@
 !.config/Code - OSS/User
 !.config/Code - OSS/User/keybindings.json
 !.config/Code - OSS/User/settings.json
+!.config/VSCodium/
+!.config/VSCodium/User
+!.config/VSCodium/User/keybindings.json
+!.config/VSCodium/User/settings.json
 !.config/dunst/
 !.config/dunst/dunstrc
 !/.config/fcitx5/
