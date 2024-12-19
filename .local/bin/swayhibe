@@ -6,7 +6,7 @@
 # swayhibe
 # hibernate in sway with a wmenu warning prompt
 
-user_choice=$(echo -e "no\nyes" | wmenu -f "SourceCodePro medium 13" -p "System Hibernation?." -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
+user_choice=$(echo -e "no\nyes" | wmenu -f "SourceCodePro medium 13" -p "System Hibernation?" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
 
 if [[ $user_choice == "yes" ]]; then
     systemctl hibernate
