@@ -20,8 +20,8 @@ set $mode_z "Z"
 set $mode_z_msg enable[t]ap disable[T]ap \n enable[p]ad disable[P]ad \n wipe[c]lipist d[w] 
 
 bar {
-	swaybar_command waybar
-}
+    swaybar_command waybar
+    }
 
 #<colorclass> <border> <background> <text> <indicator> <child_border>
 client.focused		        #9962b7 #9962b7 #F1F1F1 #e6da00
@@ -30,7 +30,7 @@ client.unfocused            #bbccdd #bbccdd #F1F1F1 #bbccdd
 font pango:monospace 0.001
 titlebar_padding 1
 titlebar_border_thickness 0
-floating_modifier $mod normal
+floating_modifier $mod
 seat seat0 hide_cursor 3000
 seat seat0 hide_cursor when-typing enable
 
@@ -65,7 +65,7 @@ exec swayidle -w \
          timeout 600 'brightnessctl set 4% -s' resume 'brightnessctl -r'\
          timeout 900 'swaylock' \
          timeout 960 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock' 
+         before-sleep 'swaylock'
 exec foot --server
 exec sleep 3 && $term -T "Scratchpad Tmux" tmux
 exec --no-startup-id "clsd"
@@ -73,13 +73,16 @@ exec --no-startup-id "gammastep -O 5000"
 exec --no-startup-id "fcitx5 -d"
 exec --no-startup-id "wl-paste --watch cliphist store"
 
+# keybindings
 bindsym --release Caps_Lock exec "if [ $(cat /sys/class/leds/input*::capslock/brightness) == 0 ]; then notify-send -r 195 'CapsLock off'; else notify-send -r 195 'CapsLock on'; fi"
 
+bindsym $mod+q kill
+bindsym $mod+d exec $menu
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term -T "Floating Term"
 bindsym $mod+Control+Return exec $term -T "Scratchpad Tmux" tmux
-bindsym $mod+q kill
-bindsym $mod+d exec $menu
+bindsym $mod+r exec --no-startup-id $term ranger
+
 bindsym $mod+Shift+r reload
 bindsym $mod+Control+r exec swaymsg "output * bg ~/.local/share/wallpaper fill"
 bindsym $mod+Shift+e exec ~/.local/bin/swayexit
@@ -92,6 +95,7 @@ bindsym $mod+Shift+a exec --no-startup-id cat ~/.local/share/bookmarks/bookmarks
 bindsym $mod+n exec --no-startup-id "dunstctl history-pop"
 bindsym $mod+Shift+n exec --no-startup-id "dunstctl close"
 bindsym $mod+CONTROL+n exec --no-startup-id "dunstctl close-all"
+bindsym $mod+backspace exec --no-startup-id "dunstctl close-all"
 # swaylock is configured at ~/.config/swaylock/config
 bindsym $mod+Shift+CONTROL+l exec --no-startup-id "swaylock"
 # adjust window gaps
@@ -112,8 +116,7 @@ bindsym $mod+Shift+minus exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SO
 bindsym $mod+Shift+equal exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%+ && wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | sed 's/[^0-9]//g' > $wob
 bindsym $mod+Shift+m exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 bindsym $mod+CONTROL+p exec --no-startup-id mpc toggle
-# launcher
-bindsym $mod+r exec --no-startup-id $term ranger
+
 ## take a screenshot with a selected part
 bindsym $mod+g exec --no-startup-id slurp | grim -g - && notify-send -u low -r 88 "Screenshot taken on selected geometry"
 ## take a screenshot with all monitors
@@ -128,6 +131,7 @@ bindsym $mod+CONTROL+k exec wtype -k 'Up'
 bindsym $mod+CONTROL+l exec wtype -k 'Right'
 bindsym Control+e exec wtype -k 'Escape'
 
+# sway mode
 # Use keyboard as mouse
 bindsym $mod+semicolon mode $mode_cursor ; exec notify-send -u normal -r 197 -t 5000 "$mode_cursor_msg"; seat seat0 hide_cursor when-typing disable
 mode $mode_cursor {
@@ -151,7 +155,7 @@ mode $mode_cursor {
     bindsym minus exec wtype -k "F11" ; mode "default"; seat seat0 hide_cursor when-typing enable
     bindsym equal exec wtype -k "F12" ; mode "default"; seat seat0 hide_cursor when-typing enable
     bindsym d wtype -k "Delete"
-
+    # mouse cursor
     bindsym h seat - cursor move -50 0
     bindsym j seat - cursor move 0 +50
     bindsym k seat - cursor move 0 -50
@@ -160,22 +164,19 @@ mode $mode_cursor {
     bindsym Shift+j seat - cursor move 0 +10
     bindsym Shift+k seat - cursor move 0 -10
     bindsym Shift+l seat - cursor move +10 0
-
+    bindsym slash seat - cursor set 9999 9999
+    # arrow keys
     bindsym $mod+h exec wtype -k "Left"
     bindsym $mod+j exec wtype -k "Down"
     bindsym $mod+k exec wtype -k "Up"
     bindsym $mod+l exec wtype -k "Right"
-
-
-    bindsym slash seat - cursor set 9999 9999
-
     # Left click (click won't work as a keybindings if with $mod key)
     bindsym $mod+comma seat - cursor press button1, seat - cursor release button1
     bindsym comma seat - cursor press button1, seat - cursor release button1
     # Right click
     bindsym $mod+period seat - cursor press button3, seat - cursor release button3
     bindsym period seat - cursor press button3, seat - cursor release button3
-
+    # page keys
     bindsym p exec wtype -k "Page_up"
     bindsym n exec wtype -k "Page_down"
     }
@@ -200,6 +201,7 @@ mode $mode_app {
     bindsym t exec --no-startup-id $term btop ; mode "default" ; exec dunstctl close 199
     bindsym d exec --no-startup-id thunderbird ; mode "default" ; exec dunstctl close 199
     }
+
 bindsym $mod+w mode $mode_wmenu; exec notify-send -u normal -r 198 -t 0 "$mode_wmenu_msg"
 mode $mode_wmenu {
     bindsym Escape mode "default" ; exec dunstctl close 198
@@ -219,6 +221,7 @@ mode $mode_wmenu {
     bindsym c exec --no-startup-id $term ~/.local/bin/wcast ; mode "default"; exec dunstctl close 198
     bindsym m exec --no-startup-id ~/.local/bin/wmulti ; mode "default"; exec dunstctl close 198
 }
+
 bindsym $mod+z mode $mode_z; exec notify-send -u normal -r 196 -t 0 "$mode_z_msg"
 mode $mode_z {
     bindsym Escape mode "default" ; exec dunstctl close 196
@@ -234,9 +237,9 @@ mode $mode_z {
     bindsym Shift+p input type:touchpad events toggle disabled, exec notify-send "touchpad disabled" ; mode "default"; exec dunstctl close 196
     bindsym c exec cliphist wipe; mode "default"; exec dunstctl close 196
     bindsym w exec ~/.local/bin/dw ; mode "default"; exec dunstctl close 196
-
 }
 
+# managing windows
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -270,7 +273,6 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 bindsym $mod+tab workspace back_and_forth
-
 bindsym $mod+comma workspace prev_on_output
 bindsym $mod+period workspace next_on_output
 bindsym $mod+Shift+comma move container to workspace prev_on_output
