@@ -1,0 +1,7 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+echo "http: $http_proxy";
+echo "https: $https_proxy";

@@ -1,0 +1,15 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# swayexit
+# exit sway with a wmenu warning prompt
+
+user_choice=$(echo -e "no\nyes" | wmenu -f "SourceCodePro medium 13" -p "Exit sway? This will end your Wayland session." -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
+
+if [[ $user_choice == "yes" ]]; then
+    sway exit
+else
+    exit 1
+fi

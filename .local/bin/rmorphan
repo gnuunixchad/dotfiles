@@ -1,0 +1,14 @@
+#!/bin/env bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# rmorphan
+
+orphan_pkg=$(pacman -Qdtq)
+
+if [ -n "$orphan_pkg" ]; then
+    sudo pacman -Rns $(pacman -Qdtq)
+else
+    echo "no orphaned packags"
+fi

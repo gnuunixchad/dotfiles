@@ -1,0 +1,17 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+# allow access to /media, must use with whitelist to ensure security
+ignore disable-mnt
+
+include whitelist-common.local
+include mpv.local
+
+whitelist ${HOME}/.cache/ranger
+whitelist ${HOME}/mus
+whitelist ${HOME}/vid
+whitelist ${HOME}/pic
+
+net none

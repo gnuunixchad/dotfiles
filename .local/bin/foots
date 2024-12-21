@@ -1,0 +1,6 @@
+#!/bin/env bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+foot --server

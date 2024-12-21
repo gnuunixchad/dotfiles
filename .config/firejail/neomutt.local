@@ -1,0 +1,16 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+include whitelist-common.local
+include blacklist-gpg.local
+
+whitelist ${HOME}/.config/nvim
+whitelist ${HOME}/.config/vim
+
+noblacklist ${HOME}/.cache/mutt
+noblacklist ${HOME}/mail/
+noblacklist ${HOME}/doc/mail
+whitelist ${HOME}/doc/mail
+#whitelist ${HOME}/.config/mutt

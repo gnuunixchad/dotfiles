@@ -1,0 +1,14 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# lsmus
+# list current playing music with mpc
+
+msg=$(mpc current)
+
+echo -e "$msg"
+if [[ "$XDG_SESSION_TYPE" != "tty" ]]; then
+    notify-send -u low -r 188 "mpc current" "$msg"
+fi

@@ -1,0 +1,9 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+whitelist ${HOME}/vid
+read-only ${HOME}/vid
+#whitelist /media/nate/
+#read-only /media/nate/

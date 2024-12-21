@@ -1,0 +1,11 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+# comment for now for get cookies
+#include whitelist-common.local
+include blacklist-gpg.local
+
+# allow yt-dlp to use firefox cookies for certain websites
+noblacklist ${HOME}/.mozilla

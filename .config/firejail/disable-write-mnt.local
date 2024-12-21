@@ -1,0 +1,8 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+#read-only /media/dsk0
+#read-only /media/dsk1
+read-only /data

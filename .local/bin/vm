@@ -1,0 +1,9 @@
+#!/bin/env bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# vm
+# abbreviation for wmenu-run
+
+exec /usr/bin/virt-manager

@@ -1,0 +1,26 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# awiki
+# search arch-wiki-docs package's files in wmenu and open in firefox
+
+wiki_path_share=/usr/share/doc/arch-wiki/html/en/
+wiki_path_local=$HOME/doc/arch-wiki/
+
+if [[ -d "$wiki_path_share" ]]; then
+    wiki_path="$wiki_path_share"
+else
+    wiki_path="$wiki_path_local"
+fi
+
+selected_page=$(find "$wiki_path" -type f | wmenu -l 6 -i -p "wwiki: " -f "SourceCodePro Medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
+
+
+# don't do anything if exiting wmenu without any input
+if  [[ -n "$selected_page" ]]; then
+    firefox file://"$selected_page"
+fi
+
+

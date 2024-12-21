@@ -1,0 +1,18 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+#include whitelist-common.local
+#
+#whitelist ${HOME}/doc/gimp
+#whitelist ${HOME}/.config/GIMP
+#whitelist ${HOME}/.config/gtk-2.0
+#whitelist ${HOME}/.config/gtk-3.0
+#whitelist ${HOME}/.config/gtk-4.0
+#whitelist ${HOME}/.cache/gimp
+#
+#include whitelist-player-pic.local
+#include blacklist-gpg.local
+
+net none

@@ -1,0 +1,205 @@
+// @author nate zhou
+// @since 2023,2024
+// codeberg.org/unixchad/dotfiles
+// github.com/gnuunixchad/dotfiles
+
+// -*- mode: jsonc -*-
+{
+    //"height": 26, // Waybar height (to be removed for auto height)
+    "spacing": 4, // Gaps between modules (4px)
+    "modules-left": [
+        "sway/workspaces",
+        "sway/scratchpad",
+        //"custom/capslock",
+        "sway/window"
+    ],
+    "modules-center":[
+        "sway/mode",
+        "privacy"
+    ],
+    "modules-right": [
+        //"tray",
+        //"mpd",
+        "custom/pacman",
+        "custom/wttr",
+        "network",
+        "group/storage",
+        "group/cpu",
+        "backlight",
+        "pulseaudio",
+        "battery",
+        "clock",
+        "idle_inhibitor"
+    ],
+    "sway/workspaces": {
+	"window-rewrite": {},
+},
+    "sway/mode": {
+        "format": "{}",
+    },
+    "sway/window":{
+        "expand": true,
+        "tooltip": false,
+        "icon":false,
+        //"max-length":45
+    },
+    "sway/scratchpad": {
+        "tooltip": false,
+        "format": "{icon} {count}",
+        "show-empty": true,
+        "format-icons": [""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "idle_inhibitor": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰈈",
+            "deactivated": "󰈉"
+        }
+    },
+    "tray": {
+        "icon-size":16,
+        "spacing": 10
+    },
+    "clock": {
+        "timezone": "Asia/Singapore",
+        //"tooltip": false,
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%b-%d %a %H:%M}",
+        //"format-alt": "{:%Y-%m-%d}",
+        "calendar": {
+            "mode": "month",
+            "format": {
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#99ffdd'><b><u>{}</u></b></span>"
+            }
+        },
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": " {}%",
+        "tooltip": false
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "tooltip": false,
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "tooltip": false,
+        "format-icons": ["󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖"]
+    },
+    "battery": {
+        "tooltip": false,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "tooltip": false,
+        "interval":5,
+        "format-wifi": "{bandwidthTotalBytes}  󰖩 {signalStrength}%",
+        "format-ethernet": "{bandwidthTotalBytes}   {ifname}",
+        "format-disconnected": "{bandwidthTotalBytes} 󰖪 ",
+    },
+    "pulseaudio": {
+        "tooltip": false,
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {volume}% {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " {volume}%",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+    },
+    "mpd": {
+        //"format": "🎜 {artist} - {title}",
+        "format": "🎜 {title}",
+        "title-len": 30,
+        "artist-len": 24,
+        "format-disconnected": "🎜",
+        "format-stopped": "🎜",
+        "unknown-tag": "unknown",
+        "interval": 5,
+    	"tooltip": false,
+    },
+    "privacy": {
+    	"icon-spacing": 4,
+    	"icon-size": 18,
+    	"modules": [
+    		{
+    			"type": "screenshare",
+    			"tooltip": true,
+    			"tooltip-icon-size": 12
+    		},
+    		{
+    			"type": "audio-out",
+    			"tooltip": true,
+    			"tooltip-icon-size": 12
+    		},
+    		{
+    			"type": "audio-in",
+    			"tooltip": true,
+    			"tooltip-icon-size": 12
+    		}
+    	]
+    },
+    "disk": {
+        "interval": 30,
+        "format": "🗁 {percentage_used}%",
+        "tooltip": false,
+        "path": "/"
+    },
+    "group/cpu": {
+        "orientation": "horizontal",
+        "modules": [
+            "cpu",
+            "temperature"
+        ]
+    },
+    "group/storage": {
+        "orientation": "horizontal",
+        "modules": [
+            "disk",
+            "memory"
+        ]
+    },
+    "custom/capslock": {
+        "format": "A {}",
+        "max-length": 8,
+        "tooltip": false,
+        "interval": 1,
+        "exec": "cat /sys/class/leds/input*::capslock/brightness"
+    },
+    "custom/wttr": {
+        "format": "{}",
+        //"max-length": 10,
+        "interval": 300,
+        "tooltip": false,
+        "exec": "head -1 ~/.cache/wttr"
+    },
+    "custom/pacman": {
+        "format": " {}",
+        //"max-length": 10,
+        "interval": 300,
+        "tooltip": false,
+        "exec": "wc -w ~/.cache/checkupdates-cron.log | cut -d' ' -f1"
+    }
+}

@@ -1,0 +1,11 @@
+#!/bin/bash
+# open the private window of firefox
+# my personal script for fast launching 
+# private window from dmenu
+#
+# @author nate zhou
+# @since 2023
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+firefox --private-window;

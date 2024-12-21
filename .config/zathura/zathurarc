@@ -1,0 +1,23 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+set recolor true
+# set background to a dark color
+set recolor-lightcolor "#191919"
+# set foreground to a lighter color (font color)
+set recolor-darkcolor "#bfbfbf"
+# preserve diagram graph colouring
+set recolor-keephue true
+
+# toggle invert color
+map I recolor
+
+map n scroll half-down
+map p scroll half-up
+map P print
+
+# zoom in and out
+map i zoom in
+map o zoom out

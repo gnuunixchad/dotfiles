@@ -1,0 +1,10 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# gallery-new
+# show gallery images with imv, with lastest modified images first
+
+#ls $(find $HOME/pic/kirei*/ -type f ) | grep -e .jpeg -e .jpg -e .png -e .gif -e .mp4 -e .webm | imv
+swayimg $(ls $(find $HOME/pic/kirei*/ -type f ) | grep -e .jpeg -e .jpg -e .png -e .gif -e .mp4 -e .webm | shuf)

@@ -1,0 +1,9 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# depends rename package on debian (perl-rename on arch linux)
+# rename files, replacing spaces with underlines
+
+perl-rename 's/ /_/g' "$@"

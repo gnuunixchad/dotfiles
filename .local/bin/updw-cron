@@ -1,0 +1,60 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# updw-cron, update dunst weather with crontab
+# @depends: libnotify, dunst, cronie, dw*, updw*
+# running with dmenu/wmenu is recommended
+
+wttr_cache="$HOME/.cache/wttr"
+# if cache doesn't exist, init by calling updw
+if [[ ! -f "$HOME/.cache/wttr" ]]; then
+    $HOME/.local/bin/updw
+fi
+
+# modified time in seconds since the Epoch
+update_time=$(stat -c "%Y" "$wttr_cache")
+# seconds since the Epoch
+current_time=$(date +%s)
+update_frequency=3600 # in seconds, 7200s = 2H
+
+if [[ -f $HOME/.cache/city ]]; then
+    city=$(cat $HOME/.cache/city)
+
+    if [[ -z $city ]]; then
+        msg="~/.cache/city is empty, write the city name to it"
+        #notify-send -u low -r 21 "$msg"
+        echo $msg
+    else
+
+        # check last update time
+        # only download weather if gap's greater than 2 hours
+        if [[ $(("$current_time" - "$update_time")) -gt "$update_frequency" ]]; then
+        # try to download weather info
+        wttr_temp=$(curl wttr.in/$city?format=1)
+        else
+            echo "Already updated within past $(($update_frequency/3600)) hours"
+            exit 1
+        fi
+
+        # check if curl returns a temperature
+        if [[ $wttr_temp == *°C* ]] ; then
+            echo $wttr_temp > $HOME/.cache/wttr
+            # adding update timestamp
+            echo "($(date +'%b-%d %a %H:%M'))" >> $HOME/.cache/wttr
+            msg="updw done"
+            #notify-send -u low -r 22 "$msg"
+            echo $msg
+        else
+            msg="updw failed, check network ?"
+            #notify-send -u low -r 21 "$msg"
+            echo $msg
+        fi
+    fi
+
+else
+    msg="~/.cache/city does not exist, write the city name to it"
+    notify-send -u low -r 21 "$msg"
+    echo $msg
+fi

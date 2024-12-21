@@ -1,0 +1,37 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+# randwall-cron
+# random wallpaper daily with cronie
+# use cron to refresh wallpaper everyday
+# 0 * * * * $HOME/.local/bin/randwall-cron
+
+wallpaper_path="$HOME/.local/share/wallpaper"
+date_last_bg=$(stat "$wallpaper_path" | grep "^Modify:" | awk '{print $2}')
+date_today=$(date -I)
+
+refresh_bg() {
+    random_wallpaper=$(find $HOME/pic/wallpapers -type f | grep -e earth -e photography -e spolight -e collection| grep -e .jpeg -e .jpg -e .png -e .gif | shuf -n 1)
+    # set the selected image as sway background
+    cp -f $random_wallpaper "$wallpaper_path";
+    # refresh swaybg
+    # without SWAYSOCK variable, swaymsg couldn't connect to the socket running from a cron job
+    SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock swaymsg "output * bg \"$wallpaper_path\" fill"
+}
+
+# don't do anything if mpvpaper is running
+if pgrep -x "mpvpaper" > /dev/null
+then
+    echo "mpvpaper is running..."
+    exit 1
+# don't do anything if wf-recorder is running
+elif pgrep -x "wf-recorder" > /dev/null
+then
+    echo "wf-recorder is running..."
+    exit 1
+# refresh wallpaper if haven't been yet today or wallpaper hasn't been set
+elif [[ $date_last_bg != $date_today || ! -f $wallpaper_path ]]; then
+    refresh_bg
+fi

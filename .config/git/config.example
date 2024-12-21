@@ -1,0 +1,18 @@
+# @author nate zhou
+# @since 2023,2024
+# codeberg.org/unixchad/dotfiles
+# github.com/gnuunixchad/dotfiles
+
+# use neovim as diff tool
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE
+
+[user]
+	email = noreply
+	name = nobody
+#[http]
+#	proxy = 127.0.0.1:PORT
+#[https]
+#	proxy = 127.0.0.1:PORT
