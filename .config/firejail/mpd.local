@@ -1,0 +1,6 @@
+# @author nate zhou
+# @since 2023,2024
+
+noblacklist ${HOME}/mus/*
+include blacklist-common.local
+include blacklist-gpg.local

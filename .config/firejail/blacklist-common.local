@@ -1,0 +1,10 @@
+# @author nate zhou
+# @since 2024
+
+noblacklist ${HOME}/doc/heart
+blacklist ${HOME}/doc/*
+blacklist ${HOME}/mus/*
+blacklist ${HOME}/pic/*
+blacklist ${HOME}/vid/*
+blacklist ${HOME}/smb/*
+blacklist ${HOME}/pkg/*

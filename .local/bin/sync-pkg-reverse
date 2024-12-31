@@ -1,0 +1,11 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+# sync-config-reverse
+# sync config files from backup to system
+
+# DON't add `--delete`
+# source path must have an ending `/`
+
+# yay cache
+rsync -avh --progress $HOME/pkg/yay/ $HOME/.cache/yay/

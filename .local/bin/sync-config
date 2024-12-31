@@ -1,0 +1,25 @@
+#!/bin/bash
+# sync-config
+# @author nate zhou
+# @since 2024
+
+heart="$HOME/doc/heart"
+dotfiles="$HOME/doc/unixchad/dotfiles"
+
+read -p "Continue? (y/n): " choice
+if [[ $choice == "y" || $choice == "Y" ]]; then
+    pacman -Qmq | sort > "$heart"/aur.list
+    pacman -Qenq | sort > "$heart"/arch.list
+
+    crontab -l > "$heart"/.config/crontab.backup && echo "crontab backup done" || echo "crontab backup failed"
+
+    # censor bookmarks for screen casting
+    grep -n "##############################below-are-private##############################" ~/doc/heart/.local/share/bookmarks/bookmarks | cut -d: -f1 | xargs -I {} sed -n '1,{}p' ~/doc/heart/.local/share/bookmarks/bookmarks > ~/doc/heart/.local/share/bookmarks/bookmarks-record && echo "bookmarks-record updated" || echo "bookmarks-record update failed"
+
+    # unixchad
+    git --git-dir ~/doc/.heart/.git --work-tree ~/doc/.heart pull && echo "heart is pulled" || echo "heart pulling failed"
+    rsync -a --delete "$heart"/../.heart/ --exclude .git --exclude .local/sbin/ --exclude arch.list --exclude aur.list --exclude install.md "$dotfiles" && chmod 755 "$dotfiles"
+else
+    echo "aborted"
+    exit 0
+fi

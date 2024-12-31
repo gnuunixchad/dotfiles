@@ -1,0 +1,17 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# lsmus
+# list current playing music with mpc
+
+
+msg=$(mpc current)
+title="lsmus"
+
+if [[ -n "$msg" ]]; then
+    echo -e "$msg"
+    if [[ "$XDG_SESSION_TYPE" != "tty" ]]; then
+        [ -z "$msg"] && title=""
+        notify-send -u low -r 188 "$title" "$msg"
+    fi
+fi

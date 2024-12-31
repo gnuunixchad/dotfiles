@@ -1,0 +1,35 @@
+# @author nate zhou
+# @since 2023,2024
+
+set font 'SourceCodePro normal 11'
+set selection-clipboard clipboard
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+
+set recolor true
+# set background to a dark color
+set default-bg "#191919"
+set statusbar-bg "#000000"
+set statusbar-basename
+set statusbar-bg "#6f3f89"
+
+set recolor-lightcolor "#191919"
+# set foreground to a lighter color (font color)
+set recolor-darkcolor "#eeeeee"
+# preserve diagram graph colouring
+set recolor-keephue true
+set highlight-fg '#005577'
+
+# toggle invert color
+map I recolor
+
+map n scroll half-down
+map p scroll half-up
+map P print
+
+# zoom in and out
+map i zoom in
+map o zoom out
+
+map b toggle_statusbar

@@ -1,0 +1,34 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# decrypt the .gpg file and pipe to a viewer, without writing to the disk
+
+usage() {
+    echo -e "usage:\tgpg-doc file.*.gpg\n\twmenu as passphrase prompt to temporarily view the encrypted files"
+}
+
+# print help menu if no arguments is provided
+if [ $# -eq 0 ]; then
+    usage
+    exit 1
+fi
+
+# use wmenu as passphrase prompt
+gpg_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "[gpg-doc] passphrase: " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
+
+# don't do anything if exiting wmenu without any input
+if  [[ -z "$gpg_passphrase" ]]; then
+    exit 1
+fi
+
+if [[ $1 == *".epub.gpg" || $1 == *".pdf.gpg" ]]; then
+    # ebooks with zathura
+    echo "$gpg_passphrase" | gpg --batch --passphrase-fd 0 -d "$1" | zathura -
+else
+    # plain text with less
+    echo "$gpg_passphrase" | gpg --batch --passphrase-fd 0 -d "$1" | less
+fi
+#gpg --pinentry-mode loopback -d $1 | less
+
+# clean cached passphrase
+gpg-connect-agent reloadagent /bye > /dev/null

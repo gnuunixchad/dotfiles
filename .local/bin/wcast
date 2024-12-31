@@ -1,0 +1,16 @@
+#!/bin/bash
+# @author nate zhou @since 2024
+# record-output record the selected output on wayland -a audio, -g geometry; -ro requires selecting one of the predefined rectangles for all outputs
+selected_output=$(swaymsg -t get_outputs -p | grep Output | wmenu -p "wshot: " -l 3 -f "SourceCodePro medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | awk '{print $2}' )
+
+wcast_state=$HOME/.cache/wcast
+cleanup() {
+    rm "$wcast_state"
+    killall -SIGUSR1 i3status
+}
+echo REC > "$wcast_state"
+killall -SIGUSR1 i3status
+#wf-recorder --no-damage -r 30 --audio=rnnoise_source -g "$(slurp -ro)" -f ~/recording.mp4
+wf-recorder -r 30 --audio=rnnoise_source -o $selected_output -f ~/tmp/recording-$(date +%Y-%m-%d-%H-%M).mp4 || cleanup
+
+trap cleanup EXIT

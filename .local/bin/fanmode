@@ -1,0 +1,63 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+# only works on asus laptop with linux kernel >= 5.6
+
+policy=/sys/devices/platform/asus-nb-wmi/throttle_thermal_policy
+# check if the file exists
+if [ ! -e $policy ]; then
+	# because notify-send would expect two arguments
+	# the title and the message, the option -I tells
+	# xagrs to replace the placeholder {} with the 
+	# second argument(the message) of notify-send
+	# it may work with out -I and {} from command
+	# line, but not in a bash script
+	echo "Not a supported asus laptop." | tee /dev/tty | xargs -I {} notify-send -r 2 -u low "fanmode" {}
+	exit 1
+fi
+
+value=$(cat $policy)
+
+
+if [ $# -eq 0 ]; then
+	echo "Usage: fanmode [mode], 0 default, 1 boost, 2 silent"
+elif [ $# -eq 1 ]; then
+	case $1 in
+		0)
+			# 1. `sudo echo 0 > $policy` doesn't work since the
+			#    redirector `>` doesn't have sudo privilege
+			# 2. pipe to null so echo doesn't print to stdout
+			echo "echo 0 | sudo tee $policy > /dev/null"
+			echo 0 | sudo tee $policy > /dev/null
+			;;
+		1)
+			echo "echo 1 | sudo tee $policy > /dev/null"
+			echo 1 | sudo tee $policy > /dev/null
+			;;
+		2)
+			echo "echo 2 | sudo tee $policy > /dev/null"
+			echo 2 | sudo tee $policy > /dev/null
+			;;
+		*)
+			echo "Invalid argument, only 0,1,2 are allowed."
+			exit 1
+			;;
+	esac
+else
+	echo "Invalid argument, only zero or one argument allowed"
+	exit 1
+fi
+
+value=$(cat $policy)
+
+if [ "$value" -eq 0 ]; then
+ 	mode="0 (default)"
+elif [ "$value" -eq 1 ]; then
+	mode="1 (boost)"
+elif [ "$value" -eq 2 ]; then
+	mode="2 (silent)"
+fi
+
+echo $mode
+# send notification if in X
+notify-send -u low -r 2 "fanmod: $mode"

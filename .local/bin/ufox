@@ -1,0 +1,6 @@
+#!/bin/bash
+# launch firefox with nfox profile
+# @authoer nate zhou
+# @since 2023, 2024
+
+firefox -P ufox;

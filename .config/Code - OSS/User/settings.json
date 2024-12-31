@@ -1,0 +1,18 @@
+// @author nate zhou
+// @since 2023,2024
+{
+    "window.menuBarVisibility": "toggle",
+    "extensions.autoUpdate": false,
+    "redhat.telemetry.enabled": false,
+    // use system keymap, fixing vscodevim not using the swapped ESC and CAPSLOCK on Linux
+    "keyboard.dispatch": "keyCode",
+    // always turn on word wrap
+    "editor.wordWrap": "on",
+    "editor.fontFamily": "Source Code Pro",
+    "vim.neovimConfigPath": "~/.config/nvim/init.lua",
+    "vim.neovimPath": "/usr/bin/nvim",
+    "vim.neovimUseConfigFile": true,
+    "editor.fontSize": 15,
+    "editor.cursorBlinking": "solid"
+
+}

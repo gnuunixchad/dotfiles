@@ -1,0 +1,29 @@
+#!/bin/env bash
+# @author nate zhou
+# @since 2024
+# write uptime to a file with cronjob for i3status
+
+cache="$HOME/.cache/uptime"
+result=$(uptime -p | sed 's/up //; s/ day\(s\)\?/d/; s/ hour\(s\)\?/h/; s/[0-9]* minute.*//; s/,//g; s/ $//')
+update_time=$(stat -c "%Y" "$cache")
+current_time=$(date +%s)
+update_frequency=600 # in seconds
+
+recache() {
+    if [ -n "$result"  ]; then
+        echo "$result" > "$cache"
+    else
+        echo "<1h" > "$cache"
+     fi
+}
+
+if [ ! -f "$cache" ]; then
+    recache
+    exit 0
+fi
+
+if [[ $(("$current_time" - "$update_time")) -gt "$update_frequency" ]]; then
+    recache
+else
+        echo "Already updated within past $(($update_frequency/60)) min"
+fi  

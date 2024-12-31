@@ -1,0 +1,6 @@
+#!/bin/env bash
+# @author nate zhou
+# reset uptime for uptime-cron after reboot
+cache="$HOME/.cache/uptime"
+rm "$cache"
+~/.local/bin/uptime-cron

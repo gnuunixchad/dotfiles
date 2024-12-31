@@ -1,0 +1,4 @@
+# read html emails with w3m
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+# open pdf attachment with zathura
+application/pdf; zathura %s;

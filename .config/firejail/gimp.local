@@ -1,0 +1,9 @@
+# @author nate zhou
+# @since 2023,2024
+
+include blacklist-gpg.local
+noblacklist ${HOME}/doc/gimp
+noblacklist ${HOME}/pic/*
+include blacklist-common.local
+
+net none

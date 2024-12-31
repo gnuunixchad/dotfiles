@@ -1,0 +1,6 @@
+#!/bin/bash
+# download music by yt-dlp with preferred formats
+# @author nate zhou
+# @since 2023
+
+yt-dlp --embed-metadata --cookies-from-browser firefox -x --audio-format mp3 $@ && notify-send -u low -r 5 "pod-dlp: finished"

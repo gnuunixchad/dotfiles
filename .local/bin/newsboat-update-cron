@@ -1,0 +1,29 @@
+#!/bin/bash
+# sync-config
+# @author nate zhou
+# @since 2024
+
+news_cache="$HOME/.local/share/newsboat/cache.db"
+
+# modified time in seconds since the Epoch
+update_time=$(stat -c "%Y" "$news_cache")
+# seconds since the Epoch
+current_time=$(date +%s)
+#update_frequency=86400 # in seconds, 86400s = 1d
+update_frequency=14400 # 3H
+
+update_newsboat() {
+    /usr/bin/newsboat -x reload
+}
+
+if [[ ! -f "$news_cache" ]]; then
+    update_newsboat
+    exit 0
+fi
+
+if [[ $(("$current_time" - "$update_time")) -gt "$update_frequency" ]]; then
+    update_newsboat
+else
+    echo "Already updated within past $(($update_frequency/3600)) hours"
+    exit 1
+fi

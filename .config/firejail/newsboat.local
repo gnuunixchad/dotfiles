@@ -1,0 +1,14 @@
+# @author nate zhou
+# @since 2023,2024
+
+# disable newsboat in firecfg.config
+
+#include blacklist-gpg.local
+#
+#noblacklist ${HOME}/doc/heart
+#noblacklist ${HOME}/.config/newsboat
+#noblacklist ${HOME}/doc/heart/.config/newsboat
+#noblacklist ${HOME}/doc/newsboat
+#include blacklist-common.local
+#
+#private-bin less,w3m

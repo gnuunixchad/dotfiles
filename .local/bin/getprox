@@ -1,0 +1,5 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+echo "http: $http_proxy";
+echo "https: $https_proxy";

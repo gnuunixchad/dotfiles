@@ -1,0 +1,21 @@
+# @author nate zhou
+# @since 2023,2024
+
+# allow access to /media, must use with whitelist to ensure security
+ignore disable-mnt
+# whitelist httrack
+whitelist ${HOME}/doc/httrack
+read-only ${HOME}/doc/httrack
+
+whitelist ${HOME}/dls
+whitelist ${HOME}/tmp
+whitelist /data/tmp
+include blacklist-gpg.local
+
+whitelist ${HOME}/doc/code
+read-only ${HOME}/doc/code
+
+whitelist ${HOME}/vid/unixchad
+read-only ${HOME}/vid/unixchad
+
+novideo

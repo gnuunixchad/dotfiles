@@ -1,0 +1,7 @@
+#!/bin/env bash
+# @author nate zhou
+# @since 2024
+# vm
+# abbreviation for wmenu-run
+
+exec /usr/bin/virt-manager

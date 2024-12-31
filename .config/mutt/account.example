@@ -1,0 +1,30 @@
+# @author nate zhou
+# @since 2023,2024
+
+# put followings in a file and encrypt it
+# set my_pass = "password"
+source "gpg -dq $HOME/.config/mutt/account1.gpg |"
+
+set imap_user = "USER@DOMAIN.com"
+set imap_pass = $my_pass
+
+# send options
+#set smtp_url = "smtps://USEER@smtp.aliyun.com:465/"
+#set realname=''
+#set from=USER@aliyun.com
+#set hostname="aliyun.com"
+set ssl_force_tls = yes
+unset ssl_starttls
+
+set folder = "imaps://imap.aliyun.com"
+#set folder = "imaps://outlook.office365.com"
+set spoolfile = "+INBOX"
+# check for all IMAP folders
+set imap_check_subscribed
+
+# store message headers locally
+set header_cache = "~/.cache/mutt/account1/headers"
+# store message locally
+set message_cachedir = "~/.cache/mutt/account1/bodies"
+
+set certificate_file = "~/.cache/mutt/account1/certificates"

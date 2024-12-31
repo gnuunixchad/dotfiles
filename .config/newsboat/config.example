@@ -1,0 +1,26 @@
+# @author nate zhou
+# @since 2023,2024
+
+color listnormal_unread  color13 default
+color listfocus          white   color5
+color listfocus_unread   white   color5
+color info               default color5
+color article            default default
+
+# movement
+bind-key h quit
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key g home
+bind-key G end
+bind-key S save-all
+
+save-path ~/doc/newsboat
+
+browser "w3m %u"
+#refresh-on-startup yes
+reload-threads 100 # loading feeds in parallel
+
+#use-proxy yes
+#proxy localhost:PORT

@@ -1,0 +1,11 @@
+# @author nate zhou
+# @since 2023,2024
+
+include blacklist-common.local
+include blacklist-gpg.local
+
+whitelist ${HOME}/pkg/iso
+read-only ${HOME}/pkg/iso
+
+whitelist ${HOME}/vbox
+whitelist /data/vbox

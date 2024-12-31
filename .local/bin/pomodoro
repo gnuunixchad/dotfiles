@@ -1,0 +1,45 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+
+# cli pomodoro using sleep and echo command
+# syntax: pomodoro 25
+# sleep 25 minutes, then show message to take 5 minutes break
+
+if [ $# -eq 0 ]; then
+  echo "Usage: $0 <minutes>"
+  exit 1;
+fi
+
+# check if input is divisible by 5
+if [ $(( $1 % 5 )) -ne 0 ]; then
+  echo "Input must be divisible by 5"
+  exit 1;
+fi
+
+# get start time
+start_time=$(date +%s)
+
+# calculate seconds to sleep
+seconds=$(( $1 * 60 ))
+
+break_time=$(( $1 / 5 ))
+
+# loop until time is up
+while [ $(($(date +%s) - $start_time)) -lt $seconds ]
+do
+  # calculate time elapsed
+  time_elapsed=$(( ($(date +%s) - $start_time) / 60 ))
+
+  # display message with current time elapsed
+  echo "${time_elapsed} of ${1} minutes passed"
+
+  # sleep for 1 second before checking again
+  sleep 60
+done
+
+# display final message when time is up
+echo "${1} minutes passed, take a ${break_time} minute break!"
+
+# send notification in X
+notify-send -u normal -r 2002 pomodoro "${1} minutes passed,\n take a ${break_time} minute break!"

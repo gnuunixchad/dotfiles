@@ -1,0 +1,9 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# gallery-new
+# show gallery images with imv, with lastest modified images first
+# imv has max argument limited to 128
+
+#ls -t $(find $HOME/pic/ -type f ) | grep -v -e .nsfw/ -e .gpg/ -e kirei/ -e kirei-gif/ -e screenshots/ -e icons/ -e camera/life-events -e camera/life-selfie -e camera/life-living -e camera/life-etc | grep -e .jpeg -e .jpg -e .png -e .gif  | imv
+swayimg -g $(ls -t $(find $HOME/pic/ -type f ) | grep -v -e .nsfw/ -e .gpg/ -e kirei/ -e kirei-gif/ -e screenshots/ -e icons/ -e camera/life-events -e camera/life-selfie -e camera/life-living -e camera/life-etc | grep -e .jpeg -e .jpg -e .png -e .gif)

@@ -1,0 +1,17 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023
+# gps-rm
+
+echo "removes GPS metadata for images, and videos like mp4"
+
+echo "exiftool \"-gps*=\" $@"
+
+read -p "Do you want to continue? (y/n): " choice
+
+if [[ $choice == "y" || $choice == "Y" ]]; then
+	exiftool "-gps*=" $@ 
+else
+	echo "aborted"
+	exit 0
+fi

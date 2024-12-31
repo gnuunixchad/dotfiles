@@ -1,0 +1,6 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# play the the camera input with mpv
+
+mpv --profile=low-latency --untimed /dev/video0

@@ -1,0 +1,13 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# decrypt the .gpg file and pipe to tar
+# after reading the untar'ed files, remember to `shred -u *`
+
+# tar -cvf - sends the output to the standard output intead of writing to a file on disk
+tar --pinentry-mode loopback -cvf - $1 | gpg -c --cipher-algo aes-256 --output $1.tar.gpg
+
+# clear passphrase cache in memory
+gpg-connect-agent reloadagent /bye
+
+notify-send -u low -i 1099 "gpg-tar" "tared and crypted"

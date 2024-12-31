@@ -1,0 +1,40 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2023,2024
+# updw, update dunst weather
+# @depends: libnotify, dunst, dw
+
+# use notification software like dunst to fetch weather info to a local cache which can then be dispalyed by my another script dw
+# running with dmenu/wmenu is recommended
+
+if [[ -f $HOME/.cache/city ]]; then
+
+    city=$(cat $HOME/.cache/city)
+
+    if [[ -z $city ]]; then
+        msg="~/.cache/city is empty, write the city name to it"
+        notify-send -u low -r 21 "$msg"
+        echo $msg
+    else
+        wttr_temp=$(curl wttr.in/$city?format=1)
+
+        # check if curl returns a temperature
+        if [[ $wttr_temp == *°C* ]] ; then
+            echo $wttr_temp > $HOME/.cache/wttr
+            # adding update timestamp
+            #echo "($(date +'%b-%d %a %H:%M'))" >> $HOME/.cache/wttr
+            msg="updw done"
+            notify-send -u low -r 22 "$msg"
+            echo $msg
+        else
+            msg="updw failed, check network ?"
+            notify-send -u low -r 21 "$msg"
+            echo $msg
+        fi
+    fi
+
+else
+    msg="~/.cache/city does not exist, write the city name to it"
+    notify-send -u low -r 21 "$msg"
+    echo $msg
+fi

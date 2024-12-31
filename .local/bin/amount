@@ -1,0 +1,57 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# amount: interactively mount partitions based on selection
+#         - unlock beforehand if the partition is encrypted(LUKS)
+#         - use wmenu for selection and passphrase prompt in wayland
+#         - use fzf for selection in tty
+# flocks is the opposite script
+# poff to interactively power off a block device
+
+selected_partion=""
+msg=""
+
+a_unlock()
+{
+    if [[ "$XDG_SESSION_TYPE" = "tty" ]]; then
+        udisksctl unlock -b "$selected_partition"
+    else # use wmenu as passphrase prompt if not in tty
+       wmenu_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "[udisksctl] passphrase: " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
+       udisksctl unlock -b "$selected_partition" --key-file <(echo -n "$wmenu_passphrase")
+    fi
+}
+
+a_mount()
+{
+    udisksctl mount -b /dev/mapper/luks-"$selected_uuid"
+}
+
+send_msg()
+{
+    if [[ "$XDG_SESSION_TYPE" != "tty" ]]; then
+        notify-send -u normal -r 401 "amount" "$msg"
+    else
+        echo "$msg"
+    fi
+}
+
+lsblk_result=$(lsblk -rpo "name,type,size,uuid,label,mountpoint,fstype" | tail -n +2 | grep -ve ' disk ' -ve SWAP -ve /boot -ve /mapper/ )
+
+if [[ "$XDG_SESSION_TYPE" != "tty" ]]; then
+    selected=$(echo "$lsblk_result" | wmenu -p "amount: " -l 6 -f "SourceCodePro medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
+else
+    # use fzf to select a partition if in tty
+    selected=$(echo "$lsblk_result" | command fzf --prompt 'amount: ')
+fi
+msg="$selected_partition mounted"
+
+selected_partition=$(echo "$selected" | awk '{print $1}')
+echo $selected_partition
+selected_uuid=$(echo "$selected"  | awk '{print $4}')
+echo $selected_uuid
+
+if [[ $selected == *"crypto_LUKS"* ]] ; then
+    a_unlock && a_mount && send_msg
+else
+    udisksctl mount -b "$selected_partition" && send_msg
+fi

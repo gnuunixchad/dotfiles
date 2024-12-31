@@ -1,0 +1,15 @@
+# @author nate zhou
+# @since 2023,2024
+
+# disable mpv in firecfg.config
+
+#ignore disable-mnt
+#
+#noblacklist ${HOME}/pic/*
+#noblacklist ${HOME}/mus/*
+#noblacklist ${HOME}/vid/*
+#noblacklist ${HOME}/smb/*
+#noblacklist ${HOME}/mnt/*
+#include blacklist-common.local
+#
+#net none

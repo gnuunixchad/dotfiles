@@ -1,0 +1,14 @@
+# @author nate zhou
+# @since 2023,2024
+
+#no-unlock-indicator
+
+ignore-empty-password
+
+daemonize
+
+show-failed-attempts
+
+indicator-caps-lock
+
+image="$HOME/.local/share/lockscreen"

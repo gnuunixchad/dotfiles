@@ -1,0 +1,14 @@
+# @author nate zhou
+# @since 2023,2024
+
+noblacklist ${HOME}/.local/share/zathura
+read-write ${HOME}/.local/share/zathura
+read-only ${HOME}/doc/.gpg
+noblacklist ${HOME}/doc/.gpg
+
+read-only ${HOME}/doc/ebook
+noblacklist ${HOME}/doc/ebook
+noblacklist ${HOME}/doc/bill
+include blacklist-common.local
+
+net none

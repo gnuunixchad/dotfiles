@@ -1,0 +1,37 @@
+# smb.conf
+# @author nate zhou
+
+# "veto files" entry must be a unix path without separator '/'
+
+[global]
+   workgroup = MYGROUP
+   server string = Samba Server
+   server role = standalone server
+   log file = /usr/local/samba/var/log.%m
+   max log size = 50
+   dns proxy = no
+[smb]
+    comment = temporary share for file transition
+    path = /home/nate/smb
+    valid users = nate
+    public = no
+    writable = yes
+    printable = no
+
+[pic]
+    comment = nate's pictures sharing
+    path = /home/nate/pic
+    veto files = /.gpg/
+    valid users = nate
+    public = no
+    writable = no
+    printable = no
+
+[vid]
+    comment = nate's videos sharing
+    path = /home/nate/vid
+    veto files = /.gpg/
+    valid users = nate
+    public = no
+    writable = no
+    printable = no

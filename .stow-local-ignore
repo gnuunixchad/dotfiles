@@ -1,0 +1,13 @@
+\.git
+\.gitignore
+\.gitmodules
+
+^/README.*
+^/LICENSE.*
+
+etc
+usr
+install.md
+packages.list
+arch.list
+aur.list

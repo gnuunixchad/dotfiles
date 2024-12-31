@@ -1,0 +1,7 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# record-voice
+# record pipewire input voice
+
+pw-record --target rnnoise_source ~/record.mp3

@@ -1,0 +1,8 @@
+# minute hour day_of_month month day_of_week command
+*/5 * * * * $HOME/.local/bin/updw-cron
+*/5 * * * * $HOME/.local/bin/uptime-cron
+*/15 * * * * $HOME/.local/bin/checkupdates-cron
+*/15 * * * * $HOME/.local/bin/sync-config-cron
+*/15 * * * * $HOME/.local/bin/newsboat-update-cron
+#*/15 * * * * $HOME/.local/bin/randwall-cron
+@reboot $HOME/.local/bin/uptime-reset

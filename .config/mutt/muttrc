@@ -1,0 +1,76 @@
+# @author nate zhou
+# @since 2023,2024
+
+# source the user and password
+source "~/.config/mutt/account1"
+
+#unset record
+
+folder-hook 'account1' 'source ~/.config/mutt/account1'
+#folder-hook 'account2' 'source ~/.config/mutt/account2'
+
+# Macros to switch accounts
+macro index <f2> "<enter-command>unmailboxes *<enter><enter-command>source ~/.config/mutt/account1<enter><sync-mailbox><change-folder>!<enter>"
+#macro index <f3> "<enter-command>unmailboxes *<enter><enter-command>source ~/.config/mutt/account2<enter><sync-mailbox><change-folder>!<enter>"
+
+# Allow mutt to open a new IMAP connection automatically
+unset imap_passive
+
+# keep the IMAP connection alive by polling intermittently (in seconds)
+set imap_keepalive = 300
+
+# How often to check for new mail (in seconds)
+set mail_check = 120
+
+# vim-like keybindings
+## h to exit in every menu, l to go deeper, j and k for up and down, g and G for top and bottom
+bind pager,browser			h			exit
+bind attach,alias			h			exit
+bind pager				l			view-attachments
+bind pager 				k 			previous-line
+bind pager 				j 			next-line
+bind pager				g			top
+bind pager				G			bottom
+bind index				j			next-entry
+bind index				k			previous-entry
+bind attach,index 			g 			first-entry
+bind attach,index 			G 			last-entry
+bind index				l			display-message
+bind attach				l			view-attach
+bind browser,alias			l			select-entry
+bind index				/			search
+## default binding for limit is l
+bind index				?			limit
+## default binding for help is ?
+bind index,pager,attach			<F1>			help
+## default binding for header view (toggle-weed) is h
+bind pager				H			display-toggle-weed
+bind attach,index,pager 		\CD 			next-page
+bind attach,index,pager 		\CU 			previous-page
+
+# read html messages in w3m
+set mailcap_path = ~/.config/mutt/mailcap
+auto_view text/html
+
+# view urls in a browser with ctrl+b
+ macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+ macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+
+# group conversation
+ set sort=threads
+ set sort_aux=last-date-received
+
+#sidebar
+set sidebar_visible # comment to disable sidebar by default
+set sidebar_short_path
+set sidebar_folder_indent
+set sidebar_format = "%B %* [%?N?%N / ?%S]"
+set mail_check_stats
+bind index,pager \CJ sidebar-prev
+bind index,pager \CK sidebar-next
+bind index,pager \CE sidebar-open
+# B to toggle side bar
+bind index,pager B sidebar-toggle-visible
+
+# editor
+set editor = "nvim"

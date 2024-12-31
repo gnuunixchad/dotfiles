@@ -1,0 +1,17 @@
+#!/bin/sh
+# @author nate zhou
+# @since 2024
+# sync-notify
+# send desktop notification if not in tty
+# .bash_alias:
+# alias sync="~/.local/bin/sync-notify"
+
+/usr/bin/sync
+if [ "$XDG_SESSION_TYPE" != "tty" ]; then
+    if command -v notify-send &> /dev/null; then
+        /usr/bin/sync && notify-send -u low -r 3412 'sync finished'
+    else
+        echo "notify-send command not found. Continuing sync without notification."
+        /usr/bin/sync
+    fi
+fi

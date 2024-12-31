@@ -1,0 +1,18 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# randlive
+# random live wallpaper
+# @depends mpvpaper, mpvpaper-run*
+
+wallpaper_path="$HOME/.local/share/wallpaper"
+random_wallpaper=$(find $HOME/pic/wallpapers/live/ | grep -e .gif -e .webm -e .mp4 | shuf -n 1)
+
+cp -f "$random_wallpaper" "$wallpaper_path";
+
+if pgrep -x "mpvpaper" > /dev/null
+then
+    killall -e "mpvpaper"
+fi
+
+$HOME/.local/bin/mpvpaper-run

@@ -1,0 +1,12 @@
+# @author nate zhou
+# @since 2023,2024
+
+include blacklist-gpg.local
+
+noblacklist ${HOME}/.config/nvim
+noblacklist ${HOME}/.config/vim
+
+noblacklist ${HOME}/.cache/mutt
+noblacklist ${HOME}/doc/mail
+noblacklist ${HOME}/doc/mail
+include blacklist-common.local

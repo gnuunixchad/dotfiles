@@ -1,0 +1,29 @@
+# @author nate zhou
+# @since 2023,2024
+
+# used by sway to swap keys
+
+xkb_keymap {
+    xkb_keycodes { include "evdev+aliases(qwerty)" };
+    xkb_types { include "complete" };
+    xkb_compat { include "complete" };
+    xkb_symbols {
+        include "pc"
+        include "us"
+        include "inet(evdev)"
+
+        #swap left alt and left super
+        ##replace left alt by left super
+        replace key <LALT> { [ Super_L ] };
+        ##replace left super by left alt
+        replace key <LWIN> { [ Alt_L] }; 
+
+        #replace right alt by right super
+        replace key <RALT> { [ Super_R ] };
+
+        #swap escape and capslock
+        replace key <ESC> { [ Caps_Lock ] };
+        replace key <CAPS> {  [ Escape ] };
+    };
+};
+

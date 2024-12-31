@@ -1,0 +1,15 @@
+# @author nate zhou
+# @since 2023,2024
+
+ignore disable-mnt
+include blacklist-gpg.local
+noblacklist ${HOME}/mus/*
+noblacklist ${HOME}/pic/memes
+noblacklist ${HOME}/pic/icon
+noblacklist ${HOME}/pic/misc
+noblacklist ${HOME}/pic/kdenlive
+read-only ${HOME}/vid/clips
+noblacklist ${HOME}/vid/clips
+include blacklist-common.local
+
+net none

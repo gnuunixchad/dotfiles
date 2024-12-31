@@ -1,0 +1,14 @@
+# @author nate zhou
+# @since 2023,2024
+
+include blacklist-gpg.local
+
+noblacklist ${HOME}/doc/heart/.config/nvim
+read-only ${HOME}/doc/heart/.config/nvim
+noblacklist ${HOME}/.config/nvim
+read-only ${HOME}/.config/nvim
+
+noblacklist ${HOME}/doc/code
+include blacklist-common.local
+
+novideo

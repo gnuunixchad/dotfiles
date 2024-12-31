@@ -1,0 +1,212 @@
+/* @author nate zhou
+// @since 2023,2024
+*/
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: Noto, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    /*min-height: 28px;*/
+}
+
+window#waybar {
+    background-color: rgba(15, 15, 15, 1);
+    font-size: 13px;
+    color: #e1e1e1;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 0px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+#workspaces button {
+    padding: 0 2px;
+    margin: 0 2px;
+    border-radius: 2px;
+    color: #e1e1e1;
+}
+
+#workspaces button.focused {
+    background-color: #6f3f89;
+    box-shadow: inset 0 -0px #bbccdd;
+}
+
+/* inactive workspace visible on another monitor*/
+#workspaces button.visible:not(.focused) {
+    background-color: #005577;
+    box-shadow: inset 0 -0px #bbccdd;
+}
+
+#workspaces button.urgent {
+    background-color: #c85577;
+}
+
+#mode {
+    color: white;
+    background-color: #6f3f89;
+    border-radius: 2px;
+    font-size: 12px;
+    padding: 0 6px;
+    margin: 0 2px;
+}
+
+#custom-wttr,
+#custom-pacman,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#updates,
+#pulseaudio {
+    padding: 0 2px;
+    margin: 0 2px;
+    border-radius: 2px;
+    background-color: #005577;
+    color: #e1e1e1;
+    font-size: 13px;
+}
+
+#clock {
+    padding: 0 4px;
+    margin: 0 2px;
+    border-radius: 2px;
+    background-color: #005577;
+    color: #e1e1e1;
+    font-size: 13px;
+}
+
+#network.disconnected {
+    background-color: #414141;
+}
+
+#battery.discharging {
+    background-color: #414141;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #c85577;
+}
+
+#pulseaudio.muted {
+    background-color: #414141;
+}
+
+#privacy
+{padding: 0 0px;
+    margin: 0 2px;
+    border-radius: 3px;
+}
+
+#scratchpad{
+    padding: 0 2px;
+    margin: 0 2px;
+    background-color: #005577;
+    box-shadow: inset 0 -0px #bbccdd;
+    font-size: 13px;
+    border-radius: 2px;
+}
+#scratchpad.empty {
+	background-color: transparent;
+    background-color: #005577;
+    box-shadow: inset 0 0px #bbccdd;
+}
+
+#window {
+    margin: 0 2px;
+	background-color: transparent;
+}
+
+#workspaces {
+    padding: 0 2px;
+    margin: 0 2px;
+    font-size: 14px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#tray,
+#idle_inhibitor{
+    padding: 0 4px;
+    margin: 0 2px;
+    font-size: 15px;
+    border-radius: 2px;
+}
+#custom-capslock {
+    padding: 0 4px;
+    margin: 0 2px;
+    font-size: 11px;
+    border-radius: 2px;
+    background-color: #005577;
+    color: #e1e1e1;
+}
+
+#mpd {
+    padding: 0 4px;
+    margin: 0 2px;
+    font-size: 13px;
+    border-radius: 2px;
+    background-color: #6f3f89;
+    color: #e1e1e1;
+}
+
+#mpd.disconnected {
+    background-color: #414141;
+}
+
+#mpd.paused {
+    background-color: #005577;
+}
+
+#mpd.stopped {
+    background-color: #005577;
+    font-size: 14px;
+}
+
+#tray {
+    background-color: #bbccdd;
+    margin: 0 2px;
+}
+
+#idle_inhibitor {
+
+    background-color: #005577;
+    color: #e1e1e1;
+}
+
+#idle_inhibitor.activated {
+    background-color: #6f3f89;
+    color: #e1e1e1
+}
+
+#privacy-item {
+    padding: 0 2px;
+    border-radius: 2px;
+    color: white;
+}
+
+#privacy-item.screenshare {
+    background-color: #0f914e;
+}
+
+#privacy-item.audio-in {
+    background-color: #9c1a3b;
+    color: #eeeeee;
+}
+
+#privacy-item.audio-out {
+    background-color: #e6da00;
+    color: #191919;
+}

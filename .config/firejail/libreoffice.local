@@ -1,0 +1,11 @@
+# @author nate zhou
+# @since 2023,2024
+
+
+noblacklist ${HOME}/doc/office
+noblacklist ${HOME}/pkg/ext/libreoffice
+read-only ${HOME}/pkg/ext/libreoffice
+include blacklist-common.local
+include blacklist-gpg.local
+
+net none

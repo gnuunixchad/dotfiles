@@ -1,0 +1,35 @@
+#!/bin/bash
+# @author nate zhou
+# @since 2024
+# decrypt the .gpg file and pipe to fim, without writing to the disk
+
+# there's virtually no image viewer that can view more than one image from the 
+# standard output, if the size of the image are the same, consider conver to 
+# gif. Otherwise pdf or a tarball.
+#
+# gpg -d $1 | fim -i
+# use mpv to display one single jpeg/png or gif image
+#gpg --pinentry-mode loopback -d $1 | mpv - --loop --pause
+
+usage() {
+    echo -e "usage:\tgpg-pic image.*.gpg\n\twmenu as passphrase prompt to temporarily view the encrypted files"
+}
+
+# print help menu if no arguments is provided
+if [ $# -eq 0 ]; then
+    usage
+    exit 1
+fi
+
+# use wmenu as passphrase prompt
+gpg_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "[gpg-pic] passphrase: " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
+
+# don't do anything if exiting wmenu without any input
+if  [[ -z "$gpg_passphrase" ]]; then
+    exit 1
+fi
+
+    echo "$gpg_passphrase" | gpg --batch --passphrase-fd 0 -d "$1" | mpv - --loop --no-resume-playback
+
+# clean cached passphrase
+gpg-connect-agent reloadagent /bye
