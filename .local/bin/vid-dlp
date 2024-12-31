@@ -10,4 +10,5 @@
 # exiftool can list file creating data (somehow related to the video upload date)
 echo "yt-dlp --embed-metadata --no-embed-info-json --write-subs --sub-lang en -f 247+250 URL";
 
-yt-dlp --cookies-from-browser firefox --embed-metadata --no-embed-info-json --write-subs --sub-lang en -f 247+250 $@ && notify-send -u low -r 7 "vid-dlp: finished"
+#yt-dlp --cookies-from-browser firefox --embed-metadata --no-embed-info-json --write-subs --sub-lang en -f 247+250 $@ && notify-send -u low -r 7 "vid-dlp: finished"
+yt-dlp --cookies-from-browser firefox --embed-metadata --write-subs --sub-lang en -S "height:720" -f "bv*+ba/b" --write-thumbnail "$@" && notify-send -u low -r 7 "yt-dlp: finished"

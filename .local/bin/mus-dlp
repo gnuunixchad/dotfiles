@@ -8,6 +8,4 @@
 # opus and ogg doesn't support id3v2 tag
 # convert to mp3
 
-echo "yt-dlp -f 251 -x --audio-format mp3 $@";
-
-yt-dlp --cookies-from-browser firefox -f 251 -x --audio-format mp3 $@ && notify-send -u low -r 6 "mus-dlp: finished"
+yt-dlp --cookies-from-browser firefox --embed-metadata -x --audio-format mp3 $@ && notify-send -u low -r 6 "mus-dlp: finished"
