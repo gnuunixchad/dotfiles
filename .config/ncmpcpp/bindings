@@ -92,6 +92,11 @@ def_key "S"
   show_search_engine
 def_key "P"
   show_playlist
+# master/slave screen
+def_key "ctrl-h"
+  master_screen
+def_key "ctrl-l"
+  slave_screen
 
 # select
 def_key "K"
