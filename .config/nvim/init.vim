@@ -53,7 +53,7 @@ map <C-o> :vertical resize +2<CR>
 
 map <leader>s :set spell!<CR>
 map <leader>w :set wrap!<CR>
-map <leader>c :set cursorcolumn!<CR>
+map <leader>C :set cursorcolumn!<CR>
 map <leader>h :set hlsearch!<CR>
 map <leader>t :tabnew<CR>
 map <leader>p :tabprev<CR>
@@ -64,13 +64,21 @@ map <leader>g :G<CR>
 map <leader>dx :Gdiffsplit<CR>
 map <leader>dv :Gvdiffsplit<CR>
 map <leader><Tab> :NERDTreeToggle<CR>
+map <leader>ct :ColorizerToggle<CR>
+map <leader>cr :ColorizerReloadAllBuffers<CR>
 
 " don't comment on new line
-" autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" vim-plug plugins
+" vim-plug
 call plug#begin()
-Plug 'ap/vim-css-color' " CSS color preview
+"Plug 'ap/vim-css-color' " CSS color preview
+Plug 'norcalli/nvim-colorizer.lua' " better color support
 Plug 'tpope/vim-fugitive' " Git integration
 Plug 'preservim/nerdtree'
 call plug#end()
+
+" nvim-colorizer
+set termguicolors
+"lua require'colorizer'.setup()
+autocmd VimEnter * ColorizerToggle
