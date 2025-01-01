@@ -78,7 +78,7 @@ def_key "n"
     next_found_item
 def_key "N"
     previous_found_item
-def_key "m"
+def_key "M"
   show_media_library
 def_key "m"
   toggle_media_library_columns_mode
@@ -93,6 +93,8 @@ def_key "S"
 def_key "P"
   show_playlist
 # master/slave screen
+def_key ","
+  toggle_screen_lock
 def_key "ctrl-h"
   master_screen
 def_key "ctrl-l"
