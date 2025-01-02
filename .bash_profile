@@ -84,3 +84,5 @@ export GTK_THEME=Adwaita-dark # for firejail'ed libreoffice
 ### WAYLAND ###
 export ELECTRON_OZONE_PLATFORM_HINT=wayland # electron
 export WLR_NO_HARDWARE_CURSORS=1 # external monitor cursor on nvidia
+# sway terminal freezes
+export WLR_DRM_NO_ATOMIC=1
