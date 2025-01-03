@@ -2,13 +2,15 @@
 # @since 2023,2024
 
 set font 'SourceCodePro normal 11'
+set guioptions ''
 set selection-clipboard clipboard
 set selection-notification false
 set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
+set database 'sqlite'
 
-set zoom-step 5
+set zoom-step 2
 
 set recolor true
 # set background to a dark color
@@ -35,4 +37,4 @@ map P print
 map i zoom in
 map o zoom out
 
-map b toggle_statusbar
+map m toggle_statusbar
