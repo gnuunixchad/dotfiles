@@ -1,5 +1,6 @@
 // @author nate zhou
-// @since 2023,2024
+// @since 2023,2024,2025
+// vim-like and i3wm-like keybindings.json for code-oss & codium
 [
 	// # vim extension
 	// ## toggle vim extension

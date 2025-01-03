@@ -1,5 +1,6 @@
 // @author nate zhou
-// @since 2023,2024
+// @since 2023,2024,2025
+// settings.json for code-oss & codium
 {
     "window.menuBarVisibility": "toggle",
     "extensions.autoUpdate": false,
