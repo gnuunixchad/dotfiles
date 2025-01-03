@@ -88,12 +88,12 @@
 
 	    // ## vertical split
     {
-        "key": "ctrl+v",
+        "key": "ctrl+space v",
         "command": "workbench.action.newGroupRight"
     },
         // ## horizontal split
     {
-        "key": "ctrl+x",
+        "key": "ctrl+space x",
         "command": "workbench.action.newGroupBelow"
     },
         // ## close a split
