@@ -41,6 +41,26 @@
         "command": "workbench.action.terminal.kill",
         "when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
     },
+        // ## terminal scrolling
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.terminal.scrollDownPage",
+        "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.terminal.scrollUpPage",
+        "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
+    },
+        // ## resize terminal
+    {
+        "key": "ctrl+i",
+        "command": "workbench.action.terminal.resizePaneUp"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "workbench.action.terminal.resizePaneDown"
+    },
 
     	// ## focus previous terminal session
     {
@@ -64,12 +84,45 @@
 
 
     	// # split editor && workbenchs
-	// an editor group is like a tabed window in i3wm, it has tabs, and can be tilled with other editor groups
+	    // an editor group is like a tabed window in i3wm, it has tabs, and can be tilled with other editor groups
 
-	// ## new editor group
+	    // ## vertical split
     {
-        "key": "ctrl+n",
+        "key": "ctrl+v",
         "command": "workbench.action.newGroupRight"
+    },
+        // ## horizontal split
+    {
+        "key": "ctrl+x",
+        "command": "workbench.action.newGroupBelow"
+    },
+        // ## close a split
+    {
+        "key": "ctrl+w",
+        "command": "workbench.action.closeEditorsAndGroup"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "workbench.action.closeActiveEditor"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "workbench.action.closeGroup",
+        "when": "activeEditorGroupEmpty && multipleEditorGroups"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeGroup",
+        "when": "activeEditorGroupEmpty && multipleEditorGroups"
+    },
+        // ## unbind default
+    {
+        "key": "ctrl+q",
+        "command": "-workbench.action.quit"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-workbench.action.closeActiveEditor"
     },
 
 
@@ -99,19 +152,19 @@
 	// ## move editor group's position with `ctrl+k` `h/j/k/l`
 	// m for Move
     {
-        "key": "ctrl+m h",
+        "key": "ctrl+space h",
         "command": "workbench.action.moveActiveEditorGroupLeft"
     },
     {
-        "key": "ctrl+m j",
+        "key": "ctrl+space j",
         "command": "workbench.action.moveActiveEditorGroupDown"
     },
     {
-        "key": "ctrl+m k",
+        "key": "ctrl+space k",
         "command": "workbench.action.moveActiveEditorGroupUp"
     },
     {
-        "key": "ctrl+m l",
+        "key": "ctrl+space l",
         "command": "workbench.action.moveActiveEditorGroupRight"
     },
 
@@ -119,12 +172,12 @@
     	// ## move an editor to another editor group split
 	// ### to next group
     {
-        "key": "ctrl+m n",
+        "key": "ctrl+space n",
         "command": "workbench.action.moveEditorToNextGroup"
     },
     	// ### to previous group
     {
-        "key": "ctrl+m p",
+        "key": "ctrl+space p",
         "command": "workbench.action.moveEditorToPreviousGroup"
     },
 
@@ -183,12 +236,12 @@
 	// # code suggestion
 	// ## use tab select suggestion, instead of up/down
     {
-        "key": "tab",
+        "key": "ctrl+n",
         "command": "selectNextSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
       },
         {
-        "key": "ctrl+tab",
+        "key": "ctrl+p",
         "command": "selectPrevSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     }

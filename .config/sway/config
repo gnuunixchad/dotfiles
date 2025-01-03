@@ -159,7 +159,7 @@ bindsym $mod+CONTROL+g exec grim && notify-send -u low -r 88 "Screenshot taken o
 bindsym $mod+grave seat - cursor set 0 0
 bindsym $mod+slash seat - cursor set 9999 9999
 # wtype
-bindsym Control+e exec wtype -k 'Escape'
+#bindsym Control+e exec wtype -k 'Escape'
 
 # sway mode
 # Use keyboard as mouse

@@ -7,6 +7,9 @@ noblacklist ${HOME}/doc/heart/.config/nvim
 read-only ${HOME}/doc/heart/.config/nvim
 noblacklist ${HOME}/.config/nvim
 read-only ${HOME}/.config/nvim
+noblacklist ${HOME}/.local/share/nvim
+read-only ${HOME}/.local/share/nvim
+noblacklist ${HOME}/.config/ranger
 
 noblacklist ${HOME}/doc/code
 include blacklist-common.local
