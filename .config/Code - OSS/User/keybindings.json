@@ -252,5 +252,34 @@
         "key": "ctrl+space r",
         "command": "workbench.action.debug.start",
         "when": "debuggersAvailable && debugState == 'inactive'"
+    },
+
+    // # sidebar EXPLORER file management
+        // ## delete file
+    {
+        "key": "shift+d",
+        "command": "deleteFile",
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus"
+    },
+    {
+        "key": "shift+d",
+        "command": "deleteFile",
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
+    },
+        // ## create new file
+    {
+        "key": "shift+n",
+        "command": "explorer.newFile"
+    },
+        // ## make directory
+    {
+        "key": "shift+m",
+        "command": "explorer.newFolder"
+    },
+        // ## rename file
+    {
+        "key": "shift+r",
+        "command": "renameFile",
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     }
 ]
