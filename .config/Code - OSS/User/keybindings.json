@@ -259,22 +259,19 @@
     {
         "key": "shift+d",
         "command": "deleteFile",
-        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus"
-    },
-    {
-        "key": "shift+d",
-        "command": "deleteFile",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
     },
         // ## create new file
     {
         "key": "shift+n",
         "command": "explorer.newFile"
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
     },
         // ## make directory
     {
         "key": "shift+m",
         "command": "explorer.newFolder"
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
     },
         // ## rename file
     {

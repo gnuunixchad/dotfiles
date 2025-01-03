@@ -17,6 +17,8 @@
     "vim.neovimConfigPath": "~/.config/nvim/init.vim",
     "vim.neovimPath": "/usr/bin/nvim",
     "vim.neovimUseConfigFile": true,
-    "vim.useSystemClipboard": true
+    "vim.useSystemClipboard": true,
+    "explorer.confirmDelete": false,
+    "workbench.startupEditor": "newUntitledFile"
 
 }
