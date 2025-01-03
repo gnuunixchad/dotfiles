@@ -1,7 +1,7 @@
 -- Name:         chad (edited on top with vim.lua by Bram Moolenaar)
 
---  @authoer natezhou
---  @since 2023
+--  @authoer nate zhou
+--  @since 2024, 2025
 
 vim.cmd.highlight('clear')
 vim.g.colors_name = 'unixchad'
