@@ -3,9 +3,12 @@
 
 set font 'SourceCodePro normal 11'
 set selection-clipboard clipboard
+set selection-notification false
 set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
+
+set zoom-step 5
 
 set recolor true
 # set background to a dark color

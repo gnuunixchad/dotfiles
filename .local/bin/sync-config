@@ -14,11 +14,14 @@ if [[ $choice == "y" || $choice == "Y" ]]; then
     crontab -l > "$heart"/.config/crontab.backup && echo "crontab backup done" || echo "crontab backup failed"
 
     # censor bookmarks for screen casting
-    grep -n "##############################below-are-private##############################" ~/doc/heart/.local/share/bookmarks/bookmarks | cut -d: -f1 | xargs -I {} sed -n '1,{}p' ~/doc/heart/.local/share/bookmarks/bookmarks > ~/doc/heart/.local/share/bookmarks/bookmarks-record && echo "bookmarks-record updated" || echo "bookmarks-record update failed"
+    grep -n "##############################below-are-private##############################" $HOME/doc/heart/.local/share/bookmarks/bookmarks | cut -d: -f1 | xargs -I {} sed -n '1,{}p' $HOME/doc/heart/.local/share/bookmarks/bookmarks > $HOME/doc/heart/.local/share/bookmarks/bookmarks-record && echo "bookmarks-record updated" || echo "bookmarks-record update failed"
 
     # unixchad
-    git --git-dir ~/doc/.heart/.git --work-tree ~/doc/.heart pull && echo "heart is pulled" || echo "heart pulling failed"
-    rsync -a --delete "$heart"/../.heart/ --exclude .git --exclude .local/sbin/ --exclude arch.list --exclude aur.list --exclude install.md "$dotfiles" && chmod 755 "$dotfiles"
+    if [ ! -d "$HOME/doc/.heart" ]; then
+        git clone "$heart" "$HOME/doc/.heart"
+    fi
+    git --git-dir $HOME/doc/.heart/.git --work-tree $HOME/doc/.heart pull && echo "heart is pulled" || echo "heart pulling failed"
+    rsync -a --delete --exclude ".git" --exclude ".local/sbin" --exclude "arch.list" --exclude "aur.list" --exclude "install.md" "$HOME/doc/.heart/" "$dotfiles" && chmod 755 "$dotfiles"
 else
     echo "aborted"
     exit 0
