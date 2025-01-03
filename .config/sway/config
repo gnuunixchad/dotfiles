@@ -25,7 +25,6 @@ bar {
 	separator_symbol "/"
     #workspace_min_width 30
 	# disable mouse
-	bindsym button1 nop
 	# 4/5/6/7 scroll up/down/right/left (touchpad)
 	bindsym button4 nop
 	bindsym button5 nop
@@ -40,34 +39,44 @@ bar {
 	focused_workspace   #191919 #6f3f89 #eeeeee
 	active_workspace    #191919 #005577 #eeeeee
 	inactive_workspace  #191919 #222222 #eeeeee
-	urgent_workspace    #191919 #3399ff #eeeeee
+	urgent_workspace    #191919 #e6da00 #000000
 	binding_mode        #191919 #6f3f89 #eeeeee
 	}
 }
 include /etc/sway/config.d/*
 
 #<colorclass> <border> <background> <text> <indicator> <child_border>
-client.focused		        #9962b7 #9962b7 #F1F1F1 #e6da00
-client.focused_inactive     #0092cc #0092cc #F1F1F1 #0092cc
-client.unfocused            #bbccdd #bbccdd #F1F1F1 #bbccdd
-font pango:monospace 0.001
+client.focused		        #9962b7 #9962b7 #f1f1f1 #e6da00
+client.focused_inactive     #0092cc #0092cc #f1f1f1 #0092cc
+client.unfocused            #191919 #191919 #f1f1f1 #191919
+client.urgent               #e6da00 #e6da00 #f1f1f1 #9962b7
+client.background           #191919
+font pango:monospace 0.01
 titlebar_padding 1
 titlebar_border_thickness 0
-floating_modifier $mod
+#default_border pixel 1
+for_window [class=".*"] border pixel 1
+
+default_orientation auto
+
+floating_maximum_size 1590 x 860
+popup_during_fullscreen smart
+focus_wrapping yes
+force_display_urgency_hint 1000 ms
+focus_on_window_activation urgent
+
 seat seat0 hide_cursor 3000
 seat seat0 hide_cursor when-typing enable
-
 focus_follows_mouse no
 mouse_warping none
-# automatically move to the workspace where new action was taken on
-focus_on_window_activation focus
 workspace_auto_back_and_forth yes
 
+floating_modifier $mod
+
 #gaps inner 4
-for_window [class=".*"] border pixel 2
 for_window [title="Floating Term"] floating enable, resize set width 800 px, resize set height 600 px, border pixel 2
 for_window [title="Scratchpad Tmux"]  move scratchpad
-for_window [app_id=swayimgapp] border pixel 1
+for_window [app_id=swayimgapp] border pixel 0
 
 #output * bg ~/.local/share/wallpaper fill
 output * bg #191919 solid_color
