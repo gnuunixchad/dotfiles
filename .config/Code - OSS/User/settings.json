@@ -9,10 +9,13 @@
     // always turn on word wrap
     "editor.wordWrap": "on",
     "editor.fontFamily": "Source Code Pro",
+    "editor.fontSize": 15,
+    "editor.cursorBlinking": "solid",
+    
+    // vim extension
     "vim.neovimConfigPath": "~/.config/nvim/init.vim",
     "vim.neovimPath": "/usr/bin/nvim",
     "vim.neovimUseConfigFile": true,
-    "editor.fontSize": 15,
-    "editor.cursorBlinking": "solid"
+    "vim.useSystemClipboard": true
 
 }
