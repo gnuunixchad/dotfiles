@@ -186,23 +186,23 @@
     	// #UI
 	// focus on side bar
     {
-        "key": "ctrl+shift+b",
+        "key": "ctrl+space b",
         "command": "workbench.action.focusSideBar"
     },
 
     	// open && focuse console: PROBLEMS
     {
-        "key": "ctrl+shift+p",
+        "key": "ctrl+space p",
         "command": "workbench.panel.markers.view.focus"
     },
     	// open && focus console: OUTPUT
     {
-        "key": "ctrl+shift+o",
+        "key": "ctrl+space o",
         "command": "workbench.panel.output.focus"
     },
     	// open && focus console: DEBUG CONSOLE
     {
-        "key": "ctrl+shift+d",
+        "key": "ctrl+space d",
         "command": "workbench.panel.repl.view.focus"
     },
 
