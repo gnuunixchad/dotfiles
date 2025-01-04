@@ -6,3 +6,5 @@
 */15 * * * * $HOME/.local/bin/newsboat-update-cron
 #*/15 * * * * $HOME/.local/bin/randwall-cron
 @reboot $HOME/.local/bin/uptime-reset
+@reboot $HOME/.local/bin/updw
+@reboot $HOME/.local/bin/checkupdates-cron --now
