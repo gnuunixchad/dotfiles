@@ -57,7 +57,7 @@
 
 /* Window control buttons (min, resize and close) */
 .titlebar-buttonbox-container {
-  display: flex !important;
+  display: none !important;
   margin-right: 12px !important;
   
  

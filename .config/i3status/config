@@ -33,7 +33,7 @@ read_file wcast {
     format_bad = ""
     path = "~/.cache/wcast"
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
 
 read_file wttr {
@@ -41,7 +41,7 @@ read_file wttr {
     format_bad = ""
     path = "~/.cache/wttr"
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
 
 read_file pacman {
@@ -49,7 +49,7 @@ read_file pacman {
     format_bad = ""
     path = "~/.cache/checkupdates-cron.num"
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
 
 read_file uptime {
@@ -57,14 +57,14 @@ read_file uptime {
     format_bad = ""
     path = "~/.cache/uptime"
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
 
 ethernet _first_ {
     format_up = "[]"
     format_down = ""
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
 
 wireless _first_ {
@@ -73,7 +73,7 @@ wireless _first_ {
     format_quality="% 02d%s"
 	color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
 
 disk / {
@@ -81,7 +81,7 @@ disk / {
     color_bad = "#eeeeee"
     color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
 
 memory {
@@ -89,13 +89,13 @@ memory {
 	color_bad = "#eeeeee"
 	color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
 
 cpu_usage {
 	format = "[ %usage]"
 	separator = false
-	separator_block_width = 2
+	separator_block_width = 4
 	color_bad = "#eeeeee"
 	color_degraded = "#eeeeee"
 }
@@ -106,7 +106,7 @@ cpu_temperature 0 {
     color_bad = "#eeeeee"
     color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
 
 read_file bright {
@@ -114,7 +114,7 @@ read_file bright {
     format_bad = ""
     path = "~/.cache/brightness"
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
 
 read_file mic {
@@ -122,7 +122,7 @@ read_file mic {
     format_bad =""
     path = "~/.cache/microphone"
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
 
 volume master {
@@ -132,7 +132,7 @@ volume master {
 	mixer = "Master"
 	mixer_idx = 0
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
 
 battery all {
@@ -149,12 +149,12 @@ battery all {
 	color_bad = "#eeeeee"
 	color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
 
 tztime local {
 	format = "[%b-%d %a %H:%M]"
 	#format = "[%Y-%m-%d]"
     separator = false
-    separator_block_width = 2
+    separator_block_width = 4
 }
