@@ -38,7 +38,7 @@
 
     	// ## kill current terminal session when focused on terminal
     {
-        "key": "ctrl+w",
+        "key": "ctrl+q",
         "command": "workbench.action.terminal.kill",
         "when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
     },

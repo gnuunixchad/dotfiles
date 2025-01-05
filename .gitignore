@@ -7,8 +7,8 @@
 !LICENSE
 !install.md
 !README.md
-!arch.list
-!aur.list
+arch.list
+aur.list
 
 !etc/
 !etc/libvirt/
@@ -39,8 +39,8 @@
 !.local/
 !.local/bin
 !.local/bin/*
-!.local/sbin
-!.local/sbin/*
+.local/sbin
+.local/sbin/*
 !.local/share/
 !.local/share/lockscreen
 !.config/
