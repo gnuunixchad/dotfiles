@@ -1,4 +1,5 @@
 #!/bin/env bash
 # @author nate zhou
 # @since 2024
-foot --server
+
+pgrep -f "foot --server" > /dev/null || foot --server

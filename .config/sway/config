@@ -4,7 +4,7 @@
 include /etc/sway/config.d/*
 # Mod4=super Mod1=alt
 set $mod Mod4
-set $term footclient
+set $term /usr/bin/footclient
 set $menu wmenu-run -f "SourceCodePro Medium 13" -i -N 191919 -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | xargs swaymsg exec --
 set $wmenu wmenu -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff
 set $bookmarks ~/.local/bin/share/bookmarks
@@ -94,18 +94,18 @@ input "type:keyboard" {
 }
 
 # autostart
+exec_always "$HOME"/.local/bin/foots
+exec_always "$HOME"/.local/bin/wobd
 exec swayidle -w \
          timeout 600 'brightnessctl set 4% -s' resume 'brightnessctl -r'\
          timeout 900 'swaylock' \
          timeout 960 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock'
-exec foot --server
 exec sleep 3 && $term -T "Scratchpad Tmux" tmux
 exec "clsd"
 exec "gammastep -O 5000"
 exec "fcitx5 -d"
 exec "wl-paste --watch cliphist store"
-exec_always "$HOME/.local/bin/wobd"
 
 # keybindings
 bindsym --release Caps_Lock exec "if [ $(cat /sys/class/leds/input*::capslock/brightness) == 0 ]; then notify-send -r 195 -t 3000 'CapsLock off'; else notify-send -r 195 -t 3000 'CapsLock on'; fi"
