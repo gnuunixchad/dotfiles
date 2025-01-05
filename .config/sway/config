@@ -338,10 +338,10 @@ bindsym $mod+c focus child
 bindsym $mod+Shift+tab move scratchpad
 bindsym $mod+tab scratchpad show
 
-bindsym $mod+y resize shrink width 5 ppt
-bindsym $mod+u resize grow height 5 ppt
-bindsym $mod+i resize shrink height 5 ppt
-bindsym $mod+o resize grow width 5 ppt
+bindsym $mod+y resize shrink width 30px
+bindsym $mod+u resize grow height 30px
+bindsym $mod+i resize shrink height 30px
+bindsym $mod+o resize grow width 30px
 
 bindsym $mod+Shift+y resize shrink width 10px
 bindsym $mod+Shift+u resize grow height 10px
