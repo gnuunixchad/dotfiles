@@ -3,6 +3,8 @@
 // @since 2023,2024,2025
 
 user_pref("layout.css.devPixelsPerPx", "0.90");
+// enable userChrome.css
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("font.name.serif.x-western", "JetBrains Mono"); // font
 user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org"); // theme
 user_pref("browser.search.region", "US"); //region
@@ -14,6 +16,9 @@ user_pref("browser.newtab.privateAllowed", true);
 user_pref("browser.download.dir", "/home/nate/dls"); // dls dir
 user_pref("browser.urlbar.placeholderName", "Bing"); // urlbar search engine
 user_pref("browser.urlbar.placeholderName.private", "Bing");
+user_pref("browser.bookmarks.restore_default_bookmarks", false);
+user_pref("browser.toolbars.bookmarks.showOtherBookmarks", false);
+user_pref("browser.toolbars.bookmarks.visibility", "never");
 // Longer interval between session information record
 user_pref("browser.sessionstore.interval", 600000);
 // disable full screen warning

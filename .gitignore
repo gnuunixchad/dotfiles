@@ -39,10 +39,13 @@ aur.list
 !.local/
 !.local/bin
 !.local/bin/*
-.local/sbin
-.local/sbin/*
 !.local/share/
 !.local/share/lockscreen
+!.mozilla
+!.mozilla/chrome
+!.mozilla/chrome/userChrome.css
+!.mozilla/example
+!.mozilla/user.js.example
 !.config/
 !.config/btop/
 !.config/btop/btop.conf.example
@@ -142,4 +145,3 @@ aur.list
 !.config/zathura/
 !.config/zathura/zathurarc
 !.config/electron-flags.conf
-!.config/user.js.example

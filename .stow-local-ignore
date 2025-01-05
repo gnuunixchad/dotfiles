@@ -5,6 +5,7 @@
 ^/README.*
 ^/LICENSE.*
 
+.mozilla
 etc
 usr
 install.md
