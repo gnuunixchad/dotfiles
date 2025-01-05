@@ -1,6 +1,6 @@
 # .bash_aliases
 # @author nate zhou
-# @since 2023,2024
+# @since 2023,2024,2025
 
 ### think twice ###
 alias rm="rm -I";
@@ -8,7 +8,7 @@ alias cp="cp -i";
 alias mv="mv -i";
 ### colorful ###
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    [ -r ~/.dircolors ] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls -F --color=auto --group-directories-first'
 fi
 alias diff="diff --color=auto"
@@ -116,6 +116,19 @@ alias BV="cd ~/virt"
 #alias fim="fim -a --no-commandline --no-etc-rc-file --no-stat-push"
 #alias ed="ed -p :"
 #alias mutt="neomutt"
+
+### SHELL FUNCTIONS ###
+# preventing nested ranger
+ranger() {
+    [ -z "$RANGER_LEVEL" ] && /usr/bin/ranger "$@" || exit &>/dev/null
+}
+# print the 16 terminal colors
+colors() {
+    for i in {0..15}; do
+        printf "\e[48;5;${i}m  \e[0m"
+        [ $((($i + 1) % 8)) -eq 0 ] && printf "\n"
+    done
+}
 
 dict () {
     /usr/bin/dict -d wn "$@" | /usr/bin/less -F

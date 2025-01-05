@@ -1,36 +1,18 @@
-# .profile
+# .bash_profile
 # @author nate zhou
-# @since 2023,2024
+# @since 2023,2024,2025
 
-# default file permission
-umask 027
+# default file permission: root 700/600, user 750/640
+[ "$UID" -eq 0 ] && umask 077 || umask 027
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
+[[ -n "$BASH_VERSION" && -f "$HOME/.bashrc" ]] && . "$HOME/.bashrc"
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-if [ -d "$HOME/.local/sbin" ] ; then
-    PATH="$HOME/.local/sbin:$PATH"
-fi
+[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
+[ -d "$HOME/.local/sbin" ] && PATH="$HOME/.local/sbin:$PATH"
 
 # colorful manpage with bat
-if [ -x /usr/bin/bat ]; then
-    export MANROFFOPT="-c"
-    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-fi
-
-# show os info on login
-if [ -x ~/.local/bin/osi ] ; then
-    ~/.local/bin/os -ld
-fi
+[ -x /usr/bin/bat ] && export MANROFFOPT="-c" && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 ### ENVIRONMENT VARIABLES ###
 export TERM=xterm-256color
@@ -50,6 +32,7 @@ export XDG_CACHE_HOME="$HOME/.cache"        # analogous to /var/cache
 export XDG_DATA_HOME="$HOME/.local/share"   # analogous to /usr/share
 export XDG_STATE_HOME="$HOME/.local/state"
 ### other softwares ###
+[ -d "$XDG_STATE_HOME"/bash ] || mkdir -p $XDG_STATE_HOME/bash
 export HISTFILE="$XDG_STATE_HOME/bash/history"
 export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
 export CALCHISTFILE="$XDG_CACHE_HOME/calc_history"

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# @author nate zhou
+# @since 2025
+
+sudo rsync -a --delete --progress $HOME/doc/heart/{.bash_aliases,.bash_profile,.bashrc,.inputrc,.stow-local-ignore} /root/heart
+sudo rsync -a --delete --progress $HOME/doc/heart/.config/{fzf,ranger,tmux,vim,dircolors} /root/heart/.config
