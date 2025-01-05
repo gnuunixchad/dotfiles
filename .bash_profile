@@ -19,6 +19,8 @@ export TERM=xterm-256color
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8   # locale
 export EDITOR="/bin/nvim"
+# firefox pixel-perfect trackpad scrolling
+export MOZ_USE_XINPUT2=1
 export BROWSER="/usr/local/bin/firefox"
 export XDG_DOWNLOAD_DIR="$HOME/dls"
 export XDG_DOCUMENTS_DIR="$HOME/doc"
