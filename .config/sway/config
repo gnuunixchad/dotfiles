@@ -329,6 +329,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+f fullscreen
 
 bindsym $mod+Shift+f floating toggle
+bindsym $mod+Shift+c resize set width 1590 px, resize set height 860 px, move position center
 bindsym $mod+Shift+s sticky toggle
 bindsym $mod+space focus mode_toggle
 

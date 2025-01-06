@@ -21,7 +21,7 @@ if [[ $choice == "y" || $choice == "Y" ]]; then
         git clone "$heart" "$HOME/doc/.heart"
     fi
     git --git-dir $HOME/doc/.heart/.git --work-tree $HOME/doc/.heart pull && echo "heart is pulled" || echo "heart pulling failed"
-    rsync -a --delete --exclude ".git" --exclude ".local/sbin" --exclude "arch.list" --exclude "aur.list" --exclude "install.md" "$HOME/doc/.heart/" "$dotfiles" && chmod 755 "$dotfiles"
+    rsync -a --delete --exclude ".git" --exclude ".local/sbin" --exclude "arch.list" --exclude "aur.list" "$HOME/doc/.heart/" "$dotfiles" && chmod 755 "$dotfiles"
 else
     echo "aborted"
     exit 0

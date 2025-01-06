@@ -460,6 +460,14 @@ login as root
 
     uncomment and modify line to:
     HandlePowerKey=hibernate
+### 2.6.16 firefox
+    user.js, userChrome.css
+    tridactyl
+        :bind j scrollline 1
+        :bind k scrollline -1
+        :set hintstyle.bg none
+        :set hintstyle.fg none
+        :set hintstyle.outline all
 
 # 3.0 (optional) restore files from a backup media
     unlock and mount the backup disk
