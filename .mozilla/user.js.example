@@ -14,6 +14,8 @@ user_pref("browser.tabs.closeWindowWithLastTab", false); // last tab
 user_pref("browser.newtab.extensionControlled", true); // new tab
 user_pref("browser.newtab.privateAllowed", true);
 user_pref("browser.download.dir", "/home/nate/dls"); // dls dir
+user_pref("browser.download.folderList", 2);
+user_pref("browser.download.lastDir", "/home/nate/dls");
 user_pref("browser.urlbar.placeholderName", "Bing"); // urlbar search engine
 user_pref("browser.urlbar.placeholderName.private", "Bing");
 user_pref("browser.bookmarks.restore_default_bookmarks", false);
