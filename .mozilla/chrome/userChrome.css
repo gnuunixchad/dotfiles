@@ -12,7 +12,7 @@
 
 /* Navbar size calc */
 :root{
-  --tab-border-radius: 15px !important; /*  Tab border radius -- Changes the tabs rounding  *//*  Default: 6px  */
+  --tab-border-radius: 3px !important; /*  Tab border radius -- Changes the tabs rounding  *//*  Default: 6px  */
   --NavbarWidth: 43; /*  Default values: 36 - 43  */
   --TabsHeight: 25; /*  Minimum: 30  *//*  Default: 36  */
   --TabsBorder: 8; /*  Doesnt do anything on small layout  *//*  Default: 8  */
@@ -52,7 +52,7 @@
   -moz-box-ordinal-group: 0 !important;
   order: -2 !important;
   margin: 2px !important;
-  display: flex !important;
+  display: none !important;
 }
 
 /* Window control buttons (min, resize and close) */
