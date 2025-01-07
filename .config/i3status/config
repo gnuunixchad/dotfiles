@@ -23,120 +23,120 @@ order += "memory"
 order += "cpu_usage"
 order += "cpu_temperature 0"
 order += "read_file bright"
-order += "read_file mic"
 order += "volume master"
+order += "read_file mic"
 order += "battery all"
 order += "tztime local"
 
 read_file wcast {
-    format = "[󰻂 %content]"
+    format = "[ 󰻂 %content ]"
     format_bad = ""
     path = "~/.cache/wcast"
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }
 
 read_file wttr {
-    format = "[%content]"
+    format = "[ %content ]"
     format_bad = ""
     path = "~/.cache/wttr"
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }
 
 read_file pacman {
-    format = "[ %content]"
+    format = "[  %content ]"
     format_bad = ""
     path = "~/.cache/checkupdates-cron.num"
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }
 
 read_file uptime {
-    format ="[ %content]"
+    format ="[  %content ]"
     format_bad = ""
     path = "~/.cache/uptime"
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }
 
 ethernet _first_ {
-    format_up = "[]"
+    format_up = "[  ]"
     format_down = ""
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }
 
 wireless _first_ {
-    format_up = "[󰖩%quality]"
-    format_down = "[󰖪]"
+    format_up = "[ 󰖩%quality ]"
+    format_down = "[ 󰖪 ]"
     format_quality="% 02d%s"
 	color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }
 
 disk / {
-	format = "[🗁 %percentage_used]"
+	format = "[ 🗁 %percentage_used ]"
     color_bad = "#eeeeee"
     color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }
 
 memory {
-    format = "[ %percentage_used]"
+    format = "[  %percentage_used ]"
 	color_bad = "#eeeeee"
 	color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }
 
 cpu_usage {
-	format = "[ %usage]"
+	format = "[  %usage ]"
 	separator = false
-	separator_block_width = 4
+	separator_block_width = 0
 	color_bad = "#eeeeee"
 	color_degraded = "#eeeeee"
 }
 
 cpu_temperature 0 {
-	format = "[ %degrees°C]"
+	format = "[  %degrees°C ]"
 	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input"
     color_bad = "#eeeeee"
     color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }
 
 read_file bright {
-    format ="[󱩎 %content%]"
+    format ="[ 󱩎 %content% ]"
     format_bad = ""
     path = "~/.cache/brightness"
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }
 
 read_file mic {
-    format = "[%content]"
+    format = "[ %content ]"
     format_bad =""
     path = "~/.cache/microphone"
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }
 
 volume master {
-	format = "[ %volume]"
-	format_muted = "[ %volume]"
+	format = "[  %volume ]"
+	format_muted = "[  %volume ]"
 	device = "default"
 	mixer = "Master"
 	mixer_idx = 0
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }
 
 battery all {
-    format = "[%status %percentage]"
+    format = "[ %status %percentage ]"
 	integer_battery_capacity = true
 	last_full_capacity = true
 	status_chr = ""
@@ -149,12 +149,12 @@ battery all {
 	color_bad = "#eeeeee"
 	color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }
 
 tztime local {
-	format = "[%b-%d %a %H:%M]"
+	format = "[ %b-%d %a %H:%M ]"
 	#format = "[%Y-%m-%d]"
     separator = false
-    separator_block_width = 4
+    separator_block_width = 0
 }

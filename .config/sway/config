@@ -18,7 +18,7 @@ set $mode_z "z: enable[t]ap disable[T]ap enable[p]ad disable[P]ad clip[h]ist-wip
 bar {
     status_command i3status
 	position top
-	font pango:Source Code Pro normal 11.5
+	font pango:Source Code Pro normal 10
 	tray_output none
 	tray_padding 0
     status_edge_padding 0
