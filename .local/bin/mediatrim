@@ -1,6 +1,6 @@
 #!/bin/bash
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # mediatrim
 # trim the first and last seconds of a audio/video file
 # triming a mp4 file with ffmpeg could make it non-streamable
@@ -8,7 +8,7 @@
 # ffmpeg -i output.mp4 -c copy -movflags faststart new_output.mp4
 
 echo "Support Formats: Audio/Video"
-echo "Usage: mediatrim FILE"
+echo "Usage: $(basename "$0") FILE"
 echo "Then enter the first and last x seconds to be trim"
 
 # get audio duration in miliseconds instead of mediainfo's default in minutes

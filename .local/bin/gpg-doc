@@ -1,10 +1,10 @@
 #!/bin/bash
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # decrypt the .gpg file and pipe to a viewer, without writing to the disk
 
 usage() {
-    echo -e "usage:\tgpg-doc file.*.gpg\n\twmenu as passphrase prompt to temporarily view the encrypted files"
+    echo -e "usage:\t$(basename "$0") file.*.gpg\n\twmenu as passphrase prompt to temporarily view the encrypted files"
 }
 
 # print help menu if no arguments is provided

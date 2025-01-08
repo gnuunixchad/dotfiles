@@ -1,12 +1,12 @@
 #!/bin/bash
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # thumbcrop
 # crop thumbnails from 1200x900(4:3) to 1200x675(16:9)
 # because bilibili uses two different ratios
 
 usage() {
-    echo "usage: thumbcrop IMAGE_FILE.png"
+    echo "usage: $(basename "$0") IMAGE_FILE.png"
     echo "crop thumbnails from 1200x900(4:3) to 1200x675(16:9)"
     echo "output as IMAGE_FILE-new.png"
     echo "which image to be cropped?"

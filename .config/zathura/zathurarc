@@ -11,6 +11,7 @@ set page-padding 1
 set database 'sqlite'
 
 set zoom-step 2
+set scroll-step 30
 
 set recolor true
 # set background to a dark color

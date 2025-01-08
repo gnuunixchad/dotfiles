@@ -1,6 +1,6 @@
 #!/bin/bash
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # decrypt the .gpg file and pipe to fim, without writing to the disk
 
 # there's virtually no image viewer that can view more than one image from the 
@@ -12,7 +12,7 @@
 #gpg --pinentry-mode loopback -d $1 | mpv - --loop --pause
 
 usage() {
-    echo -e "usage:\tgpg-pic image.*.gpg\n\twmenu as passphrase prompt to temporarily view the encrypted files"
+    echo -e "usage:\t$(basename "$0") image.*.gpg\n\twmenu as passphrase prompt to temporarily view the encrypted files"
 }
 
 # print help menu if no arguments is provided

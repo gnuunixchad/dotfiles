@@ -1,13 +1,13 @@
 #!/bin/bash
 # @author nate zhou
-# @since 2023
+# @since 2023,2025
 
 # cli pomodoro using sleep and echo command
 # syntax: pomodoro 25
 # sleep 25 minutes, then show message to take 5 minutes break
 
 if [ $# -eq 0 ]; then
-  echo "Usage: $0 <minutes>"
+    echo "Usage: $(basename "$0") <minutes>"
   exit 1;
 fi
 

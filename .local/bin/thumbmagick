@@ -1,6 +1,6 @@
 #!/bin/bash
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # thumbmagick -- thumbnail creation automated using imagemagick
 
 # known issues:
@@ -18,7 +18,7 @@ Icon_r=""
 
 # print help menu
 usage() {
-    echo "usage: thumbmagick -b BG_IMAGE -1 text_line1 [OPTIONS] ..."
+    echo "usage: $(basename "$0") -b BG_IMAGE -1 text_line1 [OPTIONS] ..."
     echo "thumbnail creation automated using imagemagick"
     echo "known issues: width of the rectangle under text is calculated with CJK fonts (doubled width), regular ASCII characters not supported yet"
     echo -e "\nREQUIRED OPTIONS:" 

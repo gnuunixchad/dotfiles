@@ -1,6 +1,6 @@
 #!/bin/bash
 # @author nate zhou
-# @since 2023,2024
+# @since 2023,2024,2025
 # dw, dunst weather
 # @depends: libnotify, dunst, updw
 
@@ -9,9 +9,9 @@
 
 if [ $# -eq 0 ]; then
     if [[ -f $HOME/.cache/wttr ]]; then
-    
+
         wttr=$(cat $HOME/.cache/wttr)
-    
+
         # check if the file is empty
         if [[ -z $wttr ]]; then
             msg="~/.cache/wttr is empty, try running updw ?"
@@ -22,7 +22,7 @@ if [ $# -eq 0 ]; then
             notify-send -u low -r 24 "$msg"
             echo $msg
         fi
-    
+
     else
         msg="~/.cache/wttr does not exist, try running updw ?"
         notify-send -u low -r 23 "$msg"

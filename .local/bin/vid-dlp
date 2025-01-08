@@ -1,7 +1,7 @@
 #!/bin/bash
 # download videos with subtitles by yt-dlp with preferred formats
 # @author nate zhou
-# @since 2023
+# @since 2023,2024
 
 # use `yt-dlp --list-formats URL` to show available formats number
 # 247 `webm 1280x720 30fps`

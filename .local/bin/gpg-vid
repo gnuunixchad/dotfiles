@@ -1,13 +1,13 @@
 #!/bin/bash
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # decrypt the .gpg file and pipe to mpv, without writing to the disk
 # the video file has to be streamable, triming a mp4 file with ffmpeg could make it non-streamable
 # fix it by copy the movflags of the orgianl file
 # ffmpeg -i output.mp4 -c copy -movflags faststart new_output.mp4
 
 usage() {
-    echo -e "usage:\tgpg-pic image.*.gpg\n\twmenu as passphrase prompt to temporarily view the encrypted files"
+    echo -e "usage:\t$(basename "$0") video.*.gpg\n\twmenu as passphrase prompt to temporarily view the encrypted files"
 }
 
 # print help menu if no arguments is provided

@@ -1,6 +1,6 @@
 #!/bin/bash
 # @ author nate zhou
-# @ since 2024
+# @ since 2024,2025
 # checkupdates-cron
 # check available pacman packages and write the number to a cache file
 # @depends pacman-contrib, dunst, cronie, lsupdates*
@@ -16,7 +16,7 @@ update_frequency=3600 # in seconds, 12H
 
 update_cache() {
 # redirect stdout to the cache file, translate newline to space
-result=$(checkupdates --nocolor ) 
+result=$(checkupdates --nocolor )
 if [ -n "$result" ]; then
     checkupdates --nocolor && echo "$result" | awk '{print $1}' | tr '\n' ' ' > "$log_cache" || echo "$result" > "$err_cache"
 else

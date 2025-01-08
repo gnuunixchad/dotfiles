@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# @author nate zhou
+# @since 2025
+# remove pacman's packages cache
+# @depends pacman-contrib
+
+echo "paccache -vruk0"
+sudo paccache -vruk0
+echo "paccache -vrk3"
+sudo paccache -vrk3

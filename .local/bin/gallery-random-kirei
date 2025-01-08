@@ -5,4 +5,5 @@
 # show gallery images with imv, with lastest modified images first
 
 #ls $(find $HOME/pic/kirei*/ -type f ) | grep -e .jpeg -e .jpg -e .png -e .gif -e .mp4 -e .webm | imv
-swayimg $(ls $(find $HOME/pic/kirei*/ -type f ) | grep -e .jpeg -e .jpg -e .png -e .gif -e .mp4 -e .webm -e .webp | shuf)
+#swayimg $(ls $(find $HOME/pic/kirei*/ -type f ) | grep -e .jpeg -e .jpg -e .png -e .gif -e .mp4 -e .webm -e .webp | shuf)
+swayimg --gallery --order=random $HOME/pic/kirei*
