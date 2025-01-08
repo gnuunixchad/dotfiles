@@ -317,7 +317,6 @@ bindsym $mod+Shift+period move container to workspace next_on_output
 
 bindsym $mod+CONTROL+comma focus output left
 bindsym $mod+CONTROL+period focus output right
-bindsym $mod+CONTROL+tab focus output up
 
 bindsym $mod+x splitv
 bindsym $mod+v splith
@@ -339,6 +338,7 @@ bindsym $mod+c focus child
 
 bindsym $mod+Shift+tab move scratchpad
 bindsym $mod+tab scratchpad show
+bindsym $mod+CONTROL+tab exec $HOME/.local/bin/swaypad
 
 bindsym $mod+y resize shrink width 30px
 bindsym $mod+u resize grow height 30px

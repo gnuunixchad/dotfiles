@@ -265,7 +265,7 @@ login as root
     `nmcli device wifi connect <ssid> password <password> hidden yes`
 ## 2.5 install user packages
     ### basic tools
-    vim neovim ranger fzf tmux git rsync openssh openbsd-netcat udisks2 zip unzip tree calc pacman-contrib archlinux-contrib reuild-detector arch-install-scripts dosfstools exfat-utils
+    vim neovim ranger fzf tmux git rsync openssh openbsd-netcat udisks2 zip unzip tree calc pacman-contrib archlinux-contrib reuild-detector arch-install-scripts dosfstools exfat-utils jq
     ### system configuration
     networkmanager brightnessctl tlp ntp ufw firejail cronie
 
