@@ -111,6 +111,9 @@ alias Bw="cd ~/pic/wallpapers && pwd"
 alias Bv="cd ~/vid && pwd"
 alias Bu="cd ~/vid/unixchad && pwd"
 alias BV="cd ~/virt && pwd"
+### echo
+alias Er="echo RANGER_LEVEL=$RANGER_LEVEL"
+
 ### legacy ###
 #alias x="startx"
 #alias transmission-cli="transmission-cli -w /data/tmp"
