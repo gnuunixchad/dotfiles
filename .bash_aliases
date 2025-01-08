@@ -71,6 +71,7 @@ alias tlss="tmux list-session"
 alias tkss="tmux kill-session -t"
 ### git ###
 alias gs="git status"
+alias gsh="git show"
 alias ga="git add"
 alias gd="git diff"
 alias gds="git diff --staged"
