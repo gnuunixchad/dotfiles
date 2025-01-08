@@ -114,7 +114,7 @@ bindsym $mod+q kill
 bindsym $mod+d exec $menu
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term -T "Floating Term"
-bindsym $mod+Control+Return exec $term -T "Scratchpad Tmux" tmux
+bindsym $mod+Control+Return exec $term -T "Scratchpad Tmux" $HOME/.local/bin/tmuxd
 bindsym $mod+r exec $term ranger
 
 bindsym $mod+Shift+r reload
