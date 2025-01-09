@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2023,2024,2025
 # dw, dunst weather
@@ -8,12 +8,12 @@
 # running with dmenu/wmenu is recommended
 
 if [ $# -eq 0 ]; then
-    if [[ -f $HOME/.cache/wttr ]]; then
+    if [ -f "$HOME/.cache/wttr" ]; then
 
         wttr=$(cat $HOME/.cache/wttr)
 
         # check if the file is empty
-        if [[ -z $wttr ]]; then
+        if [ -z $wttr ]; then
             msg="~/.cache/wttr is empty, try running updw ?"
             notify-send -u low -r 23 "$msg"
             echo $msg

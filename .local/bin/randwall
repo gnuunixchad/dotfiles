@@ -1,22 +1,17 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
-# randwall
+# @since 2024,2025
 # random wallpaper
-# use cron to refresh wallpaper everyday
-# get one random image file from my wallpapers collection
 
-wallpaper_path="$HOME/.local/share/wallpaper"
-date_last_bg=$(stat "$wallpaper_path" | grep "^Modify:" | awk '{print $2}')
-date_today=$(date -I)
+WALLPAPER_PATH="$HOME/.local/share/wallpaper"
 
 refresh_bg() {
     random_wallpaper=$(find $HOME/pic/wallpapers -type f | grep -e earth -e photography -e spolight -e collection| grep -e .jpeg -e .jpg -e .png -e .gif | shuf -n 1)
     # set the selected image as sway background
-    cp -f $random_wallpaper "$wallpaper_path";
+    cp -f $random_wallpaper "$WALLPAPER_PATH";
     # refresh swaybg
     # without SWAYSOCK variable, swaymsg couldn't connect to the socket running from a cron job
-    SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock swaymsg "output * bg \"$wallpaper_path\" fill"
+    SWAYSOCK=/run/user/$(id -u)/sway-ipc.$(id -u).$(pgrep -x sway).sock swaymsg "output * bg \"$WALLPAPER_PATH\" fill"
 }
 
 # kill live wallpaper if it's is running

@@ -1,26 +1,21 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
-# lsupdates
+# @since 2024,2025
 # list updatable packages through xdg notification
 # @depends checkupdates-cron*
 
-log_cache="$HOME/.cache/checkupdates-cron.log"
-err_cache="$HOME/.cache/checkupdates-cron.err"
+LOG_CACHE="$HOME/.cache/checkupdates-cron.log"
+ERR_CACHE="$HOME/.cache/checkupdates-cron.err"
 
 # if cache files don't exist, call checkupdates-cron once
-if [[ ! -f "$log_cache" ]]; then
+if [ ! -f "$LOG_CACHE" ]; then
     $HOME/.local/bin/checkupdates-cron
 fi
 
-pkg_count=$(cat "$log_cache" | wc -w )
-pkg_list=$(cat "$log_cache")
-err_msg=$(cat "$err_cache")
+pkg_count=$(cat "$LOG_CACHE" | wc -w )
+pkg_list=$(cat "$LOG_CACHE")
 
-msg="$pkg_count\n$pkg_list\n$err_msg"
+msg="$pkg_count\n$pkg_list"
 
-echo -e "$msg"
-if [[ "$XDG_SESSION_TYPE" != "tty" ]]; then
-    # in GUI
-    notify-send -u low -r 181 "lsupdates" "available updates: $msg"
-fi
+echo "$msg"
+[ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -u low -r 181 "lsupdates" "available updates: $msg"

@@ -1,9 +1,5 @@
-#!/bin/bash
-# open the private window of firefox
-# my personal script for fast launching 
-# private window from dmenu
-#
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2023
+# @since 2023,2025
 
-firefox --private-window;
+[ -x /usr/local/bin/firefox ] && ( /usr/local/bin/firefox --private-window; exit 0 ) || ( /usr/bin/firefox --private-window; exit 0 )

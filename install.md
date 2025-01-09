@@ -265,7 +265,7 @@ login as root
     `nmcli device wifi connect <ssid> password <password> hidden yes`
 ## 2.5 install user packages
     ### basic tools
-    vim neovim ranger fzf tmux git rsync openssh openbsd-netcat udisks2 zip unzip tree calc pacman-contrib archlinux-contrib reuild-detector arch-install-scripts dosfstools exfat-utils jq
+    dash vim neovim ranger fzf tmux git rsync openssh openbsd-netcat udisks2 zip unzip tree bc calc pacman-contrib archlinux-contrib reuild-detector arch-install-scripts dosfstools exfat-utils jq
     ### system configuration
     networkmanager brightnessctl tlp ntp ufw firejail cronie
 
@@ -468,6 +468,8 @@ login as root
         :set hintstyle.bg none
         :set hintstyle.fg none
         :set hintstyle.outline all
+### 2.6.17 /usr/bin/sh
+    sudo ln -sf /usr/bin/dash /usr/bin/sh
 
 # 3.0 (optional) restore files from a backup media
     unlock and mount the backup disk

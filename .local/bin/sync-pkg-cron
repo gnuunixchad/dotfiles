@@ -1,33 +1,33 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # @ author nate zhou
-# @ since 2024
+# @ since 2024,2025
 # checkupdates-cron
 # check available pacman packages and write the number to a cache file
 # @depends pacman-contrib, dunst, cronie, lsupdates*
 
-log_cache="$HOME/.cache/sync-pkg-cron.log"
+LOG_CACHE="$HOME/.cache/sync-pkg-cron.log"
 
 # modified time in seconds since the Epoch
 update_time=$(stat -c "%Y" "$log_cache")
 # seconds since the Epoch
 current_time=$(date +%s)
-update_frequency=604800 # in seconds, 7d
+UPDATE_FREQUENCY=604800 # in seconds, 7d
 
 sync_pkg() {
     rsync -avh --delete --progress /var/cache/pacman/pkg/ $HOME/pkg/pacman/
     rsync -avh --delete --progress $HOME/.cache/yay/ $HOME/pkg/yay/
-    echo "$(date): synced" > $log_cache
+    echo "$(date): synced" > $LOG_CACHE
 }
 
-if [[ ! -f "$log_cache" ]]; then
+if [ ! -f "$LOG_CACHE" ]; then
     sync_pkg
     exit 0
 fi
 
 # check last update time
-if [[ $(("$current_time" - "$update_time")) -gt "$update_frequency" ]]; then
+if (( current_time - update_time > UPDATE_FREQUENCY )); then
     sync_pkg
 else
-    echo "Already updated within past $(($update_frequency/3600)) hours"
+    echo "Already updated within past $(($UPDATE_FREQUENCY/3600)) hours"
     exit 1
 fi

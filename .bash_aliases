@@ -16,11 +16,11 @@ alias vdiff="nvim -d"
 alias grep="grep --color=auto"
 alias ip="ip -color=auto"
 ### output format ###
-alias ll='ls -lh'
-alias la='ls -A'
-alias lla='ls -lhA'
-alias l.='ls -d .*'
-alias ll.='ls -lh -d .*'
+alias ll="ls -lh"
+alias la="ls -A"
+alias lla="ls -lhA"
+alias l.="ls -d .*"
+alias ll.="ls -lh -d .*"
 alias bat="bat --style='plain,changes,rule,snip'"
 alias whatis="whatis -l"
 alias du="du -h -d 1"
@@ -42,17 +42,17 @@ alias fpinfo="pacman -Qq | fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --pr
 alias fpcache="pacman -Qq | fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --prompt='package cache: ' --preview-window=70%:bottom: --preview 'ls /var/cache/pacman/pkg/{}-[0-9]*.pkg.tar.zst'"
 alias sync="~/.local/bin/sync-notify"
 ### abbreviation ###
-alias .r='. ~/.bash_profile && . ~/.bashrc && . ~/.bash_aliases'
+alias .r=". ~/.bash_profile && . ~/.bashrc && . ~/.bash_aliases"
 alias heartstow='cd ~/doc/heart && stow --adopt -t ~ . && cd - &>/dev/null && echo "heart is stowed"'
 alias heartunstow='cd ~/doc/heart && stow -D -t ~ . && cd - &>/dev/null && echo "heart is unstowed"'
 alias heartrestow='cd ~/doc/heart && stow -R --adopt -t ~ . && cd - &>/dev/null && echo "heart is stowed"'
 alias ollamastow='cd ~/pkg/ollama && stow --adopt -t ~ . && cd - &>/dev/null && echo "ollama is stowed"'
 alias ollamarestow='cd ~/pkg/ollama && stow -R --adopt -t ~ . && cd - &>/dev/null && echo "ollama is stowed"'
 alias ollamaunstow='cd ~/pkg/ollama && stow -D -t ~ . && cd - &>/dev/null && echo "ollama is unstowed"'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ?='pwd'
-alias ??='realpath'
+alias ..="cd .."
+alias ...="cd ../.."
+alias ?="pwd"
+alias ??="realpath"
 alias sw="sway --unsupported-gpu" # start with ssh agent
 alias vm="virt-manager"
 alias hibernate="systemctl hibernate"
@@ -134,7 +134,7 @@ colors() {
         [ $((($i + 1) % 8)) -eq 0 ] && printf "\n"
     done
 }
-
+# offline dictionary with wordnet
 dict () {
     /usr/bin/dict -d wn "$@" | /usr/bin/less -F
 }

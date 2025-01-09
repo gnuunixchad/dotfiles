@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # power off a block device interactively
-# depends: wmenu, fzf, udisks2
-# optional: amount, flocks
+# @depends: wmenu, fzf, udisks2
+# @optional: amount, flocks
 selected_partion=""
 msg=""
 
@@ -15,7 +15,7 @@ f_poff()
 
 send_msg()
 {
-    if [[ "$XDG_SESSION_TYPE" != "tty" ]]; then
+    if [ "$XDG_SESSION_TYPE" != "tty" ]; then
         notify-send -u normal -r 403 "poff" "$msg"
     else
         echo "$msg"
@@ -24,7 +24,7 @@ send_msg()
 
 lsblk_result=$(lsblk -rpo "name,type,size,uuid,label,mountpoint,fstype" | tail -n +2 | grep -ve ' disk ' -ve SWAP -ve /boot -ve /mapper/ )
 
-if [[ "$XDG_SESSION_TYPE" != "tty" ]]; then
+if [ "$XDG_SESSION_TYPE" != "tty" ]; then
     selected=$(echo "$lsblk_result" | wmenu -p "poff: " -l 6 -f "SourceCodePro medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
 else
     # use fzf to select a partition if in tty

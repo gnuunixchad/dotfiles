@@ -1,29 +1,47 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # write uptime to a file with cronjob for i3status
 
-cache="$HOME/.cache/uptime"
-result=$(uptime -p | sed 's/up //; s/ day\(s\)\?/d/; s/ hour\(s\)\?/h/; s/[0-9]* minute.*//; s/,//g; s/ $//')
-update_time=$(stat -c "%Y" "$cache")
-current_time=$(date +%s)
-update_frequency=600 # in seconds
+TMP_DIR="/tmp/i3status"
+
+[ -d "$TMP_DIR" ] || mkdir "$TMP_DIR"
+
+UPTIME_STATE="$TMP_DIR/uptime"
+
+result="$(uptime -p | sed 's/up //; s/ day\(s\)\?/d/; s/ hour\(s\)\?/h/; s/[0-9]* minute.*//; s/,//g; s/ $//')"
+update_time="$(stat -c "%Y" "$UPTIME_STATE")"
+current_time="$(date +%s)"
+UPDATE_FREQUENCY=600 # in seconds
 
 recache() {
     if [ -n "$result"  ]; then
-        echo "$result" > "$cache"
+        echo "$result" > "$UPTIME_STATE"
     else
-        echo "<1h" > "$cache"
+        echo "<1h" > "$UPTIME_STATE"
      fi
+
+    pgrep i3status >/dev/null && killall -SIGUSR1 i3status
 }
 
-if [ ! -f "$cache" ]; then
+while [ -n "$1" ]; do
+    case "$1" in
+        -n | --now)
+            echo "update now"
+            recache
+            exit 0
+            ;;
+    esac
+    shift
+done
+
+if [ ! -f "$UPTIME_STATE" ]; then
     recache
     exit 0
 fi
 
-if [[ $(("$current_time" - "$update_time")) -gt "$update_frequency" ]]; then
+if (( current_time - update_time > UPDATE_FREQUENCY )); then
     recache
 else
-        echo "Already updated within past $(($update_frequency/60)) min"
-fi  
+        echo "Already updated within past $(($UPDATE_FREQUENCY/60)) min"
+fi

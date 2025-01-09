@@ -1,13 +1,13 @@
-#!/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # used in sway's brightness/volume keybindings
 
-wobfifo="$HOME/.cache/wob.fifo"
-[ -p "$wobfifo" ] || mkfifo "$wobfifo"
+WOBFIFO="/tmp/i3status/wob.fifo"
+[ -p "$WOBFIFO" ] || mkfifo "$WOBFIFO"
 
-if pgrep -f "tail -f $wobfifo" > /dev/null; then
-    pkill -f "tail -f $wobfifo"
+if pgrep -f "tail -f $WOBFIFO" > /dev/null; then
+    pkill -f "tail -f $WOBFIFO"
 fi
 
-tail -f "$wobfifo" | wob
+tail -f "$WOBFIFO" | wob

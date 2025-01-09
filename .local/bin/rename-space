@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
-# depends rename package on debian (perl-rename on arch linux)
+# @since 2024,2025
+# @depend rename(debian) or perl-rename(arch)
 # rename files, replacing spaces with underlines
 
 perl-rename 's/ /_/g' "$@"

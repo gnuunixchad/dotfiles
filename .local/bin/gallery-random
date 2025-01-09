@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
-# gallery-new
+# @since 2024,2025
 # show gallery images with imv, with lastest modified images first
 # imv has max argument limited to 128
 

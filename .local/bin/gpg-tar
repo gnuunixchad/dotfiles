@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # decrypt the .gpg file and pipe to tar
 # after reading the untar'ed files, remember to `shred -u *`
 

@@ -1,8 +1,6 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2023
-# sync-config-reverse
-# sync config files from backup to system
+# @since 2024,2025
 
 # DON't add `--delete`
 # source path must have an ending `/`

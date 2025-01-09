@@ -46,13 +46,13 @@ GIT_PS1_DESCRIBE_STYLE=1 	    # show commit relative to tag or branch, when deta
 GIT_PS1_SHOWCOLORHINTS=1        # display in color
 
 if [ ! $UID -eq 0 ]; then
-    if [[ -n "$SSH_CONNECTION" ]]; then
-        PS1='\[\033[00;46m\]\u@\h\[\033[00;00m\] \[\033[01;32m\]\W\[\033[00;00m\]$(__git_ps1 " (%s)")\[\033[00;00m\] \$ '
+    if [ -n "$SSH_CONNECTION" ]; then
+        PS1='\[\033[30;43m\]\u@\h\[\033[00;00m\] \[\033[01;32m\]\W\[\033[00;00m\]$(__git_ps1 " (%s)")\[\033[00;00m\] \$ '
     else
         PS1='\[\033[00;45m\]\u@\h\[\033[00;00m\] \[\033[01;32m\]\W\[\033[00;00m\]$(__git_ps1 " (%s)")\[\033[00;00m\] \$ '
     fi
 else
-    PS1='\[\033[00;41m\]\u@\h\[\033[00;00m\] \[\033[01;32m\]\W\[\033[00;00m\]$(__git_ps1 " (%s)")\[\033[00;00m\] \$ '
+        PS1='\[\033[00;41m\]\u@\h\[\033[00;00m\] \[\033[01;32m\]\W\[\033[00;00m\]$(__git_ps1 " (%s)")\[\033[00;00m\] \$ '
 fi
 
 export PS4='+ ${LINENO}: '

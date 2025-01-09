@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
 # decrypt the .gpg file and pipe to fim, without writing to the disk
@@ -16,16 +16,16 @@ usage() {
 }
 
 # print help menu if no arguments is provided
-if [ $# -eq 0 ]; then
+if [ "$#" -eq 0 ]; then
     usage
     exit 1
 fi
 
 # use wmenu as passphrase prompt
-gpg_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "[gpg-pic] passphrase: " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
+gpg_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "[$(basename $0)] passphrase: " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
 
 # don't do anything if exiting wmenu without any input
-if  [[ -z "$gpg_passphrase" ]]; then
+if  [ -z "$gpg_passphrase" ]; then
     exit 1
 fi
 

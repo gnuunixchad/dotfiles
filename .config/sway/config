@@ -9,7 +9,7 @@ set $menu wmenu-run -f "SourceCodePro Medium 13" -i -N 191919 -S 6f3f89 -s fffff
 set $wmenu wmenu -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff
 set $bookmarks ~/.local/bin/share/bookmarks
 set $bright ~/.cache/brightness
-set $wobfifo ~/.cache/wob.fifo
+set $wobfifo /tmp/i3status/wob.fifo
 set $mode_cursor ";: num:F[n] | [d]Del | [HJKL]:Slow | Mod[hjkl]:Arrow | [n]PageUp | [p]PageDn"
 set $mode_app "': news[b]oat [c]alcurse cod[e] [g]imp [k]denlive [n]cmpcpp b[t]op [f]irefox thunderbir[d]"
 set $mode_wmenu "w: w[w]iki w[h]eart w[b]ook [a]mount [f]locks [p]off w[s]hot w[c]ast w[m]ulti"

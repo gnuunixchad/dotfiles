@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
 # depends on id3v2

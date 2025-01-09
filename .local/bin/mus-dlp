@@ -1,7 +1,7 @@
-#!/bin/bash
-# download music by yt-dlp with preferred formats
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2023,2024
+# @since 2023,2024,2025
+# download music by yt-dlp with preferred formats
 
 # `yt-dlp --list-formats URL` to get details
 # 251 downloads best audio only (opus)

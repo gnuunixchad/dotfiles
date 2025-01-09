@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # amount: interactively mount partitions based on selection
 #         - unlock beforehand if the partition is encrypted(LUKS)
 #         - use wmenu for selection and passphrase prompt in wayland
@@ -13,7 +13,7 @@ msg=""
 
 a_unlock()
 {
-    if [[ "$XDG_SESSION_TYPE" = "tty" ]]; then
+    if [ "$XDG_SESSION_TYPE" = "tty" ]; then
         udisksctl unlock -b "$selected_partition"
     else # use wmenu as passphrase prompt if not in tty
        wmenu_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "[udisksctl] passphrase: " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
@@ -28,7 +28,7 @@ a_mount()
 
 send_msg()
 {
-    if [[ "$XDG_SESSION_TYPE" != "tty" ]]; then
+    if [ "$XDG_SESSION_TYPE" != "tty" ]; then
         notify-send -u normal -r 401 "amount" "$msg"
     else
         echo "$msg"
@@ -37,7 +37,7 @@ send_msg()
 
 lsblk_result=$(lsblk -rpo "name,type,size,uuid,label,mountpoint,fstype" | tail -n +2 | grep -ve ' disk ' -ve SWAP -ve /boot -ve /mapper/ )
 
-if [[ "$XDG_SESSION_TYPE" != "tty" ]]; then
+if [ "$XDG_SESSION_TYPE" != "tty" ]; then
     selected=$(echo "$lsblk_result" | wmenu -p "amount: " -l 6 -f "SourceCodePro medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
 else
     # use fzf to select a partition if in tty

@@ -1,8 +1,7 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
-# livewall
+# @since 2024,2025
 
 killall -e "mpvpaper"
 
-mpvpaper -o "--loop --no-audio --no-resume-playback" -p '*' $HOME/.local/share/wallpaper &
+mpvpaper -o "--loop --no-audio --no-resume-playback" -p '*' "$HOME/.local/share/wallpaper" &

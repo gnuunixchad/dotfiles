@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # sync-notify
 # send desktop notification if not in tty
 # .bash_alias:
@@ -8,6 +8,7 @@
 
 /usr/bin/sync
 if [ "$XDG_SESSION_TYPE" != "tty" ]; then
+    # check if command is valid
     if command -v notify-send &> /dev/null; then
         /usr/bin/sync && notify-send -u low -r 3412 'sync finished'
     else

@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
 # checkkernels
 # Compare running kernel with installed kernel package versions
-kernels="linux linux-lts linux-zen"
+KERNELS="linux linux-lts linux-zen"
 kernel_running=$(uname -r | sed 's/-lts//; s/-arch1-1//; s/-zen//;')
-kernel_installed=$(pacman -Q --color never $kernels 2> /dev/null | awk '{print $2}') # no quotes on $kernels
+kernel_installed=$(pacman -Q --color never $KERNELS 2> /dev/null | awk '{print $2}') # no quotes on $KERNELS
 
 usage() {
     echo "usage"
@@ -18,7 +18,7 @@ echo -e "have:\t$kernel_installed"
 }
 
 # parse options
-while getopts ":hv" opt; do
+while getopts "hv" opt; do
     case "${opt}" in
         h)
             usage
@@ -34,7 +34,7 @@ while getopts ":hv" opt; do
     esac
 done
 
-if [[ -z $(echo "$kernel_installed" | grep "$kernel_running") ]]; then
+if [ -z "$(echo "$kernel_installed" | grep "$kernel_running")" ]; then
     msg="kernel is outdated, a reboot is required"
 else
     msg="kernel is up-to-date"
@@ -42,7 +42,7 @@ fi
 
 echo "$msg"
 # if in graphical environment, send desktop notification
-if [[ "$XDG_SESSION_TYPE" != "tty" ]]; then
+if [ "$XDG_SESSION_TYPE" != "tty" ]; then
     notify-send -u low -r 388 "checkkernels" "$msg"
 fi
 

@@ -1,8 +1,7 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
-
-# depends rename package on debian (perl-rename on arch linux)
+# @since 2024,2025
+# @depend rename(debian) or perl-rename(arch)
 
 # `"$@"` instead of `$@`, to disable bash word splitting, if file name contains 
 # `'$@'` doesn't work | `$@` doesn't work

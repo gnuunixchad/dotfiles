@@ -1,6 +1,6 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # os information
 
 k_result=$(uname -r)

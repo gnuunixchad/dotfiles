@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2025
 # encrypt the file with symmetric cipher, using wmenu for input and examine
@@ -10,7 +10,7 @@ usage() {
 }
 
 # print help menu if no arguments is provided
-if [ $# -eq 0 ]; then
+if [ "$#" -eq 0 ]; then
     usage
     exit 1
 fi
@@ -19,12 +19,12 @@ fi
 gpg_passphrase1=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "[$(basename $0)] passphrase: " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
 
 # don't do anything if exiting wmenu without any input
-if  [[ -z "$gpg_passphrase1" ]]; then
+if  [ -z "$gpg_passphrase1" ]; then
     notify-send -r 1284 -u low "$(basename $0):" "Aborted for empty passphrase"
     exit 1
 fi
 gpg_passphrase2=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "[$(basename $0)] passphrase again " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
-if [[ "$gpg_passphrase1" != "$gpg_passphrase2" ]]; then
+if [ "$gpg_passphrase1" != "$gpg_passphrase2" ]; then
     notify-send -r 1284 -u low "inputs are not identical!"
     exit 1
 fi

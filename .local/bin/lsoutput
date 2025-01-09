@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
-# lsoutput
+# @since 2024,2025
 # list output
 
 # check if on sway (sway process exists and currently in a wayland session)

@@ -1,13 +1,12 @@
-#!/bin/bash
-# sync-config
+#!/usr/bin/env bash
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 
 heart="$HOME/doc/heart"
 dotfiles="$HOME/doc/unixchad/dotfiles"
 
 read -p "Continue? (y/n): " choice
-if [[ $choice == "y" || $choice == "Y" ]]; then
+if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
 
     rsync -vh --progress -R /etc/{default/grub,firejail/firecfg.config,samba/smb.conf,ssh/sshd_config,systemd/logind.conf,tlp.conf,vconsole.conf,libvirt/network.conf,ufw/{user.rules,user6.rules},pacman.conf,pacman.d/mirrorlist} /usr/local/share/kbd/keymaps/us-custom.map.gz "$heart"/
 

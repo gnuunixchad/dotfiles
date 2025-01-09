@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
 # thumbcrop
@@ -13,7 +13,7 @@ usage() {
 }
 
 # print help menu if no arguments is provided
-if [ $# -eq 0 ]; then
+if [ "$#" -eq 0 ]; then
     usage
 else
     convert "$1" -gravity northwest -crop 1200x675+0+0 "$1-new.png"

@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
-# @setlive
+# @since 2024,2025
 # set live wallpapers, bind as xW in ranger
 # @depends mpv, mpvpaper-run*
 

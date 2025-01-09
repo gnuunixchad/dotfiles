@@ -1,13 +1,9 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # swayhibe
 # hibernate in sway with a wmenu warning prompt
 
-user_choice=$(echo -e "no\nyes" | wmenu -f "SourceCodePro medium 13" -p "System Hibernation?" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
+user_choice="$(printf "no\nyes" | wmenu -f "SourceCodePro medium 13" -p "System Hibernation?" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)"
 
-if [[ $user_choice == "yes" ]]; then
-    systemctl hibernate
-else
-    exit 1
-fi
+[ "$user_choice" = "yes" ] && systemctl hibernate || exit 0

@@ -31,7 +31,7 @@ order += "tztime local"
 read_file wcast {
     format = "[ 󰻂 %content ]"
     format_bad = ""
-    path = "~/.cache/wcast"
+    path = "/tmp/i3status/wcast"
     separator = false
     separator_block_width = 0
 }
@@ -55,7 +55,7 @@ read_file pacman {
 read_file uptime {
     format ="[  %content ]"
     format_bad = ""
-    path = "~/.cache/uptime"
+    path = "/tmp/i3status/uptime"
     separator = false
     separator_block_width = 0
 }

@@ -1,27 +1,26 @@
-#!/bin/bash
-# sync-config
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 
-heart="$HOME/doc/heart"
-dotfiles="$HOME/doc/unixchad/dotfiles"
+HEART="$HOME/doc/heart"
+DOTFILES="$HOME/doc/unixchad/dotfiles"
 
 read -p "Continue? (y/n): " choice
-if [[ $choice == "y" || $choice == "Y" ]]; then
-    pacman -Qmq | sort > "$heart"/aur.list
-    pacman -Qenq | sort > "$heart"/arch.list
+if [ $choice = "y" ] || [ $choice = "Y" ]; then
+    pacman -Qmq | sort > "$HEART"/aur.list
+    pacman -Qenq | sort > "$HEART"/arch.list
 
-    crontab -l > "$heart"/.config/crontab.backup && echo "crontab backup done" || echo "crontab backup failed"
+    crontab -l > "$HEART"/.config/crontab.backup && echo "crontab backup done" || echo "crontab backup failed"
 
     # censor bookmarks for screen casting
     grep -n "##############################below-are-private##############################" $HOME/doc/heart/.local/share/bookmarks/bookmarks | cut -d: -f1 | xargs -I {} sed -n '1,{}p' $HOME/doc/heart/.local/share/bookmarks/bookmarks > $HOME/doc/heart/.local/share/bookmarks/bookmarks-record && echo "bookmarks-record updated" || echo "bookmarks-record update failed"
 
     # unixchad
     if [ ! -d "$HOME/doc/.heart" ]; then
-        git clone "$heart" "$HOME/doc/.heart"
+        git clone "$HEART" "$HOME/doc/.heart"
     fi
     git --git-dir $HOME/doc/.heart/.git --work-tree $HOME/doc/.heart pull && echo "heart is pulled" || echo "heart pulling failed"
-    rsync -a --delete --exclude ".git" --exclude ".local/sbin" --exclude "arch.list" --exclude "aur.list" "$HOME/doc/.heart/" "$dotfiles" && chmod 755 "$dotfiles"
+    rsync -a --delete --exclude ".git" --exclude ".local/sbin" --exclude "arch.list" --exclude "aur.list" "$HOME/doc/.heart/" "$DOTFILES" && chmod 755 "$DOTFILES"
 else
     echo "aborted"
     exit 0

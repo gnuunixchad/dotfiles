@@ -1,53 +1,54 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # @ author nate zhou
 # @ since 2024,2025
-# checkupdates-cron
 # check available pacman packages and write the number to a cache file
+# for i3status
 # @depends pacman-contrib, dunst, cronie, lsupdates*
-log_cache="$HOME/.cache/checkupdates-cron.log"
-err_cache="$HOME/.cache/checkupdates-cron.err"
-num_cache="$HOME/.cache/checkupdates-cron.num"
+
+LOG_CACHE="$HOME/.cache/checkupdates-cron.log"
+ERR_CACHE="$HOME/.cache/checkupdates-cron.err"
+NUM_CACHE="$HOME/.cache/checkupdates-cron.num"
 
 # modified time in seconds since the Epoch
-update_time=$(stat -c "%Y" "$log_cache")
+update_time=$(stat -c "%Y" "$LOG_CACHE")
 # seconds since the Epoch
 current_time=$(date +%s)
-update_frequency=3600 # in seconds, 12H
+UPDATE_FREQUENCY=3600 # in seconds, 12H
 
 update_cache() {
 # redirect stdout to the cache file, translate newline to space
 result=$(checkupdates --nocolor )
 if [ -n "$result" ]; then
-    checkupdates --nocolor && echo "$result" | awk '{print $1}' | tr '\n' ' ' > "$log_cache" || echo "$result" > "$err_cache"
+    checkupdates --nocolor && echo "$result" | awk '{print $1}' | tr '\n' ' ' > "$LOG_CACHE" || echo "$result" > "$ERR_CACHE"
 else
     # if no updates available, overwrite cache with empty string
-    echo "" > "$log_cache"
+    echo "" > "$LOG_CACHE"
 fi
-wc -w "$log_cache" | awk '{print $1}' > "$num_cache"
+wc -w "$LOG_CACHE" | awk '{print $1}' > "$NUM_CACHE"
+pgrep i3status >/dev/null && killall -SIGUSR1 i3status
 }
 
-# if cache doesn't exist, init by calling update_cache()
-if [[ ! -f "$log_cache" ]]; then
-    touch "$log_cache"
-    update_cache
-    exit 0
-fi
-
-while [[ -n "$1" ]]; do
+while [ -n "$1" ]; do
     case "$1" in
         -n | --now)
             echo "update now"
             update_cache
-            exit
+            exit 0
             ;;
     esac
     shift
 done
 
+if [ ! -f "$LOG_CACHE" ]; then
+    touch "$LOG_CACHE"
+    update_cache
+    exit 0
+fi
+
 # check last update time
-if [[ $(("$current_time" - "$update_time")) -gt "$update_frequency" ]]; then
+if (( current_time - update_time > UPDATE_FREQUENCY )); then
     update_cache
 else
-    echo "Already updated within past $(($update_frequency/3600)) hours"
+    echo "Already updated within past $(($UPDATE_FREQUENCY/3600)) hours"
     exit 1
 fi

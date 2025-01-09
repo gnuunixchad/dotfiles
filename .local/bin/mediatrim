@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
-# mediatrim
 # trim the first and last seconds of a audio/video file
 # triming a mp4 file with ffmpeg could make it non-streamable
 # fix it by copy the movflags of the orgianl file

@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # easily shred files inside directory, used in ranger `@` `:shell shred-dir %s`
 
 # shred dir/*/** recursively shred the files

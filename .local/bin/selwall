@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # select an image for sway's wallpaper with imv
 
 notify-send -u low -r 438 "[Shift+w] to set wallpaper"

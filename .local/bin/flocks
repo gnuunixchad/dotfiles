@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # flocks: interactively unmount partitions base on selection
 #        - lock afterwards if the partition is decrypted(LUKS)
 #        - use wmenu for selection in wayland
@@ -23,7 +23,7 @@ f_lock()
 
 send_msg()
 {
-    if [[ "$XDG_SESSION_TYPE" != "tty" ]]; then
+    if [ "$XDG_SESSION_TYPE" != "tty" ]; then
         notify-send -u normal -r 402 "flock" "$msg"
     else
         echo "$msg"
@@ -32,7 +32,7 @@ send_msg()
 
 lsblk_result=$(lsblk -rpo "name,type,size,uuid,label,mountpoint,fstype" | tail -n +2 | grep -ve ' disk ' -ve SWAP -ve /boot -ve /mapper/ )
 
-if [[ "$XDG_SESSION_TYPE" != "tty" ]]; then
+if [ "$XDG_SESSION_TYPE" != "tty" ]; then
     selected=$(echo "$lsblk_result" | wmenu -p "flock: " -l 6 -f "SourceCodePro medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
 else
     # use fzf to select a partition if in tty

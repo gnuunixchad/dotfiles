@@ -11,7 +11,7 @@
 [ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 [ -d "$HOME/.local/sbin" ] && PATH="$HOME/.local/sbin:$PATH"
 
-# colorful manpage with bat
+# colorize manpage
 [ -x /usr/bin/bat ] && export MANROFFOPT="-c" && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 ### ENVIRONMENT VARIABLES ###

@@ -1,10 +1,11 @@
-#!/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 # rmorphan
 
 orphan_pkg=$(pacman -Qdtq)
 
+echo 'pacman -Rns $(pacman -Qdtq)'
 if [ -n "$orphan_pkg" ]; then
     sudo pacman -Rns $(pacman -Qdtq)
 else

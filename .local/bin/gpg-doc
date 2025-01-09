@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # @author nate zhou
 # @since 2024,2025
 # decrypt the .gpg file and pipe to a viewer, without writing to the disk
@@ -14,10 +14,10 @@ if [ $# -eq 0 ]; then
 fi
 
 # use wmenu as passphrase prompt
-gpg_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "[gpg-doc] passphrase: " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
+gpg_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "[$(basename $0)] passphrase: " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
 
 # don't do anything if exiting wmenu without any input
-if  [[ -z "$gpg_passphrase" ]]; then
+if  [ -z "$gpg_passphrase" ]; then
     exit 1
 fi
 

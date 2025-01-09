@@ -1,15 +1,13 @@
-#!/bin/bash
-# sync-ssh
-# sync everything to backup server with rsync and ssh
+#!/usr/bin/env bash
 # @author nate zhou
-# @since 2024
+# @since 2024,2025
 
 #echo;
 echo "rsync -avh --delete --progress /home/nate/{doc,mus,pic,vid,pkg} nate@192.168.31.15:/home/nate";
 
 #read -p "Do you want to continue? (y/n): " choice
 
-#if [[ $choice == "y" || $choice == "Y" ]]; then 
+#if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
 #	echo "Continuing ..."
 	rsync -avh --delete --progress /home/nate/{doc,mus,pic,vid,pkg} nate@192.168.31.15:/home/nate;
 #else
