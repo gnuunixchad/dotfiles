@@ -1,5 +1,5 @@
 # @author nate zhou
-# @since 2023, 2024
+# @since 2023,2024,2025
 
 # It is important that this file is edited as UTF-8.
 
@@ -30,122 +30,122 @@ order += "battery all"
 order += "tztime local"
 
 read_file wvoice {
-    format = "[   %content ]"
+    format = "[  %content]"
     format_bad = ""
     path = "/tmp/i3status/wvoice"
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 read_file wcast {
-    format = "[ 󰻂 %content ]"
+    format = "[󰻂 %content]"
     format_bad = ""
     path = "/tmp/i3status/wcast"
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 read_file wttr {
-    format = "[ %content ]"
+    format = "[%content]"
     format_bad = ""
     path = "~/.cache/wttr"
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 read_file pacman {
-    format = "[  %content ]"
+    format = "[ %content]"
     format_bad = ""
     path = "~/.cache/checkupdates-cron.num"
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 read_file uptime {
-    format ="[  %content ]"
+    format ="[ %content]"
     format_bad = ""
     path = "/tmp/i3status/uptime"
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 ethernet _first_ {
-    format_up = "[  ]"
+    format_up = "[]"
     format_down = ""
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 wireless _first_ {
-    format_up = "[ 󰖩%quality ]"
-    format_down = "[ 󰖪 ]"
+    format_up = "[󰖩%quality]"
+    format_down = "[󰖪]"
     format_quality="% 02d%s"
 	color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 disk / {
-	format = "[ 🗁 %percentage_used ]"
+	format = "[🗁 %percentage_used]"
     color_bad = "#eeeeee"
     color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 memory {
-    format = "[  %percentage_used ]"
+    format = "[ %percentage_used]"
 	color_bad = "#eeeeee"
 	color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 cpu_usage {
-	format = "[  %usage ]"
-	separator = false
-	separator_block_width = 0
+	format = "[ %usage]"
 	color_bad = "#eeeeee"
 	color_degraded = "#eeeeee"
+	separator = false
+	#separator_block_width = 0
 }
 
 cpu_temperature 0 {
-	format = "[  %degrees°C ]"
+	format = "[ %degrees°C]"
 	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input"
     color_bad = "#eeeeee"
     color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 read_file bright {
-    format ="[ 󱩎 %content% ]"
+    format ="[󱩎 %content%]"
     format_bad = ""
     path = "~/.cache/brightness"
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 read_file mic {
-    format = "[ %content ]"
+    format = "[%content]"
     format_bad =""
     path = "~/.cache/microphone"
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 volume master {
-	format = "[  %volume ]"
-	format_muted = "[  %volume ]"
+	format = "[ %volume]"
+	format_muted = "[ %volume]"
 	device = "default"
 	mixer = "Master"
 	mixer_idx = 0
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 battery all {
-    format = "[ %status %percentage ]"
+    format = "[%status %percentage]"
 	integer_battery_capacity = true
 	last_full_capacity = true
 	status_chr = ""
@@ -158,12 +158,12 @@ battery all {
 	color_bad = "#eeeeee"
 	color_degraded = "#eeeeee"
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }
 
 tztime local {
-	format = "[ %b-%d %a %H:%M ]"
+	format = "[%b-%d %a %H:%M]"
 	#format = "[%Y-%m-%d]"
     separator = false
-    separator_block_width = 0
+    #separator_block_width = 0
 }

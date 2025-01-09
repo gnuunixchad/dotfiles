@@ -16,13 +16,13 @@ set $mode_wmenu "w: w[w]iki w[h]eart w[b]ook [a]mount [f]locks [p]off w[s]hot w[
 set $mode_z "z: enable[t]ap disable[T]ap enable[p]ad disable[P]ad clip[h]ist-wipe [l]supdates d[w] w[c]al"
 
 bar {
-    status_command i3status
+    status_command ~/.local/bin/i3status-mpd
 	position top
 	font pango:Source Code Pro normal 10
 	tray_output none
 	tray_padding 0
     status_edge_padding 0
-	separator_symbol "/"
+	separator_symbol ""
     #workspace_min_width 30
 	# disable mouse
 	# 4/5/6/7 scroll up/down/right/left (touchpad)
