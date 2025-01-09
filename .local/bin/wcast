@@ -4,8 +4,7 @@
 # record-output record the selected output on wayland -a audio, -g geometry; -ro requires selecting one of the predefined rectangles for all outputs
 # also create an indicator for i3stauts
 
-#set -x
-selected_output="$(swaymsg -t get_outputs -p | grep Output | wmenu -p "wshot: " -l 3 -f "SourceCodePro medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | awk '{print $2}' )"
+selected_output="$(swaymsg -t get_outputs -p | grep Output | wmenu -p "wcast: " -l 3 -f "SourceCodePro medium 13" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff | awk '{print $2}' )"
 
 TMP_DIR="/tmp/i3status"
 
@@ -17,17 +16,15 @@ WCAST_STATE="$TMP_DIR/wcast"
 cleanup() {
     rm -f "$WCAST_STATE"
     pgrep i3status >/dev/null && killall -SIGUSR1 i3status
+    notify-send -u low -r 1257 "$(basename "$0")" "Recording on $selected_output ended"
 }
 
-# Set the trap to call cleanup on SIGINT
-trap cleanup SIGINT
+# Set the trap to call cleanup on normally exit, interrupted, or terminated
+trap cleanup EXIT INT TERM
 
-# @TODO fix C-c signal in wf-recording
-# echo REC > "$WCAST_STATE"
-# killall -SIGUSR1 i3status
+echo REC > "$WCAST_STATE"
+killall -SIGUSR1 i3status
 
 # Start the recorder
-wf-recorder -r 30 --audio=rnnoise_source -o "$selected_output" -f "$HOME/tmp/recording-$(date +%Y-%m-%d-%H-%M).mp4"
-
-# Call cleanup explicitly in case of normal exit
-cleanup
+notify-send -u low -r 1257 "$(basename "$0")" "Recording on $selected_output..."
+wf-recorder -r 30 --audio=rnnoise_source -o "$selected_output" -f "$HOME/tmp/wcast-$(date +%Y-%m-%d-%H-%M).mp4"

@@ -12,6 +12,7 @@ general {
 	color_bad = "#777777"
 }
 
+order += "read_file wvoice"
 order += "read_file wcast"
 order += "read_file wttr"
 order += "read_file pacman"
@@ -27,6 +28,14 @@ order += "volume master"
 order += "read_file mic"
 order += "battery all"
 order += "tztime local"
+
+read_file wvoice {
+    format = "[   %content ]"
+    format_bad = ""
+    path = "/tmp/i3status/wvoice"
+    separator = false
+    separator_block_width = 0
+}
 
 read_file wcast {
     format = "[ 󰻂 %content ]"

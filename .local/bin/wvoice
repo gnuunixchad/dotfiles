@@ -2,5 +2,26 @@
 # @author nate zhou
 # @since 2024,2025
 # record pipewire input voice
+# also create an indicator for i3status
 
-pw-record --target rnnoise_source "$HOME/tmp/recording-$(date +%Y-%m-%d-%H-%M).mp3"
+TMP_DIR="/tmp/i3status"
+[ -d "$TMP_DIR" ] || mkdir "$TMP_DIR"
+[ -d "$HOME/tmp" ] || mkdir "$HOME/tmp"
+
+WVOICE_STATE="$TMP_DIR/wvoice"
+
+cleanup() {
+    rm -f "$WVOICE_STATE"
+    pgrep i3status >/dev/null && killall -SIGUSR1 i3status
+    # send notification if not in tty
+    [ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -u low -r 1258 "$(basename "$0")" "Recording audio input ended"
+}
+
+# Set the trap to call cleanup on normally exit, interrupted, or terminated
+trap cleanup EXIT INT TERM
+
+echo MIC > "$WVOICE_STATE"
+killall -SIGUSR1 i3status
+
+notify-send -u low -r 1258 "$(basename "$0")" "Recording audio input..."
+[ "$XDG_SESSION_TYPE" != "tty" ] && pw-record --target rnnoise_source "$HOME/tmp/wvoice-$(date +%Y-%m-%d-%H-%M).mp3"
