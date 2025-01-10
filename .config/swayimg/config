@@ -123,7 +123,7 @@ bottom_right = name,status
 [keys.viewer]
 Shift + question = help
 g = first_file
-Shift+G = last_file
+Shift+g = last_file
 p = prev_file
 n = next_file
 Shift+n = next_dir
@@ -180,7 +180,7 @@ Alt+ScrollDown = next_frame
 [keys.gallery]
 Shift + question = help
 g = first_file
-G = last_file
+Shift+g = last_file
 h = step_left
 l = step_right
 k = step_up
