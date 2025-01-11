@@ -108,7 +108,7 @@ exec "fcitx5 -d"
 exec "wl-paste --watch cliphist store"
 
 # keybindings
-bindsym --release Caps_Lock exec "if [ $(cat /sys/class/leds/input*::capslock/brightness) == 0 ]; then notify-send -r 195 -t 3000 'CapsLock off'; else notify-send -r 195 -t 3000 'CapsLock on'; fi"
+bindsym --release Caps_Lock exec "if [ $(cat /sys/class/leds/input*::capslock/brightness) = 0 ]; then notify-send -r 195 -t 3000 'CapsLock off'; else notify-send -r 195 -t 3000 'CapsLock on'; fi"
 
 bindsym $mod+q kill
 bindsym $mod+d exec $menu
