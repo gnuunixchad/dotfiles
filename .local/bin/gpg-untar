@@ -2,10 +2,23 @@
 # @author nate zhou
 # @since 2024,2025
 # decrypt the .gpg file and pipe to tar
+# if in wayland, using wmenu as input box
 # after reading the untar'ed files, remember to `shred -u *`
 
-# tar -xvf - reading from standard input instead of a file
-gpg --pinentry-mode loopback -d $1 | tar -xvf - && notify-send -u normal "gpg-untar" "untarted, shred -u /*/** later" && gpg-connect-agent reloadagent /bye
+if [ "$XDG_SESSION_TYPE" = "tty" ]; then
+    gpg --pinentry-mode loopback -d "$1" | tar -xvf -  && gpg-connect-agent reloadagent /bye
+    exit 0
+fi
 
-# do not give replace id to this notification
-# put $1 in the notification to make each notification different, so it also won't override
+gpg_passphrase=$(echo "" | wmenu -P -f "SourceCodePro medium 13" -p "[$(basename $0)] passphrase: " -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)
+
+# don't do anything if exiting wmenu without any input
+if  [ -z "$gpg_passphrase" ]; then
+    exit 1
+fi
+
+echo "$gpg_passphrase" | gpg --batch --passphrase-fd 0 -d "$1" | tar -xvf - && msg="Done" || msg="Failed"
+
+[ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -u normal "$(basename $0)" "$msg"
+
+gpg-connect-agent reloadagent /bye
