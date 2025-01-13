@@ -38,4 +38,4 @@ map P print
 map i zoom in
 map o zoom out
 
-map m toggle_statusbar
+map b toggle_statusbar

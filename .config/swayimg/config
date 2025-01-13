@@ -1,6 +1,6 @@
 # swayimg config with vim-like keybindings
 # @author nate zhou
-# @since 2023,2024
+# @since 2023,2024,2025
 
 ################################################################################
 # General configuration
@@ -144,9 +144,10 @@ Minus = zoom -10
 o = zoom -10
 w = zoom width
 #Shift+w = zoom height
+Shift+i = exec convert "%" -channel RGB -negate - | swayimg -
+Shift+d = exec ~/.local/bin/swayimg-rm "%"; skip_file
 Shift+w = exec ~/.local/bin/setwall "%";
 Shift+y = exec cp "%" ~/tmp;
-Shift+d = exec ~/.local/bin/swayimg-rm "%"; skip_file
 z = zoom fit
 f = zoom fill
 0 = zoom real
@@ -192,6 +193,7 @@ Return = mode
 Shift + a = antialiasing
 r = reload
 m = info
+Shift+i = exec convert "%" -channel RGB -negate - | swayimg -
 Shift+d = exec ~/.local/bin/swayimg-rm "%"; skip_file
 Shift+w = exec ~/.local/bin/setwall "%";
 Shift+y = exec cp "%" ~/tmp;

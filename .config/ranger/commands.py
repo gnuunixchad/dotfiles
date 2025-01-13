@@ -2166,8 +2166,8 @@ class fzf_select(Command):
             (
                 catimg {} -w120 ||
                 batcat --color=always {} ||
-                id3v2 -l {} ||
                 bat --color=always {} ||
+                id3v2 -l {} ||
                 cat {} ||
                 tree -ahpCL 3 -I '.git' -I '*.py[co]' -I '__pycache__' {}
             ) 2>/dev/null | head -n 100

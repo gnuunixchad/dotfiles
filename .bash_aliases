@@ -123,13 +123,16 @@ alias Er="echo RANGER_LEVEL=$RANGER_LEVEL"
 #alias mutt="neomutt"
 
 ### SHELL FUNCTIONS ###
+# cd into parent
+Cd () {
+    cd "$(dirname $1)"
+}
 # read help with a pager
 help () {
     help_output=$(command help "$@")
     [ "$?" -eq 0 ] && echo "$help_output" | /usr/bin/less
 }
-# cd to a file's parent dir
-# preventing nested ranger
+# avoid nested ranger
 ranger() {
     [ -z "$RANGER_LEVEL" ] && /usr/bin/ranger "$@" || exit &>/dev/null
 }
