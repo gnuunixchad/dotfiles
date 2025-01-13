@@ -52,6 +52,7 @@ aur.list
 !.config/calcurse/
 !.config/calcurse/conf
 !.config/calcurse/keys
+!.config/calcurse/example.ical
 !.config/Code - OSS/
 !.config/Code - OSS/User
 !.config/Code - OSS/User/keybindings.json
