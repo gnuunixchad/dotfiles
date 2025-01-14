@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# @author nate zhou
+# @since 2025
+# future event count for i3status
+
+#set -x
+NUM="$HOME/.cache/calcurse.num"
+DAY="28" # for the given range of days to print events
+
+update_num() {
+    calcurse -d "$DAY" | grep '^[0-9]' | wc -l  > "$NUM"
+}
+
+if [ ! -f "$NUM" ]; then
+    update_num
+    exit 0
+fi
+
+while [ -n "$1" ]; do
+    case "$1" in
+        -n | --now)
+            echo "update now"
+            update_num
+            exit 0
+            ;;
+    esac
+    shift
+done
+
+# modified time in seconds since the Epoch
+update_time=$(stat -c "%Y" "$NUM")
+# seconds since the Epoch
+current_time=$(date +%s)
+UPDATE_FREQUENCY=86400 # 24H
+
+
+if (( current_time - update_time > UPDATE_FREQUENCY )) ; then
+    update_num
+else
+    echo "Already updated within past $(($UPDATE_FREQUENCY/3600)) hours"
+    exit 1
+fi

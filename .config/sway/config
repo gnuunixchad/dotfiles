@@ -10,6 +10,7 @@ set $wmenu wmenu -f "SourceCodePro Medium 13" -i -S 6f3f89 -s ffffff -M 6f3f89 -
 set $bookmarks ~/.local/bin/share/bookmarks
 set $bright ~/.cache/brightness
 set $wobfifo /tmp/i3status/wob.fifo
+set $fcitix /tmp/i3status/fcitix
 set $mode_cursor ";: num:F[n] | [d]Del | [HJKL]:Slow | Mod[hjkl]:Arrow | [n]PageUp | [p]PageDn"
 set $mode_app "': news[b]oat [c]alcurse cod[e] [g]imp [k]denlive [n]cmpcpp b[t]op [f]irefox thunderbir[d]"
 set $mode_wmenu "w: w[w]iki w[h]eart w[b]ook [a]mount [f]locks [p]off w[s]hot w[c]ast w[m]ulti"
@@ -59,7 +60,7 @@ for_window [class=".*"] border pixel 1
 
 default_orientation auto
 
-floating_maximum_size 1590 x 860
+floating_maximum_size 1596 x 872
 popup_during_fullscreen smart
 focus_wrapping yes
 force_display_urgency_hint 1000 ms
@@ -110,6 +111,8 @@ exec "wl-paste --watch cliphist store"
 # keybindings
 bindsym --release Caps_Lock exec "if [ $(cat /sys/class/leds/input*::capslock/brightness) = 0 ]; then notify-send -r 195 -t 3000 'CapsLock off'; else notify-send -r 195 -t 3000 'CapsLock on'; fi"
 
+bindsym $mod+space exec fcitx5-remote -t && notify-send -u low -r 3289 -t 1100 "Input Method Toggled"
+
 bindsym $mod+q kill
 bindsym $mod+d exec $menu
 bindsym $mod+Return exec $term
@@ -156,7 +159,7 @@ bindsym $mod+Shift+g exec slurp | grim -g - && notify-send -u low -r 88 "Screens
 ## take a screenshot with all monitors
 bindsym $mod+CONTROL+g exec grim && notify-send -u low -r 88 "Screenshot taken on all outputs"
 # seat cursor
-bindsym $mod+grave seat - cursor set 0 0
+#bindsym $mod+grave seat - cursor set 0 0
 bindsym $mod+slash seat - cursor set 9999 9999
 # wtype
 #bindsym Control+e exec wtype -k 'Escape'
@@ -331,7 +334,7 @@ bindsym $mod+Shift+f floating toggle
 bindsym $mod+Shift+c resize set width 1590 px, resize set height 860 px, move position center
 bindsym $mod+CONTROL+c move position center
 bindsym $mod+Shift+s sticky toggle
-bindsym $mod+space focus mode_toggle
+bindsym $mod+grave focus mode_toggle
 
 bindsym $mod+p focus parent
 bindsym $mod+c focus child

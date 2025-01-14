@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# @author nate zhou
+# @since 2025
+# unread articles count for i3status
+
+#set -x
+NUM="$HOME/.cache/newsboat.num"
+
+update_num() {
+    result="$(newsboat -x print-unread)"
+    [[ "$result" =~ ^[0-9] ]] && echo "$result" | cut -d' ' -f1 > "$NUM" || echo "$result"
+    #echo "$result" | cut -d' ' -f1 > "$NUM"
+}
+
+if [ ! -f "$NUM" ]; then
+    update_num
+    exit 0
+fi
+
+while [ -n "$1" ]; do
+    case "$1" in
+        -n | --now)
+            echo "update now"
+            update_num
+            exit 0
+            ;;
+    esac
+    shift
+done
+
+# modified time in seconds since the Epoch
+update_time=$(stat -c "%Y" "$NUM")
+# seconds since the Epoch
+current_time=$(date +%s)
+UPDATE_FREQUENCY=14400 # 4H
+
+
+if (( current_time - update_time > UPDATE_FREQUENCY )) ; then
+    update_num
+else
+    echo "Already updated within past $(($UPDATE_FREQUENCY/3600)) hours"
+    exit 1
+fi

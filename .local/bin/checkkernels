@@ -9,12 +9,12 @@ kernel_installed=$(pacman -Q --color never $KERNELS 2> /dev/null | awk '{print $
 
 usage() {
     echo "usage"
-    echo -e "usage:\t$(basename "$0") [OPTIONS]\n[OPTIONS]:\t-h\tprint this help info\n\t-v\tverbose, print kernel versions"
+    echo "usage:\t$(basename "$0") [OPTIONS]\n[OPTIONS]:\t-h\tprint this help info\n\t-v\tverbose, print kernel versions"
 }
 
 print_kernels() {
-echo -e "on:\t$(uname -r)"
-echo -e "have:\t$kernel_installed"
+echo "running:\t$(uname -r)"
+echo "installed:\t$kernel_installed"
 }
 
 # parse options

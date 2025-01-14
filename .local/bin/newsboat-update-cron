@@ -9,7 +9,7 @@ update_time=$(stat -c "%Y" "$NEWS_CACHE")
 # seconds since the Epoch
 current_time=$(date +%s)
 #update_frequency=86400 # in seconds, 86400s = 1d
-UPDATE_FREQUENCY=14400 # 3H
+UPDATE_FREQUENCY=14400 # 4H
 
 update_newsboat() {
     /usr/bin/newsboat -x reload

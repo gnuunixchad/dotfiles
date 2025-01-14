@@ -15,11 +15,14 @@ general {
 order += "read_file wvoice"
 order += "read_file wcast"
 order += "read_file wttr"
+order += "read_file calcurse"
+order += "read_file newsboat"
 order += "read_file pacman"
 order += "read_file uptime"
 order += "ethernet _first_"
 order += "wireless _first_"
 order += "disk /"
+#order += "disk /home"
 order += "memory"
 order += "cpu_usage"
 order += "cpu_temperature 0"
@@ -34,7 +37,7 @@ read_file wvoice {
     format_bad = ""
     path = "/tmp/i3status/wvoice"
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }
 
 read_file wcast {
@@ -42,7 +45,7 @@ read_file wcast {
     format_bad = ""
     path = "/tmp/i3status/wcast"
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }
 
 read_file wttr {
@@ -50,7 +53,23 @@ read_file wttr {
     format_bad = ""
     path = "~/.cache/wttr"
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
+}
+
+read_file calcurse {
+    format = "[󰅎 %content]"
+    format_bad = ""
+    path = "~/.cache/calcurse.num"
+    separator = false
+    separator_block_width = 4
+}
+
+read_file newsboat {
+    format = "[󰡠 %content]"
+    format_bad = ""
+    path = "~/.cache/newsboat.num"
+    separator = false
+    separator_block_width = 4
 }
 
 read_file pacman {
@@ -58,7 +77,7 @@ read_file pacman {
     format_bad = ""
     path = "~/.cache/checkupdates-cron.num"
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }
 
 read_file uptime {
@@ -66,14 +85,14 @@ read_file uptime {
     format_bad = ""
     path = "/tmp/i3status/uptime"
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }
 
 ethernet _first_ {
     format_up = "[]"
     format_down = ""
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }
 
 wireless _first_ {
@@ -82,7 +101,7 @@ wireless _first_ {
     format_quality="% 02d%s"
 	color_degraded = "#eeeeee"
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }
 
 disk / {
@@ -90,15 +109,22 @@ disk / {
     color_bad = "#eeeeee"
     color_degraded = "#eeeeee"
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }
 
+disk /home {
+	format = "[ %percentage_used]"
+    color_bad = "#eeeeee"
+    color_degraded = "#eeeeee"
+    separator = false
+    separator_block_width = 4
+}
 memory {
     format = "[ %percentage_used]"
 	color_bad = "#eeeeee"
 	color_degraded = "#eeeeee"
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }
 
 cpu_usage {
@@ -106,7 +132,7 @@ cpu_usage {
 	color_bad = "#eeeeee"
 	color_degraded = "#eeeeee"
 	separator = false
-	#separator_block_width = 0
+	separator_block_width = 4
 }
 
 cpu_temperature 0 {
@@ -115,7 +141,7 @@ cpu_temperature 0 {
     color_bad = "#eeeeee"
     color_degraded = "#eeeeee"
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }
 
 read_file bright {
@@ -123,7 +149,7 @@ read_file bright {
     format_bad = ""
     path = "~/.cache/brightness"
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }
 
 read_file mic {
@@ -131,7 +157,7 @@ read_file mic {
     format_bad =""
     path = "~/.cache/microphone"
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }
 
 volume master {
@@ -139,9 +165,9 @@ volume master {
 	format_muted = "[ %volume]"
 	device = "default"
 	mixer = "Master"
-	mixer_idx = 0
+	mixer_idx = 4
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }
 
 battery all {
@@ -158,12 +184,12 @@ battery all {
 	color_bad = "#eeeeee"
 	color_degraded = "#eeeeee"
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }
 
 tztime local {
 	format = "[%b-%d %a %H:%M]"
 	#format = "[%Y-%m-%d]"
     separator = false
-    #separator_block_width = 0
+    separator_block_width = 4
 }

@@ -1,13 +1,14 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
-# confirm to remove image with wmenu
+# swayimg script for wmenu confirmation to remove an image
+# Shift+d = exec ~/.local/bin/swayimg-rm "%" && skip_file; reload
 
-user_choice="$(printf "no\nyes" | wmenu -f "SourceCodePro medium 13" -p "rm? ($@)" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)"
+user_choice="$(printf "no\nyes" | wmenu -f "SourceCodePro medium 13" -p "["$(basename $0)"] rm? $(basename $@ | awk '{if(length($0) > 80) print substr($0, 1, 35) "..." substr($0, length($0)-34, 35); else print $0}')" -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff)"
 
 if [ "$user_choice" = "yes" ]; then
     rm "$1"
-    notify-send -u low -r 3301 "swayimg"  "image removed"
+    notify-send -u low -r 3301 "swayimg"  "$1 is removed"
 else
-    exit 0
+    exit 1
 fi

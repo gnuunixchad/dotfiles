@@ -1,4 +1,6 @@
 [Hotkey]
+# Trigger Input Method
+TriggerKeys=
 # Enumerate when press trigger key repeatedly
 EnumerateWithTriggerKeys=True
 # Enumerate Input Method Forward
@@ -7,24 +9,19 @@ EnumerateForwardKeys=
 EnumerateBackwardKeys=
 # Skip first input method while enumerating
 EnumerateSkipFirst=False
-
-[Hotkey/TriggerKeys]
-0=Shift+space
+# Enumerate Input Method Group Forward
+EnumerateGroupForwardKeys=
+# Enumerate Input Method Group Backward
+EnumerateGroupBackwardKeys=
+# Activate Input Method
+ActivateKeys=
+# Deactivate Input Method
+DeactivateKeys=
+# Toggle embedded preedit
+TogglePreedit=
 
 [Hotkey/AltTriggerKeys]
 0=Shift_L
-
-[Hotkey/EnumerateGroupForwardKeys]
-0=Super+space
-
-[Hotkey/EnumerateGroupBackwardKeys]
-0=Shift+Super+space
-
-[Hotkey/ActivateKeys]
-0=Hangul_Hanja
-
-[Hotkey/DeactivateKeys]
-0=Hangul_Romaja
 
 [Hotkey/PrevPage]
 0=Up
@@ -37,9 +34,6 @@ EnumerateSkipFirst=False
 
 [Hotkey/NextCandidate]
 0=Tab
-
-[Hotkey/TogglePreedit]
-0=Control+Alt+P
 
 [Behavior]
 # Active By Default

@@ -29,12 +29,12 @@ alias ncdu="ncdu -x --hide-hidden"
 alias df="df -h -x tmpfs -x efivarfs -x devtmpfs"
 alias lsblk="lsblk -o name,mountpoints,type,size"
 alias free="free -h"
-alias less="less -F"
+alias less="less -i -F"
 alias iostat="iostat -t 2"
 alias mpv="mpv --loop"
 alias wmenu="wmenu -f 'SourceCodePro Medium 13' -i -S 6f3f89 -s ffffff -M 6f3f89 -m ffffff"
 alias fzf="/usr/bin/fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --reverse --color=16 --preview-window=65%:wrap:border-sharp: --preview 'bat --color=always --style=plain,changes {}'"
-alias fimg="find -type f \( -name "*.png" -o -name "*.jpeg" -o -name "*.jpg" \) | fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --preview 'catimg -w100 {}' --preview-window=90%:bottom: --bind='enter:execute(swayimg {})'"
+alias fimg="find -type f \( -name "*.png" -o -name "*.jpeg" -o -name "*.jpg" -o -name "*.webp" \) | fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --preview 'catimg -w100 {}' --preview-window=90%:bottom: --bind='enter:execute(swayimg {})'"
 alias fvi="fzf --bind='enter:execute(nvim {+}),ctrl-j:preview-down,ctrl-k:preview-up'"
 alias ftree="realpath * | fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --prompt='ftree: ' --reverse --preview 'tree -L1 {}'"
 alias fptree="pacman -Qq | fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --prompt='reverse depends: ' --preview-window=70%:bottom: --preview 'pactree -rd2 {}'"
@@ -43,16 +43,16 @@ alias fpcache="pacman -Qq | fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --p
 alias sync="~/.local/bin/sync-notify"
 ### abbreviation ###
 alias .r=". ~/.bash_profile && . ~/.bashrc && . ~/.bash_aliases"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ?="pwd"
+alias ??="realpath"
 alias heartstow='cd ~/doc/heart && stow --adopt -t ~ . && cd - &>/dev/null && echo "heart is stowed"'
 alias heartunstow='cd ~/doc/heart && stow -D -t ~ . && cd - &>/dev/null && echo "heart is unstowed"'
 alias heartrestow='cd ~/doc/heart && stow -R --adopt -t ~ . && cd - &>/dev/null && echo "heart is stowed"'
 alias ollamastow='cd ~/pkg/ollama && stow --adopt -t ~ . && cd - &>/dev/null && echo "ollama is stowed"'
 alias ollamarestow='cd ~/pkg/ollama && stow -R --adopt -t ~ . && cd - &>/dev/null && echo "ollama is stowed"'
 alias ollamaunstow='cd ~/pkg/ollama && stow -D -t ~ . && cd - &>/dev/null && echo "ollama is unstowed"'
-alias ..="cd .."
-alias ...="cd ../.."
-alias ?="pwd"
-alias ??="realpath"
 alias sw="sway --unsupported-gpu" # start with ssh agent
 alias vm="virt-manager"
 alias hibernate="systemctl hibernate"
@@ -62,6 +62,8 @@ alias vim="nvim"
 alias swayimg="swayimg --class swayimgapp" # sway window border per app_id
 alias p="source $HOME/.local/sbin/prox"
 alias P="getprox";
+alias ts="task";
+alias event="calcurse -d";
 alias brn="brn2 -s"
 alias yt-dlp="yt-dlp --embed-metadata --cookies-from-browser firefox"
 alias epr="firejail --profile=$HOME/.config/firejail/epr.local epr"
@@ -69,6 +71,14 @@ alias epr-zh="firejail --profile=$HOME/.config/firejail/epr-zh.local epr-zh"
 alias tksv="tmux kill-server"
 alias tlss="tmux list-session"
 alias tkss="tmux kill-session -t"
+alias tat="tmux attach"
+alias cksv="sudo checkservices"
+alias ckrb="checkrebuild"
+alias ckud="$HOME/.local/bin/checkupdates-cron"
+alias ckkn="$HOME/.local/bin/checkkernels"
+alias lsud="$HOME/.local/bin/lsupdates"
+alias rmcc="$HOME/.local/bin/rmcache"
+alias rmop="$HOME/.local/bin/rmorphan"
 ### git ###
 alias gs="git status"
 alias gsh="git show"
@@ -130,7 +140,7 @@ Cd () {
 # read help with a pager
 help () {
     help_output=$(command help "$@")
-    [ "$?" -eq 0 ] && echo "$help_output" | /usr/bin/less
+    [ "$?" -eq 0 ] && echo "$help_output" | /usr/bin/less -i
 }
 # avoid nested ranger
 ranger() {
@@ -145,5 +155,5 @@ colors() {
 }
 # offline dictionary with wordnet
 dict () {
-    /usr/bin/dict -d wn "$@" | /usr/bin/less -F
+    /usr/bin/dict -d wn "$@" | /usr/bin/less -i -F
 }
