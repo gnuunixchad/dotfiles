@@ -8,10 +8,10 @@ INPUT="$HOME/.config/ttyper/language/symbol-list"
 OUTPUT="$HOME/.config/ttyper/language/symbol"
 OUTPUT_LEN="3000"
 
->"$OUTPUT" # clear existing language file
+> "$OUTPUT" # clear existing language file
 
 for (( i=0; i<OUTPUT_LEN; i=i+1 )); do
-    length=$((RANDOM % 3 + 5))  # Generate a random length between 3 and 7
+    length=$((RANDOM % 5 + 3))  # Generate a random length between 3 and 7
     shuf -n $length $INPUT | tr -d '\n' >> $OUTPUT
     echo >> $OUTPUT  # Add a newline
 done
