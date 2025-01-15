@@ -8,8 +8,8 @@
 [[ -n "$BASH_VERSION" && -f "$HOME/.bashrc" ]] && . "$HOME/.bashrc"
 
 # set PATH so it includes user's private bin if it exists
-[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
-[ -d "$HOME/.local/sbin" ] && PATH="$HOME/.local/sbin:$PATH"
+[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:${PATH}"
+[ -d "$HOME/.local/sbin" ] && PATH="$HOME/.local/sbin:${PATH}"
 
 # colorize manpage
 [ -x /usr/bin/bat ] && export MANROFFOPT="-c" && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -18,7 +18,7 @@
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8   # locale
-export EDITOR="/bin/nvim"
+export EDITOR="/usr/bin/nvim"
 # firefox pixel-perfect trackpad scrolling
 export MOZ_USE_XINPUT2=1
 export BROWSER="/usr/local/bin/firefox"

@@ -1,0 +1,9 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# generate language file for ttyper from executables in PATH
+
+LANG_DIR="$HOME/.config/ttyper/language"
+[ -d "LANG_DIR"  ] || mkdir -p "$LANG_DIR"
+
+printenv PATH | tr ':' '\n' | grep -v '/\.local/sbin' | xargs -I {} ls {} > "${LANG_DIR}/bash"
