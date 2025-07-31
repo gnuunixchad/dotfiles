@@ -14,6 +14,8 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
+(setq org-startup-with-inline-images t)
+
 (setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
                          ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
                          ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")))
