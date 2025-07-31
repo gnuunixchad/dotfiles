@@ -6,6 +6,7 @@
 # always
 riverctl spawn "$HOME/.local/bin/wlr-output"
 riverctl spawn "${HOME}/.local/bin/dam-run"
+riverctl spawn "emacs --daemon"
 
 # restart
 killall -q swaybg fcitx5 mpc
