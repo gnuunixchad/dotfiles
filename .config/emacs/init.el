@@ -31,9 +31,11 @@
                          ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")))
 (package-initialize)
 
-(unless (package-installed-p 'evil)
+(let ((packages '(evil company)))
   (package-refresh-contents)
-  (package-install 'evil))
+  (dolist (pkg packages)
+    (unless (package-installed-p pkg)
+      (package-install pkg))))
 
 (require 'evil)
 (evil-mode 1)
@@ -46,10 +48,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages '(company evil)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(mode-line ((t (:background "#427b58" :foreground "#eeeeee")))))
+
+(add-hook 'after-init-hook 'global-company-mode)
