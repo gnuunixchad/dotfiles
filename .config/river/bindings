@@ -3,7 +3,7 @@
 # @since 2025
 # river/bindings
 
-mod=Mod1    # Mod1=Alt, Mod4=Super
+mod=Mod4    # Mod1=Alt, Mod4=Super
 term="footclient"
 menu="${HOME}/.local/bin/wmenu-run-color"
 

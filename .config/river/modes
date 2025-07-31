@@ -3,7 +3,7 @@
 # @author nate zhou
 # @since 2025
 
-mod=Mod1
+mod=Mod4
 
 fcitx="[p]inyin [a]nthy"
 wmenu="[w[w]iki w[h]eart w[b]ook [a]mount [f]locks [p]off w[s]ink w[j]doc w[e]moji"
