@@ -1,14 +1,18 @@
-; init.el
-; @author nate zhoou
-; @since 2025
+;; init.el
+;; @author nate zhoou
+;; @since 2025
 
-; emacs daemon doesn't have access to GUI resources
+;; emacs daemon doesn't have access to GUI resources
 (add-hook 'after-make-frame-functions
-          (lambda (frame)
-            (with-selected-frame frame
-              (set-background-color "#111111")
-              (set-foreground-color "#dddddd")
-              (set-face-attribute 'default nil :font "SourceCodePro-14"))))
+    (lambda (frame)
+      (with-selected-frame frame
+        (set-background-color "#111111")
+        (set-foreground-color "#dddddd")
+        (set-face-attribute 'default nil :font "SourceCodePro-14"))))
+
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 (setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
                          ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
