@@ -107,6 +107,8 @@ aur.list
 !.config/dircolors
 !.config/dunst/
 !.config/dunst/dunstrc
+!.config/emacs/
+!.config/emacs/init.el
 !.config/fcitx5/
 !.config/fcitx5/config
 !.config/firejail
