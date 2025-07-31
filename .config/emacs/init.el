@@ -2,6 +2,10 @@
 ;; @author nate zhoou
 ;; @since 2025
 
+(set-background-color "#111111")
+(set-foreground-color "#dddddd")
+(set-face-attribute 'default nil :font "SourceCodePro-14")
+
 ;; emacs daemon doesn't have access to GUI resources
 (add-hook 'after-make-frame-functions
     (lambda (frame)
@@ -20,6 +24,7 @@
 (global-display-line-numbers-mode 1)
 
 (setq org-startup-with-inline-images t)
+
 
 (setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
                          ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
