@@ -20,6 +20,8 @@
 
 (blink-cursor-mode 0)
 
+(which-key-mode 1)
+
 (setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode 1)
 
