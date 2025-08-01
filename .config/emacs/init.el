@@ -14,6 +14,11 @@
         (set-foreground-color "#dddddd")
         (set-face-attribute 'default nil :font "SourceCodePro-14"))))
 
+(custom-set-variables
+ '(package-selected-packages '(company evil)))
+(custom-set-faces
+ '(mode-line ((t (:background "#427b58" :foreground "#eeeeee")))))
+
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -27,35 +32,22 @@
 
 (setq org-startup-with-inline-images t)
 
-
 (setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
                          ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
                          ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")))
 (package-initialize)
 
-(let ((packages '(evil company)))
-  (package-refresh-contents)
-  (dolist (pkg packages)
-    (unless (package-installed-p pkg)
-      (package-install pkg))))
+(require 'use-package)
+(setq use-package-always-ensure t)
 
-(require 'evil)
-(evil-mode 1)
+(use-package evil
+    :init
+    (evil-mode 1)
+    :custom
+    (evil-want-integration t)
+    (evil-visual-state-cursor 'box)
+    :config
+    (define-key evil-normal-state-map "g" 'evil-goto-line))
 
-(setq evil-want-integration t)
-(setq evil-visual-state-cursor 'box)
-(define-key evil-normal-state-map "g" 'evil-goto-line)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(company evil)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(mode-line ((t (:background "#427b58" :foreground "#eeeeee")))))
-
-(add-hook 'after-init-hook 'global-company-mode)
+(use-package company
+    :hook 'after-init-hook 'global-company-mode))
