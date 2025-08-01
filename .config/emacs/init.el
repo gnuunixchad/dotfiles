@@ -47,7 +47,13 @@
     (evil-want-integration t)
     (evil-visual-state-cursor 'box)
     :config
-    (evil-define-key 'normal 'global (kbd "g") 'evil-goto-line))
+    (evil-define-key 'normal 'global (kbd "g") 'evil-goto-line)
+)
 
 (use-package company
-    :hook (after-init . global-company-mode))
+    :hook (after-init . global-company-mode)
+    :bind (:map company-active-map
+                ("C-n" . company-select-next)
+                ("C-p" . company-select-previous)
+          )
+)
