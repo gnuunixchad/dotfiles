@@ -56,4 +56,7 @@
                 ("C-n" . company-select-next)
                 ("C-p" . company-select-previous)
           )
+    :config (
+                (add-to-list 'company-backends 'company-dabbre)
+            )
 )
