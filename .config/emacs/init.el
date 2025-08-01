@@ -47,7 +47,7 @@
     (evil-want-integration t)
     (evil-visual-state-cursor 'box)
     :config
-    (define-key evil-normal-state-map "g" 'evil-goto-line))
+    (evil-define-key 'normal 'global (kdb "g") 'evil-goto-line))
 
 (use-package company
     :hook 'after-init-hook 'global-company-mode))
