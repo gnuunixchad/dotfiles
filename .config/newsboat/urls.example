@@ -13,6 +13,9 @@ https://codeberg.org/sewn/dam.rss ~dam git river
 https://sr.ht/~novakane/rivercarro/feed.rss ~rivercarro git river
 https://gitlab.com/akumar-xyz/river-shifttags.atom ~river-shifttags git river
 
+https://github.com/martanne/dvtm/releases.atom ~dvtm terminal tui
+https://github.com/martanne/abduco/releases.atom ~abduco terminal cli
+
 https://github.com/gokcehan/lf/releases.atom ~lf git tui
 
 https://codeberg.org/dnkl/foot/releases.rss ~foot git gui

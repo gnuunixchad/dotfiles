@@ -52,6 +52,7 @@ export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 export GRIM_DEFAULT_DIR="$HOME/tmp"
 
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket # ssh-agent
+export ABDUCO_SOCKET_DIR=/$XDG_RUNTIME_DIR # abduco
 
 export QT_QPA_PLATFORMTHEME=qt5ct # qt theme
 export QT_STYLE_OVERRIDE=adwaita-dark # qt theme

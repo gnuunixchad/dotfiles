@@ -1,0 +1,176 @@
+#!/bin/env sh
+# Pure POSIX plain text bar generator with signal support
+# Works with any bar taking stdin as plain text
+# @author nate zhou
+# @since 2025
+
+# INI
+[ -d "/tmp/${USER}" ] || mkdir -p "/tmp/${USER}"
+printf "$$" > "/tmp/${USER}/damblocks"
+sec=0
+thin_space=" "         # ` `(U+2009) is the Thin Space
+
+# MODULES
+update_time () {
+	time="󰥔 $(date '+%b-%d %a %H:%M')"
+}
+
+update_battery () {
+    BAT="BAT1"
+    POWER="/sys/class/power_supply"
+    status="$(cat $POWER/$BAT/status)"
+    level="$(cat $POWER/$BAT/capacity)"
+    case "$status" in
+        "Discharging")
+            case "$level" in
+                [0-5]) icon="󰂎";;
+                [6-9]) icon="󰁺";;
+                1[0-9]) icon="󰁻";;
+                2[0-9]) icon="󰁼";;
+                3[0-9]) icon="󰁽";;
+                4[0-9]) icon="󰁽";;
+                5[0-9]) icon="󰁾";;
+                6[0-9]) icon="󰁿";;
+                7[0-9]) icon="󰂀";;
+                8[0-9]) icon="󰂁";;
+                9[0-9]) icon="󰂂";;
+                100)    icon="󰁹";;
+            esac
+            ;;
+        "Not charging")
+            icon=""
+            ;;
+        "Charging")
+            icon=""
+            ;;
+    esac
+    battery="$icon$thin_space$level%"
+}
+
+update_bluetooth() {
+    icon="󰂯"
+    level=$(bluetoothctl info | grep -m1 'Battery Percentage' | awk -F'[()]' '{print $2}')
+    [ -z "$level" ] && icon="󰂲" || level=$level%
+    bluetooth="$icon$thin_space$level"
+}
+
+
+update_ethernet() {
+    status="$(cat /sys/class/net/e*/operstate 2>/dev/null)"
+    icon="󰛳"
+    [ "$status" != "up" ] && icon="󰲛"
+    ethernet="$icon"
+}
+
+update_wifi() {
+    status="$(cat /sys/class/net/w*/operstate 2>/dev/null)"
+    level="$(awk '/^\s*w/ {print int($3 * 100 / 70)"%"}' /proc/net/wireless)"
+    [ "$status" = "up" ] && icon="󰖩" || icon="󰖪" level=""
+    wifi="$icon$thin_space$level"
+}
+
+update_memory() {
+    usage="$(command free | awk '/Mem:/ {printf "%.0f\n", $3/$2 * 100}')"
+    icon=""
+    memory="$icon$thin_space$usage%"
+}
+
+update_root() {
+    usage="$(command df / | awk 'NR==2 {print $5}' | tr -d '%')"
+    icon=""
+    root="$icon$thin_space$usage%"
+}
+
+
+update_ttylogin() {
+    tty_count="$(w -h | wc -l )"
+    icon=""
+    ttylogin="$icon$thin_space$tty_count"
+}
+
+update_pacman() {
+    pacman_result="$(cat $HOME/.cache/checkupdates-cron.num)"
+    icon=""
+    pacman="$icon$thin_space$pacman_result"
+}
+
+update_mutt() {
+    MAIL_DIR="$HOME/doc/mail"
+    MBSYNC_CACHE="${XDG_CACHE_HOME}/mbsync-cron"
+    UPDATE_MUTT_FREQUENCY=1800 # in seconds
+    update_mutt_time="$(stat -c "%Y" "$MBSYNC_CACHE")"
+    current_time="$(date +%s)"
+    mutt_count=0
+    icon="󰇮"
+    # Loop through each mailbox directory
+    for mailbox in "$MAIL_DIR"/*; do
+        if [ -d "$mailbox" ]; then
+            # Manually specify folders instead of using brace expansion
+            for folder in "$mailbox/INBOX" "$mailbox/Junk"; do
+                if [ -d "$folder/new" ]; then
+                    # Count the number of files in the 'new' directory
+                    mutt_count=$(($mutt_count + $(find "$folder/new" -type f | wc -l)))
+                fi
+            done
+        fi
+    done
+    [ $((current_time - update_mutt_time)) -gt 86400 ] && icon="󱏣"
+    [ "$mutt_count" -gt 0 ] && icon="󰛏"
+    mutt="$icon$thin_space$mutt_count"
+}
+
+
+update_wttr() {
+    WTTR_CACHE="$HOME/.cache/wttr"
+    update_wttr_time="$(stat -c "%Y" "$WTTR_CACHE")"
+    current_time="$(date +%s)"
+    [ $((current_time - update_wttr_time)) -gt 86400 ] && wttr_result=""
+    wttr_result="$(sed 's/\+//' $WTTR_CACHE)"
+    [ -z "$wttt_result" ] && icon="󰅟"
+    wttr="$wttr_result"
+}
+
+# modules that don't update on their own need to be run at the start for getting their initial value
+update_pacman; update_wttr
+
+display () {
+    local space=" " # full width space
+    local delimiter_home="["
+    local delimiter_end="]"
+    local separator="]["
+    printf "%s" "${delimiter_home}${wttr}${separator}${mutt}${separator}${pacman}${space}${ttylogin}${separator}${root}${separator}${wifi}${space}${ethernet}${separator}${battery}${space}${bluetooth}${separator}${time}${delimiter_end}"
+}
+
+# SIGNALLING
+# trap	"<function>;display"		"RTMIN+n"
+# to update it from external commands
+## kill -m "$(cat /tmp/damblocks)"
+# where m = 34 + n
+trap	"update_bluetooth;display"	"RTMIN"     # -34 udev.rules
+trap	"update_battery;display"  	"RTMIN+1"
+trap	"update_pacman;display"	    "RTMIN+6"   # -40 .local/bin/checkupdates-cron
+trap	"update_mutt;display"	    "RTMIN+7"   # -41
+trap	"update_wttr;display"       "RTMIN+10"   # -44
+
+while true
+do
+	sleep 1 & wait && {
+		# to update item ever n seconds with a offset of m
+		## [ $((sec % n)) -eq m ] && udpate_item
+		[ $((sec % 5 )) -eq 0 ] && update_time 	# update time every 5 seconds
+		[ $((sec % 10)) -eq 0 ] && update_battery
+		[ $((sec % 10)) -eq 0 ] && update_bluetooth
+		[ $((sec % 10)) -eq 0 ] && update_ethernet
+		[ $((sec % 10)) -eq 0 ] && update_wifi
+		[ $((sec % 60)) -eq 0 ] && update_root
+		[ $((sec % 60)) -eq 0 ] && update_ttylogin
+		[ $((sec % 60)) -eq 0 ] && update_mutt
+
+		# how often the display updates ( 5 seconds )
+		[ $((sec % 5 )) -eq 0 ] && display
+
+        # cronjob
+		[ $((sec % 1800 )) -eq 0 ] && "$HOME/.local/bin/mbs" # mbsync
+		sec=$((sec + 1))
+	}
+done
