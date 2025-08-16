@@ -3,6 +3,8 @@
 # @since 2025
 # cronjob for $HOME/.local/bin/mbs
 
+[ "$(pgrep mbs-cron -c)" -gt 1 ] && exit 0
+
 while : ; do
     sleep 1 & wait && {
 		[ $((sec % 1800 )) -eq 0 ] && "$HOME/.local/bin/mbs" # mbsync
