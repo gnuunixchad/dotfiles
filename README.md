@@ -32,6 +32,7 @@ spyware when I can.
 - Audio Server:             pipewire
 - WM/Compositor:            dwl & river
 - Status bar:               dam & damblocks
+- Output Management:        kanshi & wlr-randr
 - Application Launcher:     wmenu
 - Fuzzy Finder:             fzf
 - Notification Daemon:      dunst
