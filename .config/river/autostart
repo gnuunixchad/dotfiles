@@ -30,6 +30,8 @@ pgrep 'dunst' || riverctl spawn "dunst"
 
 pgrep 'wob' || riverctl spawn "$HOME/.local/bin/wobd"
 
+pgrep 'mbs-cron' || riverctl spawn "$HOME/.local/bin/mbs-cron"
+
 riverctl spawn "fcitx5 -d" # conflicts with wtype
 
 #pgrep -f 'footclient -T Scratchpad_Tmux' || riverctl spawn "footclient -T Scratchpad_Tmux $HOME/.local/bin/tmuxd" # disabled for not obeying window rules, start manually instead
