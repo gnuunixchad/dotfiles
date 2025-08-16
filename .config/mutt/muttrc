@@ -67,10 +67,13 @@ macro index,pager S "<sync-mailbox><enter-command>unset wait_key<enter><shell-es
 # account
 source "~/.config/mutt/account1"
 source "~/.config/mutt/account2"
+source "~/.config/mutt/account3"
 
 folder-hook 'account1' 'source ~/.config/mutt/account1'
 folder-hook 'account2' 'source ~/.config/mutt/account2'
+folder-hook 'account3' 'source ~/.config/mutt/account3'
 
 ## switch accounts (,+1)
 macro index ,1 "<enter-command>unmailboxes *<enter><enter-command>source ~/.config/mutt/account1<enter><sync-mailbox><change-folder>!<enter>"
 macro index ,2 "<enter-command>unmailboxes *<enter><enter-command>source ~/.config/mutt/account2<enter><sync-mailbox><change-folder>!<enter>"
+macro index ,3 "<enter-command>unmailboxes *<enter><enter-command>source ~/.config/mutt/account3<enter><sync-mailbox><change-folder>!<enter>"

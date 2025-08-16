@@ -130,6 +130,8 @@ aur.list
 !.config/gtk-4.0/
 !.config/gtk-4.0/settings.ini
 !.config/gtk-4.0/gtk.css
+!.config/kanshi/
+!.config/kanshi/config
 !.config/isyncrc.example
 !.config/lesskey
 !.config/lf/

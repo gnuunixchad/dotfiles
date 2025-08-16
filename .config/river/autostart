@@ -4,7 +4,6 @@
 # river/autostart
 
 # always
-riverctl spawn "$HOME/.local/bin/wlr-output"
 riverctl spawn "${HOME}/.local/bin/dam-run"
 riverctl spawn "emacs --daemon"
 
@@ -20,6 +19,8 @@ riverctl spawn "$HOME/.local/sbin/clsd"
 
 # start if not running
 pgrep 'swayidle' || riverctl spawn "swayidle"
+
+pgrep 'kanshi' || riverctl spawn "kanshi"
 
 pgrep "gammastep" || riverctl spawn "gammastep -O 5000"
 

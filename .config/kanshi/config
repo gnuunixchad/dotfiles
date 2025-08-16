@@ -1,0 +1,13 @@
+# vim.ft=config
+# kanshi/config
+# @author nate zhou
+# @since 2025
+
+profile nomad {
+    output eDP-1 mode --custom 1920x1080@60Hz
+}
+
+profile home {
+    output eDP-1 mode --custom 1920x1080@60Hz position 0,0
+    output DP-1  mode --custom 1920x1080@60Hz position -1920,0
+}

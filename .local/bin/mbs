@@ -4,5 +4,5 @@
 
 MBSYNC_CACHE="${XDG_CACHE_HOME}/mbsync-cron"
 
-/usr/bin/mbsync -qqa && touch "$MBSYNC_CACHE" && kill -41 $(cat /tmp/$USER/damblocks);
+/usr/bin/mbsync -a && touch "$MBSYNC_CACHE" && kill -41 $(cat /tmp/$USER/damblocks);
 

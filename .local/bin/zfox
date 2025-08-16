@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+
+[ -x /usr/local/bin/firefox ] && ( /usr/local/bin/firefox -P zfox; exit 0 ) || ( /usr/bin/firefox -P zfox; exit 0 )

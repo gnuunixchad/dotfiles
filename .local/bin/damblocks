@@ -266,7 +266,7 @@ do
 		[ $((sec % 5 )) -eq 0 ] && display
 
         # cronjob
-		[ $((sec % 1800 )) -eq 0 ] && "$HOME/.local/bin/mbs" # mbsync
+		#[ $((sec % 1800 )) -eq 0 ] && "$HOME/.local/bin/mbs" # mbsync
 		sec=$((sec + 1))
 	}
 done

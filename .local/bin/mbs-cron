@@ -1,0 +1,11 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# cronjob for $HOME/.local/bin/mbs
+
+while : ; do
+    sleep 1 & wait && {
+		[ $((sec % 1800 )) -eq 0 ] && "$HOME/.local/bin/mbs" # mbsync
+		sec=$((sec + 1))
+    }
+done

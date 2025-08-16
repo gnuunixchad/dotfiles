@@ -1,0 +1,13 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# launch qutebrowser with alt profile in dynamic menu
+
+BASEDIR="${HOME}/.cache/qutebrowser-basedir"
+CONFIGDIR="${HOME}/.config/qutebrowser"
+
+# fix crash on start with
+# wlroots0.19, nvidia-open 575.64
+/usr/bin/qutebrowser --qt-arg disable-gpu true \
+    --basedir "${BASEDIR}/qbz/" \
+    --config-py "${CONFIGDIR}/config.py"
