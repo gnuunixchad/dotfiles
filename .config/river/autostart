@@ -17,6 +17,8 @@ riverctl spawn "$HOME/.local/bin/foots"
 
 riverctl spawn "$HOME/.local/sbin/clsd"
 
+riverctl spawn "$HOME/.local/bin/mbs-cron"
+
 # start if not running
 pgrep 'swayidle' || riverctl spawn "swayidle"
 
@@ -29,8 +31,6 @@ pgrep -f 'wl-paste --watch cliphist store' || riverctl spawn "wl-paste --watch c
 pgrep 'dunst' || riverctl spawn "dunst"
 
 pgrep 'wob' || riverctl spawn "$HOME/.local/bin/wobd"
-
-pgrep 'mbs-cron' || riverctl spawn "$HOME/.local/bin/mbs-cron"
 
 riverctl spawn "fcitx5 -d" # conflicts with wtype
 
