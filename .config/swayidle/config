@@ -1,5 +1,5 @@
 # vim.ft:conf
 timeout 600 'brightnessctl set 4% -s && pkill -SIGRTMIN+3 i3blocks' resume 'brightnessctl -r && pkill -SIGRTMIN+3 i3blocks'
 timeout 900 'wlr-randr --output DP-1 --off ; swaylock'
-timeout 960 'brightnessctl set 0%' resume 'wlr-randr --output DP-1 --on --custom-mode 1920x1080@60.000Hz --pos -1920,0 ; brightnessctl -r && pkill -SIGRTMIN+3 i3blocks'
+timeout 960 'brightnessctl set 0%' resume 'kanshi reload; brightnessctl -r && pkill -SIGRTMIN+3 i3blocks'
 before-sleep 'swaylock'
