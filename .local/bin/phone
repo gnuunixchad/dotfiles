@@ -1,0 +1,44 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# android phone script
+
+MOUNTING_POINT=${HOME}/mnt
+[ -d "$MOUNTING_POINT" ] || mkdir "$MOUNTING_POINT"
+
+list() {
+    ls "$MOUNTING_POINT"
+}
+
+mount() {
+    aft-mtp-mount "$MOUNTING_POINT"
+}
+
+unmount() {
+    fusermount3 -u "$MOUNTING_POINT"
+}
+
+usage() {
+    cat << _EOF_
+USAGE
+        $(basename "$0") [OPTIONS]
+OPTIONS
+        -h,--help       print this help info
+        -l,--list       list mounting point
+        -m,--mount      mount the android phone
+        -u,--unmount    unmount the android phone
+_EOF_
+}
+
+[ -n "$1" ] || (usage ; exit 0)
+
+while [ -n "$1" ]; do
+    case "$1" in
+        -h|--help) usage ;;
+        -l|--list) list ;;
+        -m|--mount) mount ;;
+        -u|--unmount) unmount ;;
+        *) echo "Invalid options, see --help" ;;
+    esac
+    shift
+done
