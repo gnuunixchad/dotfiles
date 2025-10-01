@@ -1,0 +1,31 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# initialize and refresh oauth2 token for mutt and isync
+
+AUTH_CMD="/usr/share/neomutt/oauth2/mutt_oauth2.py"
+PROVIDER="microsoft"
+AUTHFLOW="authcode"
+CLIENT_ID="9e5f94bc-e8a4-4e73-b8be-63364c29d753" # thunderbird's client ID
+TOKEN_DIR="${HOME}/doc/heart/.cache/mutt"
+
+authcmd() {
+    "$AUTH_CMD" --verbose \
+                --authorize \
+                --provider "$PROVIDER" \
+                --authflow "$AUTHFLOW" \
+                --client-id "$CLIENT_ID" \
+                "${TOKEN_DIR}/oauth-${account}"
+}
+
+read -p "which account?(e.g. account1,account2...) " choice
+
+[ -n "$choice" ] || \
+    ( echo Invalid argument, check accounts defined in ~/.config/isyncrc; \
+      exit 1
+    )
+
+account="$choice"
+echo "saved as ${TOKEN_DIR}/oauth-${account}"
+
+authcmd
