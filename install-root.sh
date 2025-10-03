@@ -50,6 +50,7 @@ systemctl enable --now bluetooth.service
 systemctl enable --now paccache.timer
 systemctl enable --now tlp.service
 systemctl enable --now smb.service
+systemctl enable --now dictd.service
 
 lscpu | grep -q 'Hypervisor vendor:' \
     || (systemctl enable --now libvirtd \
