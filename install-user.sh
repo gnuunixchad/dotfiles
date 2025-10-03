@@ -82,6 +82,9 @@ CALCURSE="${HOME}/.config/calcurse/calendar.ical"
 [ -f "$CALCURSE" ] && calcurse -i $CALCURSE \
     || print_err "[calcurse -i]: $CALCURSE doesn't exist"
 
+FONTCONFIG="${HOME}/.config/fontconfig/fonts.conf"
+[ -f "FONTCONFIG" ] && fc-cacche -fv > /dev/null && echo "font cache generated"
+
 read -p "sync-config-root?(y/n): " choice; [ "$choice" = "y" ] \
     || [ "$choice" = "Y"  ] \
     && ${HOME}/.local/bin/sync-config-root
