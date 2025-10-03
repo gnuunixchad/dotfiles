@@ -60,7 +60,6 @@ riverctl map "$wmenu" None p spawn "riverctl enter-mode normal && ${HOME}/.local
 riverctl map "$wmenu" None s spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wsink"
 riverctl map "$wmenu" None j spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wjdoc"
 riverctl map "$wmenu" None e spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wemoji"
-riverctl map "$wmenu" None c spawn "riverctl enter-mode normal && ${HOME}/.local/bin/clipwipe"
 
 
 # dunst ########################################################################
@@ -76,6 +75,7 @@ riverctl map "$dunst" None l spawn "riverctl enter-mode normal && ${HOME}/.local
 riverctl map "$dunst" None w spawn "riverctl enter-mode normal && ${HOME}/.local/bin/dw"
 riverctl map "$dunst" None c spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wcal"
 riverctl map "$dunst" None m spawn "riverctl enter-mode normal && ${HOME}/.local/bin/lsmus"
+riverctl map "$dunst" None h spawn "riverctl enter-mode normal && ${HOME}/.local/bin/clipwipe"
 
 
 # wlrctl #######################################################################
