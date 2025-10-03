@@ -115,6 +115,8 @@ package-list
 !.config/firejail/*
 !.config/foot/
 !.config/foot/*
+!.config/fontconfig/
+!.config/fontconfig/fonts.conf
 !.config/fzf/
 !.config/fzf/*
 !.config/GIMP/
