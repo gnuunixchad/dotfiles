@@ -31,6 +31,9 @@ alias lw="ls -ldh $(pwd)"
 alias lx="lsix"
 alias le="ls | grep -o '.[^.]*$' | sort | uniq"
 
+alias acl="getfacl"
+alias atr="lsattr"
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias Gi="cd /run/media/$USER/ && pwd"
