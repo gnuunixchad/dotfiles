@@ -8,7 +8,7 @@ mod=Mod4
 fcitx="[p]inyin [a]nthy"
 wmenu="[w[w]iki w[h]eart w[b]ook [a]mount [f]locks [p]off w[s]ink w[j]doc w[e]moji"
 dunst="clip[h]ist-wipe [l]supdates d[w] w[c]al"
-wlrctl="[hjkl]cursors [,]left [.]right [m]iddle"
+wlrctl="[hjkl]cursors [,]left [.]right [m]iddle ^[hjkl]arrows"
 
 # resize #######################################################################
 riverctl declare-mode resize
@@ -80,7 +80,7 @@ riverctl map "$dunst" None h spawn "riverctl enter-mode normal && ${HOME}/.local
 
 # wlrctl #######################################################################
 riverctl declare-mode "$wlrctl"
-riverctl map normal $mod slash enter-mode "$wlrctl"
+riverctl map normal $mod slash spawn "killall fcitx5 ; riverctl enter-mode \"$wlrctl\""
 
 riverctl map "$wlrctl" $mod slash enter-mode normal
 riverctl map "$wlrctl" None space     enter-mode normal
@@ -94,6 +94,11 @@ riverctl map -repeat "$wlrctl" Shift h spawn "wlrctl pointer move -15 0"
 riverctl map -repeat "$wlrctl" Shift j spawn "wlrctl pointer move 0 15"
 riverctl map -repeat "$wlrctl" Shift k spawn "wlrctl pointer move 0 -15"
 riverctl map -repeat "$wlrctl" Shift l spawn "wlrctl pointer move 15 0"
+
+riverctl map -repeat "$wlrctl" Control h spawn "wtype -k Left"
+riverctl map -repeat "$wlrctl" Control j spawn "wtype -k Down"
+riverctl map -repeat "$wlrctl" Control k spawn "wtype -k Up"
+riverctl map -repeat "$wlrctl" Control l spawn "wtype -k Right"
 
 riverctl map -repeat "$wlrctl" None  comma  spawn "wlrctl pointer click left"
 riverctl map -repeat "$wlrctl" None  period spawn "wlrctl pointer click right"
