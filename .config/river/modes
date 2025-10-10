@@ -82,9 +82,9 @@ riverctl map "$dunst" None h spawn "riverctl enter-mode normal && ${HOME}/.local
 riverctl declare-mode "$wlrctl"
 riverctl map normal $mod slash spawn "killall fcitx5 ; riverctl enter-mode \"$wlrctl\""
 
-riverctl map "$wlrctl" $mod slash enter-mode normal
-riverctl map "$wlrctl" None space     enter-mode normal
-riverctl map "$wlrctl" None Escape    enter-mode normal
+riverctl map "$wlrctl" $mod slash  spawn "riverctl spawn \"fcitx5 -d\"; riverctl enter-mode normal"
+riverctl map "$wlrctl" None space  spawn "riverctl spawn \"fcitx5 -d\"; riverctl enter-mode normal"
+riverctl map "$wlrctl" None Escape spawn "riverctl spawn \"fcitx5 -d\"; riverctl enter-mode normal"
 
 riverctl map -repeat "$wlrctl" None  h spawn "wlrctl pointer move -90 0"
 riverctl map -repeat "$wlrctl" None  j spawn "wlrctl pointer move 0 90"
