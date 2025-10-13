@@ -125,25 +125,25 @@ map U !du -csh $fx
 map E &footclient nvim $f
 map Y $printf '%s' "$fx" | wl-copy
 
-map gr cd /
-map g/ cd /
-map gh cd ~
-map ge cd /etc
-map gu cd /usr
-map gd cd /dev
-map go cd /opt
-map gv cd /var
-map gm cd /mnt
-map gt cd /tmp
-map gi cd /run/media/
+map br cd /
+map b/ cd /
+map bh cd ~
+map be cd /etc
+map bu cd /usr
+map bd cd /dev
+map bo cd /opt
+map bv cd /var
+map bm cd /mnt
+map bt cd /tmp
+map bi cd /run/media/
 
 map W $~/.local/bin/setwall $f
 
-map xc $~/.local/bin/gpg-cipher $f
-map xe $~/.local/bin/gpg-encrypt $f
-map xd $~/.local/bin/gpg-doc $f
-map xp $~/.local/bin/gpg-pic $f
-map xv $~/.local/bin/gpg-vid $f
+map gc $~/.local/bin/gpg-cipher $f
+map ge $~/.local/bin/gpg-encrypt $f
+map gd $~/.local/bin/gpg-doc $f
+map gp $~/.local/bin/gpg-pic $f
+map gv $~/.local/bin/gpg-vid $f
 
 map mi $mid3v2 -l $f | less -i
 map mm $mediainfo $f | less -i
