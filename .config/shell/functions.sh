@@ -46,3 +46,14 @@ pll() {
 pld() {
     pacman -Qi "$@" | grep -e '^Build Date' -e '^Version'
 }
+
+# display one-line manual page or package descriptions
+what() {
+    while [ -n "$1" ]; do
+            command whatis -l "$1" 2>/dev/null || (\
+                printf "%-20s - " "$1 (pacman)"
+                pacman -Qi "$1" | \
+                sed -n 's/^Description *: //p')
+        shift
+    done
+}
