@@ -5,6 +5,6 @@
 
 WALLPAPER_PATH="$HOME/.local/share/wallpaper"
 
-random_wallpaper=$(find $HOME/pic/wallpapers -type f | shuf -n 1)
+random_wallpaper=$(find $HOME/pic/wallpapers -type f ! -name '*.mp4' ! -name '*.gif' ! -name '*.webm' | shuf -n 1)
 
 $HOME/.local/bin/setwall "$random_wallpaper"
