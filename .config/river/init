@@ -82,7 +82,7 @@ done
 
 if command -v rivercarro > /dev/null 2>&1; then # &>/dev/null is a BASH syntax
     riverctl default-layout rivercarro
-    rivercarro -per-tag -no-smart-gaps -inner-gaps 10 -outer-gaps 10 -main-ratio 0.50 &
+    rivercarro -per-tag -no-smart-gaps -inner-gaps 0 -outer-gaps 0 -main-ratio 0.50 &
 else
     riverctl default-layout rivertile
     rivertile -view-padding 5 -outer-padding 5 -main-ratio 0.50 &

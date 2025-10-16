@@ -9,7 +9,8 @@ riverctl spawn "${HOME}/.local/bin/dam-run"
 # restart
 killall -q swaybg fcitx5 mpc
 
-riverctl spawn "swaybg -i $HOME/.local/share/wallpaper -m fill"
+#riverctl spawn "swaybg -i $HOME/.local/share/wallpaper -m fill"
+riverctl spawn "swaybg -c 000000"
 
 # restart decided by scripts
 riverctl spawn "$HOME/.local/bin/foots"
