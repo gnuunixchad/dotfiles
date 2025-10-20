@@ -47,15 +47,19 @@ GIT_PS1_STATESEPARATOR=" " 	    # separator between branch name and state symbol
 GIT_PS1_DESCRIBE_STYLE=1 	    # show commit relative to tag or branch, when detached HEAD
 GIT_PS1_SHOWCOLORHINTS=1        # display in color
 
-if [ ! $UID -eq 0 ]; then
-    if [ -n "$SSH_CONNECTION" ]; then
-        PS1='\[\033[37;105m\]\u@\h\[\033[00;00m\] \[\033[01;40m\]\W$(__git_ps1 " %s")\[\033[00;00m\] \$ '
+prompt() {
+    if [ ! $UID -eq 0 ]; then
+        if [ -n "$SSH_CONNECTION" ]; then
+            PS1='\[\033[37;105m\]\u@\h\[\033[00;00m\] \[\033[01;40m\]\W$(__git_ps1 " %s")\[\033[00;00m\] \$ '
+        else
+            [ -n "$HISTFILE" ] && PS1='\[\033[00;106m\]\u@\h\[\033[00;00m\] \[\033[01;40m\]\W$(__git_ps1 " %s")\[\033[00;00m\] \$ '
+            [ -z "$HISTFILE" ] && PS1='\[\033[30;106m\]\u@\h\[\033[00;00m\] \[\033[01;40m\]\W$(__git_ps1 " %s")\[\033[00;00m\] \$ '
+        fi
     else
-        PS1='\[\033[37;106m\]\u@\h\[\033[00;00m\] \[\033[01;40m\]\W$(__git_ps1 " %s")\[\033[00;00m\] \$ '
+            PS1='\[\033[30;107m\]\u@\h\[\033[00;00m\] \[\033[01;40m\]\W$(__git_ps1 " %s")\[\033[00;00m\] \$ '
     fi
-else
-        PS1='\[\033[30;107m\]\u@\h\[\033[00;00m\] \[\033[01;40m\]\W$(__git_ps1 " %s")\[\033[00;00m\] \$ '
-fi
+}
+prompt
 
 export PS4='+ ${LINENO}: '
 

@@ -37,12 +37,12 @@ hist() {
     }
 
     disable() {
-        unset HISTFILE
+        unset HISTFILE && prompt # 'prompt()' defined in bashrc
         status
     }
 
     enable() {
-        eval "$( grep '^export HISTFILE=' $PROFILE)"
+        eval "$( grep '^export HISTFILE=' $PROFILE)" && prompt
         status
     }
 
