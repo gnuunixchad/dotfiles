@@ -8,3 +8,5 @@ alias .r=". ~/.zprofile && . ~/.zshrc"
 autoload -Uz run-help # bash like help
 (( ${+aliases[run-help]} )) && unalias run-help
 alias help=run-help
+
+alias bash="bash --login"
