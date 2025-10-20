@@ -50,12 +50,12 @@ function hist() {
     }
 
     function disable() {
-        unset HISTFILE
+        unset HISTFILE && prompt # `prompt()` defined in zshrc
         status
     }
 
     function enable() {
-        eval "$( grep '^export HISTFILE=' $PROFILE)"
+        eval "$( grep '^export HISTFILE=' $PROFILE)" && prompt
         status
     }
 

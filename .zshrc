@@ -70,15 +70,19 @@ GIT_PS1_STATESEPARATOR=" " 	    # separator between branch name and state symbol
 GIT_PS1_DESCRIBE_STYLE=1 	    # show commit relative to tag or branch, when detached HEAD
 GIT_PS1_SHOWCOLORHINTS=1        # display in color
 
-if [ ! $UID -eq 0 ]; then
-    if [ -n "$SSH_CONNECTION" ]; then
-        PS1='%{$(tput setab 13 setaf 15)%}%n@%m%{$reset_color%} %B%{$bg[black]%}%1~$(__git_ps1 " %s")%b%{$reset_color%} \$ '
+function prompt() {
+    if [ ! $UID -eq 0 ]; then
+        if [ -n "$SSH_CONNECTION" ]; then
+            PS1='%{$(tput setab 13 setaf 15)%}%n@%m%{$reset_color%} %B%{$bg[black]%}%1~$(__git_ps1 " %s")%b%{$reset_color%} \$ '
+        else
+            [ -n "$HISTFILE" ] && PS1='%{$(tput setab 14 setaf 15)%}%n@%m%{$reset_color%} %B%{$bg[black]%}%1~$(__git_ps1 " %s")%b%{$reset_color%} \$ '
+            [ -z "$HISTFILE" ] && PS1='%{$(tput setab 14 setaf 16)%}%n@%m%{$reset_color%} %B%{$bg[black]%}%1~$(__git_ps1 " %s")%b%{$reset_color%} \$ '
+        fi
     else
-        PS1='%{$(tput setab 14 setaf 15)%}%n@%m%{$reset_color%} %B%{$bg[black]%}%1~$(__git_ps1 " %s")%b%{$reset_color%} \$ '
+            PS1='%{$bg[white]$fg[black]%}%n@%m%{$reset_color%} %B%{$bg[black]%}%1~$(__git_ps1 " %s")%b%{$reset_color%} \$ '
     fi
-else
-        PS1='%{$bg[white]$fg[black]%}%n@%m%{$reset_color%} %B%{$bg[black]%}%1~$(__git_ps1 " %s")%b%{$reset_color%} \$ '
-fi
+}
+prompt
 
 export GPG_TTY=$(tty) # TUI pinentry, need be set for each pts
 
