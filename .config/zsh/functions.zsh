@@ -36,3 +36,51 @@ zle -N zle-line-init
 autoload edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd 'v' edit-command-line
+
+# shell history switch
+function hist() {
+    PROFILE="${HOME}/.zprofile"
+
+    function status() {
+        if [ -z "$HISTFILE" ]; then
+            echo "[zsh]: history is disabled"
+        else
+            echo "[zsh]: history is enabled"
+        fi
+    }
+
+    function disable() {
+        unset HISTFILE
+        status
+    }
+
+    function enable() {
+        eval "$( grep '^export HISTFILE=' $PROFILE)"
+        status
+    }
+
+    function help() {
+        cat <<_EOF_
+USAGE
+        $(basename "$0") [OPTIONS]
+OPTIONS
+        -d,--disable    disable shell history for current session
+        -e,--enable     enable shell history for current session
+        -f,--file       print shell history file for current session
+        -h,--help       print this help info
+_EOF_
+    }
+
+    [ -z "$1" ] && status
+
+    while [ -n "$1" ]; do
+        case "$1" in
+            -d|--disable) disable;;
+            -e|--enable) enable;;
+            -f|--file) echo "[zsh]: history is saved to $HISTFILE";;
+            -h|--help) help;;
+            *) help;;
+        esac
+        shift
+    done
+}
