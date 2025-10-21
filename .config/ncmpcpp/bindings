@@ -67,7 +67,7 @@ def_key "S"
   save_playlist
 
 # navigation
-def_key "$"
+def_key "0"
   jump_to_playing_song
 
 def_key "~"
