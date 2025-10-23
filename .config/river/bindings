@@ -49,6 +49,8 @@ riverctl map normal ${mod}+Control a                spawn "${HOME}/.local/bin/ad
 
 riverctl map normal ${mod}+Shift p                  spawn "mpc toggle && ${HOME}/.local/bin/lsmus"
 
+riverctl map normal $mod backslash                  spawn "wlrctl pointer move 9999 9999"
+
 riverctl map normal $mod b                          spawn "pkill -x -SIGUSR1 dam"
 
 riverctl map normal $mod j                          focus-view next
