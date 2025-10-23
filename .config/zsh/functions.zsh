@@ -59,7 +59,7 @@ function hist() {
         status
     }
 
-    function help() {
+    function print_help() {
         cat <<_EOF_
 USAGE
         $(basename "$0") [OPTIONS]
@@ -78,8 +78,8 @@ _EOF_
             -d|--disable) disable;;
             -e|--enable) enable;;
             -f|--file) echo "[zsh]: history is saved to $HISTFILE";;
-            -h|--help) help;;
-            *) help;;
+            -h|--help) print_help;;
+            *) print_help;;
         esac
         shift
     done
