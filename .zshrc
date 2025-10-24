@@ -56,6 +56,8 @@ setopt INC_APPEND_HISTORY #SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
 
+setopt +o nomatch   # disable no matches errors; fixes yt-dlp with wildcard URLs
+
 setopt autocd		# auto cd by typing path
 #setopt auto_menu menu_complete # reduce tap pressing for completion
 
