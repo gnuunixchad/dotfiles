@@ -18,6 +18,8 @@
     public = no
     writable = yes
     printable = no
+    create mask = 0640
+    directory mask = 0750
 
 [pic]
     comment = nate's pictures sharing
