@@ -3,9 +3,23 @@
 # @since 2024,2025
 # select an image for sway's wallpaper with imv
 
+LIST="${XDG_RUNTIME_DIR}/gallery.list"
+
 notify-send -u low -r 438 "[Shift+w] to set wallpaper"
 
-# to execute a shell command inside imv, use `firejail --noprofile imv` to avoid permission issues
-#find $HOME/pic/{wallpapers,earth} $HOME/pic/camera/views -type f | grep -ve /anime/ -ve /linux/ -ve /maplestory/ -ve /fantasy/ -ve /wallpapers/live/| grep -e .jpeg -e .jpg -e .png | shuf | firejail --noprofile imv 
 
-swayimg -g $(find $HOME/pic/wallpapers -type f | grep -ve /anime/ -ve /linux/ -ve /holiday/ -ve /etc/ -ve /oc/ -ve /maplestory/ -ve /fantasy/ -ve /live/| grep -e .jpeg -e .jpg -e .png -e .webp | shuf)
+
+ls -t $(find $HOME/pic/ -type f ) \
+    | grep -e art/drawing \
+           -e art/vincent_van_gogh \
+           -e camera/views \
+           -e earth \
+           -e gloomy \
+           -e living \
+           -e photography \
+           -e poetical \
+           -e wallpapers \
+    | shuf \
+    > "$LIST"
+
+swayimg -g -F "$LIST" -o none

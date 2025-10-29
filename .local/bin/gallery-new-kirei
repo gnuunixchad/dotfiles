@@ -3,5 +3,8 @@
 # @since 2024,2025
 # show gallery images with imv, with lastest modified images first
 
-#ls -t $(find $HOME/pic/kirei*/ -type f ) | grep -e .jpeg -e .jpg -e .png -e .gif -e .mp4 -e .webm | imv
-swayimg -g $(ls -t $(find $HOME/pic/kirei*/ -type f ) | grep -e .jpeg -e .jpg -e .png -e .gif -e .mp4 -e .webm -e .webp)
+LIST="${XDG_RUNTIME_DIR}/gallery.list"
+
+ls -t $(find $HOME/pic/kirei/ -type f ) > "$LIST"
+
+swayimg -g -F "$LIST" -o none
