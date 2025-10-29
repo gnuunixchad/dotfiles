@@ -9,7 +9,19 @@ cmd open &{{
             gimp $fx
             ;;
         image/*)
-            [ "$XDG_SESSION_TYPE" = "tty" ] && mpv --loop $fx || SWAYSOCK=/dev/null swayimg $fx
+            LIST="${XDG_RUNTIME_DIR}/rifle"
+            # open files as they are sorted in lf
+            lf -remote "query $id files" > "$LIST"
+            # open the focused file in lf first
+            num=$(grep -n "$f" "$LIST" | cut -d: -f1)
+            head=$(tail -n +"$num" "$LIST")
+            tail=$(head -n $((num - 1)) "$LIST")
+            echo "$head"\\n"$tail" > "$LIST"
+
+            # open files from the re-arranged list
+            [ "$XDG_SESSION_TYPE" = "tty" ] \
+                && mpv --playlist="$LIST" --playlist-start=0 --loop-playlist \
+                || swayimg -F "$LIST" -o none
             ;;
         video/*)
             mpv --loop $fx
