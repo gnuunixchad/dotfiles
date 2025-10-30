@@ -74,6 +74,12 @@ map sa :{{
     set reverse!
     top
 }}
+map sb :{{
+    set sortby btime
+    set info size:btime
+    set reverse!
+    top
+}}
 map sc :{{
     set sortby ctime
     set info size:ctime
