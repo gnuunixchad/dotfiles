@@ -24,7 +24,7 @@ set cursorline
 set cursorcolumn
 "match ExtraWhitespace /\s\+$/ " space at the end of lines
 "highlight ExtraWhitespace ctermbg=gray guibg=gray " highlight all trailing spaces
-set statusline+=%f\ %h%m%r%=\ %{FugitiveStatusline()}\ %-8.(%l,%c%)\ %P
+set statusline+=%f\ %h%m%r%=\ %{FugitiveStatusline()}\ %-8.(%l,%c%)\ %L\ %P
 
 " don't yank to clipboard with c
 nnoremap c "_c
