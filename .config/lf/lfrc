@@ -60,6 +60,14 @@ map ` !true
 map F :filter
 map C visual-change
 
+cmap <c-g> cmd-escape
+cmap <c-f> cmd-right
+cmap <c-b> cmd-left
+cmap <c-a> cmd-home
+cmap <c-e> cmd-end
+cmap <c-n> cmd-menu-complete
+cmap <c-p> cmd-menu-complete-back
+
 map sa :{{
     set sortby atime
     set info size:atime
