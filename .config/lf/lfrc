@@ -22,6 +22,7 @@ set visualfmt "\033[7;33m"
 set selectfmt "\033[7;35m"
 set rulerfmt "%a| %p| \033[7;31m %m \033[0m| \033[7;32m %c \033[0m| \033[7;35m %s \033[0m| \033[7;33m %v \033[0m| \033[7;34m %f \033[0m| %i/%t"
 set statfmt "\033[32m%p\033[0m| %c| %u| %g| %S| %t| -> %l"
+set menuheaderfmt "\033[106;1m"
 
 set shell /usr/bin/sh
 set shellopts '-eu'
