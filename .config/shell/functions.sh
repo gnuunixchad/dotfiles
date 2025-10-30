@@ -49,6 +49,7 @@ pld() {
 
 # display one-line manual page or package descriptions
 what() {
+    [ -z "$1" ] && command whatis
     while [ -n "$1" ]; do
             command whatis -l "$1" 2>/dev/null || (\
                 printf "%-20s - " "$1 (pacman)"
