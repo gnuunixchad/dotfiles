@@ -52,6 +52,9 @@ riverctl map normal ${mod}+Shift a                  spawn "${HOME}/.local/bin/ad
 riverctl map normal ${mod}+Control a                spawn "${HOME}/.local/bin/address --multi"
 
 riverctl map normal ${mod}+Shift p                  spawn "mpc toggle && ${HOME}/.local/bin/lsmus"
+riverctl map locked ${mod}+Shift p                  spawn "mpc toggle"
+riverctl map locked ${mod}+Shift comma              spawn "mpc prev"
+riverctl map locked ${mod}+Shift period             spawn "mpc next"
 
 riverctl map normal $mod backslash                  spawn "wlrctl pointer move 9999 9999"
 
