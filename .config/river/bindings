@@ -22,6 +22,10 @@ riverctl map -repeat normal $mod minus              spawn "${HOME}/.local/bin/au
 riverctl map -repeat normal $mod equal              spawn "${HOME}/.local/bin/audio sink --plus"
 riverctl map normal $mod backspace                  spawn "${HOME}/.local/bin/audio sink --mute"
 
+riverctl map -repeat locked $mod minus              spawn "${HOME}/.local/bin/audio sink --minus"
+riverctl map -repeat locked $mod equal              spawn "${HOME}/.local/bin/audio sink --plus"
+riverctl map locked $mod backspace                  spawn "${HOME}/.local/bin/audio sink --mute"
+
 riverctl map -repeat normal ${mod}+Shift minus      spawn "${HOME}/.local/bin/audio source --minus"
 riverctl map -repeat normal ${mod}+Shift equal      spawn "${HOME}/.local/bin/audio source --plus"
 riverctl map normal ${mod}+Shift backspace          spawn "${HOME}/.local/bin/audio source --mute"
