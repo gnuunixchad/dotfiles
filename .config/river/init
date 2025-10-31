@@ -27,7 +27,7 @@ done
 # border
 riverctl border-color-focused 0x427b58ff
 riverctl border-color-unfocused 0x000000ff
-riverctl border-width 3
+riverctl border-width 2
 
 # window rules
 riverctl rule-add -app-id "*" ssd   # fix border for every window
