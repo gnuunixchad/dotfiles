@@ -5,7 +5,7 @@
 # my vim-like keybindings for ncursers music player client plus plus
 
 # playback
-def_key "p"
+def_key "space"
   pause
 
 def_key "f"
@@ -14,10 +14,10 @@ def_key "f"
 def_key "b"
   seek_backward
 
-def_key "."
+def_key "n"
     next
 
-def_key ","
+def_key "p"
     previous
 
 def_key "z"
@@ -160,12 +160,16 @@ def_key "u"
 def_key "B"
   select_album
 
-def_key "space"
+def_key "J"
   select_item
   scroll_down
 
-def_key "J"
+def_key "K"
+  select_item
+  scroll_up
+
+def_key "ctrl-j"
   move_selected_items_down
 
-def_key "K"
+def_key "ctrl-k"
   move_selected_items_up
