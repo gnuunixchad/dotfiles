@@ -48,18 +48,26 @@ map t
 map '['
 map ']'
 
-## built-in
+## normal mode
 map <c-n> half-down
 map <c-p> half-up
 map H jump-prev
 map L jump-next
-map J half-down
-map K half-up
+map J : {{
+    toggle
+    down
+}}
+map K : {{
+    toggle
+    up
+}}
 map zp toggle-preview
 map ` !true
 map F :filter
 map C visual-change
 
+
+## command-line
 cmap <c-g> cmd-escape
 cmap <c-f> cmd-right
 cmap <c-b> cmd-left
