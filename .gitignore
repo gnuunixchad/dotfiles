@@ -111,6 +111,15 @@ package-list
 !.config/dunst/dunstrc
 !.config/fcitx5/
 !.config/fcitx5/config
+!.config/fcitx5/conf
+!.config/fcitx5/conf/classicui.conf
+!.config/fcitx5/conf/keyboard.conf
+!.config/fcitx5/conf/punctuation.conf
+!.config/fcitx5/conf/wayland.conf
+!.config/fcitx5/conf/pinyin.conf
+!.config/fcitx5/conf/anthy.conf
+!.config/fcitx5/conf/hangul.conf
+!.config/fcitx5/conf/classicui.conf
 !.config/firejail
 !.config/firejail/*
 !.config/foot/
