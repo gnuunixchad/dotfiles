@@ -39,6 +39,9 @@ nnoremap <leader>e :exe '1wincmd w \| wincmd '.(winwidth(0) == &columns ? 'H' : 
 " keybindings
 " move focus to next split instead of resizing
 nnoremap <Tab> <C-W>w
+" remap half-pageup from <C-u> to <C-p>, to avoid conflict with resize bindings
+nnoremap <C-p> <C-u>
+nnoremap <C-n> <C-d>
 " split open (<leader>q quit a split)
 map <leader>x :split<CR>
 map <leader>v :vsplit<CR>
