@@ -43,20 +43,20 @@ nnoremap <Tab> <C-W>w
 map <leader>x :split<CR>
 map <leader>v :vsplit<CR>
 " split movement with ctrl+h/j/k/l
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+map <C-h> :wincmd h<CR>
+map <C-j> :wincmd j<CR>
+map <C-k> :wincmd k<CR>
+map <C-l> :wincmd l<CR>
 " split resize with ctrl+y/u/i/o
 map <C-w>y :vertical resize -2<CR>
 map <C-w>u :resize +2<CR>
 map <C-w>i :resize -2<CR>
 map <C-w>o :vertical resize +2<CR>
 " swap split position with ctrl-w + H/J/K/L
-map <C-w><S-h> :wincmd H<CR>
-map <C-w><S-j> :wincmd J<CR>
-map <C-w><S-k> :wincmd K<CR>
-map <C-w><S-l> :wincmd L<CR>
+map <C-w>h :wincmd H<CR>
+map <C-w>j :wincmd J<CR>
+map <C-w>k :wincmd K<CR>
+map <C-w>l :wincmd L<CR>
 
 map <leader>s :set spell!<CR>
 map <leader>w :set wrap!<CR>
