@@ -54,6 +54,11 @@ map <C-w>y :vertical resize -2<CR>
 map <C-w>u :resize +2<CR>
 map <C-w>i :resize -2<CR>
 map <C-w>o :vertical resize +2<CR>
+" swap split position with ctrl-w + H/J/K/L
+map <C-w><S-h> :wincmd H<CR>
+map <C-w><S-j> :wincmd J<CR>
+map <C-w><S-k> :wincmd K<CR>
+map <C-w><S-l> :wincmd L<CR>
 
 map <leader>s :set spell!<CR>
 map <leader>w :set wrap!<CR>
