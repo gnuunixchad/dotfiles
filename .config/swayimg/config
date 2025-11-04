@@ -156,6 +156,8 @@ q = exit
 [keys.gallery]
 Minus=thumb -10
 Equal=thumb +10
+o = thumb -10
+i = thumb +10
 Shift + question = help
 g = first_file
 Shift+g = last_file
