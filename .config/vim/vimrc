@@ -48,10 +48,10 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 " split resize with ctrl+y/u/i/o
-map <C-y> :vertical resize -2<CR>
-map <C-u> :resize +2<CR>
-map <C-i> :resize -2<CR>
-map <C-o> :vertical resize +2<CR>
+map <C-w>y :vertical resize -2<CR>
+map <C-w>u :resize +2<CR>
+map <C-w>i :resize -2<CR>
+map <C-w>o :vertical resize +2<CR>
 
 map <leader>s :set spell!<CR>
 map <leader>w :set wrap!<CR>
