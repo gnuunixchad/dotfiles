@@ -108,20 +108,20 @@
     },
         // ## close a split
     {
-        "key": "ctrl+w",
+        "key": "ctrl+b x",
         "command": "workbench.action.closeEditorsAndGroup"
     },
     {
-        "key": "ctrl+w",
+        "key": "ctrl+b x",
         "command": "workbench.action.closeActiveEditor"
     },
     {
-        "key": "ctrl+w",
+        "key": "ctrl+b x",
         "command": "workbench.action.closeGroup",
         "when": "activeEditorGroupEmpty && multipleEditorGroups"
     },
     {
-        "key": "ctrl+w",
+        "key": "ctrl+b x",
         "command": "-workbench.action.closeGroup",
         "when": "activeEditorGroupEmpty && multipleEditorGroups"
     },
@@ -162,19 +162,19 @@
 	// ## move editor group's position with `ctrl+k` `h/j/k/l`
 	// m for Move
     {
-        "key": "ctrl+b h",
+        "key": "ctrl+w h",
         "command": "workbench.action.moveActiveEditorGroupLeft"
     },
     {
-        "key": "ctrl+b j",
+        "key": "ctrl+w j",
         "command": "workbench.action.moveActiveEditorGroupDown"
     },
     {
-        "key": "ctrl+b k",
+        "key": "ctrl+w k",
         "command": "workbench.action.moveActiveEditorGroupUp"
     },
     {
-        "key": "ctrl+b l",
+        "key": "ctrl+w l",
         "command": "workbench.action.moveActiveEditorGroupRight"
     },
 
@@ -182,12 +182,12 @@
     	// ## move an editor to another editor group split
 	// ### to next group
     {
-        "key": "ctrl+b n",
+        "key": "ctrl+w n",
         "command": "workbench.action.moveEditorToNextGroup"
     },
     	// ### to previous group
     {
-        "key": "ctrl+b p",
+        "key": "ctrl+w p",
         "command": "workbench.action.moveEditorToPreviousGroup"
     },
 
