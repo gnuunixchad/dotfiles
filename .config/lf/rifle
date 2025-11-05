@@ -25,7 +25,7 @@ cmd open &{{
             LIST="${XDG_RUNTIME_DIR}/rifle"
             ${HOME}/.config/lf/lf-rearrange "$f"
             [ "$XDG_SESSION_TYPE" != "tty" ] && term="footclient"
-            "$term" mpv --playlist="$LIST" --playlist-start=0 --loop-playlist
+            "$term" mpv --playlist="$LIST" --playlist-start=0 --loop-playlist --loop
             ;;
         */pdf|*/epub*)
             zathura $fx
