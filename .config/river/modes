@@ -7,7 +7,7 @@ mod=Mod4
 
 fcitx="[p]inyin [a]nthy"
 wmenu="[w[w]iki w[h]eart w[b]ook [a]mount [f]locks [p]off w[s]ink w[j]doc w[e]moji"
-dunst="clip[h]ist-wipe [l]supdates d[w] w[c]al"
+dunst="clip[h]ist-wipe [l]supdates d[w] w[c]al ls[m]us"
 wlrctl="[hjkl]cursors [,]left [.]right [m]iddle ^[hjkl]arrows"
 
 # resize #######################################################################

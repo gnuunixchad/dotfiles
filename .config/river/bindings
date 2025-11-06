@@ -51,7 +51,7 @@ riverctl map normal $mod a                          spawn "${HOME}/.local/bin/ad
 riverctl map normal ${mod}+Shift a                  spawn "${HOME}/.local/bin/address --record"
 riverctl map normal ${mod}+Control a                spawn "${HOME}/.local/bin/address --multi"
 
-riverctl map normal ${mod}+Shift space                  spawn "mpc toggle && ${HOME}/.local/bin/lsmus"
+riverctl map normal ${mod}+Shift space              spawn "mpc toggle && ${HOME}/.local/bin/lsmus"
 riverctl map locked $mod space                      spawn "mpc toggle"
 riverctl map locked $mod p                          spawn "mpc prev"
 riverctl map locked $mod n                          spawn "mpc next"
