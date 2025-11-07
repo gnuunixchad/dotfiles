@@ -2,7 +2,7 @@
 # @author nate zhou
 # @since 2023,2024,2025
 
-set font 'SourceCodePro normal 11'
+set font 'SourceCodePro normal 13'
 set guioptions 'sv'
 set selection-clipboard clipboard
 set selection-notification false
