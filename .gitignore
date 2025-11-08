@@ -26,6 +26,7 @@ package-list
 !etc/firejail/firecfg.config
 !etc/libvirt/
 !etc/libvirt/network.conf
+!etc/mkinitcpio.conf
 !etc/pacman.conf
 !etc/pacman.d/
 !etc/pacman.d/hooks
