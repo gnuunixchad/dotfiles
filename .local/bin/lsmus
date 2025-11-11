@@ -3,7 +3,11 @@
 # @since 2024,2025
 # list current playing music with mpc
 
-msg=$(mpc --format="%artist%\n%title%\n%album% (%date%)" current)
+ARTIST="󰠃"
+TITLE="󰝚"
+ALBUM="󱍙"
+
+msg=$(mpc --format="$ARTIST %artist%\n$TITLE %title%\n$ALBUM %album% (%date%)" current)
 state="[$(mpc status %state%)]"
 
 if [ -n "$msg" ]; then
