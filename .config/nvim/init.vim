@@ -105,6 +105,7 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'ptzz/lf.vim'
 Plug 'voldikss/vim-floaterm'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 let g:floaterm_width=0.95
 let g:floaterm_height=0.95
@@ -114,8 +115,8 @@ set termguicolors
 "lua require'colorizer'.setup()
 autocmd VimEnter * ColorizerToggle
 
-" treesitter syntax highlight
 lua << EOF
+-- initialize treesitter (syntax highlight)
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "bash", "diff", "markdown", "markdown_inline", "c", "java", "python", "vim", "css", "json", "make", "ssh_config"},
   highlight = {
@@ -123,4 +124,6 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+-- initialize indent-blankline
+require("ibl").setup()
 EOF
