@@ -29,7 +29,7 @@ follow_now_playing_lyrics = yes
 fetch_lyrics_for_current_song_in_background = no
 
 # format
-song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[cyan]{t|f:Title} (5f)[green]{y} (20)[cyan]{b} (7f)[magenta]{l}
+song_columns_list_format = (20)[]{a} (3f)[green]{NE} (30)[cyan]{t|f:Title} (5f)[green]{y} (9f)[cyan]{b} (7f)[magenta]{l}
 
 ### color ###
 main_window_color = 188
