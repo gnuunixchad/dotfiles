@@ -269,6 +269,15 @@ update_calcurse() {
     calcurse="${icon}${count}"
 }
 
+update_mpd() {
+    local icon="󰝚"
+    if [ $(mpc status '%state%') != "playing" ]; then
+        icon="󰝛"
+    fi
+    local title="$(mpc current -f "[%title%]" | cut -c1-12 | sed 's/([^()]*)//g; s/[[:space:],.{[]*$//; s/[&]//g')"
+    mpd="${icon}${title}"
+}
+
 update_wttr() {
     local WTTR_CACHE="$HOME/.cache/wttr"
     local update_time="$(stat -c "%Y" "$WTTR_CACHE")"
@@ -283,14 +292,14 @@ update_wttr() {
 }
 
 # modules that don't update on their own need to be run at the start for getting their initial value
-update_volume; update_microphone; update_brightness; update_pacman; update_newsboat; update_calcurse; update_wttr
+update_volume; update_microphone; update_brightness; update_pacman; update_newsboat; update_calcurse; update_mpd; update_wttr
 
 display () {
     local space=" "         # ` `(U+2009) is the Thin Space
     local delimiter_home="["
     local delimiter_end="]"
     local separator="]["
-    printf "%s" "${delimiter_home}${wttr}${separator}${calcurse}${space}${newsboat}${space}${mutt}${separator}${pacman}${space}${ttylogin}${space}${uptime}${separator}${root}${space}${home}${separator}${memory}${space}${cpu}${space}${temperature}${space}${fanmode}${separator}${wifi}${space}${ethernet}${separator}${brightness}${space}${microphone}${space}${volume}${separator}${battery}${space}${bluetooth}${separator}${time}${delimiter_end}"
+    printf "%s" "${delimiter_home}${mpd}${separator}${wttr}${separator}${calcurse}${space}${newsboat}${space}${mutt}${separator}${pacman}${space}${ttylogin}${space}${uptime}${separator}${root}${space}${home}${separator}${memory}${space}${cpu}${space}${temperature}${space}${fanmode}${separator}${wifi}${space}${ethernet}${separator}${brightness}${space}${microphone}${space}${volume}${separator}${battery}${space}${bluetooth}${separator}${time}${delimiter_end}"
 }
 
 # SIGNALLING
@@ -308,7 +317,8 @@ trap	"update_pacman;display"	    "RTMIN+6"   # -40 .local/bin/checkupdates-cron
 trap	"update_mutt;display"	    "RTMIN+7"   # -41
 trap	"update_newsboat;display"   "RTMIN+8"   # -42
 trap	"update_calcurse;display"   "RTMIN+9"   # -43
-trap	"update_wttr;display"       "RTMIN+10"   # -44
+trap	"update_wttr;display"       "RTMIN+10"  # -44
+trap    "update_mpd;display"        "RTMIN+11"  # -45
 
 while true
 do
