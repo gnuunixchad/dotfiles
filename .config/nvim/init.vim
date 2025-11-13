@@ -77,6 +77,8 @@ map <leader>ct :ColorizerToggle<CR>
 map <leader>cr :ColorizerReloadAllBuffers<CR>
 map <leader>H :TSToggle highlight<CR>
 map <leader>o :LfNewTab<CR>
+map <leader>m :RenderMarkdown toggle<CR>
+map <leader>M :RenderMarkdown preview<CR>
 
 " don't comment on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -106,6 +108,7 @@ Plug 'ptzz/lf.vim'
 Plug 'voldikss/vim-floaterm'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
 call plug#end()
 let g:floaterm_width=0.95
 let g:floaterm_height=0.95
@@ -126,4 +129,18 @@ require'nvim-treesitter.configs'.setup {
 }
 -- initialize indent-blankline
 require("ibl").setup()
+
+-- render-markdown.nvim
+require('render-markdown').setup({
+    enabled = true,
+    render_modes = true,
+    heading = {
+            backgrounds = false,
+            sign = false,
+            icons = {'# ', '## ', '### ', '#### ', '##### ', '###### '},
+    },
+    code = { enabled = false, },
+    indent = { enabled = false, },
+    pipe_table = { style = 'normal' },
+})
 EOF
