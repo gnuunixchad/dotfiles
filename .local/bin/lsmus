@@ -19,6 +19,6 @@ if [ -n "$msg" ]; then
     echo "$msg"
     if [ "$XDG_SESSION_TYPE" != "tty" ]; then
         [ -z "$msg" ] && title=""
-        notify-send -u low -r 188 -t 9000 "$state" "$msg"
+        notify-send -u low -r 188 -t 5000 "$state" "$msg"
     fi
 fi
