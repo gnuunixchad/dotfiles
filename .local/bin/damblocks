@@ -274,7 +274,9 @@ update_mpd() {
     if [ $(mpc status '%state%') != "playing" ]; then
         icon="󰝛"
     fi
-    local title="$(mpc current -f "[%title%]" | cut -c1-12 | sed 's/([^()]*)//g; s/[[:space:],.{[]*$//; s/[&]//g')"
+    local title="$(mpc current -f "[%title%]" \
+                | cut -c1-12 \
+                | sed 's/([^]*)//g; s/[[:space:],.{[]*$//; s/[&]//g')"
     mpd="${icon}${title}"
 }
 
