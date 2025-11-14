@@ -35,7 +35,7 @@ riverctl map -repeat resize None o resize horizontal 50
 riverctl declare-mode "$fcitx"
 riverctl map normal ${mod}+Control f enter-mode "$fcitx"
 
-riverctl map "$fcitx" ${mod}+Control space enter-mode normal
+riverctl map "$fcitx" ${mod}+Control f enter-mode normal
 riverctl map "$fcitx" None Escape enter-mode normal
 riverctl map "$fcitx" None space enter-mode normal
 
