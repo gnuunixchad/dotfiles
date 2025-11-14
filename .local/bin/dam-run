@@ -12,8 +12,10 @@ bar_start() {
 bar_restart() {
     killall dam
     pkill -f damblocks
-    pkill -f damblocks-mpdd
     bar_start
 }
 
-! pgrep 'dam' > /dev/null 2>&1 || ! pgrep -f 'damblocks' > /dev/null 2>&1 && bar_restart
+! pgrep 'dam' > /dev/null 2>&1 \
+    || ! pgrep -f 'damblocks' > /dev/null 2>&1 \
+    || ! pgrep -f 'damblocks-mpd' > /dev/null 2>&1 \
+    && bar_restart
