@@ -9,15 +9,15 @@ riverctl spawn "${HOME}/.local/bin/dam-run"
 # restart
 killall -q swaybg fcitx5 mpc
 
-riverctl spawn "swaybg -i $HOME/.local/share/wallpaper -m fill"
+riverctl spawn "swaybg -i ${HOME}/.local/share/wallpaper -m fill"
 #riverctl spawn "swaybg -c 000000"
 
 # restart decided by scripts
-riverctl spawn "$HOME/.local/bin/foots"
+riverctl spawn "${HOME}/.local/bin/foots"
 
-riverctl spawn "$HOME/.local/sbin/clsd"
+riverctl spawn "${HOME}/.local/sbin/clsd"
 
-riverctl spawn "$HOME/.local/bin/mbs-cron"
+riverctl spawn "${HOME}/.local/bin/mbs-cron"
 
 # start if not running
 pgrep 'swayidle' || riverctl spawn "swayidle"
@@ -30,8 +30,8 @@ pgrep -f 'wl-paste --watch cliphist store' || riverctl spawn "wl-paste --watch c
 
 pgrep 'dunst' || riverctl spawn "dunst"
 
-pgrep 'wob' || riverctl spawn "$HOME/.local/bin/wobd"
+pgrep 'wob' || riverctl spawn "${HOME}/.local/bin/wobd"
 
 riverctl spawn "fcitx5 -d" # conflicts with wtype
 
-#pgrep -f 'footclient -T Scratchpad_Tmux' || riverctl spawn "footclient -T Scratchpad_Tmux $HOME/.local/bin/tmuxd" # disabled for not obeying window rules, start manually instead
+#pgrep -f 'footclient -T Scratchpad_Tmux' || riverctl spawn "footclient -T Scratchpad_Tmux ${HOME}/.local/bin/tmuxd" # disabled for not obeying window rules, start manually instead
