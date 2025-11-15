@@ -109,7 +109,7 @@ update_brightness() {
         7[0-9]) icon="󱩔" ;;
         8[0-9]) icon="󱩕" ;;
         9[0-9]) icon="󱩖" ;;
-        100%)     icon="󰛨"  ;;
+        100)    icon="󰛨"  ;;
     esac
     [ -z "$level" ] || level="${level}%"
     brightness="${icon}${level}"
