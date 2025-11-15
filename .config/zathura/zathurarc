@@ -27,7 +27,7 @@ set default-bg "#111111"
 set recolor-lightcolor "#111111"
 set statusbar-bg "#427b58"
 set recolor-darkcolor "#dddddd"
-set highlight-fg '#427b58'
+set highlight-fg '#ffffff'
 
 map I recolor
 map n scroll half-down
