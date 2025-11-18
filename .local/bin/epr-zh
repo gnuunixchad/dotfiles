@@ -615,6 +615,7 @@ def dots_path(curr, tofi):
 def find_media_viewer():
     global VWR
     VWR_LIST = [
+        "swayimg",
         "feh",
         "gio",
         "nsxiv",
