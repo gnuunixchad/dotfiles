@@ -95,6 +95,8 @@ riverctl map -repeat "$wlrctl" Shift j spawn "wlrctl pointer move 0 15"
 riverctl map -repeat "$wlrctl" Shift k spawn "wlrctl pointer move 0 -15"
 riverctl map -repeat "$wlrctl" Shift l spawn "wlrctl pointer move 15 0"
 
+riverctl map "$wlrctl" None slash spawn "riverctl enter-mode normal && wlrctl pointer move 9999 9999"
+
 riverctl map -repeat "$wlrctl" Control h spawn "wtype -k Left"
 riverctl map -repeat "$wlrctl" Control j spawn "wtype -k Down"
 riverctl map -repeat "$wlrctl" Control k spawn "wtype -k Up"

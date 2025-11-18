@@ -58,8 +58,6 @@ riverctl map locked $mod space                      spawn "mpc toggle"
 riverctl map locked $mod p                          spawn "mpc prev"
 riverctl map locked $mod n                          spawn "mpc next"
 
-riverctl map normal $mod backslash                  spawn "wlrctl pointer move 9999 9999"
-
 riverctl map normal $mod b                          spawn "pkill -x -SIGUSR1 dam"
 
 riverctl map normal $mod j                          focus-view next
@@ -76,6 +74,7 @@ riverctl map -repeat normal ${mod}+Control equal    send-layout-cmd $tiler "gaps
 
 riverctl map normal $mod Return                     zoom
 riverctl map normal $mod tab                        focus-previous-tags
+riverctl map normal $mod backslash                  focus-previous-tags
 
 riverctl map normal ${mod}+Shift c                  close
 
