@@ -127,6 +127,14 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+
+-- folding with treesitter
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = ""
+vim.opt.fillchars:append("fold: ")
+vim.opt.foldlevelstart = 99 -- open all folds by default
+
 -- initialize indent-blankline
 require("ibl").setup()
 
