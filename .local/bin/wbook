@@ -7,7 +7,20 @@ source $HOME/.local/bin/wmenu-color 2>/dev/null
 
 SEARCH_PATH="$HOME/doc/ebook"
 
-selected_file="$(find "$SEARCH_PATH" -type f | grep -e .epub$ -e .pdf$  | wmenu-color -p "wbook" -i -l 6)"
+selected_file="$(\
+    find "$SEARCH_PATH" -type f \
+    | grep -e .epub$ -e .pdf$  \
+    | wmenu-color -p "$(basename $0)" -i -l 6\
+    )"
 
-# don't open zathura if none file selected
-[ -n "$selected_file" ] && zathura "$selected_file"
+#if grep '.epub' "$selected_file"; then
+#    if grep '-zh.epub' "$selected_file"; then
+#        viewer="footclient ${HOME}/.local/bin/epr-zh"
+#    else
+#        viewer="footclient ${HOME}/.local/bin/epr"
+#    fi
+#else viewer="zathura"
+#fi
+viewer="zathura"
+
+[ -n "$selected_file" ] && $viewer "$selected_file"
