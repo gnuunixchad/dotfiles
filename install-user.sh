@@ -4,6 +4,8 @@
 # Setup user-space softwares
 #set -x
 
+DEPENDENCIES=("git" "stow" "systemctl" "gsettings" "gpg" "fzf" "fc-cache")
+
 DOTFILES_REMOTE=("https://codeberg.org/unixchad/dotfiles" \
                  "https://github.com/gnuunixchad/dotfiles")
 DOTFILES_LOCAL="${HOME}/doc/heart"
@@ -14,8 +16,23 @@ print_err() {
     echo -e ${RED}${1}${RESET}
 }
 
+check_dependencies() {
+    local isMissingDependency=0
+
+    for executable in "${DEPENDENCIES[@]}"; do
+        if ! command -v "$executable" > /dev/null ; then
+            print_err "[Dependency] comamnd '$executable' not found."
+            isMissingDependency=1
+        fi
+    done
+
+    [ "$isMissingDependency" -eq 1 ] && exit 0
+}
+
 [ ! -z "$SUDO_USER" ] && print_err "You can't run this script as root." \
     && exit 1
+
+check_dependencies
 
 umask 027
 mkdir -p ${HOME}/{dls,doc,mnt,mus,pic,pkg,smb,tmp,vid}
@@ -42,7 +59,7 @@ cd "$DOTFILES_LOCAL" && stow -R -t $HOME . --adopt
 
 systemctl enable --now --user ssh-agent.service
 
-gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+command -v gsettings > /dev/null && gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 
 SSHCONFIG="${HOME}/.ssh/config"
 [ -f "$SSHCONFIG" ] || cp ${SSHCONFIG}.example $SSHCONFIG
@@ -75,15 +92,15 @@ GPGKEYS="${HOME}/doc/.gpg/gpg-keys"
     && echo "gpg secret keys are imported"
 
 CRONTAB="${HOME}/.config/crontab.backup"
-[ -f "$CRONTAB" ] || CRONTAB="${HOME}/.config/crontab.example" \
-    && crontab $CRONTAB
+[ ! -f "$CRONTAB" ] && CRONTAB="${HOME}/.config/crontab.example"
+command -v crontab > /dev/null && crontab $CRONTAB
 
 CALCURSE="${HOME}/.config/calcurse/calendar.ical"
-[ -f "$CALCURSE" ] && calcurse -i $CALCURSE \
+[ -f "$CALCURSE" ] && command -v calcurse > /dev/null && calcurse -i $CALCURSE \
     || print_err "[calcurse -i]: $CALCURSE doesn't exist"
 
 FONTCONFIG="${HOME}/.config/fontconfig/fonts.conf"
-[ -f "FONTCONFIG" ] && fc-cacche -fv > /dev/null && echo "font cache generated"
+[ -f "FONTCONFIG" ] && fc-cache -fv > /dev/null && echo "font cache generated"
 
 read -p "sync-config-root?(y/n): " choice; [ "$choice" = "y" ] \
     || [ "$choice" = "Y"  ] \
