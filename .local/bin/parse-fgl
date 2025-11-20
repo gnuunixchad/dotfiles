@@ -1,0 +1,8 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# parse shell aliases `fgl` for previewing with git in fzf
+
+commit_HASH=$(echo "$@" | cut -d' ' -f2)
+
+git show $commit_HASH | bat --color=always --style=plain,changes
