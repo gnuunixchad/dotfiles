@@ -61,12 +61,14 @@ function hist() {
 
     function delete() {
         selection=$(cat "$HISTFILE" | nl -n'ln' -s' ' \
-            | /usr/bin/fzf --height 50% --no-preview --wrap --reverse --color \
-            | cut -d' ' -f7-)
+            | /usr/bin/fzf --height 50% --no-preview --wrap \
+                           --layout=reverse-list --color \
+                           --tac \
+                   )
+        [ -z "$selection" ] && echo aboarted && return
+        echo "$selection"
 
-        lineNumber=$(grep -Fnx "$selection" "$HISTFILE" | cut -d: -f1)
-        [ -z "$lineNumber" ] && echo "no matches" && return
-
+        lineNumber=$(echo "$selection" | cut -d' ' -f1)
         read "?Delete history entry? (y/n): "
         [ "$REPLY" = "y"  ] && sed -i "${lineNumber}d" "$HISTFILE" || echo aborted
     }
