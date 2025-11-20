@@ -10,15 +10,15 @@ notify-send -u low -r 438 "[Shift+w] to set wallpaper"
 
 
 ls -t $(find $HOME/pic/ -type f ) \
-    | grep -e art/drawing \
-           -e art/vincent_van_gogh \
-           -e camera/views \
-           -e earth \
-           -e gloomy \
-           -e living \
-           -e photography \
-           -e poetical \
-           -e wallpapers \
+    | grep -e "$HOME/pic/art/drawing" \
+           -e "$HOME/pic/art/vincent_van_gogh" \
+           -e "$HOME/pic/camera/views" \
+           -e "$HOME/pic/earth" \
+           -e "$HOME/pic/gloomy" \
+           -e "$HOME/pic/living" \
+           -e "$HOME/pic/photography" \
+           -e "$HOME/pic/poetical" \
+           -e "$HOME/pic/wallpapers" \
     | shuf \
     > "$LIST"
 
