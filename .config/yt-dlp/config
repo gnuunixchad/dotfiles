@@ -5,4 +5,4 @@
 
 --cookies-from-browser firefox
 --embed-metadata
--o "%(title).200s.%(ext)s"
+-o "%(title).80s.%(ext)s"
