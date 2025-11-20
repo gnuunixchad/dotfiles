@@ -1,1 +1,2 @@
 --preview-window=wrap:border-sharp:65%:
+--bind=ctrl-j:preview-down,ctrl-k:preview-up
