@@ -40,5 +40,6 @@
         "editor.background": "#111111e6"
 
     },
+    "chat.disableAIFeatures": true,
     "workbench.activityBar.location": "hidden"
 }
