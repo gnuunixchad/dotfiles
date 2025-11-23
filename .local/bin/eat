@@ -1,0 +1,22 @@
+#!/usr/bin/sh
+# @author nate
+# @since 2025
+# Extract Audio Track from video files losslessly
+
+#set -x
+
+file="$1"
+
+getAudioFormat() {
+    mediainfo --Inform='Audio;%Format%' "$file" | tr '[:upper:]' '[:lower:]'
+}
+
+removeExtension() {
+    echo "${file%.*}"
+}
+
+extractAudioTrack() {
+    ffmpeg -i "$file" -vn -acodec copy "$(removeExtension).$(getAudioFormat)"
+}
+
+extractAudioTrack
