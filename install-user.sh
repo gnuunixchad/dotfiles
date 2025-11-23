@@ -35,7 +35,7 @@ check_dependencies() {
 check_dependencies
 
 umask 027
-mkdir -p ${HOME}/{dls,doc,mnt,mus,pic,pkg,smb,tmp,vid}
+mkdir -p ${HOME}/{dls,doc,mnt,mus,pic,pkg,smb,tmp,vid,.gnupg}
 chmod 700 ${HOME}/{dls,mnt,tmp}
 chmod 705 ${HOME}/pkg
 
