@@ -5,8 +5,6 @@
 
 #set -x
 
-file="$1"
-
 getAudioFormat() {
     mediainfo --Inform='Audio;%Format%' "$file" | tr '[:upper:]' '[:lower:]'
 }
@@ -19,4 +17,6 @@ extractAudioTrack() {
     ffmpeg -i "$file" -vn -acodec copy "$(removeExtension).$(getAudioFormat)"
 }
 
-extractAudioTrack
+for file in "$@"; do
+    extractAudioTrack
+done
