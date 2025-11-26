@@ -70,9 +70,11 @@ map <leader>p :tabprev<CR>
 map <leader>n :tabnext<CR>
 
 map <leader>f :FZF<CR>
-map <leader>g :G<CR>
+map <leader>G :G<CR>
 map <leader>dx :Gdiffsplit<CR>
 map <leader>dv :Gvdiffsplit<CR>
+map <leader>gf :Git log --follow -- %<CR>
+map <leader>gl :Git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen(%cr)' <CR><CR>
 map <leader>ct :ColorizerToggle<CR>
 map <leader>cr :ColorizerReloadAllBuffers<CR>
 map <leader>H :TSToggle highlight<CR>
