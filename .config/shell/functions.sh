@@ -58,3 +58,11 @@ what() {
         shift
     done
 }
+
+diffpkg() {
+    if [ -z "$1" ]; then
+        echo "Missing remote [USER@]HOST"
+        return
+    fi
+    diff <(pacman -Qeq) <(ssh "$@" 'pacman -Qeq')
+}
