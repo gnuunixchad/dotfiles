@@ -25,6 +25,7 @@ alias diff="diff --color=auto"
 alias vdiff="nvim -d"
 alias grep="grep --color=auto"
 alias ip="ip -color=auto"
+alias ipa="ip -4 addr show scope global"
 
 alias ll="ls -lh --time-style=long-iso"
 alias la="ls -A"
