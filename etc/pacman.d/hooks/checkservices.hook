@@ -1,9 +1,0 @@
-[Trigger]
-Operation = Upgrade
-Type = Package
-Target = *
-
-[Action]
-Description = Checking for updated files in a service
-When = PostTransaction
-Exec = /usr/bin/checkservices
