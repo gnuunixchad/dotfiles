@@ -10,7 +10,7 @@
     // always turn on word wrap
     "editor.wordWrap": "on",
     "editor.fontFamily": "Source Code Pro",
-    "editor.fontSize": 15,
+    "editor.fontSize": 13,
     "editor.cursorBlinking": "solid",
     "editor.scrollbar.verticalScrollbarSize": 1,
     "editor.scrollbar.horizontalScrollbarSize": 1,
