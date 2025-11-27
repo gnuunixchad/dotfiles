@@ -40,6 +40,8 @@ chmod 700 ${HOME}/{dls,mnt,tmp}
 chmod 705 ${HOME}/pkg
 
 mkdir -p ${HOME}/.{cache/mpd,config/'Code - OSS',local/{share,state/nvim}}
+mkdir ${HOME}/.ollama
+touch ${HOME}/.ollama/history
 
 CITY="${HOME}/.cache/city"
 [ ! -f "$CITY" ] || [ -z "$(cat $CITY)" ] && read -p "Enter your city: " \
@@ -53,6 +55,7 @@ mv ${HOME}/.bash_profile{,~}
 [ -L "${HOME}/.bashrc" ] || mv ${HOME}/.bashrc{,~}
 
 cd "$DOTFILES_LOCAL" && stow -R -t $HOME . --adopt
+cd ${HOME}/pkg/ollama && stow --adopt -t ~ . && cd - &>/dev/null
 
 [ -x /usr/bin/zsh ] && grep ":${UID}:${GID}:" /etc/passwd | grep '/usr/bin/zsh'\
     || chsh -s /usr/bin/zsh
