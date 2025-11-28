@@ -58,6 +58,8 @@ riverctl map locked $mod space                      spawn "mpc toggle"
 riverctl map locked $mod p                          spawn "mpc prev"
 riverctl map locked $mod n                          spawn "mpc next"
 
+riverctl map normal ${mod}+Shift s                  spawn "${HOME}/.local/bin/wsk"
+
 riverctl map normal $mod b                          spawn "pkill -x -SIGUSR1 dam"
 
 riverctl map normal $mod j                          focus-view next
