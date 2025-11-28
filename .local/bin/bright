@@ -28,3 +28,6 @@ while [ -n "$1" ]; do
     esac
     shift
 done
+
+[ -z "$1" ] && brightnessctl | bright_parse
+
