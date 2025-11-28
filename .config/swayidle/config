@@ -1,5 +1,12 @@
 # vim.ft:conf
-timeout 600 'brightnessctl set 4% -s && pkill -SIGRTMIN+3 i3blocks' resume 'brightnessctl -r && pkill -SIGRTMIN+3 i3blocks'
+# swayidle/config
+# @author nate zhou
+# @since 2025
+
+timeout 600 'brightnessctl set 4% -s && ${HOME}/.local/bin/bright' resume 'brightnessctl -r && ${HOME}/.local/bin/bright'
+
 timeout 900 'wlr-randr --output DP-1 --off ; swaylock'
-timeout 960 'brightnessctl set 0%' resume 'kanshi reload; brightnessctl -r && pkill -SIGRTMIN+3 i3blocks'
+
+timeout 960 'brightnessctl set 0%' resume 'kanshi reload; brightnessctl -r && ${HOME}/.local/bin/bright'
+
 before-sleep 'swaylock'
