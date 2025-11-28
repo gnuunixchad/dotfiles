@@ -4,8 +4,14 @@
 # toggle wshowkeys
 
 start() {
+    notify-send -u low -r 290 "$(basename $0)" "wshowkeys on"
     firejail --noprofile --net=none --nosound --novideo --no3d --nodbus \
              wshowkeys -a bottom -b '#11111188' -F 'SourceCodePro 20'
 }
 
-pgrep 'wshowkeys' > /dev/null && kill $(pgrep 'wshowkeys') || start
+stop() {
+    notify-send -u low -r 290 "$(basename $0)" "wshowkeys off"
+    kill $(pgrep 'wshowkeys')
+}
+
+pgrep 'wshowkeys' > /dev/null && stop || start
