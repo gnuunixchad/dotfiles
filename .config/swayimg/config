@@ -38,9 +38,9 @@ fill = no
 antialiasing = mks13
 window = #111111
 background = #111111
-select = #005577
-border = #005577
-shadow = #000000
+select = #111111
+border = #427b58
+shadow = #427b58
 
 [list]
 order = alpha
