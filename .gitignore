@@ -21,6 +21,7 @@ package-list
 !boot/loader/loader.conf.example
 !boot/loader/entries
 !boot/loader/entries/arch.conf.example
+!boot/loader/entries/arch-fallback.conf.example
 !etc/
 !etc/firejail/
 !etc/firejail/firecfg.config
