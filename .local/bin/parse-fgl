@@ -3,6 +3,6 @@
 # @since 2025
 # parse shell aliases `fgl` for previewing with git in fzf
 
-commit_HASH=$(echo "$@" | cut -d' ' -f2)
+commit_HASH=$(echo "$@" | sed 's/^[^a-Z0-9]*//' | cut -d' ' -f1)
 
 git show $commit_HASH | bat --color=always --style=plain,changes
