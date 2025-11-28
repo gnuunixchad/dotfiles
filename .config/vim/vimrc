@@ -42,6 +42,8 @@ nmap <c-q> :q
 " save current buffer (as filename when necessary) and reload
 nmap W :w \|e<Left><Left>
 
+nmap <leader>1 :!
+
 " move focus to next split instead of resizing
 nnoremap <Tab> <C-W>w
 " split open (<leader>q quit a split)
