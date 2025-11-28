@@ -330,3 +330,14 @@ cmd rotate %{{
     lf -remote "send clear"
 }}
 map xr rotate
+
+cmd chmod %{{
+    printf "chmod $fx "
+	read perm
+    [ -z "$perm" ] && return
+    for f in $fx; do
+        chmod "$perm" "$f"
+    done
+    lf -remote "send $id reload"
+}}
+map xm chmod
