@@ -69,8 +69,13 @@ diffpkg() {
 
 # list git objects in the CWD
 lg() {
-    local branch="$(git branch --show-current)"
+    local branch="$(git branch --show-current 2> /dev/null)"
     local format='%(objectmode) %(objectsize:padded)%x09 %(path)%(objecttype)'
 
-    git ls-tree --format="$format" "$branch" | sed 's/blob$//;s/tree$/\//'
+    local output="$(git ls-tree --format="$format" "$branch" 2> /dev/null)"
+    if [ -z "$output" ]; then
+        return
+    else
+        echo "$output" | sed 's/blob$//;s/tree$/\//'
+    fi
 }
