@@ -66,3 +66,11 @@ diffpkg() {
     fi
     diff <(pacman -Qeq) <(ssh "$@" 'pacman -Qeq')
 }
+
+# list git objects in the CWD
+lg() {
+    local branch="$(git branch --show-current)"
+    local format='%(objectmode) %(objectsize:padded)%x09 %(path)%(objecttype)'
+
+    git ls-tree --format="$format" "$branch" | sed 's/blob$//;s/tree$/\//'
+}
