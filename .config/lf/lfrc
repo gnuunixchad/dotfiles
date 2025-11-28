@@ -341,3 +341,15 @@ cmd chmod %{{
     lf -remote "send $id reload"
 }}
 map xm chmod
+
+
+cmd chown %{{
+    printf "chown $fx "
+	read owner
+    [ -z "$owner" ] && return
+    for f in $fx; do
+        chown "$owner" "$f"
+    done
+    lf -remote "send $id reload"
+}}
+map xo chown
