@@ -79,5 +79,8 @@ map <leader><Tab> :NERDTreeToggle<CR>
 map <leader>ct :ColorizerToggle<CR>
 map <leader>cr :ColorizerReloadAllBuffers<CR>
 
+" terminal mode to normal mode
+tnoremap <leader><Esc> <C-\><C-n>
+
 " don't comment on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
