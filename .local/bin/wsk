@@ -1,0 +1,11 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# toggle wshowkeys
+
+start() {
+    firejail --noprofile --net=none --nosound --novideo --no3d --nodbus \
+             wshowkeys -a bottom -b '#11111188' -F 'SourceCodePro 20'
+}
+
+pgrep 'wshowkeys' > /dev/null && kill $(pgrep 'wshowkeys') || start
