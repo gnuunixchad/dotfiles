@@ -40,6 +40,8 @@ set splitbelow splitright " new split position
 nnoremap <leader>e :exe '1wincmd w \| wincmd '.(winwidth(0) == &columns ? 'H' : 'K')<CR>
 
 " keybindings
+nmap <c-q> :q
+nmap W :w\|e
 " move focus to next split instead of resizing
 nnoremap <Tab> <C-W>w
 " split open (<leader>q quit a split)
