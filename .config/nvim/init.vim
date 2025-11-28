@@ -86,6 +86,9 @@ map <leader>o :LfNewTab<CR>
 map <leader>m :RenderMarkdown toggle<CR>
 map <leader>M :RenderMarkdown preview<CR>
 
+" terminal mode to normal mode
+tnoremap <leader><Esc> <C-\><C-n>
+
 " don't comment on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
