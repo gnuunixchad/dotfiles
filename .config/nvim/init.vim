@@ -41,7 +41,9 @@ nnoremap <leader>e :exe '1wincmd w \| wincmd '.(winwidth(0) == &columns ? 'H' : 
 
 " keybindings
 nmap <c-q> :q
-nmap W :w\|e
+" save current buffer (as filename when necessary) and reload
+nmap W :w \|e<Left><Left>
+
 " move focus to next split instead of resizing
 nnoremap <Tab> <C-W>w
 " split open (<leader>q quit a split)
