@@ -23,7 +23,7 @@ preload = 1
 
 [slideshow]
 time = 3
-window = #111111
+window = mirror
 transparency = #000000ff
 scale = optimal
 position = center
