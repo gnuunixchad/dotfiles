@@ -23,9 +23,9 @@ preload = 1
 
 [slideshow]
 time = 3
-window = auto
+window = #111111
 transparency = #000000ff
-scale = fit
+scale = optimal
 position = center
 antialiasing = mks13
 
