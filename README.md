@@ -33,7 +33,7 @@ stow -t ~ . --adopt
 I prefer software that are free as in freedom, keyboard centric, terminal based,
 vim like, do one thing and do it well. And try to avoid proprietary garbage and
 spyware when I can.
-```
+```md
 - /usr/bin/sh:              dash
 - Login Shell:              zsh
 - Terminlal Multiplexer:    dvtm + abduco
