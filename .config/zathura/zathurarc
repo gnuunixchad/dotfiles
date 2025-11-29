@@ -27,7 +27,19 @@ set default-bg "#111111"
 set recolor-lightcolor "#111111"
 set statusbar-bg "#427b58"
 set recolor-darkcolor "#dddddd"
-set highlight-fg '#ffffff'
+set highlight-fg rgba(255,255,255,0.80)
+set highlight-color rgba(0,85,119,0.25)
+set highlight-active-color rgba(66,123,88,0.5) #427b5880
+set completion-bg "#111111"
+set completion-highlight-bg "#427b58"
+set completion-highlight-fg "#eeeeee"
+set inputbar-fg "#eeeeee"
+set notification-fg "#eeeeee"
+set notification-bg "#076678"
+set notification-warning-fg "#111111"
+set notification-warning-bg "#e6da00"
+set notification-error-fg "#eeeeee"
+set notification-error-bg "#8b0000"
 
 map I recolor
 map n scroll half-down
