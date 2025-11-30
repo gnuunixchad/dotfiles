@@ -8,8 +8,10 @@ file="$1"
 print_err() {
     local RED='\033[0;31m'
     local RESET='\033[0m'
-    printf ${RED}${1}${RESET}\\n
+    printf ${RED}"${1}"${RESET}\\n
 }
+
+[ -z "$1" ] && print_err "No file specified." && exit 1
 
 case $(file --mime-type -Lb $file) in
     image/x-xcf)
