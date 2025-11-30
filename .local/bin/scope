@@ -50,7 +50,7 @@ case "$(file -Lb --mime-type -- "$1")" in
         [ -f "${CACHE}.jpg" ] || /usr/bin/pdftoppm -f 1 -l 1 -singlefile -jpeg "$1" "$CACHE"
         show_img "$CACHE".jpg "$2" "$3"
         ;;
-    application/zip)
+    application/zip|application/vnd.android.package-archive)
         zipinfo "$1" | "$PAGER"
         ;;
     application/gzip)

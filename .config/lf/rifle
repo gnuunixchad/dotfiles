@@ -33,7 +33,7 @@ cmd open &{{
 		application/*opendocument*|*officedocument*)
             libreoffice $fx
             ;;
-        application/zip)
+        application/zip|application/vnd.android.package-archive)
             lf -remote "send $id \$zipinfo \$f | less -i"
             ;;
         application/gzip)
