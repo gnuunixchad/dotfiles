@@ -1,0 +1,58 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# file opener ported from my [lf](../../.config/lf/rifle)
+
+file="$1"
+
+print_err() {
+    local RED='\033[0;31m'
+    local RESET='\033[0m'
+    printf ${RED}${1}${RESET}\\n
+}
+
+case $(file --mime-type -Lb $file) in
+    image/x-xcf)
+        gimp "$file"
+        ;;
+    image/*)
+        [ "$XDG_SESSION_TYPE" = "tty" ] \
+            && mpv --loop "$file" \
+            || swayimg "$file"
+        ;;
+    video/*)
+        mpv --loop "$file"
+        ;;
+    audio/*)
+        [ "$XDG_SESSION_TYPE" != "tty" ] && term="footclient"
+        "$term" mpv --loop "$file"
+        ;;
+    */pdf|*/epub*)
+        zathura "$file"
+        ;;
+	application/*opendocument*|*officedocument*)
+        libreoffice "$file"
+        ;;
+    application/zip|application/vnd.android.package-archive)
+        $zipinfo "$file" | less -i
+        ;;
+    application/gzip)
+        zless "$file"
+        ;;
+    application/x-7z-compressed)
+        7z l "$file" | grep -oP '\S+$' | less -i
+        ;;
+    application/*tar|application/*zip*|application/zstd|application/*xz)
+        tar vvtf "$file" | less -i
+        ;;
+    text/html)
+        $BROWSER "$file"
+        ;;
+    text/*|*/json|inode/x-empty|application/javascript)
+        $EDITOR -p "$file"
+        ;;
+    *)
+        print_err "[$(basename $0)]: file type not supported."
+        file --mime-type "$file"
+        ;;
+esac
