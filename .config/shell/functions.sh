@@ -28,6 +28,12 @@ colors() {
     done
 }
 
+print_err() {
+    local RED='\033[0;31m'
+    local RESET='\033[0m'
+    echo -e ${RED}"${1}"${RESET}
+}
+
 # offline dictionary with wordnet
 dict() {
     command dict "$@" | command less -i -F
@@ -78,4 +84,12 @@ lg() {
     else
         echo "$output" | sed 's/blob$//;s/tree$/\//'
     fi
+}
+
+# select a file owned by a package with fzf then edit
+fpl() {
+    file="$(pacman -Ql $@ | cut -d' ' -f2 \
+        | fzf --preview '${HOME}/.local/bin/scope {}' \
+              --preview-window bottom)"
+    [ -n "$file" ] && ${HOME}/.local/bin/rifle "$file"
 }
