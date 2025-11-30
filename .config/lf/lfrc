@@ -310,7 +310,7 @@ cmd extract %{{
     if [ "$choice" = "y" ]; then
         case "$f" in
         *.tar) tar xf "$f" ;;
-        *.zip|*.apk) unzip "$f" ;;
+        *.zip|*.apk) unzip "$f" -d "$(basename $f | sed -E 's/.apk$|.zip$//')" ;;
         *.gz) gunzip -k "$f" ;;
         *.7z) 7z x "$f" ;;
         *.tar.gz) tar xzf "$f" ;;
