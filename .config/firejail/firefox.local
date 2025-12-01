@@ -28,3 +28,11 @@ read-only ${HOME}/vid/unixchat
 whitelist /usr/share/doc/
 
 novideo
+
+# fix gdk-pixbuf2 issue with nvidia GPU crashing firefox on launch
+whitelist /usr/share/glycin-loaders
+noblacklist /usr/bin/bwrap
+noblacklist /proc/sys/kernel/overflowuid
+noblacklist /proc/sys/kernel/overflowgid
+ignore seccomp !chroot
+seccomp !chroot,!mount,!pivot_root,!umount2
