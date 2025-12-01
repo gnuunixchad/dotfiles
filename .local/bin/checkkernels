@@ -6,7 +6,7 @@
 
 KERNELS="linux linux-lts linux-zen"
 kernel_running=$(uname -r | sed 's/-lts//; s/-arch/\.arch/; s/-zen//')
-kernel_installed=$(pacman -Q --color never $KERNELS 2> /dev/null | awk '{print $2}') # no quotes on $KERNELS
+kernel_installed=$(pacman -Q --color never $KERNELS 2> /dev/null | awk '{print $2}' | sed '1!s/^/\t\t/') # no quotes on $KERNELS
 
 usage() {
 cat << _EOF_
@@ -20,9 +20,9 @@ _EOF_
 
 print_kernels() {
 cat << _EOF_
-VERSION
-        running:   $kernel_running
-        installed: $kernel_installed
+[VERSION]
+running:        $kernel_running
+installed:      $kernel_installed
 _EOF_
 }
 
