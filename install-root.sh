@@ -57,3 +57,10 @@ lscpu | grep -q 'Hypervisor vendor:' \
     || (systemctl enable --now libvirtd \
     && virsh net-define /etc/libvirt/qemu/networks/default.xml \
     && virsh net-autostart default)
+
+pacman -Qi nvidia-utils > /dev/null 2>&1 \
+    && (systemctl enable nvidia-suspend.service; \
+        systemctl enable nvidia-hibernate.service; \
+        systemctl enable nvidia-resume.service; \
+        systemctl enable nvidia-powerd.service; \
+        echo "Nvidia power management service will be enabled after a reboot.")
