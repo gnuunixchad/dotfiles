@@ -10,7 +10,8 @@ set statusbar-h-padding 0
 set statusbar-v-padding 0
 set statusbar-home-tilde true
 set statusbar-page-percent true
-set page-padding 1
+set page-v-padding 1
+set page-h-padding 1
 set database 'sqlite'
 set zoom-step 2
 set scroll-step 30
