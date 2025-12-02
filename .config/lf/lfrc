@@ -49,6 +49,8 @@ map '['
 map ']'
 
 ## normal mode
+map .r source ~/.config/lf/lfrc
+
 map <c-n> half-down
 map <c-p> half-up
 map H jump-prev
