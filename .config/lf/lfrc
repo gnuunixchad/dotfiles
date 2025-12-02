@@ -357,3 +357,12 @@ cmd chown %{{
     lf -remote "send $id reload"
 }}
 map xo chown
+
+cmd gitBranch ${{
+    git branch | fzf | xargs -I{} git checkout {}
+    # invoke on-cd
+    CWD=$(pwd)
+    lf -remote "send $id updir"
+    lf -remote "send $id cd $CWD"
+}}
+map gb gitBranch
