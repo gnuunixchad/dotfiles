@@ -62,6 +62,8 @@ setopt interactivecomments
 setopt autocd		# auto cd by typing path
 #setopt auto_menu menu_complete # reduce tap pressing for completion
 
+setopt rm_star_silent
+
 setopt PROMPT_SUBST
 
 [ -f "/usr/share/git/completion/git-prompt.sh" ] && . /usr/share/git/completion/git-prompt.sh
