@@ -45,6 +45,9 @@ cmd open &{{
         application/*tar|application/*zip*|application/zstd|application/*xz)
             lf -remote "send $id \$tar vvtf \$f | less -i"
             ;;
+        text/troff)
+            lf -remote "send $id \$man -l \$f"
+            ;;
         text/html)
             $BROWSER $fx
             ;;
