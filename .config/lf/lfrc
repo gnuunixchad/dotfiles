@@ -168,6 +168,7 @@ map gd $~/.local/bin/gpg-doc $f
 map gp $~/.local/bin/gpg-pic $f
 map gv $~/.local/bin/gpg-vid $f
 map gm $~/.local/bin/gpg-mus $f
+map gD $~/.local/bin/gpg-decrypt $f
 
 map mi $mid3v2 -l $f | less -i
 map mm $mediainfo $f | less -i
