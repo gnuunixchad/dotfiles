@@ -72,6 +72,9 @@ case "$(file -Lb --mime-type -- "$1")" in
     application/*opendocument*)
         odt2txt "$1";
         ;;
+    text/troff)
+        man -l "$1"
+        ;;
     text/html)
         firejail --net=none w3m "$1"
         ;;
