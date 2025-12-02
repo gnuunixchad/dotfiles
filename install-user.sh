@@ -102,9 +102,15 @@ CRONTAB="${HOME}/.config/crontab.backup"
 [ ! -f "$CRONTAB" ] && CRONTAB="${HOME}/.config/crontab.example"
 command -v crontab > /dev/null && crontab $CRONTAB
 
-CALCURSE="${HOME}/.config/calcurse/calendar.ical"
-[ -f "$CALCURSE" ] && command -v calcurse > /dev/null && calcurse -i $CALCURSE \
-    || print_err "[calcurse -i]: $CALCURSE doesn't exist"
+CALCURSE_ICAL="${HOME}/.config/calcurse/calendar.ical"
+CALCURSE_APTS="${HOME}/.local/share/calcurse/apts"
+if [ -f "$CALCURSE_ICAL" ] && command -v calcurse > /dev/null; then
+    if [ "$(wc -c < $CALCURSE_APTS)"  -ne 0 ]; then
+        print_err "[calcurse -i]: Already imported file, skipped"
+    else
+        calcurse -i $CALCURSE_ICAL || print_err "[calcurse -i]: $CALCURSE_ICAL doesn't exist"
+    fi
+fi
 
 FONTCONFIG="${HOME}/.config/fontconfig/fonts.conf"
 [ -f "FONTCONFIG" ] && fc-cache -fv > /dev/null && echo "font cache generated"
