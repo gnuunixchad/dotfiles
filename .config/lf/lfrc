@@ -61,7 +61,7 @@ map K : {{
 }}
 map zp toggle-preview
 map ` !true
-map F :filter
+map f :filter
 map C visual-change
 map e $$EDITOR "$f"
 
@@ -210,7 +210,7 @@ cmd fzf_jump ${{
         lf -remote "send $id $cmd \"$res\""
     fi
 }}
-map f fzf_jump
+map F fzf_jump
 
 cmd bulk-rename ${{
     old="$(mktemp)"
