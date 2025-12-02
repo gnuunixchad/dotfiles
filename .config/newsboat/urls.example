@@ -3,8 +3,9 @@ https://archlinux.org/feeds/news/ "~Arch Linux" archlinux distro
 https://www.archlinuxcn.org/feed/ "~Arch Linux CN" archlinux distro
 https://micronews.debian.org/feeds/feed.rss "~Debian Micronews" distro
 
-# [news]
-https://distrowatch.com/news/headline.xml "~Distrowatch Headlines" distro
+# [blog]
+https://lukesmith.xyz/rss.xml "~Luke Smith" blog
+http://www.fsf.org/news/aggregator/RSS "~FSF News"
 
 # [software]
 https://codeberg.org/dwl/dwl/releases.rss ~dwl git dwl
@@ -22,9 +23,15 @@ https://codeberg.org/dnkl/foot/releases.rss ~foot git gui
 https://codeberg.org/adnano/wmenu.rss ~wmenu git gui
 https://codeberg.org/sewn/mew/releases.rss ~mew git gui
 https://github.com/artemsen/swayimg/releases.atom ~swayimg git gui
+https://github.com/ammen99/wf-recorder/releases.atom ~wf-recorder git cli gui
+https://github.com/mpv-player/mpv/releases.atom ~mpv git gui
+https://github.com/dunst-project/dunst/releases.atom ~dunst gui
 
 https://github.com/swaywm/sway/releases.atom ~sway git sway
 https://github.com/swaywm/swaylock/releases.atom ~swaylock git sway wlroots
 https://github.com/swaywm/swaybg/releases.atom ~swaybg git sway wlroots
 https://github.com/swaywm/swayidle/releases.atom ~swayidle git sway wlroots
 https://gitlab.freedesktop.org/wlroots/wlroots/-/releases.atom ~wlroots git wlroots
+
+https://github.com/linrunner/TLP/releases.atom ~tlp git cli system
+https://github.com/GothenburgBitFactory/taskwarrior/releases.atom ~taskwarrior git cli
