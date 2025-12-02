@@ -353,6 +353,7 @@ cmd execute !{{
     else
         case "$(file -Lb --mime-type $f)" in
             text/x-java) java $f ;;
+            text/x-makefile) make ;;
         esac
     fi
 }}
