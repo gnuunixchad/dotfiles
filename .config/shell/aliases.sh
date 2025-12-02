@@ -135,7 +135,7 @@ alias glra="git log --all --show-signature --follow --reverse -p"
 alias glfa="git log --follow -p --graph --abbrev-commit --show-signature"
 alias gls="git log --show-signature"
 alias gla="git log --graph --all --name-only --abbrev-commit --show-signature"
-alias fgl="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen(%cr)' --abbrev-commit | /usr/bin/fzf --layout=reverse-list --preview-window=50%:bottom: --preview 'parse-fgl {}' --color | cut -d' ' -f2 | wl-copy"
+alias fgl="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen(%cr)' --abbrev-commit | /usr/bin/fzf --layout=reverse-list --preview-window=50%:bottom: --preview 'parse-fgl {}' | cut -d' ' -f2 | wl-copy"
 alias fglf=" /usr/bin/fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --preview 'git log --follow -p {} | bat --color=always --style=plain,changes' "
 
 alias vm="virt-manager"
