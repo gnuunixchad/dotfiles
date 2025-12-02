@@ -346,6 +346,17 @@ cmd extract %{{
 }}
 map xx extract
 
+cmd execute !{{
+    if [ -x $f ]; then
+        sh -c $f
+    else
+        case "$(file -Lb --mime-type $f)" in
+            text/x-java) java $f ;;
+        esac
+    fi
+}}
+map xX execute
+
 cmd rotate %{{
     printf "rotate degree?: "
     read line
