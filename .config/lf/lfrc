@@ -280,6 +280,25 @@ cmd mkdir %{{
 }}
 map O push :mkdir<space>
 
+cmd on-redraw &{{
+    if [ $lf_width -lt 60 ]; then
+        # The order of `set preivew` and `set ratios` matters because:
+        #   - `preview` is disabled if `ratios` is `1`
+        #   - `set preview true` then fails
+        lf -remote "send $id set preview false"
+        lf -remote "send $id set ratios 1"
+    elif [ $lf_width -lt 80 ]; then
+        lf -remote "send $id set ratios 2:3"
+        lf -remote "send $id set preview true"
+    elif [ $lf_width -lt 120 ]; then
+        lf -remote "send $id set ratios 1:2:3"
+        lf -remote "send $id set preview true"
+    elif [ $lf_width -lt 160 ]; then
+        lf -remote "send $id set ratios 1:3:4"
+        lf -remote "send $id set preview true"
+    fi
+}}
+
 # git prompt on every changing directory
 cmd on-cd &{{
     bash -c '
@@ -363,6 +382,6 @@ cmd gitBranch ${{
     # invoke on-cd
     CWD=$(pwd)
     lf -remote "send $id updir"
-    lf -remote "send $id cd $CWD"
+    lf -rem4ote "send $id cd $CWD"
 }}
 map gb gitBranch
