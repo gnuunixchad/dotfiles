@@ -32,6 +32,7 @@ set watch true
 set ratios 1:2:3
 set icons true
 set drawbox
+set filtermethod regex
 
 ## unmap
 map ','
