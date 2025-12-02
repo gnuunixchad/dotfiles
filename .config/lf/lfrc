@@ -67,6 +67,7 @@ map zp toggle-preview
 map ` !true
 map F :filter
 map C visual-change
+map e $$EDITOR "$f"
 
 
 ## command-line
