@@ -37,7 +37,14 @@ cmd open &{{
             lf -remote "send $id \$zipinfo \$f | less -i"
             ;;
         application/gzip)
-            lf -remote "send $id \$zless \$f"
+            case "$f" in
+                *.tar.gz)
+                    lf -remote "send $id \$tar vvtf \$f | less -i"
+                    ;;
+                *)
+                    lf -remote "send $id \$zless \$f"
+                    ;;
+            esac
             ;;
         application/x-7z-compressed)
             lf -remote "send $id \$7z l \$f | grep -oP '\S+$' | less -i"
