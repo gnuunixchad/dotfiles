@@ -36,6 +36,7 @@ alias lt="ls -lt --time-style=long-iso"
 alias lw="ls -ldh $(pwd)"
 alias lx="lsix"
 alias le="ls | grep -o '.[^.]*$' | sort | uniq"
+alias lsmb="smbclient -L localhost -N"
 
 alias acl="getfacl"
 alias atr="lsattr"
