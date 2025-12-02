@@ -189,6 +189,7 @@ map xT $~/.local/bin/id3trck $fx
 ## Git
 map gl $clear; git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen(%cr)' --abbrev-commit
 map gs $clear; git status -v | less -i
+map gf $clear; git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen(%cr)' --abbrev-commit | /usr/bin/fzf --layout=reverse-list --preview-window=50%:bottom: --preview 'parse-fgl {}' --color | cut -d' ' -f2 | wl-copy
 
 ## commands
 cmd toggle-preview %{{
