@@ -5,8 +5,8 @@
 
 [general]
 mode = viewer
-position = parent
-size = parent
+position = auto
+size = image
 sigusr1 = reload
 sigusr2 = next_file
 app_id = swayimg
