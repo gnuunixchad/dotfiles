@@ -157,7 +157,8 @@ package-list
 !.config/lf/teleport.conf
 !.config/lf/local.conf
 !.config/lf/icons
-!/.config/lf/lf-rearrange
+!.config/lf/ruler
+!.config/lf/lf-rearrange
 !.config/layout.xkb
 !.config/mpd/
 !.config/mpd/mpd.conf

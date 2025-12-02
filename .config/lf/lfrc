@@ -10,17 +10,13 @@ set preview true
 #set sixel true
 set previewer ~/.config/lf/scope #symlink to ~/.local/bin/scope
 
+set rulerfile true
 set promptfmt "\033[106m%u@%h\033[00m \033[40m%d%f\033[0m"
 set numberfmt "\033[90m"
 set borderfmt "\033[90m"
 set cursoractivefmt "\033[37;106m"
 set cursorparentfmt "\033[30;44m"
 set timefmt "2006-01-02 15:04"
-set copyfmt "\033[7;32m"
-set cutfmt "\033[7;31m"
-set visualfmt "\033[7;33m"
-set selectfmt "\033[7;35m"
-set rulerfmt "%a| %p| \033[7;31m %m \033[0m| \033[7;32m %c \033[0m| \033[7;35m %s \033[0m| \033[7;33m %v \033[0m| \033[7;34m %f \033[0m| %i/%t %P"
 set statfmt "\033[32m%p\033[0m| %c| %u| %g| %S| %t| -> %l"
 set menuheaderfmt "\033[106;1m"
 
