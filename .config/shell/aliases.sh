@@ -65,7 +65,6 @@ alias jvi="vim /usr/lib/jvm/default/lib/src.zip"
 alias mutt="$HOME/.local/bin/mutt"
 alias tsk="task";
 alias twt="taskwarrior-tui"
-alias mpv="mpv --loop"
 alias ncmpcpp="ncmpcpp -q"
 alias newsboat="newsboat -q"
 
