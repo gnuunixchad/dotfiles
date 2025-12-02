@@ -9,6 +9,7 @@ source ~/.config/lf/local.conf
 set preview true
 #set sixel true
 set previewer ~/.config/lf/scope #symlink to ~/.local/bin/scope
+set preload true
 
 set rulerfile true
 set promptfmt "\033[106m%u@%h\033[00m \033[40m%d%f\033[0m"
