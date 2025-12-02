@@ -145,7 +145,7 @@ map I :rename; cmd-home
 map r push a<c-u>
 map R push A<c-u>
 map w $$SHELL
-map i $bat --color always --style plain,changes --pager 'less -R' "$f"
+map i $~/.config/lf/scope $f | less -R
 
 map U !du -csh $fx
 map E &footclient nvim $f
