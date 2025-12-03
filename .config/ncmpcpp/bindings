@@ -173,3 +173,7 @@ def_key "ctrl-j"
 
 def_key "ctrl-k"
   move_selected_items_up
+
+# visualizer
+def_key "v"
+  toggle_visualization_type
