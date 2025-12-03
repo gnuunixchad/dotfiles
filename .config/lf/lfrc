@@ -67,7 +67,6 @@ map f :filter
 map C visual-change
 map e $$EDITOR "$f"
 
-
 ## command-line
 cmap <c-g> cmd-escape
 cmap <c-f> cmd-right
@@ -364,6 +363,61 @@ cmd rotate %{{
     lf -remote "send clear"
 }}
 map xr rotate
+
+cmd id3v2Title %{{
+    printf "mid3v2 -a "
+	read title
+    [ -z "$title" ] && return
+    for f in $fx; do
+        mid3v2 -a "$title" "$f"
+    done
+    lf -remote "send $id reload"
+}}
+map tt id3v2Title
+
+cmd id3v2Artist %{{
+    printf "mid3v2 -a "
+	read artist
+    [ -z "$artist" ] && return
+    for f in $fx; do
+        mid3v2 -a "$artist" "$f"
+    done
+    lf -remote "send $id reload"
+}}
+map ta id3v2Artist
+
+cmd id3v2Album %{{
+    printf "mid3v2 -A "
+	read album
+    [ -z "$album" ] && return
+    for f in $fx; do
+        mid3v2 -A "$album" "$f"
+    done
+    lf -remote "send $id reload"
+}}
+map tA id3v2Album
+
+cmd id3v2Year %{{
+    printf "mid3v2 -y "
+	read year
+    [ -z "$year" ] && return
+    for f in $fx; do
+        mid3v2 -y "$year" "$f"
+    done
+    lf -remote "send $id reload"
+}}
+map ty id3v2Year
+
+cmd id3v2Track %{{
+    printf "mid3v2 -T "
+	read track
+    [ -z "$track" ] && return
+    for f in $fx; do
+        mid3v2 -y "$track" "$f"
+    done
+    lf -remote "send $id reload"
+}}
+map tT id3v2Track
 
 cmd chmod %{{
     printf "chmod $fx "
