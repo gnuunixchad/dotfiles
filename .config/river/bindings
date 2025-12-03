@@ -96,6 +96,8 @@ riverctl map normal ${mod}+Shift comma              send-to-output previous
 
 riverctl map normal $mod apostrophe                 spawn "river-shifttags --occupied"
 riverctl map normal $mod semicolon                  spawn "river-shifttags --shift -1 --occupied"
+riverctl map normal ${mod}+Shift apostrophe         spawn "river-shifttags"
+riverctl map normal ${mod}+Shift semicolon          spawn "river-shifttags --shift -1"
 
 riverctl map normal ${mod}+Control h                focus-view left
 riverctl map normal ${mod}+Control j                focus-view next
