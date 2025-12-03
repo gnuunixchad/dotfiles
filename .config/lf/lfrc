@@ -386,6 +386,17 @@ cmd id3v2Artist %{{
 }}
 map ta id3v2Artist
 
+cmd id3v2AlbumArtist %{{
+    printf "mid3v2 -a "
+	read tpe2
+    [ -z "$tpe2" ] && return
+    for f in $fx; do
+        mid3v2 --TPE2 "$tpe2" "$f"
+    done
+    lf -remote "send $id reload"
+}}
+map t2 id3v2AlbumArtist
+
 cmd id3v2Album %{{
     printf "mid3v2 -A "
 	read album
