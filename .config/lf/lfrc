@@ -66,6 +66,7 @@ map ` !true
 map f :filter
 map C visual-change
 map e $$EDITOR "$f"
+map T tag-toggle
 
 ## command-line
 cmap <c-g> cmd-escape
