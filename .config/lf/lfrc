@@ -174,7 +174,7 @@ map gD $~/.local/bin/gpg-decrypt $f
 map mi $mid3v2 -l $f | less -i
 map mm $mediainfo $f | less -i
 map me $exiftool $f | less -i
-map mf %file -Lb --mime-type $f
+map mf %file -Lb --mime-type $f | tr '\n' ' '
 map mF $file -L --mime-type $fx | less -i
 
 map xs $swayimg -r
