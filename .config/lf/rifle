@@ -58,7 +58,7 @@ cmd open &{{
         text/html)
             $BROWSER $fx
             ;;
-        text/*|*/json|inode/x-empty|application/javascript)
+        text/*|*/json|inode/x-empty|application/javascript|application/mbox)
             lf -remote "send $id \$$EDITOR -p \$fx"
             ;;
         #*)
