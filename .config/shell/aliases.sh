@@ -37,6 +37,7 @@ alias lw="ls -ldh $(pwd)"
 alias lx="lsix"
 alias le="ls | grep -o '.[^.]*$' | sort | uniq"
 alias lsmb="smbclient -L localhost -N"
+alias lb="lsblk -o name,mountpoints,type,size"
 
 alias acl="getfacl"
 alias atr="lsattr"
