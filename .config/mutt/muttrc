@@ -53,6 +53,8 @@ bind index,pager,attach	    <F1>		help
 bind pager				    H			display-toggle-weed
 bind attach,index,pager 	\CD 		next-page
 bind attach,index,pager 	\CU 		previous-page
+bind attach,index,pager 	\CN 		half-down
+bind attach,index,pager 	\CP 		half-up
 bind index                  d           delete-message
 bind index                  u           undelete-message
 bind attach,index,pager     f           flag-message
