@@ -42,6 +42,9 @@ color bold          bold white  default
 color underline          yellow default
 color normal             white  default
 
+color body yellow default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+ # email addr
+color body green  default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9@]+ # URL
+
 ## pgp
 
 color body                red       default    "(BAD signature)"
