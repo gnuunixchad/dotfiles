@@ -165,6 +165,10 @@ package-list
 !.config/mpv/
 !.config/mpv/input.conf
 !.config/mpv/mpv.conf
+!.config/mpv/scripts
+!.config/mpv/scripts/mpv-cut
+!.config/mpv/scripts/mpv-cut/main.lua
+!.config/mpv/scripts/mpv-cut/utils
 !.config/mutt/
 !.config/mutt/muttrc
 !.config/mutt/mailcap
