@@ -66,7 +66,7 @@ map ` !true
 map f :filter
 map C visual-change
 map e $$EDITOR "$f"
-map T tag-toggle
+map t tag-toggle
 
 ## command-line
 cmap <c-g> cmd-escape
@@ -375,7 +375,7 @@ cmd id3v2Title %{{
     done
     lf -remote "send $id reload"
 }}
-map tt id3v2Title
+map Tt id3v2Title
 
 cmd id3v2Artist %{{
     printf "mid3v2 -a "
@@ -386,7 +386,7 @@ cmd id3v2Artist %{{
     done
     lf -remote "send $id reload"
 }}
-map ta id3v2Artist
+map Ta id3v2Artist
 
 cmd id3v2AlbumArtist %{{
     printf "mid3v2 -a "
@@ -397,7 +397,7 @@ cmd id3v2AlbumArtist %{{
     done
     lf -remote "send $id reload"
 }}
-map t2 id3v2AlbumArtist
+map T2 id3v2AlbumArtist
 
 cmd id3v2Album %{{
     printf "mid3v2 -A "
@@ -408,7 +408,7 @@ cmd id3v2Album %{{
     done
     lf -remote "send $id reload"
 }}
-map tA id3v2Album
+map TA id3v2Album
 
 cmd id3v2Year %{{
     printf "mid3v2 -y "
@@ -419,7 +419,7 @@ cmd id3v2Year %{{
     done
     lf -remote "send $id reload"
 }}
-map ty id3v2Year
+map Ty id3v2Year
 
 cmd id3v2Track %{{
     printf "mid3v2 -T "
@@ -430,7 +430,7 @@ cmd id3v2Track %{{
     done
     lf -remote "send $id reload"
 }}
-map tT id3v2Track
+map TT id3v2Track
 
 cmd chmod %{{
     printf "chmod $fx "
