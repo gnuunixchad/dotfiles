@@ -125,8 +125,8 @@ def_key "M"
 def_key "m"
   toggle_media_library_columns_mode
 
-def_key "t"
-  show_tag_editor
+def_key "e"
+  edit_song
 
 def_key "U"
   update_database
@@ -160,18 +160,18 @@ def_key "u"
 def_key "B"
   select_album
 
-def_key "J"
+def_key "t"
   select_item
   scroll_down
 
-def_key "K"
-  select_item
+def_key "T"
   scroll_up
+  select_item
 
-def_key "ctrl-j"
+def_key "J"
   move_selected_items_down
 
-def_key "ctrl-k"
+def_key "K"
   move_selected_items_up
 
 # visualizer
