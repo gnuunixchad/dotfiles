@@ -1,9 +1,12 @@
+# vim:ft=muttrc
 # muttrc
 # @author nate zhou
 # @since 2023,2024,2025
 
 set editor = "nvim"
 source ~/.config/mutt/unixchad.neomuttrc
+
+set index_format="%3C %Z %{%Y-%m-%d %H:%M} %-12.12L (%<l?%4l&%4c>) %s"
 
 # GPG encryption and signature
 set crypt_use_gpgme=yes
