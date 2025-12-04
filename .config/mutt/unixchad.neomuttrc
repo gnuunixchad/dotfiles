@@ -22,8 +22,9 @@ color index               yellow    default ~F # delete
 color index               magenta   default ~T # delete
 
 color index_number        color8    default
-color index_author        default   default
-color index_size          color8    default
+color index_author        color6    default
+color index_size          color7    default
+color index_subject       color6    default
 
 color sidebar_new         green     default
 color sidebar_flagged     yellow    default
