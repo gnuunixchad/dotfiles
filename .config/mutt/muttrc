@@ -7,6 +7,7 @@ set editor = "nvim"
 source ~/.config/mutt/unixchad.neomuttrc
 
 set index_format="%3C %Z %{%Y-%m-%d %H:%M} %-12.12L %<l?%4l&%4c> %s"
+set auto_tag = yes
 
 # GPG encryption and signature
 set crypt_use_gpgme=yes
