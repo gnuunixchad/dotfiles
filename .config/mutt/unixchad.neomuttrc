@@ -15,10 +15,15 @@ color search              white     color14    # search patterns in pager
 color status              white     color14
 color indicator           white     color14    # selected email in index
 color tree          bold  color9    default    # arrow in threads (`-->')
+
 color index               green     default ~N # new
 color index               red       default ~D # delete
 color index               yellow    default ~F # delete
 color index               magenta   default ~T # delete
+
+color index_number        color8    default
+color index_author        default   default
+color index_size          color8    default
 
 color sidebar_new         green     default
 color sidebar_flagged     yellow    default
