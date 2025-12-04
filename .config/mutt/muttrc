@@ -55,6 +55,8 @@ bind attach,index,pager 	\CD 		next-page
 bind attach,index,pager 	\CU 		previous-page
 bind index                  d           delete-message
 bind index                  u           undelete-message
+bind attach,index,pager     f           flag-message
+bind attach,index,pager     F           forward-message
 
 
 ### sidebar
