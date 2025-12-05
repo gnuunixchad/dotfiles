@@ -5,4 +5,4 @@
 
 commit_HASH=$(echo "$@" | sed 's/^[^a-Z0-9]*//' | cut -d' ' -f1)
 
-git show $commit_HASH | bat --color=always --style=plain,changes
+git show $commit_HASH | bat --style=changes
