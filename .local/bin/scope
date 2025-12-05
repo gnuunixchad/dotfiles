@@ -79,6 +79,9 @@ case "$(file -Lb --mime-type -- "$1")" in
     application/*opendocument*)
         odt2txt "$1";
         ;;
+    application/octet-stream)
+        file -b "$1"
+        ;;
     text/troff)
         man -l "$1"
         ;;
@@ -87,9 +90,6 @@ case "$(file -Lb --mime-type -- "$1")" in
         ;;
     text/*)
         bat --color always --style="plain" "$1"
-        ;;
-    application/octet-stream)
-        file -b "$1"
         ;;
     *)
         cat "$1"

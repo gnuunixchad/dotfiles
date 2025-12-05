@@ -1,0 +1,55 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# Decrypt the gpg encrypted file and pipe to a viewer without writting to disk.
+# @TODO: fix piping to mpv in tty
+
+source ${HOME}/.local/bin/wmenu-color 2>/dev/null
+
+file="$1"
+
+usage() {
+cat << _EOF_
+DESCRIPTIOIN
+        Decrypt the gpg encrypted file and pipe to a viewer without writting to disk.
+        Which viewer will be passed to depends totally on the file extension, e.g. `webm.gpg` will be viewed with mpv.
+USAGE
+        $(basename "$0") FILE
+_EOF_
+}
+[ $# -eq 0 ] && (usage; exit 0)
+
+decrypt() {
+    local pass=""
+
+    if [ "$XDG_SESSION_TYPE" != "tty" ]; then
+        pass="$(wmenu-color -P -p "[$(basename $0)] passphrase: " < /dev/null)"
+    else
+        read -p "[$(basename) $0 passphrase: ]" -r pass
+    fi
+
+    echo "$pass" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$file"
+}
+
+rifle() {
+    case "$file" in
+        *.gif.gpg|*.mkv.gpg|*.mov.gpg|*.flv.gpg|*.mp4.gpg|*.webm.gpg|*.mp3.gpg|*.ogg.gpg|*.opus.gpg|*.oga.gpg|*.acc.gpg|*.flac.gpg|*.wav.gpg)
+            mpv - --loop --no-resume-playback
+            ;;
+        *.jpg.gpg|*.jpeg.gpg|*.png.gpg|*.svg.gpg|*.webp.gpg|*.tiff.gpg|*.heic.gpg)
+            [ "$XDG_SESSION_TYPE" != "tty" ] && swayimg - || mpv -
+            ;;
+        *.epub.gpg|*.pdf.gpg)
+            zathura -
+            ;;
+        *.gpg)
+            less
+            ;;
+    esac
+}
+
+warn() {
+    notify-send -r 404 "${basename $0}" "failed"
+}
+
+decrypt "$file" | rifle || warn
