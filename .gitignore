@@ -93,6 +93,8 @@ package-list
 !.mozilla/example
 !.mozilla/user.js.example
 !.config/
+!.config/bat/
+!.config/bat/config
 !.config/btop/
 !.config/btop/btop.conf.example
 !.config/calcurse/
