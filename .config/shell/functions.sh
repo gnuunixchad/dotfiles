@@ -31,7 +31,7 @@ du() {
             done
         fi
     }
-printUsage "$@" | sed '${/^[[:space:]]*$/d;}'
+printUsage "$@" | sed '${/^[[:space:]]*$/d;}' | less -Xi
 }
 
 # print the 16 terminal colors
