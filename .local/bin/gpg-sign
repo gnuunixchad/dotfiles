@@ -1,0 +1,30 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# sign the file with secrect key, using wmenu for key selection
+# Also see `./gpg-encrypt`
+
+source ${HOME}/.local/bin/wmenu-color 2>/dev/null
+
+usage() {
+    cat << _EOF_
+USAGE
+        $(basename "$0") FILE
+
+sign the file with secrect key, using wmenu for key selection
+_EOF_
+}
+
+[ "$#" -eq 0 ] && (usage; exit 1)
+
+gpg_seckey=$(gpg --list-secret-keys | sed -n 's/.*<\(.*\)>.*/\1/p' | wmenu-color -l 5 -P -p "[$(basename $0)] passphrase: ")
+
+[ -z "$gpg_seckey" ] && ( \
+    notify-send -r 1285 -u low "$(basename $0):" "Aborted for null local user"; \
+    exit 1)
+
+gpg --no-symkey-cache --local-user "$gpg_seckey" --detach-sign --armor "$1" \
+    && msg="signature done" \
+    || msg="signature failed"
+
+notify-send -u low -r 1285 "$(basename $0)" "$msg"
