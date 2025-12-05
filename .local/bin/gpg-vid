@@ -6,27 +6,18 @@
 # fix it by copy the movflags of the orgianl file
 # ffmpeg -i output.mp4 -c copy -movflags faststart new_output.mp4
 
-source $HOME/.local/bin/wmenu-color 2>/dev/null
+source ${HOME}/.local/bin/wmenu-color 2>/dev/null
 
 usage() {
-    echo -e "usage:\t$(basename "$0") video.*.gpg\n\twmenu as passphrase prompt to temporarily view the encrypted files"
+    cat << _EOF_
+USAGE
+        $(basename "$0") FILE
+_EOF_
 }
+[ $# -eq 0 ] && (usage; exit 1)
 
-# print help menu if no arguments is provided
-if [ $# -eq 0 ]; then
-    usage
-    exit 1
-fi
-
-# use wmenu as passphrase prompt
 gpg_passphrase=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase: ")
 
-# don't do anything if exiting wmenu without any input
-if  [ -z "$gpg_passphrase" ]; then
-    exit 1
-fi
+[ -z "$gpg_passphrase" ] && exit 1
 
-    echo "$gpg_passphrase" | gpg  --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | mpv - --loop --no-resume-playback
-
-# clean cached passphrase
-#gpg-connect-agent reloadagent /bye
+echo "$gpg_passphrase" | gpg  --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | mpv - --loop --no-resume-playback

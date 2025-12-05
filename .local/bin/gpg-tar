@@ -5,28 +5,27 @@
 # if in wayland, using wmenu as input box
 # after reading the untar'ed files, remember to `shred -u <files>`
 
-source $HOME/.local/bin/wmenu-color 2>/dev/null
+source ${HOME}/.local/bin/wmenu-color 2>/dev/null
 
 CIPHER_ALGO=aes256
 usage() {
-    echo -e "usage:\t$(basename "$0") file\n\tmake an encrypted tarball with symmetric cipher $CIPHER_ALGO using wmenu for input"
+    cat << _EOF_
+USAGE
+        $(basename "$0") FILE
+
+Make an encrypted tarball with symmetric cipher $CIPHER_ALGO using wmenu for input
+_EOF_
 }
 
-# print help menu if no arguments is provided
-if [ "$#" -eq 0 ]; then
-    usage
-    exit 1
-fi
+[ "$#" -eq 0 ]; (usage; exit 1)
 
 if [ "$XDG_SESSION_TYPE" = "tty" ]; then
     tar -cvf - "$1" | gpg --no-symkey-cache -c --cipher-algo aes-256 --output "$1".tar.gpg
     exit 0
 fi
 
-# use wmenu to input passphrase
 gpg_passphrase1=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase: ")
 
-# don't do anything if exiting wmenu without any input
 if  [ -z "$gpg_passphrase1" ]; then
     notify-send -r 1284 -u low "$(basename $0):" "Aborted for empty passphrase"
     exit 1
@@ -37,11 +36,7 @@ if [ "$gpg_passphrase1" != "$gpg_passphrase2" ]; then
     exit 1
 fi
 
-# tar -cvf - sends the output to the standard output intead of writing to a file on disk
-#tar --pinentry-mode loopback -cvf - $1 | gpg -c --cipher-algo aes-256 --output $1.tar.gpg
 tar -cvf - "$1" | gpg --no-symkey-cache -c --cipher-algo "$CIPHER_ALGO" --output "$1".tar.gpg --passphrase "$gpg_passphrase1"
 
-# clear passphrase cache in memory
-#gpg-connect-agent reloadagent /bye
 
 [ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -u low -r 1099 "$(basename $0)" "$msg"

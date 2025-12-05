@@ -1,36 +1,29 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
-# decrypt the .gpg file and pipe to a viewer, without writing to the disk
+# decrypt the gpg encrypted document file and pipe to a viewer, without writing
+# to the disk
 
-source $HOME/.local/bin/wmenu-color 2>/dev/null
+source ${HOME}/.local/bin/wmenu-color 2>/dev/null
 
 usage() {
-    echo -e "usage:\t$(basename "$0") file.*.gpg\n\twmenu as passphrase prompt to temporarily view the encrypted files"
+    cat << _EOF_
+USAGE
+        $(basename "$0") FILE
+_EOF_
 }
 
-# print help menu if no arguments is provided
-if [ $# -eq 0 ]; then
-    usage
-    exit 1
-fi
+[ "$#" -eq 0 ] && (usage; exit 0)
 
-# use wmenu as passphrase prompt
 gpg_passphrase=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase: ")
 
-# don't do anything if exiting wmenu without any input
-if  [ -z "$gpg_passphrase" ]; then
-    exit 1
-fi
+[ -z "$gpg_passphrase" ] && exit 1
 
-if [[ $1 == *".epub.gpg" || $1 == *".pdf.gpg" ]]; then
-    # ebooks with zathura
-    echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | zathura -
-else
-    # plain text with less
-    echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | less
-fi
-#gpg --pinentry-mode loopback -d $1 | less
-
-# clean cached passphrase
-#gpg-connect-agent reloadagent /bye > /dev/null
+case "$1" in
+    *.epub.gpg|*.pdf.gpg)
+        echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | zathura -
+        ;;
+    *)
+        echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | less
+        ;;
+esac

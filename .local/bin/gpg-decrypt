@@ -26,10 +26,7 @@ fi
 
 gpg_passphrase=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase: ")
 
-# don't do anything if exiting wmenu without any input
-if  [ -z "$gpg_passphrase" ]; then
-    exit 1
-fi
+[ -z "$gpg_passphrase" ] && exit 1
 
 echo "$gpg_passphrase" \
         | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" \
@@ -39,5 +36,3 @@ echo "$gpg_passphrase" \
         msg="Failed")
 
 [ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -u normal "$(basename $0)" "$msg"
-
-#gpg-connect-agent reloadagent /bye

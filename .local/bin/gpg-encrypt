@@ -2,29 +2,30 @@
 # @author nate zhou
 # @since 2025
 # encrypt the file with pulic key, using wmenu for key selection
-# see also `./gpg-cipher`
+# Also see `./gpg-cipher`
 
-source $HOME/.local/bin/wmenu-color 2>/dev/null
+source ${HOME}/.local/bin/wmenu-color 2>/dev/null
 
 usage() {
-    echo -e "usage:\t$(basename "$0") file\n\tencrypt the file with pulic key, using wmenu for key selection"
+    cat << _EOF_
+USAGE
+        $(basename "$0") FILE
+
+encrypt the file with pulic key, using wmenu for key selection
+_EOF_
 }
 
-# print help menu if no arguments is provided
-if [ "$#" -eq 0 ]; then
-    usage
-    exit 1
-fi
+[ "$#" -eq 0 ] && (usage; exit 1)
 
-# use wmenu to select recipient's public key
 gpg_pubkey=$(gpg --list-keys | sed -n 's/.*<\(.*\)>.*/\1/p' | wmenu-color -l 5 -P -p "[$(basename $0)] passphrase: ")
 
-# don't do anything if exiting wmenu without any input
-if  [ -z "$gpg_pubkey" ]; then
-    notify-send -r 1285 -u low "$(basename $0):" "Aborted for null recipient"
-    exit 1
-fi
+[ -z "$gpg_pubkey" ] && ( \
+    notify-send -r 1285 -u low "$(basename $0):" "Aborted for null recipient"; \
+    exit 1)
 
-gpg --no-symkey-cache --recipient "$gpg_pubkey" --encrypt "$1" && msg="encryption done" || msg="encryption failed"
+gpg --no-symkey-cache --recipient "$gpg_pubkey" --encrypt "$1" \
+    && msg="encryption done" \
+    || msg="encryption failed"
 
-[ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -u low -r 1285 "$(basename $0)" "$msg"
+[ "$XDG_SESSION_TYPE" != "tty" ] \
+    && notify-send -u low -r 1285 "$(basename $0)" "$msg"

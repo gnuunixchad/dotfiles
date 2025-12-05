@@ -1,43 +1,32 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
-# decrypt the .gpg file and pipe to fim, without writing to the disk
+# decrypt the gpg encrypted image file and pipe to a viewer without writing to
+# the disk
 
-# there's virtually no image viewer that can view more than one image from the 
-# standard output, if the size of the image are the same, consider conver to 
-# gif. Otherwise pdf or a tarball.
-#
-# gpg -d $1 | fim -i
-# use mpv to display one single jpeg/png or gif image
-#gpg --pinentry-mode loopback -d $1 | mpv - --loop --pause
-
-source $HOME/.local/bin/wmenu-color 2>/dev/null
+source ${HOME}/.local/bin/wmenu-color 2>/dev/null
 
 usage() {
-    echo -e "usage:\t$(basename "$0") image.*.gpg\n\twmenu as passphrase prompt to temporarily view the encrypted files"
+    cat << _EOF_
+USAGE
+        $(basename "$0") FILE
+_EOF_
 }
 
-# print help menu if no arguments is provided
-if [ "$#" -eq 0 ]; then
-    usage
-    exit 1
-fi
+[ "$#" -eq 0 ] && (usage; exit 0)
 
-# use wmenu as passphrase prompt
 gpg_passphrase=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase: ")
 
-# don't do anything if exiting wmenu without any input
-if  [ -z "$gpg_passphrase" ]; then
-    exit 1
-fi
+[ -z "$gpg_passphrase" ] && exit 1
 
-if [[ "$1" == *".pdf.gpg" ]]; then
-    echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | zathura -
-elif [[ "$1" == *".gif.gpg" ]]; then
-    echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | swayimg -
-else
-    echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | mpv - --loop --no-resume-playback
-fi
-
-# clean cached passphrase
-#gpg-connect-agent reloadagent /bye
+case "$1" in
+    *.pdf.gpg)
+        echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | zathura -
+        ;;
+    *.gif.gpg)
+        echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | swayimg -
+        ;;
+    *)
+        echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | mpv - --loop --no-resume-playback
+        ;;
+esac
