@@ -93,3 +93,19 @@ fpl() {
               --preview-window bottom)"
     [ -n "$file" ] && ${HOME}/.local/bin/rifle "$file"
 }
+
+extract() {
+    case "$f" in
+    *.tar) tar xf "$f" ;;
+    *.zip|*.apk) unzip "$f" -d "$(basename $f | sed -E 's/.apk$|.zip$//')" ;;
+    *.7z) 7z x "$f" ;;
+    *.tar.gz) tar xzf "$f" ;;
+    *.gz) gunzip -k "$f" ;;
+    *.tar.bz2) tar xjf "$f" ;;
+    *.bz2) bzip2 -dk "$f" ;;
+    *.tar.xz) tar xJf "$f" ;;
+    *.xz) xz -dk "$f" ;;
+    *.tar.zst) tar xf "$f" --zstd ;;
+    *.zst) zstd -dk "$f" ;;
+    esac
+}
