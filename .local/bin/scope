@@ -91,7 +91,7 @@ case "$(file -Lb --mime-type -- "$1")" in
     text/*)
         bat "$1"
         ;;
-    *)
-         "$1"
+    inode/directory)
+        command du -aLhd1 "$1" 2> /dev/null | sort -rh
         ;;
 esac
