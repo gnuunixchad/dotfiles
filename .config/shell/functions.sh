@@ -20,6 +20,17 @@ lfcd() {
     cd "$(command lf -print-last-dir "$@")"
 }
 
+du() {
+    if [ -z "$1" ]; then
+            command du -aLhd1 "$PWD" 2> /dev/null | sort -rh
+    else
+        for file in "$@"; do
+            command du -aLhd1 "$file" 2> /dev/null | sort -rh
+            printf '\n'
+        done
+    fi
+}
+
 # print the 16 terminal colors
 colors() {
     for i in {0..15}; do

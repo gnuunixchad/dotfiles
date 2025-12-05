@@ -52,8 +52,6 @@ alias glow="glow -t"
 alias whatis="whatis -l"
 alias sync="~/.local/bin/sync-notify"
 
-alias du="du -Lh -d 1"
-alias dU="du -Lh -d 1 | sort -rh"
 alias ncdu="ncdu -x --hide-hidden"
 alias df="df -h -x tmpfs -x efivarfs -x devtmpfs"
 alias lsblk="lsblk -o name,mountpoints,type,size"
