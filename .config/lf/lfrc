@@ -70,6 +70,14 @@ map t : {{
     down
 }}
 
+# archive & compress
+map Ct $tar cvf "$f.tar" "$(basename $f)"
+map Cz $zip -r "$f.zip" "$(basename $f)"
+map Cg $gzip -k $f
+map Cb $bzip2 -k $f
+map Cx $xz -k $f
+map Cs $zstd -zk $f
+
 ## command mode
 cmap <c-g> cmd-escape
 cmap <c-f> cmd-right
