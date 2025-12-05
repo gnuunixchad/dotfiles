@@ -64,14 +64,13 @@ map K : {{
 map zp toggle-preview
 map ` !true
 map f :filter
-map C visual-change
 map e $$EDITOR "$f"
 map t : {{
     tag-toggle
     down
 }}
 
-## command-line
+## command mode
 cmap <c-g> cmd-escape
 cmap <c-f> cmd-right
 cmap <c-b> cmd-left
@@ -79,6 +78,9 @@ cmap <c-a> cmd-home
 cmap <c-e> cmd-end
 cmap <c-n> cmd-menu-complete
 cmap <c-p> cmd-menu-complete-back
+
+## visual mode
+vmap c visual-change
 
 map sa :{{
     set sortby atime
