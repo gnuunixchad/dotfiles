@@ -132,7 +132,7 @@ autocmd VimEnter * ColorizerToggle
 lua << EOF
 -- initialize treesitter (syntax highlight)
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "bash", "diff", "markdown", "markdown_inline", "c", "java", "python", "vim", "css", "json", "make", "ssh_config", "html"},
+  ensure_installed = { "bash", "diff", "markdown", "markdown_inline", "c", "java", "python", "go", "gotmpl", "vim", "css", "json", "make", "ssh_config", "html"},
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
