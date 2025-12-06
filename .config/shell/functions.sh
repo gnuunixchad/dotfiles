@@ -100,6 +100,14 @@ lg() {
     fi
 }
 
+# git show
+gsh() {
+    showHEAD() {
+        git show HEAD'~'"$1"
+    }
+    [ -z "$1" ] && git show || showHEAD "$1"
+}
+
 # select a file owned by a package with fzf then edit
 fpl() {
     file="$(pacman -Ql $@ | cut -d' ' -f2 \
