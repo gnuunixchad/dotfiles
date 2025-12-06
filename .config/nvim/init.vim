@@ -42,7 +42,7 @@ set splitbelow splitright " new split position
 nnoremap <leader>e :exe '1wincmd w \| wincmd '.(winwidth(0) == &columns ? 'H' : 'K')<CR>
 
 " keybindings
-nmap <c-q> :q
+nmap <c-q> :q<CR>
 " save current buffer (as filename when necessary) and reload
 nmap W :w \|e<Left><Left>
 
