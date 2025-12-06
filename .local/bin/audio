@@ -21,25 +21,27 @@ blocks_reload() {
 volume_minus() {
     wpctl set-volume "$target" 1%-
     local status=$(wpctl get-volume "$target")
-    echo "$status" | sed 's/[^0-9]//g; s/^0//' | tee "$wobfifo" "${XDG_CACHE_HOME}/audio-${target}.level"
-    echo "$status" | grep -i 'MUTED' > "${XDG_CACHE_HOME}/audio-${target}.muted"
+    parseVolume
     blocks_reload "$1"
 }
 
 volume_plus() {
     wpctl set-volume "$target" 1%+
     local status=$(wpctl get-volume "$target")
-    echo "$status" | sed 's/[^0-9]//g; s/^0//' | tee "$wobfifo" "${XDG_CACHE_HOME}/audio-${target}.level"
-    echo "$status" | grep -i 'MUTED' > "${XDG_CACHE_HOME}/audio-${target}.muted"
+    parseVolume
     blocks_reload "$1"
 }
 
 volume_mute() {
     wpctl set-mute "$target" toggle
     local status=$(wpctl get-volume "$target")
+    parseVolume
+    blocks_reload "$1"
+}
+
+parseVolume() {
     echo "$status" | sed 's/[^0-9]//g; s/^0//' | tee "$wobfifo" "${XDG_CACHE_HOME}/audio-${target}.level"
     echo "$status" | grep -i 'MUTED' > "${XDG_CACHE_HOME}/audio-${target}.muted"
-    blocks_reload "$1"
 }
 
 case "$2" in
