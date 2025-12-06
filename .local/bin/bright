@@ -3,7 +3,7 @@
 # @author nate zhou
 # @since 2025
 
-set -x
+#set -x
 WOBFIFO="${XDG_RUNTIME_DIR}/wob.fifo"
 BRIGHTNESS="${XDG_CACHE_HOME}/brightness.level" # save to XDG_CACHE_DIR for reboot consistency
 
@@ -15,21 +15,17 @@ bright_parse_no_fifo() {
     grep 'Current brightness' | tr '()' ' ' | cut -d' ' -f5 | sed 's/%//' > "$BRIGHTNESS" && kill -38 "$(cat ${XDG_RUNTIME_DIR}/damblocks.pid)";
 }
 
-bright_minus() {
-    brightnessctl set 1%- | bright_parse
-}
-
-brigt_plus() {
-    brightnessctl set 1%+ | bright_parse
+changeBrightness() {
+    brightnessctl set "$1" | bright_parse
 }
 
 while [ -n "$1" ]; do
     case "$1" in
         --minus)
-            bright_minus
+            changeBrightness '1%-'
             ;;
         --plus)
-            brigt_plus
+            changeBrightness '1%+'
             ;;
         --no-fifo)
             brightnessctl | bright_parse_no_fifo
@@ -40,4 +36,3 @@ while [ -n "$1" ]; do
 done
 
 [ -z "$1" ] && brightnessctl | bright_parse
-
