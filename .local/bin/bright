@@ -5,18 +5,26 @@
 
 #set -x
 WOBFIFO="${XDG_RUNTIME_DIR}/wob.fifo"
-BRIGHTNESS="${XDG_CACHE_HOME}/brightness.level" # save to XDG_CACHE_DIR for reboot consistency
+# save brightness to XDG_CACHE_DIR for reboot consistency
+BRIGHTNESS="${XDG_CACHE_HOME}/brightness.level"
+DAMBLOCKS="${XDG_RUNTIME_DIR}/damblocks.pid"
 
-bright_parse() {
-    grep 'Current brightness' | tr '()' ' ' | cut -d' ' -f5 | sed 's/%//' | tee "$WOBFIFO" "$BRIGHTNESS" && kill -38 "$(cat ${XDG_RUNTIME_DIR}/damblocks.pid)";
+parseBrightness() {
+    grep 'Current brightness' \
+            | tr '()' ' ' | cut -d' ' -f5 | sed 's/%//' \
+            | tee "$WOBFIFO" "$BRIGHTNESS" \
+        && kill -38 "$(cat $DAMBLOCKS)";
 }
 
-bright_parse_no_fifo() {
-    grep 'Current brightness' | tr '()' ' ' | cut -d' ' -f5 | sed 's/%//' > "$BRIGHTNESS" && kill -38 "$(cat ${XDG_RUNTIME_DIR}/damblocks.pid)";
+# don't direct to WOBFIFO if brightness change is triggered by an idle manager.
+parseBrightnessIdle() {
+    grep 'Current brightness' \
+            | tr '()' ' ' | cut -d' ' -f5 | sed 's/%//' > "$BRIGHTNESS" \
+        && kill -38 "$(cat $DAMBLOCKS)";
 }
 
 changeBrightness() {
-    brightnessctl set "$1" | bright_parse
+    brightnessctl set "$1" | parseBrightness
 }
 
 while [ -n "$1" ]; do
@@ -28,7 +36,7 @@ while [ -n "$1" ]; do
             changeBrightness '1%+'
             ;;
         --no-fifo)
-            brightnessctl | bright_parse_no_fifo
+            brightnessctl | parseBrightnessIdle
             return
             ;;
     esac
