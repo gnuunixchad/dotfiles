@@ -1,6 +1,8 @@
 " @author nate zhou
 " @since 2023,2024,2025
 
+source ${HOME}/.config/nvim/autocmd.vim
+
 let mapleader=" "   " set space as leader key
 
 colorscheme unixchad
@@ -92,24 +94,6 @@ map <leader>M :RenderMarkdown preview<CR>
 " terminal mode to normal mode
 tnoremap <leader><Esc> <C-\><C-n>
 
-" don't comment on new line
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-augroup git
-    autocmd!
-    " Enable spell check for Git commit
-    autocmd FileType gitcommit setlocal spell spelllang=en_us
-    " Set column count to 72 for Git commit
-    autocmd FileType gitcommit setlocal cc=72
-augroup END
-
-augroup mutt
-    autocmd!
-    " spell check
-    autocmd BufRead,BufNewFile /tmp/neomutt-* setlocal spell spelllang=en_us
-    " column width
-    autocmd BufRead,BufNewFile /tmp/neomutt-* setlocal cc=80
-augroup END
 
 " vim-plug
 call plug#begin()
@@ -127,11 +111,10 @@ let g:floaterm_height=0.95
 
 " nvim-colorizer
 set termguicolors
-"lua require'colorizer'.setup()
-autocmd VimEnter * ColorizerToggle
 
 lua << EOF
--- initialize treesitter (syntax highlight)
+require'colorizer'.setup()
+
 require'nvim-treesitter.configs'.setup {
   ensure_installed = { "bash", "diff", "markdown", "markdown_inline", "c", "java", "python", "go", "gotmpl", "vim", "css", "json", "make", "ssh_config", "html"},
   highlight = {
