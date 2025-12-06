@@ -35,3 +35,4 @@ https://gitlab.freedesktop.org/wlroots/wlroots/-/releases.atom ~wlroots git wlro
 
 https://github.com/linrunner/TLP/releases.atom ~tlp git cli system
 https://github.com/GothenburgBitFactory/taskwarrior/releases.atom ~taskwarrior git cli
+https://github.com/netblue30/firejail/releases.atom ~firejail git cli system
