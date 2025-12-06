@@ -48,10 +48,17 @@ case $(file --mime-type -Lb $file) in
         tar vvtf "$file" | less -i
         ;;
     text/html)
-        [ "$XDG_SESSION_TYPE" != "tty" ] && $BROWSER "$file" || w3m "$file"
+        case "$f" in
+            *.md)
+                $EDITOR "$file"
+                ;;
+            *)
+                [ "$XDG_SESSION_TYPE" != "tty" ] && $BROWSER "$file" || w3m "$file"
+                ;;
+        esac
         ;;
     text/*|*/json|inode/x-empty|application/javascript)
-        $EDITOR -p "$file"
+        $EDITOR "$file"
         ;;
     *)
         print_err "[$(basename $0)]: file type not supported."
