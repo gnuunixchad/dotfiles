@@ -6,16 +6,19 @@
 
 # status is saved to XDG_CACHE_DIR for reboot consistency
 
-wobfifo="${XDG_RUNTIME_DIR}/wob.fifo"
+WOBFIFO="${XDG_RUNTIME_DIR}/wob.fifo"
+DAMBLOCKS="${XDG_RUNTIME_DIR}/damblocks.pid"
 
 [ "$1" = "sink" ] && target="@DEFAULT_AUDIO_SINK@"
 [ "$1" = "source" ] && target="@DEFAULT_AUDIO_SOURCE@"
 
 blocks_reload() {
-    [ "$1" = "sink"  ] && kill -36 "$(cat ${XDG_RUNTIME_DIR}/damblocks.pid)";
-    [ "$1" = "source" ] && kill -37 "$(cat ${XDG_RUNTIME_DIR}/damblocks.pid)";
+    [ "$1" = "sink"  ] && kill -36 "$(cat $DAMBLOCKS)";
+    [ "$1" = "source" ] && kill -37 "$(cat $DAMBLOCKS)";
     # ../../etc/udev/rules.d/99-damblocks-bluetooth.rules
-    [ "$1" = "all" ] && kill -36 "$(cat ${XDG_RUNTIME_DIR}/damblocks.pid)" && kill -37 "$(cat ${XDG_RUNTIME_DIR}/damblocks.pid)";
+    [ "$1" = "all" ] \
+        && kill -36 "$(cat $DAMBLOCKS)" \
+        && kill -37 "$(cat $DAMBLOCKS)";
 }
 
 volume_minus() {
@@ -41,11 +44,16 @@ volume_mute() {
 
 parseVolume() {
     echo "$status" | grep -i 'MUTED' > "${XDG_CACHE_HOME}/audio-${target}.muted"
+
     if grep -q 'MUTED' "${XDG_CACHE_HOME}/audio-${target}.muted"; then
-        echo "$status" | sed 's/[^0-9]//g; s/^0//' > "${XDG_CACHE_HOME}/audio-${target}.level"
-        echo "0" > "$wobfifo"
+        echo "$status" \
+            | sed 's/[^0-9]//g; s/^0//' \
+            > "${XDG_CACHE_HOME}/audio-${target}.level"
+        echo "0" > "$WOBFIFO"
     else # When toggling on mute, display 0% progress in wob
-        echo "$status" | sed 's/[^0-9]//g; s/^0//' | tee "$wobfifo" "${XDG_CACHE_HOME}/audio-${target}.level"
+        echo "$status" \
+            | sed 's/[^0-9]//g; s/^0//' \
+            | tee "$WOBFIFO" "${XDG_CACHE_HOME}/audio-${target}.level"
     fi
 }
 
