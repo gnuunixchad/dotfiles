@@ -84,6 +84,7 @@ map <leader>gl :Git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Cres
 map <leader>ct :ColorizerToggle<CR>
 map <leader>cr :ColorizerReloadAllBuffers<CR>
 map <leader>H :TSToggle highlight<CR>
+map <leader>i :IBLToggle<CR>
 map <leader>o :LfNewTab<CR>
 map <leader>m :RenderMarkdown toggle<CR>
 map <leader>M :RenderMarkdown preview<CR>
