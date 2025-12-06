@@ -40,7 +40,13 @@ volume_mute() {
 }
 
 parseVolume() {
-    echo "$status" | sed 's/[^0-9]//g; s/^0//' | tee "$wobfifo" "${XDG_CACHE_HOME}/audio-${target}.level"
+    if grep -q 'MUTED' "${XDG_CACHE_HOME}/audio-${target}.muted"; then
+        echo "$status" | sed 's/[^0-9]//g; s/^0//' | tee "$wobfifo" "${XDG_CACHE_HOME}/audio-${target}.level"
+    else # When toggling on mute, display 0% progress in wob
+        echo "$status" | sed 's/[^0-9]//g; s/^0//' > "${XDG_CACHE_HOME}/audio-${target}.level"
+        echo "0" > "$wobfifo"
+    fi
+
     echo "$status" | grep -i 'MUTED' > "${XDG_CACHE_HOME}/audio-${target}.muted"
 }
 
