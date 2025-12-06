@@ -110,16 +110,16 @@ fpl() {
 
 extract() {
     case "$f" in
-    *.tar) tar xf "$f" ;;
-    *.zip|*.apk) unzip "$f" -d "$(basename $f | sed -E 's/.apk$|.zip$//')" ;;
-    *.7z) 7z x "$f" ;;
-    *.tar.gz) tar xzf "$f" ;;
-    *.gz) gunzip -k "$f" ;;
-    *.tar.bz2) tar xjf "$f" ;;
-    *.bz2) bzip2 -dk "$f" ;;
-    *.tar.xz) tar xJf "$f" ;;
-    *.xz) xz -dk "$f" ;;
-    *.tar.zst) tar xf "$f" --zstd ;;
-    *.zst) zstd -dk "$f" ;;
+        *.tar) tar xf "$f" ;;
+        *.zip|*.apk) unzip "$f" -d "$(basename $f | sed -E 's/.apk$|.zip$//')" ;;
+        *.7z) 7z x "$f" ;;
+        *.tar.gz|*.tgz|*.taz) tar xzf "$f" ;;
+        *.gz) gunzip -k "$f" ;;
+        *.tar.bz2|*.tbz2|*.tbz|*.tz2|*.tb2) tar xjf "$f" ;;
+        *.bz2) bzip2 -dk "$f" ;;
+        *.tar.xz|*.txz) tar xJf "$f" ;;
+        *.xz) xz -dk "$f" ;;
+        *.tar.zst|*.tzst) tar xf "$f" --zstd ;;
+        *.zst) zstd -dk "$f" ;;
     esac
 }
