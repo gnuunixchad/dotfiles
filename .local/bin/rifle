@@ -48,7 +48,7 @@ case $(file --mime-type -Lb $file) in
         tar vvtf "$file" | less -i
         ;;
     text/html)
-        $BROWSER "$file"
+        [ "$XDG_SESSION_TYPE" != "tty" ] && $BROWSER "$file" || w3m "$file"
         ;;
     text/*|*/json|inode/x-empty|application/javascript)
         $EDITOR -p "$file"
