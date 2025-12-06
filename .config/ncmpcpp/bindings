@@ -8,6 +8,9 @@
 def_key "space"
   pause
 
+def_key "Y"
+  toggle_replay_gain_mode
+
 def_key "f"
   seek_forward
 
