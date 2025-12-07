@@ -82,6 +82,8 @@ package-list
 !.local/bin
 !.local/bin/*
 !.local/share/
+!.local/share/address
+!.local/share/address/address.example
 !.local/share/lockscreen
 !.local/share/nvim
 !.local/share/nvim/site

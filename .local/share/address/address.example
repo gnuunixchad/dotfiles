@@ -1,0 +1,146 @@
+# vim:ft=conf
+# bookmarks for ~/.local/bin/address
+# @author nate zhou
+# @since 2023, 2024, 2025
+# Everything before first `|` fuzzy find keywords
+
+# gpg
+keyserver ubuntu|https://keyserver.ubuntu.com
+# linux
+linux hardware support|https://linux-hardware.org/
+## archlinux
+archwiki|https://wiki.archlinux.org
+archlinux ALA|https://archive.archlinux.org/packages
+archlinux mirror list|Server = https://geo.mirror.pkgbuild.com/$repo/os/$arch
+## debian
+debian live iso|https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid
+# f-driod
+fdroid |https://f-droid.org
+fdroid Aegis Authenticator|https://f-droid.org/en/packages/com.beemdevelopment.aegis/
+fdroid Fcitx5|https://f-droid.org/en/packages/org.fcitx.fcitx5.android/
+fdroid Fennec|https://f-droid.org/en/packages/org.mozilla.fennec_fdroid/
+fdroid Fossify Gallery|https://f-droid.org/en/packages/org.fossify.gallery/
+fdroid Fossify Camera|https://f-droid.org/en/packages/org.fossify.camera/
+fdroid Fossify Calculator|https://f-droid.org/en/packages/org.fossify.math/
+fdroid Fossify Voice Recorder|https://f-droid.org/en/packages/org.fossify.voicerecorder/
+fdroid K-9 Mail|https://f-droid.org/en/packages/com.fsck.k9/
+fdroid Librera Reader|https://f-droid.org/en/packages/com.foobnix.pro.pdf.reader/
+fdroid Markor|https://f-droid.org/en/packages/net.gsantner.markor/
+fdroid Material Files|https://f-droid.org/en/packages/me.zhanghai.android.files/
+fdroid QR Scanner|https://f-droid.org/en/packages/com.secuso.privacyFriendlyCodeScanner/
+fdroid sudoku|https://f-droid.org/en/packages/com.thesuncat.sudoku/
+fdroid|https://f-droid.org/en/packages/org.tasks/
+fdroid termux|https://f-droid.org/en/packages/com.termux/
+fdroid VLC|https://f-droid.org/en/packages/org.videolan.vlc/
+########
+# source code host
+git codeberg dotfiles|https://codeberg.org/unixchad/dotfiles
+git github dotfiles|https://github.com/gnuunixchad/dotfiles
+git ssh remote|git@codeberg.org:unixchad/dotfiles.git
+git ssh remote|git@github.com:gnuunixchad/dotfiles.git
+git codeberg dwl|https://codeberg.org/unixchad/dwl
+git github dwl|https://github.com/gnuunixchad/dwl
+git codeberg damblocks|https://codeberg.org/unixchad/damblocks
+git github damblocks|https://github.com/gnuunixchad/damblocks
+git codeberg dvtm|https://codeberg.org/unixchad/dvtm
+git github dvtm|https://github.com/gnuunixchad/dvtm
+git codeberg abduco|https://codeberg.org/unixchad/abduco
+git github abduco|https://github.com/gnuunixchad/abduco
+git firefox arkenfox user.js for firefox|https://github.com/arkenfox/user.js
+git firefox tridactyl|https://github.com/tridactyl/tridactyl
+git firefox ublock origion|https://github.com/gorhill/uBlock
+git firefox darkreader|https://github.com/darkreader/darkreader
+git linux river|https://codeberg.org/river/wiki
+git linux river|https://codeberg.org/river/river
+git linux river dam|https://codeberg.org/sewn/dam
+git linux wayland menu|https://codeberg.org/sewn/mew
+git linux river rivercarro|https://sr.ht/~novakane/rivercarro/
+git linux wlroots|https://gitlab.freedesktop.org/wlroots/wlroots/
+git linux dwl|https://codeberg.org/dwl/dwl
+git linux dwl patch|https://codeberg.org/dwl/dwl-patches
+git linux shell sbar|https://github.com/pystardust/sbar
+git linux noise cancellation|https://github.com/werman/noise-suppression-for-voice
+git linux terminal tui dvtm abduco screen tmux|https://github.com/martanne/dvtm
+git linux terminal cli abduco dvtm screen tmux|https://github.com/martanne/abduco
+git linux ventoy|https://github.com/ventoy/Ventoy
+git linux epr epub reader|https://github.com/wustho/epr
+git linux AI Ollama|https://github.com/ollama/ollama
+git linux vscodium|https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo
+git linux file chooser|https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser
+git linux pxlart|https://github.com/mananapr/pxlart
+git sbctl|https://github.com/Foxboron/sbctl
+git wmenu|https://codeberg.org/adnano/wmenu
+git qutebrowser|https://github.com/qutebrowser/qutebrowser
+git lf tips|https://github.com/gokcehan/lf/wiki/Tips
+git linux guide|https://codeberg.org/unixchad/arch-install-guide
+git linux guide|https://github.com/gnuunixchad/arch-install-guide
+git mpv mpv-cut|https://github.com/familyfriendlymikey/mpv-cut
+git android syncthing-fork|https://github.com/Catfriend1/syncthing-android
+git fdroid syncthing-fork|https://f-droid.org/en/packages/com.github.catfriend1.syncthingandroid
+git windows syncthing|https://github.com/syncthing/syncthing
+git windows freefilesync|https://github.com/hkneptune/FreeFileSync
+########
+## guide
+guide How To Ask Questions The Smart Way|http://catb.org/~esr/faqs/smart-questions.html
+guide taskwarrior sub projects|https://randomgeekery.org/post/2019/02/taskwarrior-projects/#subprojects
+guide fcitx5 wayland|https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland
+guide debootstrap install debian the arch way|https://myterminal.me/diary/20210724/(VIDEO)-Installing-a-Minimal-Debian-system-the-Arch-way
+guide vim keybindings globally|https://github.com/erikw/vim-keybindings-everywhere-the-ultimate-list
+guide wayland|https://wiki.gentoo.org/wiki/List_of_software_for_Wayland
+guide wayland|https://github.com/rcalixte/awesome-wayland
+guide minimalism|https://github.com/knassar702/awesome-linux-minimalism
+guide DontBreakDebian|https://wiki.debian.org/DontBreakDebian
+guide pipewire noise cancellation|https://hackernoon.com/enabling-instant-noise-cancellation-on-linux
+guide neomutt|https://neomutt.org/guide/
+guide mpd|https://mpd.readthedocs.io/en/stable/user.html
+guide mutt isync xoauth2|https://www.vanormondt.net/~peter/blog/2021-03-16-mutt-office365-mfa.html
+guide mutt isync|https://blog.gtz.dk/posts/how-to-2famutt/
+## doc
+doc wayland text-input-v3|https://wayland.app/protocols/text-input-unstable-v3
+doct archwiki fcitx5|https://wiki.archlinux.org/title/Fcitx5
+## note
+note udisksctl unlock with wmenu|https://unix.stackexchange.com/questions/447615/provide-password-to-udisks-to-unlock-luks-encrypted-device
+########
+# blogs
+luke smith|https://lukesmith.xyz
+luke smith Not Related|https://notrelated.xyz
+rms|https://www.stallman.org/
+########
+# touch typing
+typing monkeytype|https://monkeytype.com
+typing keybr|https://www.keybr.com
+typing typingstudy|https://www.typingstudy.com
+# design
+design blocky text font generator|https://fsymbols.com/generators/blocky/
+wikimedia commons|https://commons.wikimedia.org/
+# font
+font nerdfonts|https://www.nerdfonts.com/cheat-sheet
+emoji list|https://unicode.org/Public/emoji/latest/emoji-test.txt
+## windows
+win 7zip|https://7-zip.org/download.html
+win firefox|https://mozilla.org/en-US/firefox/all/#product-desktop-esr
+## video
+bilibili unixchad|https://space.bilibili.com/34569411
+# software
+gnu|https://www.gnu.org/home.en.html
+fsf|https://www.fsf.org/
+suckless|https://suckless.org
+suckless dwm|https://dwm.suckless.org
+osi opensource initiative definition|https://opensource.org/osd
+gnu software freedomes|https://www.gnu.org/philosophy/free-sw.html#four-freedoms
+ollama|https://ollama.com
+# public domain
+public domain freesound|https://freesound.org/
+public domain ebooks|https://www.gutenberg.org/
+public domain paintings|https://artvee.com/
+# creative commons
+creative commons music|https://www.jamendo.com/
+########
+# symbols
+symbol block thin|█
+symbol block top|▀
+symbol block bottom|▃
+########
+# public email
+email gnuunixchad [nate zhou][public]|gnuunixchad@outlook.com
+##############################below-are-private##############################
