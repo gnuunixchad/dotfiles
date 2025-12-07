@@ -7,6 +7,10 @@ let mapleader=" "   " set space as leader key
 
 "colorscheme unixchad
 syntax on
+if &diff
+    syntax off
+    colorscheme industry
+endif
 set encoding=utf-8
 set title           " terminal title
 set background=dark
