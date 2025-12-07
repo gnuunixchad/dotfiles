@@ -50,7 +50,7 @@ print_err() {
 
 # offline dictionary with wordnet
 dict() {
-    command dict "$@" | command less -i -F
+    command dict "$@" | command less -iFX
 }
 
 # package management
