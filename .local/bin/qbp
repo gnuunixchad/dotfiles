@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+
+/usr/bin/qutebrowser --target private-window
