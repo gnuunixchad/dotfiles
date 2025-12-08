@@ -131,7 +131,9 @@ package-list
 !.config/firejail
 !.config/firejail/*
 !.config/foot/
-!.config/foot/*
+!.config/foot/foot.ini
+!.config/foot/bindings.ini
+!.config/foot/colors.ini
 !.config/fontconfig/
 !.config/fontconfig/fonts.conf
 !.config/fzf/
