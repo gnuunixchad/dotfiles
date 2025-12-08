@@ -96,7 +96,7 @@ alias P="getprox";
 alias ab="abduco"
 alias abc="abduco -c"
 alias aba="abduco -a"
-alias abd="abduco -A dvtm"
+alias abd="abduco -A dvtm dvtm-status"
 
 alias cksv="sudo checkservices"
 alias rskr="sudo systemctl restart archlinux-keyring-wkd-sync.service"
