@@ -13,6 +13,9 @@ config.bind('zo', 'zoom-out')
 config.bind('si', 'hint images download')
 config.bind('gp', 'open -p')
 
+config.bind('<Ctrl-u>', 'scroll page-up')
+config.bind('<Ctrl-d>', 'scroll page-down')
+
 # insert mode
 config.bind('<Ctrl-e>', 'edit-text', mode='insert')
 
