@@ -37,26 +37,30 @@ color header              white     color14      "^(Subject)"
 
 # body -----------------------------------------------------------------
 
-color quoted        bold white default
-color quoted1       bold white default
-color quoted2       bold white default
-color quoted3       bold white default
-color quoted4       bold white default
-color signature     bold white default     # everything below /^--\s*$/
 
-color bold          bold white  default
-color underline          yellow default
-color normal             white  default
+color body         brightyellow     default "^> \.*" # markdown quoted
+color body               yellow     default "^(\t| )*(-|\\*) \.*" # markdown list
 
-color body yellow default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+ # email addr
-color body green  default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9@]+ # URL
+color quoted             white      default
+color quoted1            white      default
+color quoted2            white      default
+color quoted3            white      default
+color quoted4            white      default
+color signature          white      default     # everything below /^--\s*$/
+
+color bold          bold white      default
+color underline          yellow     default
+color normal             white      default
+
+color body              yellow      default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+ # email addr
+color body              green       default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9@]+ # URL
 
 ## pgp
 
-color body                red       default    "(BAD signature)"
-color body          bold  green     default    "(Good signature)"
-color body          bold  green     default    "^gpg: Good signature .*"
-color body          bold  color241  default    "^gpg: "
-color body          bold  red       default    "^gpg: BAD signature from.*"
+color body               red        default    "(BAD signature)"
+color body          bold green      default    "(Good signature)"
+color body          bold green      default    "^gpg: Good signature .*"
+color body          bold color241   default    "^gpg: "
+color body          bold red        default    "^gpg: BAD signature from.*"
 mono  body          bold                        "^gpg: Good signature"
 mono  body          bold                        "^gpg: BAD signature from.*"
