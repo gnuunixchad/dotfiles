@@ -9,8 +9,6 @@ config.source('bindings.py')
 
 config.load_autoconfig(False) # ignore GUI settings
 
-# Config ######################################################################
-# insert mode <^e>
 c.editor.command = ['foot', '-T', 'Floating_Term', '-o', 'colors.alpha=0.9', 'nvim', '{file}', '-c', 'normal {line}G{column0}l']
 
 c.url.start_pages = 'file:///dev/null'
