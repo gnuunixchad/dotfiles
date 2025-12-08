@@ -260,4 +260,6 @@ package-list
 !.config/yt-dlp/config
 !.config/zathura/
 !.config/zathura/zathurarc
+!.config/zathura/bindings.rc
+!.config/zathura/colors.rc
 !.config/electron-flags.conf

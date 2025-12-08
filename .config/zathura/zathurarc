@@ -2,54 +2,32 @@
 # @author nate zhou
 # @since 2023,2024,2025
 
+include bindings.rc
+include colors.rc
+
 set font 'SourceCodePro normal 13'
+
 set guioptions 'sv'
+
 set selection-clipboard clipboard
 set selection-notification false
+
 set statusbar-h-padding 0
 set statusbar-v-padding 0
 set statusbar-home-tilde true
 set statusbar-page-percent true
+set statusbar-basename
+
 set page-v-padding 1
 set page-h-padding 1
+
 set database 'sqlite'
+
 set zoom-step 2
 set scroll-step 30
 set scroll-hstep 10
+set adjust-open width
+
 set recolor true
 set recolor-keephue true
 set recolor-reverse-video true
-set statusbar-basename
-set adjust-open width
-
-#set default-bg rgba(17,17,17,0.9)
-#set recolor-lightcolor rgba(17,17,17,0)
-set default-bg "#111111"
-set recolor-lightcolor "#111111"
-set statusbar-bg "#427b58"
-set recolor-darkcolor "#dddddd"
-set highlight-fg rgba(255,255,255,0.80)
-set highlight-color rgba(0,85,119,0.25)
-set highlight-active-color rgba(66,123,88,0.5) #427b5880
-set completion-bg "#111111"
-set completion-highlight-bg "#427b58"
-set completion-highlight-fg "#eeeeee"
-set inputbar-fg "#eeeeee"
-set notification-fg "#eeeeee"
-set notification-bg "#076678"
-set notification-warning-fg "#111111"
-set notification-warning-bg "#e6da00"
-set notification-error-fg "#eeeeee"
-set notification-error-bg "#8b0000"
-
-map I recolor
-map n scroll half-down
-map p scroll half-up
-map P print
-map i zoom in
-map o zoom out
-map b toggle_statusbar
-map r rotate rotate-cw
-map R rotate rotate-ccw
-
-map w adjust_window width
