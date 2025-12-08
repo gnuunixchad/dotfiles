@@ -1,7 +1,8 @@
 # @author nate zhou
-# @since 2023,2024
+# @since 2023,2024,2025
 
 include blacklist-gpg.local
 
-# allow yt-dlp to use firefox cookies for certain websites
+# cookies from browsers
 noblacklist ${HOME}/.mozilla
+noblacklist ${HOME}/.local/share/qutebrowser

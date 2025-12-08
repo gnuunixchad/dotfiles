@@ -20,7 +20,7 @@ export DVTM_EDITOR="/usr/bin/vim"
 export DVTM_PAGER="/usr/bin/less -R"
 export MOZ_USE_XINPUT2=1 # firefox pixel-perfect trackpad scrolling
 [ $(cat /etc/hostname) = "fx507" ] && export QTWEBENGINE_CHROMIUM_FLAGS='--disable-gpu' # fix qutebrowser crash on wlroots with nvidia
-[ -x "/usr/bin/qutebrowser" ] && export BROWSER="qutebrowser" || export BROWSER="/usr/local/bin/firefox"
+[ -x "/usr/bin/qutebrowser" ] && export BROWSER="qutebrowser" || export BROWSER="firefox"
 
 export XDG_DOWNLOAD_DIR="$HOME/dls"
 export XDG_DOCUMENTS_DIR="$HOME/doc"
