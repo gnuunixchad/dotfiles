@@ -237,6 +237,9 @@ package-list
 !.config/swayidle/config
 !.config/swayimg/
 !.config/swayimg/config
+!.config/swayimg/viewer.ini
+!.config/swayimg/slideshow.ini
+!.config/swayimg/gallery.ini
 !.config/swaylock/
 !.config/swaylock/config
 !.config/task/

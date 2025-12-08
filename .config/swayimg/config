@@ -3,6 +3,10 @@
 # @author nate zhou
 # @since 2024,2025
 
+include viewer.ini
+include slideshow.ini
+include gallery.ini
+
 [general]
 mode = viewer
 position = auto
@@ -11,36 +15,11 @@ sigusr1 = reload
 sigusr2 = next_file
 app_id = swayimg
 
-[viewer]
-window = #111111
-transparency = #111111
-scale = optimal
-position = center
-antialiasing = mks13
-loop = yes
-history = 1
-preload = 1
-
-[slideshow]
-time = 3
-window = mirror
-transparency = #000000ff
-scale = optimal
-position = center
-antialiasing = mks13
-
-[gallery]
-size = 200
-cache = 100
-preload = yes
-pstore = no
-fill = no
-antialiasing = mks13
-window = #111111
-background = #111111
-select = #111111
-border = #427b58
-shadow = #427b58
+[font]
+name = SourceCodePro
+size = 14
+color = #FFFFFF
+shadow = #000000
 
 [list]
 order = alpha
@@ -48,143 +27,7 @@ recursive = no
 all = yes
 fsmon = yes
 
-[font]
-name = SourceCodePro
-size = 14
-color = #FFFFFF
-shadow = #000000
-
 [info]
 show = no
 info_timeout = 0
 status_timeout = 0
-
-[info.viewer]
-top_left = +name,+format,+filesize,+imagesize,+exif
-top_right = index
-bottom_left = scale,frame
-bottom_right = status
-
-[info.slideshow]
-top_left = none
-top_right = none
-bottom_left = none
-bottom_right = dir,status
-
-[info.gallery]
-top_left = none
-top_right = none
-bottom_left = none
-bottom_right = name,status
-
-[keys.viewer]
-Shift + question = help
-g = first_file
-Shift+g = last_file
-p = prev_file
-n = next_file
-Shift+n = next_dir
-comma = prev_frame
-period = next_frame
-c = skip_file
-Space = animation
-Return = mode gallery
-s = mode slideshow
-h = step_left 10
-l = step_right 10
-k = step_up 10
-j = step_down 10
-u = step_up 100
-d = step_down 100
-Shift + H = step_left 1
-Shift + L = step_right 1
-Shift + K = step_up 1
-Shift + J = step_down 1
-Equal = zoom +10
-Plus = zoom +10
-i = zoom +10
-Minus = zoom -10
-o = zoom -10
-w = zoom width
-Shift+i = exec convert "%" -channel RGB -negate - | swayimg -
-Shift+d = exec ~/.local/bin/swayimg-rm "%" && skip_file; reload
-Shift+w = exec ~/.local/bin/setwall "%";
-Shift+y = exec cp "%" ~/tmp;
-Ctrl+r = exec ~/.local/bin/swayimg-rotate "%"; reload
-z = zoom fit
-f = zoom fill
-0 = zoom real
-BackSpace = zoom optimal
-r = rotate_right
-Shift+r = rotate_left
-Ctrl+Z = rand_file
-v = flip_vertical
-Shift+v = flip_horizontal
-Shift + a = antialiasing
-Shift + r = reload
-m = info
-Escape = exit
-q = exit
-ScrollLeft = step_right 5
-ScrollRight = step_left 5
-ScrollUp = step_up 5
-ScrollDown = step_down 5
-Ctrl+ScrollUp = zoom +10
-Ctrl+ScrollDown = zoom -10
-Shift+ScrollUp = prev_file
-Shift+ScrollDown = next_file
-Alt+ScrollUp = prev_frame
-Alt+ScrollDown = next_frame
-
-[keys.slideshow]
-F1 = help
-Home = first_file
-End = last_file
-Prior = prev_file
-Next = next_file
-Shift+r = rand_file
-Shift+d = prev_dir
-d = next_dir
-Space = pause
-i = info
-f = fullscreen
-Return = mode
-s = mode
-Escape = exit
-q = exit
-
-[keys.gallery]
-Minus=thumb -10
-Equal=thumb +10
-o = thumb -10
-i = thumb +10
-Shift + question = help
-g = first_file
-Shift+g = last_file
-h = step_left
-l = step_right
-k = step_up
-j = step_down
-p = page_up
-n = page_down
-c = skip_file
-Return = mode viewer
-s = mode slideshow
-Shift + a = antialiasing
-r = reload
-m = info
-Shift+i = exec convert "%" -channel RGB -negate - | swayimg -
-Shift+d = exec ~/.local/bin/swayimg-rm "%" && skip_file; reload
-#Shift+r = exec ~/.local/bin/swayimg-rotate "%"; reload #commented for freeze bug
-Shift+w = exec ~/.local/bin/setwall "%";
-Shift+y = exec cp "%" ~/tmp;
-Escape = exit
-q = exit
-# Mouse
-ScrollLeft = step_right
-ScrollRight = step_left
-ScrollUp = step_up
-ScrollDown = step_down
-Ctrl+ScrollUp = thumb +20
-Ctrl+ScrollDown = thumb -20
-MouseLeft = mode viewer
