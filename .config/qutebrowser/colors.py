@@ -9,7 +9,7 @@ c.colors.webpage.darkmode.policy.images = 'never'
 c.colors.webpage.bg = '#191919' # fix darkmode white flash
 
 c.colors.statusbar.normal.bg = '#427b58'
-c.colors.statusbar.command.bg = '#427b58'
+c.colors.statusbar.command.bg = '#000000'
 c.colors.statusbar.insert.bg = '#b16286'
 c.colors.statusbar.normal.fg = '#eeeeee'
 c.colors.statusbar.command.fg = '#eeeeee'
@@ -24,7 +24,7 @@ c.colors.hints.bg = '#427b58'
 c.colors.hints.fg = '#eeeeee'
 c.colors.hints.match.fg = '#eeeeee'
 
-c.colors.completion.category.bg = '#111111'
+c.colors.completion.category.bg = '#427b58'
 c.colors.completion.even.bg = '#111111'
 c.colors.completion.odd.bg = '#111111'
 c.colors.completion.item.selected.bg = '#427b58'
