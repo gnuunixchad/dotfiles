@@ -3,6 +3,7 @@
 # @author nate zhou
 # @since 2023,2024,2025
 
+source ~/.config/mutt/bindings.neomuttrc
 source ~/.config/mutt/colors.neomuttrc
 
 set editor = "nvim"
@@ -34,43 +35,6 @@ set mail_check_stats
 ## auto read html messages in w3m
 set mailcap_path = ~/.config/mutt/mailcap
 auto_view text/html
-
-
-## keybindings
-# ^G is hardcoded as `abort` and cannot be remaped
-bind pager,browser		    h			exit
-bind attach,alias			h			exit
-bind pager				    l			view-attachments
-bind pager 				    k 			previous-line
-bind pager 				    j 			next-line
-bind pager				    g			top
-bind pager				    G			bottom
-bind index				    j			next-entry
-bind index				    k			previous-entry
-bind attach,index 			g 			first-entry
-bind attach,index 			G 			last-entry
-bind index			    	l			display-message
-bind attach			    	l			view-attach
-bind browser,alias			l			select-entry
-bind index			    	/			search
-bind index			    	?			limit
-bind index,pager,attach	    <F1>		help
-bind pager				    H			display-toggle-weed
-bind attach,index,pager 	\CD 		next-page
-bind attach,index,pager 	\CU 		previous-page
-bind attach,index,pager 	\CN 		half-down
-bind attach,index,pager 	\CP 		half-up
-bind index                  d           delete-message
-bind index                  u           undelete-message
-bind attach,index,pager     f           flag-message
-bind attach,index,pager     F           forward-message
-
-
-### sidebar
-bind index,pager \CK sidebar-prev
-bind index,pager \CJ sidebar-next
-bind index,pager \CL sidebar-open
-bind index,pager \CB sidebar-toggle-visible
 
 ### sync offline mail nc (Shift+S)
 macro index,pager S "<sync-mailbox><enter-command>unset wait_key<enter><shell-escape>$HOME/.local/bin/mbs<enter><enter-command>set wait_key<enter>" "Sync Mailbox"

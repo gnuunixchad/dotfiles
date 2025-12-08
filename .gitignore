@@ -181,6 +181,7 @@ package-list
 !.config/mutt/account.example
 !.config/mutt/account.md
 !.config/mutt/colors.neomuttrc
+!.config/mutt/bindings.muttrc
 !.config/ncmpcpp/
 !.config/ncmpcpp/bindings
 !.config/ncmpcpp/config
