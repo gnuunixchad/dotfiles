@@ -1,6 +1,8 @@
 " @author nate zhou
 " @since 2023,2024
 
+source ${HOME}/.config/vim/autocmd.vim
+
 set viminfofile=~/.config/vim/viminfo
 
 let mapleader=" "   " set space as leader key
@@ -87,6 +89,3 @@ map <leader>cr :ColorizerReloadAllBuffers<CR>
 
 " terminal mode to normal mode
 tnoremap <leader><Esc> <C-\><C-n>
-
-" don't comment on new line
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

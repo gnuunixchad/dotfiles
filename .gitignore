@@ -241,6 +241,7 @@ package-list
 !.config/tmux/tmux.conf
 !.config/vim/
 !.config/vim/vimrc
+!.config/vim/autocmd.vim
 !.config/wget/
 !.config/wget/wgetrc
 !.config/wob/
