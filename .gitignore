@@ -180,7 +180,7 @@ package-list
 !.config/mutt/mailcap
 !.config/mutt/account.example
 !.config/mutt/account.md
-!.config/mutt/unixchad.neomuttrc
+!.config/mutt/colors.neomuttrc
 !.config/ncmpcpp/
 !.config/ncmpcpp/bindings
 !.config/ncmpcpp/config
