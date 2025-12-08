@@ -20,3 +20,5 @@ augroup mutt
     " column width
     autocmd BufRead,BufNewFile /tmp/neomutt-* setlocal cc=80
 augroup END
+
+autocmd BufRead,BufNewFile /tmp/qutebrowser-* set filetype=markdown
