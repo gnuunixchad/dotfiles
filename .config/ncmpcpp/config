@@ -27,7 +27,7 @@ regular_expressions = extended
 media_library_column_width_ratio_two = 1:2
 media_library_column_width_ratio_three = 3:3:2
 media_library_primary_tag = album_artist
-media_library_albums_split_by_date = no
+media_library_albums_split_by_date = yes
 
 # lyrics
 follow_now_playing_lyrics = yes
