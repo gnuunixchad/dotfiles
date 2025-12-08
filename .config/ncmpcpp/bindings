@@ -51,7 +51,7 @@ def_key "L"
   show_lyrics
 
 # playlist
-def_key "d"
+def_key "D"
   delete_stored_playlist
 
 def_key "c"
@@ -60,7 +60,7 @@ def_key "c"
 def_key "c"
   clear_main_playlist
 
-def_key "x"
+def_key "D"
   delete_playlist_items
 
 def_key "a"
