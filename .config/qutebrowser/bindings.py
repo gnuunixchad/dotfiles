@@ -13,6 +13,8 @@ config.bind('zo', 'zoom-out')
 config.bind('si', 'hint images download')
 config.bind('gp', 'open -p')
 
+config.bind('j', 'scroll-px 0 120 ')
+config.bind('k', 'scroll-px 0 -120 ')
 config.bind('<Ctrl-u>', 'scroll page-up')
 config.bind('<Ctrl-d>', 'scroll page-down')
 
