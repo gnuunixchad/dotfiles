@@ -2,8 +2,8 @@
 " @since 2023,2024,2025
 
 source ${HOME}/.config/nvim/autocmd.vim
-
-let mapleader=" "   " set space as leader key
+source ${HOME}/.config/nvim/bindings.vim
+source ${HOME}/.config/nvim/plugins.vim
 
 colorscheme unixchad
 syntax on
@@ -27,123 +27,8 @@ highlight ExtraWhitespace ctermbg=gray guibg=gray " highlight all trailing space
 set statusline+=%f\ %{FugitiveStatusline()}\ %h%m%r%=\ %-16.(%)\ %c[%l/%L\ %P]
 set laststatus=2
 
-" don't yank to clipboard with c
-nnoremap c "_c
-" <c-f> for pathname suggestion
-inoremap <C-f> <C-x><C-f>
-" tab to accept the suggestion
-inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
-
 set expandtab		" expand tab input with spaces
 set tabstop=4		" spaces per tab
 set shiftwidth=4	" spaces per indentation level
 set smartindent		" aware indentations for newline insert
 set splitbelow splitright " new split position
-nnoremap <leader>e :exe '1wincmd w \| wincmd '.(winwidth(0) == &columns ? 'H' : 'K')<CR>
-
-" keybindings
-nmap <c-q> :q<CR>
-" save current buffer (as filename when necessary) and reload
-nmap W :w \|e<Left><Left>
-
-nmap <leader>1 :!
-
-" move focus to next split instead of resizing
-nnoremap <Tab> <C-W>w
-" split open (<leader>q quit a split)
-map <leader>x :split<CR>
-map <leader>v :vsplit<CR>
-" split movement with ctrl+h/j/k/l
-map <C-h> :wincmd h<CR>
-map <C-j> :wincmd j<CR>
-map <C-k> :wincmd k<CR>
-map <C-l> :wincmd l<CR>
-" split resize with ctrl+y/u/i/o
-map <C-w>y :vertical resize -2<CR>
-map <C-w>u :resize +2<CR>
-map <C-w>i :resize -2<CR>
-map <C-w>o :vertical resize +2<CR>
-" swap split position with ctrl-w + H/J/K/L
-map <C-w>h :wincmd H<CR>
-map <C-w>j :wincmd J<CR>
-map <C-w>k :wincmd K<CR>
-map <C-w>l :wincmd L<CR>
-
-map <leader>s :set spell!<CR>
-map <leader>w :set wrap!<CR>
-map <leader>C :set cursorcolumn!<CR>
-map <leader>h :set hlsearch!<CR>
-map <leader>t :tabnew<CR>
-map <leader>p :tabprev<CR>
-map <leader>n :tabnext<CR>
-
-map <leader>f :FZF<CR>
-map <leader>G :G<CR>
-map <leader>dx :Gdiffsplit<CR>
-map <leader>dv :Gvdiffsplit<CR>
-map <leader>gf :Git log --follow -- %<CR>
-map <leader>gl :Git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen(%cr)' <CR><CR>
-map <leader>ct :ColorizerToggle<CR>
-map <leader>cr :ColorizerReloadAllBuffers<CR>
-map <leader>H :TSToggle highlight<CR>
-map <leader>i :IBLToggle<CR>
-map <leader>o :LfNewTab<CR>
-map <leader>m :RenderMarkdown toggle<CR>
-map <leader>M :RenderMarkdown preview<CR>
-
-" terminal mode to normal mode
-tnoremap <leader><Esc> <C-\><C-n>
-
-
-" vim-plug
-call plug#begin()
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'tpope/vim-fugitive'
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'ptzz/lf.vim'
-Plug 'voldikss/vim-floaterm'
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'MeanderingProgrammer/render-markdown.nvim'
-call plug#end()
-let g:floaterm_width=0.95
-let g:floaterm_height=0.95
-
-" nvim-colorizer
-set termguicolors
-
-lua << EOF
-require'colorizer'.setup()
-
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "bash", "diff", "markdown", "markdown_inline", "c", "java", "python", "go", "gotmpl", "vim", "css", "json", "make", "ssh_config", "html"},
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-}
-
--- folding with treesitter
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldtext = ""
-vim.opt.fillchars:append("fold: ")
-vim.opt.foldlevelstart = 99 -- open all folds by default
-
--- initialize indent-blankline
-require("ibl").setup()
-
--- render-markdown.nvim
-require('render-markdown').setup({
-    enabled = true,
-    render_modes = true,
-    heading = {
-            backgrounds = false,
-            sign = false,
-            icons = {'# ', '## ', '### ', '#### ', '##### ', '###### '},
-    },
-    code = { enabled = false, },
-    indent = { enabled = false, },
-    pipe_table = { style = 'normal' },
-})
-EOF
