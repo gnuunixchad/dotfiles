@@ -74,7 +74,9 @@ package-list
 !.config/shell/teleport.sh
 
 !.ssh/
-!.ssh/config.example
+!.ssh/config
+!.ssh/unixchad.conf
+!.ssh/proxy.conf.example
 !.gnupg/
 !.gnupg/gpg.conf
 !.gnupg/gpg-agent.conf
