@@ -21,6 +21,8 @@ c.fonts.default_size = '14pt' # UI
 
 c.tabs.show = "never"
 
+c.hints.uppercase = True
+
 c.downloads.location.directory = "~/dls"
 c.downloads.position = "bottom"
 
