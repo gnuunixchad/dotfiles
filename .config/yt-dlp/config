@@ -3,6 +3,6 @@
 # @author nate zhou
 # @since 2025
 
---cookies-from-browser firefox
+--cookies-from-browser chromium:~/.local/share/qutebrowser/
 --embed-metadata
 -o "%(title).80s.%(ext)s"

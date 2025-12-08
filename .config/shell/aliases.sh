@@ -83,7 +83,6 @@ alias hibernate="systemctl hibernate"
 alias poweroff="systemctl poweroff"
 alias reboot="systemctl reboot"
 
-alias yt-dlp="yt-dlp --embed-metadata --cookies-from-browser firefox"
 alias ytl="yt-dlp --list-formats"
 alias id3v2="mid3v2"
 alias exifpurge="exiftool -all= "
