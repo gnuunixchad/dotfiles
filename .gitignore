@@ -244,6 +244,7 @@ package-list
 !.config/vim/
 !.config/vim/vimrc
 !.config/vim/autocmd.vim
+!.config/vim/bindings.vim
 !.config/wget/
 !.config/wget/wgetrc
 !.config/wob/
