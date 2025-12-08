@@ -176,6 +176,7 @@ package-list
 !.config/mpv/
 !.config/mpv/input.conf
 !.config/mpv/mpv.conf
+!.config/mpv/osd.conf
 !.config/mpv/scripts
 !.config/mpv/scripts/mpv-cut
 !.config/mpv/scripts/mpv-cut/main.lua
