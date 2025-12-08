@@ -195,6 +195,7 @@ LICENSE.*   
 *.json      
 *.conf      
 *.ini       
+*.rc        
 *.yaml      
 *.toml      
 *.db        
