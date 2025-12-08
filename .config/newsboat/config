@@ -1,0 +1,16 @@
+# @author nate zhou
+# @since 2023,2024,2025
+# newsboat/config
+
+include "~/.config/newsboat/colors.conf"
+include "~/.config/newsboat/bindings.conf"
+include "~/.config/newsboat/proxy.conf"
+
+datetime-format "%Y-%m-%d"
+
+save-path ~/doc/newsboat
+
+browser "w3m %u"
+
+refresh-on-startup no
+reload-threads 100 # loading feeds in parallel

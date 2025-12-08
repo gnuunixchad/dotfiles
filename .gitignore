@@ -186,7 +186,10 @@ package-list
 !.config/ncmpcpp/bindings
 !.config/ncmpcpp/config
 !.config/newsboat/
-!.config/newsboat/config.example
+!.config/newsboat/config
+!.config/newsboat/bindings.conf
+!.config/newsboat/colors.conf
+!.config/newsboat/proxy.conf.example
 !.config/newsboat/urls.example
 !.config/nvim/
 !.config/nvim/colors/
