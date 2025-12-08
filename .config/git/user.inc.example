@@ -1,0 +1,8 @@
+# vim:ft=gitconfig
+# git/user.inc
+# @author nate zhou
+# @since 2023,2024,2025
+
+[user]
+	name  = nate zhou
+	email = gnuunixchad@outlook.com

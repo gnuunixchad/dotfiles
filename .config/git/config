@@ -1,0 +1,12 @@
+# git/config
+# @author nate zhou
+# @since 2023,2024,2025
+
+[include]
+    path = proxy.inc
+    path = user.inc
+
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE
