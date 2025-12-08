@@ -203,7 +203,10 @@ package-list
 !.config/qt6ct/
 !.config/qt6ct/qt6ct.conf
 !.config/qutebrowser/
-!.config/qutebrowser/config.py.example
+!.config/qutebrowser/config.py
+!.config/qutebrowser/proxy.py.example
+!.config/qutebrowser/colors.py
+!.config/qutebrowser/bindings.py
 !.config/qutebrowser/greasemonkey/
 !.config/qutebrowser/greasemonkey/yt-ads.js
 !.config/ranger/

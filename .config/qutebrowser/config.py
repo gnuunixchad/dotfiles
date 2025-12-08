@@ -3,9 +3,14 @@
 # @author nate zhou
 # @since 2025
 
+config.source('proxy.py')
+config.source('colors.py')
+config.source('bindings.py')
+
 config.load_autoconfig(False) # ignore GUI settings
 
 # Config ######################################################################
+# insert mode <^e>
 c.editor.command = ['foot', '-T', 'Floating_Term', 'nvim', '{file}', '-c', 'normal {line}G{column0}l']
 
 c.url.start_pages = 'file:///dev/null'
@@ -16,22 +21,10 @@ c.zoom.levels = ["25%", "33%", "50%", "67%", "75%", "90%", "100%", "125%", "133%
 c.fonts.web.size.default = 20 # webpage
 c.fonts.default_size = '14pt' # UI
 
-c.colors.webpage.darkmode.enabled = True
-c.colors.webpage.darkmode.policy.images = 'never'
-c.colors.webpage.bg = '#191919' # fix darkmode white flash
-
 c.tabs.show = "never"
 
 c.downloads.location.directory = "~/dls"
 c.downloads.position = "bottom"
-
-c.colors.statusbar.normal.bg = '#427b58'
-c.colors.statusbar.command.bg = '#427b58'
-c.colors.statusbar.insert.bg = '#b16286'
-c.colors.statusbar.normal.fg = '#eeeeee'
-c.colors.statusbar.command.fg = '#eeeeee'
-c.colors.hints.bg = '#427b58'
-c.colors.hints.match.fg = '#eeeeee'
 
 c.content.fullscreen.window = True # Limit fullscreen to browser window
 
@@ -42,18 +35,3 @@ c.content.canvas_reading = False
 c.content.geolocation = False
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 c.completion.open_categories = ['filesystem']
-
-#c.content.proxy = "http://localhost:PORT"
-
-# keybindings #################################################################
-config.bind('cs', 'config-source')
-
-config.bind('zi', 'zoom-in')
-config.bind('zo', 'zoom-out')
-
-config.bind('si', 'hint images download')
-
-config.bind('<Ctrl-p>', 'completion-item-focus --history prev', mode='command')
-config.bind('<Ctrl-n>', 'completion-item-focus --history next', mode='command')
-
-config.bind('gp', 'open -p')
