@@ -9,7 +9,7 @@
 [ -d "$HOME/.local/sbin" ] && PATH="$HOME/.local/sbin:${PATH}"
 [ -d "/usr/share/neomutt/oauth2" ] && PATH="${PATH}:/usr/share/neomutt/oauth2"
 
-[ -x /usr/bin/bat ] && export MANROFFOPT="-c" && export MANPAGER="sh -c 'col -bx | bat --pager \"less -R\" -l man -p'"
+[ -x /usr/bin/bat ] && export MANROFFOPT="-c" && export MANPAGER="sh -c 'col -bx | bat --pager \"less -XR\" -l man -p'"
 
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
