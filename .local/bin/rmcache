@@ -4,7 +4,17 @@
 # remove pacman's packages cache
 # @depends pacman-contrib
 
-echo "paccache -vruk0"
-sudo paccache -vruk0
-echo "paccache -vrk3"
-sudo paccache -vrk3
+IGNORED_PKGS="intel-ucode amd-ucode nvidia-utils nvidia-open"
+
+set -x
+removeUninstalled() {
+    sudo  paccache --verbose --remove --ignore "$IGNORED_PKGS"
+}
+
+removeOldEnough() {
+    sudo paccache --verbose --remove --keep 3
+}
+
+removeUninstalled
+removeOldEnough
+
