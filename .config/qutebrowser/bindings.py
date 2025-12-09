@@ -9,6 +9,7 @@ config.bind('cs', 'config-source')
 
 config.bind('zi', 'zoom-in')
 config.bind('zo', 'zoom-out')
+config.bind('zz', 'zoom {}'.format(c.zoom.default))
 
 config.bind('si', 'hint images download')
 config.bind('gp', 'open -p')

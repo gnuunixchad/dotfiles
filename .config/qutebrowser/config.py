@@ -3,6 +3,8 @@
 # @author nate zhou
 # @since 2025
 
+c.zoom.default = 150
+
 config.source('proxy.py')
 config.source('colors.py')
 config.source('bindings.py')
@@ -14,7 +16,6 @@ c.editor.command = ['foot', '-T', 'Floating_Term', '-o', 'colors.alpha=0.9', 'nv
 c.url.start_pages = 'file:///dev/null'
 c.url.default_page= 'file:///dev/null'
 
-c.zoom.default = 150
 c.zoom.levels = ["25%", "33%", "50%", "67%", "75%", "90%", "100%", "125%", "133%", "150%", "175%", "200%", "250%", "300%"]
 c.fonts.web.size.default = 20 # webpage
 c.fonts.default_size = '14pt' # UI
