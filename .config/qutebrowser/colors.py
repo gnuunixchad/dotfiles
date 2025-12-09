@@ -20,6 +20,8 @@ c.colors.statusbar.url.success.http.fg = '#eeeeee'
 c.colors.statusbar.url.success.https.fg = '#eeeeee'
 c.colors.statusbar.url.warn.fg = '#eeeeee'
 
+c.colors.downloads.bar.bg = '#111111'
+
 c.colors.tabs.bar.bg = '#111111'
 c.colors.tabs.even.bg = '#111111'
 c.colors.tabs.odd.bg = '#111111'
@@ -41,3 +43,6 @@ c.colors.completion.item.selected.bg = '#427b58'
 c.colors.completion.item.selected.fg = '#eeeeee'
 c.colors.completion.item.selected.match.fg = '#fd971f'
 c.colors.completion.match.fg = '#bf40bf'
+
+c.colors.prompts.bg = '#111111'
+c.colors.prompts.fg = '#eeeeee'
