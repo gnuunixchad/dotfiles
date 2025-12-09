@@ -1,5 +1,5 @@
 # <img src="./misc/dot-repo.png" width="24"/> dotfiles
-<img src="./misc/dwl.png" width="1920"/>
+<img src="./misc/river.png" width="1920"/>
 
 My Arch Installation Guide is moved to [codeberg](https://codeberg.org/unixchad/arch-install-guide)/[github](https://github.com/gnuunixchad/arch-install-guide)
 
@@ -36,10 +36,10 @@ spyware when I can.
 ```md
 - /usr/bin/sh:              dash
 - Login Shell:              zsh
-- Terminlal Multiplexer:    dvtm + abduco
+- Terminlal Multiplexer:    dvtm & abduco
 - Terminal Emulator:        foot
 - Audio Server:             pipewire
-- WM/Compositor:            dwl & river
+- WM/Compositor:            river
 - Status bar:               dam & damblocks
 - Output Management:        kanshi & wlr-randr
 - Application Launcher:     wmenu
@@ -51,17 +51,19 @@ spyware when I can.
 - Music player:             ncmpcpp & mpd
 - Video player:             mpv
 - Image Viewer:             swayimg
-- Ebook Reader:             zathura & mupdf plugin
+- Ebook Reader:             zathura & zatura-pdf-mupdf
 - Rss Feeder:               newsboat
 - Calender:                 calcurse
 - Todo:                     taskwarrior
 - Virtulization:            kvm & qemu & libvirt
 - Privacy/Security:         gpg & firejail & cryptsetup & sbctl
-- Web Browser:              qutebrowser & firefox
-- Firefox Extension:        tridactyl & darkreader & ublock origin
+- Web Browser:              qutebrowser
 - Downloader:               transmission-cli & yt-dlp & httrack & curl & wget
 - File Sharing:             rsync & ssh & samba & android-file-transfer & qrtool
 - Dotfiles Manager:         stow & git
+- Idle Manager:             swayidle
+- Session Lock:             swaylock
+- Clipboard Manager:        wl-Clipboard & cliphist
 ```
 
 ## Chinese Video Channel
