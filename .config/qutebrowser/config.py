@@ -29,6 +29,7 @@ c.tabs.min_width = 0
 c.statusbar.show = "always"
 
 c.hints.uppercase = True
+c.hints.chars = "asdfjkl;"
 
 c.downloads.location.directory = "~/dls"
 c.downloads.position = "bottom"
