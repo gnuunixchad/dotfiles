@@ -21,6 +21,7 @@ c.fonts.web.size.default = 20 # webpage
 c.fonts.default_size = '14pt' # UI
 
 c.tabs.show = "never"
+c.statusbar.show = "always"
 
 c.hints.uppercase = True
 
