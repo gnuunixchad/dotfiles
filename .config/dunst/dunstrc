@@ -35,7 +35,7 @@
     sticky_history = yes
     history_length = 30
     dmenu = /usr/bin/wmenu -p dunst:
-    browser = /usr/bin/local/firefox
+    browser = /usr/bin/qutebrowser
     always_run_script = true
     title = Dunst
     class = Dunst
