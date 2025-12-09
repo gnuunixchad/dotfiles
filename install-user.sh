@@ -47,6 +47,16 @@ mkdir -p ${HOME}/.{cache/mpd,config/'Code - OSS',local/{share,state/nvim}}
 mkdir ${HOME}/.ollama
 touch ${HOME}/.ollama/history
 
+# Make sure files touched by a cronjob for damblocks is a symlink so they can
+# be included by my rsync scripts, so to sync some status to other machines.
+mkdir -p ${HOME}/doc/heart/.cache
+for i in "wttr" "mbsync.cron" "newsboat.num"; do
+    local file="${HOME}/doc/heart/.cache/${i}"
+    if [ ! -e "$file" ]; then
+        touch --date='1970-01-01 00:00:00' "$file"
+    fi
+done
+
 CITY="${HOME}/.cache/city"
 [ ! -f "$CITY" ] || [ -z "$(cat $CITY)" ] && read -p "Enter your city: " \
     && echo "$REPLY" > "$CITY"

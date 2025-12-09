@@ -229,7 +229,7 @@ update_mutt() {
     local MAIL_DIR="$HOME/doc/mail"
     local MBSYNC_CACHE="${XDG_RUNTIME_DIR}/mbsync-cron"
     local UPDATE_FREQUENCY=3600 # in seconds
-    local update_time="$(stat -c "%Y" "$MBSYNC_CACHE")"
+    local update_time="$(stat -L -c "%Y" "$MBSYNC_CACHE")"
     local current_time="$(date +%s)"
     local count=0
     local icon="󰇮"
@@ -252,7 +252,7 @@ update_mutt() {
 
 update_newsboat() {
     local NEWS_CACHE="$HOME/.cache/newsboat.num"
-    local update_time=$(stat -c "%Y" "$NEWS_CACHE")
+    local update_time=$(stat -L -c "%Y" "$NEWS_CACHE")
     local current_time=$(date +%s)
     local UPDATE_FREQUENCY=16200 # 4.5H
     local count="$(cat $NEWS_CACHE)"
@@ -282,7 +282,7 @@ update_mpd() {
 
 update_wttr() {
     local WTTR_CACHE="$HOME/.cache/wttr"
-    local update_time="$(stat -c "%Y" "$WTTR_CACHE")"
+    local update_time="$(stat -L -c "%Y" "$WTTR_CACHE")"
     local current_time="$(date +%s)"
     local UPDATE_FREQUENCY=5400 # 1.5H
     local icon=""
