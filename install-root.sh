@@ -47,7 +47,6 @@ firecfg >/dev/null 2>/dev/null && echo "firejail symlink created"
 
 systemctl enable --now systemd-boot-update.service
 systemctl enable --now bluetooth.service
-systemctl enable --now paccache.timer
 systemctl enable --now reflector.timer
 systemctl enable --now tlp.service
 systemctl enable --now smb.service
@@ -64,3 +63,5 @@ pacman -Qi nvidia-utils > /dev/null 2>&1 \
         systemctl enable nvidia-resume.service; \
         systemctl enable nvidia-powerd.service; \
         echo "Nvidia power management service will be enabled after a reboot.")
+
+systemctl disable --now paccache.timer
