@@ -4,6 +4,7 @@
 # zsh specific aliases
 
 alias .r=". ~/.zprofile && . ~/.zshrc"
+alias ra="rehash"
 
 autoload -Uz run-help # bash like help
 (( ${+aliases[run-help]} )) && unalias run-help
