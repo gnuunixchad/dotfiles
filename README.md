@@ -33,14 +33,13 @@ stow -t ~ . --adopt
 I prefer software that are free as in freedom, keyboard centric, terminal based,
 vim like, do one thing and do it well. And try to avoid proprietary garbage and
 spyware when I can.
-```md
 - /usr/bin/sh:              dash
 - Login Shell:              zsh
 - Terminlal Multiplexer:    dvtm & abduco
 - Terminal Emulator:        foot
 - Audio Server:             pipewire
-- WM/Compositor:            river
-- Status bar:               dam & damblocks
+- WM/Compositor:            river & dwl
+- Status bar:               dam
 - Output Management:        kanshi & wlr-randr
 - Application Launcher:     wmenu
 - Fuzzy Finder:             fzf
@@ -64,7 +63,20 @@ spyware when I can.
 - Idle Manager:             swayidle
 - Session Lock:             swaylock
 - Clipboard Manager:        wl-Clipboard & cliphist
-```
+## My Window Manager Scripts:
+- Statusbar:                [damblocks](./.local/bin/damblocks)
+- Screenshot:               [wshot](./.local/bin/wshot)
+- Screen Recorder:          [wcast](./.local/bin/wcast)
+- Brightness Control:       [bright](./.local/bin/bright)
+- Audio Volume:             [audio](./.local/bin/audio)
+- Bookmark/Addressbook:     [address](./.local/bin/address)
+- Disk Mounting:            [amount](./.local/bin/amount), [flocks](./.local/bin/flocks), [poff](./.local/bin/poff)
+- File Previwer:            [rifle](./.local/bin/scope)
+- File Opener:              [scope](./.local/bin/rifle)
+- GPG Encrypt/Decrypt/Sign: [gpg-cipher](./.local/bin/gpg-cipher), [gpg-encrypt](./.local/bin/gpg-encrypt), [gpg-decrypt](./.local/bin/gpg-decrypt), [gpg-sign](./.local/bin/gpg-sign)
+- GPG Previewr:             [gpg-rifle](./.local/bin/gpg-rifle)
+- Android Mounting:         [phone](./.local/bin/phone)
+- Shoftcuts Generator:      [teleport-genesis](./.local/bin/teleport-genesis)
 
 ## Chinese Video Channel
 I have dedicated videos for almost every software I use:
