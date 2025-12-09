@@ -20,7 +20,10 @@ c.zoom.levels = ["25%", "33%", "50%", "67%", "75%", "90%", "100%", "125%", "133%
 c.fonts.web.size.default = 20 # webpage
 c.fonts.default_size = '14pt' # UI
 
-c.tabs.show = "never"
+c.tabs.show = "always"
+c.tabs.position = "left"
+c.tabs.padding = {"bottom":0, "left":0, "right":0, "top":0}
+c.tabs.min_width = 0
 c.statusbar.show = "always"
 
 c.hints.uppercase = True
