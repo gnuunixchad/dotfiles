@@ -74,7 +74,7 @@ cd ${HOME}/pkg/ollama && stow --adopt -t ~ . && cd - &>/dev/null
 [ -x /usr/bin/zsh ] && grep ":${UID}:${GID}:" /etc/passwd | grep '/usr/bin/zsh'\
     || chsh -s /usr/bin/zsh
 
-systemctl enable --now --user ssh-agent.service
+systemctl enable --user ssh-agent.service
 
 command -v gsettings > /dev/null && gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 
