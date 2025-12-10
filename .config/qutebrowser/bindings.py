@@ -26,6 +26,9 @@ config.bind('<Ctrl-d>', 'scroll page-down')
 
 config.bind('<Ctrl-Shift-p>', 'open -p')
 
+config.bind('cd', 'download-clear')
+config.bind('cm', 'clear-messages')
+
 # insert mode
 config.bind('<Ctrl-e>', 'edit-text', mode='insert')
 
