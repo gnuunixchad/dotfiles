@@ -254,8 +254,6 @@ package-list
 !.config/ttyper/language/
 !.config/ttyper/language/symbol-list
 !.config/ttyper/language/built-in
-!.config/tmux/
-!.config/tmux/tmux.conf
 !.config/vim/
 !.config/vim/vimrc
 !.config/vim/autocmd.vim
