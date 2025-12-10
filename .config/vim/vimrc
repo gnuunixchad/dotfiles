@@ -6,8 +6,6 @@ source ${HOME}/.config/vim/bindings.vim
 
 set viminfofile=~/.config/vim/viminfo
 
-
-"colorscheme unixchad
 syntax on
 if &diff
     syntax off
@@ -32,9 +30,6 @@ set cursorcolumn
 "highlight ExtraWhitespace ctermbg=gray guibg=gray " highlight all trailing spaces
 set laststatus=2
 set statusline+=%f\ %h%m%r%=\ %-16.(%)\ %c[%l/%L\ %P]
-
-" don't yank to clipboard with c
-nnoremap c "_c
 
 set expandtab		" expand tab input with spaces
 set tabstop=4		" spaces per tab
