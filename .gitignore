@@ -218,14 +218,6 @@ package-list
 !.config/qutebrowser/bindings.py
 !.config/qutebrowser/greasemonkey/
 !.config/qutebrowser/greasemonkey/yt-ads.js
-!.config/ranger/
-!.config/ranger/colorschemes/
-!.config/ranger/colorschemes/unixchad.py
-!.config/ranger/rc.conf
-!.config/ranger/teleport.conf
-!.config/ranger/rifle.conf
-!.config/ranger/scope.sh
-!.config/ranger/commands.py
 !.config/river/
 !.config/river/autostart
 !.config/river/bindings
