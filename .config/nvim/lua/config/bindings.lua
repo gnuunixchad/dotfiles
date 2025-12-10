@@ -21,8 +21,7 @@ map('n', 'c', '"_c') -- Don't copy to clipboard with `c*`
 
 -- completion
 map('i', '<C-f>', '<C-x><C-f>') -- start pathname suggestion
--- <Tab> to accept focused suggestion
-vim.api.nvim_set_keymap('i', '<Tab>', 'pumvisible() ? "<C-y>" : "<Tab>"', { expr = true, noremap = true })
+vim.cmd [[ inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>" ]]
 
 -- split
 map('n', '<leader>s', ':split<CR>')
