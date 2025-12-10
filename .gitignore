@@ -112,8 +112,6 @@ package-list
 !.config/dircolors
 !.config/dunst/
 !.config/dunst/dunstrc
-!.config/fastfetch/
-!.config/fastfetch/config.jsonc
 !.config/fcitx5/
 !.config/fcitx5/config
 !.config/fcitx5/conf
