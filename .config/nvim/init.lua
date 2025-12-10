@@ -4,3 +4,4 @@
 -- @since 2025
 
 require('config.colors')
+require('config.options')
