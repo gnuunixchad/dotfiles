@@ -1,3 +1,5 @@
+" vim:ft=vim
+" .config/vim/vimrc
 " @author nate zhou
 " @since 2023,2024,2025
 
@@ -6,33 +8,43 @@ source ${HOME}/.config/vim/bindings.vim
 
 set viminfofile=~/.config/vim/viminfo
 
+set encoding=utf-8
+
+set title           " terminal title
+
+set mouse=          " Disable mouse button moving cursor
+
+set clipboard=unnamedplus
+
+set ignorecase      " searching case incensitive
+set smartcase       " except patterns contain uppercase
+
+" visual
+set statusline+=%f\ %h%m%r%=\ %-16.(%)\ %c[%l/%L\ %P]
+set laststatus=2
+
+set number
+set relativenumber
+
+set cc=80
+set cursorline
+set cursorcolumn
+
 syntax on
 if &diff
     syntax off
     colorscheme industry
 endif
-set encoding=utf-8
-set title           " terminal title
+
+set termguicolors
 set background=dark
-set mouse=          " disable mouse clicks
-set clipboard=unnamedplus
 
-" set nohlsearch
-set ignorecase      " case insensitive searching
-set smartcase       " search case insensitive; if upper exists sensitive;
 
-set number
-set relativenumber
-set cc=80
-set cursorline
-set cursorcolumn
-"match ExtraWhitespace /\s\+$/ " space at the end of lines
-"highlight ExtraWhitespace ctermbg=gray guibg=gray " highlight all trailing spaces
-set laststatus=2
-set statusline+=%f\ %h%m%r%=\ %-16.(%)\ %c[%l/%L\ %P]
-
-set expandtab		" expand tab input with spaces
-set tabstop=4		" spaces per tab
+" indentation
+set expandtab		" <Tab> expands spaces instead of \t
+set tabstop=4		" spaces per <Tab>
 set shiftwidth=4	" spaces per indentation level
-set smartindent		" aware indentations for newline insert
-set splitbelow splitright " new split position
+set smartindent		" indentation is aware of newline insert
+
+set splitbelow
+set splitright
