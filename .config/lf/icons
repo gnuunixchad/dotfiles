@@ -243,6 +243,7 @@ LICENSE.*   
 *.ml        󰅩
 *.mli       󰅩
 *.diff      
+*.patch     
 *.go        
 *.rss       󰑬
 
