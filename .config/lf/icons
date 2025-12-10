@@ -211,7 +211,7 @@ LICENSE.*   
 *.rb        󰅩
 *.gemspec   󰅩
 *.rake      󰅩
-*.php       󰅩
+*.php       󰌟
 *.py        
 *.pyc       
 *.pyo       
@@ -229,8 +229,8 @@ LICENSE.*   
 *.hxx       󰙲
 *.hs        󰌛
 *.lhs       󰅩
-*.nix       󰅩
-*.lua       󰅩
+*.nix       
+*.lua       󰢱
 *.java      
 *.sh        󱆃
 *.fish      󱆃
@@ -238,13 +238,13 @@ LICENSE.*   
 *.zsh       󱆃
 *.ksh       󱆃
 *.csh       󱆃
-*.awk       󰅩
+*.awk       
 *.ps1       󰅩
 *.ml        󰅩
 *.mli       󰅩
-*.diff      󰅩
+*.diff      
 *.go        
-*.rss       󰅩
+*.rss       󰑬
 
 *.AppImage  
 *.exe       
