@@ -98,31 +98,26 @@
 
 	    // ## vertical split
     {
-        "key": "ctrl+b v",
+        "key": "ctrl+w v",
         "command": "workbench.action.newGroupRight"
     },
         // ## horizontal split
     {
-        "key": "ctrl+b x",
+        "key": "ctrl+w s",
         "command": "workbench.action.newGroupBelow"
     },
         // ## close a split
     {
-        "key": "ctrl+b x",
+        "key": "ctrl+w q",
         "command": "workbench.action.closeEditorsAndGroup"
     },
     {
-        "key": "ctrl+b x",
+        "key": "ctrl+w q",
         "command": "workbench.action.closeActiveEditor"
     },
     {
-        "key": "ctrl+b x",
+        "key": "ctrl+w q",
         "command": "workbench.action.closeGroup",
-        "when": "activeEditorGroupEmpty && multipleEditorGroups"
-    },
-    {
-        "key": "ctrl+b x",
-        "command": "-workbench.action.closeGroup",
         "when": "activeEditorGroupEmpty && multipleEditorGroups"
     },
         // ## unbind default
@@ -215,7 +210,7 @@
         "command": "workbench.panel.repl.view.focus"
     },
 
-	// # coding 
+	// # coding
 	// ## code Fix
     {
         "key": "ctrl+o f",
