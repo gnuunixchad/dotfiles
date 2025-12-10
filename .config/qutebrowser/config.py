@@ -36,7 +36,7 @@ c.downloads.location.directory = "~/dls"
 c.downloads.position = "bottom"
 
 c.content.fullscreen.window = True # Limit fullscreen to browser window
-
+c.content.autoplay = False
 c.content.blocking.enabled = True
 
 # privacy
