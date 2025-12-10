@@ -227,8 +227,8 @@ LICENSE.*   
 *.hh        󰙲
 *.hpp       󰙲
 *.hxx       󰙲
-*.hs        󰌛
-*.lhs       󰅩
+*.hs        󰲒
+*.lhs       󰲒
 *.nix       
 *.lua       󰢱
 *.java      
