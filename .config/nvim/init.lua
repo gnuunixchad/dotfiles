@@ -13,6 +13,7 @@ vim.cmd [[
 call plug#begin()
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 call plug#end()
 ]]
 
