@@ -17,6 +17,7 @@ riverctl map normal $mod p                          spawn "$menu"
 riverctl map normal $mod Return                     spawn "$term"
 riverctl map normal $mod v                          spawn "$term -T \"Floating_Term\" -o colors.alpha=0.9 abduco -A dvtm dvtm-status"
 riverctl map normal $mod r                          spawn "$term sh -c 'sleep 0.03 && lf'"
+riverctl map normal $mod q                          spawn qutebrowser
 
 riverctl map -repeat normal $mod minus              spawn "${HOME}/.local/bin/audio sink --minus"
 riverctl map -repeat normal $mod equal              spawn "${HOME}/.local/bin/audio sink --plus"

@@ -64,7 +64,7 @@ riverctl map "$wmenu" None e spawn "riverctl enter-mode normal && ${HOME}/.local
 
 # dunst ########################################################################
 riverctl declare-mode "$dunst"
-riverctl map normal $mod q enter-mode "$dunst"
+riverctl map normal $mod x enter-mode "$dunst"
 
 riverctl map "$dunst" $mod z enter-mode normal
 riverctl map "$dunst" $mod apostrophe enter-mode normal
