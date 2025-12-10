@@ -16,7 +16,7 @@ config.bind('zb', 'config-cycle statusbar.show always never')
 
 config.bind('zm', 'tab-mute')
 
-config.bind('si', 'hint images download')
+config.bind(';s', 'hint images download')
 config.bind('gp', 'open -p')
 
 config.bind('j', 'scroll-px 0 120 ')
