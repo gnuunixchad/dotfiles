@@ -56,3 +56,11 @@ map('n', '<leader>tc', ':set cursorcolumn!<CR>')
 map('n', '<leader>th', ':set hlsearch!<CR>')
 
 map('n', '<leader>f', ':FZF<CR>')
+
+
+-- plugins
+-- vim-fugitive
+map('n', '<leader>gg', ':G<CR>')
+map('n', '<leader>gds', ':Gdiffsplit<CR>')
+map('n', '<leader>gdv', ':Gvdiffsplit<CR>')
+map('n', '<leader>gl', ':Git log --graph --pretty=format:\'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen(%cr)\'<CR><CR>')
