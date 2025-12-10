@@ -1,5 +1,0 @@
-#!/usr/bin/sh
-# @author nate zhou
-# @since 2023,2024,2025
-
-[ -x /usr/local/bin/firefox ] && ( /usr/local/bin/firefox -P nfox; exit 0 ) || ( /usr/bin/firefox -P nfox; exit 0)

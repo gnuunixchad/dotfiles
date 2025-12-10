@@ -1,5 +1,0 @@
-#!/usr/bin/sh
-# @author nate zhou
-# @since 2023,2025
-
-[ -x /usr/local/bin/firefox ] && ( /usr/local/bin/firefox --private-window; exit 0 ) || ( /usr/bin/firefox --private-window; exit 0 )
