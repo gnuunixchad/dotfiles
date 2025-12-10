@@ -196,6 +196,7 @@ package-list
 !.config/newsboat/urls.example
 !.config/nvim/
 !.config/nvim/colors/
+!.config/nvim/colors/colors.lua
 !.config/nvim/init.lua
 !.config/nvim/coc-settings.json
 !.config/pipewire/
