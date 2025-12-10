@@ -1,24 +1,22 @@
 " nvim/autocmd.vim
 " @author nate zhou
-" @since 2025
+" @since 2023, 2024, 2025
 
-" don't comment on new line
+" Disable auto comment on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-augroup git
+augroup gitcommit
     autocmd!
-    " Enable spell check for Git commit
     autocmd FileType gitcommit setlocal spell spelllang=en_us
-    " Set column count to 72 for Git commit
     autocmd FileType gitcommit setlocal cc=72
 augroup END
 
-augroup mutt
+augroup neomutt
     autocmd!
-    " spell check
     autocmd BufRead,BufNewFile /tmp/neomutt-* setlocal spell spelllang=en_us
-    " column width
     autocmd BufRead,BufNewFile /tmp/neomutt-* setlocal cc=80
 augroup END
 
-autocmd BufRead,BufNewFile /tmp/qutebrowser-* set filetype=markdown
+augroup qutebrowser
+    autocmd BufRead,BufNewFile /tmp/qutebrowser-* set filetype=markdown
+augroup END
