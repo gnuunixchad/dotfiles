@@ -196,13 +196,7 @@ package-list
 !.config/newsboat/urls.example
 !.config/nvim/
 !.config/nvim/colors/
-!.config/nvim/colors/unixchad.lua
-!.config/nvim/init.vim
-!.config/nvim/autocmd.vim
-!.config/nvim/bindings.vim
-!.config/nvim/plugins.vim
 !.config/nvim/init.lua
-!.config/nvim/.init.lua
 !.config/nvim/coc-settings.json
 !.config/pipewire/
 !.config/pipewire/pipewire.conf.d/
