@@ -201,6 +201,7 @@ package-list
 !.config/nvim/lua/config/
 !.config/nvim/lua/config/options.lua
 !.config/nvim/lua/config/autocmd.lua
+!.config/nvim/lua/config/bindings.lua
 !.config/nvim/init.lua
 !.config/nvim/coc-settings.json
 !.config/pipewire/
