@@ -43,7 +43,7 @@ map('n', '<C-w>i', ':resize -2<CR>')
 map('n', '<C-w>o', ':vertical resize +2<CR>')
 
 -- tab
-map('n', '<leader>o', ':tabnew<CR>')
+map('n', '<leader>O', ':tabnew<CR>')
 map('n', '<leader>j', ':tabnext<CR>')
 map('n', '<leader>k', ':tabprev<CR>')
 
