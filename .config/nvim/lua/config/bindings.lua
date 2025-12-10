@@ -5,7 +5,6 @@
 
 vim.g.mapleader = ' '
 
-
 local function map(mode, keys, value)
 	vim.keymap.set(mode, keys, value, { noremap = true })
 end
@@ -59,8 +58,20 @@ map('n', '<leader>f', ':FZF<CR>')
 
 
 -- plugins
+-- nvim-colorizer
+map('n', '<leader>tC', ':ColorizerToggle<CR>')
+map('n', '<leader>rC', ':ColorizerReloadAllBuffers<CR>')
+-- nvim-treesitter
+map('n', '<leader>tH', ':TSToggle highlight<CR>')
+-- indent-blankline
+map('n', '<leader>tI', ':IBLToggle<CR>')
+-- render-markdown
+map('n', '<leader>tM', ':RenderMarkdown toggle<CR>')
+map('n', '<leader>M', ':RenderMarkdown preview<CR>')
 -- vim-fugitive
 map('n', '<leader>gg', ':G<CR>')
 map('n', '<leader>gds', ':Gdiffsplit<CR>')
 map('n', '<leader>gdv', ':Gvdiffsplit<CR>')
 map('n', '<leader>gl', ':Git log --graph --pretty=format:\'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen(%cr)\'<CR><CR>')
+-- lf
+map('n', '<leader>o', ':LfNewTab<CR>')
