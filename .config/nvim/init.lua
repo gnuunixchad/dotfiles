@@ -12,7 +12,9 @@ require('config.bindings')
 vim.cmd [[
 call plug#begin()
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'nvim-treesitter/nvim-treesitter'
 call plug#end()
 ]]
 
 require('plugins.nvim-colorizer')
+require('plugins.nvim-treesitter')
