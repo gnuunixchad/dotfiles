@@ -1,10 +1,10 @@
--- Name:         chad (edited on top with vim.lua by Bram Moolenaar)
+-- Colorscheme based on vim.lua by Bram Moolenaar)
 
 --  @authoer nate zhou
 --  @since 2024, 2025
 
 vim.cmd.highlight('clear')
-vim.g.colors_name = 'unixchad'
+vim.g.colors_name = 'green'
 
 local hi = function(name, val)
   -- Force links
