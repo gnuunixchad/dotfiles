@@ -207,6 +207,7 @@ package-list
 !.config/nvim/lua/plugins/nvim-treesitter.lua
 !.config/nvim/lua/plugins/indent-blankline.lua
 !.config/nvim/lua/plugins/render-markdown.lua
+!.config/nvim/lua/plugins/vim-floaterm.lua
 !.config/nvim/init.lua
 !.config/nvim/coc-settings.json
 !.config/pipewire/
