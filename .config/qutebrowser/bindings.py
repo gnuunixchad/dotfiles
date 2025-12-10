@@ -14,6 +14,8 @@ config.bind('zz', 'zoom {}'.format(c.zoom.default))
 config.bind('zt', 'config-cycle tabs.show multiple never')
 config.bind('zb', 'config-cycle statusbar.show always never')
 
+config.bind('zm', 'tab-mute')
+
 config.bind('si', 'hint images download')
 config.bind('gp', 'open -p')
 
