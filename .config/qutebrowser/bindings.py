@@ -22,6 +22,8 @@ config.bind('k', 'scroll-px 0 -120 ')
 config.bind('<Ctrl-u>', 'scroll page-up')
 config.bind('<Ctrl-d>', 'scroll page-down')
 
+config.bind('<Ctrl-Shift-p>', 'open -p')
+
 # insert mode
 config.bind('<Ctrl-e>', 'edit-text', mode='insert')
 
