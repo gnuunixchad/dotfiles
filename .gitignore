@@ -195,10 +195,10 @@ package-list
 !.config/newsboat/proxy.conf.example
 !.config/newsboat/urls.example
 !.config/nvim/
-!.config/nvim/colors/
-!.config/nvim/colors/colors.lua
+!.config/nvim/config/colors.lua
 !.config/nvim/lua/
 !.config/nvim/lua/config/
+!.config/nvim/lua/config/colors.lua
 !.config/nvim/lua/config/options.lua
 !.config/nvim/lua/config/autocmd.lua
 !.config/nvim/lua/config/bindings.lua
