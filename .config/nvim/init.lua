@@ -18,6 +18,7 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'MeanderingProgrammer/render-markdown.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'voldikss/vim-floaterm'
+Plug 'ptzz/lf.vim'
 call plug#end()
 ]]
 
