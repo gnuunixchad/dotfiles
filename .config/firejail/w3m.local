@@ -1,1 +1,38 @@
-firefox.local
+# @author nate zhou
+# @since 2023,2024,2025
+
+# allow access to /media, must use with whitelist to ensure security
+ignore disable-mnt
+# whitelist httrack
+whitelist ${HOME}/doc/httrack
+read-only ${HOME}/doc/httrack
+whitelist ${HOME}/doc/html
+read-only ${HOME}/doc/html
+# whitelist git
+whitelist ${HOME}/doc/git
+read-only ${HOME}/doc/git
+
+whitelist ${HOME}/dls
+whitelist ${HOME}/tmp
+whitelist /data/tmp
+include blacklist-gpg.local
+
+whitelist ${HOME}/doc/code
+read-only ${HOME}/doc/code
+
+whitelist ${HOME}/vid/unixchad
+read-only ${HOME}/vid/unixchad
+whitelist ${HOME}/vid/unixchat
+read-only ${HOME}/vid/unixchat
+
+whitelist /usr/share/doc/
+
+novideo
+
+# fix gdk-pixbuf2 issue with nvidia GPU crashing firefox on launch
+whitelist /usr/share/glycin-loaders
+noblacklist /usr/bin/bwrap
+noblacklist /proc/sys/kernel/overflowuid
+noblacklist /proc/sys/kernel/overflowgid
+ignore seccomp !chroot
+seccomp !chroot,!mount,!pivot_root,!umount2
