@@ -11,6 +11,13 @@ Patch() {
     patch "$originalFile" < <(genPatch)
 }
 
+isIdentical() {
+    if diff -s "$originalFile" "$modifiedFile" &>/dev/null; then
+        echo "File $originalFile and $modifiedFile are identical"
+        exit 0
+    fi
+}
+
 genPatch() {
     diff -u --color=auto "$originalFile" "$modifiedFile"
 }
@@ -31,6 +38,8 @@ _EOF_
 }
 
 [ "$#" -ne 2 ] && usage
+
+isIdentical
 
 dryrun
 
