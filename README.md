@@ -33,36 +33,36 @@ stow -t ~ . --adopt
 I prefer software that are free as in freedom, keyboard centric, terminal based,
 vim like, do one thing and do it well. And try to avoid proprietary garbage and
 spyware when I can.
-- /usr/bin/sh:              dash
-- Login Shell:              zsh
-- Terminlal Multiplexer:    dvtm & abduco
-- Terminal Emulator:        foot
-- Audio Server:             pipewire
-- WM/Compositor:            river & dwl
-- Status bar:               dam
-- Output Management:        kanshi & wlr-randr
-- Application Launcher:     wmenu
-- Fuzzy Finder:             fzf
-- Notification Daemon:      dunst
-- Editor:                   neovim
-- Email:                    neomutt & isync
-- File manager:             lf
-- Music player:             ncmpcpp & mpd
-- Video player:             mpv
-- Image Viewer:             swayimg
-- Ebook Reader:             zathura & zatura-pdf-mupdf
-- Rss Feeder:               newsboat
-- Calender:                 calcurse
-- Todo:                     taskwarrior
-- Virtulization:            kvm & qemu & libvirt
-- Privacy/Security:         gpg & firejail & cryptsetup & sbctl
-- Web Browser:              qutebrowser
-- Downloader:               transmission-cli & yt-dlp & httrack & curl & wget
-- File Sharing:             rsync & ssh & samba & android-file-transfer & qrtool
-- Dotfiles Manager:         stow & git
-- Idle Manager:             swayidle
-- Session Lock:             swaylock
-- Clipboard Manager:        wl-Clipboard & cliphist
+- /usr/bin/sh:              `dash`
+- Login Shell:              `zsh`
+- Terminlal Multiplexer:    `abduco`, `dvtm`
+- Terminal Emulator:        `foot`
+- Audio Server:             `pipewire`
+- WM/Compositor:            `river`, `dwl`
+- Status bar:               `dam`
+- Output Management:        `wlr-randr`, `kanshi`
+- Application Launcher:     `wmenu`
+- Fuzzy Finder:             `fzf`
+- Notification Daemon:      `dunst`
+- Editor:                   `neovim`
+- Email:                    `neomutt`, `isync`
+- File manager:             `lf`
+- Music player:             `mpd`, `ncmpcpp`
+- Video player:             `mpv`
+- Image Viewer:             `swayimg`
+- Ebook Reader:             `zathura`, `zatura-pdf-mupdf`
+- Rss Feeder:               `newsboat`
+- Calender:                 `calcurse`
+- Todo:                     `taskwarrior`
+- Virtulization:            `qemu`, `libvirt`, `virtmanager`
+- Privacy/Security:         `cryptsetup`, `sbctl`, `gpg`, `firejail`
+- Web Browser:              `w3m`, `qutebrowser`
+- Downloader:               `curl`, `wget`, `transmission-cli`, `yt-dlp`, `httrack`
+- File Sharing:             `rsync`, `samba`, `android-file-transfer`, `qrtool`
+- Dotfiles Manager:         `git`, `stow`
+- Idle Manager:             `swayidle`
+- Session Lock:             `swaylock`
+- Clipboard Manager:        `wl-Clipboard`, `cliphist`
 ## My Window Manager Scripts:
 - Statusbar:                [damblocks](./.local/bin/damblocks)
 - Screenshot:               [wshot](./.local/bin/wshot)
@@ -84,11 +84,11 @@ I have dedicated videos for almost every software I use:
 [unixchad at bilibili](https://space.bilibili.com/34569411)
 
 Software I use to create videos:
-- Screen Capture:   wf-recorder + slurp
-- Voice Recording:  pw-record + noise-suppression-for-voice
-- Video Editing:    kdenlive + ffmpeg
-- Screenshots:      grim + slurp
-- Thumbnails:       gimp + imagemagick
+- Screen Capture:   `wf-recorder` `slurp`
+- Voice Recording:  `pw-record` `noise-suppression-for-voice`
+- Video Editing:    `ffmpeg` `mpv-cut` `kdenlive`
+- Screenshots:      `grim` `slurp`
+- Thumbnails:       `imagemagick` `gimp`
 
 All emails from me will be signed by the same GPG key that I sign commits with:
 - Import my key: `gpg --recv-keys 117094DA1AEA0835E4ED0770F7476912AA224CAC`
