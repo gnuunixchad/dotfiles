@@ -20,6 +20,11 @@ ex             # EXEC
 
 LICENSE.*   
 *.list      
+*list       
+*lists      
+*mirrorlist 
+*.hook      󰛢
+*.ical      
 .git/       
 *.gitignore 
 *.stow-local-ignore 
@@ -194,8 +199,28 @@ LICENSE.*   
 *.css       
 *.json      
 *.conf      
+*conf       
+*config     
+*.local     
 *.ini       
+*.inc       
 *.rc        
+*dunstrc    
+*muttrc     
+*fzfrc      
+*gtkrc      
+*.inputrc   
+*inputrc    
+*lfrc       
+*.muttrc    
+*.neomuttrc 
+*taskrc     
+*wgetrc     
+*.zathurarc 
+*zathurarc  
+*isyncrc    
+*dircolors  
+*.xkb       
 *.yaml      
 *.toml      
 *.db        
@@ -204,6 +229,8 @@ LICENSE.*   
 *.sqlite2   
 *.sqlite3   
 *.dump      
+*vimrc      
+*.vim       
 
 *.js        
 *.mjs       
