@@ -276,7 +276,7 @@ update_mpd() {
     fi
     local title="$(mpc current -f "[%title%]" \
                 | cut -c1-12 \
-                | sed 's/([^]*)//g; s/[[:space:],.{[]*$//; s/[&]//g')"
+                | sed 's/[[:space:],.{[-]*$//; s/[&]//g')"
     mpd="${icon}${title}"
 }
 
