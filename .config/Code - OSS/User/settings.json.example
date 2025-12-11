@@ -20,7 +20,7 @@
     "editor.glyphMargin": false,
 
     // vim extension
-    "vim.neovimConfigPath": "~/.config/nvim/init.vim",
+    "vim.neovimConfigPath": "~/.config/nvim/init.lua",
     "vim.neovimPath": "/usr/bin/nvim",
     "vim.neovimUseConfigFile": true,
     "vim.useSystemClipboard": true,
