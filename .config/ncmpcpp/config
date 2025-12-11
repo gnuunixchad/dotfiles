@@ -3,6 +3,9 @@
 # @author nate zhou
 # @since 2023,2024,2025
 
+# fixed window title
+song_window_title_format = ncmpcpp
+
 ncmpcpp_directory = ~/.config/ncmpcpp
 lyrics_directory = ~/mus/.lyrics
 mpd_host = localhost
