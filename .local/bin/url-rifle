@@ -19,6 +19,10 @@ case "$url" in
         curl --silent --location "$url" | swayimg - &
         ;;
     *)
-        [ "$XDG_SESSION_TYPE" = "tty" ] && w3m "$url" || $BROWSER "$url"
+        if [ "$XDG_SESSION_TYPE" = "tty" ]; then
+            w3m "$url"
+        else
+            qutebrowser --target window --set tabs.show never "$url"
+        fi
         ;;
 esac
