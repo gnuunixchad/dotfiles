@@ -10,7 +10,7 @@ datetime-format "%Y-%m-%d"
 
 save-path ~/doc/newsboat
 
-browser "w3m %u"
+browser "~/.local/bin/url-rifle %u"
 
 refresh-on-startup no
 reload-threads 100 # loading feeds in parallel

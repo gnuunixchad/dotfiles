@@ -1,0 +1,24 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# Execuate different open actions based on URL patterns.
+
+url="$1"
+
+print_err() {
+    local RED='\033[0;31m'
+    local RESET='\033[0m'
+    printf ${RED}"${1}"${RESET}\\n
+}
+
+[ -z "$1" ] && print_err "No URL specified." && exit 1
+
+
+case "$url" in
+    *jpeg|*jpg|*png|*gif|*webp|*svg)
+        curl --silent --location "$url" | swayimg - &
+        ;;
+    *)
+        [ "$XDG_SESSION_TYPE" = "tty" ] && w3m "$url" || $BROWSER "$url"
+        ;;
+esac
