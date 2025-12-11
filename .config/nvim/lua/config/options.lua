@@ -5,8 +5,6 @@
 
 vim.o.encoding = 'utf-8'
 
-vim.o.title = true
-
 vim.o.mouse = '' -- Disable mouse button moving cursor
 
 vim.o.clipboard = 'unnamedplus'

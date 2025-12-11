@@ -10,8 +10,6 @@ set viminfofile=~/.config/vim/viminfo
 
 set encoding=utf-8
 
-set title           " terminal title
-
 set mouse=          " Disable mouse button moving cursor
 
 set clipboard=unnamedplus
