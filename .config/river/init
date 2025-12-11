@@ -33,6 +33,8 @@ riverctl border-width 2
 riverctl rule-add -app-id "*" ssd   # fix border for every window
 riverctl rule-add -title "Floating_Term" float
 riverctl rule-add -title "Floating_Term" dimensions 1200 800
+riverctl rule-add -app-id "Floating_IMG" float
+riverctl rule-add -app-id "Floating_IMG" dimensions 1200 800
 riverctl rule-add -app-id "file-*" float # GIMP file import/export
 riverctl rule-add -app-id "script-fu" float # GIMP gegl operations
 riverctl rule-add -app-id "lighting" -title "Lighting Effects" float # GIMP

@@ -20,7 +20,7 @@ print_err() {
 
 case "$url" in
     *jpeg|*jpg|*png|*gif|*webp|*svg)
-        curl --silent --location "$url" | swayimg - &
+        curl --silent --location "$url" | swayimg --class='Floating_IMG' - &
         ;;
     *)
         if [ "$XDG_SESSION_TYPE" = "tty" ]; then
