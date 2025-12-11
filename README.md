@@ -63,6 +63,7 @@ spyware when I can.
 - Idle Manager:             `swayidle`
 - Session Lock:             `swaylock`
 - Clipboard Manager:        `wl-Clipboard`, `cliphist`
+- Input Method:             `fcitx5`
 ## My Window Manager Scripts:
 - Statusbar:                [damblocks](./.local/bin/damblocks)
 - Screenshot:               [wshot](./.local/bin/wshot)
