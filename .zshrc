@@ -43,7 +43,11 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
+bindkey -s '^e' 'mutt\n'
+bindkey -s '^n' 'newsboat\n'
 bindkey -s '^o' 'lfcd\n'  # .config/shell/functions.sh
+bindkey -s '^p' 'ncmpcpp\n'
+bindkey -s '^v' 'abduco -A dvtm dvtm-status\n'
 
 # line editor v in normal mode
 autoload edit-command-line
