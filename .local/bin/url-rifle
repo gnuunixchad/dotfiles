@@ -2,6 +2,10 @@
 # @author nate zhou
 # @since 2025
 # Execuate different open actions based on URL patterns.
+#
+# Use case in `newsboat/config`:
+# `browser "~/.local/bin/url-rifle %u"`
+# If the link is an image, preview it, other wise open the link in a browser.
 
 url="$1"
 
