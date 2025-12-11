@@ -38,6 +38,7 @@ c.downloads.position = "bottom"
 c.content.fullscreen.window = True # Limit fullscreen to browser window
 c.content.autoplay = False
 c.content.blocking.enabled = True
+c.content.blocking.method = 'both'
 
 # privacy
 c.content.canvas_reading = False
