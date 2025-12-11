@@ -7,5 +7,5 @@ sudo rsync -a --delete-after --progress $HOME/doc/heart/.config/bash/{aliases.ba
 [ -d /root/heart/.config/shell ] || sudo mkdir -p /root/heart/.config/shell
 sudo rsync -a --delete-after --progress $HOME/doc/heart/.config/shell/{aliases.sh,functions.sh,profile.sh,teleport.sh} /root/heart/.config/shell
 sudo rsync -a --delete-after --progress $HOME/doc/heart/.config/readline /root/heart/.config
-sudo rsync -a --delete-after --progress $HOME/doc/heart/.config/{fzf,lf,tmux,vim,dircolors} /root/heart/.config
+sudo rsync -a --delete-after --progress $HOME/doc/heart/.config/{fzf,lf,vim,dircolors} /root/heart/.config
 sudo rsync -a --delete-after --progress $HOME/doc/heart/.local/bin/scope /root/heart/.config/lf/scope
