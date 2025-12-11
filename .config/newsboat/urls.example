@@ -1,3 +1,5 @@
+"query:Unread Articles:unread = \"yes\""
+
 # [distros]
 https://archlinux.org/feeds/news/ "~Arch Linux" archlinux distro
 https://www.archlinuxcn.org/feed/ "~Arch Linux CN" archlinux distro
