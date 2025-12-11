@@ -13,6 +13,13 @@ config.load_autoconfig(False) # ignore GUI settings
 
 c.editor.command = ['foot', '-T', 'Floating_Term', '-o', 'colors.alpha=0.9', 'nvim', '{file}', '-c', 'normal {line}G{column0}l']
 
+# lf as file chooser
+fileChooser = ['foot', '-T', 'Floating_Term', '-o', 'colors.alpha=0.9', 'lf', '-selection-path={}']
+c.fileselect.handler = "external"
+c.fileselect.folder.command = fileChooser
+c.fileselect.multiple_files.command = fileChooser
+c.fileselect.single_file.command = fileChooser
+
 c.url.start_pages = 'file:///dev/null'
 c.url.default_page= 'file:///dev/null'
 
