@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# @author nate zhou
+# @since 2025
+# dp: diff patch
+
+originalFile="$1"
+modifiedFile="$2"
+
+
+Patch() {
+    patch "$originalFile" < <(genPatch)
+}
+
+genPatch() {
+    diff -u --color=auto "$originalFile" "$modifiedFile"
+}
+
+dryrun() {
+    genPatch
+
+    read -p "Apply the patch? (y/n): "
+    [ "$REPLY" != "y" ] && exit 0
+}
+
+usage() {
+    cat << _EOF_
+USAGE
+        $(basename "$0") [originalFile] [modifiedFile]
+_EOF_
+    exit 0
+}
+
+[ "$#" -ne 2 ] && usage
+
+dryrun
+
+Patch
+
