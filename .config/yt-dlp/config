@@ -4,5 +4,9 @@
 # @since 2025
 
 --cookies-from-browser chromium:~/.local/share/qutebrowser/
+
 --embed-metadata
+
 -o "%(title).80s.%(ext)s"
+
+--concurrent-fragments 3
