@@ -67,7 +67,7 @@ alias mutt="$HOME/.local/bin/mutt"
 alias tsk="task";
 alias twt="taskwarrior-tui"
 alias ncmpcpp="ncmpcpp -q"
-alias newsboat="newsboat -q"
+alias newsboat="${HOME}/.local/bin/news"
 
 alias wmenu="$HOME/.local/bin/wmenu-color"
 alias ,,="~/.local/bin/teleport-genesis-search"
