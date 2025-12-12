@@ -64,7 +64,7 @@ spyware when I can.
 - Session Lock:             `swaylock`
 - Clipboard Manager:        `wl-Clipboard`, `cliphist`
 - Input Method:             `fcitx5`
-## My Window Manager Scripts:
+## My scripts for window managers and etc
 - Statusbar:                [damblocks](./.local/bin/damblocks)
 - Screenshot:               [wshot](./.local/bin/wshot)
 - Screen Recorder:          [wcast](./.local/bin/wcast)
@@ -76,6 +76,8 @@ spyware when I can.
 - File Opener:              [scope](./.local/bin/rifle)
 - GPG Encrypt/Decrypt/Sign: [gpg-cipher](./.local/bin/gpg-cipher), [gpg-encrypt](./.local/bin/gpg-encrypt), [gpg-decrypt](./.local/bin/gpg-decrypt), [gpg-sign](./.local/bin/gpg-sign)
 - GPG Previewr:             [gpg-rifle](./.local/bin/gpg-rifle)
+- Newsboat Previewr:        [url-rifle](./.local/bin/url-rifle)
+- Mutt/isync with Oauth2:   [muttauth](./.local/bin/muttauth)
 - Android Mounting:         [phone](./.local/bin/phone)
 - Shoftcuts Generator:      [teleport-genesis](./.local/bin/teleport-genesis)
 
