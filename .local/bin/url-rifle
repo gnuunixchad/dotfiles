@@ -15,14 +15,21 @@ print_err() {
     printf ${RED}"${1}"${RESET}\\n
 }
 
+notify() {
+    [ "$XDG_SESSION_TYPE" = "tty" ] return
+    notify-send -u low -t 3300 "$(basename $0)" "Downloading ${filetype}:\n $url"
+}
+
 [ -z "$1" ] && print_err "No URL specified." && exit 1
 
 
 case "$url" in
     *jpeg|*jpg|*png|*gif|*webp|*svg)
+        filetype="image" notify
         curl --silent --location "$url" | swayimg --class='Floating_IMG' - &
         ;;
     *epub|*pdf)
+        filetype="document" notify
         curl --silent --location "$url" | zathura - &
         ;;
     *)
