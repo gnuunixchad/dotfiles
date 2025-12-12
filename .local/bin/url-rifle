@@ -36,7 +36,8 @@ case "$url" in
         if [ "$XDG_SESSION_TYPE" = "tty" ]; then
             w3m "$url"
         else
-            qutebrowser --target window --set tabs.show never "$url"
+            notify-send -u low -t 1100 "$(basename $0)" "Open in browser:\n $url"
+            qutebrowser --target window --set tabs.show never "$url" &
         fi
         ;;
 esac
