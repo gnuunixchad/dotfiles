@@ -71,7 +71,7 @@ update_battery () {
             icon="" level="${level}%"
             ;;
         "Charging")
-            icon="" level="${level}%"
+            icon="" level="${level}%"
             ;;
     esac
     ls ${POWER}/BAT? > /dev/null || icon=""
