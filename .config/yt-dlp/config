@@ -10,5 +10,3 @@
 -o "%(title).80s.%(ext)s"
 
 --concurrent-fragments 3
-
---write-auto-subs
