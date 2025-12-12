@@ -2,7 +2,7 @@
 
 ## keybindings
 # ^G is hardcoded as `abort` and cannot be remaped
-bind pager,browser		    h			exit
+bind pager      		    h			exit
 bind attach,alias			h			exit
 bind pager				    l			view-attachments
 bind pager 				    k 			previous-line
@@ -15,7 +15,9 @@ bind attach,index 			g 			first-entry
 bind attach,index 			G 			last-entry
 bind index			    	l			display-message
 bind attach			    	l			view-attach
-bind browser,alias			l			select-entry
+bind browser    			h			goto-parent
+bind browser    			l			descend-directory
+bind browser,alias			\r			select-entry
 bind index			    	/			search
 bind index			    	?			limit
 bind index,pager,attach	    <F1>		help
