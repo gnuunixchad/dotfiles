@@ -222,6 +222,7 @@ LICENSE.*   
 *dircolors  
 *.xkb       
 *.yaml      
+*.yml       
 *.toml      
 *.db        
 *.sql       
