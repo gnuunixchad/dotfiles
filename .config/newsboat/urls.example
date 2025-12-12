@@ -20,6 +20,7 @@ https://github.com/martanne/dvtm/releases.atom ~dvtm terminal tui
 https://github.com/martanne/abduco/releases.atom ~abduco terminal cli
 
 https://github.com/gokcehan/lf/releases.atom ~lf git tui
+https://github.com/neomutt/neomutt/releases.atom ~neomutt tui
 
 https://codeberg.org/dnkl/foot/releases.rss ~foot git gui
 https://codeberg.org/adnano/wmenu.rss ~wmenu git gui
