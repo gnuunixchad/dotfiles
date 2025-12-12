@@ -33,6 +33,8 @@ riverctl map normal ${mod}+Shift backspace          spawn "${HOME}/.local/bin/au
 
 riverctl map -repeat normal $mod bracketleft        spawn "${HOME}/.local/bin/bright --minus"
 riverctl map -repeat normal $mod bracketright       spawn "${HOME}/.local/bin/bright --plus"
+riverctl map -repeat locked $mod bracketleft        spawn "${HOME}/.local/bin/bright --minus"
+riverctl map -repeat locked $mod bracketright       spawn "${HOME}/.local/bin/bright --plus"
 
 riverctl map normal ${mod}+Shift q                  spawn "${HOME}/.local/bin/exitriver"
 riverctl map normal ${mod}+Shift w                  spawn "swaylock"
