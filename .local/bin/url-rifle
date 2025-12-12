@@ -22,6 +22,9 @@ case "$url" in
     *jpeg|*jpg|*png|*gif|*webp|*svg)
         curl --silent --location "$url" | swayimg --class='Floating_IMG' - &
         ;;
+    *epub|*pdf)
+        curl --silent --location "$url" | zathura - &
+        ;;
     *)
         if [ "$XDG_SESSION_TYPE" = "tty" ]; then
             w3m "$url"
