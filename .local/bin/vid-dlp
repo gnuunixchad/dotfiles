@@ -3,7 +3,7 @@
 # @since 2023,2024,2025
 # universal config moved to `~/.config/yt-dlp/config`
 
-yt-dlp --write-subs \
-       --sub-lang en -S "height:720" -f "bv*+ba/b" \
+yt-dlp --write-auto-subs --sub-lang en \
+       -S "height:720" -f "bv*+ba/b" \
        --merge-output-format mp4 "$@" \
        && notify-send -u low -r 7 "yt-dlp: finished"
