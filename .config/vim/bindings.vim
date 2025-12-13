@@ -48,5 +48,6 @@ nnoremap <leader>ts :set spell!<CR>
 nnoremap <leader>tw :set wrap!<CR>
 nnoremap <leader>tc :set cursorcolumn!<CR>
 nnoremap <leader>th :set hlsearch!<CR>
+nnoremap <leader>tn :set relativenumber!<CR>
 
 nnoremap <leader>f :FZF<CR>

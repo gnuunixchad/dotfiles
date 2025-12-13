@@ -52,6 +52,7 @@ map('n', '<leader>ts', ':set spell!<CR>')
 map('n', '<leader>tw', ':set wrap!<CR>')
 map('n', '<leader>tc', ':set cursorcolumn!<CR>')
 map('n', '<leader>th', ':set hlsearch!<CR>')
+map('n', '<leader>tn', ':set relativenumber!<CR>')
 
 map('n', '<leader>f', ':FZF<CR>')
 
