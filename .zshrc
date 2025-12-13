@@ -7,6 +7,8 @@ case $- in # check shell options
       *) return;; # don't do anything
 esac
 
+[ -n "$DVTM" ] && unset MANPAGER MANWIDTH
+
 autoload -U compinit # enable programmable completion
 zstyle ':completion:*' menu select # arrow-key driven
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case insensitive

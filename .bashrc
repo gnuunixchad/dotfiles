@@ -7,6 +7,8 @@ case $- in # check shell options
       *) return;; # don't do anything
 esac
 
+[ -n "$DVTM" ] && unset MANPAGER MANWIDTH
+
 [ -f "/usr/share/bash-completion/bash_completion" ] && . /usr/share/bash-completion/bash_completion
 
 [ -f "$HOME/.config/dircolors" ] && eval $(dircolors "$HOME/.config/dircolors")
