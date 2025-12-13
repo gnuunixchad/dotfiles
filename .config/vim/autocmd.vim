@@ -33,8 +33,16 @@ augroup dvtmeditor
     autocmd BufRead,BufNewFile /tmp/dvtm-editor.* syntax off
 augroup END
 
-
 augroup dvtm
     autocmd!
     autocmd BufEnter * if !empty(getenv('DVTM')) | setlocal notermguicolors | endif
+augroup END
+
+function SetSudoer()
+    setlocal nocursorline
+    setlocal nocursorcolumn
+endfunction
+augroup sudoer
+    autocmd!
+    autocmd BufEnter * if !empty(getenv('SUDO_USER')) | call SetSudoer() | endif
 augroup END
