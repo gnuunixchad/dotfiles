@@ -42,7 +42,8 @@ function SetSudoer()
     setlocal nocursorline
     setlocal nocursorcolumn
 endfunction
+
 augroup sudoer
     autocmd!
-    autocmd BufEnter * if !empty(getenv('SUDO_USER')) | call SetSudoer() | endif
+    autocmd BufEnter * if !empty(getenv('SUDO_USER')) || getenv('UID') == 0 | call SetSudoer() | endif
 augroup END
