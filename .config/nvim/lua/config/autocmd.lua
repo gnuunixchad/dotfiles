@@ -36,3 +36,15 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
         vim.opt_local.filetype = 'markdown'
     end,
 })
+
+-- dvtm
+-- Aboid 24-bit colors inside dvtm.
+-- However vim is still the preffered editor inside dvtm as neovim has very
+-- slow load/exit speed even with `--clean`
+vim.api.nvim_create_autocmd("BufEnter", {
+    callback = function()
+        if os.getenv("DVTM") ~= nil and os.getenv("DVTM") ~= "" then
+            vim.opt_local.termguicolors = false
+        end
+    end,
+})
