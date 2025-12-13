@@ -5,7 +5,6 @@
 
 if [ ! $UID -eq 0 ]; then
     command -v nvim >/dev/null \
-        && [ -z "$DVTM" ] \
         && alias vim="nvim" \
            vimdiff="nvim -d"
 fi
