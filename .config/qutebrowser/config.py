@@ -41,6 +41,9 @@ c.hints.chars = "asdfjkl;"
 
 c.downloads.location.directory = "~/dls"
 c.downloads.location.prompt = False
+c.downloads.location.suggestion = 'both'
+c.downloads.location.remember = False
+c.downloads.remove_finished = 3300
 c.downloads.position = "bottom"
 
 c.content.fullscreen.window = True # Limit fullscreen to browser window
