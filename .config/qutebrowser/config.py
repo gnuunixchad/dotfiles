@@ -40,6 +40,7 @@ c.hints.uppercase = True
 c.hints.chars = "asdfjkl;"
 
 c.downloads.location.directory = "~/dls"
+c.downloads.location.prompt = False
 c.downloads.position = "bottom"
 
 c.content.fullscreen.window = True # Limit fullscreen to browser window
