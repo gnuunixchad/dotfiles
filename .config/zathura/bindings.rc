@@ -14,3 +14,6 @@ map r rotate rotate-cw
 map R rotate rotate-ccw
 
 map w adjust_window width
+
+map d toggle dual page view
+map D cycle_first_column
