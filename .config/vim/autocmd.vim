@@ -18,10 +18,12 @@ augroup neomutt
 augroup END
 
 augroup qutebrowser
+    autocmd!
     autocmd BufRead,BufNewFile /tmp/qutebrowser-* setlocl filetype=markdown
 augroup END
 
 augroup dvtmeditor
+    autocmd!
     autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal norelativenumber
     autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal nocursorline
     autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal nocursorcolumn
@@ -29,4 +31,10 @@ augroup dvtmeditor
     autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal notermguicolors
     autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal laststatus=0
     autocmd BufRead,BufNewFile /tmp/dvtm-editor.* syntax off
+augroup END
+
+
+augroup dvtm
+    autocmd!
+    autocmd BufEnter * if !empty(getenv('DVTM')) | setlocal notermguicolors | endif
 augroup END
