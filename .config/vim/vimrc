@@ -21,7 +21,6 @@ set smartcase       " except patterns contain uppercase
 set statusline+=%f\ %h%m%r%=\ %-16.(%)\ %c[%l/%L\ %P]
 set laststatus=2
 
-set number
 set relativenumber
 
 set cc=80
