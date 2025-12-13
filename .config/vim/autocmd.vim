@@ -18,7 +18,7 @@ augroup neomutt
 augroup END
 
 augroup qutebrowser
-    autocmd BufRead,BufNewFile /tmp/qutebrowser-* set filetype=markdown
+    autocmd BufRead,BufNewFile /tmp/qutebrowser-* setlocl filetype=markdown
 augroup END
 
 augroup dvtmeditor

@@ -33,6 +33,6 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
 vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
     pattern = '/tmp/qutebrowser-editor-*',
     callback = function()
-        vim.opt.filetype = 'markdown'
+        vim.opt_local.filetype = 'markdown'
     end,
 })
