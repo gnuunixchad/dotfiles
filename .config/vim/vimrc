@@ -24,8 +24,8 @@ set laststatus=2
 set relativenumber
 
 set cc=80
-set nocursorline
-set nocursorcolumn
+set cursorline
+set cursorcolumn
 
 syntax on
 if &diff
