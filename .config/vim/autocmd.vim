@@ -20,3 +20,13 @@ augroup END
 augroup qutebrowser
     autocmd BufRead,BufNewFile /tmp/qutebrowser-* set filetype=markdown
 augroup END
+
+augroup dvtmeditor
+    autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal norelativenumber
+    autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal nocursorline
+    autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal nocursorcolumn
+    autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal cc=0
+    autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal notermguicolors
+    autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal laststatus=0
+    autocmd BufRead,BufNewFile /tmp/dvtm-editor.* syntax off
+augroup END
