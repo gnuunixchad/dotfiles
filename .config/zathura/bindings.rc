@@ -3,6 +3,9 @@
 # @author nate zhou
 # @since 2023,2024,2025
 
+unmap a
+unmap s
+
 map I recolor
 map n scroll half-down
 map p scroll half-up
@@ -14,6 +17,7 @@ map r rotate rotate-cw
 map R rotate rotate-ccw
 
 map w adjust_window width
+map f adjust_window best-fit
 
 map d toggle dual page view
 map D cycle_first_column
