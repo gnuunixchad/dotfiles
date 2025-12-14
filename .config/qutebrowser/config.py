@@ -33,7 +33,7 @@ c.tabs.show = "always"
 c.tabs.position = "left"
 c.tabs.padding = {"bottom":0, "left":0, "right":0, "top":0}
 c.tabs.indicator.width = 0
-c.tabs.min_width = 0
+c.tabs.width = '10%'
 c.statusbar.show = "always"
 
 c.hints.uppercase = True
