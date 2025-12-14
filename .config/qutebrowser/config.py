@@ -38,6 +38,7 @@ c.tabs.indicator.width = 0
 c.tabs.width = '10%'
 c.statusbar.show = "always"
 
+c.keyhint.delay = 0
 c.hints.uppercase = True
 c.hints.chars = "asdfjkl;"
 
