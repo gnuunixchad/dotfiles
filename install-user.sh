@@ -44,14 +44,14 @@ chmod 750 ${HOME}/pkg/fdroid
 chmod 705 ${HOME}/pkg/{iso,pacman}
 
 mkdir -p ${HOME}/.{cache/mpd,config/'Code - OSS',local/{share,state/nvim}}
-mkdir ${HOME}/.ollama
+mkdir -p ${HOME}/.ollama
 touch ${HOME}/.ollama/history
 
 # Make sure files touched by a cronjob for damblocks is a symlink so they can
 # be included by my rsync scripts, so to sync some status to other machines.
 mkdir -p ${HOME}/doc/heart/.cache
 for i in "wttr" "mbsync.cron" "newsboat.num"; do
-    local file="${HOME}/doc/heart/.cache/${i}"
+    file="${HOME}/doc/heart/.cache/${i}"
     if [ ! -e "$file" ]; then
         touch --date='1970-01-01 00:00:00' "$file"
     fi
@@ -62,17 +62,18 @@ CITY="${HOME}/.cache/city"
     && echo "$REPLY" > "$CITY"
 
 [ ! -d "$DOTFILES_LOCAL" ] && \
-    git clone "${DOTFILES_REMOTE[1]}" $DOTFILES_LOCAL || \
-    git clone "${DOTFILES_REMOTE[2]}" $DOTFILES_LOCAL
+    git clone "${DOTFILES_REMOTE[1]}" $DOTFILES_LOCAL 2>/dev/null || \
+    git clone "${DOTFILES_REMOTE[2]}" $DOTFILES_LOCAL 2>/dev/null
 
-mv ${HOME}/.bash_profile{,~}
+mv ${HOME}/.bash_profile{,~} 2>/dev/null
 [ -L "${HOME}/.bashrc" ] || mv ${HOME}/.bashrc{,~}
 
 cd "$DOTFILES_LOCAL" && stow -R -t $HOME . --adopt
 cd ${HOME}/pkg/ollama && stow --adopt -t ~ . && cd - &>/dev/null
 
-[ -x /usr/bin/zsh ] && grep ":${UID}:${GID}:" /etc/passwd | grep '/usr/bin/zsh'\
-    || chsh -s /usr/bin/zsh
+[ -x /usr/bin/zsh ] && grep ":${UID}:${GID}:" /etc/passwd  \
+                        | grep -q '/usr/bin/zsh'\
+                    || chsh -s /usr/bin/zsh
 
 systemctl enable --user ssh-agent.service
 
@@ -87,7 +88,7 @@ BTOP="${HOME}/.config/btop/btop.conf"
 GIT="${HOME}/.config/git/config"
 [ -f "$GIT" ] || cp ${GIT}.example $GIT
 
-MUTT="${HOME}/.config/mutt/account"
+MUTT="${HOME}/.config/mutt/account2.muttrc"
 [ -f "$MUTT" ] || cp ${MUTT}.example $MUTT
 
 NEWSBOAT="${HOME}/.config/newsboat"
