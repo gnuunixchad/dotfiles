@@ -2,12 +2,15 @@
 # @author nate zhou
 # @since 2024,2025
 
-rsync --dry-run --size-only -avh --progress /var/cache/pacman/pkg/ $HOME/pkg/pacman/
+# Ignore directories like `/var/cache/pacman/pkg/download-*`.
+rsync --dry-run --size-only -avh --progress --exclude '*/' \
+      /var/cache/pacman/pkg/ $HOME/pkg/pacman/
 
 read -p "Continue? (y/n): " choice
 if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
     # pacman
-    sudo rsync --size-only -avh --progress /var/cache/pacman/pkg/ $HOME/pkg/pacman/
+    sudo rsync --size-only -avh --progress --exclude '*/' \
+               /var/cache/pacman/pkg/ $HOME/pkg/pacman/
     sudo chown -R $USER:$USER $HOME/pkg/pacman
     chmod 705 ${HOME}/pkg/pacman
     sudo paccache --remove --cachedir /var/cache/pacman/pkg/ --keep 0
