@@ -68,6 +68,9 @@ CITY="${HOME}/.cache/city"
 mv ${HOME}/.bash_profile{,~} 2>/dev/null
 [ -L "${HOME}/.bashrc" ] || mv ${HOME}/.bashrc{,~}
 
+[ -d ${HOME}/pkg/yay ] && [ ! -L ${HOME}/.cache/yay ] \
+    && ln -s ${HOME}/pkg/yay ${HOME}/.cache/yay
+
 cd "$DOTFILES_LOCAL" && stow -R -t $HOME . --adopt
 cd ${HOME}/pkg/ollama && stow --adopt -t ~ . && cd - &>/dev/null
 
