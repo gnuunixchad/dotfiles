@@ -1,25 +1,45 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2025
-# universal wayland address book manager
+# address - universal wayland address book manager with query and fuzzy find.
 # @depends $MENU wtype wl-clipboard cliphist
+# Also see `../.local/share/address/address.example`
 
 MENU="${HOME}/.local/bin/wmenu-color"
 ADDRESS_BOOK_DIR="${HOME}/.local/share/address"
 ADDRESS_BOOK="${ADDRESS_BOOK_DIR}/address"
 menu_prompt="$(basename $0)"
 
-# address with newline character
-if [ "$1" = "--multi" ]; then
+editAddress() {
+    $EDITOR $ADDRESS_BOOK
+}
+
+getAddress() {
+    cat $ADDRESS_BOOK | grep -vE "^#|^[[:space:]]*$" \
+        | $MENU -p "$menu_prompt " -l 6 \
+        | awk ' {sub(/[^|]*\|/, ""); print}' \
+        | wl-copy
+}
+
+# address for recording (with personal info censored)
+getAddressRecord() {
+    ADDRESS_BOOK="${ADDRESS_BOOK_DIR}/address-record"
+    menu_prompt="${menu_prompt}-record"
+    getAddress
+}
+
+# address with multiple lines (newline character)
+getAddressMulti() {
     ADDRESS_BOOK="${ADDRESS_BOOK_DIR}/multi"
     menu_prompt="${menu_prompt}-multi"
     selected=$(ls "$ADDRESS_BOOK" | $MENU -p "$menu_prompt " -l 5 -i)
     cat "${ADDRESS_BOOK}/${selected}" | wl-copy
     exit 0
-fi
+}
 
-# switch to the address book with personal info censored
-[ "$1" = "--record" ] && ADDRESS_BOOK="${ADDRESS_BOOK_DIR}/address-record" && menu_prompt="${menu_prompt}-record"
-
-# choose and copy
-cat $ADDRESS_BOOK | grep -vE "^#|^[[:space:]]*$" | $MENU -p "$menu_prompt " -l 6 | awk ' {sub(/[^|]*\|/, ""); print}' | wl-copy
+case "$1" in
+    -e|--edit) editAddress ;;
+    -r|--record) getAddressRecord ;;
+    -m|--multi) getAddressMulti ;;
+    *) getAddress ;;
+esac
