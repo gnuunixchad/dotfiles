@@ -82,24 +82,24 @@ systemctl enable --user ssh-agent.service
 
 command -v gsettings > /dev/null && gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 
-SSHCONFIG="${HOME}/.ssh/config"
-[ -f "$SSHCONFIG" ] || cp ${SSHCONFIG}.example $SSHCONFIG
+SSHCONFIG="${HOME}/.ssh"
+[ -f "${SSHCONFIG}/proxy.conf" ] || cp ${SSHCONFIG}/proxy.conf{.example,}
 
 BTOP="${HOME}/.config/btop/btop.conf"
 [ -f "$BTOP" ] || cp ${BTOP}.example $BTOP
 
-GIT="${HOME}/.config/git/config"
-[ -f "$GIT" ] || cp ${GIT}.example $GIT
+GIT="${HOME}/.config/git"
+[ -f "${GIT}/proxy.inc" ] || cp ${GIT}/proxy.inc{.example,}
 
-MUTT="${HOME}/.config/mutt/account2.muttrc"
-[ -f "$MUTT" ] || cp ${MUTT}.example $MUTT
+MUTT="${HOME}/.config/mutt"
+[ -f "${MUTT}/account*.muttrc" ] || cp ${MUTT}/account.{md,muttrc}
 
 NEWSBOAT="${HOME}/.config/newsboat"
-[ -f "${NEWSBOAT}/config" ] || cp ${NEWSBOAT}/config{.example,}
+[ -f "${NEWSBOAT}/proxy.conf" ] || cp ${NEWSBOAT}/proxy.conf{.example,}
 [ -f "${NEWSBOAT}/urls" ] || cp ${NEWSBOAT}/urls{.example,}
 
-QUTEBROWSER="${HOME}/.config/qutebrowser/config.py"
-[ -f "$QUTEBROWSER" ] || cp ${QUTEBROWSER}.example $QUTEBROWSER
+QUTEBROWSER="${HOME}/.config/qutebrowser"
+[ -f "${QUTEBROWSER}/proxy.py" ] || cp ${QUTEBROWSER}/proxy.py{.example,}
 
 ISYNC="${HOME}/.config/isyncrc"
 [ -f "$ISYNC" ] || cp ${ISYNC}.example $ISYNC
