@@ -29,6 +29,7 @@ c.zoom.levels = ["25%", "33%", "50%", "67%", "75%", "90%", "100%", "125%", "133%
 
 c.fonts.web.size.default = 20 # webpage
 c.fonts.default_size = '14pt' # UI
+c.fonts.hints = 'normal 14pt SourceCodePro'
 
 c.tabs.show = "always"
 c.tabs.position = "left"
