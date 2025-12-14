@@ -3,7 +3,7 @@
 # @author nate zhou
 # @since 2025
 
-c.zoom.default = 133
+c.zoom.default = 150
 
 config.source('proxy.py')
 config.source('colors.py')
@@ -26,7 +26,6 @@ c.tabs.last_close = "startpage"
 c.auto_save.session = True
 
 c.zoom.levels = ["25%", "33%", "50%", "67%", "75%", "90%", "100%", "125%", "133%", "150%", "175%", "200%", "250%", "300%"]
-
 c.fonts.web.size.default = 20 # webpage
 c.fonts.default_size = '14pt' # UI
 c.fonts.hints = 'normal 14pt SourceCodePro'
