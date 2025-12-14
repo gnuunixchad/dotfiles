@@ -2,10 +2,7 @@
 # @author nate zhou
 # @since 2024,2025
 
-#SUDOER="$(grep ':1000:1000:' /etc/passwd | cut -d':' -f1 )"
-
 rsync --dry-run --size-only -avh --progress /var/cache/pacman/pkg/ $HOME/pkg/pacman/
-rsync --dry-run --size-only -avh --progress $HOME/.cache/yay/ $HOME/pkg/yay/
 
 read -p "Continue? (y/n): " choice
 if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
@@ -14,9 +11,6 @@ if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
     sudo chown -R $USER:$USER $HOME/pkg/pacman
     chmod 705 ${HOME}/pkg/pacman
     sudo paccache --remove --cachedir /var/cache/pacman/pkg/ --keep 0
-    # yay
-    rsync -avh --size-only --delete-after --progress $HOME/.cache/yay/ $HOME/pkg/yay/
-    chmod 700 ${HOME}/pkg/yay
 else
     echo "aborted"
     exit 0
