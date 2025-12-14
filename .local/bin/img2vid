@@ -24,10 +24,16 @@ input_pattern: input-%03d.jpg"  (default)
 
 output_format: outup.mp4        (default)
         can be renamed to any filename and formats supported by ffmpeg.
+
+Example:
+        There are pic-0[1-9].png in CWD, run:
+        img2vid pic-%02d.png
+        To specific the output format as gif:
+        img2vid pic-%02d.png output.gif
 _EOF_
     exit 1
 fi
 
 [ "$#" -eq 2 ] && output="$2"
 
-ffmpeg -i "$1" -movflags faststart "$output"
+ffmpeg -i "$1" -b:v 100M -preset slow -movflags faststart "$output"
