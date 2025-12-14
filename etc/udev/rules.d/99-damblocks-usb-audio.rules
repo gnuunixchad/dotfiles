@@ -1,7 +1,7 @@
 # udev rules to refresh damblocks audio modules with usb events
 # @author nate zhou
 # @since 2025
-# whenever a usb block device is added or removed
+# whenever a usb sound device is added or removed
 # TODO: 1. action when a device is added (not working on my system)
 #       2. reload sink as well (script need update)
 
