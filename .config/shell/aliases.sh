@@ -134,6 +134,7 @@ alias gdw="git diff --word-diff"
 alias gdws="git diff --word-diff --staged"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen(%cr)' --abbrev-commit"
 alias grs="git remote -v"
+alias ggc="git gc"
 
 alias gll="git log --graph --all"
 alias gln="git log --graph --abbrev-commit --name-only"
