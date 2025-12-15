@@ -1,14 +1,15 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
-# filesystem label need match 'usb-*'
+# filesystem label need match 'usb-*' (man 8 e2label)
 
 MY_SOURCE_PATH="$HOME/doc $HOME/mus $HOME/pic $HOME/vid $HOME/pkg"
 MY_DESTINATION="/run/media/nate/usb-*/back/"
 
 # change ext4 partition label with `e2label /dev/mapper/NAME NEW_NAME`
-echo "rsync -avh --delete-after --progress  $MY_SOURCE_PATH $MY_DESTINATION"
+set -x
 rsync --dry-run -avh --delete-after --progress  $MY_SOURCE_PATH $MY_DESTINATION
+set +x
 
 read -p "Continue? (y/n): " choice
 if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
