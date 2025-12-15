@@ -117,6 +117,7 @@ fpl() {
 }
 
 extract() {
+    f="$1"
     case "$f" in
         *.tar) tar xf "$f" ;;
         *.zip|*.apk) unzip "$f" -d "$(basename $f | sed -E 's/.apk$|.zip$//')" ;;
