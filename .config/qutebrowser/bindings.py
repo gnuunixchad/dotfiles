@@ -4,6 +4,14 @@
 # source this file in config.py:
 # config.source('bindings.py')
 
+# unbind
+config.unbind('<Ctrl-v>')
+config.unbind('b')
+config.unbind('m')
+
+# passthough mode
+config.bind('<Ctrl-Shift-v>', 'mode-enter passthrough')
+
 # normal mode
 config.bind('cs', 'config-source')
 
@@ -11,10 +19,10 @@ config.bind('zi', 'zoom-in')
 config.bind('zo', 'zoom-out')
 config.bind('zz', 'zoom {}'.format(c.zoom.default))
 
-config.bind('zt', 'config-cycle tabs.show always never')
-config.bind('zb', 'config-cycle statusbar.show always never')
+config.bind('a', 'config-cycle tabs.show always never')
+config.bind('b', 'config-cycle statusbar.show always never')
 
-config.bind('zm', 'tab-mute')
+config.bind('m', 'tab-mute')
 
 config.bind(';s', 'hint images download')
 config.bind('gp', 'open -p')
@@ -28,6 +36,7 @@ config.bind('<Ctrl-Shift-p>', 'open -p')
 
 config.bind('cd', 'download-clear')
 config.bind('cm', 'clear-messages')
+config.bind('ca', 'download-cancel')
 
 config.bind('eu', 'edit-url')
 
@@ -40,4 +49,3 @@ config.bind('<Ctrl-e>', 'edit-text', mode='insert')
 # command mode
 config.bind('<Ctrl-p>', 'completion-item-focus --history prev', mode='command')
 config.bind('<Ctrl-n>', 'completion-item-focus --history next', mode='command')
-
