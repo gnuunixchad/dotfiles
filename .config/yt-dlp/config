@@ -9,6 +9,8 @@
 
 --embed-metadata
 
--o "%(title).80s.%(ext)s"
+--paths ~/dls/
+
+--output "%(title).80s.%(ext)s"
 
 --concurrent-fragments 3
