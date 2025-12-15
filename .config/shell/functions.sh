@@ -130,5 +130,6 @@ extract() {
         *.xz) xz -dk "$f" ;;
         *.tar.zst|*.tzst) tar xf "$f" --zstd ;;
         *.zst) zstd -dk "$f" ;;
+        *.rar) unrar-free -x "$f" ;;
     esac
 }
