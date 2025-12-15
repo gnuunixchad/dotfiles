@@ -9,7 +9,9 @@ vim.api.nvim_create_autocmd('BufEnter', {
     end,
 })
 
+vim.api.nvim_create_augroup('scripts', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
+    group = 'scripts',
     pattern = '*',
     callback = function()
         if vim.fn.getline(1):match('^#!/.+') then
@@ -18,8 +20,9 @@ vim.api.nvim_create_autocmd('BufWritePost', {
     end,
 })
 
--- gitcommit
+vim.api.nvim_create_augroup('gitcommit', { clear = true })
 vim.api.nvim_create_autocmd('Filetype', {
+    group = 'gitcommit',
     pattern = 'gitcommit',
     callback = function()
         vim.opt_local.spell = true
@@ -28,8 +31,9 @@ vim.api.nvim_create_autocmd('Filetype', {
     end,
 })
 
--- neomutt
+vim.api.nvim_create_augroup('neomutt', { clear = true })
 vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+    group = 'neomutt',
     pattern = '/tmp/neomutt-*',
     callback = function()
         vim.opt_local.spell = true
@@ -38,19 +42,21 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
     end,
 })
 
--- qutebrowser
+vim.api.nvim_create_augroup('qutebrowser', { clear = true })
 vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+    group = 'qutebrowser',
     pattern = '/tmp/qutebrowser-editor-*',
     callback = function()
         vim.opt_local.filetype = 'markdown'
     end,
 })
 
--- dvtm
 -- Aboid 24-bit colors inside dvtm.
 -- However vim is still the preffered editor inside dvtm as neovim has very
 -- slow load/exit speed even with `--clean`
+vim.api.nvim_create_augroup('dvtm', { clear = true })
 vim.api.nvim_create_autocmd("BufEnter", {
+    group = 'dvtm',
     callback = function()
         if os.getenv("DVTM") ~= nil and os.getenv("DVTM") ~= "" then
             vim.opt_local.termguicolors = false
