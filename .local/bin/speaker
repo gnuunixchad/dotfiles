@@ -3,18 +3,30 @@
 # @since 2025
 # wmenu/fzf script for selecting pipewire default sink (choose speaker)
 
-source $HOME/.local/bin/wmenu-color 2>/dev/null
+DAMBLOCKS="${XDG_RUNTIME_DIR}/damblocks.pid"
 
-if [ "$XDG_SESSION_TYPE" != "tty" ]; then
-    selected_sink="$(pactl list short sinks | awk '{print $2}' | wmenu-color '-p[change sink] ' -l 3)"
-else
-    selected_sink="$(pactl list short sinks | awk '{print $2}' | command fzf --prompt '[change sink] ')"
-fi
+notify() {
+    [ "$XDG_SESSION_TYPE" != "tty" ] \
+        && notify-send -u low -r 1259 "$(basename "$0")" "$sink"
+}
 
-[ -z "$selected_sink" ] && exit 0
+setSink() {
+    if [ "$XDG_SESSION_TYPE" != "tty" ]; then
+        pactl list short sinks | awk '{print $2}' \
+                               | wmenu-color '-p[speaker] ' -l 3
+    else
+        pactl list short sinks | awk '{print $2}' \
+                               | command fzf --prompt '[speaker] '
+    fi
+}
 
-[ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -u low -r 1259 "$(basename "$0")" "Default sink changed to $selected_sink"
+refreshVolume() {
+    kill -36 "$(cat "$DAMBLOCKS")"
+}
 
-pactl set-default-sink "$selected_sink"
 
-kill -36 "$(cat /tmp/$USER/damblocks)";
+sink="$(setSink)"
+[ -z "$sink" ] && exit 0
+
+
+pactl set-default-sink "$sink" && refreshVolume && notify
