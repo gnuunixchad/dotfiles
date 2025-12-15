@@ -16,6 +16,7 @@ vim.o.smartcase = true	-- except patterns contain uppercase
 vim.o.statusline = '%f %h%m%r%= %-16.(%) %c [%l/%L %P]'
 vim.o.laststatus = 2
 
+vim.o.number = true
 vim.o.relativenumber = true
 
 vim.o.cc = '80'
