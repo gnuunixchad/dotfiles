@@ -24,6 +24,7 @@ augroup END
 
 augroup dvtmeditor
     autocmd!
+    autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal nonumber
     autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal norelativenumber
     autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal nocursorline
     autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal nocursorcolumn
