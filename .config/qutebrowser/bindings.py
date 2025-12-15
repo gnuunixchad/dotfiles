@@ -20,6 +20,7 @@ config.bind('zo', 'zoom-out')
 config.bind('zz', 'zoom {}'.format(c.zoom.default))
 
 config.bind('a', 'config-cycle tabs.show always never')
+config.bind('A', 'config-cycle tabs.width 20% 10%')
 config.bind('b', 'config-cycle statusbar.show always never')
 
 config.bind('m', 'tab-mute')
