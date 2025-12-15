@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2025
-# wmenu emoji selector
+# emoji selector
 
 EMOJI_CACHE="${HOME}/.local/share/emoji-test.txt"
 EMOJI_REMOTE="https://unicode.org/Public/emoji/latest/emoji-test.txt"
@@ -10,4 +10,7 @@ MENU_APP="wmenu-color -i -l 9"
 [ -f "$EMOJI_CACHE" ] || curl "$EMOJI_REMOTE" > "$EMOJI_CACHE"
 
 
-cut -d'#' -f2- "$EMOJI_CACHE" | $MENU_APP  | cut -d' ' -f2 | wl-copy
+cut -d'#' -f2- "$EMOJI_CACHE" | sed '0,/group:/{//!d;}; /^\s*$/d' \
+                              | $MENU_APP  \
+                              | cut -d' ' -f2 \
+                              | wl-copy
