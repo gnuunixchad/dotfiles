@@ -35,17 +35,8 @@ case $(file --mime-type -Lb $file) in
 	application/*opendocument*|*officedocument*)
         libreoffice "$file"
         ;;
-    application/zip|application/vnd.android.package-archive)
-        $zipinfo "$file" | less -i
-        ;;
-    application/gzip)
-        zless "$file"
-        ;;
-    application/x-7z-compressed)
-        7z l "$file" | grep -oP '\S+$' | less -i
-        ;;
-    application/*tar|application/*zip*|application/zstd|application/*xz)
-        tar vvtf "$file" | less -i
+    application/*)
+        ${HOME}/.local/bin/scope "$file"
         ;;
     text/html)
         case "$f" in
