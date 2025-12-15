@@ -5,6 +5,11 @@
 " Disable auto comment on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+augroup scripts
+    autocmd!
+    autocmd BufWritePost * if getline(1) =~ "^#!/.+" | silent !chmod +x % | endif
+augroup END
+
 augroup gitcommit
     autocmd!
     autocmd FileType gitcommit setlocal spell spelllang=en_us

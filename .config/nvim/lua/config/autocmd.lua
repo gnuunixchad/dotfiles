@@ -9,6 +9,15 @@ vim.api.nvim_create_autocmd('BufEnter', {
     end,
 })
 
+vim.api.nvim_create_autocmd('BufWritePost', {
+    pattern = '*',
+    callback = function()
+        if vim.fn.getline(1):match('^#!/.+') then
+            vim.cmd('silent !chmod +x ' .. vim.fn.shellescape(vim.fn.expand('%')))
+        end
+    end,
+})
+
 -- gitcommit
 vim.api.nvim_create_autocmd('Filetype', {
     pattern = 'gitcommit',
