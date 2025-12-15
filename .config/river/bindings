@@ -45,9 +45,9 @@ riverctl map normal Control space                   spawn "fcitx5-remote -t"
 riverctl map normal $mod n                          spawn "dunstctl history-pop"
 riverctl map normal ${mod}+Shift n                  spawn "dunstctl close"
 
-riverctl map normal $mod g                          spawn "${HOME}/.local/bin/wshot"
-riverctl map normal ${mod}+Shift g                  spawn "${HOME}/.local/bin/wshot-geo"
-riverctl map normal ${mod}+Control g                spawn "grim && notify-send -u low -r 88 \"Screenshot taken on all outputs\""
+riverctl map normal $mod g                          spawn "${HOME}/.local/bin/shoot"
+riverctl map normal ${mod}+Shift g                  spawn "${HOME}/.local/bin/shoot --geo"
+riverctl map normal ${mod}+Control g                spawn "${HOME}/.local/bin/shoot --all"
 
 riverctl map normal $mod c                          spawn "${HOME}/.local/bin/wclip"
 riverctl map normal $mod a                          spawn "${HOME}/.local/bin/address"

@@ -1,8 +1,0 @@
-#!/usr/bin/sh
-# @author nate zhou
-# @since 2024,2025
-# script to take a screenshot with selected geometry
-
-[ -d "$HOME/tmp" ] || mkdir "$HOME/tmp"
-
-slurp | grim -g - && notify-send -u low -r 88 "Screenshot taken on selected geometry"

@@ -66,7 +66,7 @@ spyware when I can.
 - Input Method:             `fcitx5`
 ## My scripts for window managers and etc
 - Statusbar:                [damblocks](./.local/bin/damblocks)
-- Screenshot:               [wshot](./.local/bin/wshot)
+- Screenshot:               [shoot](./.local/bin/shoot)
 - Screen/Voice Recorder:    [wcast](./.local/bin/wcast), [wvoice](./.local/bin/wvoice)
 - Brightness Control:       [bright](./.local/bin/bright)
 - Speaker/Mic Volume:       [audio](./.local/bin/audio)
