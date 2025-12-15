@@ -35,9 +35,6 @@ case $(file --mime-type -Lb $file) in
 	application/*opendocument*|*officedocument*)
         libreoffice "$file"
         ;;
-    application/*)
-        ${HOME}/.local/bin/scope "$file"
-        ;;
     text/html)
         case "$f" in
             *.md)
@@ -50,6 +47,9 @@ case $(file --mime-type -Lb $file) in
         ;;
     text/*|*/json|inode/x-empty|application/javascript)
         $EDITOR "$file"
+        ;;
+    application/*)
+        ${HOME}/.local/bin/scope "$file"
         ;;
     *)
         print_err "[$(basename $0)]: file type not supported."
