@@ -1,19 +1,36 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
-# record pipewire input voice
+# use wmenu to select the audio source for voice recording
 
+RECORD_HOME="${HOME}/tmp/recordings"
+[ -d "$RECORD_HOME" ] || mkdir -p $RECORD_HOME
 
-[ -d "$HOME/tmp" ] || mkdir "$HOME/tmp"
+filename="${RECORD_HOME}/$(date +%Y-%m-%d-%H-%M-%S).mp3"
 
+notifyStart() {
+    notify-send -u low -r 1258 "$(basename "$0")"  "on $source"
+}
+
+notifyStop() {
+    notify-send -u low -r 1258 "$(basename "$0")" "stopped $source"
+}
+
+setSource() {
 if [ "$XDG_SESSION_TYPE" != "tty" ]; then
-    selected_source="$(pactl list short sources | awk '{print $2}' | wmenu-color '-p[choose source] ' -l 6)"
+    pactl list short sources | awk '{print $2}' | sort \
+        | wmenu-color '-p[choose source] ' -l 6
 else
-    selected_source="$(pactl list short sources | awk '{print $2}' | command fzf --prompt '[choose source] ')"
+    pactl list short sources | awk '{print $2}' | sort \
+        | command fzf --prompt '[choose source] '
 fi
+}
 
-[ -z "$selected_source" ] && exit 1
+source="$(setSource)"
+[ -z "$source" ] && exit 0
 
-notify-send -u low -r 1258 "$(basename "$0")" "Recording audio from $selected_source"
+notifyStart
 
-pw-record --target "$selected_source" "$HOME/tmp/wvoice-$(date +%Y-%m-%d-%H-%M-%S).mp3"
+trap notifyStop EXIT INT TERM
+
+pw-record --target "$source" "$filename"
