@@ -133,3 +133,7 @@ extract() {
         *.rar) unrar-free -x "$f" ;;
     esac
 }
+
+gbkless() {
+    iconv -f GBK -t UTF-8 "$1" | command less -Xi
+}
