@@ -1,0 +1,16 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# Also see `./suffix`
+
+usage() {
+    cat << _EOF_
+Usage:  prefix FILE|String
+        get a file's basename without extension
+_EOF_
+exit 0
+}
+
+[ "$#" -ne 1 ] && usage
+f="$(basename $1)"
+echo ${f%.*}
