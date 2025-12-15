@@ -3,16 +3,44 @@
 # @since 2024,2025
 # use wmenu to select the screen and audio source for screen casting
 
-selected_output="$(wlr-randr | grep '^[^[:space:]]'| wmenu-color -p "[$(basename $0)] " -l 3 | tr -d '()' | cut -d' ' -f-1 )"
+FPS=30
+CAPTURE_HOME="${HOME}/tmp/screencapture"
+[ -d "$CAPTURE_HOME" ] || mkdir -p $CAPTURE_HOME
 
-[ -z "$selected_output" ] && exit 1
+filename="${CAPTURE_HOME}/$(date +%Y-%m-%d-%H-%M-%S).mp4"
 
-selected_source="$(pw-dump | grep "\"node.name\":" | sort | wmenu-color "-p[choose source] " -l 6 | cut -d'"' -f4)"
+notifyStart() {
+    notify-send -u low -r 1257 "$(basename "$0")" "on $output\n$source"
+}
 
-[ -z "$selected_source" ] && exit 1
+notifyStop() {
+    notify-send -u low -r 1257 "$(basename "$0")" "stopped $output\n$source"
+}
 
-[ -d "$HOME/tmp" ] || mkdir "$HOME/tmp"
+setOutput() {
+    wlr-randr \
+        | grep '^[^[:space:]]'\
+        | wmenu-color -p "[output] " -l 3 \
+        | tr -d '()' \
+        | cut -d' ' -f-1
+}
 
-# Start the recorder
-notify-send -u low -r 1257 "$(basename "$0")" "output $selected_output\nSource $selected_source"
-wf-recorder -r 30 -o "$selected_output" --audio="$selected_source" -f "$HOME/tmp/wcast-$(date +%Y-%m-%d-%H-%M-%S).mp4"
+setSource() {
+    pw-dump \
+        | grep "\"node.name\":" \
+        | sort \
+        | wmenu-color -p "[source] " -l 6 \
+        | cut -d'"' -f4
+}
+
+output="$(setOutput)"
+[ -z "$output" ] && exit 0
+
+source="$(setSource)"
+[ -z "$source" ] && exit 0
+
+notifyStart
+
+trap notifyStop EXIT INT TERM
+
+wf-recorder -r "$FPS" -o "$output" -a "$source" -f "$filename"
