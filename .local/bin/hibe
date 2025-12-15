@@ -1,8 +1,7 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
-# swayhibe
-# hibernate in sway with a wmenu warning prompt
+# hibernate with a wmenu warning prompt
 
 user_choice="$(printf "no\nyes" | wmenu-color -p "System Hibernation?")"
 

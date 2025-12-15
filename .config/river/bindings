@@ -38,7 +38,7 @@ riverctl map -repeat locked $mod bracketright       spawn "${HOME}/.local/bin/br
 
 riverctl map normal ${mod}+Shift q                  spawn "${HOME}/.local/bin/exitriver"
 riverctl map normal ${mod}+Shift w                  spawn "swaylock"
-riverctl map normal ${mod}+Shift e                  spawn "${HOME}/.local/bin/swayhibe"
+riverctl map normal ${mod}+Shift e                  spawn "${HOME}/.local/bin/hibe"
 
 riverctl map normal Control space                   spawn "fcitx5-remote -t"
 
@@ -49,7 +49,7 @@ riverctl map normal $mod g                          spawn "${HOME}/.local/bin/sh
 riverctl map normal ${mod}+Shift g                  spawn "${HOME}/.local/bin/shoot --geo"
 riverctl map normal ${mod}+Control g                spawn "${HOME}/.local/bin/shoot --all"
 
-riverctl map normal $mod c                          spawn "${HOME}/.local/bin/wclip"
+riverctl map normal $mod c                          spawn "${HOME}/.local/bin/clip"
 riverctl map normal $mod a                          spawn "${HOME}/.local/bin/address"
 riverctl map normal ${mod}+Shift a                  spawn "${HOME}/.local/bin/address --record"
 riverctl map normal ${mod}+Control a                spawn "${HOME}/.local/bin/address --multi"

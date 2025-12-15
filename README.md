@@ -67,10 +67,10 @@ spyware when I can.
 ## My scripts for window managers and etc
 - Statusbar:                [damblocks](./.local/bin/damblocks)
 - Screenshot:               [shoot](./.local/bin/shoot)
-- Screen/Voice Recorder:    [wcast](./.local/bin/wcast), [wvoice](./.local/bin/wvoice)
+- Screen/Voice Recorder:    [capture](./.local/bin/capture), [record](./.local/bin/record)
 - Brightness Control:       [bright](./.local/bin/bright)
 - Speaker/Mic Volume:       [audio](./.local/bin/audio)
-- Speaker Chooser:          [wsink](./.local/bin/wsink)
+- Speaker Chooser:          [speaker](./.local/bin/speaker)
 - Bookmark/Addressbook:     [address](./.local/bin/address)
 - Disk Mounting:            [amount](./.local/bin/amount), [flocks](./.local/bin/flocks), [poff](./.local/bin/poff)
 - File Previwer:            [rifle](./.local/bin/scope)

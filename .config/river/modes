@@ -6,8 +6,8 @@
 mod=Mod4
 
 fcitx="[p]inyin [a]nthy"
-wmenu="[w[w]iki w[h]eart w[b]ook [a]mount [f]locks [p]off w[s]ink w[j]doc w[e]moji"
-dunst="clip[h]ist-wipe [l]supdates d[w] w[c]al ls[m]us"
+wmenu="[w]iki [h]eart [b]ooks [a]mount [f]locks [p]off [s]peaker [j]doc [e]moji"
+dunst="clip[h]ist-wipe [l]supdates d[w] d[c]al ls[m]us"
 wlrctl="[hjkl]cursors [,]left [.]right [m]iddle ^[hjkl]arrows"
 
 # resize #######################################################################
@@ -51,15 +51,15 @@ riverctl map "$wmenu" $mod w      enter-mode normal
 riverctl map "$wmenu" None space  enter-mode normal
 riverctl map "$wmenu" None Escape enter-mode normal
 
-riverctl map "$wmenu" None w spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wwiki"
-riverctl map "$wmenu" None h spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wheart"
-riverctl map "$wmenu" None b spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wbook"
+riverctl map "$wmenu" None w spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wiki"
+riverctl map "$wmenu" None h spawn "riverctl enter-mode normal && ${HOME}/.local/bin/heart"
+riverctl map "$wmenu" None b spawn "riverctl enter-mode normal && ${HOME}/.local/bin/books"
 riverctl map "$wmenu" None a spawn "riverctl enter-mode normal && ${HOME}/.local/bin/amount"
 riverctl map "$wmenu" None f spawn "riverctl enter-mode normal && ${HOME}/.local/bin/flocks"
 riverctl map "$wmenu" None p spawn "riverctl enter-mode normal && ${HOME}/.local/bin/poff"
-riverctl map "$wmenu" None s spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wsink"
-riverctl map "$wmenu" None j spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wjdoc"
-riverctl map "$wmenu" None e spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wemoji"
+riverctl map "$wmenu" None s spawn "riverctl enter-mode normal && ${HOME}/.local/bin/speaker"
+riverctl map "$wmenu" None j spawn "riverctl enter-mode normal && ${HOME}/.local/bin/jdoc"
+riverctl map "$wmenu" None e spawn "riverctl enter-mode normal && ${HOME}/.local/bin/emoji"
 
 
 # dunst ########################################################################
@@ -73,7 +73,7 @@ riverctl map "$dunst" None Escape enter-mode normal
 
 riverctl map "$dunst" None l spawn "riverctl enter-mode normal && ${HOME}/.local/bin/lsupdates"
 riverctl map "$dunst" None w spawn "riverctl enter-mode normal && ${HOME}/.local/bin/dw"
-riverctl map "$dunst" None c spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wcal"
+riverctl map "$dunst" None c spawn "riverctl enter-mode normal && ${HOME}/.local/bin/dcal"
 riverctl map "$dunst" None m spawn "riverctl enter-mode normal && ${HOME}/.local/bin/lsmus"
 riverctl map "$dunst" None h spawn "riverctl enter-mode normal && ${HOME}/.local/bin/clipwipe"
 
