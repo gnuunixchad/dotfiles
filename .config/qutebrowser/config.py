@@ -41,7 +41,7 @@ c.tabs.width = '10%'
 c.statusbar.show = "always"
 
 c.keyhint.delay = 0
-c.hints.uppercase = True
+c.hints.uppercase = False
 c.hints.chars = "asdfjkl;"
 
 c.downloads.location.directory = "~/dls"
