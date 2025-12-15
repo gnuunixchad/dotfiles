@@ -1,9 +1,1 @@
-# vim:ft=gitconfig
-# git/proxy.inc
-# @author nate zhou
-# @since 2023,2024,2025
-
-[http]
-    #proxy = 127.0.0.1:PORT
-[https]
-    #proxy = 127.0.0.1:PORT
+../proxy/git/proxy.inc.example

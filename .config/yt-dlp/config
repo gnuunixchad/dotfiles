@@ -3,6 +3,8 @@
 # @author nate zhou
 # @since 2025
 
+--config-locations ~/.config/yt-dlp/proxy.conf
+
 --cookies-from-browser chromium:~/.local/share/qutebrowser/
 
 --embed-metadata

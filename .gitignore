@@ -212,7 +212,17 @@ package-list
 !.config/pipewire/
 !.config/pipewire/pipewire.conf.d/
 !.config/pipewire/pipewire.conf.d/99-input-denoising.conf
-!.config/qt5ct/
+!.config/proxy/
+!.config/proxy/git/
+!.config/proxy/git/proxy.inc.example
+!.config/proxy/newsboat/
+!.config/proxy/newsboat/proxy.conf.example
+!.config/proxy/qutebrowser/
+!.config/proxy/qutebrowser/proxy.py.example
+!.config/proxy/ssh/
+!.config/proxy/ssh/proxy.conf.example
+!.config/proxy/yt-dlp/
+!.config/proxy/yt-dlp/proxy.conf.example
 !.config/qt5ct/qt5ct.conf
 !.config/qt6ct/
 !.config/qt6ct/qt6ct.conf
@@ -256,6 +266,7 @@ package-list
 !.config/wob/wob.ini
 !.config/yt-dlp/
 !.config/yt-dlp/config
+!.config/yt-dlp/proxy.conf.example
 !.config/zathura/
 !.config/zathura/zathurarc
 !.config/zathura/bindings.rc

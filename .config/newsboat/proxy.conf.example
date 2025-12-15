@@ -1,7 +1,1 @@
-# vim:ft=conf
-# @author nate zhou
-# @since 2023,2024,2025
-# newsboat/proxy.conf
-
-use-proxy no
-#proxy localhost:PORT
+../proxy/newsboat/proxy.conf.example
