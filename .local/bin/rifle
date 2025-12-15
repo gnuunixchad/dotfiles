@@ -3,7 +3,7 @@
 # @since 2025
 # file opener ported from my [lf](../../.config/lf/rifle)
 
-file="$1"
+f="$1"
 
 print_err() {
     local RED='\033[0;31m'
@@ -11,48 +11,69 @@ print_err() {
     printf ${RED}"${1}"${RESET}\\n
 }
 
-[ -z "$1" ] && print_err "No file specified." && exit 1
-
-case $(file --mime-type -Lb $file) in
+[ -z "$1" ] && print_err "No f specified." && exit 1
+case $(file --mime-type -Lb $f) in
     image/x-xcf)
-        gimp "$file"
+        gimp "$f"
         ;;
     image/*)
         [ "$XDG_SESSION_TYPE" = "tty" ] \
-            && mpv --loop "$file" \
-            || swayimg "$file"
+            && mpv --loop "$f" \
+            || swayimg "$f"
         ;;
     video/*)
-        mpv --loop "$file"
+        mpv --loop "$f"
         ;;
     audio/*)
         [ "$XDG_SESSION_TYPE" != "tty" ] && term="footclient"
-        "$term" mpv --loop "$file"
+        "$term" mpv --loop "$f"
         ;;
     */pdf|*/epub*)
-        zathura "$file"
+        if [ "$XDG_SESSION_TYPE" != "tty" ]; then
+            zathura "$f"
+        else
+            epr "$f"
+        fi
         ;;
 	application/*opendocument*|*officedocument*)
-        libreoffice "$file"
+        libreoffice "$f"
+        ;;
+    application/octet-stream)
+        ${HOME}/.local/bin/gpg-rifle "$f"
+        ;;
+    text/troff)
+        man -l "$f"
         ;;
     text/html)
         case "$f" in
             *.md)
-                $EDITOR "$file"
+                $EDITOR "$f"
                 ;;
             *)
-                [ "$XDG_SESSION_TYPE" != "tty" ] && $BROWSER "$file" || w3m "$file"
+                [ "$XDG_SESSION_TYPE" != "tty" ] && $BROWSER "$f" \
+                    || w3m "$f"
                 ;;
         esac
         ;;
-    text/*|*/json|inode/x-empty|application/javascript)
-        $EDITOR "$file"
+    text/*|*/json|inode/x-empty|application/javascript|application/mbox|application/pgp-signature|application/pgp-keys)
+        $EDITOR "$f"
         ;;
     application/*)
-        ${HOME}/.local/bin/scope "$file"
+        case "$f" in
+            *.epub)
+                if [ "$XDG_SESSION_TYPE" != "tty" ]; then
+                    zathura "$f"
+                else
+                    epr "$f"
+                fi
+                ;;
+            *)
+                ${HOME}/.local/bin/scope "$f"
+                ;;
+        esac
         ;;
     *)
         print_err "[$(basename $0)]: file type not supported."
-        file --mime-type "$file"
+        file --mime-type "$f"
         ;;
 esac
