@@ -47,6 +47,8 @@ config.bind('ca', 'download-cancel')
 
 config.bind('eu', 'edit-url')
 
+config.bind('<Ctrl-j>', 'tab-move +')
+config.bind('<Ctrl-k>', 'tab-move -')
 config.bind('tg', 'tab-focus 1')
 config.bind('tG', 'tab-focus -1')
 
