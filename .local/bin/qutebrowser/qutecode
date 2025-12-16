@@ -1,0 +1,11 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# qutecode - qutebrowser userscript to generate QRCode for current tab, to
+# quickly share a link in real life.
+# @depends qrtool swayimg
+
+# usage:
+# config.bind('xq', 'spawn --userscript qutecode')
+
+qrtool encode "$QUTE_URL" | swayimg --class=Floating_IMG -
