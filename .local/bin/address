@@ -41,10 +41,16 @@ openInQutebrowser() {
     [ -z "$url" ] || qutebrowser --target auto "$url"
 }
 
+openInQutebrowserRecord() {
+    url="$(getAddressRecord)"
+    [ -z "$url" ] || qutebrowser --target auto "$url"
+}
+
 case "$1" in
     -e|--edit) editAddress ;;
     -r|--record) getAddressRecord | wl-copy ;;
     -m|--multi) getAddressMulti | wl-copy ;;
     -q|--qutebrowser) openInQutebrowser ;;
+    -Q|--qutebrowserRecord) openInQutebrowserRecord ;;
     *) getAddress | wl-copy ;;
 esac
