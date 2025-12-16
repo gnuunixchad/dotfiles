@@ -240,6 +240,7 @@ package-list
 !.config/river/bindings
 !.config/river/init
 !.config/river/modes
+!.config/river/rules
 !.config/river/rivertile
 !.config/river/rivercarro
 !.config/swayidle/

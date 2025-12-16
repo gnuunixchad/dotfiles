@@ -7,6 +7,7 @@
 . $HOME/.config/river/autostart
 . $HOME/.config/river/bindings
 . $HOME/.config/river/modes
+. $HOME/.config/river/rules
 
 # remap key
 #riverctl keyboard-layout-file "$HOME/.config/layout.xkb"
@@ -28,18 +29,6 @@ done
 riverctl border-color-focused 0x427b58ff
 riverctl border-color-unfocused 0x000000ff
 riverctl border-width 2
-
-# window rules
-riverctl rule-add -app-id "*" ssd   # fix border for every window
-riverctl rule-add -title "Floating_Term" float
-riverctl rule-add -title "Floating_Term" dimensions 1200 800
-riverctl rule-add -app-id "Floating_IMG" float
-riverctl rule-add -app-id "Floating_IMG" dimensions 1200 800
-riverctl rule-add -app-id "file-*" float # GIMP file import/export
-riverctl rule-add -app-id "script-fu" float # GIMP gegl operations
-riverctl rule-add -app-id "lighting" -title "Lighting Effects" float # GIMP
-riverctl rule-add -app-id "kdenlive" float # kdenlive file chooser
-riverctl rule-add -app-id "electron" -title "Open Folder" float #code-oss
 
 # tags
 for i in $(seq 1 9)
