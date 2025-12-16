@@ -38,7 +38,7 @@ getAddressMulti() {
 
 openInQutebrowser() {
     url="$(getAddress)"
-    qutebrowser --target auto "$url"
+    [ -z "$url" ] || qutebrowser --target auto "$url"
 }
 
 case "$1" in
