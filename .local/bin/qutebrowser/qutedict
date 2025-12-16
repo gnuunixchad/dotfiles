@@ -1,0 +1,27 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# qutedict - search the word currently selected in qutebrowser with dictd
+# @depends dictd (and a dictionary database)
+
+# usage:
+# config.bind('xd', 'spawn --userscript qutedict')
+
+# > [!Note]
+# > 1. `dict` outputs to STDERR when there's no exact matched word, which can
+#       be useful(`2>&1` also avoids a confusing empty terminial).
+# > 2. Avoid piping dict's output to less directly which results in a fronzen
+# >    terminial, which is not scrollable nor searchable.
+
+DICT_TEMP=${XDG_RUNTIME_DIR}/qutebrowser/qutedict
+TERM="footclient -T Floating_Term"
+
+# remove spaces around word
+#DICT_WORD="$(echo $QUTE_SELECTED_TEXT | sed 's/^ *//; s/ *$//; s/ \{1,\}/ /g')"
+#/usr/bin/dict "$DICT_WORD" > "$DICT_TEMP" 2>&1
+
+# or just don't quote:
+/usr/bin/dict $QUTE_SELECTED_TEXT > "$DICT_TEMP" 2>&1
+
+$TERM /usr/bin/less "$DICT_TEMP"
+

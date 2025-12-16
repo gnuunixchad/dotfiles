@@ -83,6 +83,7 @@ package-list
 !.local/
 !.local/bin
 !.local/bin/*
+!.local/bin/qutebrowser/*
 !.local/share/
 !.local/share/address
 !.local/share/address/address.example
@@ -231,6 +232,7 @@ package-list
 !.config/qutebrowser/proxy.py.example
 !.config/qutebrowser/colors.py
 !.config/qutebrowser/bindings.py
+!.config/qutebrowser/userscripts
 !.config/qutebrowser/greasemonkey/
 !.config/qutebrowser/greasemonkey/yt-ads.js
 !.config/river/
