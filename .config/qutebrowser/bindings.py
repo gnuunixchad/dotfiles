@@ -15,14 +15,16 @@ config.bind('<Ctrl-Shift-v>', 'mode-enter passthrough')
 # normal mode
 config.bind('cs', 'config-source')
 
-config.bind('<Control-o>', 'spawn ~/.local/bin/address --qutebrowser')
+config.bind('a', 'spawn ~/.local/bin/address --qutebrowser')
+config.bind('<Shift-a>', 'spawn ~/.local/bin/address -Q')
 
 config.bind('zi', 'zoom-in')
 config.bind('zo', 'zoom-out')
 config.bind('zz', 'zoom {}'.format(c.zoom.default))
 
-config.bind('a', 'config-cycle tabs.show always never')
-config.bind('A', 'config-cycle tabs.width 20% 10%')
+config.bind('.', 'config-cycle tabs.show always never')
+config.bind(',', 'config-cycle tabs.width 20% 10%')
+
 config.bind('b', 'config-cycle statusbar.show always never')
 
 config.bind('m', 'tab-mute')
