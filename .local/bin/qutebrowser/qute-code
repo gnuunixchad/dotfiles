@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2025
-# qutecode - qutebrowser userscript to generate QRCode for current tab, to
+# qute-code - qutebrowser userscript to generate QRCode for current tab, to
 # quickly share a link in real life.
 # @depends qrtool swayimg
 

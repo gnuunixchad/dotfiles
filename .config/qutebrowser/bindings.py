@@ -18,8 +18,8 @@ config.bind('cs', 'config-source')
 config.bind('a', 'spawn ~/.local/bin/address --qutebrowser')
 config.bind('<Shift-a>', 'spawn ~/.local/bin/address -Q')
 
-config.bind('xd', 'spawn --userscript qutedict')
-config.bind('xq', 'spawn --userscript qutecode')
+config.bind('xd', 'spawn --userscript qute-dict')
+config.bind('xq', 'spawn --userscript qute-code')
 
 config.bind('zi', 'zoom-in')
 config.bind('zo', 'zoom-out')
