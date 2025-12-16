@@ -32,6 +32,7 @@ c.fonts.default_size = '14pt' # UI
 c.fonts.hints = 'normal 14pt SourceCodePro'
 c.fonts.tabs.selected = '12pt default_family'
 c.fonts.tabs.unselected = '12pt default_family'
+c.fonts.statusbar = '14.5pt default_family'
 
 c.tabs.show = "always"
 c.tabs.position = "left"
