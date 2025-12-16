@@ -15,6 +15,8 @@ config.bind('<Ctrl-Shift-v>', 'mode-enter passthrough')
 # normal mode
 config.bind('cs', 'config-source')
 
+config.bind('<Control-o>', 'spawn ~/.local/bin/address --qutebrowser')
+
 config.bind('zi', 'zoom-in')
 config.bind('zo', 'zoom-out')
 config.bind('zz', 'zoom {}'.format(c.zoom.default))
