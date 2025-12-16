@@ -48,6 +48,8 @@ config.bind('eu', 'edit-url')
 config.bind('tg', 'tab-focus 1')
 config.bind('tG', 'tab-focus -1')
 
+config.bind('<Shift-u>', 'adblock-update')
+
 # insert mode
 config.bind('<Ctrl-e>', 'edit-text', mode='insert')
 
