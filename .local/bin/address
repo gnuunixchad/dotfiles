@@ -17,8 +17,7 @@ editAddress() {
 getAddress() {
     cat $ADDRESS_BOOK | grep -vE "^#|^[[:space:]]*$" \
         | $MENU -p "$menu_prompt " -l 6 \
-        | awk ' {sub(/[^|]*\|/, ""); print}' \
-        | wl-copy
+        | awk ' {sub(/[^|]*\|/, ""); print}'
 }
 
 # address for recording (with personal info censored)
@@ -33,13 +32,19 @@ getAddressMulti() {
     ADDRESS_BOOK="${ADDRESS_BOOK_DIR}/multi"
     menu_prompt="${menu_prompt}-multi"
     selected=$(ls "$ADDRESS_BOOK" | $MENU -p "$menu_prompt " -l 5 -i)
-    cat "${ADDRESS_BOOK}/${selected}" | wl-copy
+    cat "${ADDRESS_BOOK}/${selected}"
     exit 0
+}
+
+openInQutebrowser() {
+    url="$(getAddress)"
+    qutebrowser --target auto "$url"
 }
 
 case "$1" in
     -e|--edit) editAddress ;;
-    -r|--record) getAddressRecord ;;
-    -m|--multi) getAddressMulti ;;
-    *) getAddress ;;
+    -r|--record) getAddressRecord | wl-copy ;;
+    -m|--multi) getAddressMulti | wl-copy ;;
+    -q|--qutebrowser) openInQutebrowser ;;
+    *) getAddress | wl-copy ;;
 esac
