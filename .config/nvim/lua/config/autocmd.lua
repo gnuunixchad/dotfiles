@@ -1,5 +1,6 @@
 -- vim:ft=lua
--- nvim/lua/config/autocmd.lua @author nate zhou
+-- nvim/lua/config/autocmd.lua
+-- @author nate zhou
 -- @since 2025
 
 -- Disable auto comment on new line
