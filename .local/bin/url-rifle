@@ -3,9 +3,12 @@
 # @since 2025
 # Execuate different open actions based on URL patterns.
 #
-# Use case in `newsboat/config`:
-# `browser "~/.local/bin/url-rifle %u"`
-# If the link is an image, preview it, other wise open the link in a browser.
+# [Usage]
+# - newsboat:
+#   `browser "~/.local/bin/url-rifle %u"`
+#
+# - qutebrowser:
+#   `config.bind('xl', 'hint links userscript qute-rifle')`
 
 url="$1"
 
@@ -37,7 +40,7 @@ case "$url" in
             w3m "$url"
         else
             notify-send -u low -t 1100 "$(basename $0)" "Open in browser:\n $url"
-            qutebrowser --target window --set tabs.show never "$url" &
+            qutebrowser --target auto --set tabs.show never "$url" &
         fi
         ;;
 esac

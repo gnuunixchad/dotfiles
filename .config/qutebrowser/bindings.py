@@ -20,6 +20,7 @@ config.bind('<Shift-a>', 'spawn ~/.local/bin/address -Q')
 
 config.bind('xd', 'spawn --userscript qute-dict')
 config.bind('xq', 'spawn --userscript qute-code')
+config.bind('xr', 'hint links userscript qute-rifle')
 
 config.bind('zi', 'zoom-in')
 config.bind('zo', 'zoom-out')
