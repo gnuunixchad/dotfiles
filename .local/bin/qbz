@@ -3,9 +3,13 @@
 # @since 2025
 # launch qutebrowser with alt profile in dynamic menu
 
+COLOR1='#1144aa'
+
 BASEDIR="${HOME}/.cache/qutebrowser-basedir"
 CONFIGDIR="${HOME}/.config/qutebrowser"
 
 /usr/bin/qutebrowser \
     --basedir "${BASEDIR}/qbz/" \
-    --config-py "${CONFIGDIR}/config.py"
+    --config-py "${CONFIGDIR}/config.py" \
+    --set colors.statusbar.normal.bg  $COLOR1 \
+    --set colors.completion.category.bg $COLOR1
