@@ -4,4 +4,6 @@
 # wayland clipboard manager
 # @depends wmenu wl-copy cliphist
 
-cliphist list | wmenu-color -p "[$(basename $0)] " -l 6 | cliphist decode | wl-copy
+cliphist list | wmenu-color -p "[$(basename $0)] " -l 6 \
+              | cliphist decode \
+              | wl-copy

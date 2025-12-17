@@ -6,8 +6,6 @@
 # fix it by copy the movflags of the orgianl file
 # ffmpeg -i output.mp4 -c copy -movflags faststart new_output.mp4
 
-source ${HOME}/.local/bin/wmenu-color 2>/dev/null
-
 usage() {
     cat << _EOF_
 USAGE
@@ -20,4 +18,6 @@ gpg_passphrase=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase: ")
 
 [ -z "$gpg_passphrase" ] && exit 1
 
-echo "$gpg_passphrase" | gpg  --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | mpv - --loop --no-resume-playback
+echo "$gpg_passphrase" \
+    | gpg  --no-symkey-cache --batch --passphrase-fd 0 -d "$1" \
+    | mpv - --loop --no-resume-playback

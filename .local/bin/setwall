@@ -8,5 +8,5 @@
 pgrep -x "mpvpaper" > /dev/null && killall -e "mpvpaper"
 
 killall swaybg
-pgrep -x river>/dev/null && riverctl spawn "swaybg -i $HOME/.local/share/wallpaper -m fill"
-pgrep -x sway >/dev/null  && swaymsg "output * bg ~/.local/share/wallpaper fill"
+pgrep -x river>/dev/null \
+    && riverctl spawn "swaybg -i $HOME/.local/share/wallpaper -m fill"

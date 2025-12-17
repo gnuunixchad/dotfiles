@@ -12,7 +12,8 @@ if [ $(mpc status '%state%') != "playing" ]; then
     icon="󰝛"
 fi
 
-msg=$(mpc --format="$ARTIST %artist%\n$TITLE %title%\n$ALBUM %album% (%date%)" current)
+msg=$(mpc --format="$ARTIST %artist%\n$TITLE %title%\n$ALBUM %album% (%date%)" \
+          current)
 state="[$icon $(mpc status %state%)]"
 
 if [ -n "$msg" ]; then

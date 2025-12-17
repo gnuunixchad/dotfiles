@@ -8,7 +8,10 @@ NUM="$HOME/.cache/newsboat.num"
 
 update_num() {
     result="$(command newsboat -x print-unread)"
-    [[ "$result" =~ ^[0-9] ]] && echo "$result" | cut -d' ' -f1 > "$NUM" || echo "$result"
+    [[ "$result" =~ ^[0-9] ]] \
+        && echo "$result" \
+        | cut -d' ' -f1 > "$NUM" \
+        || echo "$result"
     #echo "$result" | cut -d' ' -f1 > "$NUM"
     kill -42 $(cat ${XDG_RUNTIME_DIR}/damblocks.pid);
 }

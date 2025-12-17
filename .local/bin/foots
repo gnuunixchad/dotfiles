@@ -1,5 +1,6 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
+# A bootloader for the foo terminal's server.
 
 pgrep -f "foot --server" > /dev/null || foot --server

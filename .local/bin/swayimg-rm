@@ -4,9 +4,9 @@
 # swayimg script for wmenu confirmation to remove an image
 # Shift+d = exec ~/.local/bin/swayimg-rm "%" && skip_file; reload
 
-source $HOME/.local/bin/wmenu-color 2>/dev/null
-
-user_choice="$(printf "no\nyes" | wmenu-color -p "["$(basename $0)"] rm? $(basename $@ | awk '{if(length($0) > 80) print substr($0, 1, 35) "..." substr($0, length($0)-34, 35); else print $0}')")"
+user_choice="$(printf "no\nyes" \
+            | wmenu-color -p "["$(basename $0)"] rm? $(basename $@ \
+            | awk '{if(length($0) > 80) print substr($0, 1, 35) "..." substr($0, length($0)-34, 35); else print $0}')")"
 
 if [ "$user_choice" = "yes" ]; then
     rm "$1"

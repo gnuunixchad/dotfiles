@@ -3,6 +3,6 @@
 # @since 2024,2025
 # @depend rename(debian) or perl-rename(arch)
 
-# `"$@"` instead of `$@`, to disable bash word splitting, if file name contains 
+# `"$@"` instead of `$@`, to disable bash word splitting, if file name contains
 # `'$@'` doesn't work | `$@` doesn't work
 perl-rename 's/ \[.*\]././g' "$@"

@@ -4,8 +4,6 @@
 # decrypt the gpg encrypted document file and pipe to a viewer, without writing
 # to the disk
 
-source ${HOME}/.local/bin/wmenu-color 2>/dev/null
-
 usage() {
     cat << _EOF_
 USAGE
@@ -21,9 +19,13 @@ gpg_passphrase=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase: ")
 
 case "$1" in
     *.epub.gpg|*.pdf.gpg)
-        echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | zathura -
+        echo "$gpg_passphrase" \
+            | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" \
+            | zathura -
         ;;
     *)
-        echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | less
+        echo "$gpg_passphrase" \
+            | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" \
+            | less
         ;;
 esac

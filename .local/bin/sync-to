@@ -14,7 +14,8 @@ read -p "Do you want to continue? (y/n): " choice
 
 if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
 	echo "Continuing ..."
-	rsync -avh --delete-after --progress /home/nate/{doc,mus,pic,vid,pkg} ${remote}:/home/nate;
+	rsync -avh --delete-after --progress \
+        /home/nate/{doc,mus,pic,vid,pkg} ${remote}:/home/nate;
 else
 	echo "rsync is aborted."
 	exit 0

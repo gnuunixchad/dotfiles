@@ -13,18 +13,27 @@ if [ $choice = "y" ] || [ $choice = "Y" ]; then
     pacman -Qmq | sort > "$HEART"/package-list/aur-${hostname}.list
     pacman -Qenq | sort > "$HEART"/package-list/arch-${hostname}.list
 
-    crontab -l > "$HEART"/.config/crontab.backup && echo "crontab backup done" || echo "crontab backup failed"
+    crontab -l > "$HEART"/.config/crontab.backup \
+        && echo "crontab backup done" || echo "crontab backup failed"
 
     # censor address book for screen casting
-    grep -n "##############################below-are-private##############################" $HOME/doc/heart/.local/share/address/address | cut -d: -f1 | xargs -I {} sed -n '1,{}p' $HOME/doc/heart/.local/share/address/address > $HOME/doc/heart/.local/share/address/address-record && echo "address-record updated" || echo "address-record update failed"
+    grep -n "##############################below-are-private##############################" \
+        $HOME/doc/heart/.local/share/address/address \
+        | cut -d: -f1 \
+        | xargs -I {} sed -n '1,{}p' $HOME/doc/heart/.local/share/address/address \
+        > $HOME/doc/heart/.local/share/address/address-record \
+        && echo "address-record updated" || echo "address-record update failed"
 
     # unixchad
     if [ ! -d "$DOTFILES" ]; then
         git clone "$HEART" "$DOTFILES"
     fi
-    git --git-dir $DOTFILES/.git --work-tree $DOTFILES pull && echo "heart is pulled" || echo "heart pulling failed"
+    git --git-dir $DOTFILES/.git --work-tree $DOTFILES pull \
+        && echo "heart is pulled" \
+        || echo "heart pulling failed"
     chmod 750 "$DOTFILES"
-    rsync -a --delete-after "${HEART}/.local/share/nvim/plugged" "${DOTFILES}/.local/share/nvim/"
+    rsync -a --delete-after \
+        "${HEART}/.local/share/nvim/plugged" "${DOTFILES}/.local/share/nvim/"
     rsync -a --delete-after ${HEART}/package-list ${DOTFILES}/
 else
     echo "aborted"

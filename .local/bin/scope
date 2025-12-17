@@ -11,7 +11,13 @@ show_img(){
     if [ -n "$FZF_LEVEL" ] || [ -n "$NVIM" ] || [ -n "$DVTM" ]; then
         catimg -t -w 80 "$1" # use catimg when running with `fzf` & `lf.vim`
     elif [ "$XDG_SESSION_TYPE" != "tty" ]; then
-        /usr/bin/chafa -f sixel -s "$2x$3" --animate off --polite on -t 1 --bg '#111111' "$1"
+        /usr/bin/chafa -f sixel\
+                       -s "$2x$3" \
+                       --animate off \
+                       --polite on \
+                       -t 1 \
+                       --bg '#111111' \
+                       "$1"
     else
         # catimg is faster than chafa for ANSI
         catimg -t -w "$2" "$1"
@@ -24,30 +30,38 @@ case "$(file -Lb --mime-type -- "$1")" in
         # create a cache for every file, if 2 files have the same
         # size+name+last_modified_date, it has the same hash
         # `shasum` is faster than other `sha*sum`
-        CACHE="$HOME/.cache/lf/$(stat --printf '%s%n%Y' "$(readlink -f "$1")" | shasum | cut -d' ' -f1)"
-        [ -f "${CACHE}.jpg" ] || convert "$1" -flatten -quality 50 "${CACHE}.jpg"
+        CACHE="$HOME/.cache/lf/$(stat --printf '%s%n%Y' "$(readlink -f "$1")" \
+                               | shasum | cut -d' ' -f1)"
+        [ -f "${CACHE}.jpg" ] || convert "$1" -flatten \
+                                              -quality 50 "${CACHE}.jpg"
         show_img "${CACHE}.jpg" "$2" "$3"
         ;;
     image/*)
         show_img "$1" "$2" "$3"
         ;;
     video/*)
-        CACHE="$HOME/.cache/lf/$(stat --printf '%s%n%Y' "$(readlink -f "$1")" | shasum | cut -d' ' -f1)"
-        [ -f "${CACHE}.jpg" ] || /usr/bin/ffmpegthumbnailer -i "$1" -s 480 -q 5 -o "${CACHE}.jpg"
+        CACHE="$HOME/.cache/lf/$(stat --printf '%s%n%Y' "$(readlink -f "$1")" \
+                               | shasum | cut -d' ' -f1)"
+        [ -f "${CACHE}.jpg" ] \
+            || /usr/bin/ffmpegthumbnailer -i "$1" -s 480 -q 5 -o "${CACHE}.jpg"
         show_img "${CACHE}.jpg" "$2" "$3"
         ;;
     audio/*)
         mid3v2 -l "$1"
         ;;
     application/epub+zip)
-        CACHE="$HOME/.cache/lf/$(stat --printf '%s%n%Y' "$(readlink -f "$1")" | shasum | cut -d' ' -f1)"
-        [ -f "${CACHE}.png" ] || /usr/bin/gnome-epub-thumbnailer "$1" "$CACHE".png
+        CACHE="$HOME/.cache/lf/$(stat --printf '%s%n%Y' "$(readlink -f "$1")" \
+                               | shasum | cut -d' ' -f1)"
+        [ -f "${CACHE}.png" ] \
+            || /usr/bin/gnome-epub-thumbnailer "$1" "$CACHE".png
         show_img "$CACHE".png "$2" "$3"
         ;;
     application/pdf)
-        CACHE="$HOME/.cache/lf/$(stat --printf '%s%n%Y' "$(readlink -f "$1")" | shasum | cut -d' ' -f1)"
+        CACHE="$HOME/.cache/lf/$(stat --printf '%s%n%Y' "$(readlink -f "$1")" \
+                               | shasum | cut -d' ' -f1)"
         # `pdftoppm` already adds `.jpg` extension, don't duplicate
-        [ -f "${CACHE}.jpg" ] || /usr/bin/pdftoppm -f 1 -l 1 -singlefile -jpeg "$1" "$CACHE"
+        [ -f "${CACHE}.jpg" ] \
+            || /usr/bin/pdftoppm -f 1 -l 1 -singlefile -jpeg "$1" "$CACHE"
         show_img "$CACHE".jpg "$2" "$3"
         ;;
     application/zip|application/vnd.android.package-archive)

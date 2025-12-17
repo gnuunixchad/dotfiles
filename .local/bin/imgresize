@@ -21,4 +21,9 @@ fi
 
 [ "$#" -eq 2 ] && size="$2"
 
-convert "$1" -resize "$size" -background black -quality 100% -gravity center -extent ${size} "new-$1"
+convert "$1" -resize "$size" \
+             -background black \
+             -quality 100% \
+             -gravity center \
+             -extent ${size} \
+             "new-$1"

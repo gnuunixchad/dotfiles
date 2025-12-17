@@ -11,12 +11,13 @@ echo "Usage: $(basename "$0") FILE"
 echo "Then enter the first and last x seconds to be trim"
 
 # get audio duration in miliseconds instead of mediainfo's default in minutes
-# put $1 inside quotation marks so the special characters in the filename wouldn't be meaningful to bash
+# put $1 inside quotation marks so the special characters in the filename
+# wouldn't be meaningful to bash
 ls "$1"
 duration=$(mediainfo --Inform="Audio;%Duration%" "$1")
 
-# bash arithmetic cannot handle floating numbers, and dot ('.') is an operator (source)
-# round the zeros 1234.000000 -> 1234
+# bash arithmetic cannot handle floating numbers, and dot ('.') is an operator
+# (source) round the zeros 1234.000000 -> 1234
 duration=$(printf "%.0f" "$duration")
 echo $duration
 
@@ -26,4 +27,9 @@ read -p "Head to trim (in seconds), 0 to ignore: " headseconds
 read -p "Tail to trim (in seconds), 0 to ignore: " tailseconds
 
 # use bash arithmetic expansion to get second
-ffmpeg -ss $headseconds -to $(( $duration / 1000 - $tailseconds)) -i "$1" -c copy -movflags faststart "m_$1"
+ffmpeg -ss $headseconds \
+       -to $(( $duration / 1000 - $tailseconds)) \
+       -i "$1" \
+       -c copy \
+       -movflags faststart \
+       "m_$1"

@@ -1,14 +1,16 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2025
-# encrypt the file with symmetric cipher, using wmenu for input and examine
-# the passphrase for prompting the 2nd input
-
-source $HOME/.local/bin/wmenu-color 2>/dev/null
+# gpg-cipher - encrypt the file with symmetric cipher, using wmenu for input
+# and examine the passphrase for prompting the 2nd input
 
 CIPHER_ALGO=aes256
 usage() {
-    echo -e "usage:\t$(basename "$0") file\n\tencrypt files with symmetric cipher $CIPHER_ALGO using wmenu for input"
+    cat << _EOF_
+USAGE
+        $(basename "$0") FILE
+        encrypt files with symmetric cipher $CIPHER_ALGO using wmenu for input
+_EOF_
 }
 
 # print help menu if no arguments is provided
@@ -25,15 +27,24 @@ if  [ -z "$gpg_passphrase1" ]; then
     notify-send -r 1284 -u low "$(basename $0):" "Aborted for empty passphrase "
     exit 1
 fi
-gpg_passphrase2=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase again ")
+gpg_passphrase2=$(echo "" \
+                | wmenu-color -P -p "[$(basename $0)] passphrase again ")
 if [ "$gpg_passphrase1" != "$gpg_passphrase2" ]; then
     notify-send -r 1284 -u low "inputs are not identical!"
     exit 1
 fi
 
-echo "$gpg_passphrase1" | gpg --no-symkey-cache --batch --passphrase-fd 0 -c --cipher-algo "$CIPHER_ALGO" "$1" && msg="encryption done" || msg="encryption failed"
+echo "$gpg_passphrase1" \
+    | gpg --no-symkey-cache \
+          --batch --passphrase-fd 0 \
+          -c \
+          --cipher-algo "$CIPHER_ALGO" \
+          "$1" \
+    && msg="encryption done" \
+    || msg="encryption failed"
 
-[ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -u low -r 1284 "$(basename $0)" "$msg"
+[ "$XDG_SESSION_TYPE" != "tty" ] \
+    && notify-send -u low -r 1284 "$(basename $0)" "$msg"
 
 # clean cached passphrase
 #gpg-connect-agent reloadagent /bye > /dev/null

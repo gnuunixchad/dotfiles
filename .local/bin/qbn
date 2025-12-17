@@ -1,6 +1,7 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2025
+# dynamic menu alias
 # launch qutebrowser with alt profile in dynamic menu
 
 COLOR1='#005577'

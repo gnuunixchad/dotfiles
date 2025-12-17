@@ -4,9 +4,9 @@
 # swayimg script to rotate image with input degree via wmenu
 # Shift+r = exec ~/.local/bin/swayimg-rotate "%"; reload
 
-source $HOME/.local/bin/wmenu-color 2>/dev/null
 
-user_input="$(wmenu-color -p "["$(basename $0)"] Rotate degree: $(basename $@ | awk '{if(length($0) > 80) print substr($0, 1, 35) "..." substr($0, length($0)-34, 35); else print $0}')")"
+user_input="$(wmenu-color -p "["$(basename $0)"] Rotate degree: $(basename $@ \
+            | awk '{if(length($0) > 80) print substr($0, 1, 35) "..." substr($0, length($0)-34, 35); else print $0}')")"
 
 if [ -n "$user_input" ]; then
     convert -rotate "$user_input" "$1" "$1"

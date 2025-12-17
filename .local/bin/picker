@@ -15,7 +15,9 @@ if [ "$WLR_NO_HARDWARE_CURSORS" = "1" ]; then
     exit 1
 fi
 
-color=$(grim -g "$(slurp -p)" -t ppm - | magick - -format '%[pixel:p{0,0}]' txt:- | cut -d' ' -f4-)
+color=$(grim -g "$(slurp -p)" -t ppm - \
+      | magick - -format '%[pixel:p{0,0}]' txt:- \
+      | cut -d' ' -f4-)
 
 notify-send -u low -r 3581 "$(basename $0)" "$color"
 

@@ -3,7 +3,11 @@
 # @since 2024,2025
 # fuzzy finder piping to text editor (vim)
 
-selected_file=$(/usr/bin/fzf --reverse --color=16 --preview 'cat {}' --preview-window=65%:wrap:border-sharp: --prompt 'fvi >')
+selected_file=$(/usr/bin/fzf --reverse \
+                             --color=16 \
+                             --preview 'cat {}' \
+                             --preview-window=65%:wrap:border-sharp: \
+                             --prompt 'fvi >')
 
 if [ -n "$selected_file" ]; then
     $EDITOR "$selected_file"

@@ -2,10 +2,24 @@
 # @author nate zhou
 # @since 2025
 
-sudo rsync -a --delete-after --progress $HOME/doc/heart/{.profile,.bashrc,.stow-local-ignore} /root/heart
-sudo rsync -a --delete-after --progress $HOME/doc/heart/.config/bash/{aliases.bash,functions.bash} /root/heart/.config/bash
+sudo rsync -a --delete-after --progress \
+    $HOME/doc/heart/{.profile,.bashrc,.stow-local-ignore} \
+    /root/heart
+
+sudo rsync -a --delete-after --progress \
+    $HOME/doc/heart/.config/bash/{aliases.bash,functions.bash} \
+    /root/heart/.config/bash
+
 [ -d /root/heart/.config/shell ] || sudo mkdir -p /root/heart/.config/shell
-sudo rsync -a --delete-after --progress $HOME/doc/heart/.config/shell/{aliases.sh,functions.sh,profile.sh,teleport.sh} /root/heart/.config/shell
-sudo rsync -a --delete-after --progress $HOME/doc/heart/.config/readline /root/heart/.config
-sudo rsync -a --delete-after --progress $HOME/doc/heart/.config/{fzf,lf,vim,dircolors} /root/heart/.config
-sudo rsync -a --delete-after --progress $HOME/doc/heart/.local/bin/scope /root/heart/.config/lf/scope
+
+sudo rsync -a --delete-after --progress \
+    $HOME/doc/heart/.config/shell/{aliases.sh,functions.sh,profile.sh,teleport.sh} \
+    /root/heart/.config/shell
+
+sudo rsync -a --delete-after --progress \
+    $HOME/doc/heart/.config/{readline,fzf,lf,vim,dircolors} \
+    /root/heart/.config
+
+sudo rsync -a --delete-after --progress \
+    $HOME/doc/heart/.local/bin/scope \
+    /root/heart/.config/lf/scope

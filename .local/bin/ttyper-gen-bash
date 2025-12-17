@@ -10,7 +10,7 @@ OUTPUT="${LANG_DIR}/bash"
 [ -d "LANG_DIR"  ] || mkdir -p "$LANG_DIR"
 
 no_input() {
-    cat << _EOF_ 
+    cat << _EOF_
 input file doesn't exist: $INPUT
 generate it by running following in an interactive shell:
         compgen -b > $INPUT
@@ -36,17 +36,21 @@ gen_built_in() {
 }
 
 gen_gnu() {
-    pacman -Qlq coreutils | grep -E '/usr/bin/.+' | xargs -I {} basename {} >> "$OUTPUT"
+    pacman -Qlq coreutils | grep -E '/usr/bin/.+' \
+                          | xargs -I {} basename {} >> "$OUTPUT"
 }
 
 gen_linux() {
-    pacman -Qlq util-linux | grep -E '/usr/bin/.+' | xargs -I {} basename {} >> "$OUTPUT"
+    pacman -Qlq util-linux | grep -E '/usr/bin/.+' \
+                           | xargs -I {} basename {} >> "$OUTPUT"
 }
 
 gen_all () {
     add_symbol
     gen_built_in
-    printenv PATH | tr ':' '\n' | grep -v '/\.local/sbin' | xargs -I {} ls {} >> "${LANG_DIR}/bash"
+    printenv PATH | tr ':' '\n' \
+                  | grep -v '/\.local/sbin' \
+                  | xargs -I {} ls {} >> "${LANG_DIR}/bash"
 }
 
 usage () {

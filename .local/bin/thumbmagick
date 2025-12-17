@@ -21,7 +21,8 @@ usage() {
     cat << _EOF_
 usage: $(basename "$0") -b BG_IMAGE -1 text_line1 [OPTIONS] ...
 thumbnail creation automated using imagemagick
-known issues: width of the rectangle under text is calculated with CJK fonts (doubled width), regular ASCII characters not supported yet
+known issues: width of the rectangle under text is calculated with CJK fonts
+              (doubled width), regular ASCII characters not supported yet
 REQUIRED OPTIONS
     -b  :  background image
     -1  :  text of the first line

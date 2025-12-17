@@ -19,4 +19,5 @@ pkg_list=$(cat "$LOG_CACHE")
 msg="$pkg_count\n$pkg_list"
 
 echo "$msg"
-[ "$TERM" != "$MY_TERM" ] && [ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -u low -r 181 "lsupdates" "available updates: $msg"
+[ "$TERM" != "$MY_TERM" ] && [ "$XDG_SESSION_TYPE" != "tty" ] \
+    && notify-send -u low -r 181 "lsupdates" "available updates: $msg"

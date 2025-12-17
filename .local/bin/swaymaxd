@@ -11,12 +11,18 @@ output_count="$(swaymsg -t get_outputs -p | grep -c 'Output')"
 
 if [ "$output_count" != 1 ]; then
 
-    [ "$(swaymsg -t get_tree | jq -r '.. | select(.type? == "workspace" and .name == "-") | .nodes | length == 0')" = "false" ] || swaymsg  exec "footclient -T '_placeholder_window1' -o colors.alpha=0 -o font=SourceCodePro:size=0.1"
+    [ "$(swaymsg -t get_tree \
+        | jq -r '.. | select(.type? == "workspace" and .name == "-") | .nodes | length == 0')" = "false" ] \
+        || swaymsg  exec "footclient -T '_placeholder_window1' -o colors.alpha=0 -o font=SourceCodePro:size=0.1"
 
-    [ "$(swaymsg -t get_tree | jq -r '.. | select(.type? == "workspace" and .name == "=") | .nodes | length == 0')" = "false" ] || swaymsg  exec "footclient -T '_placeholder_window2' -o colors.alpha=0 -o font=SourceCodePro:size=0.1"
+    [ "$(swaymsg -t get_tree \
+        | jq -r '.. | select(.type? == "workspace" and .name == "=") | .nodes | length == 0')" = "false" ] \
+        || swaymsg  exec "footclient -T '_placeholder_window2' -o colors.alpha=0 -o font=SourceCodePro:size=0.1"
 
 else
 
-    [ "$(swaymsg -t get_tree | jq -r '.. | select(.type? == "workspace" and .name == "=") | .nodes | length == 0')" = "false" ] || swaymsg  exec "footclient -T '_placeholder_window2' -o colors.alpha=0 -o font=SourceCodePro:size=0.1"
+    [ "$(swaymsg -t get_tree \
+        | jq -r '.. | select(.type? == "workspace" and .name == "=") | .nodes | length == 0')" = "false" ] \
+        || swaymsg  exec "footclient -T '_placeholder_window2' -o colors.alpha=0 -o font=SourceCodePro:size=0.1"
 
 fi

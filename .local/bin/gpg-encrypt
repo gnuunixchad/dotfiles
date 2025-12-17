@@ -4,8 +4,6 @@
 # encrypt the file with pulic key, using wmenu for key selection
 # Also see `./gpg-cipher`
 
-source ${HOME}/.local/bin/wmenu-color 2>/dev/null
-
 usage() {
     cat << _EOF_
 USAGE
@@ -17,11 +15,15 @@ _EOF_
 
 [ "$#" -eq 0 ] && (usage; exit 1)
 
-gpg_pubkey=$(gpg --list-keys | sed -n 's/.*<\(.*\)>.*/\1/p' | wmenu-color -l 5 -P -p "[$(basename $0)] passphrase: ")
+gpg_pubkey=$(gpg --list-keys \
+           | sed -n 's/.*<\(.*\)>.*/\1/p' \
+           | wmenu-color -l 5 -P -p "[$(basename $0)] passphrase: ")
 
-[ -z "$gpg_pubkey" ] && ( \
+[ -z "$gpg_pubkey" ] && \
+    ( \
     notify-send -r 1285 -u low "$(basename $0):" "Aborted for null recipient"; \
-    exit 1)
+    exit 1
+    )
 
 gpg --no-symkey-cache --recipient "$gpg_pubkey" --encrypt "$1" \
     && msg="encryption done" \

@@ -5,10 +5,9 @@
 # if in wayland, using wmenu as input box
 # after reading the untar'ed files, remember to `shred -u *`
 
-source ${HOME}/.local/bin/wmenu-color 2>/dev/null
-
 if [ "$XDG_SESSION_TYPE" = "tty" ]; then
-    gpg --no-symkey-cache --pinentry-mode loopback -d "$1" | tar -xvf -  ##&& gpg-connect-agent reloadagent /bye
+    gpg --no-symkey-cache --pinentry-mode loopback -d "$1" \
+        | tar -xvf -  ##&& gpg-connect-agent reloadagent /bye
     exit 0
 fi
 
@@ -16,6 +15,13 @@ gpg_passphrase=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase: ")
 
 [ -z "$gpg_passphrase" ] && exit 1
 
-echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | tar -xvf - && msg="Done" || msg="Failed"
+echo "$gpg_passphrase" | gpg --no-symkey-cache \
+                             --batch \
+                             --passphrase-fd 0 \
+                             -d "$1" \
+                        | tar -xvf - \
+                        && msg="Done" \
+                        || msg="Failed"
 
-[ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -u normal "$(basename $0)" "$msg"
+[ "$XDG_SESSION_TYPE" != "tty" ] \
+    && notify-send -u normal "$(basename $0)" "$msg"

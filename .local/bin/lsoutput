@@ -29,5 +29,7 @@ if  [ ! -z $WAYLAND_DISPLAY ]; then
     get_name
 else
     # if not in wayland, check edid
-    find /sys/devices/ -name "edid" | awk -F '/' '{print $8}' | awk -F'-' '{ for (i=2; i<=NF; i++) { printf "%s", $i (i==NF ? RS : FS) } }'
+    find /sys/devices/ -name "edid" \
+        | awk -F '/' '{print $8}' \
+        | awk -F'-' '{ for (i=2; i<=NF; i++) { printf "%s", $i (i==NF ? RS : FS) } }'
 fi

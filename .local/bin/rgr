@@ -1,7 +1,0 @@
-#!/usr/bin/sh
-# @author nate zhou
-# @since 2025
-# calling a new ranger session inside ranger
-
-TERM_EMU="/usr/bin/footclient"
-[ -n "$RANGER_LEVEL" ] && { $TERM_EMU ranger & } || echo "not in ranger"

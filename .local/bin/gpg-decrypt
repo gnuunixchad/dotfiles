@@ -4,8 +4,6 @@
 # decrypt the .gpg file
 # if in wayland, using wmenu as input box
 
-source $HOME/.local/bin/wmenu-color 2>/dev/null
-
 fileName="$(echo "$1" | sed -E 's/.gpg$//')"
 
 # output redirection shan't overwrite an existing file

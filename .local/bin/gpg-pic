@@ -4,8 +4,6 @@
 # decrypt the gpg encrypted image file and pipe to a viewer without writing to
 # the disk
 
-source ${HOME}/.local/bin/wmenu-color 2>/dev/null
-
 usage() {
     cat << _EOF_
 USAGE
@@ -21,12 +19,18 @@ gpg_passphrase=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase: ")
 
 case "$1" in
     *.pdf.gpg)
-        echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | zathura -
+        echo "$gpg_passphrase" \
+            | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" \
+            | zathura -
         ;;
     *.gif.gpg)
-        echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | swayimg -
+        echo "$gpg_passphrase" \
+            | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" \
+            | swayimg -
         ;;
     *)
-        echo "$gpg_passphrase" | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" | mpv - --loop --no-resume-playback
+        echo "$gpg_passphrase" \
+            | gpg --no-symkey-cache --batch --passphrase-fd 0 -d "$1" \
+            | mpv - --loop --no-resume-playback
         ;;
 esac

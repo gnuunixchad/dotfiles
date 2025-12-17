@@ -1,6 +1,0 @@
-#!/usr/bin/sh
-# @author nate zhou
-# @since 2025
-# spawn a termux window in scratchpad if there isn't one already
-
-pgrep -x tmux || tmux attach || tmux

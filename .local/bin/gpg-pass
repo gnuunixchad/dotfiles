@@ -3,4 +3,6 @@
 # @since 2025
 # gpg-pass - search and decrypt gpg encrypted files
 
-${HOME}/.local/bin/gpg-doc "$(find ${HOME}/doc/.gpg/passwd -type f -name '*.gpg' | wmenu-color -l 6 -p "[$(basename $0)] choose file: ")"
+${HOME}/.local/bin/gpg-doc \
+    "$(find ${HOME}/doc/.gpg/passwd -type f -name '*.gpg' \
+    | wmenu-color -l 6 -p "[$(basename $0)] choose file: ")"

@@ -19,7 +19,10 @@ update_cache() {
 # redirect stdout to the cache file, translate newline to space
 result="$(checkupdates --nocolor )"
 if [ -n "$result" ]; then
-    checkupdates --nocolor && echo "$result" | awk '{print $1}' | tr '\n' ' ' > "$LOG_CACHE" || echo "$result" > "$ERR_CACHE"
+    checkupdates --nocolor && echo "$result" \
+        | awk '{print $1}' \
+        | tr '\n' ' ' > "$LOG_CACHE" \
+        || echo "$result" > "$ERR_CACHE"
 else
     # if no updates available, overwrite cache with empty string
     echo "" > "$LOG_CACHE"

@@ -7,7 +7,9 @@
 # 0 * * * * $HOME/.local/bin/randwall-cron
 
 WALLPAPER_PATH="$HOME/.local/share/wallpaper"
-date_last_bg="$(stat "$WALLPAPER_PATH" 2>/dev/null | grep "^Modify:" | awk '{print $2}')"
+date_last_bg="$(stat "$WALLPAPER_PATH" 2>/dev/null \
+              | grep "^Modify:" \
+              | awk '{print $2}')"
 date_today="$(date -I)"
 
 # don't do anything if mpvpaper is running

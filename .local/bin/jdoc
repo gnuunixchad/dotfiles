@@ -3,8 +3,6 @@
 # @since 2025
 # search openjdk-doc package's files in wmenu and open in BROWSER
 
-source $HOME/.local/bin/wmenu-color 2>/dev/null
-
 DOC_PATH_SHARE="/usr/share/doc/java-openjdk"
 DOC_PATH_LOCAL="$HOME/doc/java-openjdk/"
 
@@ -15,11 +13,15 @@ else
 fi
 
 if [ "$XDG_SESSION_TYPE" != "tty" ]; then
-    selected_page="$(find "$DOC_PATH" -type f | wmenu-color -l 6 -i -p "$(basename "$0"): ")"
+    selected_page="$(find "$DOC_PATH" -type f \
+        | wmenu-color -l 6 -i -p "$(basename "$0"): ")"
     # don't do anything if exiting wmenu without any input
     [ -n "$selected_page" ] && $BROWSER file://"$selected_page"
 else
-    selected_page="$(find "$DOC_PATH" -type f | fzf --preview 'scope {}' --bind=ctrl-j:preview-down,ctrl-k:preview-up --reverse)"
+    selected_page="$(find "$DOC_PATH" -type f \
+        | fzf --preview 'scope {}' \
+              --bind=ctrl-j:preview-down,ctrl-k:preview-up \
+              --reverse)"
     # don't do anything if exiting wmenu without any input
     [ -n "$selected_page" ] && w3m file://"$selected_page"
 fi

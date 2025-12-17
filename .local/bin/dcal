@@ -12,7 +12,8 @@ msg_summary=$(date '+%Y-%m-%d %A')
 # 2. `(^|\s)` and `(\s|$)` specify the string either be surrounded with spaces or
 #    the string is at the head/end of the line
 # 3. `\1` and `\3` retain the 1st and 3rd match, avoid adding/removing spaces
-msg_body=$(cal | tail -7 | sed -E "s,(^|\s)($date_today)(\s|$),\1<span foreground=\"$color0\" background=\"$color6\"><b><big>$date_today</big></b></span>\3,")
+msg_body=$(cal | tail -7 \
+    | sed -E "s,(^|\s)($date_today)(\s|$),\1<span foreground=\"$color0\" background=\"$color6\"><b><big>$date_today</big></b></span>\3,")
 
 # This script is also used in `./i3blocks-time`, so the replace id is "3301"
 notify-send -u low -r 3301 -t 12000 "$msg_summary" "$msg_body"

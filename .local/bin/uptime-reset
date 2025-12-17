@@ -1,8 +1,0 @@
-#!/usr/bin/sh
-# @author nate zhou
-# @since 2024,2025
-# reset uptime for uptime-cron after reboot
-
-UPTIME_CACHE="$HOME/.cache/uptime"
-rm "$UPTIME_CACHE"
-$HOME/.local/bin/uptime-cron

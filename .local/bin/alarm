@@ -5,7 +5,8 @@
 # usage: `alarm posivie_integer "description"`
 
 send_notification() {
-    notify-send -u critical -r 10 "alarm ended ($due_time)" "$alarm_description\nduration: ${minutes}m"
+    notify-send -u critical -r 10 "alarm ended ($due_time)" \
+                                  "$alarm_description\nduration: ${minutes}m"
 }
 
 # 1st arguments must be a positive integer
@@ -26,7 +27,9 @@ if [ $# -eq 2 ]; then
     due_time=$(date -d "+$minutes minutes" +%H:%M)
 
     # creating notification
-    echo "$alarm_description" | tee /dev/tty | xargs -I {} notify-send -u low -r 10 "alarm (due $due_time)" {}
+    echo "$alarm_description" \
+        | tee /dev/tty \
+        | xargs -I {} notify-send -u low -r 10 "alarm (due $due_time)" {}
 
     # ending notification
     # notify-send -r ID, same ID let the ending notification

@@ -4,8 +4,9 @@
 # updw, update dunst weather
 # @depends: libnotify, dunst, dw
 
-# use notification software like dunst to fetch weather info to a local cache which can then be dispalyed by my another script dw
-# running with dmenu/wmenu is recommended
+# use notification software like dunst to fetch weather info to a local cache
+# which can then be dispalyed by my another script dw running with dmenu/wmenu
+# is recommended
 
 WTTR_CACHE="$HOME/.cache/wttr"
 #WTTR_CACHE2="$HOME/.cache/wttr2"

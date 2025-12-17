@@ -4,15 +4,14 @@
 # Decrypt the gpg encrypted file and pipe to a viewer without writting to disk.
 # @TODO: fix piping to mpv in tty
 
-source ${HOME}/.local/bin/wmenu-color 2>/dev/null
-
 file="$1"
 
 usage() {
 cat << _EOF_
 DESCRIPTIOIN
-        Decrypt the gpg encrypted file and pipe to a viewer without writting to disk.
-        Which viewer will be passed to depends totally on the file extension, e.g. `webm.gpg` will be viewed with mpv.
+        Decrypt the gpg encrypted file and pipe to a viewer without writting to
+        disk. Which viewer will be passed to depends totally on the file
+        extension, e.g. `webm.gpg` will be viewed with mpv.
 USAGE
         $(basename "$0") FILE
 _EOF_

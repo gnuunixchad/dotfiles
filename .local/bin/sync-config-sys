@@ -8,7 +8,11 @@ dotfiles="$HOME/doc/unixchad/dotfiles"
 read -p "Continue? (y/n): " choice
 if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
 
-    rsync -pvh --progress -R /boot/loader/{entries/*,loader.conf} /etc/{mkinitcpio.conf,firejail/firecfg.config,samba/smb.conf,ssh/sshd_config,systemd/{logind.conf,sleep.conf},tlp.conf,vconsole.conf,libvirt/network.conf,ufw/{user.rules,user6.rules},pacman.conf,pacman.d/{mirrorlist,hooks/*},xdg/reflector/reflector.conf} /usr/local/share/kbd/keymaps/us-custom.map.gz "$heart"/
+    rsync -pvh --progress -R \
+        /boot/loader/{entries/*,loader.conf} \
+        /etc/{mkinitcpio.conf,firejail/firecfg.config,samba/smb.conf,ssh/sshd_config,systemd/{logind.conf,sleep.conf},tlp.conf,vconsole.conf,libvirt/network.conf,ufw/{user.rules,user6.rules},pacman.conf,pacman.d/{mirrorlist,hooks/*},xdg/reflector/reflector.conf} \
+        /usr/local/share/kbd/keymaps/us-custom.map.gz \
+        "$heart"/
 
 else
     echo "aborted"

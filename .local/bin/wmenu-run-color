@@ -4,4 +4,8 @@
 
 . $HOME/.local/bin/colors.sh
 
-wmenu-run -f "SourceCodePro Medium 13" -i -N "$background" -S "$color14" -s "$foreground"
+wmenu-run -f "SourceCodePro Medium 13" \
+          -i \
+          -N "$background" \
+          -S "$color14" \
+          -s "$foreground"

@@ -42,4 +42,6 @@ done
 echo "${1} minutes passed, take a ${break_time} minute break!"
 
 # send notification in X
-notify-send -u critical -t 0 -r 2002 pomodoro "${1} minutes passed,\n take a ${break_time} minute break!"
+notify-send -u critical -t 0 -r 2002 \
+    "$(basename $0)" \
+    "${1} minutes passed,\n take a ${break_time} minute break!"

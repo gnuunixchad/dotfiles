@@ -6,4 +6,6 @@
 MENU="${HOME}/.local/bin/wmenu-color"
 SSH_HOME="${HOME}/.ssh"
 
-ssh-add ${HOME}/.ssh/"$(ls -L $SSH_HOME | grep -ve '.conf$' -ve '.pub$' | $MENU -l 6)"
+ssh-add ${HOME}/.ssh/"$(ls -L $SSH_HOME \
+                      | grep -ve '.conf$' -ve '.pub$' \
+                      | $MENU -l 6)"

@@ -9,7 +9,8 @@ printf "\033[1;32mpacman -Rns $(pacman -Qdtq)\033[0m\n"
 if [ -n "$orphan_pkg" ]; then
     echo "$orphan_pkg"
     read -p "remove these packages? (y/n): " choice
-    [ "$choice" = "y" ] || [ "$choice" = "Y" ] && sudo pacman -Rns $(pacman -Qdtq)
+    [ "$choice" = "y" ] || [ "$choice" = "Y" ] \
+        && sudo pacman -Rns $(pacman -Qdtq)
 else
     echo "no orphaned packags"
 fi
