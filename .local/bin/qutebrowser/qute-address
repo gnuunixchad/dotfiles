@@ -1,5 +1,5 @@
 #!/usr/bin/sh
-# qute-mark - mark/retrive/delete an URL in qutebrowser with a dynamic menu
+# qute-address - add/retrive/delete an URL in qutebrowser with a dynamic menu
 # @author nate zhou
 # @since 2025
 # @depends: wmenu, wl-clipboard, libnotify, sed, grep, coreutils
@@ -8,43 +8,43 @@
 # Pros: Having Access to qutebrowser userscripts envirablement variables.
 
 # [usage]
-# config.bind('xa', 'spawn --userscript qute-mark -a')
-# config.bind('xg', 'spawn --userscript qute-mark -g')
-# config.bind('xD', 'spawn --userscript qute-mark -d')
-# config.bind('xo', 'spawn --userscript qute-mark -o')
+# config.bind('xa', 'spawn --userscript qute-address -a')
+# config.bind('xg', 'spawn --userscript qute-address -g')
+# config.bind('xD', 'spawn --userscript qute-address -d')
+# config.bind('xo', 'spawn --userscript qute-address -o')
 
 MENU="${HOME}/.local/bin/wmenu-color"
 ADDRESS_BOOK_DIR="${HOME}/.local/share/address"
-QUTE_MARK="${ADDRESS_BOOK_DIR}/qute-mark"
+QUTE_ADDRESS="${ADDRESS_BOOK_DIR}/qute-address"
 menu_prompt="$(basename $0)"
 
 notify() {
-    notify-send -r 987 "qute-mark" "$1"
+    notify-send -r 987 "qute-address" "$1"
 }
 
 clean_up() {
-    sed -i "/^$/d" "$QUTE_MARK"
+    sed -i "/^$/d" "$QUTE_ADDRESS"
 }
 
 add_URL() {
     # don't duplicate
-    grep -q "$QUTE_URL" "$QUTE_MARK" && exit 0
+    grep -q "$QUTE_URL" "$QUTE_ADDRESS" && exit 0
 
     local menu_prompt="$menu_prompt [add]"
-    echo "$QUTE_URL" >> "$QUTE_MARK"
+    echo "$QUTE_URL" >> "$QUTE_ADDRESS"
     notify "added: $QUTE_URL"
     clean_up
 }
 
 get_URL() {
-    cat "$QUTE_MARK" | $MENU -p "$menu_prompt" -l 6
+    cat "$QUTE_ADDRESS" | $MENU -p "$menu_prompt" -l 6
 }
 
 del_URL() {
     local menu_prompt="$(basename $0) [delete]"
     local candidate="$(get_URL)"
     [ -z "$candidate" ] && exit 0
-    sed -i "\|^$candidate$|d" "$QUTE_MARK"
+    sed -i "\|^$candidate$|d" "$QUTE_ADDRESS"
     notify "deleted: $candidate"
 }
 
