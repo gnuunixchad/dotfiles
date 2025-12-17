@@ -19,5 +19,5 @@ map R rotate rotate-ccw
 map w adjust_window width
 map f adjust_window best-fit
 
-map d toggle dual page view
+map d toggle_page_mode
 map D cycle_first_column
