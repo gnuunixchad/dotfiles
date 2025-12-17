@@ -13,6 +13,9 @@ set -x
 rsync --dry-run -avh --delete-after --progress \
       --include="doc/heart/.config/Code - OSS/User/*" \
       --exclude="doc/heart/.config/Code - OSS/" \
+      --exclude="doc/heart/.config/fcitx/dbus/" \
+      --exclude="doc/heart/.config/ibus/" \
+      --exclude="doc/heart/.ssh/agent/" \
       $my_source_path $my_destination
 set +x
 
@@ -21,6 +24,9 @@ if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
     rsync -avh --delete-after --progress \
         --include="doc/heart/.config/Code - OSS/User/***" \
         --exclude="doc/heart/.config/Code - OSS/*" \
+        --exclude="doc/heart/.config/fcitx/dbus/" \
+        --exclude="doc/heart/.config/ibus/" \
+        --exclude="doc/heart/.ssh/agent/" \
         $my_source_path $my_destination
 else
     echo "aborted"
