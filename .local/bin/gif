@@ -4,11 +4,14 @@
 # record selected geometry as a gif
 # @depends slurp wf-recorder
 
-[ -d "$HOME/tmp" ] || mkdir "$HOME/tmp"
+CAPTURE_HOME="${HOME}/tmp/screencapture"
+[ -d "$CAPTURE_HOME" ] || mkdir -p $CAPTURE_HOME
 
 selected_geo="$(slurp)"
 
 [ -z "$selected_geo" ] && exit 1
 
-wf-recorder --geometry "$selected_geo" -c gif -f "${HOME}/tmp/wgif-$(date +%Y-%m-%d-%M-%S).gif"
+wf-recorder -g "$selected_geo" \
+            -c gif \
+            -f "${CAPTURE_HOME}/$(date +%Y-%m-%d-%M-%S).gif"
 
