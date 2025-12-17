@@ -1,0 +1,66 @@
+#!/usr/bin/sh
+# qute-mark - mark/retrive/delete an URL in qutebrowser with a dynamic menu
+# @author nate zhou
+# @since 2025
+# @depends: wmenu, wl-clipboard, libnotify, sed, grep, coreutils
+
+# Cons: No custom keywords for retriving like what `./../address` does.
+# Pros: Having Access to qutebrowser userscripts envirablement variables.
+
+# [usage]
+# config.bind('xa', 'spawn --userscript qute-mark -a')
+# config.bind('xg', 'spawn --userscript qute-mark -g')
+# config.bind('xD', 'spawn --userscript qute-mark -d')
+# config.bind('xo', 'spawn --userscript qute-mark -o')
+
+MENU="${HOME}/.local/bin/wmenu-color"
+ADDRESS_BOOK_DIR="${HOME}/.local/share/address"
+QUTE_MARK="${ADDRESS_BOOK_DIR}/qute-mark"
+menu_prompt="$(basename $0)"
+
+notify() {
+    notify-send -r 987 "qute-mark" "$1"
+}
+
+clean_up() {
+    sed -i "/^$/d" "$QUTE_MARK"
+}
+
+add_URL() {
+    # don't duplicate
+    grep -q "$QUTE_URL" "$QUTE_MARK" && exit 0
+
+    local menu_prompt="$menu_prompt [add]"
+    echo "$QUTE_URL" >> "$QUTE_MARK"
+    notify "added: $QUTE_URL"
+    clean_up
+}
+
+get_URL() {
+    cat "$QUTE_MARK" | $MENU -p "$menu_prompt" -l 6
+}
+
+del_URL() {
+    local menu_prompt="$(basename $0) [delete]"
+    local candidate="$(get_URL)"
+    [ -z "$candidate" ] && exit 0
+    sed -i "\|^$candidate$|d" "$QUTE_MARK"
+    notify "deleted: $candidate"
+}
+
+open_URL() {
+    local menu_prompt="$(basename $0) [open]"
+    local candidate="$(get_URL)"
+    [ -z "$candidate" ] && exit 0
+    echo "open -t $candidate" >> "$QUTE_FIFO"
+}
+
+[ "$#" -eq 1 ] || exit 0
+
+case "$1" in
+    -a|--add) add_URL ;;
+    -g|--get) get_URL | wl-copy ;;
+    -d|--del) del_URL ;;
+    -o|--open) open_URL ;;
+    -c|--clean) clean_up ;;
+esac

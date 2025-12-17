@@ -8,6 +8,7 @@
 config.unbind('<Ctrl-v>')
 config.unbind('b')
 config.unbind('m')
+config.unbind('M')
 
 # passthough mode
 config.bind('<Ctrl-Shift-v>', 'mode-enter passthrough')
@@ -21,6 +22,11 @@ config.bind('<Shift-a>', 'spawn ~/.local/bin/address -Q')
 config.bind('xd', 'spawn --userscript qute-dict')
 config.bind('xq', 'spawn --userscript qute-code')
 config.bind('xr', 'hint links userscript qute-rifle')
+
+config.bind('xa', 'spawn --userscript qute-mark -a')
+config.bind('xg', 'spawn --userscript qute-mark -g')
+config.bind('xD', 'spawn --userscript qute-mark -d')
+config.bind('xo', 'spawn --userscript qute-mark -o')
 
 config.bind('zi', 'zoom-in')
 config.bind('zo', 'zoom-out')
