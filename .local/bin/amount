@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# This script is written in bash because process substitution isn't POSIX, which
+# avoids writing passphrase to a temporary file.
 # @author nate zhou
 # @since 2024,2025
 # amount: interactively mount partitions based on selection
@@ -11,17 +13,19 @@
 selected_partition=""
 msg=""
 
-a_unlock()
+f_unlock()
 {
     if [ "$XDG_SESSION_TYPE" = "tty" ]; then
         udisksctl unlock -b "$selected_partition"
     else # use wmenu as passphrase prompt if not in tty
-       wmenu_passphrase=$(echo "" | wmenu-color -P -p "[udisksctl] passphrase for $selected_partition: ")
-       udisksctl unlock -b "$selected_partition" --key-file <(echo -n "$wmenu_passphrase")
+       wmenu_passphrase=$(echo "" \
+           | wmenu-color -P -p "[udisksctl] passphrase for $selected_partition: ")
+       udisksctl unlock -b "$selected_partition" \
+           --key-file <(echo -n "$wmenu_passphrase")
     fi
 }
 
-a_mount()
+f_mount()
 {
     udisksctl mount -b /dev/mapper/luks-"$selected_uuid"
 }
@@ -35,7 +39,9 @@ send_msg()
     fi
 }
 
-lsblk_result=$(lsblk -rpo "name,type,size,uuid,label,mountpoint,fstype" | tail -n +2 | grep -ve ' disk ' -ve SWAP -ve /boot -ve /mapper/ )
+lsblk_result=$(lsblk -rpo "name,type,size,uuid,label,mountpoint,fstype" \
+               | tail -n +2 \
+               | grep -ve ' disk ' -ve SWAP -ve /boot -ve /mapper/ )
 
 if [ "$XDG_SESSION_TYPE" != "tty" ]; then
     selected=$(echo "$lsblk_result" | wmenu-color -l 6 -p "$(basename $0): ")
@@ -50,8 +56,8 @@ echo $selected_partition
 selected_uuid=$(echo "$selected"  | awk '{print $4}')
 echo $selected_uuid
 
-if [[ $selected == *"crypto_LUKS"* ]] ; then
-    a_unlock && a_mount && send_msg
+if echo "$selected" | grep -q "crypto_LUKS" ; then
+    f_unlock && f_mount && send_msg
 else
     udisksctl mount -b "$selected_partition" && send_msg
 fi

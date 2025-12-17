@@ -3,11 +3,10 @@
 # @since 2024,2025
 # power off a block device interactively
 # @depends: wmenu, fzf, udisks2
-# @optional: amount, flocks
+# Also see amount, flocks
 
 selected_partion=""
 msg=""
-
 
 f_poff()
 {
@@ -23,7 +22,9 @@ send_msg()
     fi
 }
 
-lsblk_result=$(lsblk -rpo "name,type,size,uuid,label,mountpoint,fstype" | tail -n +2 | grep -ve ' disk ' -ve SWAP -ve /boot -ve /mapper/ )
+lsblk_result=$(lsblk -rpo "name,type,size,uuid,label,mountpoint,fstype" \
+             | tail -n +2 \
+             | grep -ve ' disk ' -ve SWAP -ve /boot -ve /mapper/ )
 
 if [ "$XDG_SESSION_TYPE" != "tty" ]; then
     selected=$(echo "$lsblk_result" | wmenu-color -p "$(basename $0): " -l 6 )

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
 # flocks: interactively unmount partitions base on selection
@@ -45,7 +45,7 @@ echo $selected_partition
 selected_uuid=$(echo "$selected"  | awk '{print $4}')
 echo $selected_uuid
 
-if [[ $selected == *"crypto_LUKS"* ]] ; then
+if echo "$selected" | grep -q "crypto_LUKS" ; then
     f_unmount && f_lock && send_msg
 else
     udisksctl unmount -b "$selected_partition" && send_msg
