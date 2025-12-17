@@ -1,0 +1,26 @@
+#!/usr/bin/sh
+# exiland - exit wayland compositors
+# @author nate zhou
+# @sincd 2025
+
+compositor="${1##*-}"
+
+menu_prompt="Exit ${compositor}? This will end your Wayland session."
+
+choice="$(printf "no\nyes" | wmenu-color -p "$menu_prompt")"
+
+[ "$#" -ne 1 ] && exit 1
+
+end_session() {
+    case "$1" in
+        -river)
+            echo river
+            riverctl exit
+            ;;
+        -dwl)
+            killall dwl
+            ;;
+    esac
+}
+
+[ "$choice" = "yes" ] && end_session "$1"

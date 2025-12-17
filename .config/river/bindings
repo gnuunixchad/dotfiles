@@ -36,7 +36,7 @@ riverctl map -repeat normal $mod bracketright       spawn "${HOME}/.local/bin/br
 riverctl map -repeat locked $mod bracketleft        spawn "${HOME}/.local/bin/bright --minus"
 riverctl map -repeat locked $mod bracketright       spawn "${HOME}/.local/bin/bright --plus"
 
-riverctl map normal ${mod}+Shift q                  spawn "${HOME}/.local/bin/exitriver"
+riverctl map normal ${mod}+Shift q                  spawn "${HOME}/.local/bin/exiland -river"
 riverctl map normal ${mod}+Shift w                  spawn "swaylock"
 riverctl map normal ${mod}+Shift e                  spawn "${HOME}/.local/bin/hibe"
 

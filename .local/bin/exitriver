@@ -1,8 +1,0 @@
-#!/usr/bin/sh
-# @author nate zhou
-# @since 2024,2025
-# exit river with a wmenu warning prompt
-
-user_choice="$(printf "no\nyes" | wmenu-color -p "Exit river? This will end your Wayland session.")"
-
-[ "$user_choice" = "yes" ] && riverctl exit || exit 0

@@ -1,8 +1,0 @@
-#!/usr/bin/sh
-# @author nate zhou
-# @since 2025
-# exit dwl with a wmenu warning prompt
-
-user_choice="$(printf "no\nyes" | wmenu-color -p "Exit dwl? This will end your Wayland session.")"
-
-[ "$user_choice" = "yes" ] && killall dwl || exit 0
