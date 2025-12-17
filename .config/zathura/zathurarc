@@ -18,6 +18,9 @@ set statusbar-home-tilde true
 set statusbar-page-percent true
 set statusbar-basename
 
+set vertical-center true
+set zoom-center true
+
 set page-v-padding 1
 set page-h-padding 1
 
