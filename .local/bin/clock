@@ -1,15 +1,22 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2025
 # tty clock displaying seconds without flickering
 
+#!/usr/bin/env /bash
+#while :; do
+#    current_time=$(date +%T)
+#    # bash: echo -n     do not append a newline
+#    #            -e     enable backslash escapes
+#    # ANSI: \033[K      clear from cursor to the end of line
+#    # echo -ne \r       -n makes carriage return move cursor to the beginning
+#    #                   of the line
+#    echo -ne "$current_time\033[K\r"
+#    sleep 1
+#done
+
 while :; do
     current_time=$(date +%T)
-    # bash: echo -n     do not append a newline
-    #            -e     enable backslash escapes
-    # ANSI: \033[K      clear from cursor to the end of line
-    # echo -ne \r       -n makes carriage return move cursor to the beginning
-    #                   of the line
-    echo -ne "$current_time\033[K\r"
+    printf "\r%s\033[K" "$current_time"
     sleep 1
 done
