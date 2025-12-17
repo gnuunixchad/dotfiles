@@ -8,9 +8,9 @@ source $HOME/.local/bin/wmenu-color 2>/dev/null
 HEART="$HOME/doc/heart"
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    selected_file="$( git --git-dir="$HEART"/.git --work-tree="$HEART" ls-tree -r HEAD --name-only | grep -ve .png$ -ve .local/share/lockscreen$ -ve ^LICENSE$ -ve .md$ -ve .list$ | sort | wmenu-color -p "wheart: " -i -l 6)"
+    selected_file="$( git --git-dir="$HEART"/.git --work-tree="$HEART" ls-tree -r HEAD --name-only | grep -ve .png$ -ve .local/share/lockscreen$ -ve ^LICENSE$ -ve .md$ -ve .list$ | sort | wmenu-color -p "$(basename $0): " -i -l 6)"
 else
-    selected_file="$( git --git-dir="$HEART"/.git --work-tree="$HEART" ls-tree -r HEAD --name-only | grep -ve .png$ -ve .local/share/lockscreen$ -ve ^LICENSE$ -ve .md$ -ve .list$ | sort | fzf --prompt "wheart: " )"
+    selected_file="$( git --git-dir="$HEART"/.git --work-tree="$HEART" ls-tree -r HEAD --name-only | grep -ve .png$ -ve .local/share/lockscreen$ -ve ^LICENSE$ -ve .md$ -ve .list$ | sort | fzf --prompt "$(basename $0): " )"
 fi
 
 # don't open vim if none file selected
