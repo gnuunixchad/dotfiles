@@ -6,8 +6,10 @@
 
 HEART="${HOME}/doc/heart"
 menu_prompt="$(basename $0): "
-if [ "$TERM" = "foot" ] || [ "$TERM" = "footclient" ];
-    then terminal=""
+if [ "$TERM" = "foot" ] || [ "$TERM" = "footclient" ] || [ -n "$DVTM" ] ;
+    then
+        terminal=""
+        [ -n "$DVTM" ] && EDITOR="command vim"
     else
         terminal="footclient"
 fi
