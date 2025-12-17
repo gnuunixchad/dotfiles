@@ -4,7 +4,10 @@
 # remove pacman's packages cache
 # @depends pacman-contrib
 
-IGNORED_PKGS='intel-ucode,amd-ucode,nvidia-utils,nvidia-open'
+NVIDIA_DEPS="egl-gbm,egl-wayland,egl-x11,eglexternalplatform"
+NVIDIA="nvidia-utils,nvidia-open,nvtop,${NVIDIA_DEPS}"
+
+IGNORED_PKGS="intel-ucode,amd-ucode,${NVIDIA}"
 
 set -x
 removeUninstalled() {
