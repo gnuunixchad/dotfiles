@@ -51,6 +51,7 @@ bindkey -s '^o' 'lfcd\n'  # .config/shell/functions.sh
 bindkey -s '^p' 'ncmpcpp\n'
 bindkey -s '^v' 'abduco -A dvtm dvtm-status\n'
 bindkey -s '^a' 'address -e\n'
+bindkey -s '^h' 'heart\n'
 
 # line editor v in normal mode
 autoload edit-command-line

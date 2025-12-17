@@ -33,6 +33,7 @@ bind '"\C-o":"lfcd\C-m"' # .config/shell/functions.sh
 bind '"\C-p":"ncmpcpp\C-m"'
 bind '"\C-v":"abduco -A dvtm dvtm-status\C-m"'
 bind '"\C-a":"address -e\C-m"'
+bind '"\C-h":"heart\C-m"'
 
 HISTSIZE=2000
 HISTFILESIZE=40000
