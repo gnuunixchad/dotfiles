@@ -1,0 +1,9 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2024,2025
+# swayimg script to scan qrcode
+# Shift+s = exec ~/.local/bin/swayimg-scan "%"
+
+qrtool decode "$1" | wl-copy
+
+notify-send -t 1100 -u low -r 3301 "$(basename $0)"  "Copied to clipboard"
