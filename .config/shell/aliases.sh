@@ -141,6 +141,7 @@ alias gfa="git log --follow -p --graph --abbrev-commit --show-signature"
 alias gls="git log --show-signature"
 alias gla="git log --graph --all --name-only --abbrev-commit --show-signature"
 alias gh="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen(%cr)' --abbrev-commit | /usr/bin/fzf --layout=reverse-list --preview-window=80%:bottom: --preview 'parse-fgl {}' | cut -d' ' -f2 | xargs -I{} git rev-parse {} | wl-copy"
+alias gcl="git clone"
 
 alias jvi="vim /usr/lib/jvm/default/lib/src.zip"
 
