@@ -5,6 +5,16 @@
 " Disable auto comment on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+augroup secret
+    autocmd!
+    autocmd BufRead,BufNewFile ~/doc/.gpg/* setlocal noswapfile
+    autocmd BufRead,BufNewFile ~/doc/.gpg/* setlocal noundofile
+    autocmd BufRead,BufNewFile ~/doc/.gpg/* setlocal nobackup
+    autocmd BufRead,BufNewFile ~/doc/.gpg/* setlocal nowritebackup
+    autocmd BufRead,BufNewFile ~/doc/.gpg/* setlocal nonumber
+    autocmd BufRead,BufNewFile ~/doc/.gpg/* setlocal norelativenumber
+augroup END
+
 augroup scripts
     autocmd!
     autocmd BufWritePost * if getline(1) =~ "^#!/.+" | silent !chmod +x % | endif
