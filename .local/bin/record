@@ -6,7 +6,7 @@
 RECORD_HOME="${HOME}/tmp/recordings"
 [ -d "$RECORD_HOME" ] || mkdir -p $RECORD_HOME
 
-filename="${RECORD_HOME}/$(date +%Y-%m-%d-%H-%M-%S).mp3"
+filename="${RECORD_HOME}/$(date +%Y-%m-%d_%H_%M_%S).mp3"
 
 notifyStart() {
     notify-send -u low -r 1258 "$(basename "$0")"  "on $source"

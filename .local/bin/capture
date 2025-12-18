@@ -4,10 +4,10 @@
 # use wmenu to select the screen and audio source for screen casting
 
 FPS=30
-CAPTURE_HOME="${HOME}/tmp/screencapture"
+CAPTURE_HOME="${HOME}/tmp/capture"
 [ -d "$CAPTURE_HOME" ] || mkdir -p $CAPTURE_HOME
 
-filename="${CAPTURE_HOME}/$(date +%Y-%m-%d-%H-%M-%S).mp4"
+filename="${CAPTURE_HOME}/$(date +%Y-%m-%d_%H_%M_%S).mp4"
 
 notifyStart() {
     notify-send -u low -r 1257 "$(basename "$0")" "on $output\n$source"
