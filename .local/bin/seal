@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2025
-# seal - GPG script to {en,de}crypt|preview/sign/verify a file with dynamic
+# seal - GPG script to {en,de}crypt|preview|sign|verify a file with dynamic
 # menu or fzf. Each option can also be bound in lf for convenience.
 # Also see `./gpg-rifle`
 
@@ -109,7 +109,7 @@ verify() {
 [ "$#" -ne 2 ] && usage
 
 case "$1" in
-    -c|--ciper) cipher;;
+    -c|--cipher) cipher;;
     -e|--encrypt) encrypt ;;
     -d|--decrypt) decrypt ;;
     -r|--rifle) ${HOME}/.local/bin/gpg-rifle "$file" ;;
