@@ -10,11 +10,11 @@ if [ ! $UID -eq 0 ]; then
            vimdiff="nvim -d"
 fi
 
-# the current shell will not return when sway exits
-# no one can have the current tty access in case sway crashes
-alias sw="exec ssh-agent sway --unsupported-gpu"
 alias rv="exec ssh-agent river -no-xwayland"
 alias dl="exec ssh-agent ${HOME}/.local/bin/damblocks | /usr/local/bin/dwl"
+
+alias faketty="XDG_SESSION_TYPE=tty TERM=xterm-256color"
+alias resshagent="systemctl restart --user ssh-agent.service"
 
 alias rm="rm -I";
 alias cp="cp -i";
@@ -24,8 +24,6 @@ alias ls='ls -F --color=auto --group-directories-first'
 alias diff="diff --color=auto"
 alias vdiff="nvim -d"
 alias grep="grep --color=auto"
-alias ip="ip -color=auto"
-alias ipa="ip -4 addr show scope global"
 
 alias ll="ls -lh --time-style=long-iso"
 alias la="ls -A"
@@ -41,19 +39,21 @@ alias lb="lsblk -o name,mountpoints,type,size"
 alias lm="file -Lb --mime-type"
 alias lsml="grep --color=never -m 5 '^[^#]' /etc/pacman.d/mirrorlist"
 
-alias acl="getfacl"
-alias atr="lsattr"
+alias ,,="~/.local/bin/teleport-genesis-search"
 
 alias ..="cd .."
 alias ...="cd ../.."
 alias Gi="cd /run/media/$USER/ && pwd"
 
-alias info="info --vi-keys"
 alias less="less -i -F"
-alias glow="glow -t"
+alias info="info --vi-keys"
 alias whatis="whatis -l"
 alias sync="~/.local/bin/sync-notify"
 
+alias ip="ip -color=auto"
+alias ipa="ip -4 addr show scope global"
+alias acl="getfacl"
+alias atr="lsattr"
 alias ncdu="ncdu -x --hide-hidden"
 alias df="df -h -x tmpfs -x efivarfs -x devtmpfs"
 alias lsblk="lsblk -o name,mountpoints,type,size"
@@ -63,15 +63,24 @@ alias iostat="iostat -ht 2"
 alias fzf="FZF_LEVEL=1 /usr/bin/fzf --preview '${HOME}/.local/bin/scope {}'"
 alias ff="fzf --bind='enter:execute(${HOME}/.local/bin/rifle {+})'"
 
-alias jvi="vim /usr/lib/jvm/default/lib/src.zip"
-alias mutt="$HOME/.local/bin/mutt"
-alias tsk="task";
-alias twt="taskwarrior-tui"
-alias ncmpcpp="ncmpcpp -q"
-alias newsboat="${HOME}/.local/bin/news"
+alias ab="abduco"
+alias abc="abduco -c"
+alias aba="abduco -a"
+alias abd="abduco -A dvtm dvtm-status"
 
 alias wmenu="$HOME/.local/bin/wmenu-color"
-alias ,,="~/.local/bin/teleport-genesis-search"
+alias mutt="$HOME/.local/bin/mutt"
+alias tsk="task";
+alias ncmpcpp="ncmpcpp -q"
+alias newsboat="${HOME}/.local/bin/news"
+alias ytl="yt-dlp --list-formats"
+alias id3v2="mid3v2"
+alias exifpurge="exiftool -all= "
+alias epr="firejail --profile=$HOME/.config/firejail/epr.local epr"
+alias epr-zh="firejail --profile=$HOME/.config/firejail/epr-zh.local epr-zh"
+alias vm="virt-manager"
+alias wshowkeys="firejail --noprofile --net=none --nosound --novideo --no3d --nodbus wshowkeys -a bottom -b '#11111188' -F 'SourceCodePro 20'"
+alias transmission-cli="transmission-cli -w $HOME/dls"
 
 alias heartstow='cd ~/doc/heart && stow --adopt -t ~ . && cd - &>/dev/null && echo "heart is stowed"'
 alias heartunstow='cd ~/doc/heart && stow -D -t ~ . && cd - &>/dev/null && echo "heart is unstowed"'
@@ -80,24 +89,12 @@ alias ollamastow='cd ~/pkg/ollama && stow --adopt -t ~ . && cd - &>/dev/null && 
 alias ollamarestow='cd ~/pkg/ollama && stow -R --adopt -t ~ . && cd - &>/dev/null && echo "ollama is stowed"'
 alias ollamaunstow='cd ~/pkg/ollama && stow -D -t ~ . && cd - &>/dev/null && echo "ollama is unstowed"'
 
-alias hibernate="systemctl hibernate"
-alias poweroff="systemctl poweroff"
-alias reboot="systemctl reboot"
-
-alias ytl="yt-dlp --list-formats"
-alias id3v2="mid3v2"
-alias exifpurge="exiftool -all= "
-
-alias epr="firejail --profile=$HOME/.config/firejail/epr.local epr"
-alias epr-zh="firejail --profile=$HOME/.config/firejail/epr-zh.local epr-zh"
-
 alias p="source $HOME/.local/sbin/prox"
 alias P="getprox";
 
-alias ab="abduco"
-alias abc="abduco -c"
-alias aba="abduco -a"
-alias abd="abduco -A dvtm dvtm-status"
+alias hibernate="systemctl hibernate"
+alias poweroff="systemctl poweroff"
+alias reboot="systemctl reboot"
 
 alias cksv="sudo checkservices"
 alias rskr="sudo systemctl restart archlinux-keyring-wkd-sync.service"
@@ -136,7 +133,6 @@ alias gdws="git diff --word-diff --staged"
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen(%cr)' --abbrev-commit"
 alias grs="git remote -v"
 alias ggc="git gc"
-
 alias gll="git log --graph --all"
 alias gln="git log --graph --abbrev-commit --name-only"
 alias gf=" /usr/bin/fzf  --preview 'git log --follow -p {} | bat --color=always --style=plain,changes' --preview-window=80%:bottom: "
@@ -146,8 +142,7 @@ alias gls="git log --show-signature"
 alias gla="git log --graph --all --name-only --abbrev-commit --show-signature"
 alias gh="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen(%cr)' --abbrev-commit | /usr/bin/fzf --layout=reverse-list --preview-window=80%:bottom: --preview 'parse-fgl {}' | cut -d' ' -f2 | xargs -I{} git rev-parse {} | wl-copy"
 
-alias vm="virt-manager"
-alias wshowkeys="firejail --noprofile --net=none --nosound --novideo --no3d --nodbus wshowkeys -a bottom -b '#11111188' -F 'SourceCodePro 20'"
+alias jvi="vim /usr/lib/jvm/default/lib/src.zip"
 
 alias ftree="realpath * | /usr/bin/fzf --prompt='ftree: ' --reverse --preview 'tree -L1 {}'"
 alias fpinfo="pacman -Qq | /usr/bin/fzf --prompt='package info: ' --preview-window=70%:bottom: --preview 'pacman -Qi {}'"
@@ -155,9 +150,3 @@ alias fpcache="pacman -Qq | /usr/bin/fzf --prompt='package cache: ' --preview-wi
 
 alias ttypers="ttyper -w 10 -l symbol"
 alias ttyperb="ttyper -w 25 -l bash"
-
-alias transmission-cli="transmission-cli -w $HOME/dls"
-
-alias resshagent="systemctl restart --user ssh-agent.service"
-
-alias faketty="XDG_SESSION_TYPE=tty"
