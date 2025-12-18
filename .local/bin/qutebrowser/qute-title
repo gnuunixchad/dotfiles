@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# qute-title - display the title of current tab via XDG notification
+
+notify-send -r 450 "$(basename $0)" "$QUTE_TITLE"
