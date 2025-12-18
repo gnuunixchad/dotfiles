@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # @author nate zhou
 # @since 2025
-# saddle - {un,}lock}|{un,}mount|power-off block device with dynamic menu or
-# fzf. The dynamic menu will also serve as passphrase input when necessary,
-# which means the script works doesn't have to be executed from a terminal.
+# saddle - {un,}{lock,mount}|power-off block device with dynamic menu or fzf.
+# The dynamic menu will also serve as passphrase input when necessary, which
+# means the script works doesn't have to be executed from a terminal.
 
 # @depends: udisks2, libnotify, wmenu, fzf
 
@@ -22,7 +22,7 @@ usage() {
     cat <<_EOF_
 USAGE
         $(basename $0) OPTION
-        {un,}lock}|{un,}mount|power-off block device with dynamic menu or fzf.
+        {un,}{lock,mount}|power-off block device with dynamic menu or fzf.
         The dynamic menu will also serve as passphrase input when necessary,
         which means the script doesn't have to be executed from a terminal.
 
@@ -31,6 +31,7 @@ OPTIONS
         -m,--mount      mount a device, LUKS containers will be unlocked first
         -u,--unmount    unmount a device, LUKS containers will be locked first
         -p,--poweroff   poweroff a device
+        -e,--eject      try to unlock, unmount and poweroff a device
         -h,--help       print this manual
 _EOF_
 
@@ -116,11 +117,17 @@ power_off() {
     udisksctl power-off -b "$partition" && notify "$message"
 }
 
+eject() {
+    lock_unmount
+    udisksctl power-off -b "$partition" && notify "$message"
+}
+
 [ "$#" -ne 1 ] && usage
 
 case "$1" in
     -m|--mount) unlock_mount;;
     -u|--unmount) lock_unmount ;;
     -p|--power-off) power_off ;;
+    -e|--eject) eject ;;
     *) usage ;;
 esac
