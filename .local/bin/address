@@ -38,12 +38,12 @@ getAddressMulti() {
 
 openInQutebrowser() {
     url="$(getAddress)"
-    [ -z "$url" ] || qutebrowser --target auto "$url"
+    [ -z "$url" ] || qutebrowser --target tab-bg-silent "$url"
 }
 
 openInQutebrowserRecord() {
     url="$(getAddressRecord)"
-    [ -z "$url" ] || qutebrowser --target auto "$url"
+    [ -z "$url" ] || qutebrowser --target tab-bg-silent "$url"
 }
 
 case "$1" in

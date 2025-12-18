@@ -52,7 +52,7 @@ open_URL() {
     local menu_prompt="$(basename $0) [open]"
     local candidate="$(get_URL)"
     [ -z "$candidate" ] && exit 0
-    echo "open -t $candidate" >> "$QUTE_FIFO"
+    echo "open -b $candidate" >> "$QUTE_FIFO"
 }
 
 [ "$#" -eq 1 ] || exit 0
