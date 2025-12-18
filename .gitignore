@@ -84,6 +84,7 @@ package-list
 !.local/bin
 !.local/bin/*
 !.local/bin/qutebrowser/*
+!.local/bin/swayimg/*
 !.local/share/
 !.local/share/address
 !.local/share/address/address.example
