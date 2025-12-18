@@ -75,7 +75,7 @@ update_battery () {
             esac
             level="${level}%"
             ;;
-        "Not charging")
+        "Not charging"|"Full")
             icon="" level="${level}%"
             ;;
         "Charging")
