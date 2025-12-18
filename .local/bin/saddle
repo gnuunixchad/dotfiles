@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+# @author nate zhou
+# @since 2025
+# saddle - {un,}lock}|{un,}mount|power-off block device with dynamic menu or
+# fzf. The dynamic menu will also serve as passphrase input when necessary,
+# which means the script works doesn't have to be executed from a terminal.
+
+# @depends: udisks2, libnotify, wmenu, fzf
+
+# Supported disk encryption: LUKS
+
+# This script is written in bash because process substitution isn't POSIX,
+# which avoids writing passphrase to a temporary file via dynamic menu.
+
+prompt="[$(basename $0)]"
+
+block_list=$(lsblk -rpo "name,type,size,uuid,label,mountpoint,fstype" \
+           | tail -n +2 \
+           | grep -ve ' disk ' -ve SWAP -ve /boot -ve /mapper/ )
+
+usage() {
+    cat <<_EOF_
+USAGE
+        $(basename $0) OPTION
+        {un,}lock}|{un,}mount|power-off block device with dynamic menu or fzf.
+        The dynamic menu will also serve as passphrase input when necessary,
+        which means the script doesn't have to be executed from a terminal.
+
+        Supported disk encryption: LUKS
+OPTIONS
+        -m,--mount      mount a device, LUKS containers will be unlocked first
+        -u,--unmount    unmount a device, LUKS containers will be locked first
+        -p,--poweroff   poweroff a device
+        -h,--help       print this manual
+_EOF_
+
+exit 0
+}
+
+notify() {
+    echo -e "${RED}${1}${RESET}"
+    [ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -r 777 "$(basename $0)" "$1"
+}
+
+abort() {
+    RED='\033[0;31m'
+    RESET='\033[0m'
+    notify "$1"
+    exit 1
+}
+
+select_device() {
+    if [ "$XDG_SESSION_TYPE" = "tty" ]; then
+        menu="fzf --prompt"
+    else
+        menu="${HOME}/.local/bin/wmenu-color -l5 -p"
+    fi
+
+    selected="$(echo "$block_list" | $menu "$prompt")"
+    [ -z "$selected" ] && abort "Aborted"
+
+    partition="$(echo "$selected" | awk '{print $1}')"
+    uuid="$(echo "$selected" | awk '{print $4}')"
+}
+
+unlock() {
+    if [ "$XDG_SESSION_TYPE" = "tty" ]; then
+        udisksctl unlock -b "$partition"
+    else # use wmenu as passphrase prompt if not in tty
+       passphrase="$($menu "passphrase for $partition: " -P </dev/null)"
+       udisksctl unlock -b "$partition" --key-file <(echo -n "$passphrase") \
+           || abort "Incorrect passphrase"
+    fi
+}
+
+lock() {
+    udisksctl lock -b "$partition"
+}
+
+mount() {
+    udisksctl mount -b "/dev/mapper/luks-${uuid}"
+}
+
+unmount() {
+    udisksctl unmount -b "/dev/mapper/luks-${uuid}"
+}
+
+
+unlock_mount() {
+    select_device
+    message="Mounted: $partition"
+
+    if echo "$selected" | grep -q "crypto_LUKS" ; then
+        unlock && mount && notify "$message"
+    else
+        udisksctl mount -b "$partition" \
+            && notify "$message"
+    fi
+}
+
+lock_unmount() {
+    select_device
+    message="Unmounted: $partition"
+
+    if echo "$selected" | grep -q "crypto_LUKS" ; then
+        unmount && lock && notify "$message"
+    else
+        udisksctl unmount -b "$partition" && notify "$message"
+    fi
+}
+
+power_off() {
+    select_device
+    message="Powered off: $partition"
+
+    udisksctl power-off -b "$partition" && notify "$message"
+}
+
+[ "$#" -ne 1 ] && usage
+
+case "$1" in
+    -m|--mount) unlock_mount;;
+    -u|--unmount) lock_unmount ;;
+    -p|--power-off) power_off ;;
+    *) usage ;;
+esac
