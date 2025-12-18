@@ -75,7 +75,7 @@ spyware when I can.
 - Disk Mounting:            [amount](./.local/bin/amount), [flocks](./.local/bin/flocks), [poff](./.local/bin/poff)
 - File Previwer:            [rifle](./.local/bin/scope)
 - File Opener:              [scope](./.local/bin/rifle)
-- GPG Encrypt/Decrypt/Sign: [gpg-cipher](./.local/bin/gpg-cipher), [gpg-encrypt](./.local/bin/gpg-encrypt), [gpg-decrypt](./.local/bin/gpg-decrypt), [gpg-sign](./.local/bin/gpg-sign)
+- GPG Encrypt/Decrypt/Sign: [seal](./.local/bin/seal)
 - GPG Previewr:             [gpg-rifle](./.local/bin/gpg-rifle)
 - Newsboat Previewr:        [url-rifle](./.local/bin/url-rifle)
 - Mutt/isync with Oauth2:   [muttauth](./.local/bin/muttauth)

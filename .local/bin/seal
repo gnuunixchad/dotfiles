@@ -1,0 +1,119 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# seal - GPG script to {en,de}crypt|preview/sign/verify a file with dynamic
+# menu or fzf. Each option can also be bound in lf for convenience.
+# Also see `./gpg-rifle`
+
+CIPHER_ALGO="aes256"
+
+prompt="[$(basename $0)]"
+file="$2"
+
+usage() {
+    cat <<_EOF_
+USAGE
+        $(basename $0) OPTION FILE
+        GPG scripts to {en,de}crypt|preview|sign|verify with dynamic menu or fzf.
+        Each option can also be bound in lf for convenience.
+OPTIONS
+        -c,--cipher     enter a passphrase and encrypt the file with $CIPHER_ALGO
+        -e,--encrypt    choose a secret key and encrypt the file
+        -d,--decrypt    decrypt the gpg encrypt file
+        -r,--rifle      preview encrypted gpg files without writing to disk
+        -s,--sign       choose a secret key and detach sign the file in ascii
+        -v,--verify     verify a gpg signature
+        -h,--help       print this manual
+_EOF_
+
+exit 0
+}
+
+notify() {
+    echo "${RED}${1}${RESET}"
+    [ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -r 666 "$(basename $0)" "$1"
+}
+
+abort() {
+    RED='\033[0;31m'
+    RESET='\033[0m'
+    notify "$1"
+    exit 1
+}
+
+cipher() {
+    if [ "$XDG_SESSION_TYPE" = "tty" ]; then
+        gpg -c "$file"
+    else
+        menu="${HOME}/.local/bin/wmenu-color -P -p"
+        pass1=$($menu "$prompt ciper passphrase: " < /dev/null)
+        [ -z "$pass1" ] && abort "Aborted: passphrase is empty"
+
+        pass2=$($menu "$prompt re-enter passphrase: " < /dev/null)
+        [ "$pass1" != "$pass2" ] && abort "Aborted: inputs are not indentical"
+
+        echo "$pass1" | gpg -c --cipher-algo "$CIPHER_ALGO" --no-symkey-cache \
+                            --batch --passphrase-fd 0 --pinentry-mode loopback \
+                            "$file" \
+            && notify "Encryption finished" \
+            || abort "Encryption failed"
+    fi
+}
+
+encrypt() {
+    if [ "$XDG_SESSION_TYPE" = "tty" ]; then
+        menu="fzf --prompt"
+    else
+        menu="${HOME}/.local/bin/wmenu-color -l5 -p"
+    fi
+
+    pubkey="$(gpg --list-keys \
+           | sed -n 's/.*<\(.*\)>.*/\1/p' \
+           | $menu "$prompt encrypt with pubkey: ")"
+    [ -z "$pubkey" ] && abort "Aborted: no pubkey selected"
+
+    gpg -e --no-symkey-cache --recipient "$pubkey" "$file" \
+        && notify "Encryption finished" \
+        || abort "Encryption failed"
+}
+
+decrypt() {
+    gpg -d "$file" \
+        && notify "Decryption finished" \
+        || abort "Decryption failed"
+}
+
+sign() {
+    if [ "$XDG_SESSION_TYPE" = "tty" ]; then
+        menu="fzf --prompt"
+    else
+        menu="${HOME}/.local/bin/wmenu-color -l5 -p"
+    fi
+
+    seckey="$(gpg --list-secret-keys \
+           | sed -n 's/.*<\(.*\)>.*/\1/p' \
+           | $menu "$prompt sign with seckey: ")"
+    [ -z "$seckey" ] && abort "Aborted: no seckey selected"
+
+    gpg --no-symkey-cache --detach-sign --armor --local-user "$seckey" "$file" \
+        && notify "Singing finished" \
+        || abort "Signing failed"
+}
+
+verify() {
+    gpg --verify "$file" \
+        && notify "Verification succeeded" \
+        || abort "Verification failed"
+}
+
+[ "$#" -ne 2 ] && usage
+
+case "$1" in
+    -c|--ciper) cipher;;
+    -e|--encrypt) encrypt ;;
+    -d|--decrypt) decrypt ;;
+    -r|--rifle) ${HOME}/.local/bin/gpg-rifle "$file" ;;
+    -s|--sign) sign ;;
+    -v|--verify) verify ;;
+    *) usage ;;
+esac
