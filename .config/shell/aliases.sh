@@ -60,8 +60,9 @@ alias lsblk="lsblk -o name,mountpoints,type,size"
 alias free="free -h"
 alias iostat="iostat -ht 2"
 
-alias fzf="FZF_LEVEL=1 /usr/bin/fzf --preview 'scope {}' --bind=ctrl-j:preview-down,ctrl-k:preview-up --reverse"
-alias fvi="fzf --bind='enter:execute(nvim {+}),ctrl-j:preview-down,ctrl-k:preview-up'"
+alias fzf="FZF_LEVEL=1 /usr/bin/fzf --preview '${HOME}/.local/bin/scope {}'"
+alias ff="fzf --bind='enter:execute(${HOME}/.local/bin/rifle {+})'"
+
 alias jvi="vim /usr/lib/jvm/default/lib/src.zip"
 alias mutt="$HOME/.local/bin/mutt"
 alias tsk="task";
@@ -138,7 +139,7 @@ alias ggc="git gc"
 
 alias gll="git log --graph --all"
 alias gln="git log --graph --abbrev-commit --name-only"
-alias gf=" /usr/bin/fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --preview 'git log --follow -p {} | bat --color=always --style=plain,changes' --preview-window=80%:bottom: "
+alias gf=" /usr/bin/fzf  --preview 'git log --follow -p {} | bat --color=always --style=plain,changes' --preview-window=80%:bottom: "
 alias gF="git log --follow -p"
 alias gfa="git log --follow -p --graph --abbrev-commit --show-signature"
 alias gls="git log --show-signature"
@@ -148,9 +149,9 @@ alias gh="git log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%
 alias vm="virt-manager"
 alias wshowkeys="firejail --noprofile --net=none --nosound --novideo --no3d --nodbus wshowkeys -a bottom -b '#11111188' -F 'SourceCodePro 20'"
 
-alias ftree="realpath * | /usr/bin/fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --prompt='ftree: ' --reverse --preview 'tree -L1 {}'"
-alias fpinfo="pacman -Qq | /usr/bin/fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --prompt='package info: ' --preview-window=70%:bottom: --preview 'pacman -Qi {}'"
-alias fpcache="pacman -Qq | /usr/bin/fzf --bind=ctrl-j:preview-down,ctrl-k:preview-up --prompt='package cache: ' --preview-window=70%:bottom: --preview 'ls /var/cache/pacman/pkg/{}-[0-9]*.pkg.tar.zst'"
+alias ftree="realpath * | /usr/bin/fzf --prompt='ftree: ' --reverse --preview 'tree -L1 {}'"
+alias fpinfo="pacman -Qq | /usr/bin/fzf --prompt='package info: ' --preview-window=70%:bottom: --preview 'pacman -Qi {}'"
+alias fpcache="pacman -Qq | /usr/bin/fzf --prompt='package cache: ' --preview-window=70%:bottom: --preview 'ls /var/cache/pacman/pkg/{}-[0-9]*.pkg.tar.zst'"
 
 alias ttypers="ttyper -w 10 -l symbol"
 alias ttyperb="ttyper -w 25 -l bash"

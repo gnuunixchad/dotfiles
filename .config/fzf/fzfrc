@@ -2,8 +2,10 @@
 # @author nate zhou
 # @since 2025
 
---preview-window=wrap:border-sharp:65%:
+--preview-window=wrap:border-sharp:75%:bottom:
 
---bind=ctrl-backspace:first,ctrl-g:last,ctrl-j:preview-down,ctrl-k:preview-up,ctrl-t:preview-top,ctrl-b:preview-bottom
+--bind=ctrl-backspace:first,ctrl-g:last
+--bind=ctrl-j:preview-down,ctrl-k:preview-up
+--bind=ctrl-t:preview-top,ctrl-b:preview-bottom
 
 --color=pointer:#b16286
