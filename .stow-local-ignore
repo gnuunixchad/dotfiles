@@ -5,7 +5,6 @@
 ^/README.*
 ^/LICENSE.*
 
-.mozilla
 boot
 etc
 usr
