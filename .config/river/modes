@@ -6,7 +6,7 @@
 mod=Mod4
 
 fcitx="[p]inyin [a]nthy"
-wmenu="[w]iki [h]eart [b]ooks [a]mount [f]locks [p]off [s]peaker [j]doc [e]moji"
+wmenu="[w]iki [h]eart [b]ooks [m]ount [u]nmount [p]ower-off [s]peaker [e]moji"
 dunst="clip[h]ist-wipe [l]supdates d[w] d[c]al ls[m]us"
 wlrctl="[hjkl]cursors [,]left [.]right [m]iddle ^[hjkl]arrows"
 
@@ -54,11 +54,10 @@ riverctl map "$wmenu" None Escape enter-mode normal
 riverctl map "$wmenu" None w spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wiki"
 riverctl map "$wmenu" None h spawn "riverctl enter-mode normal && ${HOME}/.local/bin/heart"
 riverctl map "$wmenu" None b spawn "riverctl enter-mode normal && ${HOME}/.local/bin/books"
-riverctl map "$wmenu" None a spawn "riverctl enter-mode normal && ${HOME}/.local/bin/amount"
-riverctl map "$wmenu" None f spawn "riverctl enter-mode normal && ${HOME}/.local/bin/flocks"
-riverctl map "$wmenu" None p spawn "riverctl enter-mode normal && ${HOME}/.local/bin/poff"
+riverctl map "$wmenu" None m spawn "riverctl enter-mode normal && ${HOME}/.local/bin/saddle --mount"
+riverctl map "$wmenu" None u spawn "riverctl enter-mode normal && ${HOME}/.local/bin/saddle --unmount"
+riverctl map "$wmenu" None p spawn "riverctl enter-mode normal && ${HOME}/.local/bin/saddle --power-off"
 riverctl map "$wmenu" None s spawn "riverctl enter-mode normal && ${HOME}/.local/bin/speaker"
-riverctl map "$wmenu" None j spawn "riverctl enter-mode normal && ${HOME}/.local/bin/jdoc"
 riverctl map "$wmenu" None e spawn "riverctl enter-mode normal && ${HOME}/.local/bin/emoji"
 
 
