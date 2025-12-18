@@ -14,13 +14,14 @@ git clone https://github.com/gnuunixchad/dotfiles
 mkdir -p ${HOME}/.local/{share,state}
 mkdir -p ${HOME}/.{cache,config/"Code -OSS"}
 
-# Optionally, run scripts in the root of this repo at your own risk:
-sudo ./install-root.sh
-./install-user.sh
-
 # Create symlinks with GNU Stow
 cd dotfiles
 stow -t ~ . --adopt
+
+# Optionally, run my post-install scripts AT YOUR OWN RISK
+sudo ./install-root.sh
+./install-user.sh
+
 ```
 > [!NOTE]
 > A few software need manually setup:
@@ -64,23 +65,27 @@ spyware when I can.
 - Session Lock:             `swaylock`
 - Clipboard Manager:        `wl-Clipboard`, `cliphist`
 - Input Method:             `fcitx5`
-## My scripts for window managers and etc
-- Statusbar:                [damblocks](./.local/bin/damblocks)
+
+## My Personal Scripts
+- Status Bar:               [damblocks](./.local/bin/damblocks)
 - Screenshot:               [shoot](./.local/bin/shoot)
-- Screen/Voice Recorder:    [capture](./.local/bin/capture), [record](./.local/bin/record)
-- Brightness Control:       [bright](./.local/bin/bright)
-- Speaker/Mic Volume:       [audio](./.local/bin/audio)
-- Speaker Chooser:          [speaker](./.local/bin/speaker)
-- Bookmark/Addressbook:     [address](./.local/bin/address)
+- Screen Capture:           [capture](./.local/bin/capture)
+- Webcam:                   [camera](./.local/bin/camera)
+- Voice Recorder:           [record](./.local/bin/record)
+- Brightness:               [bright](./.local/bin/bright)
+- Speaker/Microphone Volume: [audio](./.local/bin/audio)
+- Speaker Switch:           [speaker](./.local/bin/speaker)
+- Bookmark:                 [address](./.local/bin/address)
 - Disk Mounting:            [amount](./.local/bin/amount), [flocks](./.local/bin/flocks), [poff](./.local/bin/poff)
 - File Previwer:            [rifle](./.local/bin/scope)
 - File Opener:              [scope](./.local/bin/rifle)
-- GPG Encrypt/Decrypt/Sign: [seal](./.local/bin/seal)
+- GPG {En,De}crypt|Preview|Sign|Verify: [seal](./.local/bin/seal)
 - GPG Previewr:             [gpg-rifle](./.local/bin/gpg-rifle)
-- Newsboat Previewr:        [url-rifle](./.local/bin/url-rifle)
 - Mutt/isync with Oauth2:   [muttauth](./.local/bin/muttauth)
+- Newsboat Previewr:        [url-rifle](./.local/bin/url-rifle)
 - Android Mounting:         [phone](./.local/bin/phone)
-- Shoftcuts Generator:      [teleport-genesis](./.local/bin/teleport-genesis)
+- Shortcuts Generator:      [teleport-genesis](./.local/bin/teleport-genesis)
+- Qutebrowser:              [userscripts](./.local/bin/qutebrowser/)
 
 ## Chinese Video Channel
 I have dedicated videos for almost every software I use:
@@ -88,11 +93,11 @@ I have dedicated videos for almost every software I use:
 [unixchad at bilibili](https://space.bilibili.com/34569411)
 
 Software I use to create videos:
-- Screen Capture:   `wf-recorder` `slurp`
-- Voice Recording:  `pw-record` `noise-suppression-for-voice`
-- Video Editing:    `ffmpeg` `mpv-cut` `kdenlive`
-- Screenshots:      `grim` `slurp`
-- Thumbnails:       `imagemagick` `gimp`
+- Screen Capture:   `wf-recorder`, `slurp`
+- Voice Recording:  `pw-record`, `noise-suppression-for-voice`
+- Video Editing:    `ffmpeg`, `mpv-cut`, `kdenlive`
+- Screenshots:      `grim`, `slurp`
+- Thumbnails:       `imagemagick`, `gimp`
 
 All emails from me will be signed by the same GPG key that I sign commits with:
 - Import my key: `gpg --recv-keys 117094DA1AEA0835E4ED0770F7476912AA224CAC`
