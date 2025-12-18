@@ -4,6 +4,24 @@
 # wayland clipboard manager
 # @depends wmenu wl-copy cliphist
 
-cliphist list | wmenu-color -p "[$(basename $0)] " -l 6 \
-              | cliphist decode \
-              | wl-copy
+wipe_history() {
+    choice="$(echo "no\nyes" \
+            | ${HOME}/.local/bin/wmenu-color \
+                -p "$(basename $0): wipe wl-clipboard history? ")"
+
+    if [ "$choice" = "yes" ]; then
+        cliphist wipe
+        notify-send -u low -r 199 "$(basename $0)" "Clipboard wiped"
+    else
+        notify-send -u low -r 199 "$(basename $0)" "Aboarted";
+        exit 0
+    fi
+}
+
+[ -z "$1" ] && cliphist list | wmenu-color -p "[$(basename $0)] " -l 6 \
+               | cliphist decode \
+               | wl-copy
+
+case "$1" in
+    -w|--wipe) wipe_history
+esac
