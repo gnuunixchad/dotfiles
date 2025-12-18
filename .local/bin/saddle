@@ -88,6 +88,8 @@ unmount() {
 
 
 unlock_mount() {
+    prompt="${prompt} mount"
+
     select_device
     message="Mounted: $partition"
 
@@ -100,6 +102,8 @@ unlock_mount() {
 }
 
 lock_unmount() {
+    prompt="${prompt} unmount"
+
     select_device
     message="Unmounted: $partition"
 
@@ -111,6 +115,8 @@ lock_unmount() {
 }
 
 power_off() {
+    prompt="${prompt} power-off"
+
     select_device
     message="Powered off: $partition"
 
@@ -118,6 +124,8 @@ power_off() {
 }
 
 eject() {
+    prompt="${prompt} eject"
+
     lock_unmount
     udisksctl power-off -b "$partition" && notify "$message"
 }
