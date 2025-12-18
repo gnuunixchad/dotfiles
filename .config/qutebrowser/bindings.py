@@ -61,6 +61,8 @@ config.bind('<Ctrl-k>', 'tab-move -')
 config.bind('tg', 'tab-focus 1')
 config.bind('tG', 'tab-focus -1')
 
+config.bind('I', 'config-cycle colors.webpage.darkmode.enabled false true')
+
 config.bind('<Shift-u>', 'adblock-update')
 
 # insert mode
