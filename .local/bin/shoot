@@ -8,6 +8,8 @@
 SCREENSHOT_HOME="${HOME}/tmp/screenshots"
 [ -d "$SCREENSHOT_HOME" ] || mkdir -p $SCREENSHOT_HOME
 
+filename="${SCREENSHOT_HOME}/$(date +%Y-%m-%d_%H_%M_%S).png"
+
 notify() {
     notify-send -u low "$(basename $0)" "$region"
 }
@@ -15,23 +17,23 @@ notify() {
 shootOutput() {
     region="$(wlr-randr \
                             | grep '^[a-zA-Z0-9]'\
-                            | wmenu-color -p "wshot: " -l 3 \
+                            | wmenu-color -p "$(basename $0) " -l 3 \
                             | tr -d '()' \
                             | cut -d' ' -f-1 )"
     sleep 0.1
-    grim -o "$region"
+    grim -o "$region" "$filename"
     notify
 }
 
 shootAll() {
     region="all outputs"
-    grim
+    grim "$filename"
     notify
 }
 
 shootGeo() {
     region=$(slurp)
-    grim -g "$region"
+    grim -g "$region" "$filename"
     notify
 }
 
