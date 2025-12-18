@@ -10,6 +10,7 @@ user_choice="$(printf "no\nyes" \
 
 if [ "$user_choice" = "yes" ]; then
     rm "$1"
+    pkill -SIGUSR1 swayimg
     notify-send -t 1100 -u low -r 3301 "swayimg"  "$1 is removed"
 else
     exit 1

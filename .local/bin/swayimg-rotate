@@ -10,6 +10,7 @@ user_input="$(wmenu-color -p "["$(basename $0)"] Rotate degree: $(basename $@ \
 
 if [ -n "$user_input" ]; then
     convert -rotate "$user_input" "$1" "$1"
+    pkill -SIGUSR1 swayimg
     notify-send -t 1101 -u low -r 3301 "swayimg"  "$1 is rotated"
 else
     exit 1
