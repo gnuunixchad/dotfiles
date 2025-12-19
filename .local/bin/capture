@@ -1,23 +1,47 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
-# use wmenu to select the screen and audio source for screen casting
+# capture - select output and audio source for screen casting via danymic menu
 
-FPS=30
 CAPTURE_HOME="${HOME}/tmp/capture"
 [ -d "$CAPTURE_HOME" ] || mkdir -p $CAPTURE_HOME
 
-filename="${CAPTURE_HOME}/$(date +%Y-%m-%d_%H_%M_%S).mp4"
+FPS=30
+filename="${CAPTURE_HOME}/$(date +%Y-%m-%d_%H_%M_%S)"
+extension="mp4"
 
-notifyStart() {
-    notify-send -u low -r 1257 "$(basename "$0")" "on $output\n$source"
+usage() {
+    cat <<_EOF_
+USAGE
+        $(basename $0) [OPTION]...
+        Select output and audio source for screen casting via danymic menu.
+        Default fomart is mp4 in 30FPS
+OPTIONS
+        -60     record in 60FPS
+        -mkv    record in mkv
+        -mute   record without audio
+_EOF_
+
+exit 0
 }
 
-notifyStop() {
-    notify-send -u low -r 1257 "$(basename "$0")" "stopped $output\n$source"
+notify() {
+    echo "${RED}${1}${RESET}"
+    [ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -r 666 "$(basename $0)" "$1"
 }
 
-setOutput() {
+abort() {
+    RED='\033[0;31m'
+    RESET='\033[0m'
+    notify "$1"
+    exit 1
+}
+
+notify_stop() {
+    notify "Stopped on $output\n$source"
+}
+
+set_output() {
     wlr-randr \
         | grep '^[^[:space:]]'\
         | wmenu-color -p "[output] " -l 3 \
@@ -25,7 +49,7 @@ setOutput() {
         | cut -d' ' -f-1
 }
 
-setSource() {
+set_source() {
     pw-dump \
         | grep "\"node.name\":" \
         | sort \
@@ -33,14 +57,18 @@ setSource() {
         | cut -d'"' -f4
 }
 
-output="$(setOutput)"
-[ -z "$output" ] && exit 0
+start_capture() {
+    output="$(set_output)"
+    [ -z "$output" ] && abort "No output selected"
 
-source="$(setSource)"
-[ -z "$source" ] && exit 0
+    source="$(set_source)"
+    [ -z "$source" ] && notify "No audio source selected"
 
-notifyStart
+    notify "Capturing on $output\n$source"
 
-trap notifyStop EXIT INT TERM
+    trap notify_stop EXIT INT TERM
 
-wf-recorder -r "$FPS" -o "$output" -a "$source" -f "$filename"
+    wf-recorder -r "$FPS" -o "$output" -a "$source" -f "${filename}.${extension}"
+}
+
+[ -z "$1" ] && start_capture
