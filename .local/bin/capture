@@ -80,6 +80,7 @@ startCapture() {
     wf-recorder --framerate "$fps" \
                 --output "$output" \
                 "$audioOption" \
+                -c h264_vaapi \
                 -f "${filename}.${extension}"
 }
 
