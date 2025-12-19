@@ -6,7 +6,7 @@
 CAPTURE_HOME="${HOME}/tmp/capture"
 [ -d "$CAPTURE_HOME" ] || mkdir -p $CAPTURE_HOME
 
-FPS=30
+fps=30
 filename="${CAPTURE_HOME}/$(date +%Y-%m-%d_%H_%M_%S)"
 extension="mp4"
 
@@ -17,9 +17,9 @@ USAGE
         Select output and audio source for screen casting via danymic menu.
         Default fomart is mp4 in 30FPS
 OPTIONS
-        -60     record in 60FPS
-        -mkv    record in mkv
-        -mute   record without audio
+        -6,--60     record in 60FPS
+        -m,--mkv    record in mkv
+        -M,--mute   record without audio
 _EOF_
 
 exit 0
@@ -37,11 +37,12 @@ abort() {
     exit 1
 }
 
-notify_stop() {
+notifyStop() {
     notify "Stopped on $output\n$source"
+    exit 0
 }
 
-set_output() {
+setOutput() {
     wlr-randr \
         | grep '^[^[:space:]]'\
         | wmenu-color -p "[output] " -l 3 \
@@ -49,7 +50,7 @@ set_output() {
         | cut -d' ' -f-1
 }
 
-set_source() {
+setSource() {
     pw-dump \
         | grep "\"node.name\":" \
         | sort \
@@ -57,18 +58,38 @@ set_source() {
         | cut -d'"' -f4
 }
 
-start_capture() {
-    output="$(set_output)"
+startCapture() {
+    output="$(setOutput)"
     [ -z "$output" ] && abort "No output selected"
 
-    source="$(set_source)"
-    [ -z "$source" ] && notify "No audio source selected"
+    if [ "$isMute" != "true" ]; then
+        source="$(setSource)"
+        [ -z "$source" ] && abort "No audio source selected"
+        audioOption="-a '$source'"
+    else
+        notify "No audio source included"
+        source=""
+        audioOption=""
+    fi
 
     notify "Capturing on $output\n$source"
 
-    trap notify_stop EXIT INT TERM
+    trap notifyStop EXIT INT TERM
 
-    wf-recorder -r "$FPS" -o "$output" -a "$source" -f "${filename}.${extension}"
+    wf-recorder --framerate "$fps" \
+                --output "$output" \
+                "$audioOption" \
+                -f "${filename}.${extension}"
 }
 
-[ -z "$1" ] && start_capture
+[ -z "$1" ] && startCapture
+
+while [ ! -z "$1" ]; do
+    case "$1" in
+        -6|--60) fps=60 ;;
+        -m|--mkv) extension="mkv" ;;
+        -M|--mute) isMute="true" ;;
+        *) usage ;;
+    esac
+    shift
+done && startCapture
