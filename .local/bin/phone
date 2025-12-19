@@ -2,6 +2,7 @@
 # @author nate zhou
 # @since 2025
 # android phone script
+# @depends android-file-transfer
 
 MOUNTING_POINT=${HOME}/mnt
 [ -d "$MOUNTING_POINT" ] || mkdir "$MOUNTING_POINT"

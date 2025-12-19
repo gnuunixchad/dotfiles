@@ -1,7 +1,9 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2025
-# initialize and refresh oauth2 token for mutt and isync
+# muttauth - initialize and refresh oauth2 token for mutt and isync
+# @depends mutt_oauth2.py(neomutt)
+# @suggests cyrus-sasl-xoauth2-git
 
 AUTH_CMD="/usr/share/neomutt/oauth2/mutt_oauth2.py"
 PROVIDER="microsoft"

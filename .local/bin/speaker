@@ -1,7 +1,10 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2025
-# wmenu/fzf script for selecting pipewire default sink (choose speaker)
+# speaker - select the pipewire default sink via dynamic menu or fzf
+# @depends pipewire-pulse, wmenu, fzf
+# This script use pactl instead of wpctl, because device name listed in pactl
+# is much easier to pipe to a dynamic menu than `wpctl status`
 
 DAMBLOCKS="${XDG_RUNTIME_DIR}/damblocks.pid"
 

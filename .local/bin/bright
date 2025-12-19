@@ -2,6 +2,7 @@
 # bright
 # @author nate zhou
 # @since 2025
+# @depends brightnessctl
 
 #set -x
 WOBFIFO="${XDG_RUNTIME_DIR}/wob.fifo"

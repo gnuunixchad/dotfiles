@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # @author nate zhou
 # @since 2025
-# generate teleporting keybindings for POSIX shell aliases, lf and ranger(disable by default)
+# teleport-genesis - Generate keybindings to teleport in POSIX shells, and file
+# managers like lf and ranger.
 
-set +x
+#set +x
 author="nate zhou"
 year="2025"
 
