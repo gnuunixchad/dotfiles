@@ -19,6 +19,7 @@ cat << _EOF_
     -h,--help       print this manual
     -b,--bash       generate teleport.sh for bash
     -r,--ranger     generate teleport.conf for ranger
+    -l,--lf         generate teleport.conf for lf
     -a,--all        generate for all (this is the default behavior)
 _EOF_
 }
