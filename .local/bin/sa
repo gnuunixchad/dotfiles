@@ -8,4 +8,4 @@ SSH_HOME="${HOME}/.ssh"
 
 ssh-add ${HOME}/.ssh/"$(ls -L $SSH_HOME \
                       | grep -ve '.conf$' -ve '.pub$' \
-                      | $MENU -l 6)"
+                      | $MENU -l 6 -p "$(basename $0)")"

@@ -5,7 +5,7 @@
 
 EMOJI_CACHE="${HOME}/.local/share/emoji-test.txt"
 EMOJI_REMOTE="https://unicode.org/Public/emoji/latest/emoji-test.txt"
-MENU_APP="wmenu-color -i -l 9"
+MENU_APP="wmenu-color -i -l 9 -p "$(basename $0)""
 
 [ -f "$EMOJI_CACHE" ] || curl "$EMOJI_REMOTE" > "$EMOJI_CACHE"
 

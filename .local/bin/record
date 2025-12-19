@@ -19,7 +19,7 @@ notifyStop() {
 setSource() {
 if [ "$XDG_SESSION_TYPE" != "tty" ]; then
     pactl list short sources | awk '{print $2}' | sort \
-        | wmenu-color '-p[choose source] ' -l 6
+        | wmenu-color '-p[choose source]' -l 6
 else
     pactl list short sources | awk '{print $2}' | sort \
         | command fzf --prompt '[choose source] '

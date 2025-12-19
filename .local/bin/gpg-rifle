@@ -22,7 +22,7 @@ decrypt() {
     local pass=""
 
     if [ "$XDG_SESSION_TYPE" != "tty" ]; then
-        pass="$(wmenu-color -P -p "[$(basename $0)] passphrase: " < /dev/null)"
+        pass="$(wmenu-color -P -p "[$(basename $0)] passphrase:" < /dev/null)"
     else
         read -p "[$(basename) $0 passphrase: ]" -r pass
     fi

@@ -16,7 +16,7 @@ editAddress() {
 
 getAddress() {
     cat $ADDRESS_BOOK | grep -vE "^#|^[[:space:]]*$" \
-        | $MENU -p "$menu_prompt " -l 6 \
+        | $MENU -p "$menu_prompt" -l 6 \
         | awk ' {sub(/[^|]*\|/, ""); print}'
 }
 
@@ -31,7 +31,7 @@ getAddressRecord() {
 getAddressMulti() {
     ADDRESS_BOOK="${ADDRESS_BOOK_DIR}/multi"
     menu_prompt="${menu_prompt}-multi"
-    selected=$(ls "$ADDRESS_BOOK" | $MENU -p "$menu_prompt " -l 5 -i)
+    selected=$(ls "$ADDRESS_BOOK" | $MENU -p "$menu_prompt" -l 5 -i)
     cat "${ADDRESS_BOOK}/${selected}"
     exit 0
 }

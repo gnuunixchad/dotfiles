@@ -16,10 +16,10 @@ notify() {
 setSink() {
     if [ "$XDG_SESSION_TYPE" != "tty" ]; then
         pactl list short sinks | awk '{print $2}' \
-                               | wmenu-color '-p[speaker] ' -l 3
+                               | wmenu-color '-pspeaker' -l 3
     else
         pactl list short sinks | awk '{print $2}' \
-                               | command fzf --prompt '[speaker] '
+                               | command fzf --prompt 'speaker '
     fi
 }
 

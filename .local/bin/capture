@@ -46,7 +46,7 @@ notifyStop() {
 setOutput() {
     wlr-randr \
         | grep '^[^[:space:]]'\
-        | wmenu-color -p "[output] " -l 3 \
+        | wmenu-color -p "[output]" -l 3 \
         | tr -d '()' \
         | cut -d' ' -f-1
 }
@@ -55,7 +55,7 @@ setSource() {
     pw-dump \
         | grep "\"node.name\":" \
         | sort \
-        | wmenu-color -p "[source] " -l 6 \
+        | wmenu-color -p "[source]" -l 6 \
         | cut -d'"' -f4
 }
 

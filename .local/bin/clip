@@ -7,7 +7,7 @@
 wipe_history() {
     choice="$(echo "no\nyes" \
             | ${HOME}/.local/bin/wmenu-color \
-                -p "$(basename $0): wipe wl-clipboard history? ")"
+                -p "$(basename $0): wipe wl-clipboard history?")"
 
     if [ "$choice" = "yes" ]; then
         cliphist wipe
@@ -18,7 +18,7 @@ wipe_history() {
     fi
 }
 
-[ -z "$1" ] && cliphist list | wmenu-color -p "[$(basename $0)] " -l 6 \
+[ -z "$1" ] && cliphist list | wmenu-color -p "$(basename $0)" -l 6 \
                | cliphist decode \
                | wl-copy
 

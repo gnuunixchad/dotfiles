@@ -16,7 +16,7 @@ fi
 
 if [ "$XDG_SESSION_TYPE" != "tty" ]; then
     selected_page="$(find "$WIKI_PATH" -type f \
-        | wmenu-color -l 6 -i -p "$(basename "$0"): ")"
+        | wmenu-color -l 6 -i -p "$(basename "$0")")"
     # don't do anything if exiting wmenu without any input
     [ -n "$selected_page" ] && $BROWSER file://"$selected_page"
 else

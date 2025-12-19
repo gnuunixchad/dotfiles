@@ -25,14 +25,14 @@ if [ "$XDG_SESSION_TYPE" = "tty" ]; then
     exit 0
 fi
 
-gpg_passphrase1=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase: ")
+gpg_passphrase1=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase:")
 
 if  [ -z "$gpg_passphrase1" ]; then
     notify-send -r 1284 -u low "$(basename $0):" "Aborted for empty passphrase"
     exit 1
 fi
 gpg_passphrase2=$(echo "" \
-    | wmenu-color -P -p "[$(basename $0)] passphrase again ")
+    | wmenu-color -P -p "[$(basename $0)] passphrase again:")
 if [ "$gpg_passphrase1" != "$gpg_passphrase2" ]; then
     notify-send -r 1284 -u low "inputs are not identical!"
     exit 1

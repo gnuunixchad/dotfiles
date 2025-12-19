@@ -17,7 +17,7 @@ notify() {
 shootOutput() {
     region="$(wlr-randr \
                             | grep '^[a-zA-Z0-9]'\
-                            | wmenu-color -p "$(basename $0) " -l 3 \
+                            | wmenu-color -p "$(basename $0)" -l 3 \
                             | tr -d '()' \
                             | cut -d' ' -f-1 )"
     sleep 0.1

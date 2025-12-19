@@ -11,7 +11,7 @@ if [ "$XDG_SESSION_TYPE" = "tty" ]; then
     exit 0
 fi
 
-gpg_passphrase=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase: ")
+gpg_passphrase=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase:")
 
 [ -z "$gpg_passphrase" ] && exit 1
 

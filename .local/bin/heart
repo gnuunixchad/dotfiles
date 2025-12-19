@@ -5,7 +5,7 @@
 # It's called heart because all my dotfiles are in ~/doc/heart managed by stow.
 
 HEART="${HOME}/doc/heart"
-menu_prompt="$(basename $0): "
+menu_prompt="$(basename $0)"
 if [ "$TERM" = "foot" ] || [ "$TERM" = "footclient" ] || [ -n "$DVTM" ] ;
     then
         terminal=""

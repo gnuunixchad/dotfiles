@@ -5,4 +5,4 @@
 
 ${HOME}/.local/bin/gpg-doc \
     "$(find ${HOME}/doc/.gpg/passwd -type f -name '*.gpg' \
-    | wmenu-color -l 6 -p "[$(basename $0)] choose file: ")"
+    | wmenu-color -l 6 -p "[$(basename $0)] choose file:")"
