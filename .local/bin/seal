@@ -3,7 +3,16 @@
 # @since 2025
 # seal - GPG script to {en,de}crypt|preview|sign|verify a file with dynamic
 # menu or fzf. Each option can also be bound in lf for convenience.
+# @depends gpg, wmenu, fzf, libnotify
 # Also see `./gpg-rifle`
+
+# lf/bindings.rc
+# map Sr $~/.local/bin/seal --rifle $f
+# map Sc $~/.local/bin/seal --cipher $f
+# map Se $~/.local/bin/seal --encrypt $f
+# map Sd $~/.local/bin/seal --decrypt $f
+# map Ss $~/.local/bin/seal --sign $f
+# map Sv $~/.local/bin/seal --verify $f | less
 
 CIPHER_ALGO="aes256"
 
