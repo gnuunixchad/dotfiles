@@ -47,7 +47,6 @@ firecfg >/dev/null 2>/dev/null && echo "firejail symlink created"
 
 systemctl enable --now systemd-boot-update.service
 systemctl enable --now bluetooth.service
-systemctl enable --now reflector.timer
 systemctl enable --now tlp.service
 systemctl enable --now smb.service
 systemctl enable --now dictd.service
