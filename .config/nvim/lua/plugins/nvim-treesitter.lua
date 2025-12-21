@@ -2,12 +2,30 @@
 -- nvim/lua/plugins/nvim-treesitter.lua
 -- @author nate zhou
 -- @since 2025
+-- config for nvim-treesitter main branch
 
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = { "bash", "diff", "markdown", "markdown_inline", "c", "java", "python", "go", "gotmpl", "vim", "css", "json", "make", "ssh_config", "html"},
-
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-  },
+local languages = { 'markdown',
+                    'markdown_inline',
+                    'diff',
+                    'make',
+                    'bash',
+                    'c',
+                    'python',
+                    'java',
+                    'go',
+                    'gotmpl',
+                    'zig',
+                    'html',
+                    'css',
+                    'json',
+                    'yaml',
+                    'vim',
+                    'lua',
 }
+
+require'nvim-treesitter'.install(languages)
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = languages,
+  callback = function() vim.treesitter.start() end,
+})
