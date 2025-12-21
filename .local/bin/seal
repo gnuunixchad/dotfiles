@@ -40,7 +40,7 @@ exit 0
 
 notify() {
     echo "${RED}${1}${RESET}"
-    [ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -r 666 "$(basename $0)" "$1"
+    notify-send -r 666 "$(basename $0)" "$1" 2>/dev/null
 }
 
 abort() {
