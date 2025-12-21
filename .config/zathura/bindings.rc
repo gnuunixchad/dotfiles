@@ -23,3 +23,6 @@ map a adjust_window best-fit
 
 map d toggle_page_mode
 map D cycle_first_column
+
+map m mark_add
+map "'" mark_evaluate
