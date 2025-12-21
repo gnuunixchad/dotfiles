@@ -27,3 +27,7 @@ set notification-warning-fg "#111111"
 set notification-warning-bg "#e6da00"
 set notification-error-fg "#eeeeee"
 set notification-error-bg "#8b0000"
+
+set index-active-bg "#427b58"
+set index-active-fg "#eeeeee"
+set index-bg "#111111"
