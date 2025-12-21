@@ -45,6 +45,10 @@ nnoremap <leader>o :tabnew<CR>
 nnoremap <leader>j :tabprev<CR>
 nnoremap <leader>k :tabnext<CR>
 
+" buffer
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>p :bp<CR>
+
 " toggle editor visuals
 nnoremap <leader>ts :set spell!<CR>
 nnoremap <leader>tw :set wrap!<CR>

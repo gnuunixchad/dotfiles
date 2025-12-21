@@ -49,6 +49,11 @@ map('n', '<leader>O', ':tabnew<CR>')
 map('n', '<leader>j', ':tabnext<CR>')
 map('n', '<leader>k', ':tabprev<CR>')
 
+
+-- buffer
+map('n', '<leader>n' ,':bn<CR>')
+map('n', '<leader>p' ,':bp<CR>')
+
 -- toggle editor visuals
 map('n', '<leader>ts', ':set spell!<CR>')
 map('n', '<leader>tw', ':set wrap!<CR>')
