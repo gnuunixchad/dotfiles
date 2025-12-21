@@ -9,29 +9,29 @@ image="$HOME/.local/share/lockscreen"
 scaling=fill
 indicator-caps-lock
 
-indicator-radius=60
+indicator-radius=65
 indicator-thickness=10
 font=SourceCodePro
-font-size=18
+font-size=20
 
-key-hl-color=6f3f89
-bs-hl-color=ce104c
+ring-color=427b58
+key-hl-color=111111
+bs-hl-color=bbccddcc
 
-ring-color=005577
+ring-clear-color=427b58
+inside-clear-color=bbccddcc
+text-clear-color=111111
 
-ring-clear-color=e3c401
-inside-clear-color=e3c401
-text-clear-color=191919
+ring-wrong-color=427b58
+inside-wrong-color=bbccddcc
+text-wrong-color=111111
 
-ring-wrong-color=c85577
-inside-wrong-color=c85577
-text-wrong-color=191919
+ring-ver-color=427b58
+inside-ver-color=bbccddcc
+text-ver-color=111111
 
-ring-ver-color=a6e22e
-inside-ver-color=a6e22e
-text-ver-color=191919
-
-ring-caps-lock-color=13c299
-inside-caps-lock-color=13c299
-caps-lock-key-hl-color=6f3f89
-text-caps-lock-color=191919
+ring-caps-lock-color=427b58
+inside-caps-lock-color=bbccddcc
+caps-lock-bs-hl-color=bbccddcc
+caps-lock-key-hl-color=111111
+text-caps-lock-color=111111
