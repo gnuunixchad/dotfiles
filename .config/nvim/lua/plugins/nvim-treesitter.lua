@@ -3,6 +3,7 @@
 -- @author nate zhou
 -- @since 2025
 -- config for nvim-treesitter main branch
+-- @depends: tree-sitter-cli (in arch repo)
 
 local languages = { 'markdown',
                     'markdown_inline',
