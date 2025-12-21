@@ -8,7 +8,7 @@ let mapleader=" "   " set space as leader key
 tnoremap <leader><Esc> <C-\><C-n>
 
 nnoremap W :w \|e<Left><Left>
-nnoremap <leader> :q<CR>
+nnoremap <leader>q :q<CR>
 
 nnoremap <leader>m :marks<CR>
 
@@ -41,7 +41,7 @@ nnoremap <C-w>i :resize -2<CR>
 nnoremap <C-w>o :vertical resize +2<CR>
 
 " tab
-nnoremap <leader>o :tabnew<CR>
+nnoremap <leader>O :tabnew<CR>
 nnoremap <leader>j :tabprev<CR>
 nnoremap <leader>k :tabnext<CR>
 
