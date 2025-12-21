@@ -10,6 +10,8 @@ tnoremap <leader><Esc> <C-\><C-n>
 nnoremap W :w \|e<Left><Left>
 nnoremap <leader> :q<CR>
 
+nnoremap <leader>m :marks<CR>
+
 nnoremap <leader>; :!
 
 " don't yank to clipboard with c

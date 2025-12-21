@@ -15,6 +15,8 @@ map('t', '<leader><Esc>', '<C-\\><C-n>')
 map('n', 'W', ':w |e<Left><Left>')
 map('n', '<leader>q', ':quit<CR>')
 
+map('n', '<leader>m', ':marks<CR>')
+
 map('n', '<leader>;', ':!') -- run shell commands
 
 map('n', 'c', '"_c') -- Don't copy to clipboard with `c*`
