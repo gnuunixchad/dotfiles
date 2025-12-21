@@ -16,6 +16,7 @@ map('n', 'W', ':w |e<Left><Left>')
 map('n', '<leader>q', ':quit<CR>')
 
 map('n', '<leader>m', ':marks<CR>')
+map('n', '<leader>b', ':buffers<CR>')
 
 map('n', '<leader>;', ':!') -- run shell commands
 

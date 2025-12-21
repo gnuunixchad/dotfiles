@@ -11,6 +11,7 @@ nnoremap W :w \|e<Left><Left>
 nnoremap <leader>q :q<CR>
 
 nnoremap <leader>m :marks<CR>
+nnoremap <leader>b :buffers<CR>
 
 nnoremap <leader>; :!
 
