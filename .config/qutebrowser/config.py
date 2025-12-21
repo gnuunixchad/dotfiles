@@ -8,6 +8,7 @@ c.zoom.default = 150
 config.source('proxy.py')
 config.source('colors.py')
 config.source('bindings.py')
+config.source('search.py')
 
 config.load_autoconfig(False) # ignore GUI settings
 
