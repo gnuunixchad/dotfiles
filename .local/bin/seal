@@ -87,9 +87,19 @@ encrypt() {
 }
 
 decrypt() {
-    gpg -d "$file" \
-        && notify "Decryption finished" \
-        || abort "Decryption failed"
+    local pass=""
+
+    if [ "$XDG_SESSION_TYPE" = "tty" ]; then
+        read -p "$prompt decryption passphrase: " -r pass
+    else
+        menu="${HOME}/.local/bin/wmenu-color -P -p"
+        pass="$($menu "$prompt decyrption passphrase: " < /dev/null)"
+    fi
+    echo "$pass" | gpg --no-symkey-cache \
+                       --batch \
+                       --passphrase-fd 0 \
+                       -d "$file" \
+                 && notify "Decryption finished" || abort "Decryption failed"
 }
 
 sign() {
