@@ -6,7 +6,7 @@
 vim.cmd [[
 call plug#begin()
 Plug 'norcalli/nvim-colorizer.lua'
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master' }
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'MeanderingProgrammer/render-markdown.nvim'
