@@ -27,6 +27,6 @@ local languages = { 'markdown',
 require'nvim-treesitter'.install(languages)
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = languages,
+  pattern = { 'markdown', 'markdown_inline' },
   callback = function() vim.treesitter.start() end,
 })
