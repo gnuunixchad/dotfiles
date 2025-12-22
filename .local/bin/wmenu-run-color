@@ -6,6 +6,6 @@
 
 wmenu-run -f "SourceCodePro Medium 13" \
           -i \
-          -N "$background" \
-          -S "$color14" \
-          -s "$foreground"
+          -N "$color4" \
+          -S "$color7" \
+          -s "$color4"
