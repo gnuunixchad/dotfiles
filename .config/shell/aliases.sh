@@ -82,12 +82,13 @@ alias vm="virt-manager"
 alias wshowkeys="firejail --noprofile --net=none --nosound --novideo --no3d --nodbus wshowkeys -a bottom -b '#11111188' -F 'SourceCodePro 20'"
 alias transmission-cli="transmission-cli -w $HOME/dls"
 
-alias heartstow='cd ~/doc/heart && stow --adopt -t ~ . && cd - &>/dev/null && echo "heart is stowed"'
-alias heartunstow='cd ~/doc/heart && stow -D -t ~ . && cd - &>/dev/null && echo "heart is unstowed"'
-alias heartrestow='cd ~/doc/heart && stow -R --adopt -t ~ . && cd - &>/dev/null && echo "heart is stowed"'
-alias ollamastow='cd ~/pkg/ollama && stow --adopt -t ~ . && cd - &>/dev/null && echo "ollama is stowed"'
-alias ollamarestow='cd ~/pkg/ollama && stow -R --adopt -t ~ . && cd - &>/dev/null && echo "ollama is stowed"'
-alias ollamaunstow='cd ~/pkg/ollama && stow -D -t ~ . && cd - &>/dev/null && echo "ollama is unstowed"'
+alias heartstow='stow -S --adopt -d "${HOME}/doc/heart"  -t "$HOME" . && echo "heart is stowed"'
+alias heartrest='stow -R --adopt -d "${HOME}/doc/heart"  -t "$HOME" . && echo "heart is restowed"'
+alias heartunst='stow -D -d "${HOME}/doc/heart"  -t "$HOME" . && echo "heart is unstowed"'
+
+alias ollamastow='stow -S --adopt -d "${HOME}/pkg/ollama" -t "$HOME" . && echo "ollama is stowed"'
+alias ollamarest='stow -R --adopt -d "${HOME}/pkg/ollama" -t "$HOME" . && echo "ollama is restowed"'
+alias ollamaunst='stow -D -d "${HOME}/pkg/ollama" -t "$HOME" . && echo "ollama is unstowed"'
 
 alias p="source $HOME/.local/sbin/prox"
 alias P="getprox";
