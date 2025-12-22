@@ -65,7 +65,7 @@ c.content.blocking.adblock.lists = [
   "https://secure.fanboy.co.nz/fanboy-annoyance.txt",]
 
 # privacy
-c.content.canvas_reading = False
+c.content.canvas_reading = False # breaks some sites, see `zcr` in `bindings.py`
 c.content.geolocation = False
 c.content.webrtc_ip_handling_policy = "default-public-interface-only"
 c.completion.open_categories = ['filesystem']
