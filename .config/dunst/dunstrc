@@ -43,7 +43,6 @@
     corners = all
     ignore_dbusclose = false
     force_xwayland = false
-    force_xinerama = false
     mouse_left_click = close_current
     mouse_middle_click = do_action, close_current
     mouse_right_click = context_all
@@ -52,21 +51,21 @@
     per_monitor_dpi = false
 
 [urgency_low]
-    background = "#111111"
-    foreground = "#dddddd"
-    frame_color= "#8ce10b"
+    background = "#0000aa"
+    foreground = "#aaaaaa"
+    frame_color= "#aaaaaa"
     timeout = 7
 
 [urgency_normal]
-    background = "#111111"
-    foreground = "#dddddd"
-    frame_color = "#8ce10b"
+    background = "#0000aa"
+    foreground = "#ffffff"
+    frame_color= "#aaaaaa"
     timeout = 12
     override_pause_level = 15
 
 [urgency_critical]
-    background = "#111111"
+    background = "#aa0000"
     foreground = "#ffffff"
-    frame_color = "#e6da00"
+    frame_color= "#aaaaaa"
     timeout = 0
-    override_pause_level = 60
+    override_pause_level = 30
