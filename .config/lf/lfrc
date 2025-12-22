@@ -21,11 +21,11 @@ set preload true
 set icons true
 set rulerfile true
 
-set promptfmt "\033[106m%u@%h\033[00m \033[40m%d%f\033[0m"
+# promptfmt is set in on-cd
 set numberfmt "\033[90m"
 set borderfmt "\033[90m"
-set cursoractivefmt "\033[37;106m"
-set cursorparentfmt "\033[30;44m"
+set cursoractivefmt "\033[47;34m"
+set cursorparentfmt "\033[47;30m"
 set timefmt "2006-01-02 15:04"
 set statfmt "\033[32m%p\033[0m| %c| %u| %g| %S| %t| -> %l"
 set menuheaderfmt "\033[106;1m"
