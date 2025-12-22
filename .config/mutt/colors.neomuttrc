@@ -2,65 +2,69 @@
 # unixchad.neomuttrc
 # @author nate zhou
 # @since 2025
-# Based on the Neonwolf Color Scheme for NeoMutt
+# see `/usr/share/doc/neomutt/manual.txt`
 
-# basic colors ---------------------------------------------------------
+# basic
 
-color error         bold  red       color235   # message line error text
-color tilde               color81   default    # vi-like tildes marking blank lines
-color message             white     color14
-color markers       bold  green     color0     # wrapped-line /^\+/ markers
-color attachment    bold  yellow    default    # attachment headers
-color search              white     color14    # search patterns in pager
-color status              white     color14
-color indicator           white     color14    # selected email in index
-color tree          bold  color9    default    # arrow in threads (`-->')
+color error           bold color15 color1   # message line error text
+color tilde                color81 default  # vi-like tildes marking blank lines
+color message         bold color7  color4
+color markers         bold color1  color0   # wrapped-line /^\+/ markers
+color attachment      bold color11 default  # attachment headers
+color search               color7  color4   # search patterns in pager
+color status               color7  color4
+color indicator            color7  color4   # selected email in index
+color tree            bold color9  default  # arrow in threads (`-->')
 
-color index               green     default ~N # new
-color index               red       default ~D # delete
-color index               yellow    default ~F # delete
-color index               magenta   default ~T # delete
+color index           bold color10 default ~N # new
+color index           bold color1  default ~D # delete
+color index           bold color11 default ~F # delete
+color index           bold magenta default ~T # delete
 
-color index_number        color8    default
-color index_author        color6    default
-color index_size          color7    default
-color index_subject       color6    default
+color index_number         color8  default
+color index_author         color15 default
+color index_size           color7  default
+color index_subject        color15 default
 
-color sidebar_new         green     default
-color sidebar_flagged     yellow    default
+# sidebar
+color sidebar_background   color15 color0
+color sidebar_indicator    color15 color4 # mailbox is open
 
-# message headers ------------------------------------------------------
+color sidebar_new     bold color10 color0
+color sidebar_flagged bold color11 color0
 
-color hdrdefault          white     default
-color header              white     default       "^(Date)"
-color header              white     color14      "^(Subject)"
+# message headers
 
-# body -----------------------------------------------------------------
+color hdrdefault           color7  default
+color header               color7  default "^(Date)"
+color header               color7  color4  "^(Subject)"
 
+# body
 
-color body         brightyellow     default "^> \.*" # markdown quoted
-color body               yellow     default "^(\t| )*(-|\\*) \.*" # markdown list
+color body                 color15 color0
+color body                 color11 color16 "^> \.*" # quoted
+color body                 color11 default "^(\t| )*(-|\\*) \.*" # list
 
-color quoted             white      default
-color quoted1            white      default
-color quoted2            white      default
-color quoted3            white      default
-color quoted4            white      default
-color signature          white      default     # everything below /^--\s*$/
+color quoted               color7  default
+color quoted1              color7  default
+color quoted2              color7  default
+color quoted3              color7  default
+color quoted4              color7  default
+color signature            color7  default # everything below /^--\s*$/
 
-color bold          bold white      default
-color underline          yellow     default
-color normal             white      default
+color bold            bold color7  default
+color underline            color11 default
+color normal               color7  default
 
-color body              yellow      default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+ # email addr
-color body              green       default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9@]+ # URL
+color body                 color11 default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+ # email addr
+color body                 color10 default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9@]+ # URL
 
 ## pgp
 
-color body               red        default    "(BAD signature)"
-color body          bold green      default    "(Good signature)"
-color body          bold green      default    "^gpg: Good signature .*"
-color body          bold color241   default    "^gpg: "
-color body          bold red        default    "^gpg: BAD signature from.*"
-mono  body          bold                        "^gpg: Good signature"
-mono  body          bold                        "^gpg: BAD signature from.*"
+color body                 color1  default  "(BAD signature)"
+color body            bold color10 default  "(Good signature)"
+color body            bold color10 default  "^gpg: Good signature .*"
+color body            bold color7  default  "^gpg: "
+color body            bold color1  default  "^gpg: BAD signature from.*"
+mono  body            bold                    "^gpg: Good signature"
+mono  body            bold                    "^gpg: BAD signature from.*"
