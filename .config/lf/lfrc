@@ -31,7 +31,7 @@ set statfmt "\033[32m%p\033[0m| %c| %u| %g| %S| %t| -> %l"
 set menuheaderfmt "\033[106;1m"
 
 set selectfmt   "\033[7;37m"
-set visualfmt   "\033[7;33m"
+set visualfmt   "\033[7;32m"
 set copyfmt     "\033[7;36m"
 set cutfmt      "\033[7;91m"
 
