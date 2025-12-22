@@ -26,7 +26,7 @@ for i in $(riverctl list-inputs | grep -i touchpad); do
 done
 
 # border
-riverctl border-color-focused 0x427b58ff
+riverctl border-color-focused 0xaaaaaaff
 riverctl border-color-unfocused 0x000000ff
 riverctl border-width 2
 
