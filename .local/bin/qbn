@@ -4,7 +4,7 @@
 # dynamic menu alias
 # launch qutebrowser with alt profile in dynamic menu
 
-COLOR1='#005577'
+COLOR1='#00aa00'
 
 BASEDIR="${HOME}/.cache/qutebrowser-basedir"
 CONFIGDIR="${HOME}/.config/qutebrowser"

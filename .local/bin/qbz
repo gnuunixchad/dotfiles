@@ -3,7 +3,7 @@
 # @since 2025
 # launch qutebrowser with alt profile in dynamic menu
 
-COLOR1='#1144aa'
+COLOR1='#5555aa'
 
 BASEDIR="${HOME}/.cache/qutebrowser-basedir"
 CONFIGDIR="${HOME}/.config/qutebrowser"
