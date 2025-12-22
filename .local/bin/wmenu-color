@@ -7,9 +7,10 @@
 
 wmenu -i \
       -f "SourceCodePro medium 13" \
-      -N 111111 \
-      -S "$color14" \
-      -s "$foreground" \
-      -M "$color14" \
-      -m "$foreground" \
+      -N "$color4" \
+      -n "$color7" \
+      -S "$color7" \
+      -s "$color4" \
+      -M "$color7" \
+      -m "$color4" \
       "$@"
