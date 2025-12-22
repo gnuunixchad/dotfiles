@@ -10,3 +10,6 @@ require('plugins.init')
 
 -- require('config.colors')
 vim.cmd('colorscheme vim')
+
+-- status line color
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#0000aa', fg = '#ffffff' })
