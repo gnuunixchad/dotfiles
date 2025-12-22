@@ -3,5 +3,25 @@
 # @authoer natezhou
 # @since 2023,2025
 
-echo "creating a backup as $1~"
-cp -i "$1" "./$1~"
+files="$@"
+
+usage() {
+cat << _EOF_
+USAGE
+        $(basename $0) FILE...
+        Create backups and append a tilde for backup filename
+_EOF_
+}
+
+confirm() {
+    read -p "$(basename $0): backup "$1" arguments?(y/n) " -r REPLY
+    [ "$REPLY" != "y" ] &&  exit 0
+}
+
+[ "$#" -eq 0 ] && usage
+
+[ "$#" -ne 1 ] && confirm "$#"
+
+for file in $files; do
+    cp -ri "$file" "${file}~"
+done
