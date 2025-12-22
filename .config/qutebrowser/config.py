@@ -10,6 +10,8 @@ config.source('colors.py')
 config.source('bindings.py')
 config.source('search.py')
 
+c.content.user_stylesheets = ["~/.config/qutebrowser/styles/black.css"]
+
 config.load_autoconfig(False) # ignore GUI settings
 
 c.editor.command = ['footclient', '-T', 'Floating_Term', '-o', 'colors.alpha=0.9', 'nvim', '{file}', '-c', 'normal {line}G{column0}l']

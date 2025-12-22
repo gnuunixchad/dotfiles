@@ -1,0 +1,12 @@
+/* qutebroser/styles/black.css */
+/* @author nate zhou */
+/* @since 2025 */
+/* darker background */
+
+html {
+    background-color: #000000 !important;
+}
+
+body {
+    background-color: #000000 !important;
+}

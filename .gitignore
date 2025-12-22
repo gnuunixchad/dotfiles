@@ -238,6 +238,8 @@ package-list
 !.config/qutebrowser/userscripts
 !.config/qutebrowser/greasemonkey/
 !.config/qutebrowser/greasemonkey/yt-ads.js
+!.config/qutebrowser/styles
+!.config/qutebrowser/styles/black.css
 !.config/river/
 !.config/river/autostart
 !.config/river/bindings
