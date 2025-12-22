@@ -71,8 +71,8 @@ mv ${HOME}/.bash_profile{,~} 2>/dev/null
 [ -d ${HOME}/pkg/yay ] && [ ! -L ${HOME}/.cache/yay ] \
     && ln -s ${HOME}/pkg/yay ${HOME}/.cache/yay
 
-cd "$DOTFILES_LOCAL" && stow -R -t $HOME . --adopt
-cd ${HOME}/pkg/ollama && stow --adopt -t ~ . && cd - &>/dev/null
+stow -R --adopt -d "$DOTFILES_LOCAL" -t "$HOME" .
+stow -R --adopt -d "${HOME}/pkg/ollama" -t "$HOME" .
 
 [ -x /usr/bin/zsh ] && grep ":${UID}:${GID}:" /etc/passwd  \
                         | grep -q '/usr/bin/zsh'\
