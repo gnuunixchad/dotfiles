@@ -44,8 +44,12 @@ chmod 750 ${HOME}/pkg/fdroid
 chmod 705 ${HOME}/pkg/{iso,pacman}
 
 mkdir -p ${HOME}/.{cache/mpd,config/'Code - OSS',local/{share,state/nvim}}
+
+# keep history files locally
 mkdir -p ${HOME}/.ollama
 touch ${HOME}/.ollama/history
+mkdir -p ${HOME}/.local/state/{bash,zsh}
+touch ${HOME}/.local/state/{bash,zsh}/history
 
 # Make sure files touched by a cronjob for damblocks is a symlink so they can
 # be included by my rsync scripts, so to sync some status to other machines.
