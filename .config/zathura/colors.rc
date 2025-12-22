@@ -6,28 +6,28 @@
 #set default-bg rgba(17,17,17,0.9)
 #set recolor-lightcolor rgba(17,17,17,0)
 
-set default-bg "#111111"
-set recolor-lightcolor "#111111"
-set statusbar-bg "#427b58"
-set recolor-darkcolor "#dddddd"
+set default-bg "#000000"
+set recolor-lightcolor "#000000"
+set statusbar-bg "#0000aa"
+set recolor-darkcolor "#ffffff"
 
 set highlight-fg rgba(255,255,255,0.80)
 set highlight-color rgba(0,85,119,0.25)
-set highlight-active-color rgba(66,123,88,0.5) #427b5880
+set highlight-active-color rgba(66,123,88,0.5) #0000aa80
 
-set completion-bg "#111111"
-set completion-highlight-bg "#427b58"
-set completion-highlight-fg "#eeeeee"
+set completion-bg "#000000"
+set completion-highlight-bg "#0000aa"
+set completion-highlight-fg "#ffffff"
 
-set inputbar-fg "#eeeeee"
+set inputbar-fg "#ffffff"
 
-set notification-fg "#eeeeee"
-set notification-bg "#076678"
-set notification-warning-fg "#111111"
-set notification-warning-bg "#e6da00"
-set notification-error-fg "#eeeeee"
-set notification-error-bg "#8b0000"
+set notification-fg "#ffffff"
+set notification-bg "#00aa00"
+set notification-warning-fg "#000000"
+set notification-warning-bg "#ffff55"
+set notification-error-fg "#ffffff"
+set notification-error-bg "#aa0000"
 
-set index-active-bg "#427b58"
-set index-active-fg "#eeeeee"
-set index-bg "#111111"
+set index-active-bg "#0000aa"
+set index-active-fg "#ffffff"
+set index-bg "#000000"
