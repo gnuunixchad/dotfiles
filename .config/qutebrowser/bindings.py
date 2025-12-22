@@ -33,8 +33,9 @@ config.bind('zi', 'zoom-in')
 config.bind('zo', 'zoom-out')
 config.bind('zz', 'zoom {}'.format(c.zoom.default))
 
-# Set to False in `config.py`, manually toggle it if website's uploading breaks
-config.bind('zcs', 'config-cycle content.canvas_reading True False')
+# manually toggle canvas reading if some website's breaking
+config.bind('zcR', 'set content.canvas_reading true ;; message-warning "Canvas Reading: True"')
+config.bind('zcr', 'set content.canvas_reading false ;; message-info "Canvas Reading: False"')
 
 config.bind('.', 'config-cycle tabs.show always never')
 config.bind(',', 'config-cycle tabs.width 20% 10%')
