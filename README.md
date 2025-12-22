@@ -102,6 +102,7 @@ Software I use to create videos:
 All emails from me will be signed by the same GPG key that I sign commits with:
 - Import my key: `gpg --recv-keys 117094DA1AEA0835E4ED0770F7476912AA224CAC`
 - Download or copy at [here](./unixchad.asc)
+- Always encrypt your emails with my public key if you know how to.
 
 ## License
 I am the author of every file with the following disclaimer:
