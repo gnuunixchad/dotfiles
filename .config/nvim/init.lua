@@ -12,4 +12,8 @@ require('plugins.init')
 vim.cmd('colorscheme vim')
 
 -- status line color
-vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#0000aa', fg = '#ffffff' })
+vim.api.nvim_set_hl(0, 'StatusLine', { bg = '#0000aa',
+                                       fg = '#ffffff', 
+                                       ctermbg = 'DarkBlue',
+                                       ctermfg = 'White'}
+)
