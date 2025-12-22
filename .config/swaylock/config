@@ -5,8 +5,8 @@ ignore-empty-password
 show-failed-attempts
 daemonize
 
-image="$HOME/.local/share/lockscreen"
-scaling=fill
+color=000000
+
 indicator-caps-lock
 
 indicator-radius=65
@@ -14,24 +14,24 @@ indicator-thickness=10
 font=SourceCodePro
 font-size=20
 
-ring-color=427b58
-key-hl-color=111111
-bs-hl-color=bbccddcc
+ring-color=0000aa
+key-hl-color=000000
+bs-hl-color=aaaaaa
 
-ring-clear-color=427b58
-inside-clear-color=bbccddcc
-text-clear-color=111111
+ring-clear-color=0000aa
+inside-clear-color=aaaaaa
+text-clear-color=000000
 
-ring-wrong-color=427b58
-inside-wrong-color=bbccddcc
-text-wrong-color=111111
+ring-wrong-color=0000aa
+inside-wrong-color=aaaaaa
+text-wrong-color=000000
 
-ring-ver-color=427b58
-inside-ver-color=bbccddcc
-text-ver-color=111111
+ring-ver-color=0000aa
+inside-ver-color=aaaaaa
+text-ver-color=000000
 
-ring-caps-lock-color=427b58
-inside-caps-lock-color=bbccddcc
-caps-lock-bs-hl-color=bbccddcc
-caps-lock-key-hl-color=111111
-text-caps-lock-color=111111
+ring-caps-lock-color=0000aa
+inside-caps-lock-color=aaaaaa
+caps-lock-bs-hl-color=aaaaaa
+caps-lock-key-hl-color=000000
+text-caps-lock-color=000000
