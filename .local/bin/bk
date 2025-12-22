@@ -3,25 +3,37 @@
 # @authoer natezhou
 # @since 2023,2025
 
-files="$@"
 
 usage() {
 cat << _EOF_
 USAGE
-        $(basename $0) FILE...
+        $(basename $0) [OPTION] FILE...
         Create backups and append a tilde for backup filename
+OPTION
+        -i,--in-place   Append a tilde to the filenames instead of
+                        creating copys
 _EOF_
 }
 
-confirm() {
-    read -p "$(basename $0): backup "$1" arguments?(y/n) " -r REPLY
-    [ "$REPLY" != "y" ] &&  exit 0
+backup() {
+
+for file in $files; do
+    $action -i "$file" "${file}~"
+done
 }
 
 [ "$#" -eq 0 ] && usage
 
-[ "$#" -ne 1 ] && confirm "$#"
-
-for file in $files; do
-    cp -ri "$file" "${file}~"
-done
+case "$1" in
+    -i|--in-place)
+        shift
+        files="$@"
+        action="mv"
+        backup
+        ;;
+    * )
+        files="$@"
+        action="cp -r"
+        backup
+        ;;
+esac
