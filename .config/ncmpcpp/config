@@ -37,22 +37,26 @@ follow_now_playing_lyrics = yes
 fetch_lyrics_for_current_song_in_background = no
 
 ### color ###
-main_window_color = 7
+main_window_color = 16
 
-song_columns_list_format = (20)[]{a} (3f)[8]{NE:T} (40)[cyan]{t|f:Title} (5f)[8]{y} (20)[7]{b} (7f)[8]{l}
+song_columns_list_format = (20)[16]{a} (3f)[8]{NE:T} (40)[16]{t|f:Title} (5f)[8]{y} (20)[16]{b} (7f)[8]{l}
 
-current_item_prefix = $b$(7)$r
+current_item_prefix = $b$(8_5)$r
 current_item_suffix = $/r$/b$(end)
 
-now_playing_prefix = $b$(10)$r
+now_playing_prefix = $b$(8_5)
 now_playing_suffix = $/r$/b$(end)
 
-current_item_inactive_column_prefix = $(8)$r
-selected_item_prefix = $4
+current_item_inactive_column_prefix = $(8_5)
+selected_item_prefix = $(8_5)
 
-progressbar_color = "15"
-progressbar_elapsed_color = "10"
+progressbar_color = "9"
+progressbar_elapsed_color = "16"
 
 playlist_disable_highlight_delay = 0
 
-visualizer_color = 47, 83, 119, 155, 191, 227, 221, 215, 209, 203, 197, 161
+browser_playlist_prefix = "$(8_5)playlist$9"
+
+empty_tag_color = 8_5
+
+visualizer_color = 9
