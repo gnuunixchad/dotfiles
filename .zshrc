@@ -100,7 +100,7 @@ prompt
 export GPG_TTY=$(tty) # TUI pinentry, need be set for each pts
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh 2>/dev/null
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=magenta,bold;
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=10,bold;
 ZSH_HIGHLIGHT_STYLES[arg0]=fg=green,bold;
 ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=fg=cyan;
 ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=fg=cyan;
