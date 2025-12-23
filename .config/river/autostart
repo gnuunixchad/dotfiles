@@ -32,4 +32,4 @@ pgrep 'dunst' || riverctl spawn "dunst"
 
 pgrep 'wob' || riverctl spawn "${HOME}/.local/bin/wobd"
 
-riverctl spawn "fcitx5 -d" # conflicts with wtype
+riverctl spawn "fcitx5 -d --verbose '*=0'" # conflicts with wtype
