@@ -27,7 +27,7 @@ USAGE
         Each option can also be bound in lf for convenience.
 OPTIONS
         -c,--cipher     enter a passphrase and encrypt the file with $CIPHER_ALGO
-        -e,--encrypt    choose a secret key and encrypt the file
+        -e,--encrypt    choose a public key and encrypt the file
         -d,--decrypt    decrypt the gpg encrypt file
         -r,--rifle      preview encrypted gpg files without writing to disk
         -s,--sign       choose a secret key and detach sign the file in ascii
