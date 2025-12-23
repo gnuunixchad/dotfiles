@@ -51,7 +51,6 @@ package-list
 !usr/local/share/kbd/keymaps/
 !usr/local/share/kbd/keymaps/us-custom.map.gz
 
-!.inputrc
 !.profile
 !.bashrc
 !.bash_aliases
@@ -240,6 +239,8 @@ package-list
 !.config/qutebrowser/greasemonkey/yt-ads.js
 !.config/qutebrowser/styles
 !.config/qutebrowser/styles/black.css
+!.config/readline/
+!.config/readline/inputrc
 !.config/river/
 !.config/river/autostart
 !.config/river/bindings
