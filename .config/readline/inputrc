@@ -4,6 +4,9 @@
 
 $include /etc/inputrc
 
+# disable Thinkpad's PC speaker in tty
+set bell-style none
+
 set editing-mode vi
 
 # disable C-n C-p for tmux scrolling
