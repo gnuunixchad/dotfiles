@@ -1,4 +1,4 @@
 title Arch Linux
 linux /vmlinuz-linux
 initrd /initramfs-linux-fallback.img
-options cryptdevice=UUID=<LUKS-CONTAINER>:cryptlvm root=UUID=<ROOT-LOGICAL-VOLUME>
+options cryptdevice=UUID=<LUKS-CONTAINER>:cryptlvm root=UUID=<ROOT-LOGICAL-VOLUME> modprobe.blacklist=pcspkr
