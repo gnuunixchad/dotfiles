@@ -5,7 +5,7 @@
 # @depends pacman-contrib
 
 NVIDIA_DEPS="egl-gbm,egl-wayland,egl-wayland2,egl-x11,eglexternalplatform"
-NVIDIA="nvidia-utils,nvidia-open,nvtop,${NVIDIA_DEPS}"
+NVIDIA="nvidia-utils,nvidia-open,nvidia-open-dkms,nvtop,${NVIDIA_DEPS}"
 
 IGNORED_PKGS="intel-ucode,amd-ucode,${NVIDIA}"
 
