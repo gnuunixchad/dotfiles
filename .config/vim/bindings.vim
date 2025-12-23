@@ -9,6 +9,7 @@ tnoremap <leader><Esc> <C-\><C-n>
 
 nnoremap W :w \|e<Left><Left>
 nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :quitall<CR>
 
 nnoremap <leader>m :marks<CR>
 nnoremap <leader>b :buffers<CR>
@@ -49,6 +50,8 @@ nnoremap <leader>k :tabnext<CR>
 " buffer
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>p :bp<CR>
+
+nnoremap <leader>df :diffthis<CR>
 
 " toggle editor visuals
 nnoremap <leader>ts :set spell!<CR>

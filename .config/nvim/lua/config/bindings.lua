@@ -13,7 +13,8 @@ end
 map('t', '<leader><Esc>', '<C-\\><C-n>')
 
 map('n', 'W', ':w |e<Left><Left>')
-map('n', '<leader>q', ':quit<CR>')
+map('n', '<leader>q', ':q<CR>')
+map('n', '<leader>Q', ':quitall<CR>')
 
 map('n', '<leader>m', ':marks<CR>')
 map('n', '<leader>b', ':buffers<CR>')
@@ -54,6 +55,8 @@ map('n', '<leader>k', ':tabprev<CR>')
 -- buffer
 map('n', '<leader>n' ,':bn<CR>')
 map('n', '<leader>p' ,':bp<CR>')
+
+map('n', '<leader>df', ':diffthis<CR>')
 
 -- toggle editor visuals
 map('n', '<leader>ts', ':set spell!<CR>')
