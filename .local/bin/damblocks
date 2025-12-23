@@ -4,15 +4,19 @@
 # damblocks - Pure POSIX plain text bar generator with individual update
 # intervals  and signal support. Originally written for river's statusbar -
 # dam, but it also works with any bar taking stdin as plain text.
+# @depends  ttf-nerd-fonts-symbols wireplumber brightnessctl coreutils sed grep
+#           awk curl
+# @suggests dash bluez-utils isync newsboat calcurse mpc wob
 
 # Fork of sbar(https://github.com/pystardust/sbar) with custom modules.
 
-# Some function's reloading depends on:
-# 1. my personal scripts        (~/.local/bin/)
-# 2. cronjobs                   (~/.config/crontab.example)
-# 3. udev rules                 (/etc/udev/rules)
+# Every function that supports signaling depends on one or more of:
+#   1. my personal scripts        (~/.local/bin/)
+#   2. cronjobs                   (~/.config/crontab.example)
+#   3. udev rules                 (/etc/udev/rules)
+# Specific dependencies are listed in the SIGNALING session in this script
 
-# Which can all be found on codeberg/github:
+# All scrips/cronjobs/rules are available on:
 # https://codeberg.org/unixchad/dotfiles
 # https://github.com/gnuunixchad/dotfiles
 
