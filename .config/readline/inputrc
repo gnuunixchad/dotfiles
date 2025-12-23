@@ -1,6 +1,6 @@
 # .inputrc
 # @author nate zhou
-# @since 2023,2024
+# @since 2023,2024,2025
 
 $include /etc/inputrc
 
@@ -8,10 +8,6 @@ $include /etc/inputrc
 set bell-style none
 
 set editing-mode vi
-
-# disable C-n C-p for tmux scrolling
-"\C-n": ""
-"\C-p": ""
 
 # vi mode indicator
 set show-mode-in-prompt on
