@@ -137,3 +137,18 @@ extract() {
 gbkless() {
     iconv -f GBK -t UTF-8 "$1" | command less -Xi
 }
+
+# get task descriptions by task IDs from taskwarrior database
+tskget() {
+    parse() {
+        case "$XDG_SESSION_TYPE" in
+            tty) echo "$description" ;;
+            wayland) echo "$description" | tee >(wl-copy) ;;
+        esac
+    }
+
+    for id in "$@"; do
+        description="$(task _get "$id".description)"
+        parse "$description"
+    done
+}
