@@ -14,6 +14,7 @@ alias rv="exec ssh-agent river -no-xwayland"
 alias dl="exec ssh-agent ${HOME}/.local/bin/damblocks | /usr/local/bin/dwl"
 
 alias faketty="XDG_SESSION_TYPE=tty TERM=xterm-256color"
+alias fakewl="XDG_SESSION_TYPE=wayland TERM=foot"
 alias resshagent="systemctl restart --user ssh-agent.service"
 
 alias rm="rm -I";
