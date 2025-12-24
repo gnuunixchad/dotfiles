@@ -33,8 +33,20 @@ while [ -n "$1" ]; do
         --minus)
             changeBrightness '1%-'
             ;;
+        --minus10)
+            changeBrightness '10%-'
+            ;;
         --plus)
             changeBrightness '1%+'
+            ;;
+        --plus10)
+            changeBrightness '10%+'
+            ;;
+        --max)
+            changeBrightness '100%'
+            ;;
+        --min)
+            changeBrightness '0%'
             ;;
         --no-fifo)
             brightnessctl | parseBrightnessIdle
