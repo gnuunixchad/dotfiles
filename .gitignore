@@ -167,6 +167,8 @@ package-list
 !.config/lf/ruler
 !.config/lf/lf-rearrange.sh
 !.config/layout.xkb
+!.config/libvirt/
+!.config/libvirt/libvirt.conf
 !.config/mpd/
 !.config/mpd/mpd.conf
 !.config/mpv/
