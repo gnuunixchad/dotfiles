@@ -36,7 +36,7 @@ vim like, do one thing and do it well. And try to avoid proprietary garbage and
 spyware when I can.
 - /usr/bin/sh:              `dash`
 - Login Shell:              `zsh`
-- Terminlal Multiplexer:    `abduco`, `dvtm`
+- Terminal Multiplexer:    `abduco`, `dvtm`
 - Terminal Emulator:        `foot`
 - Audio Server:             `pipewire`
 - WM/Compositor:            `river`, `dwl`
@@ -55,7 +55,7 @@ spyware when I can.
 - Rss Feeder:               `newsboat`
 - Calender:                 `calcurse`
 - Todo:                     `taskwarrior`
-- Virtulization:            `qemu`, `libvirt`, `virtmanager`
+- Virtualisation:            `qemu`, `libvirt`, `virtmanager`
 - Privacy/Security:         `cryptsetup`, `sbctl`, `gpg`, `firejail`
 - Web Browser:              `w3m`, `qutebrowser`
 - Downloader:               `curl`, `wget`, `transmission-cli`, `yt-dlp`, `httrack`
@@ -76,13 +76,13 @@ spyware when I can.
 - Speaker/Microphone Volume: [audio](./.local/bin/audio)
 - Speaker Switch:           [speaker](./.local/bin/speaker)
 - Bookmark:                 [address](./.local/bin/address)
-- File Previwer:            [rifle](./.local/bin/scope)
+- File Previewer:            [rifle](./.local/bin/scope)
 - File Opener:              [scope](./.local/bin/rifle)
 - {,un}{lock,mount} USB drives: [saddle](./.local/bin/saddle)
 - GPG {en,de}crypt|preview|sign|verify: [seal](./.local/bin/seal)
-- GPG Previewr:             [gpg-rifle](./.local/bin/gpg-rifle)
+- GPG Previewer:             [gpg-rifle](./.local/bin/gpg-rifle)
 - Mutt/isync with Oauth2:   [muttauth](./.local/bin/muttauth)
-- Newsboat Previewr:        [url-rifle](./.local/bin/url-rifle)
+- Newsboat Previewer:        [url-rifle](./.local/bin/url-rifle)
 - Android Mounting:         [phone](./.local/bin/phone)
 - Shortcuts Generator:      [teleport-genesis](./.local/bin/teleport-genesis)
 - Qutebrowser:              [userscripts](./.local/bin/qutebrowser/)
