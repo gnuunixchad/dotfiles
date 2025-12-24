@@ -3,6 +3,9 @@
 -- @author nate zhou
 -- @since 2025
 
+-- enables the experimental lua module loader, see `:h loader`
+vim.loader.enable()
+
 local vim = vim
 local Plug = vim.fn['plug#']
 
