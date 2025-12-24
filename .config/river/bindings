@@ -30,10 +30,14 @@ $map -repeat normal ${mod}+Shift minus      spawn "${HOME}/.local/bin/audio sour
 $map -repeat normal ${mod}+Shift equal      spawn "${HOME}/.local/bin/audio source --plus"
 $map normal ${mod}+Shift backspace          spawn "${HOME}/.local/bin/audio source --mute"
 
-$map -repeat normal $mod bracketleft        spawn "${HOME}/.local/bin/bright --minus"
-$map -repeat normal $mod bracketright       spawn "${HOME}/.local/bin/bright --plus"
-$map -repeat locked $mod bracketleft        spawn "${HOME}/.local/bin/bright --minus"
-$map -repeat locked $mod bracketright       spawn "${HOME}/.local/bin/bright --plus"
+for mode in "normal" "locked"; do
+$map -repeat $mode $mod bracketleft                  spawn "${HOME}/.local/bin/bright --minus"
+$map -repeat $mode $mod bracketright                 spawn "${HOME}/.local/bin/bright --plus"
+$map -repeat $mode ${mod}+Shift bracketleft          spawn "${HOME}/.local/bin/bright --minus10"
+$map -repeat $mode ${mod}+Shift bracketright         spawn "${HOME}/.local/bin/bright --plus10"
+$map -repeat $mode ${mod}+Control+Shift bracketleft  spawn "${HOME}/.local/bin/bright --min"
+$map -repeat $mode ${mod}+Control+Shift bracketright spawn "${HOME}/.local/bin/bright --max"
+done
 
 $map normal ${mod}+Shift q                  spawn "${HOME}/.local/bin/exiland -river"
 $map normal ${mod}+Shift w                  spawn "swaylock"
