@@ -11,9 +11,9 @@ set recolor-lightcolor "#111111"
 set statusbar-bg "#427b58"
 set recolor-darkcolor "#dddddd"
 
-set highlight-fg rgba(255,255,255,0.80)
-set highlight-color rgba(0,85,119,0.25)
-set highlight-active-color rgba(66,123,88,0.5) #427b5880
+set highlight-fg rgba(255,255,255,1)
+set highlight-color rgba(140,225,11,0.50) #8ce10b
+set highlight-active-color rgba(66,123,88,0.80) #427b58
 
 set completion-bg "#111111"
 set completion-highlight-bg "#427b58"
@@ -26,8 +26,9 @@ set notification-bg "#076678"
 set notification-warning-fg "#111111"
 set notification-warning-bg "#e6da00"
 set notification-error-fg "#eeeeee"
-set notification-error-bg "#8b0000"
+set notification-error-bg "#aa0000"
 
 set index-active-bg "#427b58"
 set index-active-fg "#eeeeee"
 set index-bg "#111111"
+set index-fg "#eeeeee"
