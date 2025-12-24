@@ -40,6 +40,11 @@ alias lb="lsblk -o name,mountpoints,type,size"
 alias lm="file -Lb --mime-type"
 alias lsml="grep --color=never -m 5 '^[^#]' /etc/pacman.d/mirrorlist"
 
+alias vls="virsh list"
+alias vla="virsh list --all"
+alias vnl="virsh net-list"
+alias vsl="virsh snapshot-list"
+
 alias ,,="~/.local/bin/teleport-genesis-search"
 
 alias ..="cd .."
