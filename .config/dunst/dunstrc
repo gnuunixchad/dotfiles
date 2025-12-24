@@ -54,19 +54,19 @@
 [urgency_low]
     background = "#111111"
     foreground = "#dddddd"
-    frame_color= "#8ce10b"
+    frame_color= "#8ec07c"
     timeout = 7
 
 [urgency_normal]
     background = "#111111"
     foreground = "#dddddd"
-    frame_color = "#8ce10b"
+    frame_color = "#8ec07c"
     timeout = 12
     override_pause_level = 15
 
 [urgency_critical]
     background = "#111111"
     foreground = "#ffffff"
-    frame_color = "#e6da00"
+    frame_color = "#b16286"
     timeout = 0
     override_pause_level = 60
