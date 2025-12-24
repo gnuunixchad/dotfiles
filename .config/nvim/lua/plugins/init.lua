@@ -3,18 +3,27 @@
 -- @author nate zhou
 -- @since 2025
 
-vim.cmd [[
-call plug#begin()
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'nvim-treesitter/nvim-treesitter', { 'branch': 'master' }
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'MeanderingProgrammer/render-markdown.nvim'
-Plug 'tpope/vim-fugitive'
-Plug 'voldikss/vim-floaterm'
-Plug 'ptzz/lf.vim'
-call plug#end()
-]]
+local vim = vim
+local Plug = vim.fn['plug#']
+
+vim.call('plug#begin')
+
+Plug('norcalli/nvim-colorizer.lua')
+
+Plug('nvim-treesitter/nvim-treesitter', { ['branch'] = 'master' })
+
+Plug('neoclide/coc.nvim', { ['branch'] = 'release' })
+
+Plug('lukas-reineke/indent-blankline.nvim')
+
+Plug('MeanderingProgrammer/render-markdown.nvim')
+
+Plug('tpope/vim-fugitive')
+
+Plug('voldikss/vim-floaterm')
+Plug('ptzz/lf.vim')
+
+vim.call('plug#end')
 
 require('plugins.nvim-colorizer')
 require('plugins.nvim-treesitter')
