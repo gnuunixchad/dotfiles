@@ -5,10 +5,10 @@
 [global]
     monitor = 0
     follow = keyboard
-    width = 270
+    width = 294
     height = (0, 600)
     origin = top-right
-    offset = (18,18)
+    offset = (12 ,10)
     scale = 0
     notification_limit = 30
     indicate_hidden = yes
