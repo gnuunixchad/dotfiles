@@ -3,6 +3,7 @@
 # @author nate zhou
 # @since 2025
 
+map="riverctl map"
 mod=Mod4
 
 fcitx="[p]inyin [a]nthy"
@@ -12,99 +13,99 @@ wlrctl="[hjkl]cursors [,]left [.]right [m]iddle ^[hjkl]arrows"
 
 # resize #######################################################################
 riverctl declare-mode resize
-riverctl map normal ${mod}+Control r enter-mode resize
+$map normal ${mod}+Control r enter-mode resize
 
-riverctl map resize ${mod}+Control  r       enter-mode normal
-riverctl map resize None            Escape  enter-mode normal
-riverctl map resize None            space   enter-mode normal
+$map resize ${mod}+Control  r       enter-mode normal
+$map resize None            Escape  enter-mode normal
+$map resize None            space   enter-mode normal
 
-riverctl map -repeat resize None f toggle-float
+$map -repeat resize None f toggle-float
 
-riverctl map -repeat resize None h move left 50
-riverctl map -repeat resize None j move down 50
-riverctl map -repeat resize None k move up 50
-riverctl map -repeat resize None l move right 50
+$map -repeat resize None h move left 50
+$map -repeat resize None j move down 50
+$map -repeat resize None k move up 50
+$map -repeat resize None l move right 50
 
-riverctl map -repeat resize None y resize horizontal -50
-riverctl map -repeat resize None u resize vertical 50
-riverctl map -repeat resize None i resize vertical -50
-riverctl map -repeat resize None o resize horizontal 50
+$map -repeat resize None y resize horizontal -50
+$map -repeat resize None u resize vertical 50
+$map -repeat resize None i resize vertical -50
+$map -repeat resize None o resize horizontal 50
 
 
 # fcitx ########################################################################
 riverctl declare-mode "$fcitx"
-riverctl map normal ${mod}+Control f enter-mode "$fcitx"
+$map normal ${mod}+Control f enter-mode "$fcitx"
 
-riverctl map "$fcitx" ${mod}+Control f enter-mode normal
-riverctl map "$fcitx" None Escape enter-mode normal
-riverctl map "$fcitx" None space enter-mode normal
+$map "$fcitx" ${mod}+Control f enter-mode normal
+$map "$fcitx" None Escape enter-mode normal
+$map "$fcitx" None space enter-mode normal
 
-riverctl map "$fcitx" None p spawn "riverctl enter-mode normal && fcitx5-remote -s pinyin"
-riverctl map "$fcitx" None a spawn "riverctl enter-mode normal && fcitx5-remote -s anthy"
+$map "$fcitx" None p spawn "riverctl enter-mode normal && fcitx5-remote -s pinyin"
+$map "$fcitx" None a spawn "riverctl enter-mode normal && fcitx5-remote -s anthy"
 
 
 # wmenu ########################################################################
 riverctl declare-mode "$wmenu"
-riverctl map normal $mod w enter-mode "$wmenu"
+$map normal $mod w enter-mode "$wmenu"
 
-riverctl map "$wmenu" $mod w      enter-mode normal
-riverctl map "$wmenu" None space  enter-mode normal
-riverctl map "$wmenu" None Escape enter-mode normal
+$map "$wmenu" $mod w      enter-mode normal
+$map "$wmenu" None space  enter-mode normal
+$map "$wmenu" None Escape enter-mode normal
 
-riverctl map "$wmenu" None w spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wiki"
-riverctl map "$wmenu" None h spawn "riverctl enter-mode normal && ${HOME}/.local/bin/heart"
-riverctl map "$wmenu" None b spawn "riverctl enter-mode normal && ${HOME}/.local/bin/books"
-riverctl map "$wmenu" None m spawn "riverctl enter-mode normal && ${HOME}/.local/bin/saddle --mount"
-riverctl map "$wmenu" None u spawn "riverctl enter-mode normal && ${HOME}/.local/bin/saddle --unmount"
-riverctl map "$wmenu" None p spawn "riverctl enter-mode normal && ${HOME}/.local/bin/saddle --power-off"
-riverctl map "$wmenu" None s spawn "riverctl enter-mode normal && ${HOME}/.local/bin/speaker"
-riverctl map "$wmenu" None e spawn "riverctl enter-mode normal && ${HOME}/.local/bin/emoji"
+$map "$wmenu" None w spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wiki"
+$map "$wmenu" None h spawn "riverctl enter-mode normal && ${HOME}/.local/bin/heart"
+$map "$wmenu" None b spawn "riverctl enter-mode normal && ${HOME}/.local/bin/books"
+$map "$wmenu" None m spawn "riverctl enter-mode normal && ${HOME}/.local/bin/saddle --mount"
+$map "$wmenu" None u spawn "riverctl enter-mode normal && ${HOME}/.local/bin/saddle --unmount"
+$map "$wmenu" None p spawn "riverctl enter-mode normal && ${HOME}/.local/bin/saddle --power-off"
+$map "$wmenu" None s spawn "riverctl enter-mode normal && ${HOME}/.local/bin/speaker"
+$map "$wmenu" None e spawn "riverctl enter-mode normal && ${HOME}/.local/bin/emoji"
 
 
 # dunst ########################################################################
 riverctl declare-mode "$dunst"
-riverctl map normal $mod x enter-mode "$dunst"
+$map normal $mod x enter-mode "$dunst"
 
-riverctl map "$dunst" $mod z enter-mode normal
-riverctl map "$dunst" $mod apostrophe enter-mode normal
-riverctl map "$dunst" None space enter-mode normal
-riverctl map "$dunst" None Escape enter-mode normal
+$map "$dunst" $mod z enter-mode normal
+$map "$dunst" $mod apostrophe enter-mode normal
+$map "$dunst" None space enter-mode normal
+$map "$dunst" None Escape enter-mode normal
 
-riverctl map "$dunst" None l spawn "riverctl enter-mode normal && ${HOME}/.local/bin/lsupdates"
-riverctl map "$dunst" None w spawn "riverctl enter-mode normal && ${HOME}/.local/bin/dw"
-riverctl map "$dunst" None c spawn "riverctl enter-mode normal && ${HOME}/.local/bin/dcal"
-riverctl map "$dunst" None m spawn "riverctl enter-mode normal && ${HOME}/.local/bin/lsmus"
-riverctl map "$dunst" None i spawn "riverctl enter-mode normal && ${HOME}/.local/bin/clip --wipe"
+$map "$dunst" None l spawn "riverctl enter-mode normal && ${HOME}/.local/bin/lsupdates"
+$map "$dunst" None w spawn "riverctl enter-mode normal && ${HOME}/.local/bin/dw"
+$map "$dunst" None c spawn "riverctl enter-mode normal && ${HOME}/.local/bin/dcal"
+$map "$dunst" None m spawn "riverctl enter-mode normal && ${HOME}/.local/bin/lsmus"
+$map "$dunst" None i spawn "riverctl enter-mode normal && ${HOME}/.local/bin/clip --wipe"
 
 
 # wlrctl #######################################################################
 riverctl declare-mode "$wlrctl"
-riverctl map normal $mod slash spawn "killall fcitx5 ; riverctl enter-mode \"$wlrctl\""
+$map normal $mod slash spawn "killall fcitx5 ; riverctl enter-mode \"$wlrctl\""
 
-riverctl map "$wlrctl" $mod slash  spawn "riverctl spawn \"fcitx5 -d\"; riverctl enter-mode normal"
-riverctl map "$wlrctl" None space  spawn "riverctl spawn \"fcitx5 -d\"; riverctl enter-mode normal"
-riverctl map "$wlrctl" None Escape spawn "riverctl spawn \"fcitx5 -d\"; riverctl enter-mode normal"
+$map "$wlrctl" $mod slash  spawn "riverctl spawn \"fcitx5 -d\"; riverctl enter-mode normal"
+$map "$wlrctl" None space  spawn "riverctl spawn \"fcitx5 -d\"; riverctl enter-mode normal"
+$map "$wlrctl" None Escape spawn "riverctl spawn \"fcitx5 -d\"; riverctl enter-mode normal"
 
-riverctl map -repeat "$wlrctl" None  h spawn "wlrctl pointer move -90 0"
-riverctl map -repeat "$wlrctl" None  j spawn "wlrctl pointer move 0 90"
-riverctl map -repeat "$wlrctl" None  k spawn "wlrctl pointer move 0 -90"
-riverctl map -repeat "$wlrctl" None  l spawn "wlrctl pointer move 90 0"
-riverctl map -repeat "$wlrctl" Shift h spawn "wlrctl pointer move -15 0"
-riverctl map -repeat "$wlrctl" Shift j spawn "wlrctl pointer move 0 15"
-riverctl map -repeat "$wlrctl" Shift k spawn "wlrctl pointer move 0 -15"
-riverctl map -repeat "$wlrctl" Shift l spawn "wlrctl pointer move 15 0"
+$map -repeat "$wlrctl" None  h spawn "wlrctl pointer move -90 0"
+$map -repeat "$wlrctl" None  j spawn "wlrctl pointer move 0 90"
+$map -repeat "$wlrctl" None  k spawn "wlrctl pointer move 0 -90"
+$map -repeat "$wlrctl" None  l spawn "wlrctl pointer move 90 0"
+$map -repeat "$wlrctl" Shift h spawn "wlrctl pointer move -15 0"
+$map -repeat "$wlrctl" Shift j spawn "wlrctl pointer move 0 15"
+$map -repeat "$wlrctl" Shift k spawn "wlrctl pointer move 0 -15"
+$map -repeat "$wlrctl" Shift l spawn "wlrctl pointer move 15 0"
 
-riverctl map "$wlrctl" None slash spawn "riverctl enter-mode normal && wlrctl pointer move 9999 9999"
+$map "$wlrctl" None slash spawn "riverctl enter-mode normal && wlrctl pointer move 9999 9999"
 
-riverctl map -repeat "$wlrctl" Control h spawn "wtype -k Left"
-riverctl map -repeat "$wlrctl" Control j spawn "wtype -k Down"
-riverctl map -repeat "$wlrctl" Control k spawn "wtype -k Up"
-riverctl map -repeat "$wlrctl" Control l spawn "wtype -k Right"
+$map -repeat "$wlrctl" Control h spawn "wtype -k Left"
+$map -repeat "$wlrctl" Control j spawn "wtype -k Down"
+$map -repeat "$wlrctl" Control k spawn "wtype -k Up"
+$map -repeat "$wlrctl" Control l spawn "wtype -k Right"
 
-riverctl map -repeat "$wlrctl" None  comma  spawn "wlrctl pointer click left"
-riverctl map -repeat "$wlrctl" None  period spawn "wlrctl pointer click right"
-riverctl map -repeat "$wlrctl" Shift comma  spawn "wlrctl pointer click left"
-riverctl map -repeat "$wlrctl" Shift period spawn "wlrctl pointer click right"
+$map -repeat "$wlrctl" None  comma  spawn "wlrctl pointer click left"
+$map -repeat "$wlrctl" None  period spawn "wlrctl pointer click right"
+$map -repeat "$wlrctl" Shift comma  spawn "wlrctl pointer click left"
+$map -repeat "$wlrctl" Shift period spawn "wlrctl pointer click right"
 
-riverctl map -repeat "$wlrctl" None n spawn "wlrctl pointer scroll 30"
-riverctl map -repeat "$wlrctl" None p spawn "wlrctl pointer scroll -30"
+$map -repeat "$wlrctl" None n spawn "wlrctl pointer scroll 30"
+$map -repeat "$wlrctl" None p spawn "wlrctl pointer scroll -30"

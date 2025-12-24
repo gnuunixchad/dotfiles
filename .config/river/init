@@ -35,8 +35,8 @@ for i in $(seq 1 9)
 do
     tags=$((1 << ($i - 1)))
     riverctl map normal $mod $i set-focused-tags $tags
-    riverctl map normal ${mod}+Shift $i set-view-tags $tags
     riverctl map normal Control $i toggle-focused-tags $tags
+    riverctl map normal ${mod}+Shift $i set-view-tags $tags
     riverctl map normal ${mod}+Control $i toggle-view-tags $tags
 done
 

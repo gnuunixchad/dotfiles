@@ -3,121 +3,120 @@
 # @since 2025
 # river/bindings
 
+map="riverctl map"
 mod=Mod4    # Mod1=Alt, Mod4=Super
 term="footclient"
 menu="${HOME}/.local/bin/wmenu-run-color"
-
-# &>/dev/null is a BASH syntax
 command -v rivercarro >/dev/null 2>&1 && tiler="rivercarro" || tiler="rivertile"
 
-riverctl map normal ${mod}+Shift r                  spawn "${HOME}/.config/river/init"
-riverctl map normal None Caps_Lock                  spawn "${HOME}/.local/bin/capslock"
+$map normal ${mod}+Shift r                  spawn "${HOME}/.config/river/init"
+$map normal None Caps_Lock                  spawn "${HOME}/.local/bin/capslock"
 
-riverctl map normal $mod p                          spawn "$menu"
-riverctl map normal $mod Return                     spawn "$term"
-riverctl map normal $mod v                          spawn "$term -T \"Floating_Term\" -o colors.alpha=0.9 abduco -A dvtm dvtm-status"
-riverctl map normal $mod r                          spawn "$term sh -c 'sleep 0.03 && lf'"
-riverctl map normal $mod q                          spawn qutebrowser
+$map normal $mod p                          spawn "$menu"
+$map normal $mod Return                     spawn "$term"
+$map normal $mod v                          spawn "$term -T \"Floating_Term\" -o colors.alpha=0.9 abduco -A dvtm dvtm-status"
+$map normal $mod r                          spawn "$term sh -c 'sleep 0.03 && lf'"
+$map normal $mod q                          spawn qutebrowser
 
-riverctl map -repeat normal $mod minus              spawn "${HOME}/.local/bin/audio sink --minus"
-riverctl map -repeat normal $mod equal              spawn "${HOME}/.local/bin/audio sink --plus"
-riverctl map normal $mod backspace                  spawn "${HOME}/.local/bin/audio sink --mute"
+$map -repeat normal $mod minus              spawn "${HOME}/.local/bin/audio sink --minus"
+$map -repeat normal $mod equal              spawn "${HOME}/.local/bin/audio sink --plus"
+$map normal $mod backspace                  spawn "${HOME}/.local/bin/audio sink --mute"
 
-riverctl map -repeat locked $mod minus              spawn "${HOME}/.local/bin/audio sink --minus"
-riverctl map -repeat locked $mod equal              spawn "${HOME}/.local/bin/audio sink --plus"
-riverctl map locked $mod backspace                  spawn "${HOME}/.local/bin/audio sink --mute"
+$map -repeat locked $mod minus              spawn "${HOME}/.local/bin/audio sink --minus"
+$map -repeat locked $mod equal              spawn "${HOME}/.local/bin/audio sink --plus"
+$map locked $mod backspace                  spawn "${HOME}/.local/bin/audio sink --mute"
 
-riverctl map -repeat normal ${mod}+Shift minus      spawn "${HOME}/.local/bin/audio source --minus"
-riverctl map -repeat normal ${mod}+Shift equal      spawn "${HOME}/.local/bin/audio source --plus"
-riverctl map normal ${mod}+Shift backspace          spawn "${HOME}/.local/bin/audio source --mute"
+$map -repeat normal ${mod}+Shift minus      spawn "${HOME}/.local/bin/audio source --minus"
+$map -repeat normal ${mod}+Shift equal      spawn "${HOME}/.local/bin/audio source --plus"
+$map normal ${mod}+Shift backspace          spawn "${HOME}/.local/bin/audio source --mute"
 
-riverctl map -repeat normal $mod bracketleft        spawn "${HOME}/.local/bin/bright --minus"
-riverctl map -repeat normal $mod bracketright       spawn "${HOME}/.local/bin/bright --plus"
-riverctl map -repeat locked $mod bracketleft        spawn "${HOME}/.local/bin/bright --minus"
-riverctl map -repeat locked $mod bracketright       spawn "${HOME}/.local/bin/bright --plus"
+$map -repeat normal $mod bracketleft        spawn "${HOME}/.local/bin/bright --minus"
+$map -repeat normal $mod bracketright       spawn "${HOME}/.local/bin/bright --plus"
+$map -repeat locked $mod bracketleft        spawn "${HOME}/.local/bin/bright --minus"
+$map -repeat locked $mod bracketright       spawn "${HOME}/.local/bin/bright --plus"
 
-riverctl map normal ${mod}+Shift q                  spawn "${HOME}/.local/bin/exiland -river"
-riverctl map normal ${mod}+Shift w                  spawn "swaylock"
-riverctl map normal ${mod}+Shift e                  spawn "${HOME}/.local/bin/hibe"
+$map normal ${mod}+Shift q                  spawn "${HOME}/.local/bin/exiland -river"
+$map normal ${mod}+Shift w                  spawn "swaylock"
+$map normal ${mod}+Shift e                  spawn "${HOME}/.local/bin/hibe"
 
-riverctl map normal Control space                   spawn "fcitx5-remote -t"
+$map normal Control space                   spawn "fcitx5-remote -t"
 
-riverctl map normal $mod n                          spawn "dunstctl history-pop"
-riverctl map normal ${mod}+Shift n                  spawn "dunstctl close"
+$map normal $mod n                          spawn "dunstctl history-pop"
+$map normal ${mod}+Shift n                  spawn "dunstctl close"
 
-riverctl map normal $mod g                          spawn "${HOME}/.local/bin/shoot"
-riverctl map normal ${mod}+Shift g                  spawn "${HOME}/.local/bin/shoot --geo"
-riverctl map normal ${mod}+Control g                spawn "${HOME}/.local/bin/shoot --all"
+$map normal $mod g                          spawn "${HOME}/.local/bin/shoot"
+$map normal ${mod}+Shift g                  spawn "${HOME}/.local/bin/shoot --geo"
+$map normal ${mod}+Control g                spawn "${HOME}/.local/bin/shoot --all"
 
-riverctl map normal $mod c                          spawn "${HOME}/.local/bin/clip"
-riverctl map normal $mod a                          spawn "${HOME}/.local/bin/address"
-riverctl map normal ${mod}+Shift a                  spawn "${HOME}/.local/bin/address --record"
-riverctl map normal ${mod}+Control a                spawn "${HOME}/.local/bin/address --multi"
+$map normal $mod c                          spawn "${HOME}/.local/bin/clip"
+$map normal $mod a                          spawn "${HOME}/.local/bin/address"
+$map normal ${mod}+Shift a                  spawn "${HOME}/.local/bin/address --record"
+$map normal ${mod}+Control a                spawn "${HOME}/.local/bin/address --multi"
 
-riverctl map normal ${mod}+Control space            spawn "mpc toggle && ${HOME}/.local/bin/lsmus"
-riverctl map normal ${mod}+Control p                spawn "mpc prev"
-riverctl map normal ${mod}+Control n                spawn "mpc next"
-riverctl map locked $mod space                      spawn "mpc toggle"
-riverctl map locked $mod p                          spawn "mpc prev"
-riverctl map locked $mod n                          spawn "mpc next"
+$map normal ${mod}+Control space            spawn "mpc toggle && ${HOME}/.local/bin/lsmus"
+$map normal ${mod}+Control p                spawn "mpc prev"
+$map normal ${mod}+Control n                spawn "mpc next"
+$map locked $mod space                      spawn "mpc toggle"
+$map locked $mod p                          spawn "mpc prev"
+$map locked $mod n                          spawn "mpc next"
 
-riverctl map normal ${mod}+Shift s                  spawn "${HOME}/.local/bin/wsk"
+$map normal ${mod}+Shift s                  spawn "${HOME}/.local/bin/wsk"
 
-riverctl map normal $mod b                          spawn "pkill -x -SIGUSR1 dam"
+$map normal $mod b                          spawn "pkill -x -SIGUSR1 dam"
 
-riverctl map normal $mod j                          focus-view next
-riverctl map normal $mod k                          focus-view previous
+$map normal $mod j                          focus-view next
+$map normal $mod k                          focus-view previous
 
-riverctl map normal $mod i                          send-layout-cmd $tiler "main-count +1"
-riverctl map normal $mod d                          send-layout-cmd $tiler "main-count -1"
+$map normal $mod i                          send-layout-cmd $tiler "main-count +1"
+$map normal $mod d                          send-layout-cmd $tiler "main-count -1"
 
-riverctl map -repeat normal $mod h                  send-layout-cmd $tiler "main-ratio -0.05"
-riverctl map -repeat normal $mod l                  send-layout-cmd $tiler "main-ratio +0.05"
+$map -repeat normal $mod h                  send-layout-cmd $tiler "main-ratio -0.05"
+$map -repeat normal $mod l                  send-layout-cmd $tiler "main-ratio +0.05"
 
-riverctl map -repeat normal ${mod}+Control minus    send-layout-cmd $tiler "gaps +2"
-riverctl map -repeat normal ${mod}+Control equal    send-layout-cmd $tiler "gaps -2"
+$map -repeat normal ${mod}+Control minus    send-layout-cmd $tiler "gaps +2"
+$map -repeat normal ${mod}+Control equal    send-layout-cmd $tiler "gaps -2"
 
-riverctl map normal $mod z                          zoom
-riverctl map normal $mod tab                        focus-previous-tags
-riverctl map normal $mod backslash                  focus-previous-tags
+$map normal $mod z                          zoom
+$map normal $mod tab                        focus-previous-tags
+$map normal $mod backslash                  focus-previous-tags
 
-riverctl map normal ${mod}+Shift c                  close
+$map normal ${mod}+Shift c                  close
 
-riverctl map normal $mod t                          send-layout-cmd "$tiler" "main-location left"
-riverctl map normal ${mod}+Shift t                  send-layout-cmd "$tiler" "main-location right"
-riverctl map normal $mod u                          send-layout-cmd "$tiler" "main-location bottom"
-riverctl map normal ${mod}+Shift u                  send-layout-cmd "$tiler" "main-location top"
-riverctl map normal $mod m                          send-layout-cmd "$tiler" "main-location monocle"
+$map normal $mod t                          send-layout-cmd "$tiler" "main-location left"
+$map normal ${mod}+Shift t                  send-layout-cmd "$tiler" "main-location right"
+$map normal $mod u                          send-layout-cmd "$tiler" "main-location bottom"
+$map normal ${mod}+Shift u                  send-layout-cmd "$tiler" "main-location top"
+$map normal $mod m                          send-layout-cmd "$tiler" "main-location monocle"
 
-riverctl map normal $mod Space                      toggle-float
-riverctl map normal $mod e                          toggle-fullscreen
+$map normal $mod Space                      toggle-float
+$map normal $mod e                          toggle-fullscreen
 
-riverctl map normal $mod period                     focus-output next
-riverctl map normal $mod comma                      focus-output previous
-riverctl map normal ${mod}+Shift period             send-to-output next
-riverctl map normal ${mod}+Shift comma              send-to-output previous
+$map normal $mod period                     focus-output next
+$map normal $mod comma                      focus-output previous
+$map normal ${mod}+Shift period             send-to-output next
+$map normal ${mod}+Shift comma              send-to-output previous
 
-riverctl map normal $mod apostrophe                 spawn "river-shifttags --occupied"
-riverctl map normal $mod semicolon                  spawn "river-shifttags --shift -1 --occupied"
-riverctl map normal ${mod}+Shift apostrophe         spawn "river-shifttags"
-riverctl map normal ${mod}+Shift semicolon          spawn "river-shifttags --shift -1"
+$map normal $mod apostrophe                 spawn "river-shifttags --occupied"
+$map normal $mod semicolon                  spawn "river-shifttags --shift -1 --occupied"
+$map normal ${mod}+Shift apostrophe         spawn "river-shifttags"
+$map normal ${mod}+Shift semicolon          spawn "river-shifttags --shift -1"
 
-riverctl map normal ${mod}+Control h                focus-view left
-riverctl map normal ${mod}+Control j                focus-view next
-riverctl map normal ${mod}+Control k                focus-view previous
-riverctl map normal ${mod}+Control l                focus-view right
+$map normal ${mod}+Control h                focus-view left
+$map normal ${mod}+Control j                focus-view next
+$map normal ${mod}+Control k                focus-view previous
+$map normal ${mod}+Control l                focus-view right
 
-riverctl map normal ${mod}+Shift h                  swap left
-riverctl map normal ${mod}+Shift j                  swap next
-riverctl map normal ${mod}+Shift k                  swap previous
-riverctl map normal ${mod}+Shift l                  swap right
+$map normal ${mod}+Shift h                  swap left
+$map normal ${mod}+Shift j                  swap next
+$map normal ${mod}+Shift k                  swap previous
+$map normal ${mod}+Shift l                  swap right
 
 # mouse
-riverctl map-pointer normal $mod BTN_LEFT           move-view
-riverctl map-pointer normal $mod BTN_RIGHT          resize-view
-riverctl map-pointer normal $mod BTN_MIDDLE         toggle-float
+$map-pointer normal $mod BTN_LEFT           move-view
+$map-pointer normal $mod BTN_RIGHT          resize-view
+$map-pointer normal $mod BTN_MIDDLE         toggle-float
 
 # all tags
 all_tags=$(((1 << 32) - 1))
-riverctl map normal $mod 0                          set-focused-tags $all_tags
-riverctl map normal ${mod}+Shift 0                  set-view-tags $all_tags
+$map normal $mod 0                          set-focused-tags $all_tags
+$map normal ${mod}+Shift 0                  set-view-tags $all_tags

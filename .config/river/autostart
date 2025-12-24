@@ -3,33 +3,35 @@
 # @since 2025
 # river/autostart
 
+spawn="riverctl spawn"
+
 # always
-riverctl spawn "${HOME}/.local/bin/dam-run"
+$spawn "${HOME}/.local/bin/dam-run"
 
 # restart
 killall -q swaybg fcitx5 mpc
 
-riverctl spawn "swaybg -i ${HOME}/.local/share/wallpaper -m fill"
-#riverctl spawn "swaybg -c 000000"
+$spawn "swaybg -i ${HOME}/.local/share/wallpaper -m fill"
+#$spawn "swaybg -c 000000"
 
 # restart decided by scripts
-riverctl spawn "${HOME}/.local/bin/foots"
+$spawn "${HOME}/.local/bin/foots"
 
-riverctl spawn "${HOME}/.local/sbin/clsd"
+$spawn "${HOME}/.local/sbin/clsd"
 
-riverctl spawn "${HOME}/.local/bin/mbs-cron"
+$spawn "${HOME}/.local/bin/mbs-cron"
 
 # start if not running
-pgrep 'swayidle' || riverctl spawn "swayidle"
+pgrep 'swayidle' || $spawn "swayidle"
 
-pgrep 'kanshi' || riverctl spawn "kanshi"
+pgrep 'kanshi' || $spawn "kanshi"
 
-pgrep "gammastep" || riverctl spawn "gammastep -O 5000"
+pgrep "gammastep" || $spawn "gammastep -O 5000"
 
-pgrep -f 'wl-paste --watch cliphist store' || riverctl spawn "wl-paste --watch cliphist store"
+pgrep -f 'wl-paste --watch cliphist store' || $spawn "wl-paste --watch cliphist store"
 
-pgrep 'dunst' || riverctl spawn "dunst"
+pgrep 'dunst' || $spawn "dunst"
 
-pgrep 'wob' || riverctl spawn "${HOME}/.local/bin/wobd"
+pgrep 'wob' || $spawn "${HOME}/.local/bin/wobd"
 
-riverctl spawn "fcitx5 -d --verbose '*=0'" # conflicts with wtype
+$spawn "fcitx5 -d --verbose '*=0'" # conflicts with wtype
