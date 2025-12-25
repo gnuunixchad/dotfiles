@@ -182,7 +182,7 @@ package-list
 !.config/mutt/
 !.config/mutt/muttrc
 !.config/mutt/mailcap
-!.config/mutt/account2.muttrc
+!.config/mutt/account-unixchad.muttrc
 !.config/mutt/account.md
 !.config/mutt/colors.neomuttrc
 !.config/mutt/bindings.muttrc

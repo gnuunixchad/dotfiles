@@ -7,7 +7,10 @@
 #
 # 2. Install an XOAUTH2 SASL plugin, e.g. `cyrus-sasl-xoauth2-git`
 #
-# 3. Avoid cronjob because of gpg-agent ENV issues instead, calling
+# 3. Create maildirs as they are defined by `Path`
+#    e.g. `mkdir -p ~/doc/mail/account-{private,public,unixchad}`
+#
+# 4. Avoid cronjob because of gpg-agent ENV issues instead, calling
 #    `~/.local/bin/mbs-cron` in an autostart script.
 # >  But when the initial invoke of pinentry-tty isn't in tty, autostarting
 # > `~/.local/bin/mbs-cron` results in all GPG commands that requires a
@@ -18,25 +21,25 @@
 # > Setting pinentry mode to loopback with --decryption-pipe is a workaround.
 
 ## Account1
-IMAPAccount account1
+IMAPAccount account-private
 Host outlook.office365.com
 Port 993
-User <user1>@outlook.com
-PassCmd "/usr/share/neomutt/oauth2/mutt_oauth2.py --decryption-pipe 'gpg --decrypt --pinentry-mode loopback' -t ~/.cache/mutt/oauth-account1"
+User user@example.com
+PassCmd "/usr/share/neomutt/oauth2/mutt_oauth2.py --decryption-pipe 'gpg --decrypt --pinentry-mode loopback' -t ~/.cache/mutt/oauth-account-private"
 TLSType IMAPS
 AuthMechs XOAUTH2
 
-IMAPStore account1-remote
-Account account1
+IMAPStore account-private-remote
+Account account-private
 
-MaildirStore account1-local
-Path ~/doc/mail/account1/
-Inbox ~/doc/mail/account1/INBOX
+MaildirStore account-private-local
+Path ~/doc/mail/account-private/
+Inbox ~/doc/mail/account-private/INBOX
 SubFolders Verbatim
 
-Channel account1
-Far :account1-remote:
-Near :account1-local:
+Channel account-private
+Far :account-private-remote:
+Near :account-private-local:
 Patterns *
 Expunge both
 CopyArrivalDate yes
@@ -44,26 +47,55 @@ Sync All
 Create Near
 SyncState *
 
+
 ## Account2
-IMAPAccount account2
+IMAPAccount account-public
 Host outlook.office365.com
 Port 993
-User gnuunixchad@outlook.com
-PassCmd "/usr/share/neomutt/oauth2/mutt_oauth2.py --decryption-pipe 'gpg --decrypt --pinentry-mode loopback' -t ~/.cache/mutt/oauth-account2"
+User user@example.com
+PassCmd "/usr/share/neomutt/oauth2/mutt_oauth2.py --decryption-pipe 'gpg --decrypt --pinentry-mode loopback' -t ~/.cache/mutt/oauth-account-public"
 TLSType IMAPS
 AuthMechs XOAUTH2
 
-IMAPStore account2-remote
-Account account2
+IMAPStore account-public-remote
+Account account-public
 
-MaildirStore account2-local
-Path ~/doc/mail/account2/
-Inbox ~/doc/mail/account2/INBOX
+MaildirStore account-public-local
+Path ~/doc/mail/account-public/
+Inbox ~/doc/mail/account-public/INBOX
 SubFolders Verbatim
 
-Channel account2
-Far :account2-remote:
-Near :account2-local:
+Channel account-public
+Far :account-public-remote:
+Near :account-public-local:
+Patterns *
+Expunge both
+CopyArrivalDate yes
+Sync All
+Create Near
+SyncState *
+
+
+## Account3
+IMAPAccount account-unixchad
+Host outlook.office365.com
+Port 993
+User gnuunixchad@outlook.com
+PassCmd "/usr/share/neomutt/oauth2/mutt_oauth2.py --decryption-pipe 'gpg --decrypt --pinentry-mode loopback' -t ~/.cache/mutt/oauth-account-unixchad"
+TLSType IMAPS
+AuthMechs XOAUTH2
+
+IMAPStore account-unixchad-remote
+Account account-unixchad
+
+MaildirStore account-unixchad-local
+Path ~/doc/mail/account-unixchad/
+Inbox ~/doc/mail/account-unixchad/INBOX
+SubFolders Verbatim
+
+Channel account-unixchad
+Far :account-unixchad-remote:
+Near :account-unixchad-local:
 Patterns *
 Expunge both
 CopyArrivalDate yes
