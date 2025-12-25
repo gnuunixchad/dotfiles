@@ -2,16 +2,27 @@
 # isyncrc
 # @author nate zhou
 # @since 2025
+
 # 1. Allow `pop` in mail server/provider settings
+#
 # 2. Install an XOAUTH2 SASL plugin, e.g. `cyrus-sasl-xoauth2-git`
-# 3. Run mbsync in damblocks as a cronjob to avoid gpg-agent ENV issues
+#
+# 3. Avoid cronjob because of gpg-agent ENV issues instead, calling
+#    `~/.local/bin/mbs-cron` in an autostart script.
+# >  But when the initial invoke of pinentry-tty isn't in tty, autostarting
+# > `~/.local/bin/mbs-cron` results in all GPG commands that requires a
+# > symmetric passphrase hanging up for minutes whenever the agent doesn't have
+# > cached that key, because the non-GUI pinentry is still waiting for the
+# > passphrase input, since it's called from a autostart script instead of
+# > terminal there's no way for user to input the passphrase.
+# > Setting pinentry mode to loopback with --decryption-pipe is a workaround.
 
 ## Account1
 IMAPAccount account1
 Host outlook.office365.com
 Port 993
 User <user1>@outlook.com
-PassCmd "/usr/share/neomutt/oauth2/mutt_oauth2.py -t ~/.cache/mutt/oauth-account1"
+PassCmd "/usr/share/neomutt/oauth2/mutt_oauth2.py --decryption-pipe 'gpg --decrypt --pinentry-mode loopback' -t ~/.cache/mutt/oauth-account1"
 TLSType IMAPS
 AuthMechs XOAUTH2
 
@@ -38,7 +49,7 @@ IMAPAccount account2
 Host outlook.office365.com
 Port 993
 User gnuunixchad@outlook.com
-PassCmd "/usr/share/neomutt/oauth2/mutt_oauth2.py -t ~/.cache/mutt/oauth-account2"
+PassCmd "/usr/share/neomutt/oauth2/mutt_oauth2.py --decryption-pipe 'gpg --decrypt --pinentry-mode loopback' -t ~/.cache/mutt/oauth-account2"
 TLSType IMAPS
 AuthMechs XOAUTH2
 
