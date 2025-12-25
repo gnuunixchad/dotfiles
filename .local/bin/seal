@@ -52,8 +52,7 @@ abort() {
 
 cipher() {
     if [ "$XDG_SESSION_TYPE" = "tty" ]; then
-        # see comments on `pinentry-mode loopback` in `~/.gnupg/gpg.conf`
-        gpg --pinentry-mode default -c "$file"
+        gpg -c "$file"
     else
         menu="${HOME}/.local/bin/wmenu-color -P -p"
         pass1=$($menu "$prompt ciper passphrase: " < /dev/null)
