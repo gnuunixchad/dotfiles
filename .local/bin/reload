@@ -4,16 +4,16 @@
 # reload - execute cronjobs after system resume
 
 
-${HOME}/.local/sbin/clsd &
+${HOME}/.local/sbin/clsx &
 
 ${HOME}/.local/bin/updw &
 
-${HOME}/.local/bin/checkupdates-cron &
+${HOME}/.local/bin/checkupdates-cron --now &
 
-${HOME}/.local/bin/newsboat-update-cron &
+${HOME}/.local/bin/newsboat-update-cron --now &
 
-${HOME}/.local/bin/calcurse-num-cron &
+${HOME}/.local/bin/calcurse-num-cron --now &
 
-${HOME}/.local/bin/mbs-cron &
+${HOME}/.local/bin/mbs &
 
-notify-send -r 55 "$(basename $0)" "Running resume hooks"
+notify-send -r 55 "$(basename $0) ($(date +'%H:%M'))" "Running resume hooks"
