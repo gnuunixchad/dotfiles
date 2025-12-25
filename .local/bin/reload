@@ -1,0 +1,19 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# reload - execute cronjobs after system resume
+
+
+${HOME}/.local/sbin/clsd &
+
+${HOME}/.local/bin/updw &
+
+${HOME}/.local/bin/checkupdates-cron &
+
+${HOME}/.local/bin/newsboat-update-cron &
+
+${HOME}/.local/bin/calcurse-num-cron &
+
+${HOME}/.local/bin/mbs-cron &
+
+notify-send -r 55 "$(basename $0)" "Running resume hooks"
