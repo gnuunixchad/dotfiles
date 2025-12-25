@@ -38,7 +38,7 @@ IMAPAccount account2
 Host outlook.office365.com
 Port 993
 User gnuunixchad@outlook.com
-PassCmd "/usr/share/neomutt/oauth2/mutt_oauth2.py --decryption-pipe 'gpg --decrypt --pinentry-mode default' -t ~/.cache/mutt/oauth-account2"
+PassCmd "/usr/share/neomutt/oauth2/mutt_oauth2.py -t ~/.cache/mutt/oauth-account2"
 TLSType IMAPS
 AuthMechs XOAUTH2
 
