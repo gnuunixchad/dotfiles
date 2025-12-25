@@ -3,6 +3,7 @@
 # @since 2025
 # reload - execute cronjobs after system resume
 
+notify-send -r 55 "$(basename $0) ($(date +'%H:%M'))" "Running resume hooks"
 
 ${HOME}/.local/sbin/clsx &
 
@@ -14,6 +15,4 @@ ${HOME}/.local/bin/newsboat-update-cron --now &
 
 ${HOME}/.local/bin/calcurse-num-cron --now &
 
-${HOME}/.local/bin/mbs &
-
-notify-send -r 55 "$(basename $0) ($(date +'%H:%M'))" "Running resume hooks"
+${HOME}/.local/bin/mbs && echo
