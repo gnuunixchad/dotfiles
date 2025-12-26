@@ -3,7 +3,7 @@
 # @author nate zhou
 # @since 2025
 
-c.zoom.default = 125
+c.zoom.default = 120
 
 config.source('proxy.py')
 config.source('colors.py')
@@ -28,7 +28,7 @@ c.url.default_page= 'file:///dev/null'
 c.tabs.last_close = "startpage"
 c.auto_save.session = True
 
-c.zoom.levels = ["25%", "33%", "50%", "67%", "75%", "90%", "100%", "125%", "133%", "150%", "175%", "200%", "250%", "300%"]
+c.zoom.levels = ["25%", "33%", "50%", "67%", "75%", "90%", "100%", "110%", "120%", "130%", "140%", "150%", "175%", "200%", "250%", "300%"]
 
 c.fonts.web.size.default = 20 # webpage
 c.fonts.web.size.default_fixed = 20 # webpage fixed-pitch
