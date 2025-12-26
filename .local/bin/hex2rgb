@@ -1,0 +1,13 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# hex2rgb - convert hex colors to RGB
+
+for color in "$@"; do
+    red="$(echo "$color" | cut -c1-2)"
+    grn="$(echo "$color" | cut -c3-4)"
+    blu="$(echo "$color" | cut -c5-6)"
+
+    printf "%d,%d,%d\n" "0x$red" "0x$grn" "0x$blu"
+done
+
