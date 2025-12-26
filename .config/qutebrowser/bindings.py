@@ -33,6 +33,8 @@ config.bind('zi', 'zoom-in')
 config.bind('zo', 'zoom-out')
 config.bind('zz', 'zoom {}'.format(c.zoom.default))
 
+config.bind('zf', 'config-cycle fonts.web.size.minimum 0 18')
+
 # manually toggle canvas reading if some website's breaking
 config.bind('zcR', 'set content.canvas_reading true ;; message-warning "Canvas Reading: True"')
 config.bind('zcr', 'set content.canvas_reading false ;; message-info "Canvas Reading: False"')
