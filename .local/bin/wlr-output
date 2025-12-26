@@ -1,9 +1,0 @@
-#!/usr/bin/sh
-# @author nate zhou
-# @since 2025
-# @depends wlr-randr
-# setup outputs for wlroots compositors
-
-wlr-randr --output eDP-1 --custom-mode 1920x1080@60.000Hz --pos 0,0 \
-          --output DP-1 --custom-mode 1920x1080@60.000Hz --pos -1920,0 || \
-wlr-randr --output eDP-1 --custom-mode 1920x1080@60.000Hz --pos 0,0

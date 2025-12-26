@@ -1,7 +1,0 @@
-#!/usr/bin/sh
-# @author nate zhou
-# @since 2025
-# switch to a sway window with wmenu fuzzy finder
-source ~/.local/bin/wmenu-color
-
-swaymsg \[con_id=$(swaymsg -t get_tree | jq -r '.nodes | .[] | .nodes | . [] | select(.nodes != null) | .nodes | .[] | select(.name != null) | "\(.id?) \(.name?)"' | wmenu-color -l 5 | awk '{print $1}')] focus
