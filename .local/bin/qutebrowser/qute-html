@@ -1,0 +1,9 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025
+# qute-html - view the HTML source of the current page in an editor
+
+TERM="footclient -T Floating_Term \
+                 -o colors.alpha=0.9"
+
+$TERM nvim "$QUTE_HTML"

@@ -23,6 +23,8 @@ config.bind('xd', 'spawn --userscript qute-dict')
 config.bind('xq', 'spawn --userscript qute-code')
 config.bind('xr', 'hint links userscript qute-rifle')
 config.bind('xt', 'spawn --userscript qute-title')
+config.bind('xv', 'spawn --userscript qute-vim')
+config.bind('xh', 'spawn --userscript qute-html')
 
 config.bind('xa', 'spawn --userscript qute-address -a')
 config.bind('xg', 'spawn --userscript qute-address -g')
