@@ -45,7 +45,9 @@ config.bind('b', 'config-cycle statusbar.show always never')
 config.bind('m', 'tab-mute')
 
 config.bind(';s', 'hint images download')
+
 config.bind('gp', 'open -p')
+config.bind(';p', 'hint links spawn qutebrowser --target private-window {hint-url}')
 
 config.bind('j', 'scroll-px 0 120 ')
 config.bind('k', 'scroll-px 0 -120 ')
