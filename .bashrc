@@ -21,6 +21,7 @@ SHELL_CONFIG="$HOME/.config/shell" # general shell configs
 BASH_CONFIG="$HOME/.config/bash" # bash specifc configs
 [ -f "$BASH_CONFIG/aliases.bash" ] && . "$BASH_CONFIG/aliases.bash"
 [ -f "$BASH_CONFIG/functions.bash" ] && . "$BASH_CONFIG/functions.bash"
+[ -f "$BASH_CONFIG/completion.bash" ] && . "$BASH_CONFIG/completion.bash"
 
 set -o vi
 eval "$(/usr/bin/fzf --bash)"
