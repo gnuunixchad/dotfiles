@@ -65,6 +65,7 @@ package-list
 !.config/zsh/
 !.config/zsh/aliases.zsh
 !.config/zsh/functions.zsh
+!.config/zsh/completion.zsh
 
 !.config/shell/
 !.config/shell/aliases.sh
