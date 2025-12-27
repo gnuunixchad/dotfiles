@@ -17,8 +17,8 @@ $else
 	set vi-cmd-mode-string \1\e[2 q\2
 $endif
 
-Control-n: menu-complete
-Control-p: menu-complete-backward
+Control-j: menu-complete
+Control-k: menu-complete-backward
 set completion-ignore-case on
 # treat underscores and hyphens equally
 set completion-map-case on
