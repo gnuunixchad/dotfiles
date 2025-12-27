@@ -56,4 +56,4 @@ while [ -n "$1" ]; do
     shift
 done
 
-[ -z "$1" ] && brightnessctl | bright_parse
+[ -z "$1" ] && brightnessctl | parseBrightness
