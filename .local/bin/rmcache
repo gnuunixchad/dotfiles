@@ -9,7 +9,6 @@ NVIDIA="nvidia-utils,nvidia-open,nvidia-open-dkms,nvtop,${NVIDIA_DEPS}"
 
 IGNORED_PKGS="intel-ucode,amd-ucode,${NVIDIA}"
 
-set -x
 removeUninstalled() {
     sudo paccache --verbose --remove --ignore "$IGNORED_PKGS" \
                   --uninstalled --keep 0
@@ -19,6 +18,16 @@ removeOldEnough() {
     sudo paccache --verbose --remove --keep 3
 }
 
+removeOldEnoughYay() {
+    CACHE="${HOME}/pkg/yay/"
+    for cache_dir in $(find "$CACHE" -maxdepth 1 -type d ! -path "$CACHE"); do
+        sudo paccache --quiet --remove --keep 3 --cachedir "$cache_dir"
+    done && echo "cleared old enough packages in $CACHE"
+}
+
+set -x
 removeUninstalled
 removeOldEnough
+set +x
+removeOldEnoughYay
 
