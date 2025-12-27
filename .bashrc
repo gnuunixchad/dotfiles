@@ -28,11 +28,13 @@ eval "$(/usr/bin/fzf --bash)"
 
 bind -m vi-command 'Control-l: clear-screen'
 bind -m vi-insert 'Control-l: clear-screen'
-bind '"\C-e":"mutt\C-m"'
-bind '"\C-o":"lfcd\C-m"' # .config/shell/functions.sh
-bind '"\C-v":"abduco -A dvtm dvtm-status\C-m"'
-bind '"\C-a":"address -e\C-m"'
-bind '"\C-h":"heart\C-m"'
+bind '"\C-e":"mutt\n"'
+bind '"\C-b":"news\n"'
+bind '"\C-m":"ncmpcpp\n"'
+bind '"\C-o":"lfcd\n"' # .config/shell/functions.sh
+bind '"\C-v":"abduco -A dvtm dvtm-status\n"'
+bind '"\C-a":"address -e\n"'
+bind '"\C-h":"heart\n"'
 
 HISTSIZE=2000
 HISTFILESIZE=40000
