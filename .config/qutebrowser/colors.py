@@ -38,7 +38,7 @@ c.colors.tabs.pinned.selected.odd.bg = '#427b58'
 
 c.colors.hints.bg = '#000000'
 c.colors.hints.fg = '#ffffff'
-c.colors.hints.match.fg = '#ffffff'
+c.colors.hints.match.fg = '#000000'
 c.hints.border = '2px solid #427b58'
 
 c.colors.completion.category.bg = '#427b58'
