@@ -3,7 +3,7 @@
 # @author nate zhou
 # @since 2025
 
-c.zoom.default = 130
+c.zoom.default = 120
 
 config.source('proxy.py')
 config.source('colors.py')
@@ -35,7 +35,7 @@ c.fonts.default_size = '14pt'
 c.fonts.web.size.default = 18 # webpage
 c.fonts.web.size.default_fixed = 18
 c.fonts.web.size.minimum = 18
-c.fonts.hints = 'normal 14pt SourceCodePro'
+c.fonts.hints = 'normal 12pt SourceCodePro'
 c.fonts.tabs.selected = '12pt default_family'
 c.fonts.tabs.unselected = '12pt default_family'
 c.fonts.statusbar = '14.5pt default_family'
