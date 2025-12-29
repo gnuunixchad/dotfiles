@@ -21,8 +21,9 @@ removeOldEnough() {
 removeOldEnoughYay() {
     CACHE="${HOME}/pkg/yay/"
     for cache_dir in $(find "$CACHE" -maxdepth 1 -type d ! -path "$CACHE"); do
-        sudo paccache --quiet --remove --keep 3 --cachedir "$cache_dir"
+        sudo paccache --quiet --remove --keep 3 --cachedir "$cache_dir" &
     done && echo "cleared old enough packages in $CACHE"
+    wait
 }
 
 set -x
