@@ -15,4 +15,6 @@ ${HOME}/.local/bin/newsboat-update-cron >/dev/null 2>&1 --now &
 
 ${HOME}/.local/bin/calcurse-num-cron >/dev/null 2>&1 --now &
 
-${HOME}/.local/bin/mbs >/dev/null 2>&1
+${HOME}/.local/bin/mbs >/dev/null 2>&1 &
+
+wait
