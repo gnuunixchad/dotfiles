@@ -4,22 +4,24 @@
 
 sudo rsync -a --delete-after --progress \
     $HOME/doc/heart/{.profile,.bashrc,.stow-local-ignore} \
-    /root/heart
+    /root/heart &
 
 sudo rsync -a --delete-after --progress \
     $HOME/doc/heart/.config/bash/{aliases.bash,functions.bash} \
-    /root/heart/.config/bash
+    /root/heart/.config/bash &
 
-[ -d /root/heart/.config/shell ] || sudo mkdir -p /root/heart/.config/shell
+[ -d /root/heart/.config/shell ] || sudo mkdir -p /root/heart/.config/shell &
 
 sudo rsync -a --delete-after --progress \
     $HOME/doc/heart/.config/shell/{aliases.sh,functions.sh,profile.sh,teleport.sh} \
-    /root/heart/.config/shell
+    /root/heart/.config/shell &
 
 sudo rsync -a --delete-after --progress \
     $HOME/doc/heart/.config/{readline,fzf,lf,vim,dircolors} \
-    /root/heart/.config
+    /root/heart/.config &
 
 sudo rsync -a --delete-after --progress \
     $HOME/doc/heart/.local/bin/scope \
-    /root/heart/.config/lf/scope
+    /root/heart/.config/lf/scope &
+
+wait

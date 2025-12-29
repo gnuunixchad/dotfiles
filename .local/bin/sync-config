@@ -10,8 +10,8 @@ hostname="$(cat /etc/hostname)"
 
 read -p "Continue? (y/n): " choice
 if [ $choice = "y" ] || [ $choice = "Y" ]; then
-    pacman -Qmq | sort > "$HEART"/package-list/aur-${hostname}.list
-    pacman -Qenq | sort > "$HEART"/package-list/arch-${hostname}.list
+    pacman -Qmq | sort > "$HEART"/package-list/aur-${hostname}.list &
+    pacman -Qenq | sort > "$HEART"/package-list/arch-${hostname}.list &
 
     crontab -l > "$HEART"/.config/crontab.backup \
         && echo "crontab backup done" || echo "crontab backup failed"
@@ -26,16 +26,18 @@ if [ $choice = "y" ] || [ $choice = "Y" ]; then
 
     # unixchad
     if [ ! -d "$DOTFILES" ]; then
-        git clone "$HEART" "$DOTFILES"
+        git clone "$HEART" "$DOTFILES" &
     fi
     git --git-dir $DOTFILES/.git --work-tree $DOTFILES pull \
         && echo "heart is pulled" \
         || echo "heart pulling failed"
     chmod 750 "$DOTFILES"
     rsync -a --delete-after \
-        "${HEART}/.local/share/nvim/plugged" "${DOTFILES}/.local/share/nvim/"
-    rsync -a --delete-after ${HEART}/package-list ${DOTFILES}/
+        "${HEART}/.local/share/nvim/plugged" "${DOTFILES}/.local/share/nvim/" &
+    rsync -a --delete-after ${HEART}/package-list ${DOTFILES}/ &
 else
     echo "aborted"
     exit 0
 fi
+
+wait
