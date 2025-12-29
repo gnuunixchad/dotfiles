@@ -15,7 +15,6 @@ if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
                /var/cache/pacman/pkg/ $HOME/pkg/pacman/
     sudo chown -R $USER:$USER $HOME/pkg/pacman
     chmod 705 ${HOME}/pkg/pacman
-    sudo paccache --remove --cachedir /var/cache/pacman/pkg/ --keep 0
 
     ${HOME}/.local/bin/rmcache
 else
