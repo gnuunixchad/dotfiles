@@ -87,3 +87,10 @@ _EOF_
         shift
     done
 }
+_hist() {
+    local options
+    local current_word="${COMP_WORDS[COMP_CWORD]}"
+    options="-d -e -f -D -h"
+    COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+}
+complete -F _hist hist
