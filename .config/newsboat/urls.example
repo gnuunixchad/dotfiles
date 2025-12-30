@@ -39,6 +39,7 @@ https://github.com/GothenburgBitFactory/taskwarrior/releases.atom ~taskwarrior g
 https://github.com/linrunner/TLP/releases.atom ~tlp git cli daemon sys
 https://github.com/ammen99/wf-recorder/releases.atom ~wf-recorder git cli wlroots
 https://github.com/Jguer/yay/releases.atom ~yay git archlinux system cli
+https://github.com/systemd/systemd/releases.atom ~systemd git sys
 
 https://github.com/swaywm/swaylock/releases.atom ~swaylock git gui wlroots
 https://github.com/swaywm/swaybg/releases.atom ~swaybg git gui wlroots
