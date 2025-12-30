@@ -102,7 +102,11 @@ _EOF_
 }
 _hist() {
     local options
-    options=("-d" "-e" "-f" "-D" "-h")
+    options=("-d" "--disable"
+             "-e" "--enable"
+             "-f" "--file"
+             "-D" "--Delete"
+             "-h" "--help")
     _describe 'options' options
 }
 compdef _hist hist
