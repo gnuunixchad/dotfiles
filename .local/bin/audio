@@ -21,15 +21,8 @@ blocks_reload() {
         && kill -37 "$(cat $DAMBLOCKS)";
 }
 
-volume_minus() {
-    wpctl set-volume "$target" 1%-
-    local status=$(wpctl get-volume "$target")
-    parseVolume
-    blocks_reload "$1"
-}
-
-volume_plus() {
-    wpctl set-volume "$target" 1%+
+set_volume() {
+    wpctl set-volume "$target" "$2"
     local status=$(wpctl get-volume "$target")
     parseVolume
     blocks_reload "$1"
@@ -59,10 +52,16 @@ parseVolume() {
 
 case "$2" in
     --minus)
-        volume_minus "$1"
+        set_volume "$1" "1%-"
+        ;;
+    --minus10)
+        set_volume "$1" "10%-"
         ;;
     --plus)
-        volume_plus "$1"
+        set_volume "$1" "1%+"
+        ;;
+    --plus10)
+        set_volume "$1" "10%+"
         ;;
     --mute)
         volume_mute "$1"
