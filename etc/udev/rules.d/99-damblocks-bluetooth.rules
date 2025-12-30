@@ -4,6 +4,6 @@
 # udev rules to refresh damblocks pipewire sink and source volumes on Bluetooth connection change
 
 # for `add` action, subsystem=="bluetooth" doesn't work on my system
-ACTION=="add", SUBSYSTEM=="input", RUN+="/usr/bin/sudo -u nate /home/nate/.local/bin/audio all reload"
+ACTION=="add", SUBSYSTEM=="input", RUN+="/usr/bin/sudo -u nate /home/nate/.local/bin/audio all --reload"
 # for `remove` action, subsystem=="bluetooth" works but there's also a delay
-ACTION=="remove", SUBSYSTEM=="bluetooth", RUN+="/usr/bin/sudo -u nate /home/nate/.local/bin/audio all reload"
+ACTION=="remove", SUBSYSTEM=="bluetooth", RUN+="/usr/bin/sudo -u nate /home/nate/.local/bin/audio all --reload"

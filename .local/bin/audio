@@ -12,6 +12,25 @@ DAMBLOCKS="${XDG_RUNTIME_DIR}/damblocks.pid"
 [ "$1" = "sink" ] && target="@DEFAULT_AUDIO_SINK@"
 [ "$1" = "source" ] && target="@DEFAULT_AUDIO_SOURCE@"
 
+usage() {
+    cat <<_EOF_
+USAGE
+        $(basename $0) TARGET OPTION
+TARGETS
+        sink        pipewire's DEFAULT_AUDIO_SINK
+        source      pipewire's DEFAULT_AUDIO_SOURCE
+        all         apply OPTION on both sink and source
+OPTIONS
+        --minus     decrease TARGET's volume by 1%
+        --minus10   decrease TARGET's volume by 10%
+        --plus      increase TARGET's volume by 1%
+        --plus10    increase TARGET's volume by 10%
+        --mute      toggle TARGET's mute
+        --reload     reload damblocks' audio module for TARGET
+_EOF_
+    exit 0
+}
+
 blocks_reload() {
     [ "$1" = "sink"  ] && kill -36 "$(cat $DAMBLOCKS)";
     [ "$1" = "source" ] && kill -37 "$(cat $DAMBLOCKS)";
@@ -28,7 +47,7 @@ set_volume() {
     blocks_reload "$1"
 }
 
-volume_mute() {
+toggle_mute() {
     wpctl set-mute "$target" toggle
     local status=$(wpctl get-volume "$target")
     parseVolume
@@ -64,12 +83,12 @@ case "$2" in
         set_volume "$1" "10%+"
         ;;
     --mute)
-        volume_mute "$1"
+        toggle_mute "$1"
         ;;
-    reload)
+    --reload)
         blocks_reload "$1"
         ;;
     *)
-        echo "Usage: audio <sink|source> <--minus | --plus | --mute | reload>"
+        usage
         ;;
 esac
