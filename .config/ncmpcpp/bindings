@@ -141,6 +141,9 @@ def_key "S"
   show_search_engine
 
 def_key "P"
+  show_playlist_editor
+
+def_key "H"
   show_playlist
 
 # master/slave screen
