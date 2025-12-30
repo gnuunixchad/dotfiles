@@ -100,3 +100,9 @@ _EOF_
         shift
     done
 }
+_hist() {
+    local options
+    options=("-d" "-e" "-f" "-D" "-h")
+    _describe 'options' options
+}
+compdef _hist hist
