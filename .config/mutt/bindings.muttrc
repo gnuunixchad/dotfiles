@@ -32,7 +32,7 @@ bind attach,index,pager     f           flag-message
 bind attach,index,pager     F           forward-message
 
 ### sidebar
-bind index,pager \CK sidebar-prev
-bind index,pager \CJ sidebar-next
-bind index,pager \CL sidebar-open
-bind index,pager \CB sidebar-toggle-visible
+bind index,pager K sidebar-prev
+bind index,pager J sidebar-next
+bind index,pager L sidebar-open
+bind index,pager B sidebar-toggle-visible
