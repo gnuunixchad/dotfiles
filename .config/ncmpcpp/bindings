@@ -131,6 +131,9 @@ def_key "m"
 def_key "e"
   edit_song
 
+def_key "E"
+  edit_lyrics
+
 def_key "U"
   update_database
 
