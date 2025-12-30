@@ -5,7 +5,6 @@
 # change volume of pipewire sinks/sources and track status.
 
 # status is saved to XDG_CACHE_DIR for reboot consistency
-
 WOBFIFO="${XDG_RUNTIME_DIR}/wob.fifo"
 DAMBLOCKS="${XDG_RUNTIME_DIR}/damblocks.pid"
 
@@ -26,12 +25,13 @@ OPTIONS
         --plus      increase TARGET's volume by 1%
         --plus10    increase TARGET's volume by 10%
         --mute      toggle TARGET's mute
-        --reload     reload damblocks' audio module for TARGET
+        --reload    reload damblocks' audio module for TARGET
 _EOF_
     exit 0
 }
 
 blocks_reload() {
+    parseVolume
     [ "$1" = "sink"  ] && kill -36 "$(cat $DAMBLOCKS)";
     [ "$1" = "source" ] && kill -37 "$(cat $DAMBLOCKS)";
     # ../../etc/udev/rules.d/99-damblocks-bluetooth.rules
@@ -40,17 +40,19 @@ blocks_reload() {
         && kill -37 "$(cat $DAMBLOCKS)";
 }
 
+get_volume() {
+    local status=$(wpctl get-volume "$target")
+    blocks_reload "$1"
+}
+
 set_volume() {
     wpctl set-volume "$target" "$2"
-    local status=$(wpctl get-volume "$target")
-    parseVolume
-    blocks_reload "$1"
+    get_volume "$1"
 }
 
 toggle_mute() {
     wpctl set-mute "$target" toggle
     local status=$(wpctl get-volume "$target")
-    parseVolume
     blocks_reload "$1"
 }
 
@@ -86,7 +88,7 @@ case "$2" in
         toggle_mute "$1"
         ;;
     --reload)
-        blocks_reload "$1"
+        set_volume "$1" "0%-"
         ;;
     *)
         usage
