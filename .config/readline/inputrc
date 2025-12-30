@@ -32,6 +32,7 @@ set colored-stats on
 # set visible-stats
 set visible-stats On
 # reduce <tab> keystrokes
+"\t": menu-complete
 set show-all-if-unmodified on
 set show-all-if-ambiguous on
 
