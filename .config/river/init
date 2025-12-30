@@ -28,6 +28,7 @@ done
 # border
 riverctl border-color-focused 0x427b58ff
 riverctl border-color-unfocused 0x000000ff
+riverctl border-color-urgent 0xeeeeeeff
 riverctl border-width 2
 
 # tags
