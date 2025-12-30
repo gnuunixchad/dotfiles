@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
 # updw-cron, update dunst weather with crontab for my status bar
@@ -27,7 +27,7 @@ if [ -f "$HOME/.cache/city" ]; then
 
         # check last update time
         # only download weather if gap's greater than 2 hours
-        if (( current_time - update_time > UPDATE_FREQUENCY )); then
+        if [ $(( $current_time - $update_time )) -gt $UPDATE_FREQUENCY ]; then
         # try to download weather info
         wttr_temp="$(curl wttr.in/$CITY?format=1)"
         wttr_temp2="$(wttr)"
@@ -37,7 +37,7 @@ if [ -f "$HOME/.cache/city" ]; then
         fi
 
         # check if curl returns a temperature
-        if [[ "$wttr_temp" == *°C* ]] ; then
+        if echo "$wttr_temp" | grep  -q '°C'; then
             # remove potential repeating spaces
             echo "$wttr_temp" | sed 's/[[:space:]]\+/ /g' > "$WTTR_CACHE"
             #[[ "$wttr_temp" == *°C* ]] && echo "$wttr_temp2" > "$WTTR_CACHE2"

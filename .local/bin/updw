@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2023,2024,2025
 # updw, update dunst weather
@@ -24,7 +24,7 @@ if [ -f "$HOME/.cache/city" ]; then
         #wttr_temp2="$(wttr)"
 
         # check if curl returns a temperature
-        if [[ "$wttr_temp" == *°C* ]] ; then
+        if echo "$wttr_temp" | grep -q '°C'; then
             # remove potential repeating spaces
             #echo "$wttr_temp" | sed 's/[[:space:]]\+/ /g; s/°C/<small>℃<\/small>/' > "$WTTR_CACHE"
             echo "$wttr_temp" | sed 's/[[:space:]]\+/ /g' > "$WTTR_CACHE"
