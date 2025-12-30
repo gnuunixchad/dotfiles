@@ -42,6 +42,8 @@ done
 $map normal ${mod}+Shift q                  spawn "${HOME}/.local/bin/exiland -river"
 $map normal ${mod}+Shift w                  spawn "swaylock"
 $map normal ${mod}+Shift e                  spawn "${HOME}/.local/bin/hibe"
+$map normal ${mod}+Shift m                  spawn "pgrep hyprmag && killall -e hyprmag || hyprmag -r 9999 -s 2"
+$map normal ${mod}+Control m                spawn "pgrep hyprmag && killall -e hyprmag || hyprmag"
 
 $map normal Control space                   spawn "fcitx5-remote -t"
 
