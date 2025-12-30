@@ -10,6 +10,24 @@ WOBFIFO="${XDG_RUNTIME_DIR}/wob.fifo"
 BRIGHTNESS="${XDG_CACHE_HOME}/brightness.level"
 DAMBLOCKS="${XDG_RUNTIME_DIR}/damblocks.pid"
 
+usage() {
+    cat <<_EOF_
+USAGE
+        $(basename $0) [OPTION]
+        Without an option, $(basename $0) reloads damblocks brightness module
+        and WOBFIFO
+OPTIONS
+        --minus     decrease brightness by 1%
+        --minus10   decrease brightness by 10%
+        --plus      increase brightness by 1%
+        --plus10    increase brightness by 10%
+        --max       set brightness to 100%
+        --min       set brightness to 0%
+        --no-fifo   reload damblocks brightness moduel without WOBFIFO
+_EOF_
+    exit 0
+}
+
 parseBrightness() {
     grep 'Current brightness' \
             | tr '()' ' ' | cut -d' ' -f5 | sed 's/%//' \
@@ -51,6 +69,9 @@ while [ -n "$1" ]; do
         --no-fifo)
             brightnessctl | parseBrightnessIdle
             return
+            ;;
+        *)
+            usage
             ;;
     esac
     shift
