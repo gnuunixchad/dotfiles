@@ -5,4 +5,5 @@
 # TODO: 1. action when a device is added (not working on my system)
 #       2. reload sink as well (script need update)
 
-ACTION=="remove", SUBSYSTEMS=="usb", SUBSYSTEM=="sound", RUN+="/usr/bin/sudo -u nate /home/nate/.local/bin/audio source --reload"
+ACTION=="remove", SUBSYSTEMS=="usb", SUBSYSTEM=="sound", RUN+="/usr/bin/sudo -E -u nate /home/nate/.local/bin/audio sink --reload"
+ACTION=="remove", SUBSYSTEMS=="usb", SUBSYSTEM=="sound", RUN+="/usr/bin/sudo -E -u nate /home/nate/.local/bin/audio source --reload"
