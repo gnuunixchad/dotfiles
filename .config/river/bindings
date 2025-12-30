@@ -18,19 +18,19 @@ $map normal $mod v                          spawn "$term -T \"Floating_Term\" -o
 $map normal $mod r                          spawn "$term sh -c 'sleep 0.03 && lf'"
 $map normal $mod q                          spawn qutebrowser
 
-$map -repeat normal $mod minus              spawn "${HOME}/.local/bin/audio sink --minus"
-$map -repeat normal $mod equal              spawn "${HOME}/.local/bin/audio sink --plus"
-$map normal $mod backspace                  spawn "${HOME}/.local/bin/audio sink --mute"
-
-$map -repeat locked $mod minus              spawn "${HOME}/.local/bin/audio sink --minus"
-$map -repeat locked $mod equal              spawn "${HOME}/.local/bin/audio sink --plus"
-$map locked $mod backspace                  spawn "${HOME}/.local/bin/audio sink --mute"
-
-$map -repeat normal ${mod}+Shift minus      spawn "${HOME}/.local/bin/audio source --minus"
-$map -repeat normal ${mod}+Shift equal      spawn "${HOME}/.local/bin/audio source --plus"
-$map normal ${mod}+Shift backspace          spawn "${HOME}/.local/bin/audio source --mute"
-
 for mode in "normal" "locked"; do
+$map -repeat $mode $mod minus                        spawn "${HOME}/.local/bin/audio sink --minus"
+$map -repeat $mode $mod equal                        spawn "${HOME}/.local/bin/audio sink --plus"
+$map -repeat $mode ${mod}+Shift minus                spawn "${HOME}/.local/bin/audio sink --minus10"
+$map -repeat $mode ${mod}+Shift equal                spawn "${HOME}/.local/bin/audio sink --plus10"
+$map $mode $mod backspace                            spawn "${HOME}/.local/bin/audio sink --mute"
+
+$map -repeat $mode ${mod}+Control minus              spawn "${HOME}/.local/bin/audio source --minus"
+$map -repeat $mode ${mod}+Control equal              spawn "${HOME}/.local/bin/audio source --plus"
+$map -repeat $mode ${mod}+Control+Shift minus        spawn "${HOME}/.local/bin/audio source --minus10"
+$map -repeat $mode ${mod}+Control+Shift equal        spawn "${HOME}/.local/bin/audio source --plus10"
+$map $mode ${mod}+Control backspace                  spawn "${HOME}/.local/bin/audio source --mute"
+
 $map -repeat $mode $mod bracketleft                  spawn "${HOME}/.local/bin/bright --minus"
 $map -repeat $mode $mod bracketright                 spawn "${HOME}/.local/bin/bright --plus"
 $map -repeat $mode ${mod}+Shift bracketleft          spawn "${HOME}/.local/bin/bright --minus10"
@@ -77,8 +77,8 @@ $map normal $mod d                          send-layout-cmd $tiler "main-count -
 $map -repeat normal $mod h                  send-layout-cmd $tiler "main-ratio -0.05"
 $map -repeat normal $mod l                  send-layout-cmd $tiler "main-ratio +0.05"
 
-$map -repeat normal ${mod}+Control minus    send-layout-cmd $tiler "gaps +2"
-$map -repeat normal ${mod}+Control equal    send-layout-cmd $tiler "gaps -2"
+$map -repeat normal ${mod}+Control bracketleft  send-layout-cmd $tiler "gaps +2"
+$map -repeat normal ${mod}+Control bracketright send-layout-cmd $tiler "gaps -2"
 
 $map normal $mod z                          zoom
 $map normal $mod tab                        focus-previous-tags
