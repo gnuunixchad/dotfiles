@@ -90,7 +90,7 @@ _EOF_
 _hist() {
     local options
     local current_word="${COMP_WORDS[COMP_CWORD]}"
-    options="-d -e -f -D -h"
+    options="-d --disable -e --enable -f --file -D --Delete -h --help"
     COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
 }
 complete -F _hist hist
