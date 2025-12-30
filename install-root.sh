@@ -20,7 +20,7 @@ print_err() {
 
 pacman --noconfirm -Sy && pacman -S --noconfirm --needed archlinux-keyring
 
-[ -f "$ARCH_LIST" ] && pacman -S --noconfirm --needed $(cat "$ARCH_LIST") \
+[ -f "$ARCH_LIST" ] && pacman -S --needed $(cat "$ARCH_LIST") \
     2>/dev/null || print_err "package list not found, no packages installed"
 
 [ -z "$(pdbedit -Lv)" ] && smbpasswd -a "$sudoer"
