@@ -26,7 +26,7 @@ show_img(){
 
 
 case "$(file -Lb --mime-type -- "$1")" in
-    image/*xcf|image/heic)
+    image/*xcf|image/heic|image/x-xpixmap)
         # create a cache for every file, if 2 files have the same
         # size+name+last_modified_date, it has the same hash
         # `shasum` is faster than other `sha*sum`
