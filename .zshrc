@@ -17,10 +17,11 @@ zstyle ':completion:*' cache-path "$XDG_CACHE_HOME"/zsh/zcompdump
 zstyle ':completion:*:processes' command 'NOCOLORS=1 ps -U $(whoami)|sed "/ps/d"' # all process owned by $USER, instead of current session
 zstyle ':completion:*:processes' sort false # remain correct PID order
 zstyle ':completion:*:processes-names' command 'NOCOLORS=1 ps xho command|sed "s/://g"' # more process name with `killall`
+zstyle ':completion:*' list-prompt '' # no "do you wish to see all...?"
+zstyle ':completion:*' select-prompt '' # no "do you wish to see all...?"
 zmodload zsh/complist
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump # move cache out of home
 _comp_options+=(globdots) # glob hidden files
-
 
 autoload -U colors && colors
 [ -f "$HOME/.config/dircolors" ] && source <(dircolors "$HOME/.config/dircolors")
