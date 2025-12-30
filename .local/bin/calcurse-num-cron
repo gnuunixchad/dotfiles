@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2025
 # future event count for my status bar
@@ -35,7 +35,7 @@ current_time=$(date +%s)
 UPDATE_FREQUENCY=3600 # 1H
 
 
-if (( current_time - update_time > UPDATE_FREQUENCY )) ; then
+if [ $(( $current_time - $update_time)) -gt $UPDATE_FREQUENCY ]; then
     update_num
 else
     echo "Already updated within past $(($UPDATE_FREQUENCY/3600)) hours"

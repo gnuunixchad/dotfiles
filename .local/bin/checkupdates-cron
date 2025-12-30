@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @ author nate zhou
 # @ since 2024,2025
 # check available pacman packages and write the number to a cache file
@@ -49,7 +49,7 @@ if [ ! -f "$LOG_CACHE" ]; then
 fi
 
 # check last update time
-if (( current_time - update_time > UPDATE_FREQUENCY )); then
+if [ $(( current_time - update_time )) -gt $UPDATE_FREQUENCY ]; then
     update_cache
 else
     echo "Already updated within past $(($UPDATE_FREQUENCY/3600)) hours"

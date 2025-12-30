@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025
 
@@ -31,7 +31,7 @@ while [ -n "$1" ]; do
     shift
 done
 
-if (( current_time - update_time > UPDATE_FREQUENCY )) ; then
+if [ $(( current_time - update_time )) -gt $UPDATE_FREQUENCY ]; then
     update_newsboat
 else
     echo "Already updated within past $(($UPDATE_FREQUENCY/3600)) hours"

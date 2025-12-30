@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
 # @since 2025
 # unread articles count for my status bar
@@ -8,7 +8,7 @@ NUM="$HOME/.cache/newsboat.num"
 
 update_num() {
     result="$(command newsboat -x print-unread)"
-    [[ "$result" =~ ^[0-9] ]] \
+    echo "$result" | grep -q '^[0-9]' \
         && echo "$result" \
         | cut -d' ' -f1 > "$NUM" \
         || echo "$result"
@@ -39,7 +39,7 @@ current_time=$(date +%s)
 UPDATE_FREQUENCY=14400 # 4H
 
 
-if (( current_time - update_time > UPDATE_FREQUENCY )) ; then
+if [ $(( current_time - update_time )) -gt $UPDATE_FREQUENCY ]; then
     update_num
 else
     echo "Already updated within past $(($UPDATE_FREQUENCY/3600)) hours"
