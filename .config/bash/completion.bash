@@ -51,3 +51,15 @@ _bright() {
     COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
 }
 complete -F _bright bright
+
+_audio() {
+    local targets options
+    targets="sink source all"
+    options="--minus --minus10 --plus --plus10 --mute --reload"
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=( $(compgen -W "${targets[*]}" -- "${COMP_WORDS[1]}") )
+    elif [ "$COMP_CWORD" -eq 2 ]; then
+        COMPREPLY=( $(compgen -W "${options[*]}" -- "${COMP_WORDS[2]}") )
+    fi
+}
+complete -F _audio audio
