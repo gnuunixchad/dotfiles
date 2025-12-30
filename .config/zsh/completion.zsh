@@ -44,3 +44,15 @@ _bright() {
     _describe 'options' options
 }
 compdef _bright bright
+
+_audio() {
+    local targets options
+    targets=("sink" "source" "all")
+    options=("--minus" "--minus10" "--plus" "--plus10" "--mute" "--reload")
+    if [ "$CURRENT" -eq 2 ]; then
+        compadd "${targets[@]}"
+    elif [ "$CURRENT" -eq 3 ]; then
+        compadd "${options[@]}"
+    fi
+}
+compdef _audio audio
