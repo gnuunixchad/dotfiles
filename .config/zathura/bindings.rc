@@ -27,5 +27,5 @@ map D cycle_first_column
 map m mark_add
 map "'" mark_evaluate
 
-map gn jumplist forward
-map gp jumplist backward
+map C-i jumplist forward
+map C-o jumplist forward
