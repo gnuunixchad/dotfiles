@@ -50,6 +50,10 @@ def_key "I"
 def_key "L"
   show_lyrics
 
+def_key ";"
+  toggle_screen_lock
+  show_lyrics
+
 # playlist
 def_key "D"
   delete_stored_playlist
