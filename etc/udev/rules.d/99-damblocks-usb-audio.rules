@@ -1,9 +1,7 @@
-# udev rules to refresh damblocks audio modules with usb events
+# udev rules to refresh damblocks audio modules with usb sound device events
 # @author nate zhou
 # @since 2025
-# whenever a usb sound device is added or removed
 # TODO: 1. action when a device is added (not working on my system)
 #       2. reload sink as well (script need update)
 
-ACTION=="remove", SUBSYSTEMS=="usb", SUBSYSTEM=="sound", RUN+="/usr/bin/sudo -E -u nate /home/nate/.local/bin/audio sink --reload"
-ACTION=="remove", SUBSYSTEMS=="usb", SUBSYSTEM=="sound", RUN+="/usr/bin/sudo -E -u nate /home/nate/.local/bin/audio source --reload"
+ACTION=="remove", SUBSYSTEMS=="usb", SUBSYSTEM=="sound", RUN+="/usr/bin/sudo -u nate /bin/sh -c 'XDG_RUNTIME_DIR=/run/user/1000 XDG_CACHE_HOME=/home/nate/.cache /home/nate/.local/bin/audio source --reload'"

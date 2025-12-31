@@ -4,8 +4,6 @@
 # udev rules to refresh damblocks pipewire sink and source volumes on Bluetooth connection change
 
 # for `add` action, subsystem=="bluetooth" doesn't work on my system
-ACTION=="add", SUBSYSTEM=="input", RUN+="/usr/bin/sudo -E -u nate /home/nate/.local/bin/audio sink --reload"
-ACTION=="add", SUBSYSTEM=="input", RUN+="/usr/bin/sudo -E -u nate /home/nate/.local/bin/audio source --reload"
+ACTION=="add", SUBSYSTEM=="input", RUN+="/usr/bin/sudo -u nate /usr/bin/sh -c 'XDG_RUNTIME_DIR=/run/user/1000 XDG_CACHE_HOME=/home/nate/.cache /home/nate/.local/bin/audio sink --reload'"
 # for `remove` action, subsystem=="bluetooth" works but there's also a delay
-ACTION=="remove", SUBSYSTEM=="bluetooth", RUN+="/usr/bin/sudo -E -u nate /home/nate/.local/bin/audio sink --reload"
-ACTION=="remove", SUBSYSTEM=="bluetooth", RUN+="/usr/bin/sudo -E -u nate /home/nate/.local/bin/audio source --reload"
+ACTION=="remove", SUBSYSTEM=="bluetooth", RUN+="/usr/bin/sudo -u nate /usr/bin/sh -c 'XDG_RUNTIME_DIR=/run/user/1000 XDG_CACHE_HOME=/home/nate/.cache /home/nate/.local/bin/audio sink --reload'"
