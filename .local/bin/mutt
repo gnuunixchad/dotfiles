@@ -10,4 +10,4 @@ update() {
 # update count on exit, interrupted or terminated
 trap update EXIT INT TERM
 
-command neomutt
+neomutt "$@"
