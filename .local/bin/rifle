@@ -18,9 +18,9 @@ case $(file --mime-type -Lb $f) in
         gimp "$f"
         ;;
     image/*)
-        [ "$XDG_SESSION_TYPE" = "tty" ] \
-            && mpv --loop "$f" \
-            || swayimg "$f"
+        [ "$XDG_SESSION_TYPE" = !"tty" ] \
+            && swayimg "$f" \
+            || mpv --loop "$f"
         ;;
     video/*)
         mpv --loop "$f"
@@ -67,7 +67,7 @@ case $(file --mime-type -Lb $f) in
         ;;
     application/*)
         case "$f" in
-            *.epub)
+            *.epub) # some epub's mime type is application/zip
                 if [ "$XDG_SESSION_TYPE" != "tty" ]; then
                     zathura "$f"
                 else
