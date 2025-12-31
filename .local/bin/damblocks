@@ -279,7 +279,7 @@ update_newsboat() {
 
 # cache file generaded by `${HOME}/.local/bin/calcurse-num-cron`
 update_calcurse() {
-    local DAY="28"
+    local DAY="14"
     local count="$(calcurse -d "$DAY" | grep '^[0-9]' | wc -l)"
     local icon=""
     calcurse="${icon}${count}"
@@ -291,7 +291,7 @@ update_mpd() {
         icon="󰝛"
     fi
     local title="$(mpc current -f "[%title%]" \
-                | cut -c1-16 \
+                | cut -c1-12 \
                 | sed 's/[[:space:],.{[-]*$//; s/[&]//g')"
     mpd="${icon}${title}"
 }
