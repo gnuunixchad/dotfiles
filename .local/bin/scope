@@ -99,6 +99,9 @@ case "$(file -Lb --mime-type -- "$1")" in
     application/octet-stream)
         file -b "$1"
         ;;
+    message/rfc822)
+        "$PAGER" "$1"
+        ;;
     text/troff)
         man -l "$1"
         ;;
