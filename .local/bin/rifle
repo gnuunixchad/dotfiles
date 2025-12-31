@@ -4,6 +4,7 @@
 # file opener ported from my [lf](../../.config/lf/rifle)
 
 f="$1"
+term="footclient"
 
 print_err() {
     local RED='\033[0;31m'
@@ -25,8 +26,9 @@ case $(file --mime-type -Lb $f) in
         mpv --loop "$f"
         ;;
     audio/*)
-        [ "$XDG_SESSION_TYPE" != "tty" ] && term="footclient"
-        "$term" mpv --loop "$f"
+        [ "$XDG_SESSION_TYPE" != "tty" ] \
+            && "$term" mpv --loop "$f" \
+            || mpv --loop "$f"
         ;;
     */pdf|*/epub*)
         if [ "$XDG_SESSION_TYPE" != "tty" ]; then
@@ -40,6 +42,11 @@ case $(file --mime-type -Lb $f) in
         ;;
     application/octet-stream)
         ${HOME}/.local/bin/gpg-rifle "$f"
+        ;;
+    message/rfc822)
+        [ "$XDG_SESSION_TYPE" != "tty" ] \
+            && "$term" mutt -f "$(realpath $f | rev | cut -d'/' -f3- | rev)" \
+            || mutt -f "$(realpath $f | rev | cut -d'/' -f3- | rev)"
         ;;
     text/troff)
         man -l "$f"
