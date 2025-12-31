@@ -182,9 +182,17 @@ def_key "T"
   select_item
 
 def_key "J"
-  move_selected_items_down
+  select_item
+  scroll_down
 
 def_key "K"
+  scroll_up
+  select_item
+
+def_key "ctrl-j"
+  move_selected_items_down
+
+def_key "ctrl-k"
   move_selected_items_up
 
 # visualizer
