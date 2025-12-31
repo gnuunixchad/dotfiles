@@ -53,8 +53,8 @@ systemctl enable --now dictd.service
 
 lscpu | grep -q 'Hypervisor vendor:' \
     || (systemctl enable --now libvirtd \
-    && virsh net-define /etc/libvirt/qemu/networks/default.xml \
-    && virsh net-autostart default)
+        && virsh net-define /etc/libvirt/qemu/networks/default.xml \
+        && virsh net-autostart default)
 
 pacman -Qi nvidia-utils > /dev/null 2>&1 \
     && (systemctl enable nvidia-suspend.service; \
