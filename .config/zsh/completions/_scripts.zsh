@@ -56,3 +56,10 @@ _audio() {
     fi
 }
 compdef _audio audio
+
+_sync-to() {
+    local options
+    options=($(cat ~/.ssh/known_hosts | cut -d' ' -f1 | sort | uniq))
+    _describe 'options' options
+}
+compdef _sync-to sync-to
