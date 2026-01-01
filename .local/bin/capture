@@ -1,8 +1,10 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # capture - select output and audio source for screen casting via danymic menu
 # @depends wl-recorder, wmenu, libnotify
+
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
 CAPTURE_HOME="${HOME}/tmp/capture"
 [ -d "$CAPTURE_HOME" ] || mkdir -p $CAPTURE_HOME

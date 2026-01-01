@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # seal - GPG script to {en,de}crypt|preview|sign|verify a file with dynamic
 # menu or fzf. Each option can also be bound in lf for convenience.
 # @depends gpg, wmenu, fzf, libnotify
@@ -13,6 +13,8 @@
 # map Sd $~/.local/bin/seal --decrypt $f
 # map Ss $~/.local/bin/seal --sign $f
 # map Sv $~/.local/bin/seal --verify $f | less
+
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
 CIPHER_ALGO="aes256"
 

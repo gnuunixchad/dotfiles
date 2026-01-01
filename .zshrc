@@ -1,6 +1,6 @@
 # zshrc
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 
 case $- in # check shell options
     *i*) ;; # interactive shell
@@ -35,9 +35,7 @@ ZSH_CONFIG="$HOME/.config/zsh" # zsh specifc configs
 [ -f "$ZSH_CONFIG/aliases.zsh" ] && . "$ZSH_CONFIG/aliases.zsh"
 [ -f "$ZSH_CONFIG/functions.zsh" ] && . "$ZSH_CONFIG/functions.zsh"
 [ -d "$ZSH_CONFIG/completions" ] && \
-    for completion in $ZSH_CONFIG/completions/*; do
-        . "$completion"
-    done
+    for completion in $ZSH_CONFIG/completions/*; do . "$completion"; done
 
 set -o vi
 source <(/usr/bin/fzf --zsh)

@@ -1,6 +1,6 @@
 # .bashrc
 # @author nate zhou
-# @since 2023,2024,2025
+# @since 2023,2024,2025,2026
 
 case $- in # check shell options
     *i*) ;; # interactive shell
@@ -22,9 +22,7 @@ BASH_CONFIG="$HOME/.config/bash" # bash specifc configs
 [ -f "$BASH_CONFIG/aliases.bash" ] && . "$BASH_CONFIG/aliases.bash"
 [ -f "$BASH_CONFIG/functions.bash" ] && . "$BASH_CONFIG/functions.bash"
 [ -d "$BASH_CONFIG/completions" ] && \
-    for completion in $BASH_CONFIG/completions/*; do
-        . "$completion"
-    done
+    for completion in $BASH_CONFIG/completions/*; do . "$completion"; done
 
 set -o vi
 eval "$(/usr/bin/fzf --bash)"

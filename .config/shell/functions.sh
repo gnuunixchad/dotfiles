@@ -1,6 +1,6 @@
 # .config/shell/functions.sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # general functions for bash/zsh
 
 # cd into parent
@@ -54,6 +54,7 @@ dict() {
 }
 
 # package management
+# Below have completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 ## list binaries
 plb() {
     pacman -Ql "$@" | grep -E '/usr/bin/.+$'
@@ -66,7 +67,6 @@ pll() {
 pld() {
     pacman -Qi "$@" | grep -e '^Build Date' -e '^Version'
 }
-
 # display one-line manual page or package descriptions
 what() {
     [ -z "$1" ] && command whatis
@@ -78,7 +78,6 @@ what() {
         shift
     done
 }
-
 diffpkg() {
     if [ -z "$1" ]; then
         echo "Missing remote [USER@]HOST"

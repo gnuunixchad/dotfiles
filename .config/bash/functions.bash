@@ -1,6 +1,6 @@
 # bash/functions.sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # bash specific functions
 
 osc7_cwd() { # new footclient in current working directory for bash

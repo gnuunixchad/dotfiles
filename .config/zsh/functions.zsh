@@ -1,6 +1,6 @@
 # .config/zsh/functions.zsh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # zsh specific functions
 
 function osc7-pwd() { # new footclient in current working directory for zsh

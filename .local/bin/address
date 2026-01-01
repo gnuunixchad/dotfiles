@@ -1,9 +1,11 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # address - universal wayland address book manager with query and fuzzy find.
 # @depends $MENU wtype wl-clipboard cliphist
 # Also see `../.local/share/address/address.example`
+
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
 MENU="${HOME}/.local/bin/wmenu-color"
 ADDRESS_BOOK_DIR="${HOME}/.local/share/address"

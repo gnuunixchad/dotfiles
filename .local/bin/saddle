@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # saddle - {un,}{lock,mount}|power-off block device with dynamic menu or fzf.
 # The dynamic menu will also serve as passphrase input when necessary, which
 # means the script works doesn't have to be executed from a terminal.
@@ -11,6 +11,8 @@
 
 # This script is written in bash because process substitution isn't POSIX,
 # which avoids writing passphrase to a temporary file via dynamic menu.
+
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
 prompt="[$(basename $0)]"
 

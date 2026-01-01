@@ -1,6 +1,6 @@
 " vim/bindings.vim
 " @author nate zhou
-" @since 2023,2024,2025
+" @since 2023,2024,2025,2026
 
 let mapleader=" "   " set space as leader key
 
