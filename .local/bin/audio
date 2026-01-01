@@ -43,18 +43,18 @@ blocks_reload() {
 }
 
 get_volume() {
-    local status=$(wpctl get-volume "$target")
+    local status=$(wpctl get-volume "$target" 2> /dev/null)
     blocks_reload "$1"
 }
 
 set_volume() {
-    wpctl set-volume "$target" "$2"
+    wpctl set-volume "$target" "$2" 2> /dev/null
     get_volume "$1"
 }
 
 toggle_mute() {
-    wpctl set-mute "$target" toggle
-    local status=$(wpctl get-volume "$target")
+    wpctl set-mute "$target" toggle 2> /dev/null
+    local status=$(wpctl get-volume "$target" 2> /dev/null)
     blocks_reload "$1"
 }
 
