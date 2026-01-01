@@ -1,6 +1,6 @@
 # vim:ft=sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # bash completion for my scripts in ${HOME}/.local/bin/*
 
 _saddle() {
@@ -67,7 +67,8 @@ complete -F _audio audio
 _sync-to() {
     local options
     local current_word="${COMP_WORDS[COMP_CWORD]}"
-    options="$(cat ~/.ssh/known_hosts | cut -d' ' -f1 | sort | uniq)"
+    options="$(grep '^Host ' ~/.ssh/servers.conf | cut -d' ' -f2-)\
+             $(cat ~/.ssh/known_hosts | cut -d' ' -f1 | sort | uniq)"
     COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
 }
 complete -F _sync-to sync-to
