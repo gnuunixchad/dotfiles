@@ -19,22 +19,22 @@ $map normal $mod r                          spawn "$term sh -c 'sleep 0.03 && lf
 $map normal $mod q                          spawn qutebrowser
 
 for mode in "normal" "locked"; do
-$map -repeat $mode $mod minus                        spawn "${HOME}/.local/bin/audio sink --minus"
-$map -repeat $mode $mod equal                        spawn "${HOME}/.local/bin/audio sink --plus"
-$map -repeat $mode ${mod}+Shift minus                spawn "${HOME}/.local/bin/audio sink --minus10"
-$map -repeat $mode ${mod}+Shift equal                spawn "${HOME}/.local/bin/audio sink --plus10"
+$map -repeat $mode $mod minus                        spawn "${HOME}/.local/bin/audio sink --minus10"
+$map -repeat $mode $mod equal                        spawn "${HOME}/.local/bin/audio sink --plus10"
+$map -repeat $mode ${mod}+Shift minus                spawn "${HOME}/.local/bin/audio sink --minus"
+$map -repeat $mode ${mod}+Shift equal                spawn "${HOME}/.local/bin/audio sink --plus"
 $map $mode $mod backspace                            spawn "${HOME}/.local/bin/audio sink --mute"
 
-$map -repeat $mode ${mod}+Control minus              spawn "${HOME}/.local/bin/audio source --minus"
-$map -repeat $mode ${mod}+Control equal              spawn "${HOME}/.local/bin/audio source --plus"
-$map -repeat $mode ${mod}+Control+Shift minus        spawn "${HOME}/.local/bin/audio source --minus10"
-$map -repeat $mode ${mod}+Control+Shift equal        spawn "${HOME}/.local/bin/audio source --plus10"
+$map -repeat $mode ${mod}+Control minus              spawn "${HOME}/.local/bin/audio source --minus10"
+$map -repeat $mode ${mod}+Control equal              spawn "${HOME}/.local/bin/audio source --plus10"
+$map -repeat $mode ${mod}+Control+Shift minus        spawn "${HOME}/.local/bin/audio source --minus"
+$map -repeat $mode ${mod}+Control+Shift equal        spawn "${HOME}/.local/bin/audio source --plus"
 $map $mode ${mod}+Control backspace                  spawn "${HOME}/.local/bin/audio source --mute"
 
-$map -repeat $mode $mod bracketleft                  spawn "${HOME}/.local/bin/bright --minus"
-$map -repeat $mode $mod bracketright                 spawn "${HOME}/.local/bin/bright --plus"
-$map -repeat $mode ${mod}+Shift bracketleft          spawn "${HOME}/.local/bin/bright --minus10"
-$map -repeat $mode ${mod}+Shift bracketright         spawn "${HOME}/.local/bin/bright --plus10"
+$map -repeat $mode $mod bracketleft                  spawn "${HOME}/.local/bin/bright --minus10"
+$map -repeat $mode $mod bracketright                 spawn "${HOME}/.local/bin/bright --plus10"
+$map -repeat $mode ${mod}+Shift bracketleft          spawn "${HOME}/.local/bin/bright --minus"
+$map -repeat $mode ${mod}+Shift bracketright         spawn "${HOME}/.local/bin/bright --plus"
 $map -repeat $mode ${mod}+Control+Shift bracketleft  spawn "${HOME}/.local/bin/bright --min"
 $map -repeat $mode ${mod}+Control+Shift bracketright spawn "${HOME}/.local/bin/bright --max"
 done
