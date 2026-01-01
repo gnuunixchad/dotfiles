@@ -10,6 +10,8 @@ if [ ! $UID -eq 0 ]; then
            vimdiff="nvim -d"
 fi
 
+alias cmd="command"
+
 alias rv="exec ssh-agent river -no-xwayland"
 alias dl="exec ssh-agent ${HOME}/.local/bin/damblocks | /usr/local/bin/dwl"
 
