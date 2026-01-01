@@ -10,7 +10,10 @@ local function map(mode, keys, value)
 end
 
 -- escape terminal mode with vi mode shell
-map('t', '<leader><Esc>', '<C-\\><C-n>')
+map('t', '<leader><ESC>', '<C-\\><C-n>')
+map('t', '<leader>q', '<C-\\><C-n> | :quit!<CR>')
+
+map('n', '<leader><CR>', ':split | terminal<CR> | i', {  silent = true })
 
 map('n', 'W', ':w |e<Left><Left>')
 map('n', '<leader>q', ':q<CR>')
