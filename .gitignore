@@ -58,7 +58,8 @@ package-list
 !.config/bash/
 !.config/bash/aliases.bash
 !.config/bash/functions.bash
-!.config/bash/completion.bash
+!.config/bash/completions
+!.config/bash/completions/*
 
 !.zprofile
 !.zshrc
