@@ -50,9 +50,9 @@ _audio() {
     targets=("sink" "source" "all")
     options=("--minus" "--minus10" "--plus" "--plus10" "--mute" "--reload")
     if [ "$CURRENT" -eq 2 ]; then
-        compadd "${targets[@]}"
+        _describe 'targets' targets
     elif [ "$CURRENT" -eq 3 ]; then
-        compadd "${options[@]}"
+        _describe 'options' options
     fi
 }
 compdef _audio audio
