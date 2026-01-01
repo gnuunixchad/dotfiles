@@ -63,3 +63,11 @@ _audio() {
     fi
 }
 complete -F _audio audio
+
+_sync-to() {
+    local options
+    local current_word="${COMP_WORDS[COMP_CWORD]}"
+    options="$(cat ~/.ssh/known_hosts | cut -d' ' -f1 | sort | uniq)"
+    COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+}
+complete -F _sync-to sync-to
