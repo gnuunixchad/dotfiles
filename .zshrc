@@ -34,7 +34,10 @@ SHELL_CONFIG="$HOME/.config/shell" # general shell configs
 ZSH_CONFIG="$HOME/.config/zsh" # zsh specifc configs
 [ -f "$ZSH_CONFIG/aliases.zsh" ] && . "$ZSH_CONFIG/aliases.zsh"
 [ -f "$ZSH_CONFIG/functions.zsh" ] && . "$ZSH_CONFIG/functions.zsh"
-[ -f "$ZSH_CONFIG/completion.zsh" ] && . "$ZSH_CONFIG/completion.zsh"
+[ -d "$ZSH_CONFIG/completions" ] && \
+    for completion in $ZSH_CONFIG/completions/*; do
+        . "$completion"
+    done
 
 set -o vi
 source <(/usr/bin/fzf --zsh)

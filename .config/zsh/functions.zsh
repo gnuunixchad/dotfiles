@@ -100,13 +100,3 @@ _EOF_
         shift
     done
 }
-_hist() {
-    local options
-    options=("-d" "--disable"
-             "-e" "--enable"
-             "-f" "--file"
-             "-D" "--Delete"
-             "-h" "--help")
-    _describe 'options' options
-}
-compdef _hist hist
