@@ -5,7 +5,10 @@
 let mapleader=" "   " set space as leader key
 
 " escape terminal mode with vi mode shell
-tnoremap <leader><Esc> <C-\><C-n>
+tnoremap <leader><ESC> <C-\><C-n>
+tnoremap <leader>q <C-\><C-n>:quit!<CR>
+
+nnoremap <leader><CR> :terminal<CR>
 
 nnoremap W :w \|e<Left><Left>
 nnoremap <leader>q :q<CR>
