@@ -1,7 +1,7 @@
 # vim:ft=sh
 # @author nate zhou
 # @since 2025, 2026
-# functions in `~/.config/zsh/functions.zsh`
+# functions in `~/.config/{shell,zsh}/functions.zsh`
 
 _hist() {
     local options
