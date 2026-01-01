@@ -59,7 +59,8 @@ compdef _audio audio
 
 _sync-to() {
     local options
-    options=($(cat ~/.ssh/known_hosts | cut -d' ' -f1 | sort | uniq))
+    options=($(grep '^Host ' ~/.ssh/servers.conf | cut -d' ' -f2-) \
+             $(cat ~/.ssh/known_hosts | cut -d' ' -f1 | sort | uniq))
     _describe 'options' options
 }
 compdef _sync-to sync-to
