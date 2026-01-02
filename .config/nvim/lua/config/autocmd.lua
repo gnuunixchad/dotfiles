@@ -78,3 +78,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
         end
     end,
 })
+
+vim.api.nvim_create_augroup('zshEditor', { clear = true })
+vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+    group = 'zshEditor',
+    pattern = '/tmp/zsh*.zsh',
+    callback = function()
+        vim.opt_local.filetype = 'sh'
+    end,
+})
