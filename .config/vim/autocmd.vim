@@ -63,3 +63,8 @@ augroup sudoer
     autocmd!
     autocmd BufEnter * if !empty(getenv('SUDO_USER')) || getenv('UID') == 0 | call SetSudoer() | endif
 augroup END
+
+augroup zshEditor
+    autocmd!
+    autocmd BufRead,BufNewFile /tmp/zsh*.zsh setlocl filetype=sh
+augroup END
