@@ -84,7 +84,7 @@ gen_all() {
 }
 
 if [ ! -f "$TELEPORT_CONF" ]; then
-    cat << _EOF_
+    cat >&2 << _EOF_
 error: $TELEPORT_CONF doesn't exist
 create it in the format of:
     Bh="~/doc/heart"

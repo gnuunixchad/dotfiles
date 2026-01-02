@@ -13,7 +13,7 @@ ARCH_LIST="${DOTFILES_LOCAL}/package-list/arch-${hostname}.list"
 print_err() {
     local RED='\033[0;31m'
     local RESET='\033[0m'
-    echo -e ${RED}${1}${RESET}
+    echo -e ${RED}${1}${RESET} >&2
 }
 
 [ ! "$UID" -eq 0 ] && print_err "You must run this script as root." && exit 1

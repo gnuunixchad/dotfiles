@@ -13,7 +13,7 @@ DOTFILES_LOCAL="${HOME}/doc/heart"
 print_err() {
     local RED='\033[0;31m'
     local RESET='\033[0m'
-    echo -e ${RED}${1}${RESET}
+    echo -e ${RED}${1}${RESET} >&2
 }
 
 check_dependencies() {

@@ -9,7 +9,7 @@ term="footclient"
 print_err() {
     local RED='\033[0;31m'
     local RESET='\033[0m'
-    printf ${RED}"${1}"${RESET}\\n
+    printf ${RED}"${1}"${RESET}\\n >&2
 }
 
 [ -z "$1" ] && print_err "No f specified." && exit 1
