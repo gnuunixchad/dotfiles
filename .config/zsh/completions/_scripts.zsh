@@ -6,7 +6,9 @@
 _saddle() {
     local options
     options=("-m" "--mount" "-u" "--unmount" "-p" "--power-off" "-e" "--eject")
-    _describe 'options' options
+    if [ "$CURRENT" -eq 2 ]; then
+        _describe 'options' options
+    fi
 }
 compdef _saddle saddle
 
@@ -14,20 +16,28 @@ _seal() {
     local options
     options=("-c" "--cipher" "-e" "--encrypt" "-d" "--decrypt" "-r" "-rifle" \
              "-s" "--sign" "-v" "--verify")
-    _describe 'options' options
+    if [ "$CURRENT" -eq 2 ]; then
+        _describe 'options' options
+    elif [ "$CURRENT" -eq 3 ]; then
+        _files "$@"
+    fi
 }
 compdef _seal seal
 
 _phone() {
     local options
     options=("-l" "--list" "-m" "--mount" "-u" "--unmount")
-    _describe 'options' options
+    if [ "$CURRENT" -eq 2 ]; then
+        _describe 'options' options
+    fi
 }
 compdef _phone phone
 _address() {
     local options
     options=("-e" "--edit")
-    _describe 'options' options
+    if [ "$CURRENT" -eq 2 ]; then
+        _describe 'options' options
+    fi
 }
 compdef _address address
 
@@ -41,7 +51,9 @@ compdef _capture capture
 _bright() {
     local options
     options=("--minus" "--minus10" "--plus" "--plus10" "--max" "--min" "--no-fifo")
-    _describe 'options' options
+    if [ "$CURRENT" -eq 2 ]; then
+        _describe 'options' options
+    fi
 }
 compdef _bright bright
 
@@ -61,6 +73,8 @@ _sync-to() {
     local options
     options=($(grep '^Host ' ~/.ssh/servers.conf | cut -d' ' -f2-) \
              $(cat ~/.ssh/known_hosts | cut -d' ' -f1 | sort | uniq))
-    _describe 'options' options
+    if [ "$CURRENT" -eq 2 ]; then
+        _describe 'options' options
+    fi
 }
 compdef _sync-to sync-to
