@@ -67,6 +67,7 @@ $map locked $mod p                          spawn "mpc prev"
 $map locked $mod n                          spawn "mpc next"
 
 $map normal ${mod}+Shift s                  spawn "${HOME}/.local/bin/wsk"
+$map normal ${mod}+Shift b                  spawn "pgrep gammastep && killall gammastep || gammastep -O 5000"
 
 $map normal $mod b                          spawn "pkill -x -SIGUSR1 dam"
 
