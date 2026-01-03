@@ -7,7 +7,9 @@ _saddle() {
     local options
     local current_word="${COMP_WORDS[COMP_CWORD]}"
     options="-m --mount -u --unmount -p --power-off -e --eject"
-    COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    fi
 }
 complete -F _saddle saddle
 
@@ -16,7 +18,11 @@ _seal() {
     local current_word="${COMP_WORDS[COMP_CWORD]}"
     options="-c --cipher -e --encrypt -d --decrypt -r -rifle -s --sign
              -v --verify"
-    COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    elif [ "$COMP_CWORD" -eq 2 ]; then
+        COMPREPLY=($(compgen -A file -- "${COMP_WORDS[COMP_CWORD]}"))
+    fi
 }
 complete -F _seal seal
 
@@ -24,7 +30,9 @@ _phone() {
     local options
     local current_word="${COMP_WORDS[COMP_CWORD]}"
     options="-l --list -m --mount -u --unmount"
-    COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    fi
 }
 complete -F _phone phone
 
@@ -32,7 +40,9 @@ _address() {
     local options
     local current_word="${COMP_WORDS[COMP_CWORD]}"
     options="-e --edit"
-    COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    fi
 }
 complete -F _address address
 
@@ -48,7 +58,9 @@ _bright() {
     local options
     local current_word="${COMP_WORDS[COMP_CWORD]}"
     options="--minus --minus10 --plus --plus10 --max --min --no-fifo"
-    COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    fi
 }
 complete -F _bright bright
 
@@ -69,6 +81,8 @@ _sync-to() {
     local current_word="${COMP_WORDS[COMP_CWORD]}"
     options="$(grep '^Host ' ~/.ssh/servers.conf | cut -d' ' -f2-)\
              $(cat ~/.ssh/known_hosts | cut -d' ' -f1 | sort | uniq)"
-    COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    fi
 }
 complete -F _sync-to sync-to
