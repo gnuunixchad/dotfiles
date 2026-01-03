@@ -36,7 +36,7 @@ notify() {
 abort() {
     RED='\033[0;31m'
     RESET='\033[0m'
-    notify "$1"
+    notify "$1" >&2
     exit 1
 }
 
