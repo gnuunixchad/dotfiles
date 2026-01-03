@@ -6,6 +6,9 @@
     path = proxy.inc
     path = user.inc
 
+[commit]
+    gpgsign = true
+
 [diff]
     tool = nvimdiff
 [difftool "nvimdiff"]
