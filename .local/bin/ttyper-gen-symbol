@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # generate strings of random symbols for the language file for ttyper with
 # a given symbol file, in which has one single character on each line.
 
@@ -17,10 +17,12 @@ no_input() {
 
 > "$OUTPUT" # clear existing language file
 
-for (( i=0; i<OUTPUT_LEN; i=i+1 )); do
+i=0
+while [ "$i" -lt "$OUTPUT_LEN" ]; do
     length=$((RANDOM % 5 + 3))  # Generate a random length between 3 and 7
     shuf -n $length $INPUT | tr -d '\n' >> $OUTPUT
     echo >> $OUTPUT  # Add a newline
+    i=$((i+1))
 done && echo "Language file generated: $OUTPUT"
 
 sort -u $OUTPUT -o $OUTPUT  # Sort unique lines
