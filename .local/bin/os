@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # os information
 
 k_result=$(uname -r)
@@ -15,9 +15,9 @@ l_result=$(awk 'NR==1' ~/.cache/checkupdates-cron.log | wc -w)
 
 print_colors() {
     printf "colors:    "
-    for i in {0..15};do
-        printf "\e[48;5;${i}m \e[0m"
-        if [ $((($i + 1) % 16)) -eq 0 ]; then
+    for i in $(seq 0 15);do
+        printf "\033[48;5;${i}m \033[0m"
+        if [ $(( (i + 1) % 16 )) -eq 0 ]; then
             printf "\n"
         fi
     done
@@ -40,7 +40,7 @@ echo "temp:      $t_result"°C
 }
 
 print_upgradable() {
-    if [[ -f ~/.cache/checkupdates-cron.log ]]; then
+    if [ -f ~/.cache/checkupdates-cron.log ]; then
         echo "updates:   $l_result"
     fi
 }
@@ -61,12 +61,9 @@ print_help() {
 }
 
 
-if [[ "$@" == *-h* ]]; then
-    print_help
-fi
-if [[ "$@" == *o* ]] || [[ "$@" == *a* ]]; then
-    print_os
-fi
+echo "$@" | grep -q -e '-h' && print_help
+
+echo "$@" | grep -q -e 'o' -e 'a' && print_os
 
 print_based
 
