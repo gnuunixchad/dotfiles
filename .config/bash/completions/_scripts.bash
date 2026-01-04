@@ -46,14 +46,20 @@ _address() {
 }
 complete -F _address address
 
-_capture() {
-    local options
-    local current_word="${COMP_WORDS[COMP_CWORD]}"
-    options="-6 --60 -m --mkv -M --mute"
-    COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+_capture() { # do not suggest options that have already been typed
+    local options used remaining
+    options=(-6 --60 -m --mkv -M --mute)
+    # $used array contains everything been typed in the current command line
+    [ $COMP_CWORD -ge 2 ] && used=("${COMP_WORDS[@]:1:COMP_CWORD-1}") || used=()
+    for opt in "${options[@]}"; do
+        if [[ ! " ${used[@]} " =~ " $opt " ]]; then
+            remaining+=("$opt")
+        fi
+    done
+    COMPREPLY=($(compgen -W "${remaining[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
 }
-complete -F _capture capture
 
+complete -F _capture capture
 _bright() {
     local options
     local current_word="${COMP_WORDS[COMP_CWORD]}"
