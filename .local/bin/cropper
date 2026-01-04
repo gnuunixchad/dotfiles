@@ -58,7 +58,7 @@ done
 
 # top/bottom/right/left is the pixels from each edge to be cropped
 
-#  +-------------------in_w---------------------+
+#  (0,0)---------------in_w--------------------(in_w,0)
 #  |                                            |
 #  |      A(left,top)------------+              |
 #  |      |                      |              |
@@ -66,7 +66,7 @@ done
 #  |      |                      |              |
 #  |      +----------out_w-------B(right,bottom)|
 #  |                                            |
-#  +--------------------------------------------+
+# (0,in_h)--------------------------------------+
 
 out_w="in_w-$left-$right"
 out_h="in_h-$top-$bottom"
