@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # thumbmagick -- thumbnail creation automated using imagemagick
 
 # known issues:
@@ -79,7 +79,7 @@ while getopts ":b:1:2:3:c:l:r:h" opt; do
 done
 
 # check if required arguments are provided
-if [[ -z $Image_bg ]] || [[ -z $Text_line1 ]]; then
+if [ -z $Image_bg ] || [ -z $Text_line1 ]; then
     echo -e "Required argument is missing.\n"
     usage
     exit 1
