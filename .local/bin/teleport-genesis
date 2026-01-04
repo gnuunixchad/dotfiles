@@ -1,12 +1,12 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # teleport-genesis - Generate keybindings to teleport in POSIX shells, and file
 # managers like lf and ranger.
 
 #set +x
 author="nate zhou"
-year="2025"
+year="2025,2026"
 
 TELEPORT_CONF="$HOME/.config/shell/teleport.conf"
 TELEPORT_SHELL="$HOME/.config/shell/teleport.sh"
@@ -33,7 +33,7 @@ gen_shell() {
     clear_up > "$TELEPORT_SHELL"
 
     while IFS= read -r line; do
-        if [[ -n "$line" && "$line" != \#* ]]; then
+        if [ -n "$line" ] && ! echo "$line" | grep -q '^#.*'; then
             parsed_key="$(echo "$line" | cut -d'=' -f1)"
             parsed_dir="$(echo "$line" | cut -d'"' -f2)"
             printf "alias %s=\"%s\"\\n" "$parsed_key" "$parsed_dir" >> "$TELEPORT_SHELL"
@@ -49,7 +49,7 @@ gen_ranger() {
     local LEADER_CHAR="." # leader key for open in new tab
 
     while IFS= read -r line; do
-        if [[ -n "$line" && "$line" != \#* ]]; then
+        if [ -n "$line" ] && ! echo "$line" | grep -q '^#.*'; then
             parsed_key="$(echo $line | cut -d'=' -f1)"
             parsed_key_tab="${LEADER_CHAR}${parsed_key:1}"
             # remove backslashes: Ranger and Bash expect the exact opposite
@@ -67,7 +67,7 @@ gen_lf() {
     clear_up > "$TELEPORT_LF"
 
     while IFS= read -r line; do
-        if [[ -n "$line" && "$line" != \#* ]]; then
+        if [ -n "$line" ] && ! echo "$line" | grep -q '^#.*'; then
             parsed_key="$(echo $line | cut -d'=' -f1)"
             parsed_dir="$(echo "$line" | cut -d'"' -f2)"
             printf "map %s cd %s\\n" "$parsed_key" "$parsed_dir" >> "$TELEPORT_LF"
