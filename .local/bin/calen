@@ -1,20 +1,22 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # display calcurse event and calculate the days left
 
-set +x
+#set -x
 days=28
-[ "$#" -eq 1 ] && (( days )) && days="$1"
+[ "$#" -eq 1 ] && days="$1"
 
 calcurse -d "$days" | while IFS= read -r line; do
-    if [[ $line =~ ^[0-9]{2}/[0-9]{2}/[0-9]{2} ]]; then
-        date_parsed="${line%:}"
+    # append days left to dates as in 'mm/dd/YY' from `calcurse -d date`
+    if echo "$line" | grep -qE '^[0-9]{2}/[0-9]{2}/[0-9]{2}'; then
+        date_parsed="${line%:}" # remove trailing `:`
+        # calculate how many days left in seconds since the Epoch
         date_event="$(date -d $date_parsed +%s)"
         date_today="$(date +%s)"
         days_left="$(( (date_event - date_today) / 86400 ))"
         echo "$line ($days_left d)"
-    else
+    else # print events and empty lines as is
         echo "$line"
     fi
 done
