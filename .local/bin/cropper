@@ -1,0 +1,75 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2026
+# @depends ffmpeg
+# cropper - crop videos by pixels
+
+input="$1"
+prefix="${input%.*}"
+suffix="${input##*.}"
+output="${prefix}-$(date '+%Y-%m-%d_%H_%M_%S').${suffix}"
+
+top=0
+bottom=0
+left=0
+right=0
+
+usage() {
+    cat <<_EOF_
+USAGE
+        $(basename "$0") FILE OPTIONS...
+        For batch process, run the script in a for-in loop.
+OPTIONS
+        -t INTEGER   pixels to be cropped from top edge
+        -b INTEGER   pixels to be cropped from bottom edge
+        -l INTEGER   pixels to be cropped from left edge
+        -r INTEGER   pixels to be cropped from right edge
+EXAMPLE
+        Crop 100 pixels out from every edge:
+        $(basename "$0") input.webm -t 100 -b 100 -r 100 -l 100
+_EOF_
+    exit 0
+}
+
+[ $# -le 1 ] && usage
+
+shift
+while getopts ":t:b:l:r:h" opt; do
+    case ${opt} in
+        t ) top=$OPTARG ;;
+        b ) bottom=$OPTARG ;;
+        l ) left=$OPTARG ;;
+        r ) right=$OPTARG ;;
+        h ) usage; exit 0 ;;
+        \? ) echo "Invalid option: -$OPTARG" >&2; usage; exit 1 ;;
+        : ) echo "Option -$OPTARG requires pixels(Integer)" >&2; usage; exit 1 ;;
+    esac
+done
+
+# `man 1 ffmpeg-all`:
+# > crop
+# >     in_w    input width
+# >     in_h    input height
+# >     out_w   output width
+# >     out_h   output height
+#
+# > crop=100:100:12:34
+# > Crop area with size 100x100 at position (12,34)
+
+# top/bottom/right/left is the pixels from each edge to be cropped
+
+#  +-------------------in_w---------------------+
+#  |                                            |
+#  |      A(left,top)------------+              |
+#  |      |                      |              |
+# in_h    |                     out_h           |
+#  |      |                      |              |
+#  |      +----------out_w-------B(right,bottom)|
+#  |                                            |
+#  +--------------------------------------------+
+
+out_w="in_w-$left-$right"
+out_h="in_h-$top-$bottom"
+crop="crop=${out_w}:${out_h}:${left}:${top}"
+
+ffmpeg -i "$input" -vf "${crop}" -movflags faststart "$output"
