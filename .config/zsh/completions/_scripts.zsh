@@ -41,10 +41,13 @@ _address() {
 }
 compdef _address address
 
-_capture() {
-    local options
+_capture() { # do not suggest options that have already been typed
+    local options used remaining
     options=("-6" "--60" "-m" "--mkv" "-M" "--mute")
-    _describe 'options' options
+    # $words array continas everything been typed in the current command line
+    used=(${words[2,-1]})
+    remaining=(${options:|used})
+    _describe 'options' remaining
 }
 compdef _capture capture
 
