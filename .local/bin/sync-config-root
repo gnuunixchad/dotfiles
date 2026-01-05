@@ -7,7 +7,7 @@ sudo rsync -a --delete-after --progress \
     /root/heart &
 
 sudo rsync -a --delete-after --progress \
-    $HOME/doc/heart/.config/bash/{aliases.bash,functions.bash} \
+    $HOME/doc/heart/.config/bash/{aliases.bash,functions.bash,completions} \
     /root/heart/.config/bash &
 
 [ -d /root/heart/.config/shell ] || sudo mkdir -p /root/heart/.config/shell &
