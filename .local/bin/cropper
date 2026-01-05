@@ -4,6 +4,8 @@
 # @depends ffmpeg
 # cropper - crop videos by pixels
 
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
+
 input="$1"
 prefix="${input%.*}"
 suffix="${input##*.}"

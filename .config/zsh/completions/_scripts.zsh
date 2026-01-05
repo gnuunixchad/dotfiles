@@ -90,3 +90,12 @@ _os() {
     _describe 'options' remaining
 }
 compdef _os os
+
+_cropper() {
+    local options
+    options=("-t" "-b" "-l" "-r")
+    used=(${words[2,-1]})
+    remaining=(${options:|used})
+    _describe 'options' remaining
+}
+compdef _cropper cropper

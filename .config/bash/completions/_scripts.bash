@@ -105,3 +105,16 @@ _os() {
     COMPREPLY=($(compgen -W "${remaining[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
 }
 complete -F _os os
+
+_cropper() {
+    local options used remaining
+    options=(-t -b -l -r)
+    [ $COMP_CWORD -ge 2 ] && used=("${COMP_WORDS[@]:1:COMP_CWORD-1}") || used=()
+    for opt in "${options[@]}"; do
+        if [[ ! " ${used[@]} " =~ " $opt " ]]; then
+            remaining+=("$opt")
+        fi
+    done
+    COMPREPLY=($(compgen -W "${remaining[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
+}
+complete -F _cropper cropper
