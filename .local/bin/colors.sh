@@ -1,4 +1,4 @@
-#/usr/bin/sh
+#vim:ft=sh
 # @author nate zhou
 # @since 2025
 # colorscheme for wmenu-color and i3blocks scripts
