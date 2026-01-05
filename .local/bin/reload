@@ -5,25 +5,43 @@
 
 notify-send -r 55 "$(basename $0) ($(date +'%H:%M'))" "Running resume hooks"
 
+pids=""
+
 cleanup() {
-    kill -- -$$ # kill the whole process group in this script
+    trap - EXIT INT TERM # reset traps
+    [ -n "$pids" ] && kill $pids 2>/dev/null # kill bg jobs
+
+    # Don't use `kill -- -$$`:
+
     # man 1 kill:
     # > When an argument of the form '-n' is given, and it is
     # > meant to denote a process group, either a signal must be
     # > specified first, or the argument must be preceded by a '--'
     # > option, otherwise it will be taken as the signal to send.
+
+    # because it kills the whole process group, including the parent shell;
+    # when the shell receives SIGTERM from cleanup(), it re-triggers the trap,
+    # therefore the shell gets a segmentation fault (core dumped).
+
+    # Instead, collect individual PIDs of background jobs and only kill the
+    # specific PIDs in `cleanup()`.
 }
 
 trap cleanup INT TERM EXIT
 
 ${HOME}/.local/bin/updw >/dev/null 2>&1 &
+pids="$pids $!"
 
 ${HOME}/.local/bin/checkupdates-cron >/dev/null 2>&1 --now &
+pids="$pids $!"
 
 ${HOME}/.local/bin/newsboat-update-cron >/dev/null 2>&1 --now &
+pids="$pids $!"
 
 ${HOME}/.local/bin/calcurse-num-cron >/dev/null 2>&1 --now &
+pids="$pids $!"
 
 ${HOME}/.local/bin/mbs >/dev/null 2>&1 &
+pids="$pids $!"
 
 wait
