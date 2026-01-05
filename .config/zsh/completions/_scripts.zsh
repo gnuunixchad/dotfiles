@@ -81,3 +81,12 @@ _sync-to() {
     fi
 }
 compdef _sync-to sync-to
+
+_os() {
+    local options
+    options=("-a" "-d" "-l" "-o" "-t" "-h")
+    used=(${words[2,-1]})
+    remaining=(${options:|used})
+    _describe 'options' remaining
+}
+compdef _os os
