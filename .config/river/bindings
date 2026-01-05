@@ -49,6 +49,7 @@ $map normal Control space                   spawn "fcitx5-remote -t"
 
 $map normal $mod n                          spawn "dunstctl history-pop"
 $map normal ${mod}+Shift n                  spawn "dunstctl close"
+$map normal ${mod}+Control+Shift n          spawn "dunstctl close-all"
 
 $map normal $mod g                          spawn "${HOME}/.local/bin/shoot"
 $map normal ${mod}+Shift g                  spawn "${HOME}/.local/bin/shoot --geo"
