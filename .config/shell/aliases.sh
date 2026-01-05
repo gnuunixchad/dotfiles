@@ -47,6 +47,8 @@ alias vla="virsh list --all"
 alias vnl="virsh net-list"
 alias vsl="virsh snapshot-list"
 
+alias il="mid3v2 -l"
+
 alias ,,="~/.local/bin/teleport-genesis-search"
 
 alias ..="cd .."
@@ -83,6 +85,7 @@ alias ncmpcpp="ncmpcpp -q"
 alias newsboat="${HOME}/.local/bin/news"
 alias ytl="yt-dlp --list-formats"
 alias id3v2="mid3v2"
+alias id3cp="mid3cp"
 alias exifpurge="exiftool -all= "
 alias epr="firejail --profile=$HOME/.config/firejail/epr.local epr"
 alias epr-zh="firejail --profile=$HOME/.config/firejail/epr-zh.local epr-zh"
