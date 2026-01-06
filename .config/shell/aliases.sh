@@ -42,6 +42,10 @@ alias lb="lsblk -o name,mountpoints,type,size"
 alias lm="file -Lb --mime-type"
 alias lsml="grep --color=never -m 5 '^[^#]' /etc/pacman.d/mirrorlist"
 
+alias g="git"
+alias v="virsh"
+alias e="$EDITOR"
+
 alias vs="virsh list"
 alias vla="virsh list --all"
 alias vnl="virsh net-list"
