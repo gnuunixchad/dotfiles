@@ -75,6 +75,12 @@ mv ${HOME}/.bash_profile{,~} 2>/dev/null
 [ -d ${HOME}/pkg/yay ] && [ ! -L ${HOME}/.cache/yay ] \
     && ln -s ${HOME}/pkg/yay ${HOME}/.cache/yay
 
+[ -d /data/virt ] && [ ! -L ${HOME}/virt ] \
+    && (ln -s /data/virt ${HOME}/virt \
+        chmod 750 /data/virt
+        setfacl -m u:libvirt-qemu:x /data/virt
+        )
+
 stow -R --adopt -d "$DOTFILES_LOCAL" -t "$HOME" .
 stow -R --adopt -d "${HOME}/pkg/ollama" -t "$HOME" .
 
