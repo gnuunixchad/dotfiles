@@ -40,6 +40,12 @@
         "editor.background": "#111111e6"
 
     },
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
     "chat.disableAIFeatures": true,
+    "editor.autoClosingDelete": "never",
+    "editor.autoClosingOvertype": "never",
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingComments": "never",
+    "editor.autoClosingQuotes": "never",
     "workbench.activityBar.location": "hidden"
 }
