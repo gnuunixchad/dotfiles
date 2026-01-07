@@ -52,6 +52,7 @@ c.keyhint.delay = 0
 c.hints.uppercase = False
 c.hints.chars = "asdfjkl;"
 c.hints.min_chars = 2
+c.hints.auto_follow = "full-match"
 
 c.downloads.location.directory = "~/dls"
 c.downloads.location.prompt = False
