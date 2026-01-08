@@ -233,6 +233,9 @@ LICENSE.*   
 *vimrc      
 *.vim       
 
+*GNUmakefile 
+*makefile   
+*Makefile   
 *.js        
 *.mjs       
 *.jsx       
@@ -260,6 +263,7 @@ LICENSE.*   
 *.nix       
 *.lua       󰢱
 *.java      
+*.class     󰘔
 *.sh        󱆃
 *.fish      󱆃
 *.bash      󱆃
