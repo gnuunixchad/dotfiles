@@ -52,6 +52,7 @@ EXEC 01;32
 *GNUmakefile 01;32
 *makefile 01;32
 *Makefile 01;32
+*PKGBUILD 01;32
 # If you use DOS-style suffixes, you may want to uncomment the following:
 #.cmd 01;32 # executables (bright green)
 #.exe 01;32
