@@ -49,6 +49,9 @@ OTHER_WRITABLE 34;42 # dir that is other-writable (o+w) and not sticky
 STICKY 37;44 # dir with the sticky bit set (+t) and not other-writable
 # This is for files with execute permission:
 EXEC 01;32
+*GNUmakefile 01;32
+*makefile 01;32
+*Makefile 01;32
 # If you use DOS-style suffixes, you may want to uncomment the following:
 #.cmd 01;32 # executables (bright green)
 #.exe 01;32
