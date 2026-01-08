@@ -5,7 +5,7 @@
 # intervals  and signal support. Originally written for river's statusbar -
 # dam, but it also works with any bar taking stdin as plain text.
 # @depends  ttf-nerd-fonts-symbols wireplumber brightnessctl coreutils sed grep
-#           awk curl
+#           awk curl cronie stow systemd
 # @suggests dash bluez-utils isync newsboat calcurse mpc wob
 
 # Fork of sbar(https://github.com/pystardust/sbar) with custom modules.
@@ -16,9 +16,11 @@
 #   3. udev rules                 (/etc/udev/rules)
 # Specific dependencies are listed in the SIGNALING session in this script
 
-# All scrips/cronjobs/rules are available on:
-# https://codeberg.org/unixchad/dotfiles
-# https://github.com/gnuunixchad/dotfiles
+#To mange all the scripts, udev rules and cronjobs:
+# git clone https://codeberg.org/unixchad/damblocks
+# git clone https://github.com/gnuunixchad/damblocks
+# make install
+# make uninstall
 
 #set -x
 # INI
