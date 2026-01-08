@@ -236,6 +236,7 @@ LICENSE.*   
 *GNUmakefile 
 *makefile   
 *Makefile   
+*PKGBUILD   󰣇
 *.js        
 *.mjs       
 *.jsx       
