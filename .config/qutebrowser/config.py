@@ -45,6 +45,8 @@ c.tabs.position = "left"
 c.tabs.padding = {"bottom":0, "left":0, "right":0, "top":0}
 c.tabs.indicator.width = 0
 c.tabs.width = '10%'
+c.tabs.title.format = '{audio}{current_title}'
+c.tabs.title.format_pinned = '{audio}{current_title}'
 c.statusbar.show = "always"
 c.completion.height = '30%'
 
