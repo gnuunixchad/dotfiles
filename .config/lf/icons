@@ -118,7 +118,6 @@ LICENSE.*   
 *.tz        
 *.deb       
 *.rpm       
-*.jar       
 *.war       
 *.ear       
 *.sar       
@@ -264,6 +263,8 @@ LICENSE.*   
 *.nix       
 *.lua       󰢱
 *.java      
+*.jmod      
+*.jar       
 *.class     󰘔
 *.sh        󱆃
 *.fish      󱆃
