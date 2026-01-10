@@ -88,6 +88,7 @@ alias tsk="task";
 alias ncmpcpp="ncmpcpp -q"
 alias newsboat="${HOME}/.local/bin/news"
 alias ytl="yt-dlp --list-formats"
+alias ytd="yt-dlp"
 alias id3v2="mid3v2"
 alias id3cp="mid3cp"
 alias exifpurge="exiftool -all= "
