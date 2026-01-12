@@ -1,0 +1,113 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2026
+# ~/.local/bin/lucia
+
+. ${HOME}/.local/sbin/lucia.env
+
+LUCIA_COMMAND="$(command ls -v $LUCIA_COMMAND_PATTERN | tail -1)"
+
+usage() {
+    cat << _EOF_
+USAGE
+        $(basename $0) OPTION
+OPTIONS
+        -e|--enlighten)     enlighten
+        -E|--eclipse)       eclipse
+        -d|--demonize)      demonize
+        -r|--rotate)        rotate
+        -p|--peruse)        peruse
+_EOF_
+    exit 0
+}
+
+abort() {
+    local RED='\033[0;31m'
+    local RESET='\033[0m'
+    echo -e ${RED}${1}${RESET} >&2
+}
+
+inflame() {
+    [ -f "$LUCIA_CONFIG" ] && mv "$LUCIA_CONFIG" "${LUCIA_CONFIG}-$(date -I)"
+    # only keep 3 most recent
+    ls -rv "${LUCIA_CONFIG}-"* | tail -n +4 | xargs -r rm --
+}
+
+gaze() {
+    if [ ! -f "$LUCIA_CONFIG" ]; then
+       isDim="1"
+    else
+        dawn="$(date -I)"
+        dusk="$(stat -c %y $LUCIA_CONFIG | cut -d' ' -f1 )"
+        echo "$dawn" | grep -q "$dusk" && isDim="0" || isDim="1"
+    fi
+}
+
+eclipse() {
+    set -- $LUCIA_OPTIONS
+    pgrep -f "$(basename $LUCIA_COMMAND)" > /dev/null \
+        && pkill -f "$(basename $LUCIA_COMMAND)"
+    nohup "$LUCIA_COMMAND" "$@" > "$LUCIA_LOG" 2>&1 &
+}
+
+rotate() {
+    gaze
+    if [ $isDim -eq 0 ]; then
+        exit 0
+    else
+        local result="$(cat "$LUCIA_ROTATE_CONFIG" \
+                        | xargs $LUCIA_ROTATE_COMMAND)"
+        if [ -n "$result" ]; then
+            inflame
+            echo "$result" > "$LUCIA_CONFIG"
+            eclipse
+        fi
+    fi
+}
+
+init() {
+    [ -d "$LUCIA_HOME" ] && [ -f "$LUCIA_ROTATE_CONFIG" ] \
+        || abort "$LUCIA_ROTATE_CONFIG doesn't exist" >&2
+
+    rotate
+}
+
+enlighten() {
+    init
+
+    # man 1 dash
+    #
+    # > set [{ -options | +options | -- }] arg ...
+    # >     The third use of the set command is to set the values of the shell's
+    # >     positional parameters to the specified args.
+    set -- $LUCIA_OPTIONS
+
+    # all positional parameters are replaced by strings splitted from
+    # $LUCIA_OPTIONS, instead of treating $LUCIA_OPTIONS as a single option
+    # $LUCIA_COMMAND will parse them correctly.
+    "$LUCIA_COMMAND" "$@"
+}
+
+demonize() {
+    if pgrep -f "$(basename $LUCIA_COMMAND)" > /dev/null; then
+        exit 0
+    else
+        set -- $LUCIA_OPTIONS
+        nohup "$LUCIA_COMMAND" "$@" > "$LUCIA_LOG" 2>&1 &
+    fi
+}
+
+peruse() {
+    tail -f "$LUCIA_LOG"
+}
+
+while [ -n "$1" ]; do
+    case "$1" in
+        -e|--enlighten)     enlighten   ;;
+        -E|--eclipse)       eclipse     ;;
+        -d|--demonize)      demonize    ;;
+        -r|--rotate)        rotate      ;;
+        -p|--peruse)        peruse      ;;
+    esac
+    shift
+done
