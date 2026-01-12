@@ -1,9 +1,8 @@
 # vim:ft=crontab
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # minute hour day_of_month month day_of_week command
 
-*/15 * * * * $HOME/.local/sbin/clsd
 */15 * * * * $HOME/.local/bin/sync-config-cron
 
 # status bar wttr
@@ -27,7 +26,8 @@
 */15 * * * * $HOME/.local/bin/calcurse-num-cron
 
 # offline mail
-# disable due to ENV issuse with gpg-agent,  use damblocks as a workaround
+# disable due to ENV issuse with gpg-agent, invoke `~/.local/bin/mbs-cron` from
+# a autostart script instead.
 #@reboot $HOME/.local/bin/mbs
 #*/15 * * * * $HOME/.local/bin/mbs
 
