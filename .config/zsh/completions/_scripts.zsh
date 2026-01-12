@@ -99,3 +99,13 @@ _cropper() {
     _describe 'options' remaining
 }
 compdef _cropper cropper
+
+_lucia() {
+    local options
+    options=("-e" "--enlighten" "-E" "--eclipse" "-d" "--demonize" \
+             "-r" "--rotate" "-p" "--peruse")
+    if [ "$CURRENT" -eq 2 ]; then
+        _describe 'options' options
+    fi
+}
+compdef _lucia lucia

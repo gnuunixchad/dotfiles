@@ -118,3 +118,13 @@ _cropper() {
     COMPREPLY=($(compgen -W "${remaining[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
 }
 complete -F _cropper cropper
+
+_lucia() {
+    local options
+    local current_word="${COMP_WORDS[COMP_CWORD]}"
+    options="-e --enlighten -E --eclipse -d --demonize -r --rotate -p --peruse"
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    fi
+}
+complete -F _lucia lucia
