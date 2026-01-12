@@ -61,6 +61,8 @@ rotate() {
             inflame
             echo "$result" > "$LUCIA_CONFIG"
             eclipse
+        else
+            abort "$LUCIA_ROTATE_COMMAND failed"
         fi
     fi
 }
