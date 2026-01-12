@@ -27,12 +27,6 @@ abort() {
     echo -e ${RED}${1}${RESET} >&2
 }
 
-inflame() {
-    [ -f "$LUCIA_CONFIG" ] && mv "$LUCIA_CONFIG" "${LUCIA_CONFIG}-$(date -I)"
-    # only keep 3 most recent
-    ls -rv "${LUCIA_CONFIG}-"* | tail -n +4 | xargs -r rm --
-}
-
 gaze() {
     if [ ! -f "$LUCIA_CONFIG" ]; then
        isDim="1"
@@ -41,6 +35,12 @@ gaze() {
         dusk="$(stat -c %y $LUCIA_CONFIG | cut -d' ' -f1 )"
         echo "$dawn" | grep -q "$dusk" && isDim="0" || isDim="1"
     fi
+}
+
+inflame() {
+    [ -f "$LUCIA_CONFIG" ] && mv "$LUCIA_CONFIG" "${LUCIA_CONFIG}-$(date -I)"
+    # only keep 3 most recent
+    ls -rv "${LUCIA_CONFIG}-"* | tail -n +4 | xargs -r rm --
 }
 
 eclipse() {
