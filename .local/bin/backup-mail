@@ -38,7 +38,7 @@ for mailbox in "${MAIL_DIR}"/*/; do
             tar cvf "$tarball" -C "$MAIL_DIR" "$dir_name"
 
             # keep the 3 most recent backup for each mailbox, remove the older
-            ls -t "${TARGET_DIR}/${dir_name}_"*.tar | tail -n +4 | xargs -r rm --
+            ls -rv "${TARGET_DIR}/${dir_name}_"*.tar | tail -n +4 | xargs -r rm --
         else
             echo "Backup for $dir_name on $current_date already exists."
         fi
