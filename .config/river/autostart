@@ -17,6 +17,8 @@ $spawn "swaybg -i ${HOME}/.local/share/wallpaper -m fill" &
 # restart decided by scripts
 $spawn "${HOME}/.local/bin/foots" &
 
+$spawn "${HOME}/.local/bin/lucia -d" &
+
 $spawn "${HOME}/.local/bin/mbs-cron" &
 
 # start if not running
