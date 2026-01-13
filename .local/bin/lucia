@@ -30,6 +30,13 @@ abort() {
     echo -e ${RED}${1}${RESET} >&2
 }
 
+alter() {
+    local lancea
+    command -v nvim >/dev/null && [ -z "$DVTM" ] \
+        && lancea="command nvim" || lancea="command vim"
+    $lancea "$LUCIA_ROTATE_CONFIG"
+}
+
 gaze() {
     if [ ! -f "$LUCIA_CONFIG" ]; then
        isDim="1"
@@ -110,6 +117,7 @@ peruse() {
 
 while [ -n "$1" ]; do
     case "$1" in
+        -a|--alter)         alter       ;;
         -e|--enlighten)     enlighten   ;;
         -E|--eclipse)       eclipse     ;;
         -d|--demonize)      demonize    ;;
