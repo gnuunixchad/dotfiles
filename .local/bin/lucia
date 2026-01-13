@@ -3,6 +3,8 @@
 # @since 2026
 # ~/.local/bin/lucia
 
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
+
 . ${HOME}/.local/sbin/lucia.env
 
 LUCIA_COMMAND="$(command ls -v $LUCIA_COMMAND_PATTERN | tail -1)"
@@ -12,11 +14,12 @@ usage() {
 USAGE
         $(basename $0) OPTION
 OPTIONS
-        -e|--enlighten)     enlighten
-        -E|--eclipse)       eclipse
-        -d|--demonize)      demonize
-        -r|--rotate)        rotate
-        -p|--peruse)        peruse
+        -a|--alter
+        -e|--enlighten
+        -E|--eclipse
+        -d|--demonize
+        -r|--rotate
+        -p|--peruse
 _EOF_
     exit 0
 }
@@ -102,6 +105,8 @@ demonize() {
 peruse() {
     tail -f "$LUCIA_LOG"
 }
+
+[ -z "$1" ] && usage
 
 while [ -n "$1" ]; do
     case "$1" in
