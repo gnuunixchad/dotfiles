@@ -29,6 +29,8 @@ cleanup() {
 
 trap cleanup INT TERM EXIT
 
+${HOME}/.local/bin/lucia -d
+
 ${HOME}/.local/bin/updw >/dev/null 2>&1 &
 pids="$pids $!"
 
