@@ -276,19 +276,19 @@
     },
         // ## create new file
     {
-        "key": "shift+n",
+        "key": "o",
         "command": "explorer.newFile",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
     },
         // ## make directory
     {
-        "key": "shift+m",
+        "key": "shift+O",
         "command": "explorer.newFolder",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceReadonly && !inputFocus"
     },
         // ## rename file
     {
-        "key": "shift+r",
+        "key": "r",
         "command": "renameFile",
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
     },
