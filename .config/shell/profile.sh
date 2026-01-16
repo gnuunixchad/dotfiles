@@ -21,7 +21,7 @@ export PAGER="/usr/bin/less"
 export DVTM_EDITOR="/usr/bin/vim"
 export DVTM_PAGER="/usr/bin/less -R"
 export BROWSER="qutebrowser"
-[ $(cat /etc/hostname) = "fx507" ] && export QTWEBENGINE_CHROMIUM_FLAGS='--disable-gpu' # fix qutebrowser crash on wlroots with nvidia
+pacman -Qi nvidia-utils > /dev/null 2>&1 && export QTWEBENGINE_CHROMIUM_FLAGS='--disable-gpu' # fix qutebrowser crash on wlroots with nvidia
 
 export XDG_DOWNLOAD_DIR="$HOME/dls"
 export XDG_DOCUMENTS_DIR="$HOME/doc"
