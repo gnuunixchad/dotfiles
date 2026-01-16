@@ -1,0 +1,29 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2026
+# @depends xwayland-satellite
+
+# A script to dynamically set and use xwayland via xwayland-satellite, instead
+# of running xwayland persistently.
+
+# Usage:
+#- Without option: start xwayland server on demand.
+#- With options: connect to xwayland server with the given commands.
+
+start_server() {
+    if pgrep -f 'xwayland-satellite' > /dev/null; then
+        echo "xwayland-satellite is already running"
+        exit 0
+    else
+        DISPLAY=":0"
+        xwayland-satellite
+    fi
+}
+
+start_client() {
+    env DISPLAY=":0" $@
+}
+
+[ -z "$1" ] && start_server
+
+[ -n "$1" ] && start_client $@
