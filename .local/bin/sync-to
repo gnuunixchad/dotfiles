@@ -4,24 +4,34 @@
 
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
+abort() {
+    local RED='\033[0;31m'
+    local RESET='\033[0m'
+    echo -e ${RED}${1}${RESET}
+}
+
 if [ "$#" -eq 0 ]; then
     read -p "Sync to the remote IP address: " remote
     [ -z "$remote" ] && ( echo "Invalid IP address, aborted" ; exit 1)
-else remote="$1"
+else
+    remote="$1"
 fi
 
-echo "rsync -avh --delete-after --progress /home/nate/{doc,mus,pic,vid,pkg} ${remote}:/home/nate";
+sync_cmd="rsync -avh --delete-after --progress \
+      --exclude="doc/heart/.config/fcitx/dbus/" \
+      --exclude="doc/heart/.config/ibus/" \
+      --exclude="doc/heart/.ssh/agent/" \
+      /home/${USER}/{doc,mus,pic,vid,pkg} \
+      ${remote}:/home/${USER};"
+
+echo $sync_cmd
 
 read -p "Do you want to continue? (y/n): " choice
 
 if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
 	echo "Continuing ..."
-	rsync -avh --delete-after --progress \
-        --exclude="doc/heart/.config/fcitx/dbus/" \
-        --exclude="doc/heart/.config/ibus/" \
-        --exclude="doc/heart/.ssh/agent/" \
-        /home/nate/{doc,mus,pic,vid,pkg} ${remote}:/home/nate;
+    eval "$sync_cmd" || abort "failed" >&2
 else
-	echo "rsync is aborted."
+    abort "aborted"
 	exit 0
 fi
