@@ -1,33 +1,30 @@
-#!/usr/bin/env bash
+#!/usr/bin/sh
 # @ author nate zhou
-# @ since 2024,2025
-# checkupdates-cron
-# check available pacman packages and write the number to a cache file
-# @depends pacman-contrib, dunst, cronie, lsupdates*
+# @ since 2024,2025,2026
+# sync-pkg-cron
+# @depends ${HOME}/.local/bin/sync-pkg
 
-LOG_CACHE="$HOME/.cache/sync-pkg-cron.log"
+LOG="${HOME}/.cache/sync-pkg-cron.log"
 
 # modified time in seconds since the Epoch
-update_time=$(stat -c "%Y" "$log_cache")
+update_time=$(stat -c "%Y" "$LOG")
 # seconds since the Epoch
 current_time=$(date +%s)
 UPDATE_FREQUENCY=604800 # in seconds, 7d
 
 sync_pkg() {
-    rsync -avh --delete-after --progress /var/cache/pacman/pkg/ $HOME/pkg/pacman/
-    rsync -avh --delete-after --progress $HOME/.cache/yay/ $HOME/pkg/yay/
-    echo "$(date): synced" > $LOG_CACHE
+    ${HOME}/.local/bin/sync-pkg && echo "$(date): synced" > $LOG
 }
 
-if [ ! -f "$LOG_CACHE" ]; then
+if [ ! -f "$LOG" ]; then
     sync_pkg
     exit 0
 fi
 
 # check last update time
-if (( current_time - update_time > UPDATE_FREQUENCY )); then
+if [ $((current_time - update_time)) -gt $UPDATE_FREQUENCY ]; then
     sync_pkg
 else
-    echo "Already updated within past $(($UPDATE_FREQUENCY/3600)) hours"
+    echo "Already updated within past $((UPDATE_FREQUENCY/3600/24)) days"
     exit 1
 fi
