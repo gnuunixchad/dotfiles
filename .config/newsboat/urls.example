@@ -36,6 +36,7 @@ https://github.com/gokcehan/lf/releases.atom ~lf git tui
 https://github.com/neomutt/neomutt/releases.atom ~neomutt tui
 https://github.com/newsboat/newsboat/tags.atom ~newsboat git tui
 https://github.com/GothenburgBitFactory/taskwarrior/releases.atom ~taskwarrior git cli
+https://github.com/yt-dlp/yt-dlp/releases.atom ~yt-dlp cli
 https://github.com/linrunner/TLP/releases.atom ~tlp git cli daemon sys
 https://github.com/ammen99/wf-recorder/releases.atom ~wf-recorder git cli wlroots
 https://github.com/Jguer/yay/releases.atom ~yay git archlinux system cli
