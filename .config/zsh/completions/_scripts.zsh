@@ -109,3 +109,16 @@ _lucia() {
     fi
 }
 compdef _lucia lucia
+
+_xwl() {
+    # complete 1st positional parameter with executables in PATH
+    if [ "$CURRENT" -eq 2 ]; then
+        compadd - ${(k)commands}
+    else
+    # complete the rest with the executables' original completion
+        shift words
+        (( CURRENT-- ))
+        _normal
+    fi
+}
+compdef _xwl xwl

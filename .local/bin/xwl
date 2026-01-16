@@ -10,6 +10,8 @@
 #- Without option: start xwayland server on demand.
 #- With options: connect to xwayland server with the given commands.
 
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
+
 start_server() {
     if pgrep -f 'xwayland-satellite' > /dev/null; then
         echo "xwayland-satellite is already running"

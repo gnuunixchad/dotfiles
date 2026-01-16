@@ -129,3 +129,15 @@ _lucia() {
     fi
 }
 complete -F _lucia lucia
+
+_xwl() {
+    _init_completion || return
+    # complete 1st positional parameter with executables in PATH
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        mapfile -t COMPREPLY < <(compgen -c -- "$cur")
+        return 0
+    fi
+    # complete the rest with the executables' original completion
+    _command_offset 1
+}
+complete -F _xwl xwl
