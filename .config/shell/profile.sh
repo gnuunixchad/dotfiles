@@ -20,9 +20,8 @@ export EDITOR="/usr/bin/nvim"
 export PAGER="/usr/bin/less"
 export DVTM_EDITOR="/usr/bin/vim"
 export DVTM_PAGER="/usr/bin/less -R"
-export MOZ_USE_XINPUT2=1 # firefox pixel-perfect trackpad scrolling
+export BROWSER="qutebrowser"
 [ $(cat /etc/hostname) = "fx507" ] && export QTWEBENGINE_CHROMIUM_FLAGS='--disable-gpu' # fix qutebrowser crash on wlroots with nvidia
-[ -x "/usr/bin/qutebrowser" ] && export BROWSER="qutebrowser" || export BROWSER="firefox"
 
 export XDG_DOWNLOAD_DIR="$HOME/dls"
 export XDG_DOCUMENTS_DIR="$HOME/doc"
@@ -62,8 +61,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct # qt theme
 export QT_STYLE_OVERRIDE=adwaita-dark # qt theme
 export GTK_THEME=Adwaita-dark # for firejail'ed libreoffice theme
 
-export WLR_DRM_NO_ATOMIC=1 # fix sway terminal freezes
-export ELECTRON_OZONE_PLATFORM_HINT=wayland # electron, disabled to run in xwayland for fcitx5 support
+#export ELECTRON_OZONE_PLATFORM_HINT=wayland # electron
 #export WLR_NO_HARDWARE_CURSORS=1 # external monitor cursor on nvidia
 
 # fcitx
