@@ -1,13 +1,14 @@
+#!/usr/bin/sh
 # .config/shell/profile.sh
 # @author nate zhou
-# @since 2023,2024,2025
-# general profile for bash/zsh
+# @since 2023,2024,2025,2026
+# set universal ENV, use `/bin/sh`(-> `/bin/dash`) for better efficiency
 
 [ "$UID" -eq 0 ] || umask 027 # dir/file:750/640
 
-[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:${PATH}"
-[ -d "$HOME/.local/sbin" ] && PATH="$HOME/.local/sbin:${PATH}"
-[ -d "/usr/share/neomutt/oauth2" ] && PATH="${PATH}:/usr/share/neomutt/oauth2"
+[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:${PATH}"
+[ -d "$HOME/.local/sbin" ] && export PATH="$HOME/.local/sbin:${PATH}"
+[ -d "/usr/share/neomutt/oauth2" ] && export PATH="${PATH}:/usr/share/neomutt/oauth2"
 
 [ -x /usr/bin/bat ] && export MANROFFOPT="-c" && export MANPAGER="sh -c 'col -bx | bat --pager \"less -XR\" -l man -p'"
 export MANWIDTH=80
