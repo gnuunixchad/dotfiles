@@ -59,6 +59,12 @@ dict() {
 plb() {
     pacman -Ql "$@" | grep -E '/usr/bin/.+$'
 }
+
+# list libraries
+pli() {
+    pacman -Ql "$@" | grep -E '/usr/lib/.+$'
+}
+
 ## list licenses
 pll() {
     pacman -Qi "$@" | grep '^Licenses' | cut -d' ' -f10-
