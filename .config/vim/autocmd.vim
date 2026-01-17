@@ -1,6 +1,6 @@
 " nvim/autocmd.vim
 " @author nate zhou
-" @since 2023, 2024, 2025
+" @since 2023,2024,2025,2026
 
 " Disable auto comment on new line
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o

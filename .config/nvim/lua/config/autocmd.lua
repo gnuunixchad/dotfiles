@@ -1,7 +1,7 @@
 -- vim:ft=lua
 -- nvim/lua/config/autocmd.lua
 -- @author nate zhou
--- @since 2025
+-- @since 2025,2026
 
 -- Disable auto comment on new line
 vim.api.nvim_create_autocmd('BufEnter', {
