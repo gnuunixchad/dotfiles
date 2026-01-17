@@ -30,7 +30,7 @@ vim.o.background = 'dark'
 
 -- highlight all trailing spaces
 vim.cmd('highlight TrailingSpace ctermbg=gray guibg=gray')
-vim.cmd('match TrailingSpace /\\s\\+$/')
+vim.fn.matchadd('TrailingSpace', '\\s\\+$')
 
 -- indentation
 vim.o.expandtab = true -- <Tab> expands spaces instead of \t
