@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # Setup user-space softwares
 #set -x
 
@@ -110,6 +110,9 @@ NEWSBOAT="${HOME}/.config/newsboat"
 
 QUTEBROWSER="${HOME}/.config/qutebrowser"
 [ -f "${QUTEBROWSER}/proxy.py" ] || cp ${QUTEBROWSER}/proxy.py{.example,}
+
+YTDLP="${HOME}/.config/yt-dlp"
+[ -f "${YTDLP}/proxy.conf" ] || cp ${YTDLP}/proxy.conf{.example,}
 
 ISYNC="${HOME}/.config/isyncrc"
 [ -f "$ISYNC" ] || cp ${ISYNC}.example $ISYNC
