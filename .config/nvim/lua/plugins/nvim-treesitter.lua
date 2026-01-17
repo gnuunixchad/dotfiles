@@ -1,23 +1,33 @@
 -- vim:ft=lua
 -- nvim/lua/plugins/nvim-treesitter.lua
 -- @author nate zhou
--- @since 2025
--- This config only works on nvim-treesitter master branch since December 2025.
+-- @since 2025,2026
+-- config for nvim-treesitter main branch
+-- @depends: tree-sitter-cli (in arch repo)
 
-require'nvim-treesitter.configs'.setup {
-    ensure_installed = { 'bash', 'diff', 'markdown', 'markdown_inline', 'regex', 'c', 'java', 'python', 'go', 'gotmpl', 'vim', 'css', 'json', 'make', 'ssh_config', 'html'},
-
-    highlight = {
-        enable = true,
-        disable = { 'sh', 'bash' },
-        additional_vim_regex_highlighting = false,
-  },
+local languages = { 'markdown',
+                    'markdown_inline',
+                    'regex',
+                    'diff',
+                    'make',
+                    'bash',
+                    'c',
+                    'python',
+                    'java',
+                    'go',
+                    'gotmpl',
+                    'zig',
+                    'html',
+                    'css',
+                    'json',
+                    'yaml',
+                    'vim',
+                    'lua',
 }
 
--- another way is to set `highlight.enable` to false and whitelist filetypes
---vim.api.nvim_create_autocmd('FileType', {
---    pattern = { 'markdown', 'markdown_inline', 'java' }
---    callback = function()
---        vim.treesitter.start()
---    end,
---})
+require'nvim-treesitter'.install(languages)
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = languages,
+  callback = function() vim.treesitter.start() end,
+})
