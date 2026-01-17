@@ -7,6 +7,7 @@
 
 local languages = { 'markdown',
                     'markdown_inline',
+                    'regex',
                     'diff',
                     'make',
                     'bash',
