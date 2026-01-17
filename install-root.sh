@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # Setup system-wide softwares
 #set -x
 
@@ -31,6 +31,9 @@ grep -q '^termux:' /etc/passwd || useradd -m -G "$sudoer" termux
 
 [ -f /root/.bash_profile ] && mv /root/.bash_profile{,~}
 [ -L "/root/.bashrc" ] || mv /root/.bashrc{,~}
+
+CRYPTKEY="/root/cryptkey"
+[ -f "$CRYPTKEY" ] && (chmod 400 "$CRYPTKEY"; chattr +i "$CRYPTKEY")
 
 cp -r --preserve=mode ${DOTFILES_LOCAL}/{etc,usr} /
 
