@@ -66,6 +66,15 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
     end,
 })
 
+vim.api.nvim_create_augroup('org', { clear = true })
+vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+    group = 'org',
+    pattern = '*.org',
+    callback = function()
+        vim.bo.filetype = 'markdown'
+    end,
+})
+
 -- Aboid 24-bit colors inside dvtm.
 -- However vim is still the preffered editor inside dvtm as neovim has very
 -- slow load/exit speed even with `--clean`
