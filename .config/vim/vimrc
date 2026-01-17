@@ -37,6 +37,9 @@ endif
 set termguicolors
 set background=dark
 
+" highlight all trailing spaces
+highlight TrailingSpace ctermbg=gray guibg=gray
+match TrailingSpace /\s\+$/
 
 " indentation
 set expandtab		" <Tab> expands spaces instead of \t
