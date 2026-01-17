@@ -1,7 +1,7 @@
 -- vim:ft=lua
 -- nvim/lua/plugins/nvim-treesitter.lua
 -- @author nate zhou
--- @since 2025
+-- @since 2025,2026
 -- config for nvim-treesitter main branch
 -- @depends: tree-sitter-cli (in arch repo)
 
@@ -27,6 +27,6 @@ local languages = { 'markdown',
 require'nvim-treesitter'.install(languages)
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'markdown', 'markdown_inline' },
+  pattern = languages,
   callback = function() vim.treesitter.start() end,
 })
