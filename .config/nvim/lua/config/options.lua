@@ -1,7 +1,7 @@
 -- vim:ft=lua
 -- nvim/lua/config/options.lua
 -- @author nate zhou
--- @since 2025
+-- @since 2025,2026
 
 vim.o.encoding = 'utf-8'
 
@@ -29,8 +29,8 @@ vim.o.termguicolors = true
 vim.o.background = 'dark'
 
 -- highlight all trailing spaces
-vim.cmd('match TrailingSpace /\\s\\+$/')
 vim.cmd('highlight TrailingSpace ctermbg=gray guibg=gray')
+vim.cmd('match TrailingSpace /\\s\\+$/')
 
 -- indentation
 vim.o.expandtab = true -- <Tab> expands spaces instead of \t
