@@ -37,6 +37,11 @@ augroup qutebrowser
     autocmd BufRead,BufNewFile /tmp/qutebrowser-* setlocl filetype=markdown
 augroup END
 
+augroup org
+    autocmd!
+    autocmd BufRead,BufNewFile *.org setlocal filetype=markdown
+augroup END
+
 augroup dvtmeditor
     autocmd!
     autocmd BufRead,BufNewFile /tmp/dvtm-editor.* setlocal nonumber
