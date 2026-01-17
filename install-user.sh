@@ -54,7 +54,7 @@ touch ${HOME}/.local/state/{bash,zsh}/history
 # Make sure files touched by a cronjob for damblocks is a symlink so they can
 # be included by my rsync scripts, so to sync some status to other machines.
 mkdir -p ${HOME}/doc/heart/.cache
-for i in "wttr" "mbsync.cron" "newsboat.num"; do
+for i in "wttr" "mbsync.cron" "newsboat.num" "checkupdates-cron.log"; do
     file="${HOME}/doc/heart/.cache/${i}"
     if [ ! -e "$file" ]; then
         touch --date='1970-01-01 00:00:00' "$file"
