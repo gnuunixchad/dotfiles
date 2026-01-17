@@ -20,6 +20,7 @@ _package() {
     _describe 'options' options
 }
 compdef _package plb
+compdef _package pli
 compdef _package pll
 compdef _package pld
 compdef _package what

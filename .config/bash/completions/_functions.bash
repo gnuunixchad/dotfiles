@@ -18,6 +18,7 @@ _package() {
     COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
 }
 complete -F _package plb
+complete -F _package pli
 complete -F _package pll
 complete -F _package pld
 complete -F _package what
