@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 
 HEART="$HOME/doc/heart"
 chmod 700 "$HEART" # deny go permission to exclude for termux syncing
@@ -33,11 +33,13 @@ if [ $choice = "y" ] || [ $choice = "Y" ]; then
         || echo "heart pulling failed"
     chmod 750 "$DOTFILES"
     rsync -a --delete-after \
-        "${HEART}/.local/share/nvim/plugged" "${DOTFILES}/.local/share/nvim/" &
+        "${HEART}/.local/share/nvim/" "${DOTFILES}/.local/share/nvim/" &
     rsync -a --delete-after ${HEART}/package-list ${DOTFILES}/ &
+    wait
+
+    # deny permission for user termux(in the $USER's group)
+    chmod 700 "${DOTFILES}/.local/share/nvim/"
 else
     echo "aborted"
     exit 0
 fi
-
-wait
