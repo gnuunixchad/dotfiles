@@ -1,10 +1,10 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # filesystem label need match 'usb-*' (man 8 e2label)
 
 MY_SOURCE_PATH="$HOME/doc $HOME/mus $HOME/pic $HOME/vid"
-MY_DESTINATION="/run/media/nate/usb-*/back/"
+MY_DESTINATION="/run/media/${USER}/usb-*/back/"
 
 # change ext4 partition label with `e2label /dev/mapper/NAME NEW_NAME`
 set -x
