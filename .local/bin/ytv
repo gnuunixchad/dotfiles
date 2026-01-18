@@ -52,4 +52,4 @@ done
 
 [ -z "$url" ] && usage
 
-download && notify-send -u low -r 7 "yt-dlp: finished"
+download && notify-send -u low -r 7 "$(basename $0)" "download finished"
