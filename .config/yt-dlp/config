@@ -9,7 +9,7 @@
 
 --embed-metadata
 
---format 'ba[format_note*=original]/ba'
+--format 'bv*+ba[format_note*=original]/bv+ba'
 
 --paths ~/dls/
 
