@@ -1,10 +1,10 @@
 # @author nate zhou
-# @since 2023,2024
+# @since 2023,2024,2026
 
 # allow access to /media, must use with whitelist to ensure security
 ignore disable-mnt
 
-noblacklist ${HOME}/.cache/ranger
+noblacklist ${HOME}/.cache/lf
 noblacklist ${HOME}/pic/*
 noblacklist ${HOME}/vid/*
 noblacklist ${HOME}/mus/*

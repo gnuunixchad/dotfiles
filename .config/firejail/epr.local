@@ -1,9 +1,8 @@
 # @author nate zhou
-# @since 2023,2024
+# @since 2023,2024,2026
 
 # for epr(https://github.com/wustho/epr) epub reader
 # run with `firejail --profile=$HOME/.config/firejial/epr.local epr`
-# put in ranger's rc.conf and create alias in.bashrc
 
 # whitelist config file and the excutable itself
 #whitelist ${HOME}/.config/epr
