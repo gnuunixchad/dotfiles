@@ -9,13 +9,13 @@ fi            # FILE
 or             # ORPHAN
 tw             # STICKY_OTHER_WRITABLE
 ow             # OTHER_WRITABLE
-st             # STICKY
-pi             # FIFO
-so             # SOCK
+st          s  # STICKY
+pi          |  # FIFO
+so          =  # SOCK
 bd             # BLK
 cd             # CHR
-su             # SETUID
-sg             # SETGID
+su          u  # SETUID
+sg          g  # SETGID
 ex             # EXEC
 
 LICENSE.*   
