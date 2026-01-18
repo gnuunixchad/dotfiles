@@ -1,7 +1,11 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2023,2024,2025
-# universal config moved to `~/.config/yt-dlp/config`
+# @since 2023,2024,2025,2026
 
-yt-dlp --extract-audio --audio-format mp3  $@ \
-    && notify-send -u low -r 6 "mus-dlp: finished"
+# main config is auto loaded, no need to specify below in a script or here:
+#--config-locations ~/.config/yt-dlp/config
+
+AUDIO_CONFIG="${HOME}/.config/yt-dlp/audio.conf"
+
+yt-dlp --config-locations $AUDIO_CONFIG "$@" && \
+    notify-send -u low -r 6 "$(basename $0)" "download finished"
