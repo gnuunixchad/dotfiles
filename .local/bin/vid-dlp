@@ -1,9 +1,55 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2023,2024,2025
-# universal config moved to `~/.config/yt-dlp/config`
+# @since 2023,2024,2025,2026
 
-yt-dlp --write-auto-subs --sub-lang en \
-       -S "height:720" -f "bv*+ba/b" \
-       --merge-output-format mp4 "$@" \
-       && notify-send -u low -r 7 "yt-dlp: finished"
+# main config is auto loaded, no need to specify below in video.conf or here:
+#--config-locations ~/.config/yt-dlp/config
+
+VIDEO_CONFIG="${HOME}/.config/yt-dlp/video.conf"
+
+height="720"
+format="webm"
+url=""
+
+usage() {
+    cat << _EOF_
+USAGE
+        $(basename $0) [OPTION]... URL
+OPTIONS
+        -h,--height NUM     max desired height, default is 720
+        -f,--format FORMAT  merge output format if needed, default is webm
+EXAMPLES
+        $(basename $0) -h 480 -f mp4 URL
+        Perfer 480 or lower quality, if an output merge is required, to mp4
+_EOF_
+    exit 0
+}
+
+download() {
+    yt-dlp --config-locations $VIDEO_CONFIG \
+           -S "height:$height" \
+           --merge-output-format "$format" \
+           "$url"
+}
+
+while [ -n "$1" ]; do
+    case "$1" in
+        -h|--height)
+            shift
+            height="$1"
+            ;;
+        -f|--format)
+            shift
+            format="$1"
+            ;;
+        *)
+            url="$1"
+            ;;
+    esac
+    shift
+done
+
+
+[ -z "$url" ] && usage
+
+download && notify-send -u low -r 7 "yt-dlp: finished"
