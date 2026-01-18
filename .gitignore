@@ -281,6 +281,7 @@ package-list
 !.config/wob/wob.ini
 !.config/yt-dlp/
 !.config/yt-dlp/config
+!.config/yt-dlp/video.conf
 !.config/yt-dlp/proxy.conf.example
 !.config/zathura/
 !.config/zathura/zathurarc
