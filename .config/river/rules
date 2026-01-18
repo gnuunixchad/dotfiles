@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # river/rules
 
 add="riverctl rule-add"
@@ -22,3 +22,5 @@ $add -app-id "lighting" -title "Lighting Effects" float
 $add -app-id "kdenlive" float # file chooser
 
 $add -app-id "electron" -title "Open Folder" float #code-oss
+
+$add -app-id "org.fcitx.fcitx5-config-qt" float
