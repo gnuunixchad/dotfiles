@@ -1,7 +1,8 @@
 # vim:ft=conf
 # lf/icons
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
+# @depends ttf-nerd-fonts-symbols
 
 ln            # LINK
 di          󰝰  # DIR
