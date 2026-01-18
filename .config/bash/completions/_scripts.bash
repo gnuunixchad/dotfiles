@@ -141,3 +141,16 @@ _xwl() {
     _command_offset 1
 }
 complete -F _xwl xwl
+
+_ytv() {
+    local options used remaining
+    options=(--height --format)
+    [ $COMP_CWORD -ge 2 ] && used=("${COMP_WORDS[@]:1:COMP_CWORD-1}") || used=()
+    for opt in "${options[@]}"; do
+        if [[ ! " ${used[@]} " =~ " $opt " ]]; then
+            remaining+=("$opt")
+        fi
+    done
+    COMPREPLY=($(compgen -W "${remaining[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
+}
+complete -F _ytv ytv

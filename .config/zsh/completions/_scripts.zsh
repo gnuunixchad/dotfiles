@@ -122,3 +122,12 @@ _xwl() {
     fi
 }
 compdef _xwl xwl
+
+_ytv() {
+    local options
+    options=("--height" "--format")
+    used=(${words[2,-1]})
+    remaining=(${options:|used})
+    _describe 'options' remaining
+}
+compdef _ytv ytv
