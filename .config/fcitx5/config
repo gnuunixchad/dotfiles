@@ -1,22 +1,20 @@
 [Hotkey]
-# Trigger Input Method
+# Toggle Input Method
 TriggerKeys=
-# Enumerate when press trigger key repeatedly
+# Enumerate when holding modifier of Toggle key
 EnumerateWithTriggerKeys=True
-# Enumerate Input Method Forward
-EnumerateForwardKeys=
-# Enumerate Input Method Backward
-EnumerateBackwardKeys=
-# Skip first input method while enumerating
-EnumerateSkipFirst=False
-# Enumerate Input Method Group Forward
-EnumerateGroupForwardKeys=
-# Enumerate Input Method Group Backward
-EnumerateGroupBackwardKeys=
 # Activate Input Method
 ActivateKeys=
 # Deactivate Input Method
 DeactivateKeys=
+# Enumerate Input Method Backward
+EnumerateBackwardKeys=
+# Skip first input method while enumerating
+EnumerateSkipFirst=True
+# Enumerate Input Method Group Forward
+EnumerateGroupForwardKeys=
+# Enumerate Input Method Group Backward
+EnumerateGroupBackwardKeys=
 # Toggle embedded preedit
 TogglePreedit=
 # Time limit in milliseconds for triggering modifier key shortcuts
@@ -24,6 +22,9 @@ ModifierOnlyKeyTimeout=250
 
 [Hotkey/AltTriggerKeys]
 0=Shift_L
+
+[Hotkey/EnumerateForwardKeys]
+0=Control+Shift+space
 
 [Hotkey/PrevPage]
 0=Up
@@ -56,9 +57,9 @@ CompactInputMethodInformation=True
 ShowFirstInputMethodInformation=True
 # Default page size
 DefaultPageSize=5
-# Override Xkb Option
+# Override XKB Option
 OverrideXkbOption=False
-# Custom Xkb Option
+# Custom XKB Option
 CustomXkbOption=
 # Force Enabled Addons
 EnabledAddons=
