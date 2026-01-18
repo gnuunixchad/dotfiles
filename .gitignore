@@ -282,6 +282,7 @@ package-list
 !.config/yt-dlp/
 !.config/yt-dlp/config
 !.config/yt-dlp/video.conf
+!.config/yt-dlp/audio.conf
 !.config/yt-dlp/proxy.conf.example
 !.config/zathura/
 !.config/zathura/zathurarc
