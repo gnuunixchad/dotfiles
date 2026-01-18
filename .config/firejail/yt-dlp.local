@@ -1,8 +1,16 @@
 # @author nate zhou
-# @since 2023,2024,2025
+# @since 2023,2024,2025,2026
 
 include blacklist-gpg.local
 
 # cookies from browsers
 noblacklist ${HOME}/.mozilla
 noblacklist ${HOME}/.local/share/qutebrowser
+
+# tentative fix for yt-dlp/javaScript deno profile
+# https://github.com/netblue30/firejail/commit/f2de86464d270d0ff933ed095f2965afcfc2f4e7
+noblacklist ${HOME}/.cache/deno
+noblacklist ${PATH}/deno
+private-bin deno,uname,file
+private-etc yt-dlp,yt-dlp-plugins
+ignore memory-deny-write-execute
