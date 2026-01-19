@@ -40,6 +40,7 @@ spyware when I can.
 - Terminal Emulator:        `foot`
 - Audio Server:             `pipewire`
 - Compositor:               `river`, `dwl`
+- Window Manager:           `kwm`
 - Status Line:              `damblocks`
 - Output Management:        `wlr-randr`, `kanshi`
 - Application Launcher:     `wmenu`
