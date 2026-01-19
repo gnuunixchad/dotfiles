@@ -1,12 +1,14 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # mu: print human-readable memory usage by process name
-# Usage: mu [OPTION...] [PROCESS NAME...]
+# Usage: mu [OPTION]... [PROCESS NAME]...
 #    -h, --help          print this message
-# With no options mu prints the most momory heavy processes
+# With no options mu prints the top 20 momory heavy processes
 
-[ -z "$@" ] && \
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
+
+[ -z "$1" ] && \
     ps axh -o rss,pid,cmd:20 --sort=-rss \
         | awk '{printf "%s %s %.2f MB\n", $2, $3, $1/1024}' \
         | head -20 \
