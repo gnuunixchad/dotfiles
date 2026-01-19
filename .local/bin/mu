@@ -7,12 +7,16 @@
 # With no options mu prints the top 20 momory heavy processes
 
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
+ 
+#Truncate processes' command names based on current terminal column width
+columns=$(tput cols)
+cmd_length=$((columns / 2))
 
 [ -z "$1" ] && \
     ps axh -o rss,pid,cmd:20 --sort=-rss \
-        | awk '{printf "%s %s %.2f MB\n", $2, $3, $1/1024}' \
+        | awk '{printf "%s %.'"$cmd_length"'s %.2f MB\n", $2, $3, $1/1024}' \
         | head -20 \
         | column -t \
     || ps -o rss,pid,cmd -p $(pidof -x "$@") \
-        | awk 'NR==1 {print; next} {printf "%s %s %.2f MB\n", $2, $3, $1/1024}' \
+        | awk 'NR==1 {next} {printf "%s %.'"$cmd_length"'s %.2f MB\n", $2, $3, $1/1024}' \
         | column -t
