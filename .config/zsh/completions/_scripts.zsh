@@ -125,7 +125,9 @@ compdef _ytv ytv
 
 _mu() {
     local options
-    options=($(ps -e -o comm=))
+    # avoid `comm=` format in `ps` which truncates long commands, resulting
+    # incomplete command names for `.local/bin/mu` to find the PIDs.
+    options=($(ps -e -o cmd= | sed 's/^\[//; s/\]$//' | cut -d' ' -f1))
     _describe 'options' options
 }
 compdef _mu mu

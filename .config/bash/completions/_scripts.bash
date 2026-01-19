@@ -158,7 +158,9 @@ complete -F _ytv ytv
 _mu() {
     local options
     local current_word="${COMP_WORDS[COMP_CWORD]}"
-    options="$(ps -e -o comm=)"
+    # avoid `comm=` format in `ps` which truncates long commands, resulting
+    # incomplete command names for `.local/bin/mu` to find the PIDs.
+    options="$(ps -e -o cmd= | sed 's/^\[//; s/\]$//' | cut -d' ' -f1)"
     COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
 }
 complete -F _mu mu
