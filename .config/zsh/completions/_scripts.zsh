@@ -131,3 +131,12 @@ _mu() {
     _describe 'options' options
 }
 compdef _mu mu
+
+_muttauth() {
+    local options
+    options=("--provider" "--authflow" "--client-id" "--token-dir" "--help")
+    used=(${words[2,-1]})
+    remaining=(${options:|used})
+    _describe 'options' remaining
+}
+compdef _muttauth muttauth

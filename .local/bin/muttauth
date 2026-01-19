@@ -5,6 +5,8 @@
 # @depends mutt_oauth2.py(neomutt)
 # @suggests cyrus-sasl-xoauth2-git
 
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
+
 ## for a password login:
 # echo set my_pass = "password" | gpg -e > ${HOME}/.cache/mutt/account1.gpg
 # source in account1.muttrc:

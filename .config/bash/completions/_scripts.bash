@@ -164,3 +164,16 @@ _mu() {
     COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
 }
 complete -F _mu mu
+
+_muttauth() {
+    local options used remaining
+    options=(--provider --authflow --client-id --token-dir --help)
+    [ $COMP_CWORD -ge 2 ] && used=("${COMP_WORDS[@]:1:COMP_CWORD-1}") || used=()
+    for opt in "${options[@]}"; do
+        if [[ ! " ${used[@]} " =~ " $opt " ]]; then
+            remaining+=("$opt")
+        fi
+    done
+    COMPREPLY=($(compgen -W "${remaining[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
+}
+complete -F _muttauth muttauth
