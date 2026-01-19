@@ -126,6 +126,7 @@ alias pl="pacman -Ql"
 alias po="pacman -Qo"
 alias pd="pactree -d1"
 alias pv="pactree -rd1"
+alias pdep="sudo pacman -Syu --needed --asdeps"
 
 alias gpl="gpg --list-keys"
 alias gpls="gpg --list-secret-keys"
