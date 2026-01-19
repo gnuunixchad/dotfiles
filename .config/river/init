@@ -1,82 +1,33 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # river/init
+# river-0.4.0
 
-. $HOME/.local/bin/colors.sh    # source colorscheme
-. $HOME/.config/river/autostart
-. $HOME/.config/river/bindings
-. $HOME/.config/river/modes
-. $HOME/.config/river/rules
+# restart
+killall -q swaybg fcitx5 mpc &
 
-# remap key
-#riverctl keyboard-layout-file "$HOME/.config/layout.xkb"
-riverctl keyboard-layout -options caps:swapescape,altwin:swap_alt_win us
+$spawn "swaybg -i ${HOME}/.local/share/wallpaper -m fill" &
+#$spawn "swaybg -c 000000" &
 
-# input
-riverctl focus-follows-cursor disabled
+# restart decided by scripts
+$spawn "${HOME}/.local/bin/foots" &
 
-riverctl set-repeat 30 200
+$spawn "${HOME}/.local/bin/lucia -d" &
 
-riverctl hide-cursor timeout 3000
-riverctl hide-cursor when-typing enabled
+$spawn "${HOME}/.local/bin/mbs-cron" &
 
-for i in $(riverctl list-inputs | grep -i touchpad); do
-    riverctl input "$i" tap enabled
-done
+# start if not running
+pgrep 'swayidle' || $spawn "swayidle" &
 
-# border
-riverctl border-color-focused 0x427b58ff
-riverctl border-color-unfocused 0x000000ff
-riverctl border-color-urgent 0xeeeeeeff
-riverctl border-width 2
+pgrep 'kanshi' || $spawn "kanshi" &
 
-# tags
-for i in $(seq 1 9)
-do
-    tags=$((1 << ($i - 1)))
-    riverctl map normal $mod $i set-focused-tags $tags
-    riverctl map normal Control $i toggle-focused-tags $tags
-    riverctl map normal ${mod}+Shift $i set-view-tags $tags
-    riverctl map normal ${mod}+Control $i toggle-view-tags $tags
-done
+pgrep "gammastep" || $spawn "gammastep -O 5000" &
 
-# scratchpad
-# The scratchpad will live on an unused tag. Which tags are used depends on your
-# config, but rivers default uses the first 9 tags.
-scratch_tag=$((1 << 20 ))
+pgrep -f 'wl-paste --watch cliphist store' || $spawn "wl-paste --watch cliphist store" &
 
-# Toggle the scratchpad
-riverctl map normal $mod o toggle-focused-tags ${scratch_tag}
+pgrep 'dunst' || $spawn "dunst" &
 
-# Send windows to the scratchpad
-riverctl map normal ${mod}+Shift o set-view-tags ${scratch_tag}
+pgrep 'wob' || $spawn "${HOME}/.local/bin/wobd" &
 
-# Set spawn tagmask to ensure new windows don't have the scratchpad tag unless
-# explicitly set.
-all_but_scratch_tag=$(( ((1 << 32) - 1) ^ $scratch_tag ))
-riverctl spawn-tagmask ${all_but_scratch_tag}
-
-# sitcky windows
-all_tags=$(((1 << 32) - 1))
-sticky_tag=$((1 << 31))
-all_but_sticky_tag=$(( $all_tags ^ $sticky_tag ))
-
-riverctl map normal $mod s toggle-view-tags $sticky_tag
-riverctl spawn-tagmask ${all_but_sticky_tag}
-
-# modify the normal keybind to always select the sticky tag
-for i in $(seq 1 9)
-do
-    tags=$((1 << ($i - 1)))
-    # Super+[1-9] to focus tag [0-8]
-    riverctl map normal Super $i set-focused-tags $(($sticky_tag + $tags))
-done
-
-if command -v rivercarro > /dev/null 2>&1; then # &>/dev/null is a BASH syntax
-    riverctl default-layout rivercarro
-    rivercarro -per-tag -no-smart-gaps -inner-gaps 0 -outer-gaps 0 -main-ratio 0.50 &
-else
-    riverctl default-layout rivertile
-    rivertile -view-padding 5 -outer-padding 5 -main-ratio 0.50 &
-fi
+$spawn "fcitx5 -d --verbose '*=0'" & # conflicts with wtype
