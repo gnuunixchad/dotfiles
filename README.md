@@ -39,7 +39,7 @@ spyware when I can.
 - Terminal Multiplexer:     `abduco`, `dvtm`
 - Terminal Emulator:        `foot`
 - Audio Server:             `pipewire`
-- WM/Compositor:            `river`, `dwl`
+- WM/Compositor:            `river-classic`, `dwl`
 - Status bar:               `dam`
 - Output Management:        `wlr-randr`, `kanshi`
 - Application Launcher:     `wmenu`
