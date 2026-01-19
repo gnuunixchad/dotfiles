@@ -1,15 +1,53 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # muttauth - initialize and refresh oauth2 token for mutt and isync
 # @depends mutt_oauth2.py(neomutt)
 # @suggests cyrus-sasl-xoauth2-git
+
+## for a password login:
+# echo set my_pass = "password" | gpg -e > ${HOME}/.cache/mutt/account1.gpg
+# source in account1.muttrc:
+# source "gpg -dq ${HOME}/.cache/mutt/account1.gpg |"
 
 AUTH_CMD="/usr/share/neomutt/oauth2/mutt_oauth2.py"
 PROVIDER="microsoft"
 AUTHFLOW="authcode"
 CLIENT_ID="9e5f94bc-e8a4-4e73-b8be-63364c29d753" # thunderbird's client ID
 TOKEN_DIR="${HOME}/doc/heart/.cache/mutt"
+ISYNCRC="${HOME}/.config/isyncrc"
+MBSYNCRC="${HOME}/.mbsyncrc"
+
+usage() {
+    cat << _EOF_
+USAGE
+            $(basename $0) [OPTION]...
+            Initialize and refresh oauth2 token for mutt and isync, depends on
+            mutt_oauth2.py(neomutt), and an XOAUTH2 SASL plugin (e.g.
+            cryus-sasl-xoauth2-git)
+OPTIONS
+            -p,--provider {google,microsoft}
+                    specify provider to use. (default is microsoft)
+            --authflow {authcode, localhostauthcode, devicecode}
+                    specify authflow. (default is authcode)
+            --client-id {CLIENT_ID}
+                    provider id from registration. (default is thunderbird's ID)
+            --token-dir {DIR_PATH}
+                    path to save tokens. (default is $TOKEN_DIR)
+            -h,--help
+                    print this usage manual
+_EOF_
+    exit 0
+}
+
+probe_accounts() {
+    local config
+    [ -f "$ISYNCRC" ] && config="$ISYNCRC" || config="$MBSYNCRC"
+    echo "accounts found in ${config}:"
+    grep '^Channel ' "$config" | cut -d' ' -f2 | tr '\n' ' '
+    echo
+
+}
 
 authcmd() {
     "$AUTH_CMD" --verbose \
@@ -20,7 +58,35 @@ authcmd() {
                 "${TOKEN_DIR}/oauth-${account}"
 }
 
-read -p "which account?(e.g. account1,account2...) " choice
+while [ -n "$1" ]; do
+    case "$1" in
+        -p|--provider)
+            shift
+            PROVIDER="$1"
+            ;;
+        --authflow)
+            shift
+            AUTHFLOW="$1"
+            ;;
+        --client-id)
+            shift
+            CLIENT_ID="$1"
+            ;;
+        --token-dir)
+            shift
+            TOKEN_DIR="$1"
+            ;;
+        -h|--help)
+            usage
+            ;;
+    esac
+    shift
+done
+
+
+probe_accounts
+
+read -p "which account? " choice
 
 [ -n "$choice" ] || \
     ( echo Invalid argument, check accounts defined in ~/.config/isyncrc; \
@@ -28,6 +94,9 @@ read -p "which account?(e.g. account1,account2...) " choice
     )
 
 account="$choice"
-echo "saved as ${TOKEN_DIR}/oauth-${account}"
+
+[ -d "$TOKEN_DIR" ] && mkdir -p "$TOKEN_DIR"
 
 authcmd
+
+echo "saved as ${TOKEN_DIR}/oauth-${account}"
