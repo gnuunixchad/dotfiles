@@ -154,3 +154,11 @@ _ytv() {
     COMPREPLY=($(compgen -W "${remaining[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
 }
 complete -F _ytv ytv
+
+_mu() {
+    local options
+    local current_word="${COMP_WORDS[COMP_CWORD]}"
+    options="$(ps -e -o comm=)"
+    COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+}
+complete -F _mu mu

@@ -72,15 +72,6 @@ _audio() {
 }
 compdef _audio audio
 
-_sync-to() {
-    local options
-    options=($(grep '^Host ' ~/.ssh/servers.conf | cut -d' ' -f2-) \
-             $(cat ~/.ssh/known_hosts | cut -d' ' -f1 | sort | uniq))
-    if [ "$CURRENT" -eq 2 ]; then
-        _describe 'options' options
-    fi
-}
-compdef _sync-to sync-to
 
 _os() {
     local options
@@ -131,3 +122,10 @@ _ytv() {
     _describe 'options' remaining
 }
 compdef _ytv ytv
+
+_mu() {
+    local options
+    options=($(ps -e -o comm=))
+    _describe 'options' options
+}
+compdef _mu mu
