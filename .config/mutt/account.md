@@ -1,12 +1,13 @@
 # vim:ft=muttrc
 # account config example for mutt/neomutt
 # @author nate zhou
-# @since 2023,2024,2025
+# @since 2023,2024,2025,2026
 
-## for password login:
-## put followings in a file and encrypt it
-#set my_pass = "password"
-#source "gpg -dq $HOME/.config/mutt/account1.gpg |"
+## for a password login:
+echo set my_pass = "password" | gpg -e > ${HOME}/.cache/mutt/account1.gpg
+# source in account1.muttrc:
+source "gpg -dq ${HOME}/.cache/mutt/account1.gpg |"
+
 
 ## oauth2 authentication for outlook
 ## https://www.vanormondt.net/~peter/blog/2021-03-16-mutt-office365-mfa.html
