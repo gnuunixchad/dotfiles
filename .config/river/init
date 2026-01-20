@@ -5,7 +5,7 @@
 # river-0.4.0
 
 # restart
-killall -q swaybg fcitx5 mpc &
+killall -q swaybg fcitx5 mpc
 
 $spawn "swaybg -i ${HOME}/.local/share/wallpaper -m fill" &
 #$spawn "swaybg -c 000000" &
@@ -32,4 +32,6 @@ pgrep 'wob' || $spawn "${HOME}/.local/bin/wobd" &
 
 $spawn "fcitx5 -d --verbose '*=0'" & # conflicts with wtype
 
-${HOME}/.local/bin/damblocks | /usr/local/bin/kwm
+${HOME}/.local/bin/damblocks | /usr/local/bin/kwm &
+
+${HOME}/.local/bin/damblocks-mpdd
