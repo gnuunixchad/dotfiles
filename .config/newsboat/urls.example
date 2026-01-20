@@ -46,6 +46,9 @@ https://github.com/swaywm/swaylock/releases.atom ~swaylock git gui wlroots
 https://github.com/swaywm/swaybg/releases.atom ~swaybg git gui wlroots
 https://github.com/swaywm/swayidle/releases.atom ~swayidle git daemon wlroots
 
+https://git.sr.ht/~leon_plickat/lswt/refs/rss.xml ~lswt wlroots
+https://git.sr.ht/~brocellous/wlrctl/refs/rss.xml ~wlrctl wlroots
+
 https://github.com/swaywm/sway/releases.atom ~sway git wm
 https://gitlab.freedesktop.org/wlroots/wlroots/-/releases.atom ~wlroots git wlroots
 
