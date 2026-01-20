@@ -4,34 +4,7 @@
 # river/init
 # river-0.4.0
 
-# restart
-killall -q swaybg fcitx5 mpc
-
-$spawn "swaybg -i ${HOME}/.local/share/wallpaper -m fill" &
-#$spawn "swaybg -c 000000" &
-
-# restart decided by scripts
-$spawn "${HOME}/.local/bin/foots" &
-
-$spawn "${HOME}/.local/bin/lucia -d" &
-
-$spawn "${HOME}/.local/bin/mbs-cron" &
-
-# start if not running
-pgrep 'swayidle' || $spawn "swayidle" &
-
-pgrep 'kanshi' || $spawn "kanshi" &
-
-pgrep "gammastep" || $spawn "gammastep -O 5000" &
-
-pgrep -f 'wl-paste --watch cliphist store' || $spawn "wl-paste --watch cliphist store" &
-
-pgrep 'dunst' || $spawn "dunst" &
-
-pgrep 'wob' || $spawn "${HOME}/.local/bin/wobd" &
-
-$spawn "fcitx5 -d --verbose '*=0'" & # conflicts with wtype
-
 ${HOME}/.local/bin/damblocks | /usr/local/bin/kwm &
 
+killall -q mpc
 ${HOME}/.local/bin/damblocks-mpdd
