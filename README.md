@@ -1,5 +1,5 @@
 # <img src="./misc/dot-repo.png" width="24"/> dotfiles
-<img src="./misc/river.png" width="1920"/>
+<img src="./misc/kwm.png" width="1920"/>
 
 My Arch Installation Guide is moved to [codeberg](https://codeberg.org/unixchad/arch-install-guide)/[github](https://github.com/gnuunixchad/arch-install-guide)
 
@@ -27,7 +27,7 @@ sudo ./install-root.sh
 > A few software need manually setup:
 > - Software's config named to `*.example` for privacy reasons
 > - Software's config listed in `./.stow-local-ignore`
-> - Software complied from source, e.g. my build of `dwl`([codeberg](https://codeberg.org/unixchad/dwl)/[github](https://github.com/gnuunixchad/dwl)) and `dam`([codeberg](https://codeberg.org/unixchad/damblocks)/[github](https://github.com/gnuunixchad/damblocks)).
+> - Software complied from source, e.g. my build of `kwm`([codeberg](https://codeberg.org/unixchad/kwm)/[github](https://github.com/gnuunixchad/kwm)) and `dwl`([codeberg](https://codeberg.org/unixchad/dwl)/[github](https://github.com/gnuunixchad/dwl)).
 > - For software I don't use anymore(like `sway`), check the git tags.
 
 ## Software I Use
