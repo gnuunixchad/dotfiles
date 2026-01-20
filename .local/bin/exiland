@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 # exiland - exit wayland compositors
 # @author nate zhou
-# @sincd 2025
+# @sincd 2025,2026
 
 compositor="${1##*-}"
 
@@ -13,7 +13,7 @@ choice="$(printf "no\nyes" | wmenu-color -p "$menu_prompt")"
 
 end_session() {
     case "$1" in
-        -river)
+        -river-classic)
             echo river
             riverctl exit
             ;;
