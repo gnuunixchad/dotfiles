@@ -16,6 +16,9 @@ end_session() {
         -river)
             killall river
             ;;
+        -river-classic)
+            riverctl exit
+            ;;
         -dwl)
             killall dwl
             ;;
