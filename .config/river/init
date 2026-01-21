@@ -7,7 +7,8 @@
 # my build of kwm
 # https://codeberg.org/unixchad/kwm
 # https://github.com/gnuunixchad/kwm
-${HOME}/.local/bin/damblocks | /usr/local/bin/kwm &
+/usr/local/bin/kwm &
 
 killall -q mpc
+${HOME}/.local/bin/damblocks --fifo
 ${HOME}/.local/bin/damblocks-mpdd
