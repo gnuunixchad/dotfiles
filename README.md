@@ -28,6 +28,7 @@ sudo ./install-root.sh
 > - Software's config named to `*.example` for privacy reasons
 > - Software's config listed in `./.stow-local-ignore`
 > - Software complied from source, e.g. my build of `kwm`([codeberg](https://codeberg.org/unixchad/kwm)/[github](https://github.com/gnuunixchad/kwm)) and `dwl`([codeberg](https://codeberg.org/unixchad/dwl)/[github](https://github.com/gnuunixchad/dwl)).
+> - For `river-0.3.x` configs, check the git branch `river-classic`
 > - For software I don't use anymore(like `sway`), check the git tags.
 
 ## Software I Use
