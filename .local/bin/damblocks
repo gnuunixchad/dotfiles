@@ -25,7 +25,7 @@
 # make uninstall
 
 DAMBLOCKS_FIFO="${XDG_RUNTIME_DIR}/damblocks.fifo"
-[ ! -p "$DAMBLOCKS_FIFO" ] && (rm -r "$DAMBLOCKS_FIFO"; mkfifo "$DAMBLOCKS_FIFO")
+[ ! -p "$DAMBLOCKS_FIFO" ] && (rm -f "$DAMBLOCKS_FIFO"; mkfifo "$DAMBLOCKS_FIFO")
 
 #set -x
 # INI
