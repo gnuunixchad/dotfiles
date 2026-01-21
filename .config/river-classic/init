@@ -1,0 +1,83 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2025,2026
+# river/init
+# river-classic
+
+. $HOME/.local/bin/colors.sh    # source colorscheme
+. $HOME/.config/river/autostart
+. $HOME/.config/river/bindings
+. $HOME/.config/river/modes
+. $HOME/.config/river/rules
+
+# remap key
+#riverctl keyboard-layout-file "$HOME/.config/layout.xkb"
+riverctl keyboard-layout -options caps:swapescape,altwin:swap_alt_win us
+
+# input
+riverctl focus-follows-cursor disabled
+
+riverctl set-repeat 30 200
+
+riverctl hide-cursor timeout 3000
+riverctl hide-cursor when-typing enabled
+
+for i in $(riverctl list-inputs | grep -i touchpad); do
+    riverctl input "$i" tap enabled
+done
+
+# border
+riverctl border-color-focused 0x427b58ff
+riverctl border-color-unfocused 0x000000ff
+riverctl border-color-urgent 0xeeeeeeff
+riverctl border-width 2
+
+# tags
+for i in $(seq 1 9)
+do
+    tags=$((1 << ($i - 1)))
+    riverctl map normal $mod $i set-focused-tags $tags
+    riverctl map normal Control $i toggle-focused-tags $tags
+    riverctl map normal ${mod}+Shift $i set-view-tags $tags
+    riverctl map normal ${mod}+Control $i toggle-view-tags $tags
+done
+
+# scratchpad
+# The scratchpad will live on an unused tag. Which tags are used depends on your
+# config, but rivers default uses the first 9 tags.
+scratch_tag=$((1 << 20 ))
+
+# Toggle the scratchpad
+riverctl map normal $mod o toggle-focused-tags ${scratch_tag}
+
+# Send windows to the scratchpad
+riverctl map normal ${mod}+Shift o set-view-tags ${scratch_tag}
+
+# Set spawn tagmask to ensure new windows don't have the scratchpad tag unless
+# explicitly set.
+all_but_scratch_tag=$(( ((1 << 32) - 1) ^ $scratch_tag ))
+riverctl spawn-tagmask ${all_but_scratch_tag}
+
+# sitcky windows
+all_tags=$(((1 << 32) - 1))
+sticky_tag=$((1 << 31))
+all_but_sticky_tag=$(( $all_tags ^ $sticky_tag ))
+
+riverctl map normal $mod s toggle-view-tags $sticky_tag
+riverctl spawn-tagmask ${all_but_sticky_tag}
+
+# modify the normal keybind to always select the sticky tag
+for i in $(seq 1 9)
+do
+    tags=$((1 << ($i - 1)))
+    # Super+[1-9] to focus tag [0-8]
+    riverctl map normal Super $i set-focused-tags $(($sticky_tag + $tags))
+done
+
+if command -v rivercarro > /dev/null 2>&1; then # &>/dev/null is a BASH syntax
+    riverctl default-layout rivercarro
+    rivercarro -per-tag -no-smart-gaps -inner-gaps 0 -outer-gaps 0 -main-ratio 0.50 &
+else
+    riverctl default-layout rivertile
+    rivertile -view-padding 5 -outer-padding 5 -main-ratio 0.50 &
+fi
