@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2023,2024,2025
+# @since 2023,2024,2025,2026
 # set wallpaper with swaybg
 
 [ ! -d "$1" ] && ln -sf "$(realpath $1)" $HOME/.local/share/wallpaper;
@@ -8,5 +8,4 @@
 pgrep -x "mpvpaper" > /dev/null && killall -e "mpvpaper"
 
 killall swaybg
-pgrep -x river>/dev/null \
-    && riverctl spawn "swaybg -i $HOME/.local/share/wallpaper -m fill"
+nohup swaybg -i $HOME/.local/share/wallpaper -m fill >/dev/null 2>&1 &
