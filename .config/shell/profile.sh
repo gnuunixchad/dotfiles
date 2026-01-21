@@ -13,6 +13,8 @@
 [ -x /usr/bin/bat ] && export MANROFFOPT="-c" && export MANPAGER="sh -c 'col -bx | bat --pager \"less -XR\" -l man -p'"
 export MANWIDTH=80
 
+export XKB_DEFAULT_OPTIONS=caps:swapescape,altwin:swap_alt_win
+
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8 # locale
