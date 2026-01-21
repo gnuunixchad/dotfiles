@@ -4,6 +4,9 @@
 # river/init
 # river-0.4.0
 
+# my build of kwm
+# https://codeberg.org/unixchad/kwm
+# https://github.com/gnuunixchad/kwm
 ${HOME}/.local/bin/damblocks | /usr/local/bin/kwm &
 
 killall -q mpc
