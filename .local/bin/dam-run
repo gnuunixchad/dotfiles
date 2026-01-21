@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
-# dam-run: start status bar for river
+# @since 2025,2026
+# dam-run: start status bar for river-classic
 # @depends: dam damblocks
 
 bar_start() {
