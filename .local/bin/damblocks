@@ -1,14 +1,16 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # damblocks - Pure POSIX plain text bar generator with individual update
-# intervals  and signal support. Originally written for river's statusbar -
-# dam, but it also works with any bar taking stdin as plain text.
+# intervals and signal support, working with STDIN and FIFO.
+# Originally for river-classic's dam, but damblocks works with any interface
+# that accepts stdin(default) or a fifo (with --fifo option).
+
+# Fork of sbar(https://github.com/pystardust/sbar) with custom modules.
+
 # @depends  ttf-nerd-fonts-symbols wireplumber brightnessctl coreutils sed grep
 #           awk curl cronie stow systemd
 # @suggests dash bluez-utils isync newsboat calcurse mpc wob
-
-# Fork of sbar(https://github.com/pystardust/sbar) with custom modules.
 
 # Every function that supports signaling depends on one or more of:
 #   1. my personal scripts        (~/.local/bin/)
@@ -21,6 +23,9 @@
 # git clone https://github.com/gnuunixchad/damblocks
 # make install
 # make uninstall
+
+DAMBLOCKS_FIFO="${XDG_RUNTIME_DIR}/damblocks.fifo"
+[ ! -p "$DAMBLOCKS_FIFO" ] && (rm -r "$DAMBLOCKS_FIFO"; mkfifo "$DAMBLOCKS_FIFO")
 
 #set -x
 # INI
@@ -343,32 +348,40 @@ trap	"update_calcurse;display"   "RTMIN+9"   # -43 .local/bin/calcurse*
 trap	"update_wttr;display"       "RTMIN+10"  # -44 .local/bin/updw(,-cron}
 trap    "update_mpd;display"        "RTMIN+11"  # -45 .local/bin/damblocks-mpdd
 
-while true
-do
-	sleep 1 & wait && {
-		# to update item ever n seconds with a offset of m
-		## [ $((sec % n)) -eq m ] && udpate_item
-		[ $((sec % 5 )) -eq 0 ] && update_time 	# update time every 5 seconds
-		[ $((sec % 10)) -eq 0 ] && update_battery
-		[ $((sec % 10)) -eq 0 ] && update_bluetooth
-		[ $((sec % 10)) -eq 0 ] && update_ethernet
-		[ $((sec % 10)) -eq 0 ] && update_wifi
-		[ $((sec % 5)) -eq 0 ] && update_temperature
-		[ $((sec % 5)) -eq 0 ] && update_fanmode
-		[ $((sec % 5)) -eq 0 ] && update_cpu
-		[ $((sec % 5)) -eq 0 ] && update_memory
-		[ $((sec % 60)) -eq 0 ] && update_home
-		[ $((sec % 60)) -eq 0 ] && update_root
-		#[ $((sec % 60)) -eq 0 ] && update_usb
-		[ $((sec % 900)) -eq 0 ] && update_uptime
-		[ $((sec % 60)) -eq 0 ] && update_ttylogin
-		[ $((sec % 60)) -eq 0 ] && update_mutt
+run_loop() {
+    while true
+    do
+    	sleep 1 & wait && {
+    		# to update item ever n seconds with a offset of m
+    		## [ $((sec % n)) -eq m ] && udpate_item
+    		[ $((sec % 5 )) -eq 0 ] && update_time 	# update time every 5 seconds
+    		[ $((sec % 10)) -eq 0 ] && update_battery
+    		[ $((sec % 10)) -eq 0 ] && update_bluetooth
+    		[ $((sec % 10)) -eq 0 ] && update_ethernet
+    		[ $((sec % 10)) -eq 0 ] && update_wifi
+    		[ $((sec % 5)) -eq 0 ] && update_temperature
+    		[ $((sec % 5)) -eq 0 ] && update_fanmode
+    		[ $((sec % 5)) -eq 0 ] && update_cpu
+    		[ $((sec % 5)) -eq 0 ] && update_memory
+    		[ $((sec % 60)) -eq 0 ] && update_home
+    		[ $((sec % 60)) -eq 0 ] && update_root
+    		#[ $((sec % 60)) -eq 0 ] && update_usb
+    		[ $((sec % 900)) -eq 0 ] && update_uptime
+    		[ $((sec % 60)) -eq 0 ] && update_ttylogin
+    		[ $((sec % 60)) -eq 0 ] && update_mutt
 
-		# how often the display updates ( 5 seconds )
-		[ $((sec % 5 )) -eq 0 ] && display
+    		# how often the display updates ( 5 seconds )
+    		[ $((sec % 5 )) -eq 0 ] && display
 
-        # cronjob
-		#[ $((sec % 1800 )) -eq 0 ] && "$HOME/.local/bin/mbs" # mbsync
-		sec=$((sec + 1))
-	}
-done
+            # cronjob
+    		#[ $((sec % 1800 )) -eq 0 ] && "$HOME/.local/bin/mbs" # mbsync
+    		sec=$((sec + 1))
+    	}
+    done
+}
+
+if [ "$1" = "--fifo" ]; then
+    run_loop > "$DAMBLOCKS_FIFO"
+else
+    run_loop
+fi
