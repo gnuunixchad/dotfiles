@@ -321,7 +321,7 @@ update_wttr() {
 update_volume; update_microphone; update_brightness; update_pacman; update_newsboat; update_calcurse; update_mpd; update_wttr
 
 display () {
-    local space=" "         # ` `(U+2009) is the Thin Space
+    local space=" "
     local delimiter_home="["
     local delimiter_end="]"
     local separator="]["
