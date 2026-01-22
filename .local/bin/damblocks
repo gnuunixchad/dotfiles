@@ -8,7 +8,7 @@
 
 # with the --fifo option, you can restart the script without restarting the
 # whole command pipe, by running
-# `nohup damblocks --fifo &`
+# `nohup damblocks --fifo >/dev/null 2>&1 &`
 
 # Fork of sbar(https://github.com/pystardust/sbar) with custom modules.
 
