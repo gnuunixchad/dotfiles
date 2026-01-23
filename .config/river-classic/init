@@ -5,10 +5,10 @@
 # river-classic
 
 . $HOME/.local/bin/colors.sh    # source colorscheme
-. $HOME/.config/river/autostart
-. $HOME/.config/river/bindings
-. $HOME/.config/river/modes
-. $HOME/.config/river/rules
+. $HOME/.config/river-classic/autostart
+. $HOME/.config/river-classic/bindings
+. $HOME/.config/river-classic/modes
+. $HOME/.config/river-classic/rules
 
 # remap key
 #riverctl keyboard-layout-file "$HOME/.config/layout.xkb"
