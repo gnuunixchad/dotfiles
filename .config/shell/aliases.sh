@@ -12,7 +12,8 @@ fi
 
 alias cmd="command"
 
-alias rv="exec ssh-agent river -no-xwayland"
+alias rv="exec ssh-agent /usr/local/bin/river"
+alias rc="exec ssh-agent /usr/bin/river -no-xwayland -c ${HOME}/.config/river-classic/init"
 alias dl="exec ssh-agent ${HOME}/.local/bin/damblocks | /usr/local/bin/dwl"
 
 alias faketty="XDG_SESSION_TYPE=tty TERM=xterm-256color"
