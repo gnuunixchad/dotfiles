@@ -66,6 +66,7 @@ reload_cronjobs() {
 }
 
 reload_damblocks() {
+    killall damblocks
     ${HOME}/.local/bin/damblocks --fifo &
     killall -q mpc
     ${HOME}/.local/bin/damblocks-mpdd &
