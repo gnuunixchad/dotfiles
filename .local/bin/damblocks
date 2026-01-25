@@ -16,6 +16,8 @@
 #           awk curl cronie stow systemd
 # @suggests dash bluez-utils isync newsboat calcurse mpc wob
 
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
+
 # Every function that supports signaling depends on one or more of:
 #   1. my personal scripts        (~/.local/bin/)
 #   2. cronjobs                   (~/.config/crontab.example)
