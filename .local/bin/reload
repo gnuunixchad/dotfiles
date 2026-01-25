@@ -1,49 +1,87 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
-# reload - execute cronjobs after system resume
+# @since 2025,2026
+# reload - reload my cronjob & daemon scripts
 
-notify-send -r 55 "$(basename $0) ($(date +'%H:%M'))" "Running resume hooks"
-
-pids=""
-
-cleanup() {
-    trap - EXIT INT TERM # reset traps
-    [ -n "$pids" ] && kill $pids 2>/dev/null # kill bg jobs
-
-    # Don't use `kill -- -$$`:
-
-    # man 1 kill:
-    # > When an argument of the form '-n' is given, and it is
-    # > meant to denote a process group, either a signal must be
-    # > specified first, or the argument must be preceded by a '--'
-    # > option, otherwise it will be taken as the signal to send.
-
-    # because it kills the whole process group, including the parent shell;
-    # when the shell receives SIGTERM from cleanup(), it re-triggers the trap,
-    # therefore the shell gets a segmentation fault (core dumped).
-
-    # Instead, collect individual PIDs of background jobs and only kill the
-    # specific PIDs in `cleanup()`.
+usage() {
+    cat << _EOF_
+USAGE
+        $(basename $0) [OPTION]...
+        Without any options, default to reload cronjobs
+OPTIONS
+        -c,--cronjobs   reload cronjob scripts(default)
+        -d,--damblocks  reload damblocks (fifo)
+        -h,--help       print this usage manual
+_EOF_
+    exit 0
 }
 
-trap cleanup INT TERM EXIT
+reload_cronjobs() {
+    pids=""
 
-${HOME}/.local/bin/lucia -d
+    notify-send -r 55 "$(basename $0) ($(date +'%H:%M'))" "Running resume hooks"
 
-${HOME}/.local/bin/updw >/dev/null 2>&1 &
-pids="$pids $!"
+    cleanup() {
+        trap - EXIT INT TERM # reset traps
+        [ -n "$pids" ] && kill $pids 2>/dev/null # kill bg jobs
 
-${HOME}/.local/bin/checkupdates-cron >/dev/null 2>&1 --now &
-pids="$pids $!"
+        # Don't use `kill -- -$$`:
 
-${HOME}/.local/bin/newsboat-update-cron >/dev/null 2>&1 --now &
-pids="$pids $!"
+        # man 1 kill:
+        # > When an argument of the form '-n' is given, and it is
+        # > meant to denote a process group, either a signal must be
+        # > specified first, or the argument must be preceded by a '--'
+        # > option, otherwise it will be taken as the signal to send.
 
-${HOME}/.local/bin/calcurse-num-cron >/dev/null 2>&1 --now &
-pids="$pids $!"
+        # because it kills the whole process group, including the parent shell;
+        # when the shell receives SIGTERM from cleanup(), it re-triggers the
+        # trap, therefore the shell gets a segmentation fault (core dumped).
 
-${HOME}/.local/bin/mbs >/dev/null 2>&1 &
-pids="$pids $!"
+        # Instead, collect individual PIDs of background jobs and only kill the
+        # specific PIDs in `cleanup()`.
+    }
 
-wait
+    trap cleanup INT TERM EXIT
+
+    ${HOME}/.local/bin/lucia -d
+
+    ${HOME}/.local/bin/updw >/dev/null 2>&1 &
+    pids="$pids $!"
+
+    ${HOME}/.local/bin/checkupdates-cron >/dev/null 2>&1 --now &
+    pids="$pids $!"
+
+    ${HOME}/.local/bin/newsboat-update-cron >/dev/null 2>&1 --now &
+    pids="$pids $!"
+
+    ${HOME}/.local/bin/calcurse-num-cron >/dev/null 2>&1 --now &
+    pids="$pids $!"
+
+    ${HOME}/.local/bin/mbs >/dev/null 2>&1 &
+    pids="$pids $!"
+
+    wait
+}
+
+reload_damblocks() {
+    ${HOME}/.local/bin/damblocks --fifo &
+    killall -q mpc
+    ${HOME}/.local/bin/damblocks-mpdd &
+}
+
+[ -z "$1" ] && reload_cronjobs
+
+while [ -n "$1" ]; do
+    case "$1" in
+        -c|--cronjobs)
+            reload_cronjobs
+            ;;
+        -d|--damblocks)
+            reload_damblocks
+            ;;
+        -h|--help)
+            usage
+            ;;
+    esac
+    shift
+done
