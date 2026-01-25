@@ -140,3 +140,12 @@ _muttauth() {
     _describe 'options' remaining
 }
 compdef _muttauth muttauth
+
+_reload() {
+    local options
+    options=("--cronjobs" "--damblocks" "--help")
+    used=(${words[2,-1]})
+    remaining=(${options:|used})
+    _describe 'options' remaining
+}
+compdef _reload reload

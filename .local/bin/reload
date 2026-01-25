@@ -3,6 +3,8 @@
 # @since 2025,2026
 # reload - reload my cronjob & daemon scripts
 
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
+
 usage() {
     cat << _EOF_
 USAGE

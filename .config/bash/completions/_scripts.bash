@@ -177,3 +177,16 @@ _muttauth() {
     COMPREPLY=($(compgen -W "${remaining[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
 }
 complete -F _muttauth muttauth
+
+_reload() {
+    local options used remaining
+    options=(--cronjobs --damblocks --help)
+    [ $COMP_CWORD -ge 2 ] && used=("${COMP_WORDS[@]:1:COMP_CWORD-1}") || used=()
+    for opt in "${options[@]}"; do
+        if [[ ! " ${used[@]} " =~ " $opt " ]]; then
+            remaining+=("$opt")
+        fi
+    done
+    COMPREPLY=($(compgen -W "${remaining[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
+}
+complete -F _reload reload
