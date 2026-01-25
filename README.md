@@ -89,6 +89,7 @@ spyware when I can.
 - Shortcuts Generator:      [teleport-genesis](./.local/bin/teleport-genesis)
 - Qutebrowser:              [userscripts](./.local/bin/qutebrowser/)
 - Xwayland Server/Client:   [xwl](./.local/bin/xwl)
+- Reload other scripts:     [reload](./.local/bin/reload)
 
 ## Chinese Video Channel
 I have dedicated videos for almost every software I use:
