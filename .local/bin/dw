@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2023,2024,2025
+# @since 2023,2024,2025,2026
 # dw, dunst weather
 # @depends: libnotify, dunst, updw
 
@@ -34,5 +34,5 @@ if [ $# -eq 0 ]; then
 else
     msg=$(curl wttr.in/$1?format=4)
     [ "$XDG_SESSION_TYPE" != "tty" ] \
-        && notify-send -u low -r 24 "$(basename)" "$msg"
+        && notify-send -u low -r 24 "$(basename $0)" "$msg"
 fi
