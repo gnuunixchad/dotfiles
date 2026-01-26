@@ -10,7 +10,7 @@ term="footclient"
 menu="${HOME}/.local/bin/wmenu-run-color"
 command -v rivercarro >/dev/null 2>&1 && tiler="rivercarro" || tiler="rivertile"
 
-$map normal ${mod}+Shift r                  spawn "${HOME}/.config/river/init"
+$map normal ${mod}+Shift r                  spawn "${HOME}/.config/river-classic/init"
 $map normal None Caps_Lock                  spawn "${HOME}/.local/bin/capslock"
 
 $map normal $mod p                          spawn "$menu"
