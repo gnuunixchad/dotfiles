@@ -309,7 +309,7 @@ update_mpd() {
     mpd="${icon}${title}"
 }
 
-# cache file generated/updated by `${HOME}/.local/bin/updw-cron`
+# cache file generated/updated by `${HOME}/.local/bin/wttr --cron`
 update_wttr() {
     local WTTR_CACHE="$HOME/.cache/wttr"
     local update_time="$(stat -L -c "%Y" "$WTTR_CACHE")"
@@ -351,7 +351,7 @@ trap	"update_pacman;display"	    "RTMIN+6"   # -40 .local/bin/checkupdates-cron
 trap	"update_mutt;display"	    "RTMIN+7"   # -41 .local/bin/mbs{,-cron}
 trap	"update_newsboat;display"   "RTMIN+8"   # -42 .local/bin/news*
 trap	"update_calcurse;display"   "RTMIN+9"   # -43 .local/bin/calcurse*
-trap	"update_wttr;display"       "RTMIN+10"  # -44 .local/bin/updw(,-cron}
+trap	"update_wttr;display"       "RTMIN+10"  # -44 .local/bin/wttr --cron
 trap    "update_mpd;display"        "RTMIN+11"  # -45 .local/bin/damblocks-mpdd
 
 run_loop() {
