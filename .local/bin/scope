@@ -91,7 +91,7 @@ case "$(file -Lb --mime-type -- "$1")" in
         ;;
     application/x-iso*)
         # `iso-info` command from `libcdio`
-        iso-info "$1" | "$PAGER"
+        iso-info --no-header "$1" | tail +2 | "$PAGER"
         ;;
     application/*opendocument*)
         odt2txt "$1";
