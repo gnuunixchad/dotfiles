@@ -5,7 +5,6 @@
 # wttr - weather report script
 
 # TODO:
-# - update function
 # - cronjob function
 
 CITY="${HOME}/.cache/city"
@@ -30,7 +29,6 @@ _EOF_
 notify() {
     msg="$1"
 
-    echo "${RED}${1}${RESET}"
     [ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -r 23 "$(basename $0)" "$msg"
 }
 
@@ -40,38 +38,50 @@ abort() {
     RED='\033[0;31m'
     RESET='\033[0m'
 
+    echo "${RED}${1}${RESET}"
+
     notify "$msg" >&2
     exit 1
 }
 
-get_local_wttr() {
-    if [ -f "$WTTR" ]; then
+check_city() {
+    wttr=$(cat $WTTR 2>/dev/null)
 
-        wttr=$(cat $WTTR)
-
-        # check if the file is empty
-        if [ -z "$wttr" ]; then
-            msg="$WTTR is empty, try \"running $(basename $0) --update\" first."
-            abort "$msg"
-        else
-            msg=$wttr
-            [ "$XDG_SESSION_TYPE" != "tty" ] \
-                && notify-send -u low -r 24 "$(basename $0)" "$msg"
-            echo $msg
-        fi
-
-    else
-        msg="$WTTR doesn't exist, try \"running $(basename $0) --update\" first."
+    if [ ! -f "$CITY" ]; then
+        msg="$CITY doesn't exist, try \"$(basename $0) -e\" first."
+        abort "$msg"
+    elif [ -z "$wttr" ]; then
+        msg="$WTTR is empty, try \"$(basename $0) -u\" first."
         abort "$msg"
     fi
+}
+
+get_local_wttr() {
+    check_city
+
+    wttr=$(cat $WTTR)
+    msg="$wttr"
+    echo "$msg"
+    notify "$msg"
+
 }
 
 get_city_wttr() {
     city="$1"
     msg=$(curl wttr.in/${city}?format=4)
     echo "$msg"
-    [ "$XDG_SESSION_TYPE" != "tty" ] \
-        && notify-send -u low -r 24 "$(basename $0)" "$msg"
+    notify "$msg"
+}
+
+edit_city() {
+    $EDITOR $CITY
+}
+
+update() {
+    city="$(cat $CITY)"
+    msg=$(curl wttr.in/${city}?format=4)
+    echo "$msg" | tee $WTTR
+    notify "$msg"
 }
 
 [ -z "$1" ] && get_local_wttr
