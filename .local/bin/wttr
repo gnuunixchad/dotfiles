@@ -4,6 +4,8 @@
 # @depends: libnotify, dunst(or equivalent daemon)
 # wttr - weather report script
 
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
+
 CITY="${HOME}/.cache/city"
 WTTR="${HOME}/.cache/wttr"
 DAMBLOCKS="${XDG_RUNTIME_DIR}/damblocks.pid"

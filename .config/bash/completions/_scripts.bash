@@ -190,3 +190,13 @@ _reload() {
     COMPREPLY=($(compgen -W "${remaining[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
 }
 complete -F _reload reload
+
+_wttr() {
+    local options
+    local current_word="${COMP_WORDS[COMP_CWORD]}"
+    options="-u --update -c --cron -e --edit -h --help"
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    fi
+}
+complete -F _wttr wttr

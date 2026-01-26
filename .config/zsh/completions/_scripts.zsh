@@ -149,3 +149,12 @@ _reload() {
     _describe 'options' remaining
 }
 compdef _reload reload
+
+_wttr() {
+    local options
+    options=("-u" "--update" "-c" "--cron" "-e" "--edit" "-h" "--help")
+    if [ "$CURRENT" -eq 2 ]; then
+        _describe 'options' options
+    fi
+}
+compdef _wttr wttr
