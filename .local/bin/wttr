@@ -5,11 +5,12 @@
 # wttr - weather report script
 
 # TODO:
-# - damblocks signaling
 # - don't overwrite if update_cmd failed
+# - icon substituion and truncation
 
 CITY="${HOME}/.cache/city"
 WTTR="${HOME}/.cache/wttr"
+DAMBLOCKS="${XDG_RUNTIME_DIR}/damblocks.pid"
 
 update_frequency=3600 # in seconds
 
@@ -26,6 +27,10 @@ OPTIONS
             -h,--help       print this usage manual
 _EOF_
     exit 0
+}
+
+send_signal() {
+    kill -44 "$(cat $DAMBLOCKS)"
 }
 
 update_cmd() {
@@ -106,6 +111,8 @@ cron() {
     fi
 
 }
+
+trap send_signal EXIT
 
 [ -z "$1" ] && get_local_wttr
 
