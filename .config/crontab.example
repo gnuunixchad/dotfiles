@@ -8,8 +8,8 @@
 */15 * * * * $HOME/.local/bin/sync-config-cron
 
 # status bar wttr
-@reboot $HOME/.local/bin/updw
-*/5 * * * * $HOME/.local/bin/updw-cron
+@reboot $HOME/.local/bin/wttr --update
+*/5 * * * * $HOME/.local/bin/wttr --cron
 
 # status bar pacman updates count
 @reboot $HOME/.local/bin/checkupdates-cron --now

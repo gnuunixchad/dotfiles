@@ -1,21 +1,87 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2023,2025
-# weather
+# @since 2023,2024,2025,2026
+# @depends: libnotify, dunst(or equivalent daemon)
+# wttr - weather report script
 
-if [ -f "$HOME/.cache/city" ]; then
+# TODO:
+# - update function
+# - cronjob function
 
-    CITY="$(cat "$HOME/.cache/city")"
+CITY="${HOME}/.cache/city"
+WTTR="${HOME}/.cache/wttr"
 
-    if [ -z "$CITY" ]; then
-        msg="~/.cache/city is empty, write the city name to it"
-        [ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -u low -r 20 "$msg"
-        echo $msg
+usage() {
+    cat << _EOF_
+USAGE
+            $(basename $0) [CITY] [OPTION]
+            without CITY, read the local cache in $WTTR
+OPTIONS
+            -u,--update     update the local cache in $WTTR
+            -c,--cron [interval]
+                            to be run as a cron job that checks the last update
+                            time withthe defined update intervals(default 3600)
+            -e,--edit       edit the CITY in $CITY
+            -h,--help       print this usage manual
+_EOF_
+    exit 0
+}
+
+notify() {
+    msg="$1"
+
+    echo "${RED}${1}${RESET}"
+    [ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -r 23 "$(basename $0)" "$msg"
+}
+
+abort() {
+    msg="$1"
+
+    RED='\033[0;31m'
+    RESET='\033[0m'
+
+    notify "$msg" >&2
+    exit 1
+}
+
+get_local_wttr() {
+    if [ -f "$WTTR" ]; then
+
+        wttr=$(cat $WTTR)
+
+        # check if the file is empty
+        if [ -z "$wttr" ]; then
+            msg="$WTTR is empty, try \"running $(basename $0) --update\" first."
+            abort "$msg"
+        else
+            msg=$wttr
+            [ "$XDG_SESSION_TYPE" != "tty" ] \
+                && notify-send -u low -r 24 "$(basename $0)" "$msg"
+            echo $msg
+        fi
+
     else
-        curl "v2.wttr.in/$CITY"
+        msg="$WTTR doesn't exist, try \"running $(basename $0) --update\" first."
+        abort "$msg"
     fi
-else
-    msg="~/.cache/city does not exist, write the city name to it"
-    [ "$XDG_SESSION_TYPE" != "tty" ] && notify-send -u low -r 20 "$msg"
-    echo $msg
+}
+
+get_city_wttr() {
+    city="$1"
+    msg=$(curl wttr.in/${city}?format=4)
+    echo "$msg"
+    [ "$XDG_SESSION_TYPE" != "tty" ] \
+        && notify-send -u low -r 24 "$(basename $0)" "$msg"
+}
+
+[ -z "$1" ] && get_local_wttr
+
+if [ -n "$1" ]; then
+    case "$1" in
+        -u|--update) update ;;
+        -c|--cron) cron ;;
+        -e|--edit) edit_city ;;
+        -h|--help) usage ;;
+        *) get_city_wttr "$1" ;;
+    esac
 fi
