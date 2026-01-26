@@ -8,7 +8,7 @@ map="riverctl map"
 
 fcitx="[p]inyin [a]nthy"
 wmenu="[w]iki [h]eart [b]ooks [m]ount [u]nmount [p]ower-off [s]peaker [e]moji"
-dunst="clip-w[i]pe [l]supdates d[w] d[c]al ls[m]us"
+dunst="clip-w[i]pe [l]supdates [w]ttr d[c]al ls[m]us"
 wlrctl="[hjkl]cursors [,]left [.]right [m]iddle ^[hjkl]arrows"
 
 # resize #######################################################################
@@ -72,7 +72,7 @@ $map "$dunst" None space enter-mode normal
 $map "$dunst" None Escape enter-mode normal
 
 $map "$dunst" None l spawn "riverctl enter-mode normal && ${HOME}/.local/bin/lsupdates"
-$map "$dunst" None w spawn "riverctl enter-mode normal && ${HOME}/.local/bin/dw"
+$map "$dunst" None w spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wttr"
 $map "$dunst" None c spawn "riverctl enter-mode normal && ${HOME}/.local/bin/dcal"
 $map "$dunst" None m spawn "riverctl enter-mode normal && ${HOME}/.local/bin/lsmus"
 $map "$dunst" None i spawn "riverctl enter-mode normal && ${HOME}/.local/bin/clip --wipe"
