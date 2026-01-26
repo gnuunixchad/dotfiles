@@ -70,6 +70,7 @@ spyware when I can.
 
 ## My Personal Scripts
 - Status Bar:               [damblocks](./.local/bin/damblocks)
+- Weather Report:           [wttr](./.local/bin/wttr)
 - Screenshot:               [shoot](./.local/bin/shoot)
 - Screen Capture:           [capture](./.local/bin/capture)
 - Webcam:                   [camera](./.local/bin/camera)
