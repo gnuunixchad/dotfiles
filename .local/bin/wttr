@@ -4,10 +4,6 @@
 # @depends: libnotify, dunst(or equivalent daemon)
 # wttr - weather report script
 
-# TODO:
-# - don't overwrite if update_cmd failed
-# - icon substituion and truncation
-
 CITY="${HOME}/.cache/city"
 WTTR="${HOME}/.cache/wttr"
 DAMBLOCKS="${XDG_RUNTIME_DIR}/damblocks.pid"
@@ -34,7 +30,7 @@ send_signal() {
 }
 
 update_cmd() {
-    curl wttr.in/${city}?format=4
+    curl wttr.in/${city}?format=1
 }
 
 notify() {
@@ -69,9 +65,14 @@ check_cache() {
 update() {
     city="$(cat $CITY)"
     msg=$(update_cmd)
-    echo "$msg" | tee $WTTR
-    notify "$msg"
-    exit 0
+    if echo "$msg" | grep -q '°C'; then
+        echo "$msg" | sed 's/[[:space:]]\+/ /g' | tee "$WTTR"
+        notify "$msg"
+        exit 0
+    else
+        msg="downloading failed, please check the connection to wttr.in"
+        abort "$msg"
+    fi
 }
 
 
