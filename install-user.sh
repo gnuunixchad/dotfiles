@@ -4,7 +4,7 @@
 # Setup user-space softwares
 #set -x
 
-DEPENDENCIES=("git" "stow" "systemctl" "gsettings" "gpg" "fzf" "fc-cache")
+DEPENDENCIES=("git" "stow" "systemctl" "gsettings" "gpg" "fzf")
 
 DOTFILES_REMOTE=("https://codeberg.org/unixchad/dotfiles" \
                  "https://github.com/gnuunixchad/dotfiles")
@@ -140,7 +140,8 @@ if [ -f "$CALCURSE_ICAL" ] && command -v calcurse > /dev/null; then
 fi
 
 FONTCONFIG="${HOME}/.config/fontconfig/fonts.conf"
-[ -f "FONTCONFIG" ] && fc-cache -fv > /dev/null && echo "font cache generated"
+command -v fc-cache && [ -f "FONTCONFIG" ] \
+    && fc-cache -fv > /dev/null && echo "font cache generated"
 
 read -p "sync-config-root?(y/n): " choice; [ "$choice" = "y" ] \
     || [ "$choice" = "Y"  ] \
