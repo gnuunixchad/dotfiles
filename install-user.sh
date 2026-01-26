@@ -118,6 +118,7 @@ ISYNC="${HOME}/.config/isyncrc"
 [ -f "$ISYNC" ] || cp ${ISYNC}.example $ISYNC
 
 GPGKEYS="${HOME}/doc/.gpg/gpg-keys"
+chmod 700 ${DOTFILES_LOCAL}/.gnupg
 [ -d "$GPGKEYS" ] && gpg -q --import $(realpath $(ls ${GPGKEYS}/*.pub \
     | command fzf --prompt="[gpg]: public key to import")) \
     && echo "gpg public keys are imported"
