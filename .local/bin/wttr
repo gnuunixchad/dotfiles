@@ -5,10 +5,13 @@
 # wttr - weather report script
 
 # TODO:
-# - cronjob function
+# - damblocks signaling
+# - don't overwrite if update_cmd failed
 
 CITY="${HOME}/.cache/city"
 WTTR="${HOME}/.cache/wttr"
+
+update_frequency=3600 # in seconds
 
 usage() {
     cat << _EOF_
@@ -17,13 +20,16 @@ USAGE
             without CITY, read the local cache in $WTTR
 OPTIONS
             -u,--update     update the local cache in $WTTR
-            -c,--cron [interval]
-                            to be run as a cron job that checks the last update
-                            time withthe defined update intervals(default 3600)
+            -c,--cron       to be run as a cron job that checks the last update
+                            time with the defined update_frequency($update_frequency seconds)
             -e,--edit       edit the CITY in $CITY
             -h,--help       print this usage manual
 _EOF_
     exit 0
+}
+
+update_cmd() {
+    curl wttr.in/${city}?format=4
 }
 
 notify() {
@@ -44,20 +50,28 @@ abort() {
     exit 1
 }
 
-check_city() {
+check_cache() {
     wttr=$(cat $WTTR 2>/dev/null)
 
     if [ ! -f "$CITY" ]; then
         msg="$CITY doesn't exist, try \"$(basename $0) -e\" first."
         abort "$msg"
     elif [ -z "$wttr" ]; then
-        msg="$WTTR is empty, try \"$(basename $0) -u\" first."
-        abort "$msg"
+        update
     fi
 }
 
+update() {
+    city="$(cat $CITY)"
+    msg=$(update_cmd)
+    echo "$msg" | tee $WTTR
+    notify "$msg"
+    exit 0
+}
+
+
 get_local_wttr() {
-    check_city
+    check_cache
 
     wttr=$(cat $WTTR)
     msg="$wttr"
@@ -68,7 +82,7 @@ get_local_wttr() {
 
 get_city_wttr() {
     city="$1"
-    msg=$(curl wttr.in/${city}?format=4)
+    msg=$(update_cmd)
     echo "$msg"
     notify "$msg"
 }
@@ -77,11 +91,20 @@ edit_city() {
     $EDITOR $CITY
 }
 
-update() {
-    city="$(cat $CITY)"
-    msg=$(curl wttr.in/${city}?format=4)
-    echo "$msg" | tee $WTTR
-    notify "$msg"
+cron() {
+    check_cache
+
+    local current_time="$(date +%s)"
+    local update_time="$(stat -c '%Y' "$WTTR")"
+
+
+    if [ $(( $current_time - $update_time )) -gt "$update_frequency" ]; then
+        update
+    else
+        msg="Already update within past $(( $update_frequency / 3600)) hours"
+        echo $msg
+    fi
+
 }
 
 [ -z "$1" ] && get_local_wttr
@@ -89,7 +112,7 @@ update() {
 if [ -n "$1" ]; then
     case "$1" in
         -u|--update) update ;;
-        -c|--cron) cron ;;
+        -c|--cron) cron "$1" ;;
         -e|--edit) edit_city ;;
         -h|--help) usage ;;
         *) get_city_wttr "$1" ;;
