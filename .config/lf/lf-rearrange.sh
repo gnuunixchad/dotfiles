@@ -1,1 +1,1 @@
-/home/nate/.local/bin/lf-rearrange
+../../.local/bin/lf-rearrange
