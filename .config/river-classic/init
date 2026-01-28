@@ -63,7 +63,7 @@ all_tags=$(((1 << 32) - 1))
 sticky_tag=$((1 << 31))
 all_but_sticky_tag=$(( $all_tags ^ $sticky_tag ))
 
-riverctl map normal $mod s toggle-view-tags $sticky_tag
+riverctl map normal ${mod}+Shift s toggle-view-tags $sticky_tag
 riverctl spawn-tagmask ${all_but_sticky_tag}
 
 # modify the normal keybind to always select the sticky tag
