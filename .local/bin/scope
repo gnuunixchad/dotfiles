@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # general file previewer for LF & FZF
 # `~/.local/bin/fzf-scope` is a modified version of my `lf/scope`
 
@@ -106,10 +106,24 @@ case "$(file -Lb --mime-type -- "$1")" in
         man -l "$1"
         ;;
     text/html)
-        firejail --net=none w3m "$1"
+        case "$1" in
+            *svg)
+                show_img "$1" "$2" "$3"
+                ;;
+            *)
+                firejail --net=none w3m "$1"
+                ;;
+        esac
         ;;
     text/*|application/pgp-signature|application/pgp-keys|application/javascript|application/json)
-        bat "$1"
+        case "$1" in
+            *svg)
+                show_img "$1" "$2" "$3"
+                ;;
+            *)
+                bat "$1"
+                ;;
+        esac
         ;;
     inode/directory)
         command du -aLhd1 "$1" 2> /dev/null | sort -rh
