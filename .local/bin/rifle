@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # file opener ported from my [lf](../../.config/lf/rifle)
 
 f="$1"
@@ -53,6 +53,11 @@ case $(file --mime-type -Lb $f) in
         ;;
     text/html)
         case "$f" in
+            *.svg)
+                [ "$XDG_SESSION_TYPE" = !"tty" ] \
+                    && swayimg "$f" \
+                    || mpv --loop "$f"
+                ;;
             *.md)
                 $EDITOR "$f"
                 ;;
@@ -63,7 +68,16 @@ case $(file --mime-type -Lb $f) in
         esac
         ;;
     text/*|*/json|inode/x-empty|application/javascript|application/mbox|application/pgp-signature|application/pgp-keys)
-        $EDITOR "$f"
+        case "$f" in
+            *.svg)
+                [ "$XDG_SESSION_TYPE" = !"tty" ] \
+                    && swayimg "$f" \
+                    || mpv --loop "$f"
+                ;;
+            *)
+                $EDITOR "$f"
+                ;;
+        esac
         ;;
     application/*)
         case "$f" in
