@@ -25,8 +25,8 @@ pacman --noconfirm -Sy && pacman -S --noconfirm --needed archlinux-keyring
 
 pacman -Qi samba >/dev/null && [ -z "$(pdbedit -Lv)" ] && smbpasswd -a "$sudoer"
 
-usermod "$sudoer" -aG kvm,libvirt
-
+grep -q '^kvm:' /etc/group && usermod "$sudoer" -aG kvm
+grep -q '^libvirt:' /etc/group && usermod "$sudoer" -aG libvirt
 grep -q '^termux:' /etc/passwd || useradd -m -G "$sudoer" termux
 
 [ -f /root/.bash_profile ] && mv /root/.bash_profile{,~}
