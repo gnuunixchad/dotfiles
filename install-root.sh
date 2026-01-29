@@ -33,7 +33,7 @@ grep -q '^termux:' /etc/passwd || useradd -m -G "$sudoer" termux
 [ -f /root/.bashrc ] && [ ! -L /root/.bashrc ] && mv /root/.bashrc{,~}
 
 CRYPTKEY="/root/cryptkey"
-[ -f "$CRYPTKEY" ] && (chmod 400 "$CRYPTKEY"; chattr +i "$CRYPTKEY")
+[ -f "$CRYPTKEY" ] && (chmod -f 400 "$CRYPTKEY"; chattr +i "$CRYPTKEY")
 
 cp -r --preserve=mode ${DOTFILES_LOCAL}/{etc,usr} /
 
