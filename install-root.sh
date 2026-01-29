@@ -61,10 +61,10 @@ lscpu | grep -q 'Hypervisor vendor:' \
         && virsh net-autostart default)
 
 pacman -Qi nvidia-utils > /dev/null 2>&1 \
-    && (systemctl enable nvidia-suspend.service; \
-        systemctl enable nvidia-hibernate.service; \
-        systemctl enable nvidia-resume.service; \
-        systemctl enable nvidia-powerd.service; \
+    && (systemctl enable nvidia-suspend.service
+        systemctl enable nvidia-hibernate.service
+        systemctl enable nvidia-resume.service
+        systemctl enable nvidia-powerd.service
         echo "Nvidia power management service will be enabled after a reboot.")
 
 pacman -Qi seatd > /dev/null 2>&1 \
