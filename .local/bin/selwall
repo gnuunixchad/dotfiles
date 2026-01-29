@@ -22,4 +22,4 @@ ls -t $(find $HOME/pic/ -type f ) \
     | shuf \
     > "$LIST"
 
-swayimg -g -F "$LIST" -o none
+swayimg --class='Floating_IMG' -g -F "$LIST" -o none
