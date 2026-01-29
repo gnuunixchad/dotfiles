@@ -30,7 +30,7 @@ grep -q '^libvirt:' /etc/group && usermod "$sudoer" -aG libvirt
 grep -q '^termux:' /etc/passwd || useradd -m -G "$sudoer" termux
 
 [ -f /root/.bash_profile ] && mv /root/.bash_profile{,~}
-[ -L "/root/.bashrc" ] || mv /root/.bashrc{,~}
+[ -f /root/.bashrc ] && [ ! -L /root/.bashrc ] && mv /root/.bashrc{,~}
 
 CRYPTKEY="/root/cryptkey"
 [ -f "$CRYPTKEY" ] && (chmod 400 "$CRYPTKEY"; chattr +i "$CRYPTKEY")
