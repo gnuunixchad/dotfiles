@@ -50,6 +50,7 @@ alias e="$EDITOR"
 alias vs="virsh list"
 alias vla="virsh list --all"
 alias vnl="virsh net-list"
+alias vdl="virsh net-dhcp-leases --network default"
 alias vsl="virsh snapshot-list"
 
 alias il="mid3v2 -l"
