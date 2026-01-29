@@ -36,12 +36,12 @@ check_dependencies
 
 umask 027
 mkdir -p ${HOME}/{dls,doc,mnt,mus,pic,pkg,smb,tmp,vid,.gnupg}
-chmod 700 ${HOME}/{doc,mus,pic,vid}/.gpg
-chmod 700 ${HOME}/{dls,mnt,tmp}
-chmod 755 ${HOME}/pkg
-chmod 700 ${HOME}/pkg/{.*,*}
-chmod 750 ${HOME}/pkg/fdroid
-chmod 705 ${HOME}/pkg/{iso,pacman}
+chmod -f 700 ${HOME}/{doc,mus,pic,vid}/.gpg
+chmod -f 700 ${HOME}/{dls,mnt,tmp}
+chmod -f 755 ${HOME}/pkg
+chmod -f 700 ${HOME}/pkg/{.*,*}
+chmod -f 750 ${HOME}/pkg/fdroid
+chmod -f 705 ${HOME}/pkg/{iso,pacman}
 
 mkdir -p ${HOME}/.{cache/mpd,config/'Code - OSS',local/{share,state/nvim}}
 
