@@ -62,7 +62,7 @@ for i in "wttr" "mbsync.cron" "newsboat.num" "checkupdates-cron.log"; do
 done
 
 CITY="${HOME}/.cache/city"
-[ ! -f "$CITY" ] || [ -z "$(cat $CITY)" ] && read -p "Enter your city: " \
+[ ! -f "$CITY" ] || [ -z "$(cat $CITY)" ] && read -p "Enter your city(for wttr script): " \
     && echo "$REPLY" > "$CITY"
 
 [ ! -d "$DOTFILES_LOCAL" ] && \
