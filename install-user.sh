@@ -82,7 +82,8 @@ mv ${HOME}/.bash_profile{,~} 2>/dev/null
         )
 
 stow -R --adopt -d "$DOTFILES_LOCAL" -t "$HOME" .
-stow -R --adopt -d "${HOME}/pkg/ollama" -t "$HOME" .
+OLLAMA="${HOME}/pkg/ollama"
+[ -d "$OLLAMA" ] && stow -R --adopt -d "$OLLAMA" -t "$HOME" .
 
 [ -x /usr/bin/zsh ] && grep ":${UID}:${GID}:" /etc/passwd  \
                         | grep -q '/usr/bin/zsh'\
