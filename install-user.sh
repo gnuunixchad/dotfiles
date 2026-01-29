@@ -142,7 +142,7 @@ if [ -f "$CALCURSE_ICAL" ] && command -v calcurse > /dev/null; then
 fi
 
 FONTCONFIG="${HOME}/.config/fontconfig/fonts.conf"
-command -v fc-cache && [ -f "FONTCONFIG" ] \
+command -v fc-cache > /dev/null && [ -f "FONTCONFIG" ] \
     && fc-cache -fv > /dev/null && echo "font cache generated"
 
 read -p "sync-config-root?(y/n): " choice; [ "$choice" = "y" ] \
