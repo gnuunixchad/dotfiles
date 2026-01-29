@@ -23,7 +23,7 @@ pacman --noconfirm -Sy && pacman -S --noconfirm --needed archlinux-keyring
 [ -f "$ARCH_LIST" ] && pacman -S --needed $(cat "$ARCH_LIST") \
     || print_err "package list not found, no packages installed"
 
-[ -z "$(pdbedit -Lv)" ] && smbpasswd -a "$sudoer"
+pacman -Qi samba >/dev/null && [ -z "$(pdbedit -Lv)" ] && smbpasswd -a "$sudoer"
 
 usermod "$sudoer" -aG kvm,libvirt
 
