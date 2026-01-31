@@ -45,6 +45,7 @@ alias lsml="grep --color=never -m 5 '^[^#]' /etc/pacman.d/mirrorlist"
 
 alias g="git"
 alias v="virsh"
+alias t="type"
 alias e="$EDITOR"
 
 alias vs="virsh list"
@@ -83,6 +84,7 @@ alias ab="abduco"
 alias abc="abduco -c"
 alias aba="abduco -a"
 alias abd="abduco -A dvtm dvtm-status"
+alias abk="killall abduco dvtm"
 
 alias wmenu="$HOME/.local/bin/wmenu-color"
 alias mutt="$HOME/.local/bin/mutt"
@@ -99,6 +101,9 @@ alias epr-zh="firejail --profile=$HOME/.config/firejail/epr-zh.local epr-zh"
 alias vm="virt-manager"
 alias wshowkeys="firejail --noprofile --net=none --nosound --novideo --no3d --nodbus wshowkeys -a bottom -b '#11111188' -F 'SourceCodePro 20'"
 alias transmission-cli="transmission-cli -w $HOME/dls"
+
+alias pm="pulsemixer"
+alias bt="bluetui"
 
 alias heartstow='stow -S --adopt -d "${HOME}/doc/heart"  -t "$HOME" . && echo "heart is stowed"'
 alias heartrest='stow -R --adopt -d "${HOME}/doc/heart"  -t "$HOME" . && echo "heart is restowed"'
