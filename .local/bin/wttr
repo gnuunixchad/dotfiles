@@ -68,7 +68,7 @@ update() {
     city="$(cat $CITY)"
     msg=$(update_cmd)
     if echo "$msg" | grep -q '°C'; then
-        echo "$msg" | sed 's/[[:space:]]\+/ /g' | tee "$WTTR"
+        echo "$msg" | sed 's/[[:space:]]\+/ /g; s/°C/℃/' | tee "$WTTR"
         notify "$msg"
         exit 0
     else
