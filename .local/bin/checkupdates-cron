@@ -10,27 +10,26 @@ LOG_CACHE="$HOME/.cache/checkupdates-cron.log"
 ERR_CACHE="$HOME/.cache/checkupdates-cron.err"
 NUM_CACHE="$HOME/.cache/checkupdates-cron.num"
 
-# modified time in seconds since the Epoch
-update_time=$(stat -c "%Y" "$LOG_CACHE")
-# seconds since the Epoch
-current_time=$(date +%s)
-UPDATE_FREQUENCY=3600 # in seconds, 1H
+update_time=$(stat -c "%Y" "$LOG_CACHE") # mtime in seconds since Epoch
+current_time=$(date +%s) # seconds since Epoch
+UPDATE_FREQUENCY=3600 # in seconds
 
 update_cache() {
-# redirect stdout to the cache file, translate newline to space
-result="$(checkupdates --nocolor )"
-if [ -n "$result" ]; then
-    checkupdates --nocolor && echo "$result" \
-        | awk '{print $1}' \
-        | tr '\n' ' ' > "$LOG_CACHE" \
-        || echo "$result" > "$ERR_CACHE"
-else
-    # if no updates available, overwrite cache with empty string
-    echo "" > "$LOG_CACHE"
-fi
-wc -w "$LOG_CACHE" | awk '{print $1}' > "$NUM_CACHE"
+    # redirect stdout to the cache file, translate newline to space
+    result="$(checkupdates --nocolor )"
+    if [ -n "$result" ]; then
+        checkupdates --nocolor && echo "$result" \
+            | awk '{print $1}' \
+            | tr '\n' ' ' > "$LOG_CACHE" \
+            || echo "$result" > "$ERR_CACHE"
+    else
+        # if no updates available, overwrite cache with empty string
+        echo "" > "$LOG_CACHE"
+    fi
 
-[ -f "$DAMBLOCKS" ] && kill -40 "$(cat $DAMBLOCKS)";
+    wc -w "$LOG_CACHE" | awk '{print $1}' > "$NUM_CACHE"
+
+    [ -f "$DAMBLOCKS" ] && kill -40 "$(cat $DAMBLOCKS)";
 }
 
 while [ -n "$1" ]; do
