@@ -31,8 +31,8 @@ is_connected() {
 
 toggle_connection() {
     is_connected "$1" \
-        && bluetoothctl disconnect "$1" \
-        || bluetoothctl connect "$1"
+        && (bluetoothctl disconnect "$1" && notify "disconnected\n$1" )\
+        || (bluetoothctl connect "$1" && notify "connected\n$1" )
 }
 
 toggle_connection "$(select_device)"
