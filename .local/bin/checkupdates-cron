@@ -1,10 +1,11 @@
 #!/usr/bin/sh
 # @ author nate zhou
-# @ since 2024,2025
+# @ since 2024,2025,2026
 # check available pacman packages and write the number to a cache file
 # for my status bar
 # @depends pacman-contrib, dunst, cronie, lsupdates*
 
+DAMBLOCKS="${XDG_RUNTIME_DIR:-/run/user/1000}/damblocks.pid"
 LOG_CACHE="$HOME/.cache/checkupdates-cron.log"
 ERR_CACHE="$HOME/.cache/checkupdates-cron.err"
 NUM_CACHE="$HOME/.cache/checkupdates-cron.num"
@@ -28,7 +29,8 @@ else
     echo "" > "$LOG_CACHE"
 fi
 wc -w "$LOG_CACHE" | awk '{print $1}' > "$NUM_CACHE"
-kill -40 $(cat ${XDG_RUNTIME_DIR:-"/run/user/1000"}/damblocks.pid);
+
+[ -f "$DAMBLOCKS" ] && kill -40 "$(cat $DAMBLOCKS)";
 }
 
 while [ -n "$1" ]; do
