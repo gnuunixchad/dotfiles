@@ -281,6 +281,8 @@ LICENSE.*   
 *.patch     
 *.go        
 *.rss       󰑬
+*.zig       
+*.zon       
 
 *.AppImage  
 *.exe       󰨡
