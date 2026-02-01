@@ -52,9 +52,9 @@ $map normal $mod n                          spawn "dunstctl history-pop"
 $map normal ${mod}+Shift n                  spawn "dunstctl close"
 $map normal ${mod}+Control+Shift n          spawn "dunstctl close-all"
 
-$map normal $mod g                          spawn "${HOME}/.local/bin/shoot"
-$map normal ${mod}+Shift g                  spawn "${HOME}/.local/bin/shoot --geo"
-$map normal ${mod}+Control g                spawn "${HOME}/.local/bin/shoot --all"
+$map normal $mod y                          spawn "${HOME}/.local/bin/shoot"
+$map normal ${mod}+Shift y                  spawn "${HOME}/.local/bin/shoot --geo"
+$map normal ${mod}+Control y                spawn "${HOME}/.local/bin/shoot --all"
 
 $map normal $mod c                          spawn "${HOME}/.local/bin/clip"
 $map normal $mod a                          spawn "${HOME}/.local/bin/address"
