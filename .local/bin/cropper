@@ -20,6 +20,7 @@ usage() {
     cat <<_EOF_
 USAGE
         $(basename "$0") FILE OPTIONS...
+        crop video by pixels
         For batch process, run the script in a for-in loop.
 OPTIONS
         -t INTEGER   pixels to be cropped from top edge
