@@ -57,7 +57,7 @@ systemctl enable --now tlp.service 2>/dev/null
 systemctl enable --now smb.service 2>/dev/null
 systemctl enable --now dictd.service 2>/dev/null
 
-lscpu | grep -q 'Hypervisor vendor:' \
+pacman -Qi libvirt >/dev/null 2>&1 && lscpu | grep -q 'Hypervisor vendor:' \
     || (systemctl enable --now libvirtd \
         && virsh net-define /etc/libvirt/qemu/networks/default.xml \
         && virsh net-autostart default)
