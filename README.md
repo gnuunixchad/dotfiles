@@ -34,9 +34,9 @@ sudo ./install-root.sh
 I prefer software that are free as in freedom, keyboard centric, terminal based,
 vim like, do one thing and do it well. And try to avoid proprietary garbage and
 spyware when I can.
-
-| scripting shell | dash |
+| | |
 |:---|:---|
+| scripting shell | dash |
 | login shell | zsh |
 | terminal multiplexer| abduco dvtm |
 | terminal emulator | foot |
@@ -70,28 +70,27 @@ spyware when I can.
 | input method | fcitx5 |
 
 ## My Personal Scripts
-- status bar:               [damblocks](./.local/bin/damblocks)
-- weather report:           [wttr](./.local/bin/wttr)
-- screenshot:               [shoot](./.local/bin/shoot)
-- screen capture:           [capture](./.local/bin/capture)
-- webcam:                   [camera](./.local/bin/camera)
-- voice recorder:           [record](./.local/bin/record)
-- brightness:               [bright](./.local/bin/bright)
-- speaker/microphone volume: [audio](./.local/bin/audio)
-- speaker switch:           [speaker](./.local/bin/speaker)
-- bookmark:                 [address](./.local/bin/address)
-- file previewer:           [rifle](./.local/bin/scope)
-- file opener:              [scope](./.local/bin/rifle)
-- {,un}{lock,mount} usb drives: [saddle](./.local/bin/saddle)
-- gpg {en,de}crypt|preview|sign|verify: [seal](./.local/bin/seal)
-- gpg previewer:            [gpg-rifle](./.local/bin/gpg-rifle)
-- mutt/isync with oauth2:   [muttauth](./.local/bin/muttauth)
-- newsboat previewer:       [url-rifle](./.local/bin/url-rifle)
-- android mounting:         [phone](./.local/bin/phone)
-- shortcuts generator:      [teleport-genesis](./.local/bin/teleport-genesis)
-- qutebrowser:              [userscripts](./.local/bin/qutebrowser/)
-- xwayland server/client:   [xwl](./.local/bin/xwl)
-- reload other scripts:     [reload](./.local/bin/reload)
+| | |
+|:---|:---|
+| status bar | [damblocks](./.local/bin/damblocks) |
+| weather report | [wttr](./.local/bin/wttr) |
+| screenshot | [shoot](./.local/bin/shoot) |
+| screen capture | [capture](./.local/bin/capture) |
+| webcam | [camera](./.local/bin/camera) |
+| voice recorder | [record](./.local/bin/record) |
+| brightness | [bright](./.local/bin/bright) |
+| audio volume | [audio](./.local/bin/audio) |
+| audio sink | [speaker](./.local/bin/speaker) |
+| bookmark | [address](./.local/bin/address) |
+| file previewer | [rifle](./.local/bin/scope) [gpg-rifle](./.local/bin/gpg-rifle) [url-rifle](./.local/bin/url-rifle) |
+| file opener | [scope](./.local/bin/rifle) |
+| mounting | [saddle](./.local/bin/saddle) [phone](./.local/bin/phone) |
+| gpg | [seal](./.local/bin/seal) |
+| mutt_oauth2 | [muttauth](./.local/bin/muttauth) |
+| shortcuts generator | [teleport-genesis](./.local/bin/teleport-genesis) |
+| qutebrowser | [userscripts](./.local/bin/qutebrowser/) |
+| xwayland-satellite | [xwl](./.local/bin/xwl) |
+| reload other scripts | [reload](./.local/bin/reload) |
 
 ## Chinese Video Channel
 I have dedicated videos for almost every software I use:
@@ -99,11 +98,13 @@ I have dedicated videos for almost every software I use:
 [unixchad at bilibili](https://space.bilibili.com/34569411)
 
 Software I use to create videos:
-- screen capture:   `wf-recorder`, `slurp`
-- voice recording:  `pw-record`, `noise-suppression-for-voice`
-- video editing:    `ffmpeg`, `mpv-cut`, `kdenlive`
-- screenshots:      `grim`, `slurp`
-- thumbnails:       `imagemagick`, `gimp`
+| | |
+|:---|:---|
+| screen capture | wf-recorder slurp |
+| voice recording | pw-record noise-suppression-for-voice |
+| video editing | ffmpeg mpv-cut kdenlive |
+| screenshots | grim slurp |
+| thumbnails | imagemagick gimp |
 
 All emails from me will be signed by the same GPG key that I sign commits with:
 - Import my key: `gpg --recv-keys 117094DA1AEA0835E4ED0770F7476912AA224CAC`
