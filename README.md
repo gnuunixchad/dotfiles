@@ -34,39 +34,40 @@ sudo ./install-root.sh
 I prefer software that are free as in freedom, keyboard centric, terminal based,
 vim like, do one thing and do it well. And try to avoid proprietary garbage and
 spyware when I can.
-- /usr/bin/sh:              `dash`
-- Login Shell:              `zsh`
-- Terminal Multiplexer:     `abduco`, `dvtm`
-- Terminal Emulator:        `foot`
-- Audio Server:             `pipewire`
-- Compositor:               `river`, `river-classic`, `dwl`
-- River Window Manager:     `kwm`
-- River-classic bar:        `dam`
-- Status generator:         `damblocks`
-- Output Management:        `wlr-randr`, `kanshi`
-- Application Launcher:     `wmenu`
-- Fuzzy Finder:             `fzf`
-- Notification Daemon:      `dunst`
-- Editor:                   `neovim`
-- Email:                    `neomutt`, `isync`
-- File manager:             `lf`
-- Music player:             `mpd`, `ncmpcpp`
-- Video player:             `mpv`
-- Image Viewer:             `swayimg`
-- Ebook Reader:             `zathura`, `zatura-pdf-mupdf`
-- Rss Feeder:               `newsboat`
-- Calender:                 `calcurse`
-- Todo:                     `taskwarrior`
-- Virtualisation:           `qemu`, `libvirt`, `virtmanager`
-- Privacy/Security:         `cryptsetup`, `sbctl`, `gpg`, `firejail`
-- Web Browser:              `w3m`, `qutebrowser`
-- Downloader:               `curl`, `wget`, `transmission-cli`, `yt-dlp`, `httrack`
-- File Sharing:             `rsync`, `samba`, `android-file-transfer`, `qrtool`
-- Dotfiles Manager:         `git`, `stow`
-- Idle Manager:             `swayidle`
-- Session Lock:             `swaylock`
-- Clipboard Manager:        `wl-clipboard`, `cliphist`
-- Input Method:             `fcitx5`
+
+| Scripting Shell | dash |
+|:---|:---|
+| Login Shell | zsh |
+| Terminal Multiplexer| abduco dvtm |
+| Terminal Emulator | foot |
+| Audio Server | pipewire |
+| Wayland Compositor | river river-classic dwl |
+| River Window Manager | kwm |
+| River-classic bar | dam |
+| Status generator | damblocks |
+| Output Management | wlr-randr kanshi |
+| Application Launcher | wmenu |
+| Fuzzy Finder | fzf |
+| Notification Daemon | dunst |
+| Editor | neovim vim |
+| Email | neomutt isync |
+| File manager | lf |
+| Music player | mpd ncmpcpp |
+| Video player | mpv |
+| Image Viewer | swayimg |
+| Ebook Reader | zathura |
+| Rss Feeder | newsboat |
+| Calender & Todo | calcurse taskwarrior |
+| Virtualization | qemu libvirt virtmanager |
+| Security | cryptsetup  sbctl gpg firejail |
+| Browser | w3m qutebrowser |
+| Download | curl wget transmission-cli yt-dlp httrack |
+| File Sharing | rsync samba android-file-transfer qrtool |
+| Dotfiles Manager | git stow |
+| Idle Manager | swayidle |
+| Session Lock | swaylock |
+| Clipboard | wl-clipboard  cliphist |
+| Input Method | fcitx5 |
 
 ## My Personal Scripts
 - Status Bar:               [damblocks](./.local/bin/damblocks)
