@@ -120,11 +120,6 @@ $map normal ${mod}+Shift j                  swap next
 $map normal ${mod}+Shift k                  swap previous
 $map normal ${mod}+Shift l                  swap right
 
-$map normal ${mod}+Control+Shift h          snap left
-$map normal ${mod}+Control+Shift j          snap down
-$map normal ${mod}+Control+Shift k          snap up
-$map normal ${mod}+Control+Shift l          snap right
-
 # mouse
 $map-pointer normal $mod BTN_LEFT           move-view
 $map-pointer normal $mod BTN_RIGHT          resize-view

@@ -31,6 +31,10 @@ $map -repeat resize None u resize vertical 50
 $map -repeat resize None i resize vertical -50
 $map -repeat resize None o resize horizontal 50
 
+$map normal ${mod}+Control+Shift h snap left
+$map normal ${mod}+Control+Shift j snap down
+$map normal ${mod}+Control+Shift k snap up
+$map normal ${mod}+Control+Shift l snap right
 
 # fcitx ########################################################################
 riverctl declare-mode "$fcitx"
