@@ -2,6 +2,7 @@
 # @author nate zhou
 # @since 2025,2026
 # file opener ported from my [lf](../../.config/lf/rifle)
+set -x
 
 f="$1"
 term="footclient"
@@ -13,7 +14,7 @@ print_err() {
 }
 
 [ -z "$1" ] && print_err "No f specified." && exit 1
-case $(file --mime-type -Lb $f) in
+case $(file --mime-type -Lb "$f") in
     image/x-xcf)
         gimp "$f"
         ;;
