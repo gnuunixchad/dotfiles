@@ -6,7 +6,6 @@
 
 map="riverctl map"
 
-fcitx="[p]inyin [a]nthy"
 wmenu="[w]iki [h]eart [b]ooks [m]ount [u]nmount [p]ower-off [s]peaker [e]moji"
 dunst="clip-w[i]pe [l]supdates [w]ttr d[c]al ls[m]us"
 wlrctl="[hjkl]cursors [,]left [.]right [m]iddle ^[hjkl]arrows"
@@ -35,17 +34,6 @@ $map normal ${mod}+Control+Shift h snap left
 $map normal ${mod}+Control+Shift j snap down
 $map normal ${mod}+Control+Shift k snap up
 $map normal ${mod}+Control+Shift l snap right
-
-# fcitx ########################################################################
-riverctl declare-mode "$fcitx"
-$map normal ${mod}+Control f enter-mode "$fcitx"
-
-$map "$fcitx" ${mod}+Control f enter-mode normal
-$map "$fcitx" None Escape enter-mode normal
-$map "$fcitx" None space enter-mode normal
-
-$map "$fcitx" None p spawn "riverctl enter-mode normal && fcitx5-remote -s pinyin"
-$map "$fcitx" None a spawn "riverctl enter-mode normal && fcitx5-remote -s anthy"
 
 
 # wmenu ########################################################################
