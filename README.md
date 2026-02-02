@@ -65,7 +65,7 @@ spyware when I can.
 - Dotfiles Manager:         `git`, `stow`
 - Idle Manager:             `swayidle`
 - Session Lock:             `swaylock`
-- Clipboard Manager:        `wl-Clipboard`, `cliphist`
+- Clipboard Manager:        `wl-clipboard`, `cliphist`
 - Input Method:             `fcitx5`
 
 ## My Personal Scripts
