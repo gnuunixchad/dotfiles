@@ -1,11 +1,18 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # choose a key to cache in ssh-agent via dynamic menu
 
 MENU="${HOME}/.local/bin/wmenu-color"
 SSH_HOME="${HOME}/.ssh"
 
 ssh-add ${HOME}/.ssh/"$(ls -L $SSH_HOME \
-                      | grep -ve '.conf$' -ve '.pub$' \
+                      | grep -ve '.conf$' \
+                             -ve '.*config$' \
+                             -ve '.pub$' \
+                             -ve '^agent$' \
+                             -ve '^known_hosts*' \
+                             -ve '^authorized_keys$' \
+                             -ve '.*.example$' \
+                      | sort -r \
                       | $MENU -l 6 -p "$(basename $0)")"
