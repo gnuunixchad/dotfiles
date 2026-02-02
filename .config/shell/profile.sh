@@ -4,7 +4,7 @@
 # @since 2023,2024,2025,2026
 # set universal ENV, use `/bin/sh`(-> `/bin/dash`) for better efficiency
 
-[ "$UID" -eq 0 ] || umask 027 # dir/file:750/640
+[ "$UID" -eq 0 ] || umask 022 # dir/file:755/644
 
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:${PATH}"
 [ -d "$HOME/.local/sbin" ] && export PATH="$HOME/.local/sbin:${PATH}"
