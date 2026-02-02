@@ -41,7 +41,11 @@ case $(file --mime-type -Lb $f) in
         libreoffice "$f"
         ;;
     application/octet-stream)
-        ${HOME}/.local/bin/gpg-rifle "$f"
+        case "$f" in
+            *.gpg)
+                ${HOME}/.local/bin/gpg-rifle "$f"
+                ;;
+        esac
         ;;
     message/rfc822)
         [ "$XDG_SESSION_TYPE" != "tty" ] \
