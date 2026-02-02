@@ -6,7 +6,7 @@
 
 map="riverctl map"
 
-wmenu="[w]iki [h]eart [b]ooks [s]peaker [e]moji"
+wmenu="[w]iki [h]eart [b]ooks bl[u]e [s]peaker [e]moji"
 dunst="clip-w[i]pe [l]supdates [w]ttr d[c]al ls[m]us"
 wlrctl="[hjkl]cursors [,]left [.]right [m]iddle ^[hjkl]arrows"
 
@@ -45,6 +45,7 @@ $map "$wmenu" None Escape enter-mode normal
 $map "$wmenu" None w spawn "riverctl enter-mode normal && ${HOME}/.local/bin/wiki"
 $map "$wmenu" None h spawn "riverctl enter-mode normal && ${HOME}/.local/bin/heart"
 $map "$wmenu" None b spawn "riverctl enter-mode normal && ${HOME}/.local/bin/books"
+$map "$wmenu" None u spawn "riverctl enter-mode normal && ${HOME}/.local/bin/blue"
 $map "$wmenu" None s spawn "riverctl enter-mode normal && ${HOME}/.local/bin/speaker"
 $map "$wmenu" None e spawn "riverctl enter-mode normal && ${HOME}/.local/bin/emoji"
 
