@@ -46,6 +46,14 @@ case $(file --mime-type -Lb "$f") in
             *.gpg)
                 ${HOME}/.local/bin/gpg-rifle "$f"
                 ;;
+            *.mp3)
+                [ "$XDG_SESSION_TYPE" != "tty" ] \
+                    && "$term" mpv --loop --audio-display=no "$f" \
+                    || mpv --loop --audio-display=no "$f"
+                ;;
+            *)
+                $EDITOR "$f"
+                ;;
         esac
         ;;
     message/rfc822)
