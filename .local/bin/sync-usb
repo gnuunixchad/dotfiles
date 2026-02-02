@@ -14,6 +14,7 @@ rsync --dry-run -avh --delete-after --progress \
     --exclude="doc/heart/.config/fcitx/dbus/" \
     --exclude="doc/heart/.config/ibus/" \
     --exclude="doc/heart/.ssh/agent/" \
+    --exclude=".zig-cache" \
     $MY_SOURCE_PATH $MY_DESTINATION
 set +x
 
@@ -25,6 +26,7 @@ if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
         --exclude="doc/heart/.config/fcitx/dbus/" \
         --exclude="doc/heart/.config/ibus/" \
         --exclude="doc/heart/.ssh/agent/" \
+        --exclude=".zig-cache" \
         $MY_SOURCE_PATH $MY_DESTINATION
 else
     echo "aborted"

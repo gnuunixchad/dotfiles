@@ -21,6 +21,7 @@ sync_cmd="rsync -avh --delete-after --progress \
       --exclude="doc/heart/.config/fcitx/dbus/" \
       --exclude="doc/heart/.config/ibus/" \
       --exclude="doc/heart/.ssh/agent/" \
+      --exclude=".zig-cache/" \
       /home/${USER}/{doc,mus,pic,vid,pkg} \
       ${remote}:/home/${USER};"
 
