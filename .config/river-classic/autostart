@@ -27,7 +27,7 @@ pgrep 'swayidle' || $spawn "swayidle" &
 
 pgrep 'kanshi' || $spawn "kanshi" &
 
-pgrep "gammastep" || $spawn "gammastep -O 5000" &
+killall -q gammastep; $spawn "gammastep -O 5000" &
 
 pgrep -f 'wl-paste --watch cliphist store' || $spawn "wl-paste --watch cliphist store" &
 
