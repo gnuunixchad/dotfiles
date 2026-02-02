@@ -6,27 +6,28 @@
 
 map="riverctl map"
 
+floating="floating"
 wmenu="[w]iki [h]eart [b]ooks bl[u]e [s]peaker [e]moji [j]doc"
 dunst="clip-w[i]pe [l]supdates [w]ttr d[c]al ls[m]us"
 wlrctl="[hjkl]cursors [,]left [.]right [m]iddle ^[hjkl]arrows"
 
-# resize #######################################################################
-riverctl declare-mode resize
-$map normal ${mod}+Control r enter-mode resize
+# float #######################################################################
+riverctl declare-mode "$floating"
+$map normal ${mod}+Control f enter-mode "$floating"
 
-$map resize ${mod}+Control  r       enter-mode normal
-$map resize None            Escape  enter-mode normal
-$map resize None            space   enter-mode normal
+$map "$floating" ${mod}+Control  f       enter-mode normal
+$map "$floating" None            Escape  enter-mode normal
+$map "$floating" None            space   enter-mode normal
 
-$map -repeat resize None h move left 50
-$map -repeat resize None j move down 50
-$map -repeat resize None k move up 50
-$map -repeat resize None l move right 50
+$map -repeat "$floating" None h move left 50
+$map -repeat "$floating" None j move down 50
+$map -repeat "$floating" None k move up 50
+$map -repeat "$floating" None l move right 50
 
-$map -repeat resize None y resize horizontal -50
-$map -repeat resize None u resize vertical 50
-$map -repeat resize None i resize vertical -50
-$map -repeat resize None o resize horizontal 50
+$map -repeat "$floating" None y resize horizontal -50
+$map -repeat "$floating" None u resize vertical 50
+$map -repeat "$floating" None i resize vertical -50
+$map -repeat "$floating" None o resize horizontal 50
 
 $map normal ${mod}+Control+Shift h snap left
 $map normal ${mod}+Control+Shift j snap down
