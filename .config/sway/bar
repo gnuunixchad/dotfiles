@@ -27,6 +27,6 @@ bar {
     active_workspace   $colorbg $colorbg #bbbbbb
     inactive_workspace $colorbg $colorbg #bbbbbb
     urgent_workspace   #bbbbbb  #bbbbbb  $colorbg
-    binding_mode       $color14 $color14 #bbbbbb
+    binding_mode       $color14 $color14 #eeeeee
 	}
 }
