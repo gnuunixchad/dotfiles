@@ -3,7 +3,7 @@
 # @since 2023,2024,2025,2026
 # .config/sway/autostart
 
-exec_always swaymsg seat - cursor set 9999 9999
+exec_always "killall -q mpc; ${HOME}/.local/bin/damblocks-mpdd"
 exec_always "${HOME}"/.local/bin/foots
 exec_always "${HOME}"/.local/bin/wobd
 exec swayidle -w \
