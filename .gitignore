@@ -257,6 +257,9 @@ package-list
 !.config/river-classic/rules
 !.config/river-classic/rivertile
 !.config/river-classic/rivercarro
+!.config/sway
+!.config/sway/config
+!.config/sway/colors
 !.config/swayidle/
 !.config/swayidle/config
 !.config/swayimg/

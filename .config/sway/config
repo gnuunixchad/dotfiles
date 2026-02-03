@@ -1,0 +1,394 @@
+# @author nate zhou
+# @since 2023,2024,2025
+
+include /etc/sway/config.d/*
+include ~/.config/sway/colors
+
+# Mod4=super Mod1=alt
+set $mod Mod4
+set $term /usr/bin/footclient
+set $menu wmenu-run -f "SourceCodePro Medium 14" -i -N "$background" -S "$color9" -s "$background" | xargs swaymsg exec --
+set $wmenu ~/.local/bin/wmenu-color
+set $bookmarks ~/.local/bin/share/bookmarks
+set $wobfifo /tmp/wob.fifo
+set $mode_cursor "[;] num:F[n] | [d]Del | [HJKL]:Slow | Mod[hjkl]:Arrow | [n]PageUp | [p]PageDn"
+set $mode_wmenu "[w] w[w]iki w[h]eart w[b]ook [a]mount [f]locks [p]off w[s]hot w[c]ast w[m]ulti wsin[k] w[v]oice w[j]doc"
+set $mode_apostrophe "[:] enable[t]ap disable[T]ap enable[p]ad disable[P]ad clip[h]ist-wipe [l]supdates d[w] w[c]al"
+set $mode_space "[p]inyin keyboard-[u]s [a]nthy"
+
+bar {
+    #status_command ~/.local/bin/i3status-mpd
+    id bar-1
+    status_command i3blocks
+	position top
+    height 26
+	font pango:Source Code Pro normal 13
+	tray_output none
+	tray_padding 0
+    status_edge_padding 0
+	separator_symbol ""
+	# disable scroll up/down/right/left
+	bindsym button4 nop
+	bindsym button5 nop
+	bindsym button6 nop
+	bindsym button7 nop
+    bindsym button8 workspace next_on_output
+    bindsym button9 workspace prev_on_output
+    strip_workspace_numbers yes
+
+	colors {
+    background $background
+    #workspace color    border  backgr  text
+    focused_workspace  $color9 $color9 $background
+    active_workspace   $color8 $color8 $foreground
+    inactive_workspace $background $background $foreground
+    urgent_workspace   $color11 $color11 $foreground
+    binding_mode       $color9 $color9 $background
+	}
+}
+
+# class                 border  backgr. text    indicator child_border
+client.focused          $color9 $color9 $background $color6   $color9
+client.focused_inactive $color8 $color7 $background $color7   $color7
+client.unfocused        $color8 $background $foreground $color8   $background
+client.urgent           $color8 $color11 $foreground $color11   $color11
+client.placeholder      #$background #$background $foreground #$background   #$background
+
+font pango:monospace 11.5
+titlebar_padding 1
+titlebar_border_thickness 0
+#default_border pixel 1
+for_window [class=".*"] border pixel 2
+#for_window [app_id="code-oss"] opacity 0.90
+
+default_orientation auto
+
+#floating_maximum_size 1600 x 875
+popup_during_fullscreen smart
+focus_wrapping yes
+force_display_urgency_hint 200 ms
+focus_on_window_activation urgent
+
+seat seat0 hide_cursor 3000
+seat seat0 hide_cursor when-typing enable
+focus_follows_mouse no
+mouse_warping none
+
+floating_modifier $mod
+
+#gaps inner 4
+#gaps outer -2
+#smart_gaps on
+for_window [title="_Floating_Term"] floating enable, resize set width 800 px, resize set height 600 px, border pixel 2
+for_window [title="_Scratchpad_Tmux"]  move scratchpad
+for_window [app_id=swayimgapp] border pixel 0
+
+output * bg ~/.local/share/wallpaper fill
+output 'eDP-1' mode --custom 1920x1080@60.000Hz pos 0 0
+output  'DP-1' mode --custom 1920x1080@60.000Hz pos -1920 0
+workspace 1 output DP-1
+workspace 2 output DP-1
+workspace 3 output DP-1
+workspace 4 output DP-1
+workspace 5 output DP-1
+workspace 6 output eDP-1
+workspace 7 output eDP-1
+workspace 8 output eDP-1
+workspace 9 output eDP-1
+workspace 10:0 output eDP-1
+
+input "type:touchpad" tap enabled
+input "type:touchpad" events enabled
+bindsym $mod+backslash input "type:touchpad" tap enabled, exec notify-send -u low -r 242 "tap enabled"
+bindsym $mod+Shift+backslash input "type:touchpad" tap disabled, exec notify-send -u low -r 242 "tap disabled"
+input "type:keyboard" {
+	repeat_delay 200
+	repeat_rate 30
+    xkb_file "~/.config/sway/layout.xkb"
+}
+
+# autostart
+exec_always swaymsg seat - cursor set 9999 9999
+exec_always "$HOME"/.local/bin/foots
+exec_always "$HOME"/.local/bin/wobd
+exec swayidle -w \
+         timeout 600 'brightnessctl set 4% -s && pkill -SIGRTMIN+3 i3blocks' resume 'brightnessctl -r && pkill -SIGRTMIN+3 i3blocks'\
+         timeout 900 'swaylock' \
+         timeout 960 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock'
+exec "clsd"
+exec "gammastep -O 5000"
+exec "fcitx5 -d"
+exec "wl-paste --watch cliphist store"
+
+# keybindings
+bindsym --release Caps_Lock exec "if [ $(cat /sys/class/leds/input*::capslock/brightness | head -1) = 0 ]; then notify-send -r 195 -t 1100 'CapsLock '; else notify-send -r 195 -t 1100 'CapsLock '; fi"
+
+bindsym $mod+space exec fcitx5-remote -t && notify-send -u normal -r 3289 -t 1100 "$(fcitx5-remote -n)"
+bindsym CONTROL+grave mode $mode_space
+mode $mode_space {
+    bindsym Escape mode "default"
+    bindsym Space mode "default"
+    bindsym $mod+Shift+space mode "default"
+
+    bindsym p exec swaymsg mode "default" && fcitx5-remote -s pinyin && notify-send -u normal -r 3289 -t 1100 "$(fcitx5-remote -n)"
+    bindsym u exec swaymsg mode "default" && fcitx5-remote -s keyboard-us && notify-send -u normal -r 3289 -t 1100 "$(fcitx5-remote -n)"
+    bindsym a exec swaymsg mode "default" && fcitx5-remote -s anthy && notify-send -u normal -r 3289 -t 1100 "$(fcitx5-remote -n)"
+    bindsym h exec swaymsg mode "default" && fcitx5-remote -s hangul && notify-send -u normal -r 3289 -t 1100 "$(fcitx5-remote -n)"
+}
+
+bindsym $mod+q kill
+bindsym $mod+delete kill
+bindsym $mod+d exec $menu
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec $term -T "_Floating_Term"
+bindsym $mod+Control+Return exec $term -T "_Scratchpad_Tmux" $HOME/.local/bin/tmuxd
+bindsym $mod+r exec $term lf
+bindsym $mod+CONTROL+e exec $term neomutt
+bindsym $mod+CONTROL+m exec $term ncmpcpp
+bindsym $mod+CONTROL+b exec $term bluetui
+bindsym $mod+CONTROL+p exec $term pulsemixer
+bindsym $mod+CONTROL+t exec $term btop
+bindsym $mod+CONTROL+c exec $term calcurse
+bindsym $mod+CONTROL+n exec $term news
+bindsym $mod+CONTROL+w exec $term taskwarrior-tui
+
+bindsym $mod+Shift+r reload
+bindsym $mod+Control+r exec swaymsg "output * bg ~/.local/share/wallpaper fill"
+bindsym $mod+Shift+e exec ~/.local/bin/swayexit
+bindsym $mod+Shift+q exec ~/.local/bin/swayhibe
+# clipboard & bookmarks
+bindsym $mod+c exec ~/.local/bin/wclip
+bindsym $mod+b exec ~/.local/bin/wbookmark
+bindsym $mod+Shift+b exec ~/.local/bin/wbookmark-record
+# notification
+bindsym $mod+Shift+n exec "dunstctl history-pop"
+bindsym $mod+n exec "dunstctl close"
+bindsym $mod+backspace exec "dunstctl close-all"
+# swaylock is configured at ~/.config/swaylock/config
+bindsym $mod+Shift+CONTROL+l exec "swaylock"
+# adjust window gaps
+bindsym $mod+CONTROL+minus exec "swaymsg gaps inner current minus 2"
+bindsym $mod+CONTROL+equal exec "swaymsg gaps inner current plus 2"
+# brightness
+bindsym $mod+bracketleft exec brightnessctl set 2%- | awk -F'[()]' 'NR==3 {print $2}'| sed 's/%//' > $wobfifo  && pkill -SIGRTMIN+3 i3blocks
+bindsym $mod+bracketright exec brightnessctl set 2%+ | awk -F'[()]' 'NR==3 {print $2}'| sed 's/%//' > $wobfifo && pkill -SIGRTMIN+3 i3blocks
+# audio output
+bindsym $mod+minus exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g; s/^0//' > $wobfifo && pkill -SIGRTMIN+1 i3blocks
+bindsym $mod+equal exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g; s/^0//' > $wobfifo && pkill -SIGRTMIN+1 i3blocks
+bindsym $mod+m exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && pkill -SIGRTMIN+1 i3blocks
+# audio input
+bindsym $mod+Shift+minus exec wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%- &&  wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | sed 's/[^0-9]//g; s/^0//' > $wobfifo && pkill -SIGRTMIN+2 i3blocks
+bindsym $mod+Shift+equal exec wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%+ &&  wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | sed 's/[^0-9]//g; s/^0//' > $wobfifo && pkill -SIGRTMIN+2 i3blocks
+bindsym $mod+Shift+m exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && pkill -SIGRTMIN+2 i3blocks
+
+bindsym $mod+CONTROL+space exec mpc toggle
+
+## take a screenshot with a selected part
+bindsym $mod+g exec ~/.local/bin/wshot
+bindsym $mod+Shift+g exec ~/.local/bin/wshot-geo
+## take a screenshot with all monitors
+bindsym $mod+CONTROL+g exec grim && notify-send -u low -r 88 "Screenshot taken on all outputs"
+## color picker
+#bindsym $mod+CONTROL+c exec ~/.local/bin/wpicker
+# seat cursor
+#bindsym $mod+grave seat - cursor set 0 0
+bindsym $mod+slash seat - cursor set 9999 9999
+# wtype
+#bindsym Control+e exec wtype -k 'Escape'
+
+# sway mode
+# Use keyboard as mouse
+bindsym $mod+semicolon mode $mode_cursor; seat seat0 hide_cursor when-typing disable
+mode $mode_cursor {
+    bindsym Escape mode "default" ; seat seat0 hide_cursor when-typing enable
+    bindsym Space mode "default" ; seat seat0 hide_cursor when-typing enable
+    bindsym $mod+semicolon mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym $mod+apostrophe mode $mode_apostrophe; seat seat0 hide_cursor when-typing enable
+    bindsym $mod+w mode $mode_wmenu; seat seat0 hide_cursor when-typing enable
+
+    bindsym 1 exec wtype -k "F1" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 2 exec wtype -k "F2" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 3 exec wtype -k "F3" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 4 exec wtype -k "F4" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 5 exec wtype -k "F5" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 6 exec wtype -k "F6" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 7 exec wtype -k "F7" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 8 exec wtype -k "F8" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 9 exec wtype -k "F9" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym 0 exec wtype -k "F10" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym minus exec wtype -k "F11" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym equal exec wtype -k "F12" ; mode "default"; seat seat0 hide_cursor when-typing enable
+    bindsym d wtype -k "Delete"
+    # mouse cursor
+    bindsym h seat - cursor move -50 0
+    bindsym j seat - cursor move 0 +50
+    bindsym k seat - cursor move 0 -50
+    bindsym l seat - cursor move +50 0
+    bindsym Shift+h seat - cursor move -10 0
+    bindsym Shift+j seat - cursor move 0 +10
+    bindsym Shift+k seat - cursor move 0 -10
+    bindsym Shift+l seat - cursor move +10 0
+    bindsym slash seat - cursor set 9999 9999
+    # arrow keys
+    bindsym $mod+h exec wtype -k "Left"
+    bindsym $mod+j exec wtype -k "Down"
+    bindsym $mod+k exec wtype -k "Up"
+    bindsym $mod+l exec wtype -k "Right"
+    # Left click (click won't work as a keybindings if with $mod key)
+    bindsym $mod+comma seat - cursor press button1, seat - cursor release button1
+    bindsym comma seat - cursor press button1, seat - cursor release button1
+    # Right click
+    bindsym $mod+period seat - cursor press button3, seat - cursor release button3
+    bindsym period seat - cursor press button3, seat - cursor release button3
+    # page keys
+    bindsym p exec wtype -k "Page_up"
+    bindsym n exec wtype -k "Page_down"
+    }
+
+
+bindsym $mod+w mode $mode_wmenu
+mode $mode_wmenu {
+    bindsym Escape mode "default"
+    bindsym Space mode "default"
+    bindsym $mod+w mode "default"
+    bindsym $mod+semicolon mode $mode_cursor ; seat seat0 hide_cursor when-typing disable
+    bindsym $mod+apostrophe mode $mode_apostrophe
+
+    bindsym w exec ~/.local/bin/wwiki ; mode "default"
+    bindsym h exec ~/.local/bin/wheart ; mode "default"
+    bindsym b exec ~/.local/bin/wbook ; mode "default"
+    bindsym a exec ~/.local/bin/amount ; mode "default"
+    bindsym f exec ~/.local/bin/flocks ; mode "default"
+    bindsym p exec ~/.local/bin/poff ; mode "default"
+    bindsym s exec ~/.local/bin/wshot ; mode "default"
+    bindsym c exec $term ~/.local/bin/wcast ; mode "default"
+    bindsym m exec ~/.local/bin/wmulti ; mode "default"
+    bindsym k exec ~/.local/bin/wsink ; mode "default"
+    bindsym v exec ~/.local/bin/wvoice ; mode "default"
+    bindsym j exec ~/.local/bin/wjdoc ; mode "default"
+}
+
+bindsym $mod+apostrophe mode $mode_apostrophe
+mode $mode_apostrophe {
+    bindsym Escape mode "default"
+    bindsym Space mode "default"
+    bindsym $mod+semicolon mode $mode_cursor ; seat seat0 hide_cursor when-typing disable
+    bindsym $mod+apostrophe mode $mode_apostrophe
+    bindsym $mod+w mode $mode_wmenu
+
+    bindsym t input type:touchpad tap enabled, exec notify-send "tap enabled" ; mode "default"
+    bindsym Shift+t input type:touchpad tap disabled, exec notify-send "tap disabled" ; mode "default"
+    bindsym p input type:touchpad events toggle enabled, exec notify-send "touchpad enabled" ; mode "default"
+    bindsym Shift+p input type:touchpad events toggle disabled, exec notify-send "touchpad disabled" ; mode "default"
+    bindsym h exec cliphist wipe; mode "default"; exec notify-send -u normal -r 196 "cliphist wiped"
+    bindsym w exec ~/.local/bin/dw ; mode "default"
+    bindsym l exec ~/.local/bin/lsupdates ; mode "default"
+    bindsym c exec ~/.local/bin/wcal ; mode "default"
+}
+
+# managing windows
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+CONTROL+h mark swap, focus left, swap container with mark swap
+bindsym $mod+CONTROL+j mark swap, focus down, swap container with mark swap
+bindsym $mod+CONTROL+k mark swap, focus up, swap container with mark swap
+bindsym $mod+CONTROL+l mark swap, focus right, swap container with mark swap
+
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+# Strip workspace numbers for workspace 10, only display the name
+# applys to any workspace that has a name of the form "[n][:][NAME]"
+bindsym $mod+0 workspace 10:0
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10:0
+
+bindsym $mod+CONTROL+1 move container to workspace number 1; workspace number 1
+bindsym $mod+CONTROL+2 move container to workspace number 2; workspace number 2
+bindsym $mod+CONTROL+3 move container to workspace number 3; workspace number 3
+bindsym $mod+CONTROL+4 move container to workspace number 4; workspace number 4
+bindsym $mod+CONTROL+5 move container to workspace number 5; workspace number 5
+bindsym $mod+CONTROL+6 move container to workspace number 6; workspace number 6
+bindsym $mod+CONTROL+7 move container to workspace number 7; workspace number 7
+bindsym $mod+CONTROL+8 move container to workspace number 8; workspace number 8
+bindsym $mod+CONTROL+9 move container to workspace number 9; workspace number 9
+bindsym $mod+CONTROL+0 move container to workspace number 10:0; workspace number 10:0
+
+bindsym $mod+tab workspace back_and_forth
+bindsym $mod+comma workspace prev_on_output
+bindsym $mod+period workspace next_on_output
+bindsym $mod+Shift+comma move container to workspace prev_on_output
+bindsym $mod+Shift+period move container to workspace next_on_output
+
+bindsym $mod+CONTROL+comma focus output left
+bindsym $mod+CONTROL+period focus output right
+
+bindsym $mod+x splitv
+bindsym $mod+v splith
+
+bindsym $mod+s layout toggle stacking split
+bindsym $mod+t layout toggle tabbed split
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+f fullscreen
+# mimic maximize
+workspace_auto_back_and_forth yes
+for_window [title="_placeholder_window1"] mark "_placeholder_window1" , border pixel 0
+for_window [title="_placeholder_window2"] mark "_placeholder_window2" , border pixel 0
+assign [title="_placeholder_window1"] workspace -
+assign [title="_placeholder_window2"] workspace =
+workspace - output DP-1
+workspace = output eDP-1
+# use i3blocks as a GUI crontab to execute swaymaxd
+bindsym $mod+grave exec "~/.local/bin/swaymaxd"
+bindsym $mod+f exec "~/.local/bin/swaymax"
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+c move position center
+bindsym $mod+Shift+t sticky toggle
+bindsym $mod+z focus mode_toggle
+
+bindsym $mod+p focus parent
+bindsym $mod+Shift+p focus child
+
+bindsym $mod+Shift+s move scratchpad
+bindsym $mod+a scratchpad show
+
+bindsym $mod+y resize shrink width 30px
+bindsym $mod+u resize grow height 30px
+bindsym $mod+i resize shrink height 30px
+bindsym $mod+o resize grow width 30px
+
+bindsym $mod+Shift+y resize shrink width 10px
+bindsym $mod+Shift+u resize grow height 10px
+bindsym $mod+Shift+i resize shrink height 10px
+bindsym $mod+Shift+o resize grow width 10px
+
+# mouse bindings
+bindsym --whole-window --border $mod+button2 exec wtype -k "Return"
+bindsym --whole-window --border $mod+button4 exec wtype -k "Left"
+bindsym --whole-window --border $mod+button5 exec wtype -k "Right"
