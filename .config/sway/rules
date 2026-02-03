@@ -1,0 +1,7 @@
+# vim:ft=swayconfig
+# @author nate zhou
+# @since 2023,2024,2025,2026
+
+for_window [title="Floating_Term"] floating enable, resize set width 800 px, resize set height 600 px, border pixel 2
+
+for_window [app_id=swayimgapp] border pixel 0

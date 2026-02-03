@@ -1,0 +1,32 @@
+# vim:ft=swayconfig
+# @author nate zhou
+# @since 2023,2024,2025,2026
+
+bar {
+    id bar-1
+    status_command damblocks
+	position top
+    height 24
+	font Source Code Pro normal 13
+	tray_output none
+	tray_padding 4
+    status_edge_padding 4
+	bindsym button4 nop
+	bindsym button5 nop
+	bindsym button6 nop
+	bindsym button7 nop
+    bindsym button8 nop
+    bindsym button9 nop
+    strip_workspace_numbers yes
+
+	colors {
+    background $colorbg
+    statusline #bbbbbb
+    #workspace color    border  backgr   text
+    focused_workspace  $color14 $color14 #eeeeee
+    active_workspace   $colorbg $colorbg #bbbbbb
+    inactive_workspace $colorbg $colorbg #bbbbbb
+    urgent_workspace   #bbbbbb  #bbbbbb  $colorbg
+    binding_mode       $color14 $color14 #bbbbbb
+	}
+}
