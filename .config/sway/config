@@ -15,33 +15,30 @@ set $mode_apostrophe "[:] enable[t]ap disable[T]ap enable[p]ad disable[P]ad clip
 set $mode_space "[p]inyin keyboard-[u]s [a]nthy"
 
 bar {
-    #status_command ${HOME}/.local/bin/i3status-mpd
     id bar-1
     status_command damblocks
 	position top
-    height 26
-	font pango:Source Code Pro normal 13
+    height 24
+	font Source Code Pro normal 13
 	tray_output none
-	tray_padding 0
-    status_edge_padding 0
-	separator_symbol ""
-	# disable scroll up/down/right/left
+	tray_padding 4
+    status_edge_padding 4
 	bindsym button4 nop
 	bindsym button5 nop
 	bindsym button6 nop
 	bindsym button7 nop
-    bindsym button8 workspace next_on_output
-    bindsym button9 workspace prev_on_output
+    bindsym button8 nop
+    bindsym button9 nop
     strip_workspace_numbers yes
 
 	colors {
     background $colorbg
-    #workspace color    border  backgr  text
-    focused_workspace  $color9 $color9 $colorbg
-    active_workspace   $color8 $color8 $colorfg
+    #workspace color    border  backgr   text
+    focused_workspace  $color9  $color9  $colorbg
+    active_workspace   $color8  $color8  $colorfg
     inactive_workspace $colorbg $colorbg $colorfg
     urgent_workspace   $color11 $color11 $colorfg
-    binding_mode       $color9 $color9 $colorbg
+    binding_mode       $color9  $color9  $colorbg
 	}
 }
 
