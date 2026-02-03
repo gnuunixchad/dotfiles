@@ -1,8 +1,11 @@
 #!/usr/bin/sh
-# bright
 # @author nate zhou
 # @since 2025,2026
 # @depends brightnessctl
+# bright - changing monitor backlight brightness and track status
+# also see:
+#   - .local/bin/wobd for setting an indicator in a wayland environment
+#   - .local/bin/damblocks for sending signals to update status bars
 
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 

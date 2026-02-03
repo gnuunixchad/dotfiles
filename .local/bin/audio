@@ -2,7 +2,10 @@
 # @author nate zhou
 # @since 2025,2026
 # @depends wireplumber
-# change volume of pipewire sinks/sources and track status.
+# audio - change volume of pipewire sinks/sources and track status
+# also see:
+#   - .local/bin/wobd for setting an indicator in a wayland environment
+#   - .local/bin/damblocks for sending signals to update status bars
 
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
