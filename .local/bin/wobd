@@ -3,6 +3,8 @@
 # @since 2024,2025,2026
 # used in .local/bin/{audio,bright}
 
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
+
 WOBFIFO="${XDG_RUNTIME_DIR}/wob.fifo"
 wobcmd="wob"
 

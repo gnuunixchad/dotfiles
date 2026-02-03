@@ -167,3 +167,14 @@ _wttr() {
     fi
 }
 compdef _wttr wttr
+
+_wobd() {
+    local options
+    options=("-c" "--config")
+    if [ "$CURRENT" -eq 2 ]; then
+        _describe 'options' options
+    elif [ "$CURRENT" -eq 3 ]; then
+        _files "$@"
+    fi
+}
+compdef _wobd wobd

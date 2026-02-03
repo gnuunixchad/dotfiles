@@ -200,3 +200,15 @@ _wttr() {
     fi
 }
 complete -F _wttr wttr
+
+_wobd() {
+    local options
+    local current_word="${COMP_WORDS[COMP_CWORD]}"
+    options="-c --config"
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    elif [ "$COMP_CWORD" -eq 2 ]; then
+        COMPREPLY=($(compgen -A file -- "${COMP_WORDS[COMP_CWORD]}"))
+    fi
+}
+complete -F _wobd wobd
