@@ -29,7 +29,12 @@ sudo ./install-root.sh
 > A few software need manually setup:
 > - Software's config named to `*.example` for privacy reasons
 > - Software's config listed in `./.stow-local-ignore`
-> - Software complied from source, e.g. my build of `kwm`([codeberg](https://codeberg.org/unixchad/kwm)/[github](https://github.com/gnuunixchad/kwm)) and `dwl`([codeberg](https://codeberg.org/unixchad/dwl)/[github](https://github.com/gnuunixchad/dwl)).
+> - Software complied from source, e.g. my build of
+>   + `kwm`([codeberg](https://codeberg.org/unixchad/kwm)/[github](https://github.com/gnuunixchad/kwm))
+>   + `river-classic`([codeberg](https://codeberg.org/unixchad/river-classic)/[github](https://github.com/gnuunixchad/river-classic))
+>   + `dam`([codeberg](https://codeberg.org/unixchad/dam)/[github](https://github.com/gnuunixchad/dam))
+>   + `dwl`([codeberg](https://codeberg.org/unixchad/dwl)/[github](https://github.com/gnuunixchad/dwl)).
+>   + `dvtm`([codeberg](https://codeberg.org/unixchad/dvtm)/[github](https://github.com/gnuunixchad/dvtm))
 
 ## Software I Use
 I prefer software that are free as in freedom, keyboard centric, terminal based,
@@ -45,7 +50,7 @@ spyware when I can.
 | wayland compositor | river river-classic dwl sway|
 | river window manager | kwm |
 | river-classic bar | dam |
-| status generator | damblocks |
+| status generator | damblocks([codeberg](https://codeberg.org/unixchad/damblocks)/[github](https://github.com/gnuunixchad/damblocks))|
 | output management | wlr-randr kanshi |
 | application launcher | wmenu |
 | fuzzy finder | fzf |
