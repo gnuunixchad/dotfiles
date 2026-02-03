@@ -1,7 +1,25 @@
 # vim:ft=swayconfig
 # @author nate zhou
 # @since 2023,2024,2025,2026
+# .config/sway/rules
 
-for_window [title="Floating_Term"] floating enable, resize set width 800 px, resize set height 600 px, border pixel 2
+for_window [title="Floating_Term"] \
+    floating enable, \
+    resize set width 1200 px, resize set height 800 px
 
-for_window [app_id=swayimgapp] border pixel 0
+for_window [app_id="Floating_IMG"] \
+    floating enable, \
+    resize set width 1200 px, resize set height 800 px
+
+# GIMP
+for_window [app_id="file-*"] floating enable
+for_window [app_id="script-fu"] floating enable
+for_window [app_id="lighting" title="Lighting Effects"] floating enable
+
+# kdenlive file chooser
+for_window [app_id="kdenlive"] floating enable
+
+# code-oss
+for_window [app_id="electron" title="Open Folder"] floating enable
+
+for_window [app_id="org.fcitx.fcitx5-config-qt"] floating enable
