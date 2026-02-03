@@ -47,12 +47,12 @@ bar {
 	}
 }
 
-# class                 border  backgr. text    indicator child_border
-client.focused          $color9 $color9 $colorbg $color6   $color9
-client.focused_inactive $color8 $color7 $colorbg $color7   $color7
-client.unfocused        $color8 $colorbg $colorfg $color8   $colorbg
-client.urgent           $color8 $color11 $colorfg $color11   $color11
-client.placeholder      #$colorbg #$colorbg $colorfg #$colorbg   #$colorbg
+# class                 border    backgr    text     indicator child_border
+client.focused          $color14  $color14  $colorbg $colorbg   $color14
+client.focused_inactive $colorbg  $colorbg  $colorbg $colorbg  $colorbg
+client.unfocused        $colorbg  $colorbg  $colorfg $colorbg  $colorbg
+client.urgent           $color8   $color11  $colorfg $color11  $color11
+client.placeholder      #$colorbg #$colorbg $colorfg #$colorbg #$colorbg
 
 font pango:monospace 11.5
 titlebar_padding 1
