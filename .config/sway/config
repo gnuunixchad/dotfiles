@@ -2,14 +2,14 @@
 # @since 2023,2024,2025
 
 include /etc/sway/config.d/*
-include ~/.config/sway/colors
+include ${HOME}/.config/sway/colors
 
 # Mod4=super Mod1=alt
 set $mod Mod4
 set $term /usr/bin/footclient
 set $menu wmenu-run -f "SourceCodePro Medium 14" -i -N "$colorbg" -S "$color9" -s "$colorbg" | xargs swaymsg exec --
-set $wmenu ~/.local/bin/wmenu-color
-set $bookmarks ~/.local/bin/share/bookmarks
+set $wmenu ${HOME}/.local/bin/wmenu-color
+set $bookmarks ${HOME}/.local/bin/share/bookmarks
 set $wobfifo /tmp/wob.fifo
 set $mode_cursor "[;] num:F[n] | [d]Del | [HJKL]:Slow | Mod[hjkl]:Arrow | [n]PageUp | [p]PageDn"
 set $mode_wmenu "[w] w[w]iki w[h]eart w[b]ook [a]mount [f]locks [p]off w[s]hot w[c]ast w[m]ulti wsin[k] w[v]oice w[j]doc"
@@ -17,7 +17,7 @@ set $mode_apostrophe "[:] enable[t]ap disable[T]ap enable[p]ad disable[P]ad clip
 set $mode_space "[p]inyin keyboard-[u]s [a]nthy"
 
 bar {
-    #status_command ~/.local/bin/i3status-mpd
+    #status_command ${HOME}/.local/bin/i3status-mpd
     id bar-1
     status_command i3blocks
 	position top
@@ -83,7 +83,7 @@ for_window [title="_Floating_Term"] floating enable, resize set width 800 px, re
 for_window [title="_Scratchpad_Tmux"]  move scratchpad
 for_window [app_id=swayimgapp] border pixel 0
 
-output * bg ~/.local/share/wallpaper fill
+output * bg ${HOME}/.local/share/wallpaper fill
 output 'eDP-1' mode --custom 1920x1080@60.000Hz pos 0 0
 output  'DP-1' mode --custom 1920x1080@60.000Hz pos -1920 0
 workspace 1 output DP-1
@@ -109,8 +109,8 @@ input "type:keyboard" {
 
 # autostart
 exec_always swaymsg seat - cursor set 9999 9999
-exec_always "$HOME"/.local/bin/foots
-exec_always "$HOME"/.local/bin/wobd
+exec_always "${HOME}"/.local/bin/foots
+exec_always "${HOME}"/.local/bin/wobd
 exec swayidle -w \
          timeout 600 'brightnessctl set 4% -s && pkill -SIGRTMIN+3 i3blocks' resume 'brightnessctl -r && pkill -SIGRTMIN+3 i3blocks'\
          timeout 900 'swaylock' \
@@ -142,7 +142,7 @@ bindsym $mod+delete kill
 bindsym $mod+d exec $menu
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term -T "_Floating_Term"
-bindsym $mod+Control+Return exec $term -T "_Scratchpad_Tmux" $HOME/.local/bin/tmuxd
+bindsym $mod+Control+Return exec $term -T "_Scratchpad_Tmux" ${HOME}/.local/bin/tmuxd
 bindsym $mod+r exec $term lf
 bindsym $mod+CONTROL+e exec $term neomutt
 bindsym $mod+CONTROL+m exec $term ncmpcpp
@@ -154,18 +154,18 @@ bindsym $mod+CONTROL+n exec $term news
 bindsym $mod+CONTROL+w exec $term taskwarrior-tui
 
 bindsym $mod+Shift+r reload
-bindsym $mod+Control+r exec swaymsg "output * bg ~/.local/share/wallpaper fill"
-bindsym $mod+Shift+e exec ~/.local/bin/swayexit
-bindsym $mod+Shift+q exec ~/.local/bin/swayhibe
+bindsym $mod+Control+r exec swaymsg "output * bg ${HOME}/.local/share/wallpaper fill"
+bindsym $mod+Shift+e exec ${HOME}/.local/bin/swayexit
+bindsym $mod+Shift+q exec ${HOME}/.local/bin/swayhibe
 # clipboard & bookmarks
-bindsym $mod+c exec ~/.local/bin/wclip
-bindsym $mod+b exec ~/.local/bin/wbookmark
-bindsym $mod+Shift+b exec ~/.local/bin/wbookmark-record
+bindsym $mod+c exec ${HOME}/.local/bin/wclip
+bindsym $mod+b exec ${HOME}/.local/bin/wbookmark
+bindsym $mod+Shift+b exec ${HOME}/.local/bin/wbookmark-record
 # notification
 bindsym $mod+Shift+n exec "dunstctl history-pop"
 bindsym $mod+n exec "dunstctl close"
 bindsym $mod+backspace exec "dunstctl close-all"
-# swaylock is configured at ~/.config/swaylock/config
+# swaylock is configured at ${HOME}/.config/swaylock/config
 bindsym $mod+Shift+CONTROL+l exec "swaylock"
 # adjust window gaps
 bindsym $mod+CONTROL+minus exec "swaymsg gaps inner current minus 2"
@@ -185,12 +185,12 @@ bindsym $mod+Shift+m exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && pkill 
 bindsym $mod+CONTROL+space exec mpc toggle
 
 ## take a screenshot with a selected part
-bindsym $mod+g exec ~/.local/bin/wshot
-bindsym $mod+Shift+g exec ~/.local/bin/wshot-geo
+bindsym $mod+g exec ${HOME}/.local/bin/wshot
+bindsym $mod+Shift+g exec ${HOME}/.local/bin/wshot-geo
 ## take a screenshot with all monitors
 bindsym $mod+CONTROL+g exec grim && notify-send -u low -r 88 "Screenshot taken on all outputs"
 ## color picker
-#bindsym $mod+CONTROL+c exec ~/.local/bin/wpicker
+#bindsym $mod+CONTROL+c exec ${HOME}/.local/bin/wpicker
 # seat cursor
 #bindsym $mod+grave seat - cursor set 0 0
 bindsym $mod+slash seat - cursor set 9999 9999
@@ -255,18 +255,18 @@ mode $mode_wmenu {
     bindsym $mod+semicolon mode $mode_cursor ; seat seat0 hide_cursor when-typing disable
     bindsym $mod+apostrophe mode $mode_apostrophe
 
-    bindsym w exec ~/.local/bin/wwiki ; mode "default"
-    bindsym h exec ~/.local/bin/wheart ; mode "default"
-    bindsym b exec ~/.local/bin/wbook ; mode "default"
-    bindsym a exec ~/.local/bin/amount ; mode "default"
-    bindsym f exec ~/.local/bin/flocks ; mode "default"
-    bindsym p exec ~/.local/bin/poff ; mode "default"
-    bindsym s exec ~/.local/bin/wshot ; mode "default"
-    bindsym c exec $term ~/.local/bin/wcast ; mode "default"
-    bindsym m exec ~/.local/bin/wmulti ; mode "default"
-    bindsym k exec ~/.local/bin/wsink ; mode "default"
-    bindsym v exec ~/.local/bin/wvoice ; mode "default"
-    bindsym j exec ~/.local/bin/wjdoc ; mode "default"
+    bindsym w exec ${HOME}/.local/bin/wwiki ; mode "default"
+    bindsym h exec ${HOME}/.local/bin/wheart ; mode "default"
+    bindsym b exec ${HOME}/.local/bin/wbook ; mode "default"
+    bindsym a exec ${HOME}/.local/bin/amount ; mode "default"
+    bindsym f exec ${HOME}/.local/bin/flocks ; mode "default"
+    bindsym p exec ${HOME}/.local/bin/poff ; mode "default"
+    bindsym s exec ${HOME}/.local/bin/wshot ; mode "default"
+    bindsym c exec $term ${HOME}/.local/bin/wcast ; mode "default"
+    bindsym m exec ${HOME}/.local/bin/wmulti ; mode "default"
+    bindsym k exec ${HOME}/.local/bin/wsink ; mode "default"
+    bindsym v exec ${HOME}/.local/bin/wvoice ; mode "default"
+    bindsym j exec ${HOME}/.local/bin/wjdoc ; mode "default"
 }
 
 bindsym $mod+apostrophe mode $mode_apostrophe
@@ -282,9 +282,9 @@ mode $mode_apostrophe {
     bindsym p input type:touchpad events toggle enabled, exec notify-send "touchpad enabled" ; mode "default"
     bindsym Shift+p input type:touchpad events toggle disabled, exec notify-send "touchpad disabled" ; mode "default"
     bindsym h exec cliphist wipe; mode "default"; exec notify-send -u normal -r 196 "cliphist wiped"
-    bindsym w exec ~/.local/bin/dw ; mode "default"
-    bindsym l exec ~/.local/bin/lsupdates ; mode "default"
-    bindsym c exec ~/.local/bin/wcal ; mode "default"
+    bindsym w exec ${HOME}/.local/bin/dw ; mode "default"
+    bindsym l exec ${HOME}/.local/bin/lsupdates ; mode "default"
+    bindsym c exec ${HOME}/.local/bin/wcal ; mode "default"
 }
 
 # managing windows
@@ -364,8 +364,8 @@ assign [title="_placeholder_window2"] workspace =
 workspace - output DP-1
 workspace = output eDP-1
 # use i3blocks as a GUI crontab to execute swaymaxd
-bindsym $mod+grave exec "~/.local/bin/swaymaxd"
-bindsym $mod+f exec "~/.local/bin/swaymax"
+bindsym $mod+grave exec "${HOME}/.local/bin/swaymaxd"
+bindsym $mod+f exec "${HOME}/.local/bin/swaymax"
 
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+Shift+c move position center
