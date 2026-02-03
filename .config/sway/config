@@ -34,11 +34,11 @@ bar {
 	colors {
     background $colorbg
     #workspace color    border  backgr   text
-    focused_workspace  $color9  $color9  $colorbg
-    active_workspace   $color8  $color8  $colorfg
-    inactive_workspace $colorbg $colorbg $colorfg
-    urgent_workspace   $color11 $color11 $colorfg
-    binding_mode       $color9  $color9  $colorbg
+    focused_workspace  $color14 $color14 #eeeeee
+    active_workspace   $colorbg $colorbg #bbbbbb
+    inactive_workspace $colorbg $colorbg #bbbbbb
+    urgent_workspace   #bbbbbb  #bbbbbb  $colorbg
+    binding_mode       $color14 $color14 #bbbbbb
 	}
 }
 
