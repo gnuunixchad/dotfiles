@@ -40,4 +40,4 @@ if pgrep -f "tail -f $WOBFIFO" > /dev/null; then
     pkill -f "tail -f $WOBFIFO"
 fi
 
-tail -f "$WOBFIFO" | $wobcmd
+tail -f "$WOBFIFO" | $wobcmd &
