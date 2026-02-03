@@ -1,8 +1,7 @@
 #!/usr/bin/sh
-# river/modes
 # @author nate zhou
 # @since 2025,2026
-# river-classic
+# river-classic/modes
 
 map="riverctl map"
 

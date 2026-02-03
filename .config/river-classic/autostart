@@ -1,8 +1,7 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2025,2026
-# river/autostart
-# river-classic
+# river-classic/autostart
 
 spawn="riverctl spawn"
 
