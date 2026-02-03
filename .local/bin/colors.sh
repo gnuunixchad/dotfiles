@@ -1,13 +1,10 @@
 #vim:ft=sh
 # @author nate zhou
-# @since 2025
-# colorscheme for wmenu-color and i3blocks scripts
-#. $HOME/.local/bin/colors.sh
+# @since 2025,2026
+# colorscheme
 
-foreground="#eeeeee"
-background="#000000"
-#<span foreground=\"$separator\">]</span>"
-separator="#888888"
+colorfg="#eeeeee"
+colorbg="#000000"
 
 color0="#111111"
 color1="#f92672"
