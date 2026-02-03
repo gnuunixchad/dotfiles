@@ -1,7 +1,7 @@
 # vim:ft=conf
 # bookmarks for ~/.local/bin/address
 # @author nate zhou
-# @since 2023, 2024, 2025
+# @since 2023,2024,2025,2026
 # Everything before first `|` fuzzy find keywords
 
 # gpg
@@ -44,6 +44,14 @@ git codeberg dwl|https://codeberg.org/unixchad/dwl
 git github dwl|https://github.com/gnuunixchad/dwl
 git codeberg damblocks|https://codeberg.org/unixchad/damblocks
 git github damblocks|https://github.com/gnuunixchad/damblocks
+git codeberg kwm|https://codeberg.org/unixchad/kwm
+git github kwm|https://github.com/gnuunixchad/kwm
+git codeberg river-classic|https://codeberg.org/unixchad/river-classic
+git github river-classic|https://github.com/gnuunixchad/river-classic
+git codeberg river-shifttags|https://codeberg.org/unixchad/river-shifttags
+git github river-shifttags|https://github.com/gnuunixchad/river-shifttags
+git codeberg dam|https://codeberg.org/unixchad/dam
+git github dam|https://github.com/gnuunixchad/dam
 git codeberg dvtm|https://codeberg.org/unixchad/dvtm
 git github dvtm|https://github.com/gnuunixchad/dvtm
 git codeberg abduco|https://codeberg.org/unixchad/abduco
@@ -61,6 +69,7 @@ git linux wlroots|https://gitlab.freedesktop.org/wlroots/wlroots/
 git linux dwl|https://codeberg.org/dwl/dwl
 git linux dwl patch|https://codeberg.org/dwl/dwl-patches
 git linux shell sbar|https://github.com/pystardust/sbar
+git linux wayland|https://github.com/Supreeeme/xwayland-satellite
 git linux noise cancellation|https://github.com/werman/noise-suppression-for-voice
 git linux terminal tui dvtm abduco screen tmux|https://github.com/martanne/dvtm
 git linux terminal cli abduco dvtm screen tmux|https://github.com/martanne/abduco
