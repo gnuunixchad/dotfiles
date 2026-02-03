@@ -9,10 +9,10 @@ profile nomad {
 
 profile home {
     output eDP-1 mode --custom 1920x1080@60Hz position 0,0
-    output DP-1 enable mode --custom 1920x1080@60Hz position 0,-1080
+    output DP-1 enable mode --custom 1920x1080@60Hz position -1920,0
 }
 
 profile home {
     output eDP-1 mode --custom 1920x1080@60Hz position 0,0
-    output DP-2 enable mode --custom 1920x1080@60Hz position 0,-1080
+    output DP-2 enable mode --custom 1920x1080@60Hz position -1920,0
 }
