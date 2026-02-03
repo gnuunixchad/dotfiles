@@ -1,0 +1,17 @@
+# vim:ft=swayconfig
+# @author nate zhou
+# @since 2023,2024,2025,2026
+# .config/sway/autostart
+
+exec_always swaymsg seat - cursor set 9999 9999
+exec_always "${HOME}"/.local/bin/foots
+exec_always "${HOME}"/.local/bin/wobd
+exec swayidle -w \
+         timeout 600 'brightnessctl set 4% -s && pkill -SIGRTMIN+3 i3blocks' resume 'brightnessctl -r && pkill -SIGRTMIN+3 i3blocks'\
+         timeout 900 'swaylock' \
+         timeout 960 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock'
+exec "clsd"
+exec "gammastep -O 5000"
+exec "fcitx5 -d"
+exec "wl-paste --watch cliphist store"

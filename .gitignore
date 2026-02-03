@@ -259,6 +259,9 @@ package-list
 !.config/river-classic/rivercarro
 !.config/sway
 !.config/sway/config
+!.config/sway/autostart
+!.config/sway/bindings
+!.config/sway/modes
 !.config/sway/colors
 !.config/swayidle/
 !.config/swayidle/config
