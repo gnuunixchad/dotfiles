@@ -104,7 +104,7 @@ bindsym $mod+Shift+backslash input "type:touchpad" tap disabled, exec notify-sen
 input "type:keyboard" {
 	repeat_delay 200
 	repeat_rate 30
-    xkb_file "~/.config/sway/layout.xkb"
+    xkb_options caps:swapescape,altwin:swap_alt_win
 }
 
 # autostart
