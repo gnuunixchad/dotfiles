@@ -33,6 +33,7 @@ bar {
 
 	colors {
     background $colorbg
+    statusline #bbbbbb
     #workspace color    border  backgr   text
     focused_workspace  $color14 $color14 #eeeeee
     active_workspace   $colorbg $colorbg #bbbbbb
