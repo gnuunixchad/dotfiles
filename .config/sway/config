@@ -9,6 +9,8 @@ include ${HOME}/.config/sway/bindings
 include ${HOME}/.config/sway/modes
 include ${HOME}/.config/sway/rules
 
+xwayland disable
+
 input "type:keyboard" {
 	repeat_delay 200
 	repeat_rate 30
