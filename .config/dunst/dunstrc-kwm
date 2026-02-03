@@ -1,7 +1,8 @@
 # vim:ft=conf
 # @author nate zhou
 # @since 2023,2024,2025,2026
-# dunstrc
+# dunst/dunstrc-kwm
+# add offset for kwm on river
 
 [global]
     monitor = 0
@@ -9,7 +10,7 @@
     width = 294
     height = (0, 600)
     origin = top-right
-    offset = (12 ,10)
+    offset = (12 ,36)
     scale = 0
     notification_limit = 30
     indicate_hidden = yes

@@ -117,6 +117,7 @@ package-list
 !.config/dircolors
 !.config/dunst/
 !.config/dunst/dunstrc
+!.config/dunst/dunstrc-kwm
 !.config/fcitx5/
 !.config/fcitx5/config
 !.config/fcitx5/conf
@@ -289,6 +290,7 @@ package-list
 !.config/wget/wgetrc
 !.config/wob/
 !.config/wob/wob.ini
+!.config/wob/wob-kwm.ini
 !.config/yt-dlp/
 !.config/yt-dlp/config
 !.config/yt-dlp/video.conf
