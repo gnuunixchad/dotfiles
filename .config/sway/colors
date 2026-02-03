@@ -1,10 +1,10 @@
 # vim:ft=swayconfig
 # sway/color
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 
-set $foreground "#eeeeee"
-set $background "#000000"
+set $colorfg "#eeeeee"
+set $colorbg "#000000"
 
 set $color0 "#111111"
 set $color6 "#8ec07c"

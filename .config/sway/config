@@ -7,7 +7,7 @@ include ~/.config/sway/colors
 # Mod4=super Mod1=alt
 set $mod Mod4
 set $term /usr/bin/footclient
-set $menu wmenu-run -f "SourceCodePro Medium 14" -i -N "$background" -S "$color9" -s "$background" | xargs swaymsg exec --
+set $menu wmenu-run -f "SourceCodePro Medium 14" -i -N "$colorbg" -S "$color9" -s "$colorbg" | xargs swaymsg exec --
 set $wmenu ~/.local/bin/wmenu-color
 set $bookmarks ~/.local/bin/share/bookmarks
 set $wobfifo /tmp/wob.fifo
@@ -37,22 +37,22 @@ bar {
     strip_workspace_numbers yes
 
 	colors {
-    background $background
+    background $colorbg
     #workspace color    border  backgr  text
-    focused_workspace  $color9 $color9 $background
-    active_workspace   $color8 $color8 $foreground
-    inactive_workspace $background $background $foreground
-    urgent_workspace   $color11 $color11 $foreground
-    binding_mode       $color9 $color9 $background
+    focused_workspace  $color9 $color9 $colorbg
+    active_workspace   $color8 $color8 $colorfg
+    inactive_workspace $colorbg $colorbg $colorfg
+    urgent_workspace   $color11 $color11 $colorfg
+    binding_mode       $color9 $color9 $colorbg
 	}
 }
 
 # class                 border  backgr. text    indicator child_border
-client.focused          $color9 $color9 $background $color6   $color9
-client.focused_inactive $color8 $color7 $background $color7   $color7
-client.unfocused        $color8 $background $foreground $color8   $background
-client.urgent           $color8 $color11 $foreground $color11   $color11
-client.placeholder      #$background #$background $foreground #$background   #$background
+client.focused          $color9 $color9 $colorbg $color6   $color9
+client.focused_inactive $color8 $color7 $colorbg $color7   $color7
+client.unfocused        $color8 $colorbg $colorfg $color8   $colorbg
+client.urgent           $color8 $color11 $colorfg $color11   $color11
+client.placeholder      #$colorbg #$colorbg $colorfg #$colorbg   #$colorbg
 
 font pango:monospace 11.5
 titlebar_padding 1
