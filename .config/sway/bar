@@ -7,6 +7,7 @@ bar {
     status_command damblocks
 	position top
     height 24
+    workspace_min_width 26px
 	font Source Code Pro medium 13
 	tray_output none
 	tray_padding 4
