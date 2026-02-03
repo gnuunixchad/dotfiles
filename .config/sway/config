@@ -5,7 +5,7 @@ include /etc/sway/config.d/*
 include ${HOME}/.config/sway/colors
 
 # Mod4=super Mod1=alt
-set $mod "Mod4"
+set $mod Mod4
 set $term "footclient"
 set $menu "${HOME}/.local/bin/wmenu-run-color"
 set $wmenu "${HOME}/.local/bin/wmenu-color"
