@@ -1,13 +1,13 @@
 # vim:ft=swayconfig
 # @author nate zhou
 # @since 2023,2024,2025,2026
+# .config/sway/bar
 
 bar {
-    id bar-1
     status_command damblocks
 	position top
     height 24
-	font Source Code Pro normal 13
+	font Source Code Pro medium 13
 	tray_output none
 	tray_padding 4
     status_edge_padding 4
@@ -22,7 +22,7 @@ bar {
 	colors {
     background $colorbg
     statusline #bbbbbb
-    #workspace color    border  backgr   text
+    #workspace          border  backgr   text
     focused_workspace  $color14 $color14 #eeeeee
     active_workspace   $colorbg $colorbg #bbbbbb
     inactive_workspace $colorbg $colorbg #bbbbbb
