@@ -29,7 +29,7 @@ mouse_warping none
 client.focused          $color14  $color14  $colorbg $colorbg  $color14
 client.focused_inactive $colorbg  $colorbg  $colorbg $colorbg  $colorbg
 client.unfocused        $colorbg  $colorbg  $colorfg $colorbg  $colorbg
-client.urgent           $color8   $color11  $colorfg $color11  $color11
+client.urgent           $colorfg  $colorfg  $colorbg $colorfg  $colorfg
 client.placeholder      #$colorbg #$colorbg $colorfg #$colorbg #$colorbg
 
 font monospace 0.001
