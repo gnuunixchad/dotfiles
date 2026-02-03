@@ -1,15 +1,43 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
-# used in sway's brightness/volume keybindings
+# @since 2024,2025,2026
+# used in .local/bin/{audio,bright}
 
 WOBFIFO="${XDG_RUNTIME_DIR}/wob.fifo"
+wobcmd="wob"
+
+usage() {
+    cat << _EOF_
+USAGE
+        $(basename $0) [OPTION]
+        setting up a fifo as $WOBFIFO, and start or restart wob to listen to,
+        used in .local/bin/{audio,bright}.
+OPTIONS
+        -c,--config FILE    specify alternative config file for wob
+        -h,--help           print this usage manual
+_EOF_
+    exit 0
+}
 
 [ -f "$WOBFIFO" ] && [ ! -p "$WOBFIFO" ] && rm "$WOBFIFO"
-[ -f "$WOBFIFO" ] || mkfifo "$WOBFIFO"
+[ -p "$WOBFIFO" ] || mkfifo "$WOBFIFO"
+
+while [ -n "$1" ]; do
+    case "$1" in
+        -c|--config)
+            shift
+            CONFIG="$1"
+            wobcmd="wob -c $CONFIG"
+            ;;
+        *)
+            usage
+            ;;
+    esac
+    shift
+done
 
 if pgrep -f "tail -f $WOBFIFO" > /dev/null; then
     pkill -f "tail -f $WOBFIFO"
 fi
 
-tail -f "$WOBFIFO" | wob
+tail -f "$WOBFIFO" | $wobcmd
