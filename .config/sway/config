@@ -7,7 +7,7 @@ include ${HOME}/.config/sway/colors
 # Mod4=super Mod1=alt
 set $mod "Mod4"
 set $term "footclient"
-set $menu "wmenu-run -f "SourceCodePro Medium 14" -i -N "$colorbg" -S "$color9" -s "$colorbg" | xargs swaymsg exec --"
+set $menu "${HOME}/.local/bin/wmenu-run-color"
 set $wmenu "${HOME}/.local/bin/wmenu-color"
 set $mode_cursor "[;] num:F[n] | [d]Del | [HJKL]:Slow | Mod[hjkl]:Arrow | [n]PageUp | [p]PageDn"
 set $mode_wmenu "[w] w[w]iki w[h]eart w[b]ook [a]mount [f]locks [p]off w[s]hot w[c]ast w[m]ulti wsin[k] w[v]oice w[j]doc"
