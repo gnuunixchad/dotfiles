@@ -17,7 +17,7 @@ set $mode_space "[p]inyin keyboard-[u]s [a]nthy"
 bar {
     #status_command ${HOME}/.local/bin/i3status-mpd
     id bar-1
-    status_command i3blocks
+    status_command damblocks
 	position top
     height 26
 	font pango:Source Code Pro normal 13
