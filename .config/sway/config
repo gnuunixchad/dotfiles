@@ -1,106 +1,59 @@
+# vim:ft=swayconfig
 # @author nate zhou
 # @since 2023,2024,2025,2026
 
-include /etc/sway/config.d/*
-set $mod Mod4
-
+include ${HOME}/.config/sway/colors
+include ${HOME}/.config/sway/bar
 include ${HOME}/.config/sway/autostart
 include ${HOME}/.config/sway/bindings
-include ${HOME}/.config/sway/mode
-include ${HOME}/.config/sway/colors
+include ${HOME}/.config/sway/modes
+include ${HOME}/.config/sway/rules
 
-# Mod4=super Mod1=alt
-set $term "footclient"
-set $menu "${HOME}/.local/bin/wmenu-run-color"
-set $wmenu "${HOME}/.local/bin/wmenu-color"
-set $mode_cursor "[;] num:F[n] | [d]Del | [HJKL]:Slow | Mod[hjkl]:Arrow | [n]PageUp | [p]PageDn"
-set $mode_wmenu "[w] w[w]iki w[h]eart w[b]ook [a]mount [f]locks [p]off w[s]hot w[c]ast w[m]ulti wsin[k] w[v]oice w[j]doc"
-set $mode_apostrophe "[:] enable[t]ap disable[T]ap enable[p]ad disable[P]ad clip[h]ist-wipe [l]supdates d[w] w[c]al"
-set $mode_space "[p]inyin keyboard-[u]s [a]nthy"
-
-bar {
-    id bar-1
-    status_command damblocks
-	position top
-    height 24
-	font Source Code Pro normal 13
-	tray_output none
-	tray_padding 4
-    status_edge_padding 4
-	bindsym button4 nop
-	bindsym button5 nop
-	bindsym button6 nop
-	bindsym button7 nop
-    bindsym button8 nop
-    bindsym button9 nop
-    strip_workspace_numbers yes
-
-	colors {
-    background $colorbg
-    statusline #bbbbbb
-    #workspace color    border  backgr   text
-    focused_workspace  $color14 $color14 #eeeeee
-    active_workspace   $colorbg $colorbg #bbbbbb
-    inactive_workspace $colorbg $colorbg #bbbbbb
-    urgent_workspace   #bbbbbb  #bbbbbb  $colorbg
-    binding_mode       $color14 $color14 #bbbbbb
-	}
-}
-
-# class                 border    backgr    text     indicator child_border
-client.focused          $color14  $color14  $colorbg $colorbg   $color14
-client.focused_inactive $colorbg  $colorbg  $colorbg $colorbg  $colorbg
-client.unfocused        $colorbg  $colorbg  $colorfg $colorbg  $colorbg
-client.urgent           $color8   $color11  $colorfg $color11  $color11
-client.placeholder      #$colorbg #$colorbg $colorfg #$colorbg #$colorbg
-
-font pango:monospace 11.5
-titlebar_padding 1
-titlebar_border_thickness 0
-#default_border pixel 1
-for_window [class=".*"] border pixel 2
-#for_window [app_id="code-oss"] opacity 0.90
-
-default_orientation auto
-
-#floating_maximum_size 1600 x 875
-popup_during_fullscreen smart
-focus_wrapping yes
-force_display_urgency_hint 200 ms
-focus_on_window_activation urgent
-
-seat seat0 hide_cursor 3000
-seat seat0 hide_cursor when-typing enable
-focus_follows_mouse no
-mouse_warping none
-
-floating_modifier $mod
-
-#gaps inner 4
-#gaps outer -2
-#smart_gaps on
-for_window [title="_Floating_Term"] floating enable, resize set width 800 px, resize set height 600 px, border pixel 2
-for_window [app_id=swayimgapp] border pixel 0
-
-output * bg ${HOME}/.local/share/wallpaper fill
-output 'eDP-1' mode --custom 1920x1080@60.000Hz pos 0 0
-output  'DP-1' mode --custom 1920x1080@60.000Hz pos -1920 0
-workspace 1 output DP-1
-workspace 2 output DP-1
-workspace 3 output DP-1
-workspace 4 output DP-1
-workspace 5 output DP-1
-workspace 6 output eDP-1
-workspace 7 output eDP-1
-workspace 8 output eDP-1
-workspace 9 output eDP-1
-workspace 10:0 output eDP-1
-
-input "type:touchpad" tap enabled
-input "type:touchpad" events enabled
 input "type:keyboard" {
 	repeat_delay 200
 	repeat_rate 30
     xkb_options caps:swapescape,altwin:swap_alt_win
 }
+input "type:touchpad" {
+    tap enabled
+    events enabled
+}
+seat seat0 {
+    hide_cursor 3000
+    hide_cursor when-typing enable
+}
+focus_follows_mouse no
+mouse_warping none
 
+# class                 border    backgr    text     indicator child_border
+client.focused          $color14  $color14  $colorbg $colorbg  $color14
+client.focused_inactive $colorbg  $colorbg  $colorbg $colorbg  $colorbg
+client.unfocused        $colorbg  $colorbg  $colorfg $colorbg  $colorbg
+client.urgent           $color8   $color11  $colorfg $color11  $color11
+client.placeholder      #$colorbg #$colorbg $colorfg #$colorbg #$colorbg
+
+font monospace 0.001
+titlebar_padding 1
+titlebar_border_thickness 0
+for_window [class=".*"] border pixel 2
+
+default_orientation auto
+popup_during_fullscreen smart
+focus_wrapping yes
+force_display_urgency_hint 200 ms
+focus_on_window_activation urgent
+floating_modifier $mod
+
+workspace 1 output eDP-1
+workspace 2 output eDP-1
+workspace 3 output eDP-1
+workspace 4 output eDP-1
+workspace 5 output eDP-1
+workspace 6 output DP-1
+workspace 7 output DP-1
+workspace 8 output DP-1
+workspace 9 output DP-1
+workspace 10:0 output DP-1
+
+gaps inner 0
+gaps outer 0
