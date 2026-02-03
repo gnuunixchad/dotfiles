@@ -47,6 +47,8 @@ alias g="git"
 alias v="virsh"
 alias t="type"
 alias e="$EDITOR"
+alias s="systemctl"
+alias ss="sudo systemctl"
 
 alias vs="virsh list"
 alias vla="virsh list --all"
