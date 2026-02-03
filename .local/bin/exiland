@@ -22,6 +22,9 @@ end_session() {
         -dwl)
             killall dwl
             ;;
+        -sway)
+            swaymsg exit
+            ;;
     esac
 }
 
