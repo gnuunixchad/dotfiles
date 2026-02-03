@@ -3,63 +3,105 @@
 # @since 2023,2024,2025,2026
 # .config/sway/bindings
 
+bindsym $mod+Shift+r reload
 bindsym --release Caps_Lock exec "if [ $(cat /sys/class/leds/input*::capslock/brightness | head -1) = 0 ]; then notify-send -r 195 -t 1100 'CapsLock '; else notify-send -r 195 -t 1100 'CapsLock '; fi"
 
-bindsym $mod+space exec fcitx5-remote -t && notify-send -u normal -r 3289 -t 1100 "$(fcitx5-remote -n)"
-
-bindsym $mod+q kill
-bindsym $mod+delete kill
-bindsym $mod+d exec $menu
+bindsym $mod+p      exec $menu
 bindsym $mod+Return exec $term
-bindsym $mod+Shift+Return exec $term -T "_Floating_Term"
-bindsym $mod+r exec $term lf
+bindsym $mod+v      exec "$term -T \"Floating_Term\" -o colors.alpha=0.9 abduco -A dvtm dvtm-status"
+bindsym $mod+r      exec $term lf
+bindsym $mod+q      exec qutebrowser
 
-bindsym $mod+Shift+r reload
-bindsym $mod+Control+r exec swaymsg "output * bg ${HOME}/.local/share/wallpaper fill"
-bindsym $mod+Shift+e exec ${HOME}/.local/bin/swayexit
-bindsym $mod+Shift+q exec ${HOME}/.local/bin/swayhibe
-# clipboard & bookmarks
-bindsym $mod+c exec ${HOME}/.local/bin/wclip
-bindsym $mod+b exec ${HOME}/.local/bin/wbookmark
-bindsym $mod+Shift+b exec ${HOME}/.local/bin/wbookmark-record
-# notification
-bindsym $mod+Shift+n exec "dunstctl history-pop"
-bindsym $mod+n exec "dunstctl close"
-bindsym $mod+backspace exec "dunstctl close-all"
-# swaylock is configured at ${HOME}/.config/swaylock/config
-bindsym $mod+Shift+CONTROL+l exec "swaylock"
-# adjust window gaps
-bindsym $mod+CONTROL+minus exec "swaymsg gaps inner current minus 2"
-bindsym $mod+CONTROL+equal exec "swaymsg gaps inner current plus 2"
-# brightness
-bindsym $mod+bracketleft exec brightnessctl set 2%- | awk -F'[()]' 'NR==3 {print $2}'| sed 's/%//' > $wobfifo  && pkill -SIGRTMIN+3 i3blocks
-bindsym $mod+bracketright exec brightnessctl set 2%+ | awk -F'[()]' 'NR==3 {print $2}'| sed 's/%//' > $wobfifo && pkill -SIGRTMIN+3 i3blocks
-# audio output
-bindsym $mod+minus exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g; s/^0//' > $wobfifo && pkill -SIGRTMIN+1 i3blocks
-bindsym $mod+equal exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed 's/[^0-9]//g; s/^0//' > $wobfifo && pkill -SIGRTMIN+1 i3blocks
-bindsym $mod+m exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && pkill -SIGRTMIN+1 i3blocks
-# audio input
-bindsym $mod+Shift+minus exec wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%- &&  wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | sed 's/[^0-9]//g; s/^0//' > $wobfifo && pkill -SIGRTMIN+2 i3blocks
-bindsym $mod+Shift+equal exec wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 2%+ &&  wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | sed 's/[^0-9]//g; s/^0//' > $wobfifo && pkill -SIGRTMIN+2 i3blocks
-bindsym $mod+Shift+m exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && pkill -SIGRTMIN+2 i3blocks
+bindsym $mod+minus       exec "${HOME}/.local/bin/audio sink --minus10"
+bindsym $mod+equal       exec "${HOME}/.local/bin/audio sink --plus10"
+bindsym $mod+Shift+minus exec "${HOME}/.local/bin/audio sink --minus"
+bindsym $mod+Shift+equal exec "${HOME}/.local/bin/audio sink --plus"
+bindsym $mod+backspace   exec "${HOME}/.local/bin/audio sink --mute"
 
-bindsym $mod+CONTROL+space exec mpc toggle
+bindsym $mod+Control+minus       exec "${HOME}/.local/bin/audio source --minus10"
+bindsym $mod+Control+equal       exec "${HOME}/.local/bin/audio source --plus10"
+bindsym $mod+Control+Shift+minus exec "${HOME}/.local/bin/audio source --minus"
+bindsym $mod+Control+Shift+equal exec "${HOME}/.local/bin/audio source --plus"
+bindsym $mod+Control+backspace   exec "${HOME}/.local/bin/audio source --mute"
 
-## take a screenshot with a selected part
-bindsym $mod+g exec ${HOME}/.local/bin/wshot
-bindsym $mod+Shift+g exec ${HOME}/.local/bin/wshot-geo
-## take a screenshot with all monitors
-bindsym $mod+CONTROL+g exec grim && notify-send -u low -r 88 "Screenshot taken on all outputs"
-## color picker
-#bindsym $mod+CONTROL+c exec ${HOME}/.local/bin/wpicker
-# seat cursor
-#bindsym $mod+grave seat - cursor set 0 0
-bindsym $mod+slash seat - cursor set 9999 9999
-# wtype
-#bindsym Control+e exec wtype -k 'Escape'
+bindsym $mod+bracketleft                exec "${HOME}/.local/bin/bright --minus10"
+bindsym $mod+bracketright               exec "${HOME}/.local/bin/bright --plus10"
+bindsym $mod+Shift+bracketleft          exec "${HOME}/.local/bin/bright --minus"
+bindsym $mod+Shift+bracketright         exec "${HOME}/.local/bin/bright --plus"
+bindsym $mod+Control+Shift+bracketleft  exec "${HOME}/.local/bin/bright --min"
+bindsym $mod+Control+Shift+bracketright exec "${HOME}/.local/bin/bright --max"
 
+bindsym $mod+Shift+q exec "${HOME}/.local/bin/exiland -sway"
+bindsym $mod+Shift+w exec "swaylock"
+bindsym $mod+Shift+e exec "${HOME}/.local/bin/hibe"
+bindsym $mod+Shift+m exec "pgrep hyprmag && killall -e hyprmag || hyprmag -r 9999 -s 2"
+bindsym $mod+Control+m exec "pgrep hyprmag && killall -e hyprmag || hyprmag"
 
-# managing windows
+bindsym Control+space  exec "fcitx5-remote -t"
+
+bindsym $mod+n                  exec "dunstctl history-pop"
+bindsym $mod+Shift+n            exec "dunstctl close"
+bindsym $mod+Control+Shift+n    exec "dunstctl close-all"
+
+bindsym $mod+y                  exec "${HOME}/.local/bin/shoot"
+bindsym $mod+Shift+y            exec "${HOME}/.local/bin/shoot --geo"
+bindsym $mod+Control+y          exec "${HOME}/.local/bin/shoot --all"
+
+bindsym $mod+c                  exec "${HOME}/.local/bin/clip"
+bindsym $mod+a                  exec "${HOME}/.local/bin/address"
+bindsym $mod+Shift+a            exec "${HOME}/.local/bin/address --record"
+bindsym $mod+Control+a          exec "${HOME}/.local/bin/address --multi"
+
+bindsym $mod+Control+space      exec "mpc toggle && ${HOME}/.local/bin/lsmus"
+bindsym $mod+Control+p          exec "mpc prev"
+bindsym $mod+Control+n          exec "mpc next"
+
+bindsym $mod+Control+s          exec "${HOME}/.local/bin/wsk"
+bindsym $mod+Shift+b            exec "pgrep gammastep && killall gammastep || gammastep -O 5000"
+
+bindsym $mod+b                  exec "swaymsg bar mode toggle"
+
+bindsym $mod+i focus parent
+bindsym $mod+d focus child
+
+bindsym $mod+CONTROL+bracketleft  exec "swaymsg gaps inner current plus 2"
+bindsym $mod+CONTROL+bracketright exec "swaymsg gaps inner current minus 2"
+
+bindsym $mod+tab workspace back_and_forth
+bindsym $mod+backslash workspace back_and_forth
+
+bindsym $mod+Shift+c kill
+
+bindsym $mod+t layout toggle tabbed split
+bindsym $mod+s layout toggle stacking split
+bindsym $mod+u layout toggle split
+
+bindsym $mod+x splitv
+bindsym $mod+z splith
+
+bindsym $mod+Control+h resize shrink width 30px
+bindsym $mod+Control+j resize grow height 30px
+bindsym $mod+Control+k resize shrink height 30px
+bindsym $mod+Control+l resize grow width 30px
+
+bindsym $mod+space floating toggle
+bindsym $mod+f focus mode_toggle
+bindsym $mod+e fullscreen
+
+bindsym $mod+Shift+s sticky toggle
+bindsym $mod+Shift+o move scratchpad
+bindsym $mod+o scratchpad show
+
+bindsym $mod+period focus output right
+bindsym $mod+comma focus output left
+bindsym $mod+Shift+period move container to output right
+bindsym $mod+Shift+comma move container to output left
+
+bindsym $mod+apostrophe workspace next_on_output
+bindsym $mod+semicolon workspace prev_on_output
+bindsym $mod+Shift+apostrophe move container to workspace next_on_output
+bindsym $mod+Shift+semicolon move container to workspace prev_on_output
+
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
@@ -70,11 +112,6 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-bindsym $mod+CONTROL+h mark swap, focus left, swap container with mark swap
-bindsym $mod+CONTROL+j mark swap, focus down, swap container with mark swap
-bindsym $mod+CONTROL+k mark swap, focus up, swap container with mark swap
-bindsym $mod+CONTROL+l mark swap, focus right, swap container with mark swap
-
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -84,8 +121,6 @@ bindsym $mod+6 workspace number 6
 bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
-# Strip workspace numbers for workspace 10, only display the name
-# applys to any workspace that has a name of the form "[n][:][NAME]"
 bindsym $mod+0 workspace 10:0
 
 bindsym $mod+Shift+1 move container to workspace number 1
@@ -99,68 +134,13 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10:0
 
-bindsym $mod+CONTROL+1 move container to workspace number 1; workspace number 1
-bindsym $mod+CONTROL+2 move container to workspace number 2; workspace number 2
-bindsym $mod+CONTROL+3 move container to workspace number 3; workspace number 3
-bindsym $mod+CONTROL+4 move container to workspace number 4; workspace number 4
-bindsym $mod+CONTROL+5 move container to workspace number 5; workspace number 5
-bindsym $mod+CONTROL+6 move container to workspace number 6; workspace number 6
-bindsym $mod+CONTROL+7 move container to workspace number 7; workspace number 7
-bindsym $mod+CONTROL+8 move container to workspace number 8; workspace number 8
-bindsym $mod+CONTROL+9 move container to workspace number 9; workspace number 9
-bindsym $mod+CONTROL+0 move container to workspace number 10:0; workspace number 10:0
-
-bindsym $mod+tab workspace back_and_forth
-bindsym $mod+comma workspace prev_on_output
-bindsym $mod+period workspace next_on_output
-bindsym $mod+Shift+comma move container to workspace prev_on_output
-bindsym $mod+Shift+period move container to workspace next_on_output
-
-bindsym $mod+CONTROL+comma focus output left
-bindsym $mod+CONTROL+period focus output right
-
-bindsym $mod+x splitv
-bindsym $mod+v splith
-
-bindsym $mod+s layout toggle stacking split
-bindsym $mod+t layout toggle tabbed split
-bindsym $mod+e layout toggle split
-
-bindsym $mod+Shift+f fullscreen
-# mimic maximize
-workspace_auto_back_and_forth yes
-for_window [title="_placeholder_window1"] mark "_placeholder_window1" , border pixel 0
-for_window [title="_placeholder_window2"] mark "_placeholder_window2" , border pixel 0
-assign [title="_placeholder_window1"] workspace -
-assign [title="_placeholder_window2"] workspace =
-workspace - output DP-1
-workspace = output eDP-1
-# use i3blocks as a GUI crontab to execute swaymaxd
-bindsym $mod+grave exec "${HOME}/.local/bin/swaymaxd"
-bindsym $mod+f exec "${HOME}/.local/bin/swaymax"
-
-bindsym $mod+Shift+space floating toggle
-bindsym $mod+Shift+c move position center
-bindsym $mod+Shift+t sticky toggle
-bindsym $mod+z focus mode_toggle
-
-bindsym $mod+p focus parent
-bindsym $mod+Shift+p focus child
-
-bindsym $mod+Shift+s move scratchpad
-bindsym $mod+a scratchpad show
-
-bindsym $mod+y resize shrink width 30px
-bindsym $mod+u resize grow height 30px
-bindsym $mod+i resize shrink height 30px
-bindsym $mod+o resize grow width 30px
-
-bindsym $mod+Shift+y resize shrink width 10px
-bindsym $mod+Shift+u resize grow height 10px
-bindsym $mod+Shift+i resize shrink height 10px
-bindsym $mod+Shift+o resize grow width 10px
-
-# mouse bindings
-bindsym --whole-window --border $mod+button2 exec wtype -k "Return"
-bindsym --whole-window --border $mod+button4 exec wtype -k "Left"
-bindsym --whole-window --border $mod+button5 exec wtype -k "Right"
+## mimic maximize
+#for_window [title="_placeholder_window1"] mark "_placeholder_window1" , border pixel 0
+#for_window [title="_placeholder_window2"] mark "_placeholder_window2" , border pixel 0
+#assign [title="_placeholder_window1"] workspace -
+#assign [title="_placeholder_window2"] workspace =
+#workspace - output DP-1
+#workspace = output eDP-1
+## use i3blocks as a GUI crontab to execute swaymaxd
+#bindsym $mod+grave exec "${HOME}/.local/bin/swaymaxd"
+#bindsym $mod+m exec "${HOME}/.local/bin/swaymax"
