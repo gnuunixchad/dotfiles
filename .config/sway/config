@@ -80,7 +80,6 @@ floating_modifier $mod
 #gaps outer -2
 #smart_gaps on
 for_window [title="_Floating_Term"] floating enable, resize set width 800 px, resize set height 600 px, border pixel 2
-for_window [title="_Scratchpad_Tmux"]  move scratchpad
 for_window [app_id=swayimgapp] border pixel 0
 
 output * bg ${HOME}/.local/share/wallpaper fill
@@ -142,16 +141,7 @@ bindsym $mod+delete kill
 bindsym $mod+d exec $menu
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec $term -T "_Floating_Term"
-bindsym $mod+Control+Return exec $term -T "_Scratchpad_Tmux" ${HOME}/.local/bin/tmuxd
 bindsym $mod+r exec $term lf
-bindsym $mod+CONTROL+e exec $term neomutt
-bindsym $mod+CONTROL+m exec $term ncmpcpp
-bindsym $mod+CONTROL+b exec $term bluetui
-bindsym $mod+CONTROL+p exec $term pulsemixer
-bindsym $mod+CONTROL+t exec $term btop
-bindsym $mod+CONTROL+c exec $term calcurse
-bindsym $mod+CONTROL+n exec $term news
-bindsym $mod+CONTROL+w exec $term taskwarrior-tui
 
 bindsym $mod+Shift+r reload
 bindsym $mod+Control+r exec swaymsg "output * bg ${HOME}/.local/share/wallpaper fill"
