@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 # dvtm-status
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 
 FIFO="${XDG_RUNTIME_DIR}/dvtm-status.fifo"
 
@@ -13,6 +13,9 @@ update_time () {
 
 update_battery () {
     local POWER="/sys/class/power_supply"
+
+    ls "${POWER}/BAT?" >/dev/null 2>&1 || { printf %s "AC"; return; }
+
     local status="$(cat $POWER/BAT?/status)"
     local level="$(cat $POWER/BAT?/capacity)"
     case "$status" in
