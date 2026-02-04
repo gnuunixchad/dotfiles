@@ -108,16 +108,20 @@ update_battery () {
 
 # For audio & brightness modules, save to XDG_CACHE_HOME for reboot consistency
 update_volume() {
-    local level=$(cat "${XDG_CACHE_HOME}/audio-@DEFAULT_AUDIO_SINK@.level")
-    local muted=$(cat "${XDG_CACHE_HOME}/audio-@DEFAULT_AUDIO_SINK@.muted")
+    local level=$(cat "${XDG_CACHE_HOME}/audio-@DEFAULT_AUDIO_SINK@.level" \
+                  2>/dev/null)
+    local muted=$(cat "${XDG_CACHE_HOME}/audio-@DEFAULT_AUDIO_SINK@.muted" \
+                  2>/dev/null)
     [ -z "$muted" ] && icon="" || icon=""
     [ -z "$level" ] || level="${level}%"
     volume="${icon}${level}"
 }
 
 update_microphone() {
-    local level=$(cat "${XDG_CACHE_HOME}/audio-@DEFAULT_AUDIO_SOURCE@.level")
-    local muted=$(cat "${XDG_CACHE_HOME}/audio-@DEFAULT_AUDIO_SOURCE@.muted")
+    local level=$(cat "${XDG_CACHE_HOME}/audio-@DEFAULT_AUDIO_SOURCE@.level" \
+                  2>/dev/null)
+    local muted=$(cat "${XDG_CACHE_HOME}/audio-@DEFAULT_AUDIO_SOURCE@.muted" \
+                  2>/dev/null)
     [ -z "$muted" ] && icon="" || icon=""
     [ -z "$level" ] || level="${level}%"
     microphone="${icon}${level}"
@@ -125,7 +129,7 @@ update_microphone() {
 
 update_brightness() {
     local icon=""
-    local level="$(cat ${XDG_CACHE_HOME}/brightness.level)"
+    local level="$(cat ${XDG_CACHE_HOME}/brightness.level 2>/dev/null)"
     case $level in
         [0-9]) icon="󱩎" ;;
         1[0-9]) icon="󱩏" ;;
@@ -255,8 +259,11 @@ update_pacman() {
 }
 
 update_mutt() {
-    local MAIL_DIR="$HOME/doc/mail"
     local MBSYNC_CACHE="${XDG_RUNTIME_DIR}/mbsync-cron"
+
+    [ -f "$MBSYNC_CACHE" ] || { icon="󱏣"; return; }
+
+    local MAIL_DIR="$HOME/doc/mail"
     local UPDATE_FREQUENCY=3600 # in seconds
     local update_time="$(stat -L -c "%Y" "$MBSYNC_CACHE")"
     local current_time="$(date +%s)"
@@ -295,6 +302,7 @@ update_newsboat() {
 
 # cache file generaded by `${HOME}/.local/bin/calcurse-num-cron`
 update_calcurse() {
+    command -v calcurse >/dev/null 2>&1 || { icon="󰃴"; return; }
     local DAY="14"
     local count="$(calcurse -d "$DAY" | grep '^[0-9]' | wc -l)"
     local icon=""
@@ -302,6 +310,7 @@ update_calcurse() {
 }
 
 update_mpd() {
+    command mpc >/dev/null 2>&1 || { icon="󰝛"; return; }
     local icon="󰝚"
     if [ $(mpc status '%state%') != "playing" ]; then
         icon="󰝛"
