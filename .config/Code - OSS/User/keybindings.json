@@ -311,5 +311,9 @@
     {
         "key": "ctrl+.",
         "command": "workbench.action.openGlobalKeybindings"
+    },
+    {
+        "key": "ctrl+shift+n",
+        "command": "-workbench.action.newWindow"
     }
 ]
