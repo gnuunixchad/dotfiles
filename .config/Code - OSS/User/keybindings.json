@@ -53,12 +53,12 @@
     },
         // ## terminal scrolling
     {
-        "key": "ctrl+n",
+        "key": "ctrl+shift+j",
         "command": "workbench.action.terminal.scrollDownPage",
         "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
     },
     {
-        "key": "ctrl+p",
+        "key": "ctrl+shift+k",
         "command": "workbench.action.terminal.scrollUpPage",
         "when": "terminalFocusInAny && terminalHasBeenCreated && !terminalAltBufferActive || terminalFocusInAny && terminalProcessSupported && !terminalAltBufferActive"
     },
