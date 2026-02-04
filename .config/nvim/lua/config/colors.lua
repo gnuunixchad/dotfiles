@@ -1,7 +1,7 @@
 -- Colorscheme based on vim.lua by Bram Moolenaar)
 
 --  @authoer nate zhou
---  @since 2024, 2025
+--  @since 2024,2025,2026
 
 vim.cmd.highlight('clear')
 vim.g.colors_name = 'green'
@@ -202,8 +202,8 @@ hi('@lsp.type.typeParameter', { link = 'TypeDef' })
 hi('@lsp.type.variable',      { link = 'Identifier' })
 
   hi('ColorColumn',  { bg = '#111111',                            ctermbg = 'DarkRed' })
-  --hi('CursorColumn', { bg = 'Grey40',                           ctermbg = 'DarkGrey' })
-  --hi('CursorLine',   { bg = 'Grey40',                           cterm = { underline = true } })
+  hi('CursorColumn', { bg = '#2c2e33',                            ctermbg = 'DarkGrey' })
+  hi('CursorLine',   { bg = '#2c2e33',                            cterm = { underline = true } })
   hi('CursorLineNr', { fg = 'White', bold = true,                 ctermfg = 'White', cterm = { underline = true } })
   hi('DiffAdd',      { fg = 'white', bg = 'Green',                ctermbg = 'DarkBlue' })
   hi('DiffChange',   { fg = 'white', bg = '#6f3f89',              ctermbg = 'DarkMagenta' })
