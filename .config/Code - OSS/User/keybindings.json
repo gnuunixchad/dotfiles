@@ -240,6 +240,11 @@
         "key": "ctrl+b b",
         "command": "workbench.action.toggleSidebarVisibility"
     },
+    {
+        "key": "ctrl+b e",
+        "command": "workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    },
 
     	// open && focuse console: PROBLEMS
     {
