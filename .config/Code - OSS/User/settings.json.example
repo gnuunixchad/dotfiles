@@ -40,15 +40,27 @@
     "workbench.iconTheme": "vs-minimal",
 
     "workbench.colorCustomizations":{
-        "editor.background": "#111111e6"
+        "editor.background": "#111111"
 
     },
     "workbench.secondarySideBar.defaultVisibility": "hidden",
-    "chat.disableAIFeatures": true,
     "editor.autoClosingDelete": "never",
     "editor.autoClosingOvertype": "never",
     "editor.autoClosingBrackets": "never",
     "editor.autoClosingComments": "never",
     "editor.autoClosingQuotes": "never",
-    "workbench.activityBar.location": "hidden"
+    "workbench.activityBar.location": "hidden",
+    "update.showReleaseNotes": false,
+
+    // anti-feature
+    "chat.disableAIFeatures": true,
+    "chat.extensionUnification.enabled": false,
+    "telemetry.feedback.enabled": false,
+    "telemetry.editStats.enabled": false,
+    "telemetry.telemetryLevel": "off",
+    "workbench.enableExperiments": false,
+    "workbench.commandPalette.experimental.enableNaturalLanguageSearch": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "extensions.experimental.issueQuickAccess": false,
+    "extensions.ignoreRecommendations": true
 }
