@@ -315,5 +315,13 @@
     {
         "key": "ctrl+shift+n",
         "command": "-workbench.action.newWindow"
+    },
+    {
+        "key": "ctrl+shift+i",
+        "command": "workbench.action.zoomIn"
+    },
+    {
+        "key": "ctrl+shift+o",
+        "command": "workbench.action.zoomOut"
     }
 ]
