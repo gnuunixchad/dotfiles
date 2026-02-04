@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # update neomutt unread count for my status bar
 
 update() {
@@ -8,6 +8,6 @@ update() {
 }
 
 # update count on exit, interrupted or terminated
-trap update EXIT INT TERM
+trap update EXIT INT TERM HUP QUIT
 
 neomutt "$@"
