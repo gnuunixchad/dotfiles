@@ -72,7 +72,7 @@ update_bluetooth() {
 update_battery () {
     local POWER="/sys/class/power_supply"
 
-    ls "${POWER}/BAT?" >/dev/null 2>&1 || { icon=""; return; }
+    ls ${POWER}/BAT? >/dev/null 2>&1 || { icon=""; return; }
 
     local icon=""
     local status="$(cat $POWER/BAT?/status)"
