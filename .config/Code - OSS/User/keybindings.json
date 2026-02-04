@@ -1,6 +1,6 @@
 // keybindings.json
 // @author nate zhou
-// @since 2023,2024,2025
+// @since 2023,2024,2025,2026
 
 [
 	// # vim extension
@@ -184,6 +184,27 @@
     {
         "key": "ctrl+w p",
         "command": "workbench.action.moveEditorToPreviousGroup"
+    },
+
+    {
+        "key": "ctrl+b k",
+        "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
+        "when": "!activeEditorGroupEmpty"
+    },
+    {
+        "key": "ctrl+b k",
+        "command": "workbench.action.quickOpenNavigateNextInEditorPicker",
+        "when": "inEditorsPicker && inQuickOpen"
+    },
+    {
+        "key": "ctrl+b j",
+        "command": "workbench.action.quickOpenLeastRecentlyUsedEditorInGroup",
+        "when": "!activeEditorGroupEmpty"
+    },
+    {
+        "key": "ctrl+b j",
+        "command": "workbench.action.quickOpenNavigatePreviousInEditorPicker",
+        "when": "inEditorsPicker && inQuickOpen"
     },
 
     // resize splits
