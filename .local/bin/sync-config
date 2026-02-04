@@ -12,6 +12,8 @@ read -p "Continue? (y/n): " choice
 if [ $choice = "y" ] || [ $choice = "Y" ]; then
     pacman -Qmq | sort > "$HEART"/package-list/aur-${hostname}.list &
     pacman -Qenq | sort > "$HEART"/package-list/arch-${hostname}.list &
+    command -v code >/dev/null 2>&1 \
+        && command code --list-extensions > "$HEART"/package-list/code-${hostname}.list 2>/dev/null &
 
     crontab -l > "$HEART"/.config/crontab.backup \
         && echo "crontab backup done" || echo "crontab backup failed"
