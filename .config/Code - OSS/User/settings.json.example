@@ -1,7 +1,7 @@
 // vim:ft=json
 // settings.json
 // @author nate zhou
-// @since 2023,2024,2025
+// @since 2023,2024,2025,2026
 
 {
     "redhat.telemetry.enabled": false,
@@ -18,6 +18,9 @@
     "editor.minimap.enabled": false,
     // break point
     "editor.glyphMargin": false,
+
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false,
 
     // vim extension
     "vim.neovimConfigPath": "~/.config/nvim/init.lua",
