@@ -186,6 +186,24 @@
         "command": "workbench.action.moveEditorToPreviousGroup"
     },
 
+    // resize splits
+    {
+        "key": "ctrl+w y",
+        "command": "workbench.action.decreaseViewWidth",
+    },
+    {
+        "key": "ctrl+w u",
+        "command": "workbench.action.increaseViewHeight"
+    },
+    {
+        "key": "ctrl+w i",
+        "command": "workbench.action.decreaseViewHeight"
+    },
+    {
+        "key": "ctrl+w o",
+        "command": "workbench.action.increaseViewWidth",
+    },
+
 
     	// #UI
     {
