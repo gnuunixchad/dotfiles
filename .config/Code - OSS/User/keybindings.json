@@ -64,11 +64,11 @@
     },
         // ## resize terminal
     {
-        "key": "ctrl+i",
+        "key": "ctrl+shift+l",
         "command": "workbench.action.terminal.resizePaneUp"
     },
     {
-        "key": "ctrl+u",
+        "key": "ctrl+shift+h",
         "command": "workbench.action.terminal.resizePaneDown"
     },
 
