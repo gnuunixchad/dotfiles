@@ -74,14 +74,14 @@
 
     	// ## focus previous terminal session
     {
-        "key": "ctrl+h",
+        "key": "ctrl+shift+;",
         "command": "workbench.action.terminal.focusPrevious",
         "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
     },
 
     	// ## focus next terminal session
     {
-        "key": "ctrl+l",
+        "key": "ctrl+shift+'",
         "command": "workbench.action.terminal.focusNext",
         "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
     },
