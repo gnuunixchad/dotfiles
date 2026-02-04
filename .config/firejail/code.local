@@ -3,6 +3,8 @@
 
 include blacklist-gpg.local
 
+whitelist /var/spool/mail/$USER
+
 noblacklist ${HOME}/doc/heart/.config/nvim
 read-only ${HOME}/doc/heart/.config/nvim
 noblacklist ${HOME}/.config/nvim
