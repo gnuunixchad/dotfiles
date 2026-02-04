@@ -239,25 +239,25 @@
 	// # coding
 	// ## code Fix
     {
-        "key": "ctrl+o f",
+        "key": "ctrl+b f",
         "command": "editor.action.quickFix",
         "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
     },
     	// ## code Hover
     {
-        "key": "ctrl+o h",
+        "key": "ctrl+b h",
         "command": "editor.action.showHover",
         "when": "editorTextFocus"
     },
     	// ## code floating Definition
     {
-        "key": "ctrl+o d",
+        "key": "ctrl+b d",
         "command": "editor.action.revealDefinition",
         "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
     },
     	// ## code open Reference file
     {
-        "key": "ctrl+o r",
+        "key": "ctrl+b r",
         "command": "editor.action.goToReferences",
         "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
     },
