@@ -6,6 +6,9 @@
     path = proxy.inc
     path = user.inc
 
+[includeIf "gitdir:~/doc/unixchad/"]
+    path = unixchad.inc
+
 [core]
     pager = less -Ri
 

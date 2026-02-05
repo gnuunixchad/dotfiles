@@ -146,7 +146,7 @@ package-list
 !.config/git/
 !.config/git/config
 !.config/git/proxy.inc.example
-!.config/git/user.inc.example
+!.config/git/unixchad.inc
 !.config/gtk-2.0/
 !.config/gtk-2.0/gtkrc
 !.config/gtk-3.0/
