@@ -76,6 +76,9 @@ package-list
 !.config/shell/teleport.conf
 !.config/shell/teleport.sh
 
+!.xinitrc
+!.Xresources
+
 !.ssh/
 !.ssh/config
 !.ssh/unixchad.conf
