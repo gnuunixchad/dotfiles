@@ -5,7 +5,7 @@
 
 _damblocks() {
     local options
-    options=("--fifo")
+    options=("--fifo" "--xsetroot")
     if [ "$CURRENT" -eq 2 ]; then
         _describe 'options' options
     fi
