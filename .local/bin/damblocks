@@ -1,20 +1,16 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2025,2026
-# damblocks - Pure POSIX plain text bar generator with individual update
-# intervals and signal support, working with STDIN and FIFO.
-# Originally for river-classic's dam, but damblocks works with any interface
-# that accepts stdin(default) or a fifo (with --fifo option).
 
-# with the --fifo option, you can restart the script without restarting the
-# whole command pipe, by running
-# `nohup damblocks --fifo >/dev/null 2>&1 &`
+# damblocks - plain text status line generator written in POSIX shell
+# - with individual update intervals and signal support
+# - supporting stdin, fifo and xsetroot
 
 # Fork of sbar(https://github.com/pystardust/sbar) with custom modules.
 
 # @depends  ttf-nerd-fonts-symbols wireplumber brightnessctl coreutils sed grep
-#           awk curl cronie stow systemd
-# @suggests dash bluez-utils isync newsboat calcurse mpc wob
+#           awk curl cronie udev
+# @suggests dash bluez-utils isync newsboat calcurse mpc wob stow
 
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
@@ -29,6 +25,18 @@
 # git clone https://github.com/gnuunixchad/damblocks
 # make install
 # make uninstall
+
+case "$1" in
+    --fifo)
+        mode="fifo"
+        ;;
+    --xsetroot)
+        mode="xsetroot"
+        ;;
+    *)
+        mode="stdin"
+        ;;
+esac
 
 DAMBLOCKS_FIFO="${XDG_RUNTIME_DIR}/damblocks.fifo"
 [ ! -p "$DAMBLOCKS_FIFO" ] && (rm -f "$DAMBLOCKS_FIFO"; mkfifo "$DAMBLOCKS_FIFO")
@@ -343,7 +351,19 @@ display () {
     local delimiter_home="["
     local delimiter_end="]"
     local separator="]["
-    printf "%s" "${delimiter_home}${mpd}${separator}${wttr}${separator}${calcurse}${space}${newsboat}${space}${mutt}${separator}${pacman}${space}${ttylogin}${space}${uptime}${separator}${root}${space}${home}${separator}${memory}${space}${cpu}${space}${temperature}${space}${fanmode}${separator}${wifi}${space}${ethernet}${separator}${brightness}${space}${microphone}${space}${volume}${separator}${battery}${space}${bluetooth}${separator}${time}${delimiter_end}"
+    local line="${delimiter_home}${mpd}${separator}${wttr}${separator}${calcurse}${space}${newsboat}${space}${mutt}${separator}${pacman}${space}${ttylogin}${space}${uptime}${separator}${root}${space}${home}${separator}${memory}${space}${cpu}${space}${temperature}${space}${fanmode}${separator}${wifi}${space}${ethernet}${separator}${brightness}${space}${microphone}${space}${volume}${separator}${battery}${space}${bluetooth}${separator}${time}${delimiter_end}"
+
+case "$mode" in
+    fifo)
+        printf "%s" "$line" > "$DAMBLOCKS_FIFO"
+        ;;
+    xsetroot)
+        xsetroot -name "$line"
+        ;;
+    stdin)
+        printf "%s" "$line"
+        ;;
+esac
 }
 
 # SIGNALING
@@ -366,40 +386,32 @@ trap	"update_calcurse;display"   "RTMIN+9"   # -43 .local/bin/calcurse*
 trap	"update_wttr;display"       "RTMIN+10"  # -44 .local/bin/wttr --cron
 trap    "update_mpd;display"        "RTMIN+11"  # -45 .local/bin/damblocks-mpdd
 
-run_loop() {
-    while true
-    do
-    	sleep 1 & wait && {
-    		# to update item ever n seconds with a offset of m
-    		## [ $((sec % n)) -eq m ] && udpate_item
-    		[ $((sec % 5 )) -eq 0 ] && update_time 	# update time every 5 seconds
-    		[ $((sec % 10)) -eq 0 ] && update_battery
-    		[ $((sec % 10)) -eq 0 ] && update_bluetooth
-    		[ $((sec % 10)) -eq 0 ] && update_ethernet
-    		[ $((sec % 10)) -eq 0 ] && update_wifi
-    		[ $((sec % 5)) -eq 0 ] && update_temperature
-    		[ $((sec % 5)) -eq 0 ] && update_fanmode
-    		[ $((sec % 5)) -eq 0 ] && update_cpu
-    		[ $((sec % 5)) -eq 0 ] && update_memory
-    		[ $((sec % 60)) -eq 0 ] && update_home
-    		[ $((sec % 60)) -eq 0 ] && update_root
-    		#[ $((sec % 60)) -eq 0 ] && update_usb
-    		[ $((sec % 900)) -eq 0 ] && update_uptime
-    		[ $((sec % 60)) -eq 0 ] && update_ttylogin
-    		[ $((sec % 60)) -eq 0 ] && update_mutt
+while true
+do
+	sleep 1 & wait && {
+		# to update item ever n seconds with a offset of m
+		## [ $((sec % n)) -eq m ] && udpate_item
+		[ $((sec % 5 )) -eq 0 ] && update_time 	# update time every 5 seconds
+		[ $((sec % 10)) -eq 0 ] && update_battery
+		[ $((sec % 10)) -eq 0 ] && update_bluetooth
+		[ $((sec % 10)) -eq 0 ] && update_ethernet
+		[ $((sec % 10)) -eq 0 ] && update_wifi
+		[ $((sec % 5)) -eq 0 ] && update_temperature
+		[ $((sec % 5)) -eq 0 ] && update_fanmode
+		[ $((sec % 5)) -eq 0 ] && update_cpu
+		[ $((sec % 5)) -eq 0 ] && update_memory
+		[ $((sec % 60)) -eq 0 ] && update_home
+		[ $((sec % 60)) -eq 0 ] && update_root
+		#[ $((sec % 60)) -eq 0 ] && update_usb
+		[ $((sec % 900)) -eq 0 ] && update_uptime
+		[ $((sec % 60)) -eq 0 ] && update_ttylogin
+		[ $((sec % 60)) -eq 0 ] && update_mutt
 
-    		# how often the display updates ( 5 seconds )
-    		[ $((sec % 5 )) -eq 0 ] && display
+		# how often the display updates ( 5 seconds )
+		[ $((sec % 5 )) -eq 0 ] && display
 
-            # cronjob
-    		#[ $((sec % 1800 )) -eq 0 ] && "$HOME/.local/bin/mbs" # mbsync
-    		sec=$((sec + 1))
-    	}
-    done
-}
-
-if [ "$1" = "--fifo" ]; then
-    run_loop > "$DAMBLOCKS_FIFO"
-else
-    run_loop
-fi
+        # cronjob
+		#[ $((sec % 1800 )) -eq 0 ] && "$HOME/.local/bin/mbs" # mbsync
+		sec=$((sec + 1))
+	}
+done
