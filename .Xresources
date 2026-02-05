@@ -1,24 +1,28 @@
-# @author nate zhou
-# @since 2023,2026
-# .Xresources
+! @author nate zhou
+! @since 2023,2026
+! .Xresources
 
-xterm*color0:   #242424
-xterm*color1:   #f92672
-xterm*color2:   #8ce10b
-xterm*color3:   #fd971f
-xterm*color4:   #bbccdd
-xterm*color5:   #bf40bf
-xterm*color6:   #8ec07c
-xterm*color7:   #e6e6e6
+! st-xresources
+color0: #242424
+color1: #f92672
+color2: #8ce10b
+color3: #fd971f
+color4: #bbccdd
+color5: #bf40bf
+color6: #8ec07c
+color7: #e6e6e6
 
-xterm*color8:   #616161
-xterm*color9:   #ff669d
-xterm*color10:  #beed5f
-xterm*color11:  #ffdca0
-xterm*color12:  #076678
-xterm*color13:  #6a78a8
-xterm*color14:  #427b58
-xterm*color15:  #ffffff
+color8: #616161
+color9: #ff669d
+color10: #beed5f
+color11: #ffdca0
+color12: #076678
+color13: #6a78a8
+color14: #427b58
+color15: #ffffff
+
+background: #111111
+foreground: #dddddd
 
 
 Sxiv.background: #111111
