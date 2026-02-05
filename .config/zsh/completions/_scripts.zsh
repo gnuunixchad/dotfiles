@@ -152,7 +152,7 @@ compdef _muttauth muttauth
 
 _reload() {
     local options
-    options=("--cronjobs" "--damblocks" "--help")
+    options=("--cronjobs" "--damblocks-fifo" "--damblocks-xsetroot" "--help")
     used=(${words[2,-1]})
     remaining=(${options:|used})
     _describe 'options' remaining

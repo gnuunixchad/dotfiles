@@ -2,6 +2,7 @@
 # @author nate zhou
 # @since 2025,2026
 # reload - reload my cronjob & daemon scripts
+set -x
 
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
@@ -12,7 +13,10 @@ USAGE
         Without any options, default to reload cronjobs
 OPTIONS
         -c,--cronjobs   reload cronjob scripts(default)
-        -d,--damblocks  reload damblocks (fifo)
+        -f,--damblocks-fifo
+                        reload damblocks (fifo)
+        -x,--damblocks-xsetroot
+                        reload damblocks (xsetroot)
         -h,--help       print this usage manual
 _EOF_
     exit 0
@@ -67,7 +71,7 @@ reload_cronjobs() {
 
 reload_damblocks() {
     killall damblocks
-    ${HOME}/.local/bin/damblocks --fifo &
+    ${HOME}/.local/bin/damblocks "$1" &
     killall -q mpc
     ${HOME}/.local/bin/damblocks-mpdd &
 }
@@ -79,8 +83,11 @@ while [ -n "$1" ]; do
         -c|--cronjobs)
             reload_cronjobs
             ;;
-        -d|--damblocks)
-            reload_damblocks
+        -f|--damblocks-fifo)
+            reload_damblocks --fifo
+            ;;
+        -x|--damblocks-xsetroot)
+            reload_damblocks --xsetroot
             ;;
         -h|--help)
             usage

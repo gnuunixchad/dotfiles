@@ -180,7 +180,7 @@ complete -F _muttauth muttauth
 
 _reload() {
     local options used remaining
-    options=(--cronjobs --damblocks --help)
+    options=(--cronjobs --damblocks-fifo --damblocks-xsetroot --help)
     [ $COMP_CWORD -ge 2 ] && used=("${COMP_WORDS[@]:1:COMP_CWORD-1}") || used=()
     for opt in "${options[@]}"; do
         if [[ ! " ${used[@]} " =~ " $opt " ]]; then
