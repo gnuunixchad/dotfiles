@@ -2,8 +2,36 @@
 # @author nate zhou
 # @since 2023,2026
 
-[ -f "${HOME}/.Xresources" ] && xrdb -m "${HOME}/.Xresources"
+autostart() {
+    xrandr -s 1920x1080
 
-damblocks --xsetroot &
+    xwallpaper --zoom ${HOME}/.local/share/wallpaper &
+
+    damblocks --xsetroot &
+
+    picom --experimental-backends --vsync &
+
+    xautolock -time 16 -locker "i3lock" &
+
+    picom &
+
+    redshift -O 5000 &
+
+    pgrep 'dunst' || dunst &
+
+    fcitx5 -d --verbose '*=0' &
+
+}
+
+config_x() {
+
+    [ -f "${HOME}/.Xresources" ] && xrdb -m "${HOME}/.Xresources" &
+
+    xset r rate 200 30 &
+
+    setxkbmap -option caps:swapescape,altwin:swap_alt_win &
+}
+
+autostart; config_x
 
 exec ssh-agent dwm
