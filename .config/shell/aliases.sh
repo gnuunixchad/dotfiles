@@ -3,12 +3,9 @@
 # @since 2023,2024,2025,2026
 # general aliases for bash/zsh
 
-if [ ! $UID -eq 0 ]; then
-    command -v nvim >/dev/null \
-        && [ -z "$DVTM" ] \
-        && alias vim="nvim" \
-           vimdiff="nvim -d"
-fi
+[ ! $UID -eq 0 ] && command -v nvim >/dev/null \
+    && [ -z "$DVTM" ] && [ -z "$TERM_PROGRAM" ] \
+    && alias vim="nvim" vimdiff="nvim -d"
 
 alias cmd="command"
 
