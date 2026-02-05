@@ -221,6 +221,8 @@ package-list
 !.config/nvim/lua/plugins/lf.lua
 !.config/nvim/init.lua
 !.config/nvim/coc-settings.json
+!.config/picom/
+!.config/picom/picom.conf
 !.config/pipewire/
 !.config/pipewire/pipewire.conf.d/
 !.config/pipewire/pipewire.conf.d/99-input-denoising.conf
