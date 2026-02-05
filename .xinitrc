@@ -6,4 +6,4 @@
 
 damblocks --xsetroot &
 
-exec dwm
+exec ssh-agent dwm
