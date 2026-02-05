@@ -19,6 +19,9 @@ end_session() {
         -river-classic)
             riverctl exit
             ;;
+        -dwm)
+            killall dwm
+            ;;
         -dwl)
             killall dwl
             ;;
