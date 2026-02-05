@@ -1,7 +1,7 @@
 # vim:ft=lf
 # lfrc
 # @author nate zhou
-# since 2025
+# since 2025,2026
 
 source ~/.config/lf/rifle.conf
 source ~/.config/lf/commands.conf
@@ -19,7 +19,7 @@ set preview true
 set previewer ~/.config/lf/scope.sh
 set preload true
 set icons true
-set rulerfile true
+set rulerfile ~/.config/lf/ruler.go
 
 set promptfmt "\033[106m%u@%h\033[00m \033[40m%d%f\033[0m"
 set numberfmt "\033[90m"
@@ -38,7 +38,9 @@ set cutfmt      "\033[7;91m"
 set info size:time
 set dircounts true
 set dirfirst true
+set number true
 set relativenumber true
 set truncatepct 50
 set ratios 1:2:3
 set drawbox
+set mergeindicators true

@@ -1,5 +1,4 @@
-{{/* vim:ft=gotmpl */ -}}
-{{/* lf/ruler */ -}}
+{{/* lf/ruler.go */ -}}
 {{/* @author nate zhou */ -}}
 {{/* @since 2025 */ -}}
 

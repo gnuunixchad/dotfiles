@@ -172,7 +172,7 @@ package-list
 !.config/lf/teleport.conf
 !.config/lf/local.conf
 !.config/lf/icons
-!.config/lf/ruler
+!.config/lf/ruler.go
 !.config/lf/lf-rearrange.sh
 !.config/layout.xkb
 !.config/libvirt/
