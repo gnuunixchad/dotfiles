@@ -13,6 +13,7 @@ alias rv="exec ssh-agent /usr/local/bin/river"
 alias rc="exec ssh-agent /usr/local/bin/river-classic -c ${HOME}/.config/river-classic/init"
 alias dl="exec ssh-agent ${HOME}/.local/bin/damblocks | /usr/local/bin/dwl"
 alias sw="exec ssh-agent sway --unsupported-gpu"
+alias x="startx"
 
 alias faketty="XDG_SESSION_TYPE=tty TERM=xterm-256color"
 alias fakewl="XDG_SESSION_TYPE=wayland TERM=foot"
