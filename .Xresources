@@ -3,30 +3,26 @@
 ! .Xresources
 
 ! st-xresources
-color0: #242424
-color1: #f92672
-color2: #8ce10b
-color3: #fd971f
-color4: #bbccdd
-color5: #bf40bf
-color6: #8ec07c
-color7: #e6e6e6
+*.color0: #242424
+*.color1: #f92672
+*.color2: #8ce10b
+*.color3: #fd971f
+*.color4: #bbccdd
+*.color5: #bf40bf
+*.color6: #8ec07c
+*.color7: #e6e6e6
 
-color8: #616161
-color9: #ff669d
-color10: #beed5f
-color11: #ffdca0
-color12: #076678
-color13: #6a78a8
-color14: #427b58
-color15: #ffffff
+*.color8: #616161
+*.color9: #ff669d
+*.color10: #beed5f
+*.color11: #ffdca0
+*.color12: #076678
+*.color13: #6a78a8
+*.color14: #427b58
+*.color15: #ffffff
 
-background: #111111
-foreground: #dddddd
-
-
-Sxiv.background: #111111
-Sxiv.foreground: #427b58
+*.background: #111111
+*.foreground: #dddddd
 
 Nsxiv*background: #111111
 Nsxiv*foreground: #dddddd
