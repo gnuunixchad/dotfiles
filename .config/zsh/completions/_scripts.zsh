@@ -178,3 +178,14 @@ _wobd() {
     fi
 }
 compdef _wobd wobd
+
+_xobd() {
+    local options
+    options=("-c" "--config")
+    if [ "$CURRENT" -eq 2 ]; then
+        _describe 'options' options
+    elif [ "$CURRENT" -eq 3 ]; then
+        _files "$@"
+    fi
+}
+compdef _xobd xobd

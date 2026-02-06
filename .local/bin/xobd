@@ -1,0 +1,45 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2026
+# used in .local/bin/{audio,bright}
+
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
+
+XOBFIFO="${XDG_RUNTIME_DIR}/xob.fifo"
+xobcmd="xob"
+
+usage() {
+    cat << _EOF_
+USAGE
+        $(basename $0) [OPTION]
+        setting up a fifo as $XOBFIFO, and start or restart xob to listen to,
+        used in .local/bin/{audio,bright}.
+OPTIONS
+        -c,--config FILE    specify alternative config file for xob
+        -h,--help           print this usage manual
+_EOF_
+    exit 0
+}
+
+[ -f "$XOBFIFO" ] && [ ! -p "$XOBFIFO" ] && rm "$XOBFIFO"
+[ -p "$XOBFIFO" ] || mkfifo "$XOBFIFO"
+
+while [ -n "$1" ]; do
+    case "$1" in
+        -c|--config)
+            shift
+            CONFIG="$1"
+            xobcmd="xob -c $CONFIG"
+            ;;
+        *)
+            usage
+            ;;
+    esac
+    shift
+done
+
+if pgrep -f "tail -f $XOBFIFO" > /dev/null; then
+    pkill -f "tail -f $XOBFIFO"
+fi
+
+tail -f "$XOBFIFO" | $xobcmd &
