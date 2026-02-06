@@ -13,8 +13,6 @@ autostart() {
 
     xautolock -time 16 -locker "i3lock" &
 
-    picom &
-
     redshift -P -O 5000 &
 
     pgrep 'dunst' || dunst -conf ${HOME}/.config/dunst/dunstrc-offset &
@@ -36,6 +34,7 @@ config_x() {
     export GTK_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
     export QT_IM_MODULE=fcitx
+    export XDG_SESSION_TYPE=xorg
 
 }
 
