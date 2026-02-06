@@ -39,29 +39,29 @@ spyware when I can.
 |:---|:---|
 | scripting shell | dash |
 | login shell | zsh |
-| terminal multiplexer| [abduco](https://codeberg.org/unixchad/abduco) [dvtm](https://codeberg.org/unixchad/dvtm) |
-| terminal emulator | foot [st](https://codeberg.org/unixchad/st) |
-| wayland compositor | [river-classic](https://codeberg.org/unixchad/river-classic) [dwl](https://codeberg.org/unixchad/dwl) [kwm](https://codeberg.org/unixchad/kwm) sway [dwm](https://codeberg.org/unixchad/dwm)|
+| terminal multiplexer| [abduco](https://codeberg.org/unixchad/abduco) · [dvtm](https://codeberg.org/unixchad/dvtm) |
+| terminal emulator | foot · [st](https://codeberg.org/unixchad/st) |
+| wayland compositor | [river-classic](https://codeberg.org/unixchad/river-classic) · [dwl](https://codeberg.org/unixchad/dwl) · [kwm](https://codeberg.org/unixchad/kwm) · sway · [dwm](https://codeberg.org/unixchad/dwm)|
 | status generator | [damblocks](https://codeberg.org/unixchad/damblocks) |
-| output management | wlr-randr kanshi |
-| application launcher | wmenu [mew](https://codeberg.org/unixchad/mew) [dmenu](https://codeberg.org/unixchad/dmenu) |
+| output management | wlr-randr · kanshi |
+| application launcher | wmenu · [mew](https://codeberg.org/unixchad/mew) · [dmenu](https://codeberg.org/unixchad/dmenu) |
 | notification daemon | dunst |
-| editor | neovim vim |
-| email | neomutt isync |
+| editor | neovim · vim |
+| email | neomutt · isync |
 | file manager | lf |
-| music player | mpd ncmpcpp |
+| music player | mpd · ncmpcpp |
 | video player | mpv |
-| image viewer | swayimg [nsxiv](https://codeberg.org/unixchad/nsxiv) |
+| image viewer | swayimg · [nsxiv](https://codeberg.org/unixchad/nsxiv) |
 | ebook reader | zathura |
 | rss feeder | newsboat |
-| calender & todo | calcurse taskwarrior |
-| virtualization | qemu libvirt virtmanager |
-| security | cryptsetup  sbctl gpg firejail |
-| browser | w3m qutebrowser |
-| download | curl wget transmission-cli yt-dlp httrack |
-| file sharing | rsync samba android-file-transfer qrtool |
-| dotfiles manager | git stow |
-| clipboard | wl-clipboard  cliphist |
+| calender & todo | calcurse · taskwarrior |
+| virtualization | qemu · libvirt · virtmanager |
+| security | cryptsetup · sbctl · gpg · firejail |
+| browser | w3m · qutebrowser |
+| download | curl · wget · transmission-cli · yt-dlp · httrack |
+| file sharing | rsync · samba · android-file-transfer · qrtool |
+| dotfiles manager | git · stow |
+| clipboard | wl-clipboard · cliphist |
 | input method | fcitx5 |
 
 ## My Personal Scripts
