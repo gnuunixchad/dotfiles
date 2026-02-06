@@ -77,9 +77,9 @@ spyware when I can.
 | audio volume | [audio](./.local/bin/audio) |
 | audio sink | [speaker](./.local/bin/speaker) |
 | bookmark | [address](./.local/bin/address) |
-| file previewer | [rifle](./.local/bin/scope) [gpg-rifle](./.local/bin/gpg-rifle) [url-rifle](./.local/bin/url-rifle) |
+| file previewer | [rifle](./.local/bin/scope) · [gpg-rifle](./.local/bin/gpg-rifle) · [url-rifle](./.local/bin/url-rifle) |
 | file opener | [scope](./.local/bin/rifle) |
-| mounting | [saddle](./.local/bin/saddle) [phone](./.local/bin/phone) |
+| mounting | [saddle](./.local/bin/saddle) · [phone](./.local/bin/phone) |
 | gpg | [seal](./.local/bin/seal) |
 | mutt_oauth2 | [muttauth](./.local/bin/muttauth) |
 | shortcuts generator | [teleport-genesis](./.local/bin/teleport-genesis) |
