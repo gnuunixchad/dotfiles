@@ -6,7 +6,7 @@
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
 XOBFIFO="${XDG_RUNTIME_DIR}/xob.fifo"
-xobcmd="xob"
+xobcmd="xob -t 3300"
 
 usage() {
     cat << _EOF_

@@ -17,7 +17,7 @@ autostart() {
 
     redshift -O 5000 &
 
-    pgrep 'dunst' || dunst &
+    pgrep 'dunst' || dunst -conf ${HOME}/.config/dunst/dunstrc-offset &
 
     pgrep 'xob' || ${HOME}/.local/bin/xobd &
 

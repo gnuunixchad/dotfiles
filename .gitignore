@@ -296,6 +296,8 @@ package-list
 !.config/wob/
 !.config/wob/wob.ini
 !.config/wob/wob-kwm.ini
+!.config/xob/
+!.config/xob/styles.cfg
 !.config/yt-dlp/
 !.config/yt-dlp/config
 !.config/yt-dlp/video.conf
