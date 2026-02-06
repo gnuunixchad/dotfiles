@@ -10,8 +10,13 @@
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
 # status is saved to XDG_CACHE_DIR for reboot consistency
-WOBFIFO="${XDG_RUNTIME_DIR}/wob.fifo"
 DAMBLOCKS="${XDG_RUNTIME_DIR}/damblocks.pid"
+
+[ "$XDG_SESSION_TYPE" = "wayland" ] \
+    && MENU="${HOME}/.local/bin/wmenu-color" \
+       FIFO="${XDG_RUNTIME_DIR}/wob.fifo" \
+    || MENU="dmenu" \
+       FIFO="${XDG_RUNTIME_DIR}/xob.fifo"
 
 [ "$1" = "sink" ] && target="@DEFAULT_AUDIO_SINK@"
 [ "$1" = "source" ] && target="@DEFAULT_AUDIO_SOURCE@"
@@ -68,11 +73,11 @@ parseVolume() {
         echo "$status" \
             | sed 's/[^0-9]//g; s/^0//' \
             > "${XDG_CACHE_HOME}/audio-${target}.level"
-        echo "0" > "$WOBFIFO"
+        echo "0" > "$FIFO"
     else # When toggling on mute, display 0% progress in wob
         echo "$status" \
             | sed 's/[^0-9]//g; s/^0//' \
-            | tee "$WOBFIFO" "${XDG_CACHE_HOME}/audio-${target}.level"
+            | tee "$FIFO" "${XDG_CACHE_HOME}/audio-${target}.level"
     fi
 }
 
