@@ -24,5 +24,8 @@
 *.background: #111111
 *.foreground: #dddddd
 
-Nsxiv*background: #111111
-Nsxiv*foreground: #dddddd
+! nsxiv
+Nsxiv.window.background: #111111
+Nsxiv.window.foreground: #dddddd
+Nsxiv.bar.background: #427b58
+Nsxiv.bar.foreground: #dddddd
