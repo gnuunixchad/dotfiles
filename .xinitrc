@@ -11,6 +11,10 @@ autostart() {
 
     picom --experimental-backends --vsync &
 
+    ${HOME}/.local/bin/lucia -d &
+
+    ${HOME}/.local/bin/mbs-cron &
+
     xautolock -time 16 -locker "i3lock" &
 
     redshift -P -O 5000 &
