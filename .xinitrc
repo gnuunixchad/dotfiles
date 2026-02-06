@@ -32,8 +32,13 @@ config_x() {
     xset r rate 200 30 &
 
     setxkbmap -option caps:swapescape,altwin:swap_alt_win &
+
+    export GTK_IM_MODULE=fcitx
+    export XMODIFIERS=@im=fcitx
+    export QT_IM_MODULE=fcitx
+
 }
 
-autostart; config_x
+config_x; autostart;
 
 exec ssh-agent dwm
