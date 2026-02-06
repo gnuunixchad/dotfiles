@@ -10,7 +10,8 @@
 [ "$XDG_SESSION_TYPE" = "wayland" ] \
     && MENU="${HOME}/.local/bin/wmenu-color" \
        copy_cmd="wl-copy" \
-    || MENU="dmenu"
+    || MENU="dmenu" \
+       copy_cmd="xsel -b"
 
 ADDRESS_BOOK_DIR="${HOME}/.local/share/address"
 ADDRESS_BOOK="${ADDRESS_BOOK_DIR}/address"
