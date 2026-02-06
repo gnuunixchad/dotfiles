@@ -3,8 +3,11 @@
 # @since 2025,2026
 
 # damblocks - plain text status line generator written in POSIX shell
-# - with individual update intervals and signal support
-# - supporting stdin, fifo and xsetroot
+#- individual update intervals and signals
+#- individual modules only updated when needed, instantly
+#- supporting to stdin, fifo and xsetroot
+#- supporting Wayland, Xorg and tty
+#- Restart damblocks with [reload](./bin/reload)
 
 # Fork of sbar(https://github.com/pystardust/sbar) with custom modules.
 
