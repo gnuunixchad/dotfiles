@@ -45,14 +45,14 @@ spyware when I can.
 | scripting shell | dash |
 | login shell | zsh |
 | terminal multiplexer| abduco dvtm |
-| terminal emulator | foot |
+| terminal emulator | foot st|
 | audio server | pipewire |
-| wayland compositor | river river-classic dwl sway|
+| wayland compositor | river river-classic dwl sway dwm|
 | river window manager | kwm |
 | river-classic bar | dam |
 | status generator | damblocks([codeberg](https://codeberg.org/unixchad/damblocks)/[github](https://github.com/gnuunixchad/damblocks))|
 | output management | wlr-randr kanshi |
-| application launcher | wmenu |
+| application launcher | wmenu dmenu |
 | fuzzy finder | fzf |
 | notification daemon | dunst |
 | editor | neovim vim |
@@ -60,7 +60,7 @@ spyware when I can.
 | file manager | lf |
 | music player | mpd ncmpcpp |
 | video player | mpv |
-| image viewer | swayimg |
+| image viewer | swayimg nsxiv |
 | ebook reader | zathura |
 | rss feeder | newsboat |
 | calender & todo | calcurse taskwarrior |
