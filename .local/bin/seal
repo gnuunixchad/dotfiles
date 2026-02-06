@@ -3,7 +3,7 @@
 # @since 2025,2026
 # seal - GPG script to {en,de}crypt|preview|sign|verify a file with dynamic
 # menu or fzf. Each option can also be bound in lf for convenience.
-# @depends gpg, wmenu, fzf, libnotify
+# @depends gpg, wmenu or dmenu, fzf, libnotify
 # Also see `./gpg-rifle`
 
 # lf/bindings.rc
@@ -25,7 +25,8 @@ usage() {
     cat <<_EOF_
 USAGE
         $(basename $0) OPTION FILE
-        GPG scripts to {en,de}crypt|preview|sign|verify with dynamic menu or fzf.
+        GPG scripts to {en,de}crypt|preview|sign|verify with wmenu(wayland),
+        dmenu(xorg) or fzf(tty).
         Each option can also be bound in lf for convenience.
 OPTIONS
         -c,--cipher     enter a passphrase and encrypt the file with $CIPHER_ALGO
@@ -52,15 +53,24 @@ abort() {
     exit 1
 }
 
+set_menu() {
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        menu="${HOME}/.local/bin/wmenu-color"
+    elif [ -n "$XAUTHORITY" ]; then
+        menu="dmenu"
+    else
+        menu="fzf"
+    fi
+}
+
 cipher() {
     if [ "$XDG_SESSION_TYPE" = "tty" ]; then
         gpg -c "$file"
     else
-        menu="${HOME}/.local/bin/wmenu-color -P -p"
-        pass1=$($menu "$prompt ciper passphrase: " < /dev/null)
+        pass1=$($menu -p "$prompt ciper passphrase: " < /dev/null)
         [ -z "$pass1" ] && abort "Aborted: passphrase is empty"
 
-        pass2=$($menu "$prompt re-enter passphrase: " < /dev/null)
+        pass2=$($menu -p "$prompt re-enter passphrase: " < /dev/null)
         [ "$pass1" != "$pass2" ] && abort "Aborted: inputs are not indentical"
 
         echo "$pass1" | gpg -c --cipher-algo "$CIPHER_ALGO" --no-symkey-cache \
@@ -72,10 +82,10 @@ cipher() {
 }
 
 encrypt() {
-    if [ "$XDG_SESSION_TYPE" = "tty" ]; then
-        menu="fzf --prompt"
+    if [ "$menu" = "fzf" ]; then
+        menu="${menu} --prompt"
     else
-        menu="${HOME}/.local/bin/wmenu-color -l5 -p"
+        menu="${menu} -l 5 -p"
     fi
 
     pubkey="$(gpg --list-keys \
@@ -91,10 +101,10 @@ encrypt() {
 decrypt() {
     local pass=""
 
-    if [ "$XDG_SESSION_TYPE" = "tty" ]; then
+    if [ "$menu" = "fzf" ]; then
         read -p "$prompt decryption passphrase: " -r pass
     else
-        menu="${HOME}/.local/bin/wmenu-color -P -p"
+        menu="${menu} -P -p"
         pass="$($menu "$prompt decyrption passphrase: " < /dev/null)"
     fi
     echo "$pass" | gpg --no-symkey-cache \
@@ -105,10 +115,10 @@ decrypt() {
 }
 
 sign() {
-    if [ "$XDG_SESSION_TYPE" = "tty" ]; then
-        menu="fzf --prompt"
+    if [ "$menu" = "fzf" ]; then
+        menu="{menu} --prompt"
     else
-        menu="${HOME}/.local/bin/wmenu-color -l5 -p"
+        menu="${menu} -l 5 -p"
     fi
 
     seckey="$(gpg --list-secret-keys \
@@ -127,7 +137,7 @@ verify() {
         || abort "Verification failed"
 }
 
-[ "$#" -ne 2 ] && usage
+[ "$#" -ne 2 ] && usage || set_menu
 
 case "$1" in
     -c|--cipher) cipher;;
