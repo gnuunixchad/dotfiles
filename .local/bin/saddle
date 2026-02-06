@@ -5,7 +5,7 @@
 # The dynamic menu will also serve as passphrase input when necessary, which
 # means the script works doesn't have to be executed from a terminal.
 
-# @depends: udisks2, libnotify, wmenu, fzf
+# @depends: udisks2, libnotify, wmenu or dmenu, fzf
 
 # Supported disk encryption: LUKS
 
@@ -24,7 +24,8 @@ usage() {
     cat <<_EOF_
 USAGE
         $(basename $0) OPTION
-        {un,}{lock,mount}|power-off block device with dynamic menu or fzf.
+        {un,}{lock,mount}|power-off block device with wmenu(wayland),
+        dmenu(xorg) or fzf(tty).
         The dynamic menu will also serve as passphrase input when necessary,
         which means the script doesn't have to be executed from a terminal.
 
@@ -53,13 +54,15 @@ abort() {
 }
 
 select_device() {
-    if [ "$XDG_SESSION_TYPE" = "tty" ]; then
-        menu="fzf --prompt"
-    else
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
         menu="${HOME}/.local/bin/wmenu-color -p"
+    elif [ -n "$XAUTHORITY" ]; then
+        menu="dmenu -p"
+    else
+        menu="fzf --prompt"
     fi
 
-    selected="$(echo "$block_list" | $menu "$prompt" -l5)"
+    selected="$(echo "$block_list" | $menu "$prompt" -l 5)"
     [ -z "$selected" ] && abort "Aborted"
 
     partition="$(echo "$selected" | awk '{print $1}')"
