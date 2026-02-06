@@ -1,0 +1,22 @@
+#!/usr/bin/sh
+# exiorg - exit xorg window manager
+# @author nate zhou
+# @sincd 2026
+
+window_manager="${1#*-}"
+
+menu_prompt="Exit ${window_manager}? This will end your Xorg session."
+
+choice="$(printf "no\nyes" | dmenu -p "$menu_prompt")"
+
+[ "$#" -ne 1 ] && exit 1
+
+end_session() {
+    case "$1" in
+        -dwm)
+            killall dwm
+            ;;
+    esac
+}
+
+[ "$choice" = "yes" ] && end_session "$1"
