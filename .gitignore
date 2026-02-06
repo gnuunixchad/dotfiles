@@ -77,7 +77,6 @@ package-list
 !.config/shell/teleport.sh
 
 !.xinitrc
-!.Xresources
 
 !.ssh/
 !.ssh/config
