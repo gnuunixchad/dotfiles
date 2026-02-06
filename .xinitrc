@@ -19,6 +19,8 @@ autostart() {
 
     pgrep 'dunst' || dunst &
 
+    pgrep 'xob' || ${HOME}/.local/bin/xobd &
+
     fcitx5 -d --verbose '*=0' &
 
 }
