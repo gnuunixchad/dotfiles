@@ -1,7 +1,7 @@
 # <img src="./misc/dot-repo.png" width="24"/> dotfiles
 <img src="./misc/kwm.png" width="1920"/>
 
-[kwm on river](./misc/kwm.png) | [river-classic](./misc/river-classic.png) | [dwl](./misc/dwl.png) | [sway](./misc/sway.png)
+[kwm on river](./misc/kwm.png) | [river-classic](./misc/river-classic.png) | [dwl](./misc/dwl.png) | [sway](./misc/sway.png) | [dwm](./misc/dwm.png)
 
 My Arch Installation Guide is moved to [codeberg](https://codeberg.org/unixchad/arch-install-guide)/[github](https://github.com/gnuunixchad/arch-install-guide)
 
