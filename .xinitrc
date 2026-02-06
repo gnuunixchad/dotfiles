@@ -15,7 +15,7 @@ autostart() {
 
     picom &
 
-    redshift -O 5000 &
+    redshift -P -O 5000 &
 
     pgrep 'dunst' || dunst -conf ${HOME}/.config/dunst/dunstrc-offset &
 
