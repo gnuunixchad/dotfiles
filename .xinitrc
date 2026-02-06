@@ -9,7 +9,7 @@ autostart() {
 
     damblocks --xsetroot &
 
-    picom --experimental-backends --vsync &
+    picom &
 
     ${HOME}/.local/bin/lucia -d &
 
