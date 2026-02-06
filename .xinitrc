@@ -19,6 +19,8 @@ autostart() {
 
     redshift -P -O 5000 &
 
+    clipmenud &
+
     pgrep 'dunst' || dunst -conf ${HOME}/.config/dunst/dunstrc-offset &
 
     pgrep 'xob' || ${HOME}/.local/bin/xobd &
