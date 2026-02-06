@@ -95,11 +95,11 @@ I have dedicated videos for almost every software I use:
 Software I use to create videos:
 | | |
 |:---|:---|
-| screen capture | wf-recorder slurp |
-| voice recording | pw-record noise-suppression-for-voice |
-| video editing | ffmpeg mpv-cut kdenlive |
-| screenshots | grim slurp |
-| thumbnails | imagemagick gimp |
+| screen capture | wf-recorder · slurp |
+| voice recording | pw-record · noise-suppression-for-voice |
+| video editing | ffmpeg · mpv-cut · kdenlive |
+| screenshots | grim · slurp |
+| thumbnails | imagemagick · gimp |
 
 All emails from me will be signed by the same GPG key that I sign commits with:
 - Import my key: `gpg --recv-keys 117094DA1AEA0835E4ED0770F7476912AA224CAC`
