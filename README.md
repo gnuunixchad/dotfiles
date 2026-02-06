@@ -29,12 +29,7 @@ sudo ./install-root.sh
 > A few software need manually setup:
 > - Software's config named to `*.example` for privacy reasons
 > - Software's config listed in `./.stow-local-ignore`
-> - Software complied from source, e.g. my build of
->   + `kwm`([codeberg](https://codeberg.org/unixchad/kwm)/[github](https://github.com/gnuunixchad/kwm))
->   + `river-classic`([codeberg](https://codeberg.org/unixchad/river-classic)/[github](https://github.com/gnuunixchad/river-classic))
->   + `dam`([codeberg](https://codeberg.org/unixchad/dam)/[github](https://github.com/gnuunixchad/dam))
->   + `dwl`([codeberg](https://codeberg.org/unixchad/dwl)/[github](https://github.com/gnuunixchad/dwl)).
->   + `dvtm`([codeberg](https://codeberg.org/unixchad/dvtm)/[github](https://github.com/gnuunixchad/dvtm))
+> - Software complied from source
 
 ## Software I Use
 I prefer software that are free as in freedom, keyboard centric, terminal based,
@@ -44,23 +39,19 @@ spyware when I can.
 |:---|:---|
 | scripting shell | dash |
 | login shell | zsh |
-| terminal multiplexer| abduco dvtm |
-| terminal emulator | foot st|
-| audio server | pipewire |
-| wayland compositor | river river-classic dwl sway dwm|
-| river window manager | kwm |
-| river-classic bar | dam |
-| status generator | damblocks([codeberg](https://codeberg.org/unixchad/damblocks)/[github](https://github.com/gnuunixchad/damblocks))|
+| terminal multiplexer| [abduco](https://codeberg.org/unixchad/abduco) [dvtm](https://codeberg.org/unixchad/dvtm) |
+| terminal emulator | foot [st](https://codeberg.org/unixchad/st) |
+| wayland compositor | [river-classic](https://codeberg.org/unixchad/river-classic) [dwl](https://codeberg.org/unixchad/dwl) [kwm](https://codeberg.org/unixchad/kwm) sway [dwm](https://codeberg.org/unixchad/dwm)|
+| status generator | [damblocks](https://codeberg.org/unixchad/damblocks) |
 | output management | wlr-randr kanshi |
-| application launcher | wmenu dmenu |
-| fuzzy finder | fzf |
+| application launcher | wmenu [mew](https://codeberg.org/unixchad/mew) [dmenu](https://codeberg.org/unixchad/dmenu) |
 | notification daemon | dunst |
 | editor | neovim vim |
 | email | neomutt isync |
 | file manager | lf |
 | music player | mpd ncmpcpp |
 | video player | mpv |
-| image viewer | swayimg nsxiv |
+| image viewer | swayimg [nsxiv](https://codeberg.org/unixchad/nsxiv) |
 | ebook reader | zathura |
 | rss feeder | newsboat |
 | calender & todo | calcurse taskwarrior |
@@ -70,8 +61,6 @@ spyware when I can.
 | download | curl wget transmission-cli yt-dlp httrack |
 | file sharing | rsync samba android-file-transfer qrtool |
 | dotfiles manager | git stow |
-| idle manager | swayidle |
-| session lock | swaylock |
 | clipboard | wl-clipboard  cliphist |
 | input method | fcitx5 |
 
