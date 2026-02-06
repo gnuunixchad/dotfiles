@@ -9,11 +9,13 @@
 
 [ "$XDG_SESSION_TYPE" = "wayland" ] \
     && MENU="${HOME}/.local/bin/wmenu-color" \
+       copy_cmd="wl-copy" \
     || MENU="dmenu"
 
 ADDRESS_BOOK_DIR="${HOME}/.local/share/address"
 ADDRESS_BOOK="${ADDRESS_BOOK_DIR}/address"
 menu_prompt="$(basename $0)"
+
 
 editAddress() {
     $EDITOR $ADDRESS_BOOK
@@ -53,9 +55,9 @@ openInQutebrowserRecord() {
 
 case "$1" in
     -e|--edit) editAddress ;;
-    -r|--record) getAddressRecord | wl-copy ;;
-    -m|--multi) getAddressMulti | wl-copy ;;
+    -r|--record) getAddressRecord | $copy_cmd ;;
+    -m|--multi) getAddressMulti | $copy_cmd ;;
     -q|--qutebrowser) openInQutebrowser ;;
     -Q|--qutebrowserRecord) openInQutebrowserRecord ;;
-    *) getAddress | wl-copy ;;
+    *) getAddress | $copy_cmd ;;
 esac
