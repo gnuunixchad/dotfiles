@@ -10,7 +10,7 @@
 
 # @depends  ttf-nerd-fonts-symbols wireplumber brightnessctl coreutils sed grep
 #           awk curl cronie udev
-# @suggests dash bluez-utils isync newsboat calcurse mpc wob stow
+# @suggests dash bluez-utils isync newsboat calcurse mpc wob xob stow
 
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
