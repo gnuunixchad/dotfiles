@@ -7,7 +7,10 @@
 
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
-MENU="${HOME}/.local/bin/wmenu-color"
+[ "$XDG_SESSION_TYPE" = "wayland" ] \
+    && MENU="${HOME}/.local/bin/wmenu-color" \
+    || MENU="dmenu"
+
 ADDRESS_BOOK_DIR="${HOME}/.local/share/address"
 ADDRESS_BOOK="${ADDRESS_BOOK_DIR}/address"
 menu_prompt="$(basename $0)"
