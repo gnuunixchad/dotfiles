@@ -1,9 +1,14 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2023,2024,2025,2026
-# set wallpaper with swaybg
+# @depends swaybg xwallpaper(xorg)
+# setwall - set wallpaper
 
 [ ! -d "$1" ] && ln -sf "$(realpath $1)" $HOME/.local/share/wallpaper;
 
-killall swaybg
-nohup swaybg -i $HOME/.local/share/wallpaper -m fill >/dev/null 2>&1 &
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    killall swaybg
+    nohup swaybg -i $HOME/.local/share/wallpaper -m fill >/dev/null 2>&1 &
+elif [ -n "$XAUTHORITY" ]; then
+    xwallpaper --zoom ${HOME}/.local/share/wallpaper
+fi
