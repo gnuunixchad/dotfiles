@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # select an image for sway's wallpaper with imv
 
 LIST="${XDG_RUNTIME_DIR}/gallery.list"
@@ -22,4 +22,8 @@ ls -t $(find $HOME/pic/ -type f ) \
     | shuf \
     > "$LIST"
 
-swayimg --class='Floating_IMG' -g -F "$LIST" -o none
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    swayimg --class='Floating_IMG' -g -F "$LIST" -o none
+elif [ -n "$XAUTHORITY" ]; then
+    cat "$LIST" | nsxiv -N "Floating_IMG"  -t -
+fi
