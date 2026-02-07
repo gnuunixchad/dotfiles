@@ -10,7 +10,7 @@
 show_img(){
     if [ -n "$FZF_LEVEL" ] || [ -n "$NVIM" ] || [ -n "$DVTM" ]; then
         catimg -t -w 80 "$1" # use catimg when running with `fzf` & `lf.vim`
-    elif [ "$XDG_SESSION_TYPE" != "tty" ]; then
+    elif [ "$XDG_SESSION_TYPE" != "tty" ] && [ "$TERM" = "foot" ]; then
         /usr/bin/chafa -f sixel\
                        -s "$2x$3" \
                        --animate off \
