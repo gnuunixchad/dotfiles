@@ -1,0 +1,36 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2023,2026
+# .config/nsxiv/exec/key-handler
+
+# <^-x> sends the next key to external key-handler
+
+while read file
+do
+    case "$1" in
+        "W")
+            ${HOME}/.local/bin/setwall "$file"
+            ;;
+
+        "D")
+        user_choice="$(printf "no\nyes" \
+                    | dmenu -p "["$(basename $0)"] rm? $(basename $@ \
+                    | awk '{if(length($0) > 80) print substr($0, 1, 35) "..." substr($0, length($0)-34, 35); else print $0}')")"
+        if [ "$user_choice" = "yes" ]; then
+            rm "$file"
+            notify-send -t 1100 -u low -r 3301 "nsxiv"  "$file is removed"
+        else
+            exit 1
+        fi
+            ;;
+        "Y")
+            cp "$file" ${HOME}/tmp/
+            ;;
+        "S")
+            qrtool decode "$file" | xsel -b
+            notify-send -t 1100 -u low -r 3301 \
+                "$(basename $0)"  "Copied to clipboard"
+            ;;
+
+    esac
+done

@@ -210,6 +210,9 @@ package-list
 !.config/newsboat/colors.conf
 !.config/newsboat/proxy.conf.example
 !.config/newsboat/urls.example
+!.config/nsxiv/
+!.config/nsxiv/exec/
+!.config/nsxiv/exec/key-handler
 !.config/nvim/
 !.config/nvim/config/colors.lua
 !.config/nvim/lua/
