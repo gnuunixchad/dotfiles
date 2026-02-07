@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # show gallery images with imv, with lastest modified images first
 # imv has max argument limited to 128
 
@@ -26,4 +26,8 @@ ls -t $(find $HOME/pic/ -type f ) \
     | shuf \
     > "$LIST"
 
-swayimg -g -F "$LIST" -o none
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    swayimg -g -F "$LIST" -o none
+elif [ -n "$XAUTHORITY" ]; then
+    cat "$LIST" | nsxiv -t -
+fi

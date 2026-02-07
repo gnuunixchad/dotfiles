@@ -1,10 +1,14 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # show gallery images with imv, with lastest modified images first
 
 LIST="${XDG_RUNTIME_DIR}/gallery.list"
 
 ls -t $(find $HOME/pic/kirei/ -type f ) |shuf > "$LIST"
 
-swayimg -g -F "$LIST" -o none
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    swayimg -g -F "$LIST" -o none
+elif [ -n "$XAUTHORITY" ]; then
+    cat "$LIST" | nsxiv -t -
+fi
