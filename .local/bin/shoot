@@ -2,7 +2,7 @@
 # @author nate zhou
 # @since 2024,2025,2026
 # shoot - Take a screenshot with selected region in wlroots compositors.
-# @depends wmenu grim wlr-rander scrot(xorg)
+# @depends wmenu grim slurp wlr-rander scrot(xorg)
 
 # TODO: shootOutput() on xorg
 
