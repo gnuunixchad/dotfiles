@@ -13,15 +13,24 @@ print_err() {
     printf ${RED}"${1}"${RESET}\\n >&2
 }
 
+open_img() {
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        swayimg "$f"
+    elif [ -n "$XAUTHORITY" ]; then
+        nsxiv "$f"
+    else
+        mpv --loop "$f"
+    fi
+}
+
+
 [ -z "$1" ] && print_err "No f specified." && exit 1
 case $(file --mime-type -Lb "$f") in
     image/x-xcf)
         gimp "$f"
         ;;
     image/*)
-        [ "$XDG_SESSION_TYPE" = !"tty" ] \
-            && swayimg "$f" \
-            || mpv --loop "$f"
+        open_img
         ;;
     video/*)
         mpv --loop "$f"
@@ -67,9 +76,7 @@ case $(file --mime-type -Lb "$f") in
     text/html)
         case "$f" in
             *.svg)
-                [ "$XDG_SESSION_TYPE" = !"tty" ] \
-                    && swayimg "$f" \
-                    || mpv --loop "$f"
+                open_img
                 ;;
             *.md)
                 $EDITOR "$f"
@@ -83,9 +90,7 @@ case $(file --mime-type -Lb "$f") in
     text/*|*/json|inode/x-empty|application/javascript|application/mbox|application/pgp-signature|application/pgp-keys)
         case "$f" in
             *.svg)
-                [ "$XDG_SESSION_TYPE" = !"tty" ] \
-                    && swayimg "$f" \
-                    || mpv --loop "$f"
+                open_img
                 ;;
             *)
                 $EDITOR "$f"
