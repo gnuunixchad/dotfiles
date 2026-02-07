@@ -1,8 +1,8 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # qute-dict - search the word currently selected in qutebrowser with dictd
-# @depends dictd (and a dictionary database)
+# @depends dictd (and a dictionary database) foot st(xorg)
 
 # usage:
 # config.bind('xd', 'spawn --userscript qutedict')
@@ -14,9 +14,14 @@
 # >    terminial, which is not scrollable nor searchable.
 
 DICT_TEMP=${XDG_RUNTIME_DIR}/qutebrowser/qutedict
-TERM="footclient -T Floating_Term \
-                 -o main.font=SourceCodePro:size=20\
-                 -o colors.alpha=0.9"
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    TERM="footclient -T Floating_Term \
+                     -o main.font=SourceCodePro:size=20\
+                     -o colors.alpha=0.9"
+elif [ -n "$XAUTHORITY" ]; then
+    TERM="st -T Floating_Term"
+fi
 
 # remove spaces around word
 #DICT_WORD="$(echo $QUTE_SELECTED_TEXT | sed 's/^ *//; s/ *$//; s/ \{1,\}/ /g')"

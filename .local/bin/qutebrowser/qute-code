@@ -1,11 +1,21 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # qute-code - qutebrowser userscript to generate QRCode for current tab, to
 # quickly share a link in real life.
-# @depends qrtool swayimg
+# @depends qrtool swayimg nsxiv(xorg)
 
 # usage:
 # config.bind('xq', 'spawn --userscript qutecode')
 
-qrtool encode "$QUTE_URL" | swayimg --class=Floating_IMG -
+qrcode=${XDG_RUNTIME_DIR}/qutebrowser/qute-code.png
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    viewer="swayimg --class=Floating_IMG"
+elif [ -n "$XAUTHORITY" ]; then
+    viewer="nsxiv -N Floating_IMG --no-bar --private"
+fi
+
+qrtool encode "$QUTE_URL" > $qrcode
+
+$viewer $qrcode

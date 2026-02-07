@@ -1,9 +1,13 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # qute-vim - view the plain text of the current page in an editor
 
-TERM="footclient -T Floating_Term \
-                 -o colors.alpha=0.9"
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    TERM="footclient -T Floating_Term \
+                     -o colors.alpha=0.9"
+elif [ -n "$XAUTHORITY" ]; then
+    TERM="st -T Floating_Term"
+fi
 
 $TERM nvim "$QUTE_TEXT"
