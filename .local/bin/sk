@@ -1,0 +1,16 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2026
+# toggle screenkey
+
+start() {
+    notify-send -u low -r 290 "$(basename $0)" "screenkey on"
+    screenkey -s small -f 'SourceCodePro' --vis-shift
+}
+
+stop() {
+    notify-send -u low -r 290 "$(basename $0)" "screenkey off"
+    kill $(pgrep 'screenkey')
+}
+
+pgrep 'screenkey' > /dev/null && stop || start
