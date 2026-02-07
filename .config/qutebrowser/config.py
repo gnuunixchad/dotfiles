@@ -1,7 +1,7 @@
 # vim:ft=python
 # qutebrowser/config.py
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 
 c.zoom.default = 120
 
@@ -14,10 +14,18 @@ c.content.user_stylesheets = ["~/.config/qutebrowser/styles/black.css"]
 
 config.load_autoconfig(False) # ignore GUI settings
 
-c.editor.command = ['footclient', '-T', 'Floating_Term', '-o', 'colors.alpha=0.9', 'nvim', '{file}', '-c', 'normal {line}G{column0}l']
+import os
+import shlex
 
-# lf as file chooser
-fileChooser = ['footclient', '-T', 'Floating_Term', '-o', 'colors.alpha=0.9', 'lf', '-selection-path={}']
+if os.environ.get('XDG_SESSION_TYPE') == 'wayland':
+    term = 'footclient -T Floating_Term -o colors.alpha=0.9'
+else:
+    term = 'st -T Floating_Term'
+
+c.editor.command = shlex.split(term) + \
+        ['nvim', '{file}', '-c', 'normal {line}G{column0}l']
+
+fileChooser = shlex.split(term) + ['lf', '-selection-path={}']
 c.fileselect.handler = "external"
 c.fileselect.folder.command = fileChooser
 c.fileselect.multiple_files.command = fileChooser
