@@ -41,11 +41,11 @@ spyware when I can.
 | login shell | zsh |
 | terminal multiplexer| [abduco](https://codeberg.org/unixchad/abduco) · [dvtm](https://codeberg.org/unixchad/dvtm) |
 | terminal emulator | foot · [st](https://codeberg.org/unixchad/st) |
-| wayland compositor | [river-classic](https://codeberg.org/unixchad/river-classic) · [dwl](https://codeberg.org/unixchad/dwl) · [kwm](https://codeberg.org/unixchad/kwm) · sway · [dwm](https://codeberg.org/unixchad/dwm)|
+| window manager | [river-classic](https://codeberg.org/unixchad/river-classic) · [dwl](https://codeberg.org/unixchad/dwl) · [kwm](https://codeberg.org/unixchad/kwm) · sway · [dwm](https://codeberg.org/unixchad/dwm)|
 | status generator | [damblocks](https://codeberg.org/unixchad/damblocks) |
 | output management | wlr-randr · kanshi |
-| application launcher | wmenu · [mew](https://codeberg.org/unixchad/mew) · [dmenu](https://codeberg.org/unixchad/dmenu) |
-| notification daemon | dunst |
+| menu | wmenu · [mew](https://codeberg.org/unixchad/mew) · [dmenu](https://codeberg.org/unixchad/dmenu) |
+| notification | dunst |
 | editor | neovim · vim |
 | email | neomutt · isync |
 | file manager | lf |
