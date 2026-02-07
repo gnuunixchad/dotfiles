@@ -1,17 +1,22 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # heart - search and edit dotfiles tracked by git in a dynamic menu
 # It's called heart because all my dotfiles are in ~/doc/heart managed by stow.
 
 HEART="${HOME}/doc/heart"
 menu_prompt="$(basename $0)"
-if [ "$TERM" = "foot" ] || [ "$TERM" = "footclient" ] || [ -n "$DVTM" ] ;
-    then
-        terminal=""
-        [ -n "$DVTM" ] && EDITOR="command vim"
-    else
-        terminal="footclient"
+
+if [ "$TERM" = "foot" ] || [ "$TERM" = "footclient" ] || [ -n "$DVTM" ] ; then
+    term=""
+    [ -n "$DVTM" ] && EDITOR="command vim"
+elif [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    term="footclient"
+    menu="${HOME}/.local/bin/wmenu-color"
+elif [ -n "$XAUTHORITY" ]; then
+    term="st"
+    menu="dmenu"
+
 fi
 
 list_tracked_files() {
@@ -26,8 +31,8 @@ list_tracked_files() {
 }
 
 menu() {
-    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-        wmenu-color -p "$menu_prompt" -i -l 6
+    if [ "$XDG_SESSION_TYPE" = "wayland" ] || [ -n "$XAUTHORITY" ]; then
+        $menu -p "$menu_prompt" -i -l 6
     else
         fzf --prompt "$menu_prompt"
     fi
@@ -35,4 +40,4 @@ menu() {
 
 selected_file="$(list_tracked_files | menu)"
 
-[ -n "$selected_file" ] && $terminal $EDITOR "$selected_file"
+[ -n "$selected_file" ] && $term $EDITOR "$selected_file"
