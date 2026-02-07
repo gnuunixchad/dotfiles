@@ -37,6 +37,11 @@ config_x() {
 
     setxkbmap -option caps:swapescape,altwin:swap_alt_win &
 
+    touchpads=$(xinput list | grep -i "touchpad" | grep -oP 'id=\K[0-9]+')
+    for touchpad in $touchpads ; do
+        xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
+    done
+
     export GTK_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
     export QT_IM_MODULE=fcitx
