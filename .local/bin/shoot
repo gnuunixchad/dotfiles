@@ -1,8 +1,10 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # shoot - Take a screenshot with selected region in wlroots compositors.
-# @depends wmenu grim wlr-rander
+# @depends wmenu grim wlr-rander scrot(xorg)
+
+# TODO: shootOutput() on xorg
 
 [ -z "$GRIM_DEFAULT_DIR" ] && GRIM_DEFAULT_DIR="$HOME/tmp/screenshots"
 SCREENSHOT_HOME="${HOME}/tmp/screenshots"
@@ -16,26 +18,42 @@ notify() {
 }
 
 shootOutput() {
-    region="$(wlr-randr \
-                            | grep '^[a-zA-Z0-9]'\
-                            | wmenu-color -p "$(basename $0)" -l 3 \
-                            | tr -d '()' \
-                            | cut -d' ' -f-1 )"
-    sleep 0.1
-    grim -o "$region" "$filename"
-    notify
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        region="$(wlr-randr \
+                                | grep '^[a-zA-Z0-9]'\
+                                | wmenu-color -p "$(basename $0)" -l 3 \
+                                | tr -d '()' \
+                                | cut -d' ' -f-1 )"
+        sleep 0.1
+        grim -o "$region" "$filename"
+        notify
+    else
+        notify-send -u low "$(basename $0)" \
+            "shoot output is only supported on wayland"
+
+    fi
 }
 
 shootAll() {
     region="all outputs"
-    grim "$filename"
+
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        grim "$filename"
+    else
+        scrot "$filename"
+    fi
+
     notify
 }
 
 shootGeo() {
-    region=$(slurp)
-    grim -g "$region" "$filename"
-    notify
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        region=$(slurp)
+        grim -g "$region" "$filename"
+        notify
+    else
+        scrot -s "$filename"
+    fi
 }
 
 [ -z "$1" ] && shootOutput
