@@ -1,8 +1,14 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # decrypt the gpg encrypted document file and pipe to a viewer, without writing
 # to the disk
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    menu="${HOME}/.local/bin/wmenu-color"
+elif [ -n "$XAUTHORITY" ]; then
+    menu="dmenu"
+fi
 
 usage() {
     cat << _EOF_
@@ -13,7 +19,7 @@ _EOF_
 
 [ "$#" -eq 0 ] && (usage; exit 0)
 
-gpg_passphrase=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase:")
+gpg_passphrase=$(echo "" | $menu -P -p "[$(basename $0)] passphrase:")
 
 [ -z "$gpg_passphrase" ] && exit 1
 

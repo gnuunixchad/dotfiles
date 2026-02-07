@@ -1,17 +1,22 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # decrypt the .gpg file and pipe to tar
-# if in wayland, using wmenu as input box
+# if in wayland, using wmenu/dmenu as input box
 # after reading the untar'ed files, remember to `shred -u *`
 
-if [ "$XDG_SESSION_TYPE" = "tty" ]; then
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    menu="${HOME}/.local/bin/wmenu-color"
+elif [ -n "$XAUTHORITY" ]; then
+    menu="dmenu"
+else
     gpg --no-symkey-cache --pinentry-mode loopback -d "$1" \
         | tar -xvf -  ##&& gpg-connect-agent reloadagent /bye
     exit 0
 fi
 
-gpg_passphrase=$(echo "" | wmenu-color -P -p "[$(basename $0)] passphrase:")
+gpg_passphrase=$(echo "" | $menu -P -p "[$(basename $0)] passphrase:")
 
 [ -z "$gpg_passphrase" ] && exit 1
 

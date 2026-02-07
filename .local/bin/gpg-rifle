@@ -1,10 +1,16 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # Decrypt the gpg encrypted file and pipe to a viewer without writting to disk.
 # @TODO: fix piping to mpv in tty
 
 file="$1"
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    menu="${HOME}/.local/bin/wmenu-color"
+elif [ -n "$XAUTHORITY" ]; then
+    menu="dmenu"
+fi
 
 usage() {
 cat << _EOF_
@@ -22,7 +28,7 @@ decrypt() {
     local pass=""
 
     if [ "$XDG_SESSION_TYPE" != "tty" ]; then
-        pass="$(wmenu-color -P -p "[$(basename $0)] passphrase:" < /dev/null)"
+        pass="$($menu -P -p "[$(basename $0)] passphrase:" < /dev/null)"
     else
         read -p "[$(basename) $0 passphrase: ]" -r pass
     fi
