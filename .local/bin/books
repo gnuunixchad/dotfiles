@@ -1,26 +1,23 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
-# open ebooks with zathura with wmenu
-
-source $HOME/.local/bin/wmenu-color 2>/dev/null
+# @since 2024,2025,2026
+# open ebooks with zathura with dynamic menu
 
 SEARCH_PATH="$HOME/doc/ebook"
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    menu=${HOME}/.local/bin/wmenu-color
+elif [ -n "$XAUTHORITY" ]; then
+    menu=dmenu
+fi
+
 
 selected_file="$(\
     find "$SEARCH_PATH" -type f \
     | grep -e .epub$ -e .pdf$  \
-    | wmenu-color -p "$(basename $0)" -i -l 6\
+    | $menu -p "$(basename $0)" -i -l 6\
     )"
 
-#if grep '.epub' "$selected_file"; then
-#    if grep '-zh.epub' "$selected_file"; then
-#        viewer="footclient ${HOME}/.local/bin/epr-zh"
-#    else
-#        viewer="footclient ${HOME}/.local/bin/epr"
-#    fi
-#else viewer="zathura"
-#fi
 viewer="zathura"
 
 [ -n "$selected_file" ] && $viewer "$selected_file"
