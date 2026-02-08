@@ -4,6 +4,12 @@
 # @depends gpg wmenu dmenu(xorg, with password patch)
 # gpg-pass - search and decrypt gpg encrypted files
 
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    menu="${HOME}/.local/bin/wmenu-color"
+elif [ -n "$XAUTHORITY" ]; then
+    menu="dmenu"
+fi
+
 ${HOME}/.local/bin/gpg-doc \
     "$(find ${HOME}/doc/.gpg/passwd -type f -name '*.gpg' \
-    | wmenu-color -l 6 -p "[$(basename $0)] choose file:")"
+    | $menu -l 6 -p "[$(basename $0)] choose file:")"
