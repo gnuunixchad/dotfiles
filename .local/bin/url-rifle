@@ -1,6 +1,7 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
+# @depends swayimg nsxiv(xorg) zathura qutebrowser w3m(tty)
 # url - rifle Execuate different open actions based on URL patterns.
 #
 # [Usage]
@@ -19,7 +20,7 @@ print_err() {
 }
 
 notify() {
-    [ "$XDG_SESSION_TYPE" = "tty" ] return
+    [ "$XDG_SESSION_TYPE" = "tty" ] && return
     notify-send -u low -t 3300 "$(basename $0)" "Downloading ${filetype}:\n $url"
 }
 
@@ -28,8 +29,19 @@ notify() {
 
 case "$url" in
     *jpeg|*jpg|*png|*gif|*webp|*svg)
-        filetype="image" notify
-        curl --silent --location "$url" | swayimg --class='Floating_IMG' - &
+        {
+            image="${XDG_RUNTIME_DIR}/url-rifle.tmp"
+            curl --silent --location "$url" > "$image"
+
+            if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+                viewer="swayimg --class='Floating_IMG'"
+            elif [ -n "$XAUTHORITY" ]; then
+                viewer="nsxiv --name='Floating_IMG' --no-bar"
+            fi
+
+            filetype="image" notify
+            $viewer $image
+        } &
         ;;
     *epub|*pdf)
         filetype="document" notify
