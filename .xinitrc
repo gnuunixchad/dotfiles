@@ -2,12 +2,12 @@
 # @author nate zhou
 # @since 2023,2026
 
+wm=${1:-dwm}
+
 autostart() {
     xrandr -s 1920x1080
 
     xwallpaper --zoom ${HOME}/.local/share/wallpaper &
-
-    damblocks --xsetroot &
 
     picom &
 
@@ -56,4 +56,12 @@ config_x() {
 
 config_x; autostart;
 
-exec ssh-agent dwm
+case "$wm" in
+    dwm)
+        damblocks --xsetroot &
+        exec ssh-agent dwm
+        ;;
+    i3)
+        exec ssh-agent i3
+        ;;
+esac
