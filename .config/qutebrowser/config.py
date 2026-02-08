@@ -20,7 +20,7 @@ import shlex
 if os.environ.get('XDG_SESSION_TYPE') == 'wayland':
     term = 'footclient -T Floating_Term -o colors.alpha=0.9'
 else:
-    term = 'st -T Floating_Term -A 0.9'
+    term = 'st -T Floating_Term'
 
 c.editor.command = shlex.split(term) + \
         ['nvim', '{file}', '-c', 'normal {line}G{column0}l']
