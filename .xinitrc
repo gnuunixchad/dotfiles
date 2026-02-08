@@ -39,6 +39,8 @@ config_x() {
 
     unclutter --timeout 3 &
 
+    xbanish &
+
     touchpads=$(xinput list | grep -i "touchpad" | grep -oP 'id=\K[0-9]+')
     for touchpad in $touchpads ; do
         xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
