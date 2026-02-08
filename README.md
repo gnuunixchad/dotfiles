@@ -77,8 +77,8 @@ spyware when I can. (Detailed software on X is listed [here](https://codeberg.or
 | audio volume | [audio](./.local/bin/audio) |
 | audio sink | [speaker](./.local/bin/speaker) |
 | bookmark | [address](./.local/bin/address) |
-| file previewer | [rifle](./.local/bin/scope) · [gpg-rifle](./.local/bin/gpg-rifle) · [url-rifle](./.local/bin/url-rifle) |
-| file opener | [scope](./.local/bin/rifle) |
+| file opener | [rifle](./.local/bin/rifle) · [gpg-rifle](./.local/bin/gpg-rifle) · [url-rifle](./.local/bin/url-rifle) |
+| file previewer | [scope](./.local/bin/scope) |
 | mounting | [saddle](./.local/bin/saddle) · [phone](./.local/bin/phone) |
 | gpg | [seal](./.local/bin/seal) |
 | mutt_oauth2 | [muttauth](./.local/bin/muttauth) |
