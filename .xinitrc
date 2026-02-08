@@ -37,6 +37,8 @@ config_x() {
 
     setxkbmap -option caps:swapescape,altwin:swap_alt_win &
 
+    unclutter --timeout 3 &
+
     touchpads=$(xinput list | grep -i "touchpad" | grep -oP 'id=\K[0-9]+')
     for touchpad in $touchpads ; do
         xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
