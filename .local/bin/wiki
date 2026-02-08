@@ -1,12 +1,18 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # search arch-wiki-docs package's files in wmenu and open in browser
-
-source $HOME/.local/bin/wmenu-color 2>/dev/null
 
 WIKI_PATH_SHARE="/usr/share/doc/arch-wiki/html/en/"
 WIKI_PATH_LOCAL="$HOME/doc/arch-wiki/"
+
+menu=""
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    menu="${HOME}/.local/bin/wmenu-color"
+elif [ -n "$XAUTHORITY" ]; then
+    menu="dmenu"
+fi
 
 if [ -d "$WIKI_PATH_SHARE" ]; then
     WIKI_PATH="$WIKI_PATH_SHARE"
@@ -14,9 +20,9 @@ else
     WIKI_PATH="$WIKI_PATH_LOCAL"
 fi
 
-if [ "$XDG_SESSION_TYPE" != "tty" ]; then
+if [ -n "$menu" ]; then
     selected_page="$(find "$WIKI_PATH" -type f \
-        | wmenu-color -l 6 -i -p "$(basename "$0")")"
+        | $menu -l 6 -i -p "$(basename "$0")")"
     # don't do anything if exiting wmenu without any input
     [ -n "$selected_page" ] && $BROWSER file://"$selected_page"
 else
