@@ -80,6 +80,7 @@ spyware when I can.
 | audio volume | [audio](./.local/bin/audio) |
 | audio sink | [speaker](./.local/bin/speaker) |
 | bookmark | [address](./.local/bin/address) |
+| clipboard | [clip](./.local/bin/clip) |
 | file opener | [rifle](./.local/bin/rifle) · [gpg-rifle](./.local/bin/gpg-rifle) · [url-rifle](./.local/bin/url-rifle) |
 | file previewer | [scope](./.local/bin/scope) |
 | mounting | [saddle](./.local/bin/saddle) · [phone](./.local/bin/phone) |
