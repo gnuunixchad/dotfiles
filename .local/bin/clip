@@ -1,27 +1,47 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # wayland clipboard manager
-# @depends wmenu wl-copy cliphist
+# @depends wmenu dmenu(xorg) wl-copy cliphist clipmenu(xorg)
+
+set_variables() {
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        menu="${HOME}/.local/bin/wmenu-color"
+        wipe_cmd="cliphist wipe"
+    elif [ -n "$XAUTHORITY" ]; then
+        menu="dmenu"
+        wipe_cmd="rm -rf ${XDG_RUNTIME_DIR}/clipmenu.*.*/*"
+    fi
+}
 
 wipe_history() {
+    set_variables
+
     choice="$(echo "no\nyes" \
-            | ${HOME}/.local/bin/wmenu-color \
-                -p "$(basename $0): wipe wl-clipboard history?")"
+              | $menu -p "$(basename $0): wipe clipboard history?")"
 
     if [ "$choice" = "yes" ]; then
-        cliphist wipe
         notify-send -u low -r 199 "$(basename $0)" "Clipboard wiped"
+        $wipe_cmd
     else
         notify-send -u low -r 199 "$(basename $0)" "Aboarted";
         exit 0
     fi
 }
 
-[ -z "$1" ] && cliphist list | wmenu-color -p "$(basename $0)" -l 6 \
-               | cliphist decode \
-               | wl-copy
+open_clipboard() {
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        cliphist list | wmenu-color -p "$(basename $0)" -l 6 \
+                      | cliphist decode \
+                      | wl-copy
+    elif [ -n "$XAUTHORITY" ]; then
+        clipmenu
+    fi
+}
+
+[ -z "$1" ] && open_clipboard
 
 case "$1" in
-    -w|--wipe) wipe_history
+    -w|--wipe) wipe_history ;;
+    *) exit 0 ;;
 esac
