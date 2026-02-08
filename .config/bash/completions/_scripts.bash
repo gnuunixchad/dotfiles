@@ -224,3 +224,13 @@ _xobd() {
     fi
 }
 complete -F _xobd xobd
+
+_clip() {
+    local options
+    local current_word="${COMP_WORDS[COMP_CWORD]}"
+    options="--wipe --help"
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    fi
+}
+complete -F _clip clip

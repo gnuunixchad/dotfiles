@@ -189,3 +189,12 @@ _xobd() {
     fi
 }
 compdef _xobd xobd
+
+_clip() {
+    local options
+    options=("--wipe" "--help")
+    if [ "$CURRENT" -eq 2 ]; then
+        _describe 'options' options
+    fi
+}
+compdef _clip clip

@@ -4,6 +4,8 @@
 # clipboard manager for Wayland and X
 # @depends wmenu dmenu(xorg) wl-copy cliphist clipmenu(xorg)
 
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
+
 usage() {
     cat << _EOF_
 USAGE
