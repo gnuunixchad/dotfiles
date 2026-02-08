@@ -2,9 +2,7 @@
 # @author nate zhou
 # @since 2026
 # blue - interactively toggle bluetooth devices
-# @depends wmenu, fzf, bluez-utils
-
-#set -x
+# @depends wmenu dmenu(xorg) fzf bluez-utils
 
 prompt="[$(basename $0)]"
 menu=""
@@ -15,10 +13,12 @@ notify() {
 }
 
 select_device() {
-    if [ "$XDG_SESSION_TYPE" = "tty" ]; then
-        menu="fzf --prompt"
-    else
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
         menu="${HOME}/.local/bin/wmenu-color -l5 -p"
+    elif [ -n "$XAUTHORITY" ]; then
+        menu="dmenu -l 5 -p"
+    else
+        menu="fzf --prompt"
     fi
 
     bluetoothctl devices | cut -d' ' -f2- | $menu "$prompt" | cut -d' ' -f1
