@@ -2,9 +2,8 @@
 # @author nate zhou
 # @since 2024,2025,2026
 # shoot - Take a screenshot with selected region in wlroots compositors.
-# @depends wmenu grim slurp wlr-rander maim(xorg)
+# @depends wmenu grim slurp wlr-rander maim(xorg) xrandr(xorg)
 
-# TODO: shootOutput() on xorg
 
 [ -z "$GRIM_DEFAULT_DIR" ] && GRIM_DEFAULT_DIR="$HOME/tmp/screenshots"
 SCREENSHOT_HOME="${HOME}/tmp/screenshots"
@@ -28,9 +27,14 @@ shootOutput() {
         grim -o "$region" "$filename"
         notify
     else
-        notify-send -u low "$(basename $0)" \
-            "shoot output is only supported on wayland"
-
+        region="$(xrandr \
+                                | grep ' connected '\
+                                | dmenu -p "$(basename $0)" -l 3 \
+                                | sed 's/ primary / /' \
+                                | cut -d' ' -f3 )"
+        sleep 0.1
+        maim -g "$region" "$filename"
+        notify
     fi
 }
 
