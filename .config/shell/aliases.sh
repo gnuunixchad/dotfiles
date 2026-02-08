@@ -9,10 +9,10 @@
 
 alias cmd="command"
 
-alias rv="exec ssh-agent /usr/local/bin/river"
-alias rc="exec ssh-agent /usr/local/bin/river-classic -c ${HOME}/.config/river-classic/init"
-alias dl="exec ssh-agent ${HOME}/.local/bin/damblocks | /usr/local/bin/dwl"
-alias sw="exec ssh-agent sway --unsupported-gpu"
+alias rv="ssh-agent /usr/local/bin/river"
+alias rc="ssh-agent /usr/local/bin/river-classic -c ${HOME}/.config/river-classic/init"
+alias dl="ssh-agent ${HOME}/.local/bin/damblocks | /usr/local/bin/dwl"
+alias sw="ssh-agent sway --unsupported-gpu"
 
 alias x="startx"
 
