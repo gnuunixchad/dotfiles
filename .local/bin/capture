@@ -2,7 +2,7 @@
 # @author nate zhou
 # @since 2024,2025,2026
 # capture - select output and audio source for screen casting via danymic menu
-# @depends wl-recorder, wmenu, libnotify
+# @depends wlr-randr xrandr(xorg) wl-recorder ffmpeg(xorg) wmenu dmenu(xorg)
 
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
@@ -45,20 +45,36 @@ notifyStop() {
     exit 0
 }
 
+set_menu() {
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        menu="${HOME}/.local/bin/wmenu-color"
+    elif [ -n "$XAUTHORITY" ]; then
+        menu="dmenu"
+    fi
+}
+
 setOutput() {
-    wlr-randr \
-        | grep '^[^[:space:]]'\
-        | wmenu-color -p "[output]" -l 3 \
-        | tr -d '()' \
-        | cut -d' ' -f-1
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        wlr-randr \
+            | grep '^[^[:space:]]'\
+            | $menu -p "[output]" -l 3 \
+            | tr -d '()' \
+            | cut -d' ' -f-1
+    elif [ -n "$XAUTHORITY" ]; then
+        xrandr \
+            | grep ' connected '\
+            | $menu -p "$(basename $0)" -l 3 \
+            | sed 's/ primary / /' \
+            | cut -d' ' -f3
+    fi
 }
 
 setSource() {
-    pw-dump \
-        | grep "\"node.name\":" \
-        | sort \
-        | wmenu-color -p "[source]" -l 6 \
-        | cut -d'"' -f4
+    source="$(pw-dump \
+              | grep "\"node.name\":" \
+              | sort \
+              | $menu -p "[source]" -l 6 \
+              | cut -d'"' -f4)"
 }
 
 startCapture() {
@@ -66,9 +82,8 @@ startCapture() {
     [ -z "$output" ] && abort "No output selected"
 
     if [ "$isMute" != "true" ]; then
-        source="$(setSource)"
+        setSource
         [ -z "$source" ] && abort "No audio source selected"
-        audioOption="-a '$source'"
     else
         notify "No audio source included"
         source=""
@@ -79,12 +94,26 @@ startCapture() {
 
     trap notifyStop EXIT INT TERM
 
-    wf-recorder --framerate "$fps" \
-                --output "$output" \
-                "$audioOption" \
-                -c h264_vaapi \
-                -f "${filename}.${extension}"
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        wf-recorder --framerate "$fps" \
+                    --output "$output" \
+                    -a "$source" \
+                    -c h264_vaapi \
+                    -f "${filename}.${extension}"
+    elif [ -n "$XAUTHORITY" ]; then
+        SIZE=$(echo $output | cut -d+ -f1)
+        X=$(echo $output | cut -d+ -f2)
+        Y=$(echo $output | cut -d+ -f3)
+
+        ffmpeg -f x11grab -framerate "$fps" \
+                    -video_size $SIZE -i :0.0+$X,$Y \
+                    -f pulse -i "$source" \
+                    -c:v libx264 \
+                    "${filename}.${extension}"
+    fi
 }
+
+set_menu
 
 [ -z "$1" ] && startCapture
 
