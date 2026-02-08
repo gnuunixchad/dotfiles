@@ -1,8 +1,14 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # hibernate with a wmenu warning prompt
 
-user_choice="$(printf "no\nyes" | wmenu-color -p "System Hibernation?")"
+if [ "$XDG_RUNTIME_DIR" = "wayland" ]; then
+    menu="${HOME}/.local/bin/wmenu-color"
+elif [ -n "$XAUTHORITY" ]; then
+    menu="dmenu"
+fi
+
+user_choice="$(printf "no\nyes" | $menu -p "System Hibernation?")"
 
 [ "$user_choice" = "yes" ] && systemctl hibernate || exit 0
