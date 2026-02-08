@@ -15,7 +15,6 @@ alias dl="exec ssh-agent ${HOME}/.local/bin/damblocks | /usr/local/bin/dwl"
 alias sw="exec ssh-agent sway --unsupported-gpu"
 
 alias x="startx"
-alias xr="xrdb -m ${HOME}/.Xresources"
 
 alias faketty="XDG_SESSION_TYPE=tty TERM=xterm-256color"
 alias fakewl="XDG_SESSION_TYPE=wayland TERM=foot"
