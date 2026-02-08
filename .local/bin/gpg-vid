@@ -1,6 +1,7 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025,2026
+# @depends gpg wmenu dmenu(xorg, with password patch)
 # decrypt the .gpg file and pipe to mpv, without writing to the disk
 # the video file has to be streamable, triming a mp4 file with ffmpeg could make it non-streamable
 # fix it by copy the movflags of the orgianl file

@@ -1,6 +1,7 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025,2026
+# @depends gpg wmenu dmenu(xorg, with password patch)
 # decrypt the .gpg file and pipe to tar
 # if in wayland, using wmenu/dmenu as input box
 # after reading the untar'ed files, remember to `shred -u *`
