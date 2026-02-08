@@ -4,9 +4,10 @@
 # qute-html - view the HTML source of the current page in an editor
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    TERM="footclient -T Floating_Term -o colors.alpha=0.9"
+    TERM="footclient -T Floating_Term \
+                     -o colors.alpha=0.9"
 elif [ -n "$XAUTHORITY" ]; then
-    TERM="st -T Floating_Term -A 0.9"
+    TERM="st -T Floating_Term"
 fi
 
 

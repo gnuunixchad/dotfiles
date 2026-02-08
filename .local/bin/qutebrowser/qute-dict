@@ -20,9 +20,7 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
                      -o main.font=SourceCodePro:size=20\
                      -o colors.alpha=0.9"
 elif [ -n "$XAUTHORITY" ]; then
-    TERM="st -T Floating_Term \
-             -f SourceCodePro:size=20 \
-             -A 0.9"
+    TERM="st -T Floating_Term"
 fi
 
 # remove spaces around word
