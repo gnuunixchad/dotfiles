@@ -1,10 +1,20 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
-# use wmenu to select the audio source for voice recording
+# @since 2024,2025,2026
+# use a dynamic menu to select the audio source for voice recording
 
 RECORD_HOME="${HOME}/tmp/recordings"
 [ -d "$RECORD_HOME" ] || mkdir -p $RECORD_HOME
+
+menu=""
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    menu="${HOME}/.local/bin/wmenu-color -l5 -p"
+elif [ -n "$XAUTHORITY" ]; then
+    menu="dmenu -l 5 -p"
+else
+    menu="fzf --prompt"
+fi
 
 filename="${RECORD_HOME}/$(date +%Y-%m-%d_%H_%M_%S).mp3"
 
@@ -17,13 +27,8 @@ notifyStop() {
 }
 
 setSource() {
-if [ "$XDG_SESSION_TYPE" != "tty" ]; then
     pactl list short sources | awk '{print $2}' | sort \
-        | wmenu-color '-p[choose source]' -l 6
-else
-    pactl list short sources | awk '{print $2}' | sort \
-        | command fzf --prompt '[choose source] '
-fi
+        | $menu '[choose source]'
 }
 
 source="$(setSource)"
