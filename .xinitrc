@@ -15,7 +15,7 @@ autostart() {
 
     ${HOME}/.local/bin/mbs-cron &
 
-    xautolock -time 16 -locker "i3lock" &
+    xss-lock i3lock -i ${HOME}/.local/share/lockscreen -f  &
 
     redshift -P -O 5000 &
 
@@ -43,6 +43,9 @@ config_x() {
     for touchpad in $touchpads ; do
         xinput set-prop "$touchpad" "libinput Tapping Enabled" 1
     done
+
+    xset s on
+    xset s 960
 
     export GTK_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
