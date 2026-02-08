@@ -4,6 +4,20 @@
 # clipboard manager for Wayland and X
 # @depends wmenu dmenu(xorg) wl-copy cliphist clipmenu(xorg)
 
+usage() {
+    cat << _EOF_
+USAGE
+            $(basename $0) [OPTION]
+            clipboard manager for Wayland and X
+            without any options, open the dynamic menu to choose a history entry
+OPTIONS
+            -w,--wipe   wipe the current session's clipboard history,
+                        cliphist in Wayland, climenu in X
+            -h,--help   print this usage manual
+_EOF_
+    exit 0
+}
+
 set_variables() {
     if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
         menu="${HOME}/.local/bin/wmenu-color"
@@ -43,5 +57,5 @@ open_clipboard() {
 
 case "$1" in
     -w|--wipe) wipe_history ;;
-    *) exit 0 ;;
+    *) usage ;;
 esac
