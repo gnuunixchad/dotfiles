@@ -2,7 +2,7 @@
 # @author nate zhou
 # @since 2024,2025,2026
 # shoot - Take a screenshot with selected region in wlroots compositors.
-# @depends wmenu grim slurp wlr-rander scrot(xorg)
+# @depends wmenu grim slurp wlr-rander maim(xorg)
 
 # TODO: shootOutput() on xorg
 
@@ -40,7 +40,7 @@ shootAll() {
     if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
         grim "$filename"
     else
-        scrot "$filename"
+        maim "$filename"
     fi
 
     notify
@@ -50,10 +50,11 @@ shootGeo() {
     if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
         region=$(slurp)
         grim -g "$region" "$filename"
-        notify
     else
-        scrot -s "$filename"
+        region=$(slop)
+        maim -g "$region" "$filename"
     fi
+    notify
 }
 
 [ -z "$1" ] && shootOutput
