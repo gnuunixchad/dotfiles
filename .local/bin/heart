@@ -7,16 +7,18 @@
 HEART="${HOME}/doc/heart"
 menu_prompt="$(basename $0)"
 
-if [ "$TERM" = "foot" ] || [ "$TERM" = "footclient" ] || [ -n "$DVTM" ] ; then
+if [ "$TERM" = "dvtm-256color" ] ; then
     term=""
-    [ -n "$DVTM" ] && EDITOR="command vim"
+    EDITOR="command vim"
 elif [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     term="footclient"
     menu="${HOME}/.local/bin/wmenu-color"
 elif [ -n "$XAUTHORITY" ]; then
     term="st"
     menu="dmenu"
-
+else
+    term=""
+    EDITOR="command vim"
 fi
 
 list_tracked_files() {
@@ -31,8 +33,8 @@ list_tracked_files() {
 }
 
 menu() {
-    if [ "$XDG_SESSION_TYPE" = "wayland" ] || [ -n "$XAUTHORITY" ]; then
-        $menu -p "$menu_prompt" -i -l 6
+    if [ -n "$menu" ]; then
+        $menu -p "$${HOME}/.local/bin/wmenu-colorpt" -i -l 6
     else
         fzf --prompt "$menu_prompt"
     fi
