@@ -34,7 +34,10 @@ sudo ./install-root.sh
 ## Software I Use
 I prefer software that are free as in freedom, keyboard centric, terminal based,
 vim like, do one thing and do it well. And try to avoid proprietary garbage and
-spyware when I can. (Detailed software on X is listed [here](https://codeberg.org/unixchad/dwm))
+spyware when I can.
+
+(Detailed software [list](https://codeberg.org/unixchad/dwm#software-i-use-in-dwm) on Xorg)
+
 | | |
 |:---|:---|
 | scripting shell | dash |
@@ -100,6 +103,8 @@ Software I use to create videos:
 | video editing | ffmpeg · mpv-cut · kdenlive |
 | screenshots | grim · slurp |
 | thumbnails | imagemagick · gimp |
+
+(Detailed software [list](https://codeberg.org/unixchad/dwm#software-i-use-to-create-videos-on-x) on Xorg)
 
 All emails from me will be signed by the same GPG key that I sign commits with:
 - Import my key: `gpg --recv-keys 117094DA1AEA0835E4ED0770F7476912AA224CAC`
