@@ -15,7 +15,7 @@ autostart() {
 
     ${HOME}/.local/bin/mbs-cron &
 
-    xss-lock i3lock -i ${HOME}/.local/share/lockscreen -f  &
+    xss-lock -- i3lock -i ${HOME}/.local/share/lockscreen -f  &
 
     redshift -P -O 5000 &
 
