@@ -1,12 +1,18 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # speaker - select the pipewire default sink via dynamic menu or fzf
-# @depends pipewire-pulse, wmenu, fzf
+# @depends pipewire-pulse wmenu dmenu(xorg) fzf
 # This script use pactl instead of wpctl, because device name listed in pactl
 # is much easier to pipe to a dynamic menu than `wpctl status`
 
 DAMBLOCKS="${XDG_RUNTIME_DIR}/damblocks.pid"
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    menu="${HOME}/.local/bin/wmenu-color"
+elif [ -n "$XAUTHORITY" ]; then
+    menu="dmenu"
+fi
 
 notify() {
     [ "$XDG_SESSION_TYPE" != "tty" ] \
@@ -16,7 +22,7 @@ notify() {
 setSink() {
     if [ "$XDG_SESSION_TYPE" != "tty" ]; then
         pactl list short sinks | awk '{print $2}' \
-                               | wmenu-color '-pspeaker' -l 3
+                               | $menu -p '-pspeaker' -l 3
     else
         pactl list short sinks | awk '{print $2}' \
                                | command fzf --prompt 'speaker '
