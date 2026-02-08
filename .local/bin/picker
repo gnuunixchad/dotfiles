@@ -1,12 +1,13 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
-# wayland color picker
-# select a single 1x1 pixel with slurp, use grim to take a screenshot on it
-# and pipe to imagemagick to parse color
-# @depends slurp grim imagemagick libnotify dunst
-# @bug WLR_NO_HARDWARE_CURSORS=1 cause grim's output image having wrong color
-# for single pixel
+# @since 2025,2026
+# @depends slurp slop(xorg) grim maim(xorg) imagemagick libnotify
+# picker - color picker for Wayland and X
+
+# KNOWN ISSUES:
+# 1. WLR_NO_HARDWARE_CURSORS=1 cause grim's output image having wrong color
+#    for single pixel
+# 2. slop cannot do a single pixel screenshot
 
 if [ "$WLR_NO_HARDWARE_CURSORS" = "1" ]; then
     msg="grim conflicts with: WLR_NO_HARDWARE_CURSORS=1"
@@ -15,10 +16,29 @@ if [ "$WLR_NO_HARDWARE_CURSORS" = "1" ]; then
     exit 1
 fi
 
-color=$(grim -g "$(slurp -p)" -t ppm - \
-      | magick - -format '%[pixel:p{0,0}]' txt:- \
-      | cut -d' ' -f4-)
+wpicker() {
+    color=$(grim -g "$(slurp -p)" -t ppm - \
+          | magick - -format '%[pixel:p{0,0}]' txt:- \
+          | cut -d' ' -f4-)
 
-notify-send -u low -r 3581 "$(basename $0)" "$color"
+    notify-send -u low -r 3581 "$(basename $0)" "$color"
 
-echo $color | grep -o '#......' | tr 'A-Z' 'a-z' | wl-copy
+    echo $color | grep -o '#......' | tr 'A-Z' 'a-z' | wl-copy
+}
+
+xpicker() {
+    geometry=$(slop -f '%g' 2>/dev/null)
+
+    color=$(import -window root -crop "${geometry}" -depth 8 txt:- 2>/dev/null | \
+            awk 'NR==2 {print $3}' | tr -d 'srgb:')
+
+    notify-send -u low -r 3581 "$(basename "$0")" "Color: $color"
+
+    echo "$color" | tr 'A-Z' 'a-z' | xsel -b
+}
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    wpicker
+elif [ -n "$XAUTHORITY" ]; then
+    xpicker
+fi
