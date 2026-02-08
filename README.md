@@ -64,7 +64,7 @@ spyware when I can. (Detailed software on X is listed [here](https://codeberg.or
 | clipboard | wl-clipboard · cliphist |
 | input method | fcitx5 |
 
-## My Personal Scripts
+## My Personal Scripts (supporting Wayland and Xorg)
 | | |
 |:---|:---|
 | status bar | [damblocks](./.local/bin/damblocks) |
