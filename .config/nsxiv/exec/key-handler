@@ -8,11 +8,11 @@
 while read file
 do
     case "$1" in
-        "W")
+        "w")
             ${HOME}/.local/bin/setwall "$file"
             ;;
 
-        "D")
+        "d")
         user_choice="$(printf "no\nyes" \
                     | dmenu -p "["$(basename $0)"] rm? $(basename $@ \
                     | awk '{if(length($0) > 80) print substr($0, 1, 35) "..." substr($0, length($0)-34, 35); else print $0}')")"
@@ -23,10 +23,10 @@ do
             exit 1
         fi
             ;;
-        "Y")
+        "y")
             cp "$file" ${HOME}/tmp/
             ;;
-        "S")
+        "s")
             qrtool decode "$file" | xsel -b
             notify-send -t 1100 -u low -r 3301 \
                 "$(basename $0)"  "Copied to clipboard"
