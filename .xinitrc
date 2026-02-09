@@ -30,6 +30,8 @@ autostart() {
 }
 
 config_x() {
+    #xrdb -m ~/.Xresources
+    echo "Xft.dpi: 96" | xrdb -m
 
     [ -f "${HOME}/.Xresources" ] && xrdb -m "${HOME}/.Xresources" &
 
