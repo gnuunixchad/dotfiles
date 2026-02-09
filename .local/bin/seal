@@ -67,10 +67,10 @@ cipher() {
     if [ "$XDG_SESSION_TYPE" = "tty" ]; then
         gpg -c "$file"
     else
-        pass1=$($menu -p "$prompt ciper passphrase: " < /dev/null)
+        pass1=$($menu -P -p "$prompt ciper passphrase: " < /dev/null)
         [ -z "$pass1" ] && abort "Aborted: passphrase is empty"
 
-        pass2=$($menu -p "$prompt re-enter passphrase: " < /dev/null)
+        pass2=$($menu -P -p "$prompt re-enter passphrase: " < /dev/null)
         [ "$pass1" != "$pass2" ] && abort "Aborted: inputs are not indentical"
 
         echo "$pass1" | gpg -c --cipher-algo "$CIPHER_ALGO" --no-symkey-cache \
