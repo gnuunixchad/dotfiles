@@ -361,7 +361,7 @@ case "$mode" in
         printf "%s" "$line" > "$DAMBLOCKS_FIFO"
         ;;
     xsetroot)
-        xsetroot -name "$line"
+        xsetroot -name "$line" >/dev/null 2>&1
         ;;
     stdin)
         printf "%s" "$line"
