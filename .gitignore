@@ -100,13 +100,8 @@ package-list
 !.local/share/nvim/site/autoload/plug.vim
 !.config/
 !.config/autorandr
-!.config/autorandr/settings.ini
-!.config/autorandr/nomad/
-!.config/autorandr/nomad/*
-!.config/autorandr/DP-1/
-!.config/autorandr/DP-1/*
-!.config/autorandr/DP-2/
-!.config/autorandr/DP-2/*
+!.config/autorandr/*
+!.config/autorandr/**/*
 !.config/bat/
 !.config/bat/config
 !.config/btop/

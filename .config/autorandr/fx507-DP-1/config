@@ -1,0 +1,23 @@
+output DP-2
+off
+output eDP-1
+crtc 0
+mode 1920x1080
+pos 0x0
+primary
+rate 60.01
+x-prop-broadcast_rgb Automatic
+x-prop-colorspace Default
+x-prop-max_bpc 8
+x-prop-non_desktop 0
+x-prop-scaling_mode Full aspect
+output DP-1
+crtc 1
+mode 1920x1080
+pos 1920x0
+rate 60.00
+x-prop-audio auto
+x-prop-broadcast_rgb Automatic
+x-prop-colorspace Default
+x-prop-max_bpc 12
+x-prop-non_desktop 0
