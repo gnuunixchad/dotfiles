@@ -7,7 +7,7 @@
 
 wmenu -i \
       -f "SourceCodePro medium 13" \
-      -N 111111 \
+      -N "$colorbg" \
       -S "$color14" \
       -s "$colorfg" \
       -M "$color14" \
