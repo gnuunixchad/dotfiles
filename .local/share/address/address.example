@@ -36,14 +36,20 @@ fdroid termux|https://f-droid.org/en/packages/com.termux/
 fdroid VLC|https://f-droid.org/en/packages/org.videolan.vlc/
 ########
 # source code host
+git codeberg|https://codeberg.org
+git github|https://github.com
+git codeberg|https://codeberg.org/unixchad
+git github|https://github.com/gnuunixchad
 git codeberg dotfiles|https://codeberg.org/unixchad/dotfiles
 git github dotfiles|https://github.com/gnuunixchad/dotfiles
 git ssh remote|git@codeberg.org:unixchad/dotfiles.git
 git ssh remote|git@github.com:gnuunixchad/dotfiles.git
-git codeberg dwl|https://codeberg.org/unixchad/dwl
-git github dwl|https://github.com/gnuunixchad/dwl
+git linux guide|https://codeberg.org/unixchad/arch-install-guide
+git linux guide|https://github.com/gnuunixchad/arch-install-guide
 git codeberg damblocks|https://codeberg.org/unixchad/damblocks
 git github damblocks|https://github.com/gnuunixchad/damblocks
+git codeberg dwl|https://codeberg.org/unixchad/dwl
+git github dwl|https://github.com/gnuunixchad/dwl
 git codeberg kwm|https://codeberg.org/unixchad/kwm
 git github kwm|https://github.com/gnuunixchad/kwm
 git codeberg river-classic|https://codeberg.org/unixchad/river-classic
@@ -52,6 +58,16 @@ git codeberg river-shifttags|https://codeberg.org/unixchad/river-shifttags
 git github river-shifttags|https://github.com/gnuunixchad/river-shifttags
 git codeberg dam|https://codeberg.org/unixchad/dam
 git github dam|https://github.com/gnuunixchad/dam
+git codeberg mew|https://codeberg.org/unixchad/mew
+git github mew|https://github.com/gnuunixchad/mew
+git codeberg nsxiv|https://codeberg.org/unixchad/nsxiv
+git github nsxiv|https://github.com/gnuunixchad/nsxiv
+git codeberg dwm|https://codeberg.org/unixchad/dwm
+git github dwm|https://github.com/gnuunixchad/dwm
+git codeberg st|https://codeberg.org/unixchad/st
+git github st|https://github.com/gnuunixchad/st
+git codeberg dmenu|https://codeberg.org/unixchad/dmenu
+git github dmenu|https://github.com/gnuunixchad/dmenu
 git codeberg dvtm|https://codeberg.org/unixchad/dvtm
 git github dvtm|https://github.com/gnuunixchad/dvtm
 git codeberg abduco|https://codeberg.org/unixchad/abduco
@@ -60,8 +76,10 @@ git firefox arkenfox user.js for firefox|https://github.com/arkenfox/user.js
 git firefox tridactyl|https://github.com/tridactyl/tridactyl
 git firefox ublock origion|https://github.com/gorhill/uBlock
 git firefox darkreader|https://github.com/darkreader/darkreader
-git linux river|https://codeberg.org/river/wiki
 git linux river|https://codeberg.org/river/river
+git lunux river-classic|https://codeberg.org/river/river-classic
+git linux river|https://codeberg.org/river/wiki
+git linux river|https://github.com/kewuaa/kwm
 git linux river dam|https://codeberg.org/sewn/dam
 git linux wayland menu|https://codeberg.org/sewn/mew
 git linux river rivercarro|https://sr.ht/~novakane/rivercarro/
@@ -79,12 +97,11 @@ git linux AI Ollama|https://github.com/ollama/ollama
 git linux vscodium|https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo
 git linux file chooser|https://github.com/hunkyburrito/xdg-desktop-portal-termfilechooser
 git linux pxlart|https://github.com/mananapr/pxlart
+git xbanish|https://github.com/jcs/xbanish
 git sbctl|https://github.com/Foxboron/sbctl
 git wmenu|https://codeberg.org/adnano/wmenu
 git qutebrowser|https://github.com/qutebrowser/qutebrowser
 git lf tips|https://github.com/gokcehan/lf/wiki/Tips
-git linux guide|https://codeberg.org/unixchad/arch-install-guide
-git linux guide|https://github.com/gnuunixchad/arch-install-guide
 git mpv mpv-cut|https://github.com/familyfriendlymikey/mpv-cut
 git android syncthing-fork|https://github.com/Catfriend1/syncthing-android
 git fdroid syncthing-fork|https://f-droid.org/en/packages/com.github.catfriend1.syncthingandroid
@@ -137,9 +154,11 @@ gnu|https://www.gnu.org/home.en.html
 fsf|https://www.fsf.org/
 suckless|https://suckless.org
 suckless dwm|https://dwm.suckless.org
-osi opensource initiative definition|https://opensource.org/osd
-gnu software freedomes|https://www.gnu.org/philosophy/free-sw.html#four-freedoms
-ollama|https://ollama.com
+suckless dwm|https://git.suckless.org/dwm
+suckless st|https://git.suckless.org/st
+suckless slock|https://git.suckless.org/slock
+suckless dmenu|https://git.suckless.org/dmenu
+nsxiv|https://codeberg.org/nsxiv/nsxiv
 # public domain
 public domain freesound|https://freesound.org/
 public domain ebooks|https://www.gutenberg.org/
