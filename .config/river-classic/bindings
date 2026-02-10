@@ -56,6 +56,7 @@ $map normal ${mod}+Shift y                  spawn "${HOME}/.local/bin/shoot --ge
 $map normal ${mod}+Control y                spawn "${HOME}/.local/bin/shoot --all"
 
 $map normal $mod c                          spawn "${HOME}/.local/bin/clip"
+$map normal ${mod}+Control c                spawn "${HOME}/.local/bin/clip --wipe"
 $map normal $mod a                          spawn "${HOME}/.local/bin/address"
 $map normal ${mod}+Shift a                  spawn "${HOME}/.local/bin/address --record"
 $map normal ${mod}+Control a                spawn "${HOME}/.local/bin/address --multi"
