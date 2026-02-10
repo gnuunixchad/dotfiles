@@ -6,6 +6,7 @@
 
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
+
 CAPTURE_HOME="${HOME}/tmp/capture"
 [ -d "$CAPTURE_HOME" ] || mkdir -p $CAPTURE_HOME
 
@@ -108,7 +109,8 @@ startCapture() {
         ffmpeg -f x11grab -framerate "$fps" \
                     -video_size $SIZE -i :0.0+$X,$Y \
                     -f pulse -i "$source" \
-                    -c:v libx264 \
+                    -c:v h264 \
+                    -crf 0 -preset ultrafast \
                     "${filename}.${extension}"
     fi
 }
