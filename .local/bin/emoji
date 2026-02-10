@@ -8,8 +8,10 @@ EMOJI_REMOTE="https://unicode.org/Public/emoji/latest/emoji-test.txt"
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     menu="wmenu-color"
+    clipboard="wl-copy"
 elif [ -n "$XAUTHORITY" ]; then
     menu="dmenu"
+    clipboard="xsel -b"
 fi
 
 [ -f "$EMOJI_CACHE" ] || curl "$EMOJI_REMOTE" > "$EMOJI_CACHE"
@@ -18,4 +20,4 @@ fi
 cut -d'#' -f2- "$EMOJI_CACHE" | sed '0,/group:/{//!d;}; /^\s*$/d' \
                               | $menu  -i -l 9 -p "$(basename $0)" \
                               | cut -d' ' -f2 \
-                              | wl-copy
+                              | $clipboard
