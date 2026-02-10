@@ -23,6 +23,9 @@ https://codeberg.org/sewn/dam.rss ~dam git river
 
 https://codeberg.org/dwl/dwl/releases.rss ~dwl git dwl wm
 
+https://suckless.org/atom.xml ~suckless xorg
+https://codeberg.org/nsxiv/nsxiv/tags.rss ~nsxiv git xorg gui
+
 https://codeberg.org/adnano/wmenu.rss ~wmenu git gui
 https://codeberg.org/sewn/mew/releases.rss ~mew git gui
 
