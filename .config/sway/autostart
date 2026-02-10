@@ -22,7 +22,7 @@ exec_always "pgrep 'kanshi' || kanshi"
 
 exec_always "killall -q gammastep; gammastep -O 5000"
 
-exec_always "pgrep -f 'wl-paste --watch cliphist store' || wl-paste --watch cliphist store"
+exec_always "wl-paste --watch cliphist store"
 
 exec_always "pgrep 'dunst' || dunst"
 
