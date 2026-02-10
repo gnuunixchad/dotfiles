@@ -93,7 +93,7 @@ package-list
 !.local/share/
 !.local/share/address
 !.local/share/address/address.example
-!.local/share/lockscreen
+!.local/share/wallpaper.png
 !.local/share/nvim
 !.local/share/nvim/site
 !.local/share/nvim/site/autoload
