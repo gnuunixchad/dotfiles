@@ -53,6 +53,7 @@ bindsym $mod+Shift+y            exec "${HOME}/.local/bin/shoot --geo"
 bindsym $mod+Control+y          exec "${HOME}/.local/bin/shoot --all"
 
 bindsym $mod+c                  exec "${HOME}/.local/bin/clip"
+bindsym $mod+Control+c          exec "${HOME}/.local/bin/clip --wipe"
 bindsym $mod+a                  exec "${HOME}/.local/bin/address"
 bindsym $mod+Shift+a            exec "${HOME}/.local/bin/address --record"
 bindsym $mod+Control+a          exec "${HOME}/.local/bin/address --multi"
