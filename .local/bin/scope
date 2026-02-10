@@ -20,7 +20,7 @@ show_img(){
                        "$1"
     else
         # catimg is faster than chafa for ANSI
-        catimg -t -w "$2" "$1"
+        catimg -t -w "$(($2 * 2))" "$1"
     fi
 }
 
