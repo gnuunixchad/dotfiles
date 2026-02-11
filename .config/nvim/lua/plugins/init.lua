@@ -15,6 +15,8 @@ Plug('norcalli/nvim-colorizer.lua')
 
 Plug('nvim-treesitter/nvim-treesitter', { ['branch'] = 'main' })
 
+Plug('nvim-treesitter/nvim-treesitter-context')
+
 Plug('neoclide/coc.nvim', { ['branch'] = 'release' })
 
 Plug('lukas-reineke/indent-blankline.nvim')
@@ -30,6 +32,7 @@ vim.call('plug#end')
 
 require('plugins.nvim-colorizer')
 require('plugins.nvim-treesitter')
+require('plugins.nvim-treesitter-context')
 require('plugins.indent-blankline')
 require('plugins.render-markdown')
 require('plugins.vim-floaterm')
