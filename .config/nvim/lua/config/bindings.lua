@@ -79,6 +79,8 @@ map('n', '<leader>tC', ':ColorizerToggle<CR>')
 map('n', '<leader>rC', ':ColorizerReloadAllBuffers<CR>')
 -- nvim-treesitter
 map('n', '<leader>tH', ':TSToggle highlight<CR>')
+-- nvim-treesitter-context
+map('n', '<leader>tx', ':TSContext toggle<CR>')
 -- indent-blankline
 map('n', '<leader>tI', ':IBLToggle<CR>')
 -- render-markdown
