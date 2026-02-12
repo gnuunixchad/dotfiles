@@ -16,6 +16,9 @@ end_session() {
         -dwm)
             killall dwm
             ;;
+        -i3)
+            i3-msg exit
+            ;;
     esac
 }
 
