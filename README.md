@@ -87,6 +87,7 @@ spyware when I can.
 | gpg | [seal](./.local/bin/seal) |
 | mutt_oauth2 | [muttauth](./.local/bin/muttauth) |
 | shortcuts generator | [teleport-genesis](./.local/bin/teleport-genesis) |
+| color picker | [picker](./.local/bin/picker) |
 | qutebrowser | [userscripts](./.local/bin/qutebrowser/) |
 | xwayland-satellite | [xwl](./.local/bin/xwl) |
 | reload other scripts | [reload](./.local/bin/reload) |
