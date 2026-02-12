@@ -16,6 +16,7 @@ alias sw="ssh-agent sway --unsupported-gpu"
 
 alias x="startx"
 alias dm="startx ${HOME}/.xinitrc dwm"
+alias i3="startx ${HOME}/.xinitrc i3"
 
 alias faketty="XDG_SESSION_TYPE=tty TERM=xterm-256color"
 alias fakewl="XDG_SESSION_TYPE=wayland TERM=foot"
