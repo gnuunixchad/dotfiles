@@ -42,8 +42,7 @@ done
 $map normal ${mod}+Shift q                  spawn "${HOME}/.local/bin/exiland -river-classic"
 $map normal ${mod}+Shift w                  spawn "waylock -init-color 0x000000 -input-color 0x005577 -fail-color 0xcc3333"
 $map normal ${mod}+Shift e                  spawn "${HOME}/.local/bin/hibe"
-$map normal ${mod}+Shift m                  spawn "pgrep hyprmag && killall -e hyprmag || hyprmag -r 9999 -s 2"
-$map normal ${mod}+Control m                spawn "pgrep hyprmag && killall -e hyprmag || hyprmag"
+$map normal ${mod}+Shift m                  spawn "${HOME}/.local/bin/mag"
 
 $map normal Control space                   spawn "fcitx5-remote -t"
 
