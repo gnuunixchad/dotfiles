@@ -49,6 +49,8 @@
     "editor.autoClosingBrackets": "never",
     "editor.autoClosingComments": "never",
     "editor.autoClosingQuotes": "never",
+    "editor.autoSurround": "never",
+    "editor.comments.insertSpace": false,
     "workbench.activityBar.location": "hidden",
     "update.showReleaseNotes": false,
 
