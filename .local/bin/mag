@@ -6,10 +6,10 @@
 set_tools() {
     screenshot="${XDG_RUNTIME_DIR}/mag.png"
     if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-        shooter="grim $screenshot"
+        shooter="grim -l 0 $screenshot"
         viewer="swayimg -f --class=Magnifier $screenshot"
     elif [ -n "$XAUTHORITY" ]; then
-        shooter="maim -u $screenshot"
+        shooter="maim -m 1 -u $screenshot"
         viewer="nsxiv -f --no-bar --name Magnifier $screenshot"
     fi
 }
