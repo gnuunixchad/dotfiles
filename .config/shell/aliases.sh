@@ -18,7 +18,7 @@ alias x="startx"
 alias dm="startx ${HOME}/.xinitrc dwm"
 alias i3="startx ${HOME}/.xinitrc i3"
 
-alias faketty="XDG_SESSION_TYPE=tty TERM=xterm-256color"
+alias faketty="XDG_SESSION_TYPE=tty; unset XAUTHORITY; TERM=xterm-256color"
 alias fakewl="XDG_SESSION_TYPE=wayland TERM=foot"
 alias resshagent="systemctl restart --user ssh-agent.service"
 
