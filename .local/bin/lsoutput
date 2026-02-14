@@ -1,35 +1,14 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
-# list output
+# @since 2024,2025,2026
+# lsoutput - list output
 
-# -p, --pretty output, friendly for grep
-msg="$(wlr-randr)"
-
-get_name() {
-    echo "$msg" | grep '^[^[:space:]]'
-}
-
-get_res() {
-    echo "$msg" | grep -e 'Output' -e 'Current mode'
-}
-
-# check if currently in a wayland session)
-if  [ ! -z $WAYLAND_DISPLAY ]; then
-    while [ -n "$1" ]; do
-        case "$1" in
-            -r | --res):
-                get_res
-                exit 0
-                ;;
-        esac
-        shift
-    done
-
-    get_name
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    wlr-randr | grep '^[^[:space:]]'
+elif [ -n "$XAUTHORITY" ]; then
+    xrandr | grep ' connected '
 else
-    # if not in wayland, check edid
-    find /sys/devices/ -name "edid" \
-        | awk -F '/' '{print $8}' \
-        | awk -F'-' '{ for (i=2; i<=NF; i++) { printf "%s", $i (i==NF ? RS : FS) } }'
+    grep -xl 'connected' /sys/class/drm/card*-*/status \
+        | cut -d'/' -f5 \
+        | cut -d'-' -f2-
 fi
