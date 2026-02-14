@@ -22,4 +22,12 @@ toggle() {
     pgrep -f "$viewer" && pkill -f "$viewer" || magnify
 }
 
-set_tools; toggle
+cleanup() {
+    rm -f "$screenshot"
+}
+
+set_tools
+
+trap cleanup EXIT TERM INT HUP
+
+toggle
