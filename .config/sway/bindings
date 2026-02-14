@@ -39,8 +39,7 @@ bindsym $mod+Control+Shift+bracketright exec "${HOME}/.local/bin/bright --max"
 bindsym $mod+Shift+q exec "${HOME}/.local/bin/exiland -sway"
 bindsym $mod+Shift+w exec "waylock -init-color 0x000000 -input-color 0x005577 -fail-color 0xcc3333"
 bindsym $mod+Shift+e exec "${HOME}/.local/bin/hibe"
-bindsym $mod+Shift+m exec "pgrep hyprmag && killall -e hyprmag || hyprmag -r 9999 -s 2"
-bindsym $mod+Control+m exec "pgrep hyprmag && killall -e hyprmag || hyprmag"
+bindsym $mod+Shift+m exec "${HOME}/.local/bin/mag"
 
 bindsym Control+space  exec "fcitx5-remote -t"
 
