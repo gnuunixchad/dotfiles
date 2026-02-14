@@ -88,6 +88,7 @@ spyware when I can.
 | mutt_oauth2 | [muttauth](./.local/bin/muttauth) |
 | shortcuts generator | [teleport-genesis](./.local/bin/teleport-genesis) |
 | color picker | [picker](./.local/bin/picker) |
+| screen magnifier | [mag](./.local/bin/mag) |
 | qutebrowser | [userscripts](./.local/bin/qutebrowser/) |
 | xwayland-satellite | [xwl](./.local/bin/xwl) |
 | reload other scripts | [reload](./.local/bin/reload) |
