@@ -9,7 +9,7 @@ set_tools() {
         shooter="grim $screenshot"
         viewer="swayimg -f --class=Magnifier $screenshot"
     elif [ -n "$XAUTHORITY" ]; then
-        shooter="maim $screenshot"
+        shooter="maim -u $screenshot"
         viewer="nsxiv -f --no-bar --name Magnifier $screenshot"
     fi
 }
