@@ -7,7 +7,7 @@ map="riverctl map"
 mod=Mod4    # Mod1=Alt, Mod4=Super
 term="footclient"
 menu="${HOME}/.local/bin/wmenu-run-color"
-command -v rivercarro >/dev/null 2>&1 && tiler="rivercarro" || tiler="rivertile"
+command -v riverdeck >/dev/null 2>&1 && tiler="riverdeck" || tiler="rivertile"
 
 $map normal ${mod}+Shift r                  spawn "${HOME}/.config/river-classic/init"
 $map normal None Caps_Lock                  spawn "${HOME}/.local/bin/capslock"
@@ -95,6 +95,7 @@ $map normal ${mod}+Shift t                  send-layout-cmd "$tiler" "main-locat
 $map normal $mod u                          send-layout-cmd "$tiler" "main-location bottom"
 $map normal ${mod}+Shift u                  send-layout-cmd "$tiler" "main-location top"
 $map normal $mod m                          send-layout-cmd "$tiler" "main-location monocle"
+$map normal $mod o                          send-layout-cmd "$tiler" "main-location deck"
 
 $map normal $mod Space                      toggle-float
 $map normal $mod e                          toggle-fullscreen
