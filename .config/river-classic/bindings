@@ -96,6 +96,7 @@ $map normal $mod u                          send-layout-cmd "$tiler" "main-locat
 $map normal ${mod}+Shift u                  send-layout-cmd "$tiler" "main-location top"
 $map normal $mod m                          send-layout-cmd "$tiler" "main-location monocle"
 $map normal $mod o                          send-layout-cmd "$tiler" "main-location deck"
+$map normal $mod g                          send-layout-cmd "$tiler" "main-location grid"
 
 $map normal $mod Space                      toggle-float
 $map normal $mod e                          toggle-fullscreen
