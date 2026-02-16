@@ -1,0 +1,34 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2026
+# wa - add wifi connection
+
+ssid="$1"
+password="$2"
+is_hidden="no"
+
+usage() {
+    cat << _EOF_
+USAGE
+        wa [OPTION] SSID [PASSWORD]
+        add wifi connection
+OPTIONS
+        -H,--hidden     connect to hidden SSID
+        -h,--help       print this manual
+_EOF_
+    exit 0
+}
+
+connect() {
+    nmcli device wifi connect $ssid password $password hidden $is_hidden
+}
+
+[ -z "$1" ] && usage
+
+case "$1" in
+    -H,--hidden)
+        is_hidden=yes
+        ;;
+esac
+
+connect
