@@ -1,0 +1,71 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2026
+# sharepkg - share pacman CacheDir on network, so you would not have to get the
+# packages every time from the internet on multiple physical and virtual
+# machines
+
+cache_dir="$(grep '^CacheDir' /etc/pacman.conf |  rev | cut -d' ' -f1 | rev)"
+ip_addr=$(ip -br a | grep 'virbr0' \
+                   | sed -e 's/[[:space:]]\+/ /g' \
+                   | cut -d' ' -f3 \
+                   | cut -d'/' -f1)
+port="8080"
+
+usage() {
+    cat << _EOF_
+USAGE
+            $(basename $0) [OPTION]
+            share pacman CacheDir on network, you would not have to get the
+            packages every time from the internet on multiple physical and
+            virtual machines
+OPTION
+            -h,--help   print this usage manual
+            -d,--dir PATH
+                        set pacman CacheDir, default is the last CacheDir in
+                        your pacman.conf: ${HOME}/pkg/pacman
+            -b,--bind IP
+                        set ip address, default is $ip_addr
+            -p,--port PORT
+                        set port, default is $port
+EXAMPLE
+            On virtual machine's /etc/pacman.d/mirrorlist add:
+
+                CacheDir = http://$ip_addr $port
+
+            Cache servers will be tried before any non-cache servers, will not
+            be removed from the server pool because of HTTP 404 download
+            errors, and will not be used for database files.
+
+            Internet connection is still required to get database files though.
+_EOF_
+    exit 0
+}
+
+start_server() {
+    echo cache_dir=$cache_dir
+    python -m http.server -d "$cache_dir" --bind "$ip_addr" "$port"
+}
+
+while [ -n "$1" ]; do
+    case "$1" in
+        -d|--dir)
+            shift
+            cache_dir="$1"
+            ;;
+        -b|--bind)
+            shift
+            ip_addr="$1"
+            ;;
+        -p|--port)
+            shift
+            port="${1:-$port}"
+            ;;
+        -h|--help)
+            usage
+            ;;
+    esac
+    shift
+done
+
+start_server
