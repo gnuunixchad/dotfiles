@@ -1,4 +1,8 @@
+#/dev/mapper/cryptlvm: UUID="I3wu3n-xeDV-8RKV-FQIb-YIQk-b2lf-qufn2H" TYPE="LVM2_member"
+#/dev/nvme0n1p2: UUID="275798bf-a33c-4cde-a489-625a3957899f" TYPE="crypto_LUKS" PARTUUID="d107774a-9ed1-49eb-af9d-71c8d47b5167"
+#/dev/mapper/vg0-root: UUID="91e69c07-65c4-4fb9-b51e-448fe20564a3" BLOCK_SIZE="4096" TYPE="ext4"
+
 title Arch Linux
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options cryptdevice=UUID=<LUKS-CONTAINER>:cryptlvm root=UUID=<ROOT-LOGICAL-VOLUME> modprobe.blacklist=pcspkr
+options rd.luks.name=275798bf-a33c-4cde-a489-625a3957899f=cryptlvm root=UUID=91e69c07-65c4-4fb9-b51e-448fe20564a3 modprobe.blacklist=pcspkr
