@@ -234,3 +234,16 @@ _clip() {
     fi
 }
 complete -F _clip clip
+
+_sharepkg() {
+    local options used remaining
+    options=(--dir --bind --port)
+    [ $COMP_CWORD -ge 2 ] && used=("${COMP_WORDS[@]:1:COMP_CWORD-1}") || used=()
+    for opt in "${options[@]}"; do
+        if [[ ! " ${used[@]} " =~ " $opt " ]]; then
+            remaining+=("$opt")
+        fi
+    done
+    COMPREPLY=($(compgen -W "${remaining[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
+}
+complete -F _sharepkg sharepkg

@@ -198,3 +198,12 @@ _clip() {
     fi
 }
 compdef _clip clip
+
+_sharepkg() {
+    local options
+    options=("--dir" "--bind" "--port")
+    used=(${words[2,-1]})
+    remaining=(${options:|used})
+    _describe 'options' remaining
+}
+compdef _sharepkg sharepkg
