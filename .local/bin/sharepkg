@@ -15,7 +15,7 @@ port="8080"
 usage() {
     cat << _EOF_
 USAGE
-            $(basename $0) [OPTION]
+            $(basename $0) [OPTION...]
             share pacman CacheDir on network, you would not have to get the
             packages every time from the internet on multiple physical and
             virtual machines
