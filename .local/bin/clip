@@ -6,6 +6,7 @@
 
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
+set -x
 usage() {
     cat << _EOF_
 USAGE
@@ -33,7 +34,7 @@ set_variables() {
 wipe_history() {
     set_variables
 
-    choice="$(echo "no\nyes" \
+    choice="$(echo -e "no\nyes" \
               | $menu -p "$(basename $0): wipe clipboard history?")"
 
     if [ "$choice" = "yes" ]; then
