@@ -28,6 +28,8 @@ pacman -Qi samba >/dev/null 2>&1 && [ -z "$(pdbedit -Lv)" ] && smbpasswd -a "$su
 grep -q '^kvm:' /etc/group && usermod "$sudoer" -aG kvm
 grep -q '^libvirt:' /etc/group && usermod "$sudoer" -aG libvirt
 grep -q '^termux:' /etc/passwd || useradd -m -G "$sudoer" termux
+sudo -u termux mkdir -m 700 /home/termux/.ssh
+sudo -u termux touch /home/termux/.ssh/authorized_keys
 chmod 750 /home/"$sudoer"
 
 [ -f /root/.bash_profile ] && mv /root/.bash_profile{,~}
