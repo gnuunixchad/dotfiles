@@ -51,6 +51,7 @@ command -v ufw > /dev/null \
 
 firecfg >/dev/null 2>/dev/null && echo "firejail symlink created"
 
+systemctl enable --now sshd.service
 systemctl enable --now systemd-boot-update.service
 systemctl enable --now bluetooth.service 2>/dev/null
 systemctl enable --now tlp.service 2>/dev/null
