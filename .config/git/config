@@ -22,3 +22,6 @@
 
 [merge]
     tool = nvimdiff
+
+[pull]
+    rebase = true
