@@ -76,7 +76,7 @@ mv ${HOME}/.bash_profile{,~} 2>/dev/null
     && ln -s ${HOME}/pkg/yay ${HOME}/.cache/yay
 
 [ -d /data/virt ] && [ ! -L ${HOME}/virt ] \
-    && (ln -s /data/virt ${HOME}/virt \
+    && (ln -s /data/virt ${HOME}/virt
         chmod 750 /data/virt
         setfacl -m u:libvirt-qemu:x /data/virt
         )
