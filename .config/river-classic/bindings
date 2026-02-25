@@ -112,14 +112,19 @@ $map normal ${mod}+Shift apostrophe         spawn "river-shifttags"
 $map normal ${mod}+Shift semicolon          spawn "river-shifttags --shift -1"
 
 $map normal ${mod}+Control h                focus-view left
-$map normal ${mod}+Control j                focus-view next
-$map normal ${mod}+Control k                focus-view previous
+$map normal ${mod}+Control j                focus-view down
+$map normal ${mod}+Control k                focus-view up
 $map normal ${mod}+Control l                focus-view right
 
 $map normal ${mod}+Shift h                  swap left
 $map normal ${mod}+Shift j                  swap next
 $map normal ${mod}+Shift k                  swap previous
 $map normal ${mod}+Shift l                  swap right
+
+$map normal ${mod}+Shift+Control h          swap left
+$map normal ${mod}+Shift+Control j          swap down
+$map normal ${mod}+Shift+Control k          swap up
+$map normal ${mod}+Shift+Control l          swap right
 
 # mouse
 $map-pointer normal $mod BTN_LEFT           move-view
