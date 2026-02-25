@@ -194,7 +194,7 @@ complete -F _reload reload
 _wttr() {
     local options
     local current_word="${COMP_WORDS[COMP_CWORD]}"
-    options="-u --update -c --cron -e --edit -h --help"
+    options="-u --update -c --cron -e --edit -g --geo -h --help"
     if [ "$COMP_CWORD" -eq 1 ]; then
         COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
     fi

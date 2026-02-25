@@ -22,6 +22,7 @@ OPTIONS
             -c,--cron       to be run as a cron job that checks the last update
                             time with the defined update_frequency($update_frequency seconds)
             -e,--edit       edit the CITY in $CITY
+            -g,--geo)       print the city in $CITY
             -h,--help       print this usage manual
 _EOF_
     exit 0
@@ -99,6 +100,10 @@ edit_city() {
     $EDITOR $CITY
 }
 
+print_city() {
+    cat $CITY
+}
+
 cron() {
     check_cache
 
@@ -124,6 +129,7 @@ if [ -n "$1" ]; then
         -u|--update) update ;;
         -c|--cron) cron "$1" ;;
         -e|--edit) edit_city ;;
+        -g|--geo) print_city ;;
         -*) usage ;;
         *) get_city_wttr "$1" ;;
     esac

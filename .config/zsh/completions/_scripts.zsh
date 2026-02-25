@@ -161,7 +161,8 @@ compdef _reload reload
 
 _wttr() {
     local options
-    options=("-u" "--update" "-c" "--cron" "-e" "--edit" "-h" "--help")
+    options=("-u" "--update" "-c" "--cron" "-e" "--edit" "-g" "--geo" \
+             "-h" "--help")
     if [ "$CURRENT" -eq 2 ]; then
         _describe 'options' options
     fi
