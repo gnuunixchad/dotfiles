@@ -28,6 +28,8 @@ Plug('tpope/vim-fugitive')
 Plug('voldikss/vim-floaterm')
 Plug('ptzz/lf.vim')
 
+Plug('h-hg/fcitx.nvim')
+
 vim.call('plug#end')
 
 require('plugins.nvim-colorizer')
