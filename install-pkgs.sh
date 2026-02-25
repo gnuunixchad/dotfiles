@@ -147,6 +147,9 @@ add_base() {
     pkg="$pkg w3m"
     pkg="$pkg zip"
 
+    src_make="$src_make abduco"
+    src_make="$src_make dvtm"
+
     install_yay
 }
 
