@@ -124,7 +124,7 @@ if [ -n "$1" ]; then
         -u|--update) update ;;
         -c|--cron) cron "$1" ;;
         -e|--edit) edit_city ;;
-        -h|--help) usage ;;
+        -*) usage ;;
         *) get_city_wttr "$1" ;;
     esac
 fi
