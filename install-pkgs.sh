@@ -25,6 +25,7 @@ OPTIONS
         --base
         --yay
         --dwm
+        --dwl
         --river-classic
         --ime
         --mutt
@@ -295,6 +296,14 @@ add_wayland() {
     aur="$aur wlrctl"
 }
 
+add_dwl() {
+    add_wayland; add_audio; add_fonts; add_themes
+
+    pkg="$pkg wlroots0.18"
+
+    src_make="$src_make dwl"
+}
+
 add_river_classic() {
     add_wayland; add_audio; add_fonts; add_themes
 
@@ -452,6 +461,9 @@ while [ -n "$1" ]; do
             ;;
         --dwm)
             add_dwm
+            ;;
+        --dwl)
+            add_dwl
             ;;
         --river-classic)
             add_river_classic
