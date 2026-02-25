@@ -285,7 +285,6 @@ add_wayland() {
     pkg="$pkg grim"
     pkg="$pkg wob"
     pkg="$pkg wev"
-    pkg="$pkg fcft"
     pkg="$pkg tllist"
     pkg="$pkg wayland-protocols"
     pkg="$pkg sway"
@@ -420,6 +419,7 @@ add_extra() {
     pkg="$pkg zathura-pdf-mupdf"
 
     pkg="$pkg mpv"
+    pkg="$pkg swayimg"
     pkg="$pkg ncmpcpp"
     pkg="$pkg mpd"
     pkg="$pkg mpc"
