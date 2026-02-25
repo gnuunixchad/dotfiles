@@ -28,10 +28,10 @@ $map -repeat "$floating" None u resize vertical 50
 $map -repeat "$floating" None i resize vertical -50
 $map -repeat "$floating" None o resize horizontal 50
 
-$map normal ${mod}+Shift h snap left
-$map normal ${mod}+Shift j snap down
-$map normal ${mod}+Shift k snap up
-$map normal ${mod}+Shift l snap right
+$map "$floating" ${mod}+Shift h snap left
+$map "$floating" ${mod}+Shift j snap down
+$map "$floating" ${mod}+Shift k snap up
+$map "$floating" ${mod}+Shift l snap right
 
 
 # wmenu ########################################################################
