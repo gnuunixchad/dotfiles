@@ -41,8 +41,53 @@ print_err() {
     echo -e ${RED}${1}${RESET} >&2
 }
 
-[ ! -z "$SUDO_USER" ] && print_err "You can't run this script as root." \
-    && exit 1
+install_yay() {
+    [ -d ${HOME}/pkg/yay ] && [ ! -L ${HOME}/.cache/yay ] \
+        && ln -s ${HOME}/pkg/yay ${HOME}/.cache/yay
+
+    local package="$(ls -v ${HOME}/.cache/yay/yay/yay-[0-9]*.pkg.* | tail -1)"
+    if [ -f "$package" ]; then
+        sudo pacman -U --needed "$package"
+    else
+        mkdir -p ${HOME}/.cache/yay
+        git clone https://aur.archlinux.org/yay.git ${HOME}/.cache/yay/yay
+        sudo pacman -S --needed --asdeps go
+        makepkg --dir ${HOME}/.cache/yay/yay
+        sudo pacman -U --needed "$package"
+    fi
+}
+
+check_src() {
+    repo_prefix="https://codeberg.org/unixchad"
+    [ -d "${src_dir}/${package}" ] || {
+        mkdir -p $src_dir
+        cd $src_dir
+        git clone ${repo_prefix}/${package}
+        cd -
+    }
+}
+
+install_make() {
+    src_dir="${HOME}/.local/src"
+
+    for package in $src_make; do
+        check_src "$src_dir"
+        cd ${src_dir}/${package}
+        sudo make install
+        cd -
+    done
+}
+
+install_zig() {
+    src_dir="${HOME}/.local/src"
+
+    for package in $src_zig; do
+        check_src "$src_dir"
+        cd ${src_dir}/${package}
+        sudo zig build -Doptimize=ReleaseSafe --prefix /usr/local install
+        cd -
+    done
+}
 
 add_linux() {
     pkg="$pkg $linux"
@@ -151,54 +196,6 @@ add_base() {
     src_make="$src_make dvtm"
 
     install_yay
-}
-
-install_yay() {
-    [ -d ${HOME}/pkg/yay ] && [ ! -L ${HOME}/.cache/yay ] \
-        && ln -s ${HOME}/pkg/yay ${HOME}/.cache/yay
-
-    local package="$(ls -v ${HOME}/.cache/yay/yay/yay-[0-9]*.pkg.* | tail -1)"
-    if [ -f "$package" ]; then
-        sudo pacman -U --needed "$package"
-    else
-        mkdir -p ${HOME}/.cache/yay
-        git clone https://aur.archlinux.org/yay.git ${HOME}/.cache/yay/yay
-        sudo pacman -S --needed --asdeps go
-        makepkg --dir ${HOME}/.cache/yay/yay
-        sudo pacman -U --needed "$package"
-    fi
-}
-
-check_src() {
-    repo_prefix="https://codeberg.org/unixchad"
-    [ -d "${src_dir}/${package}" ] || {
-        mkdir -p $src_dir
-        cd $src_dir
-        git clone ${repo_prefix}/${package}
-        cd -
-    }
-}
-
-install_make() {
-    src_dir="${HOME}/.local/src"
-
-    for package in $src_make; do
-        check_src "$src_dir"
-        cd ${src_dir}/${package}
-        sudo make install
-        cd -
-    done
-}
-
-install_zig() {
-    src_dir="${HOME}/.local/src"
-
-    for package in $src_zig; do
-        check_src "$src_dir"
-        cd ${src_dir}/${package}
-        sudo zig build -Doptimize=ReleaseSafe --prefix /usr/local install
-        cd -
-    done
 }
 
 add_audio() {
@@ -428,6 +425,9 @@ add_extra() {
     pkg="$pkg python-adblock"
 }
 
+
+[ ! -z "$SUDO_USER" ] && print_err "You can't run this script as root." \
+    && exit 1
 
 [ -z "$1" ] && usage
 
