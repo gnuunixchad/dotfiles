@@ -310,7 +310,7 @@ add_river_classic() {
     src_make="$src_make dam"
     src_make="$src_make river-shifttags"
 
-    src_zig="$prefix_cmd_src_zig river-classic"
+    src_zig="$src_zig river-classic"
 }
 
 add_media() {
