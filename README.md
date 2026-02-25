@@ -23,7 +23,7 @@ stow -t ~ . --adopt
 # Optionally, run my post-install scripts AT YOUR OWN RISK
 sudo ./install-root.sh
 ./install-user.sh
-sudo ./install-pkg.sh --install --all
+./install-pkg.sh --install --all
 
 ```
 > [!NOTE]
