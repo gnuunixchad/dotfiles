@@ -169,9 +169,21 @@ install_yay() {
     fi
 }
 
+check_src() {
+    repo_prefix="https://codeberg.org/unixchad"
+    [ -d "${src_dir}/${package}" ] || {
+        mkdir -p $src_dir
+        cd $src_dir
+        git clone ${repo_prefix}/${package}
+        cd -
+    }
+}
+
 install_make() {
     src_dir="${HOME}/.local/src"
+
     for package in $src_make; do
+        check_src "$src_dir"
         cd ${src_dir}/${package}
         sudo make install
         cd -
@@ -180,7 +192,9 @@ install_make() {
 
 install_zig() {
     src_dir="${HOME}/.local/src"
+
     for package in $src_zig; do
+        check_src "$src_dir"
         cd ${src_dir}/${package}
         sudo zig build -Doptimize=ReleaseSafe --prefix /usr/local install
         cd -
