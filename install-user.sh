@@ -76,7 +76,6 @@ mv ${HOME}/.bash_profile{,~} 2>/dev/null
 [ -d ${HOME}/pkg/yay ] && [ ! -L ${HOME}/.cache/yay ] \
     && ln -s ${HOME}/pkg/yay ${HOME}/.cache/yay
 
-set -x
 [ -d /data/virt ] \
     && (ln -sf /data/virt ${HOME}/virt
         chmod 750 /data/virt
