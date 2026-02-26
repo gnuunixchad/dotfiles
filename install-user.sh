@@ -147,6 +147,8 @@ FONTCONFIG="${HOME}/.config/fontconfig/fonts.conf"
 command -v fc-cache > /dev/null && [ -f "FONTCONFIG" ] \
     && fc-cache -fv > /dev/null && echo "font cache generated"
 
+${HOME}/.local/bin/setwall ${script_dir}/.local/share/wallpaper.png &
+
 read -p "sync-config-root?(y/n): " choice; [ "$choice" = "y" ] \
     || [ "$choice" = "Y"  ] \
     && ${HOME}/.local/bin/sync-config-root
