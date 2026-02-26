@@ -82,7 +82,8 @@ set -x
         setfacl -m u:libvirt-qemu:x /data/virt
         )
 
-stow -R --adopt -d "$DOTFILES_LOCAL" -t "$HOME" .
+# use current dir as stow dir, instead of DOTFILES_LOCAL, which may not exist
+stow -R --adopt -t "$HOME" .
 OLLAMA="${HOME}/pkg/ollama"
 [ -d "$OLLAMA" ] && stow -R --adopt -d "$OLLAMA" -t "$HOME" .
 
