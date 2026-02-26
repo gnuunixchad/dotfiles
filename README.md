@@ -21,9 +21,9 @@ cd dotfiles
 stow -t ~ . --adopt
 
 # Optionally, run my post-install scripts AT YOUR OWN RISK
+./install-pkg.sh --install --base
 sudo ./install-root.sh
 ./install-user.sh
-./install-pkg.sh --install --all
 
 ```
 > [!NOTE]
