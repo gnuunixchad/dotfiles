@@ -25,7 +25,7 @@ OPTION
                         set pacman CacheDir, default is the last CacheDir in
                         your pacman.conf: ${HOME}/pkg/pacman
             -b,--bind IP
-                        set ip address, default is $ip_addr
+                        set ip address, default is your virbr0: $ip_addr
             -p,--port PORT
                         set port, default is $port
 EXAMPLE
