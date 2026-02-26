@@ -38,9 +38,9 @@ chmod 750 /home/"$sudoer"
 CRYPTKEY="/root/cryptkey"
 [ -f "$CRYPTKEY" ] && (chmod -f 400 "$CRYPTKEY"; chattr +i "$CRYPTKEY")
 
-find ${DOTFILES_LOCAL}/{etc,usr} -type d -exec chmod 755 {} +
-find ${DOTFILES_LOCAL}/{etc,usr} -type f -exec chmod 644 {} +
-cp -r --preserve=mode ${DOTFILES_LOCAL}/{etc,usr} /
+find ./{etc,usr} -type d -exec chmod 755 {} +
+find ./{etc,usr} -type f -exec chmod 644 {} +
+cp -r --preserve=mode ./{etc,usr} /
 
 timedatectl set-ntp true
 systemctl enable --now systemd-timesyncd.service
