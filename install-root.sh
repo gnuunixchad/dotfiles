@@ -7,6 +7,7 @@
 sudoer="$(grep ':1000:1000:' /etc/passwd | cut -d':' -f1)"
 
 DOTFILES_LOCAL="/home/${sudoer}/doc/heart"
+script_dir="$(cd $(dirname $0) && pwd)"
 hostname="$(cat /etc/hostname)"
 ARCH_LIST="${DOTFILES_LOCAL}/package-list/arch-${hostname}.list"
 
@@ -38,9 +39,9 @@ chmod 750 /home/"$sudoer"
 CRYPTKEY="/root/cryptkey"
 [ -f "$CRYPTKEY" ] && (chmod -f 400 "$CRYPTKEY"; chattr +i "$CRYPTKEY")
 
-find ./{etc,usr} -type d -exec chmod 755 {} +
-find ./{etc,usr} -type f -exec chmod 644 {} +
-cp -r --preserve=mode ./{etc,usr} /
+find ${script_dir}/{etc,usr} -type d -exec chmod 755 {} +
+find ${script_dir}/{etc,usr} -type f -exec chmod 644 {} +
+cp -r --preserve=mode ${script_dir}/{etc,usr} /
 
 timedatectl set-ntp true
 systemctl enable --now systemd-timesyncd.service

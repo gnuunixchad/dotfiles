@@ -9,6 +9,7 @@ DEPENDENCIES=("git" "stow" "systemctl" "gsettings" "gpg" "fzf")
 DOTFILES_REMOTE=("https://codeberg.org/unixchad/dotfiles" \
                  "https://github.com/gnuunixchad/dotfiles")
 DOTFILES_LOCAL="${HOME}/doc/heart"
+script_dir="$(cd $(dirname $0) && pwd)"
 
 print_err() {
     local RED='\033[0;31m'
@@ -83,7 +84,7 @@ set -x
         )
 
 # use current dir as stow dir, instead of DOTFILES_LOCAL, which may not exist
-stow -R --adopt -t "$HOME" .
+stow -R --adopt -d "$script_dir" -t "$HOME" .
 OLLAMA="${HOME}/pkg/ollama"
 [ -d "$OLLAMA" ] && stow -R --adopt -d "$OLLAMA" -t "$HOME" .
 
