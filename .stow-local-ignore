@@ -14,3 +14,4 @@ misc
 unixchad.asc
 install-root.sh
 install-user.sh
+install-pkgs.sh
