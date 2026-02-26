@@ -195,8 +195,6 @@ add_base() {
 
     src_make="$src_make abduco"
     src_make="$src_make dvtm"
-
-    install_yay
 }
 
 add_audio() {
