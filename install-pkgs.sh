@@ -13,6 +13,9 @@ prefix_cmd_src_zig="$prefix_cmd_default"
 
 linux="linux"
 
+wlroots_dwl="wlroots0.18"
+wlroots_river_classic="wlroots0.19"
+
 usage() {
     cat << _EOF_
 USAGE
@@ -298,7 +301,7 @@ add_wayland() {
 add_dwl() {
     add_wayland; add_audio; add_fonts; add_themes
 
-    pkg="$pkg wlroots0.18"
+    pkg="$pkg $wlroots_dwl"
 
     src_make="$src_make dwl"
 }
@@ -307,6 +310,7 @@ add_river_classic() {
     add_wayland; add_audio; add_fonts; add_themes
 
     pkg="$pkg zig"
+    pkg="$pkg $wlroots_river_classic"
     pkg="$pkg scdoc"
     pkg="$pkg tllist"
     pkg="$pkg wayland-protocols"
