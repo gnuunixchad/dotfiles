@@ -248,17 +248,18 @@ add_xorg() {
     pkg="$pkg dunst"
     pkg="$pkg brightnessctl"
     pkg="$pkg libnotify"
+
+    src_make="$src_make st"
+    src_make="$src_make dmenu"
+    src_make="$src_make nsxiv"
+    src_make="$src_make xob"
+    src_make="$src_make xbanish"
 }
 
 add_dwm() {
     add_xorg; add_audio; add_fonts; add_themes
 
     src_make="$src_make dwm"
-    src_make="$src_make st"
-    src_make="$src_make dmenu"
-    src_make="$src_make nsxiv"
-    src_make="$src_make xob"
-    src_make="$src_make xbanish"
 }
 
 add_wayland() {
