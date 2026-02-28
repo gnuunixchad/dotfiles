@@ -24,7 +24,7 @@ package-list
 !boot/loader/entries/arch-fallback.conf.example
 !etc/
 !etc/firejail/
-!etc/firejail/firecfg.config
+!etc/firejail/*
 !etc/libvirt/
 !etc/libvirt/network.conf
 !etc/mkinitcpio.conf

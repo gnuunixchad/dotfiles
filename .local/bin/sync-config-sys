@@ -10,7 +10,7 @@ if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
 
     rsync -pvh --progress -R \
         /boot/loader/{entries/*,loader.conf} \
-        /etc/{mkinitcpio.conf,firejail/firecfg.config,samba/smb.conf,ssh/sshd_config,systemd/{logind.conf,sleep.conf},tlp.conf,vconsole.conf,libvirt/network.conf,ufw/{user.rules,user6.rules},pacman.conf,pacman.d/{mirrorlist,hooks/*}} \
+        /etc/{mkinitcpio.conf,firejail/{firecfg.config,w3m.profile},samba/smb.conf,ssh/sshd_config,systemd/{logind.conf,sleep.conf},tlp.conf,vconsole.conf,libvirt/network.conf,ufw/{user.rules,user6.rules},pacman.conf,pacman.d/{mirrorlist,hooks/*}} \
         /usr/local/share/kbd/keymaps/us-custom.map.gz \
         "$heart"/
 
