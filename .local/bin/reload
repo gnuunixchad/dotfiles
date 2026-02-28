@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2025,2026
-# reload - reload my cronjob & daemon scripts
+# reload - generic script to reload stuff
 
 # This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
 
@@ -9,13 +9,15 @@ usage() {
     cat << _EOF_
 USAGE
         $(basename $0) [OPTION]...
-        Without any options, default to reload cronjobs
+        Without any options, default to reloading cronjobs
 OPTIONS
         -c,--cronjobs   reload cronjob scripts(default)
         -f,--damblocks-fifo
                         reload damblocks (fifo)
         -x,--damblocks-xsetroot
                         reload damblocks (xsetroot)
+        -m,--module [module]...
+                        reload kernel modules
         -h,--help       print this usage manual
 _EOF_
     exit 0
@@ -75,6 +77,10 @@ reload_damblocks() {
     ${HOME}/.local/bin/damblocks-mpdd &
 }
 
+reload_module() {
+    sudo modprobe -r $@ && sudo modprobe $@
+}
+
 [ -z "$1" ] && reload_cronjobs
 
 while [ -n "$1" ]; do
@@ -87,6 +93,10 @@ while [ -n "$1" ]; do
             ;;
         -x|--damblocks-xsetroot)
             reload_damblocks --xsetroot
+            ;;
+        -m|--module)
+            shift
+            reload_module $@
             ;;
         -h|--help)
             usage
