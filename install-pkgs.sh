@@ -288,7 +288,6 @@ add_wayland() {
     pkg="$pkg tllist"
     pkg="$pkg wayland-protocols"
     pkg="$pkg sway"
-    pkg="$pkg wlroots0.19"
     pkg="$pkg xorg-xwayland"
     pkg="$pkg xwayland-satellite"
     pkg="$pkg brightnessctl"
