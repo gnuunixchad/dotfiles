@@ -13,7 +13,7 @@ prefix_cmd_src_zig="$prefix_cmd_default"
 
 linux="linux"
 
-wlroots_dwl="wlroots0.18"
+wlroots_dwl="wlroots0.19"
 wlroots_river_classic="wlroots0.19"
 
 usage() {
