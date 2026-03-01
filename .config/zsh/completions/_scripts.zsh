@@ -32,6 +32,7 @@ _phone() {
     fi
 }
 compdef _phone phone
+
 _address() {
     local options
     options=("-e" "--edit")
@@ -220,3 +221,12 @@ _sharepkg() {
     _describe 'options' remaining
 }
 compdef _sharepkg sharepkg
+
+_ala() {
+    local options
+    options=("-d" "--delete" "-h" "--help")
+    if [ "$CURRENT" -eq 2 ]; then
+        _describe 'options' options
+    fi
+}
+compdef _ala ala

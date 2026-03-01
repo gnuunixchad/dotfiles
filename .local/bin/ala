@@ -1,0 +1,50 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2026
+# ala - set pacman mirror for archlinux arcive
+
+# This script has completions: `.config/{z,ba}sh/completions/_scripts.{z,ba}sh`
+
+mirrorlist="/etc/pacman.d/mirrorlist"
+server="https://archive.archlinux.org"
+#server="https://umea.archive.pkgbuild.com"
+
+usage() {
+    cat << _EOF_
+USAGE
+        $(basename $0) YYYY/mm/dd
+                add a specific date for ALA in $mirrorlist
+        $(basename $0) -d,--delete
+                delete ALA from $mirrorlist
+DESCRIPTION
+        set ALA to a specific date and update system with 'sudo pacman -Syyuu'
+_EOF_
+    exit 0
+}
+
+add_ala() {
+    sudo sed -i "1i\Server=${ala}" "$mirrorlist"
+}
+
+del_ala() {
+    sudo sed -i "\|^Server=${server}.*$|d" "$mirrorlist"
+}
+
+[ -z "$1" ] && usage
+
+while [ -n "$1" ]; do
+    case "$1" in
+        [0-9][0-9][0-9][0-9]/[0-9][0-9]/[0-9][0-9])
+            date="$1"
+            ala="${server}/repos/${date}/\$repo/os/\$arch"
+            add_ala
+            ;;
+        -d|--delete)
+            del_ala
+            ;;
+        *)
+            usage
+            ;;
+    esac
+    shift
+done

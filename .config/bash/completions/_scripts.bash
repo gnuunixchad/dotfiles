@@ -259,3 +259,13 @@ _sharepkg() {
     COMPREPLY=($(compgen -W "${remaining[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
 }
 complete -F _sharepkg sharepkg
+
+_ala() {
+    local options
+    local current_word="${COMP_WORDS[COMP_CWORD]}"
+    options="-d --delete -h --help"
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    fi
+}
+complete -F _ala ala
