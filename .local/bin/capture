@@ -99,7 +99,7 @@ startCapture() {
         wf-recorder --framerate "$fps" \
                     --output "$output" \
                     -a "$source" \
-                    -c h264_vaapi \
+                    -c libx264rgb \
                     -f "${filename}.${extension}"
     elif [ -n "$XAUTHORITY" ]; then
         SIZE=$(echo $output | cut -d+ -f1)
