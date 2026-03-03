@@ -1,0 +1,5 @@
+# udev rules to refresh damblocks battery module with power_supply events
+# @author nate zhou
+# @since 2026
+
+ACTION=="change", SUBSYSTEM=="power_supply", RUN+="/usr/bin/sudo -u nate /bin/sh -c 'kill -46 $(cat /run/user/1000/damblocks.pid)'"

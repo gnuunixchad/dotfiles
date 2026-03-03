@@ -388,6 +388,7 @@ trap	"update_newsboat;display"   "RTMIN+8"   # -42 .local/bin/news*
 trap	"update_calcurse;display"   "RTMIN+9"   # -43 .local/bin/calcurse*
 trap	"update_wttr;display"       "RTMIN+10"  # -44 .local/bin/wttr --cron
 trap    "update_mpd;display"        "RTMIN+11"  # -45 .local/bin/damblocks-mpdd
+trap    "update_battery;display"    "RTMIN+12"  # -46 99-damblocks-battery.rules
 
 while true
 do
