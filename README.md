@@ -55,7 +55,7 @@ spyware when I can.
 | file manager | lf |
 | music player | mpd · ncmpcpp |
 | video player | mpv |
-| image viewer | swayimg · [nsxiv](https://codeberg.org/unixchad/nsxiv) |
+| image viewer | [swayimg](https://codeberg.org/unixchad/swayimg) · [nsxiv](https://codeberg.org/unixchad/nsxiv) |
 | ebook reader | zathura |
 | rss feeder | newsboat |
 | calender & todo | calcurse · taskwarrior |
