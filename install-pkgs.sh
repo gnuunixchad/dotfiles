@@ -3,13 +3,14 @@
 # @since 2026
 # Setup packages
 
-#set -x
+set -x
 
 prefix_cmd_default="echo"
 prefix_cmd_pacman="$prefix_cmd_default"
 prefix_cmd_aur="$prefix_cmd_default"
 prefix_cmd_src_make="$prefix_cmd_default"
 prefix_cmd_src_zig="$prefix_cmd_default"
+prefix_cmd_src_meson="$prefix_cmd_default"
 
 linux="linux"
 
@@ -30,6 +31,7 @@ OPTIONS
         --dwm
         --dwl
         --river-classic
+        --swayimg
         --ime
         --mutt
         --kvm
@@ -89,6 +91,19 @@ install_zig() {
         check_src "$src_dir"
         cd ${src_dir}/${package}
         sudo zig build -Doptimize=ReleaseSafe --prefix /usr/local install
+        cd -
+    done
+}
+
+install_meson() {
+    src_dir="${HOME}/.local/src"
+
+    for package in $src_meson; do
+        check_src "$src_dir"
+        cd ${src_dir}/${package}
+        meson setup --wipe $build_dir
+        meson compile -C $build_dir
+        sudo meson install -C $build_dir
         cd -
     done
 }
@@ -320,6 +335,16 @@ add_river_classic() {
     src_zig="$src_zig river-classic"
 }
 
+add_swayimg() {
+    add_wayland;
+
+    pkg="$pkg meson"
+
+    build_dir="_build_dir"
+
+    src_meson="$src_meson swayimg"
+}
+
 add_media() {
     pkg="$pkg ffmpeg"
     pkg="$pkg python-mutagen"
@@ -449,6 +474,7 @@ while [ -n "$1" ]; do
             prefix_cmd_aur="yay -S --needed"
             prefix_cmd_src_make="install_make"
             prefix_cmd_src_zig="install_zig"
+            prefix_cmd_src_meson="install_meson"
             ;;
         --linux)
             shift
@@ -469,6 +495,9 @@ while [ -n "$1" ]; do
             ;;
         --river-classic)
             add_river_classic
+            ;;
+        --swayimg)
+            add_swayimg
             ;;
         --ime)
             add_ime
@@ -525,5 +554,11 @@ done
 [ -n "$src_zig" ] && {
     echo "Source(zig): "
     $prefix_cmd_src_zig $src_zig
+    echo
+}
+
+[ -n "$src_meson" ] && {
+    echo "Source(meson): "
+    $prefix_cmd_src_meson $src_meson
     echo
 }
