@@ -139,8 +139,8 @@ package-list
 !.config/foot/
 !.config/foot/foot.ini
 !.config/foot/bindings.ini
-!.config/foot/colors.ini
-!.config/foot/colors2.ini
+!.config/foot/colors-dark.ini
+!.config/foot/colors-light.ini
 !.config/fontconfig/
 !.config/fontconfig/fonts.conf
 !.config/fzf/
