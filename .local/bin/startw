@@ -1,0 +1,24 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2026
+# startw - start wayland session
+
+# This script has completions: `.config/{z,ba}sh/completions/_startw.{z,ba}sh`
+
+wc=${1:-dwl}
+
+case "$wc" in
+    dwl)
+        damblocks --fifo &
+        exec ssh-agent tail -f ${XDG_RUNTIME_DIR}/damblocks.fifo | dwl
+        ;;
+    river-classic)
+        exec ssh-agent river-classic -c ${HOME}/.config/river-classic/init
+        ;;
+    river)
+        exec ssh-agent river
+        ;;
+    sway)
+        exec ssh-agent sway --unsupported-gpu
+        ;;
+esac

@@ -9,10 +9,10 @@
 
 alias cmd="command"
 
-alias rv="ssh-agent /usr/local/bin/river"
-alias rc="ssh-agent /usr/local/bin/river-classic -c ${HOME}/.config/river-classic/init"
-alias dl="ssh-agent ${HOME}/.local/bin/damblocks | /usr/local/bin/dwl"
-alias sw="ssh-agent sway --unsupported-gpu"
+alias rv="${HOME}/.local/bin/startw river"
+alias rc="${HOME}/.local/bin/startw river-classic"
+alias dl="${HOME}/.local/bin/startw dwl"
+alias sw="${HOME}/.local/bin/startw sway"
 
 alias x="startx"
 alias dm="startx ${HOME}/.xinitrc dwm"
