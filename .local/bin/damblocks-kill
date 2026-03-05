@@ -1,0 +1,8 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2026
+# dk - wrapper script for sending signals to damblocks
+
+for signal in "$@"; do
+    kill "$signal" $(cat /run/user/*/damblocks.pid)
+done
