@@ -28,6 +28,7 @@ OPTIONS
                 specify version for kernel and headers (default is linux)
         --base
         --yay
+        --damblocks
         --dwm
         --dwl
         --river-classic
@@ -241,7 +242,13 @@ add_themes() {
     aur="$aur adwaita-qt6-git"
 }
 
+add_damblocks() {
+    src_make="$src_make damblocks"
+}
+
 add_xorg() {
+    add_damblocks
+
     pkg="$pkg xorg-server"
     pkg="$pkg xorg-xinit"
     pkg="$pkg xorg-xrandr"
@@ -281,6 +288,8 @@ add_dwm() {
 }
 
 add_wayland() {
+    add_damblocks
+
     pkg="$pkg foot"
     pkg="$pkg wlr-randr"
     pkg="$pkg kanshi"
@@ -486,6 +495,9 @@ while [ -n "$1" ]; do
             ;;
         --yay)
             install_yay
+            ;;
+        --damblocks)
+            add_damblocks
             ;;
         --dwm)
             add_dwm
