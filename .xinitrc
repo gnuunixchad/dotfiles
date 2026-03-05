@@ -59,6 +59,7 @@ config_x; autostart;
 
 case "$wm" in
     dwm)
+        damblocks-mpdd &
         damblocks --xsetroot &
         exec ssh-agent dwm
         ;;
