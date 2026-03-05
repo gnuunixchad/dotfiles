@@ -3,11 +3,9 @@
 # [distros]
 https://archlinux.org/feeds/news/ "~Arch Linux" archlinux distro
 https://www.archlinuxcn.org/feed/ "~Arch Linux CN" archlinux distro
-https://micronews.debian.org/feeds/feed.rss "~Debian Micronews" distro
 
 # [blog]
 https://lukesmith.xyz/rss.xml "~Luke Smith" blog
-
 # [news]
 http://www.fsf.org/news/aggregator/RSS "~FSF News" news
 
@@ -20,6 +18,7 @@ https://codeberg.org/river/river-classic/releases.rss ~river-classic git river
 https://sr.ht/~novakane/rivercarro/feed.rss ~rivercarro git river
 https://gitlab.com/akumar-xyz/river-shifttags.atom ~river-shifttags git river
 https://codeberg.org/sewn/dam.rss ~dam git river
+https://codeberg.org/unixchad/damblocks/releases.rss ~damblocks git
 
 https://codeberg.org/dwl/dwl/releases.rss ~dwl git dwl wm
 
@@ -43,6 +42,7 @@ https://github.com/yt-dlp/yt-dlp/releases.atom ~yt-dlp cli
 https://github.com/linrunner/TLP/releases.atom ~tlp git cli daemon sys
 https://github.com/ammen99/wf-recorder/releases.atom ~wf-recorder git cli wlroots
 https://github.com/Jguer/yay/releases.atom ~yay git archlinux system cli
+https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio/-/releases.atom ~mkinitcpio git archlinux system cli
 https://github.com/systemd/systemd/releases.atom ~systemd git sys
 
 https://github.com/swaywm/swaylock/releases.atom ~swaylock git gui wlroots
