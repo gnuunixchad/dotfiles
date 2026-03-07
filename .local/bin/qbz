@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 # launch qutebrowser with alt profile in dynamic menu
 
 COLOR1='#1144aa'
@@ -12,4 +12,5 @@ CONFIGDIR="${HOME}/.config/qutebrowser"
     --basedir "${BASEDIR}/qbz/" \
     --config-py "${CONFIGDIR}/config.py" \
     --set colors.statusbar.normal.bg  $COLOR1 \
-    --set colors.completion.category.bg $COLOR1
+    --set colors.completion.category.bg $COLOR1 \
+    "$@"
