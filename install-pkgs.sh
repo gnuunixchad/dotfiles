@@ -16,6 +16,7 @@ linux="linux"
 
 wlroots_dwl="wlroots0.19"
 wlroots_river_classic="wlroots0.19"
+wlroots_river="wlroots0.19"
 
 usage() {
     cat << _EOF_
@@ -32,6 +33,7 @@ OPTIONS
         --dwm
         --dwl
         --river-classic
+        --river
         --swayimg
         --ime
         --mutt
@@ -66,6 +68,7 @@ install_yay() {
 
 check_src() {
     repo_prefix="https://codeberg.org/unixchad"
+
     [ -d "${src_dir}/${package}" ] || {
         mkdir -p $src_dir
         cd $src_dir
@@ -78,7 +81,7 @@ install_make() {
     src_dir="${HOME}/.local/src"
 
     for package in $src_make; do
-        check_src "$src_dir"
+        check_src
         cd ${src_dir}/${package}
         sudo make install
         cd -
@@ -89,7 +92,7 @@ install_zig() {
     src_dir="${HOME}/.local/src"
 
     for package in $src_zig; do
-        check_src "$src_dir"
+        check_src
         cd ${src_dir}/${package}
         sudo zig build -Doptimize=ReleaseSafe --prefix /usr/local install
         cd -
@@ -100,7 +103,7 @@ install_meson() {
     src_dir="${HOME}/.local/src"
 
     for package in $src_meson; do
-        check_src "$src_dir"
+        check_src
         cd ${src_dir}/${package}
         meson setup --wipe $build_dir
         meson compile -C $build_dir
@@ -344,6 +347,18 @@ add_river_classic() {
     src_zig="$src_zig river-classic"
 }
 
+add_river() {
+    add_wayland; add_audio; add_fonts; add_themes
+
+    pkg="$pkg zig"
+    pkg="$pkg $wlroots_river"
+    pkg="$pkg scdoc"
+    pkg="$pkg tllist"
+    pkg="$pkg wayland-protocols"
+
+    src_zig="$src_zig river"
+}
+
 add_swayimg() {
     add_wayland;
 
@@ -508,6 +523,9 @@ while [ -n "$1" ]; do
         --river-classic)
             add_river_classic
             ;;
+        --river)
+            add_river
+            ;;
         --swayimg)
             add_swayimg
             ;;
@@ -528,6 +546,7 @@ while [ -n "$1" ]; do
             install_yay
             add_dwm
             add_river_classic
+            add_river
             add_media
             add_gui_editor
             add_ime
