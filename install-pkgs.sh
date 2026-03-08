@@ -3,7 +3,7 @@
 # @since 2026
 # Setup packages
 
-set -x
+#set -x
 
 prefix_cmd_default="echo"
 prefix_cmd_pacman="$prefix_cmd_default"
@@ -34,6 +34,7 @@ OPTIONS
         --dwl
         --river-classic
         --river
+        --kwm
         --swayimg
         --ime
         --mutt
@@ -359,6 +360,12 @@ add_river() {
     src_zig="$src_zig river"
 }
 
+add_kwm() {
+    add_river
+
+    src_zig="$src_zig kwm"
+}
+
 add_swayimg() {
     add_wayland;
 
@@ -526,6 +533,9 @@ while [ -n "$1" ]; do
         --river)
             add_river
             ;;
+        --kwm)
+            add_kwm
+            ;;
         --swayimg)
             add_swayimg
             ;;
@@ -546,7 +556,7 @@ while [ -n "$1" ]; do
             install_yay
             add_dwm
             add_river_classic
-            add_river
+            add_kwm
             add_media
             add_gui_editor
             add_ime
