@@ -79,6 +79,8 @@ git codeberg abduco|https://codeberg.org/unixchad/abduco
 git github abduco|https://github.com/gnuunixchad/abduco
 git codeberg zoomx|https://codeberg.org/unixchad/zoomx
 git github zoomx|https://github.com/gnuunixchad/zoomx
+git codeberg jade|https://codeberg.org/unixchad/fcitx5-theme-jade
+git github jade|https://github.com/gnuunixchad/fcitx5-theme-jade
 git firefox arkenfox user.js for firefox|https://github.com/arkenfox/user.js
 git firefox tridactyl|https://github.com/tridactyl/tridactyl
 git firefox ublock origion|https://github.com/gorhill/uBlock
