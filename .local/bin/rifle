@@ -87,7 +87,7 @@ case $(file --mime-type -Lb "$f") in
                 ;;
         esac
         ;;
-    text/*|*/json|inode/x-empty|application/javascript|application/mbox|application/pgp-signature|application/pgp-keys)
+    text/*|*/json|inode/x-empty|application/javascript|application/mbox|application/pgp-signature|application/pgp-keys|application/x-wine-extension-ini)
         case "$f" in
             *.svg)
                 open_img
