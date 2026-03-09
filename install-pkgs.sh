@@ -36,7 +36,7 @@ OPTIONS
         --river
         --kwm
         --swayimg
-        --ime
+        --ime,--fcitx5
         --mutt
         --kvm
         --bluetooth
@@ -407,7 +407,7 @@ add_ime() {
     pkg="$pkg fcitx5-qt"
     pkg="$pkg fcitx5-anthy"
 
-    aur="$aur fcitx5-skin-fluentdark-git"
+    src_make="$src_make fcitx5-theme-jade"
 }
 
 add_downloader() {
@@ -539,7 +539,7 @@ while [ -n "$1" ]; do
         --swayimg)
             add_swayimg
             ;;
-        --ime)
+        --ime|--fcitx5)
             add_ime
             ;;
         --mutt)
