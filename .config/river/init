@@ -10,5 +10,3 @@
 /usr/local/bin/kwm &
 
 ${HOME}/.local/bin/damblocks --fifo &
-killall -q mpc
-${HOME}/.local/bin/damblocks-mpdd
