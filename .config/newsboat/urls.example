@@ -45,7 +45,7 @@ https://github.com/Jguer/yay/releases.atom ~yay git archlinux system cli
 https://gitlab.archlinux.org/archlinux/mkinitcpio/mkinitcpio/-/releases.atom ~mkinitcpio git archlinux system cli
 https://github.com/systemd/systemd/releases.atom ~systemd git sys
 
-https://github.com/swaywm/swaylock/releases.atom ~swaylock git gui wlroots
+https://codeberg.org/ifreund/waylock/releases.rss ~waylock wayland gui
 https://github.com/swaywm/swaybg/releases.atom ~swaybg git gui wlroots
 https://github.com/swaywm/swayidle/releases.atom ~swayidle git daemon wlroots
 
