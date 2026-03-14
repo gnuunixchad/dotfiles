@@ -14,6 +14,7 @@ https://github.com/martanne/abduco/releases.atom ~abduco terminal cli
 https://github.com/martanne/dvtm/releases.atom ~dvtm terminal tui
 
 https://codeberg.org/river/river/releases.rss ~river git river wm
+https://github.com/kewuaa/kwm/releases.atom ~kwm git river wm
 https://codeberg.org/river/river-classic/releases.rss ~river-classic git river
 https://sr.ht/~novakane/rivercarro/feed.rss ~rivercarro git river
 https://gitlab.com/akumar-xyz/river-shifttags.atom ~river-shifttags git river
@@ -56,3 +57,5 @@ https://github.com/swaywm/sway/releases.atom ~sway git wm
 https://gitlab.freedesktop.org/wlroots/wlroots/-/releases.atom ~wlroots git wlroots
 
 https://github.com/Supreeeme/xwayland-satellite/releases.atom ~xwayland-satellite git xwayland xorg
+
+https://github.com/junegunn/vim-plug/releases.atom ~vim-plug nvim
