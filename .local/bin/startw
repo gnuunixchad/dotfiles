@@ -5,7 +5,7 @@
 
 # This script has completions: `.config/{z,ba}sh/completions/_startw.{z,ba}sh`
 
-wc=${1:-dwl}
+wc=${1:-kwm}
 
 case "$wc" in
     dwl)
@@ -17,6 +17,10 @@ case "$wc" in
         ;;
     river)
         exec ssh-agent river
+        ;;
+    kwm)
+        damblocks --fifo &
+        exec ssh-agent river -c 'kwm'
         ;;
     sway)
         exec ssh-agent sway --unsupported-gpu

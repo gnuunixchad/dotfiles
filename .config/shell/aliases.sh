@@ -9,9 +9,11 @@
 
 alias cmd="command"
 
-alias rv="${HOME}/.local/bin/startw river"
-alias rc="${HOME}/.local/bin/startw river-classic"
+alias w="startw"
+alias km="${HOME}/.local/bin/startw kwm"
 alias dl="${HOME}/.local/bin/startw dwl"
+alias rc="${HOME}/.local/bin/startw river-classic"
+alias rv="${HOME}/.local/bin/startw river"
 alias sw="${HOME}/.local/bin/startw sway"
 
 alias x="startx"
