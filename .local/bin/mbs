@@ -1,10 +1,9 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2025
+# @since 2025,2026
 
 MBSYNC_CACHE="${XDG_RUNTIME_DIR}/mbsync-cron"
 
-/usr/bin/mbsync -a \
+mbsync -aq \
     && touch "$MBSYNC_CACHE" \
     && kill -41 $(cat ${XDG_RUNTIME_DIR}/damblocks.pid);
-
