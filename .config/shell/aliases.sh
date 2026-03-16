@@ -9,7 +9,7 @@
 
 alias cmd="command"
 
-alias w="startw"
+alias wl="startw"
 alias km="${HOME}/.local/bin/startw kwm"
 alias dl="${HOME}/.local/bin/startw dwl"
 alias rc="${HOME}/.local/bin/startw river-classic"
