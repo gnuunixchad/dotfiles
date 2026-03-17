@@ -272,7 +272,7 @@ update_pacman() {
 update_mutt() {
     local MBSYNC_CACHE="${XDG_RUNTIME_DIR}/mbsync-cron"
 
-    [ -f "$MBSYNC_CACHE" ] || { icon="󱏣"; return; }
+    [ -f "$MBSYNC_CACHE" ] || { mutt="󱏣"; return; }
 
     local MAIL_DIR="$HOME/doc/mail"
     local UPDATE_FREQUENCY=3600 # in seconds
