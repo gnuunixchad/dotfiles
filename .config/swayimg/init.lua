@@ -6,6 +6,8 @@ require('modes.viewer')
 require('modes.gallery')
 require('modes.slideshow')
 
+swayimg.set_mode("viewer")
+
 swayimg.imagelist.set_order("none")
 
 swayimg.text.set_timeout(0)
