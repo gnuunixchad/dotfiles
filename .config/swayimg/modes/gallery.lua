@@ -1,0 +1,3 @@
+-- swayimg/modes/gallery.lua
+-- @author nate zhou
+-- @since 2026

@@ -1,0 +1,3 @@
+-- swayimg/modes/slideshow.lua
+-- @author nate zhou
+-- @since 2026
