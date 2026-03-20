@@ -280,10 +280,11 @@ package-list
 !.config/swayidle/
 !.config/swayidle/config
 !.config/swayimg/
-!.config/swayimg/config
-!.config/swayimg/viewer.ini
-!.config/swayimg/slideshow.ini
-!.config/swayimg/gallery.ini
+!.config/swayimg/init.lua
+!.config/swayimg/modes
+!.config/swayimg/modes/viewer.lua
+!.config/swayimg/modes/gallery.lua
+!.config/swayimg/modes/slideshow.lua
 !.config/swaylock/
 !.config/swaylock/config
 !.config/task/

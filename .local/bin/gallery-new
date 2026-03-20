@@ -27,7 +27,7 @@ ls -t $(find $HOME/pic/ -type f ) \
 
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    swayimg -g -F "$LIST" -o none
+    swayimg -g -f "$LIST"
 elif [ -n "$XAUTHORITY" ]; then
     cat "$LIST" | nsxiv -t -
 fi

@@ -8,7 +8,7 @@ LIST="${XDG_RUNTIME_DIR}/gallery.list"
 ls -t $(find $HOME/pic/kirei/ -type f ) |shuf > "$LIST"
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    swayimg -g -F "$LIST" -o none
+    swayimg -g -f "$LIST"
 elif [ -n "$XAUTHORITY" ]; then
     cat "$LIST" | nsxiv -t -
 fi
