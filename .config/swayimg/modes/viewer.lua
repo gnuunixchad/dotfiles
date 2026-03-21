@@ -2,6 +2,8 @@
 -- @author nate zhou
 -- @since 2026
 
+local functions = require("functions")
+
 swayimg.viewer.bind_reset()
 
 swayimg.viewer.set_default_scale(1.0)
@@ -171,3 +173,5 @@ swayimg.viewer.on_key("v", function()
     swayimg.viewer.flip_vertical()
 end)
 swayimg.viewer.on_key("a", toggle_antialiasing)
+
+swayimg.viewer.on_key("Shift+d", functions.delete)
