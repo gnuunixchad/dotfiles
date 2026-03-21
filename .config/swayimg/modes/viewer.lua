@@ -175,3 +175,4 @@ end)
 swayimg.viewer.on_key("a", toggle_antialiasing)
 
 swayimg.viewer.on_key("Shift+d", functions.delete)
+swayimg.viewer.on_key("Shift+s", functions.qrscan)

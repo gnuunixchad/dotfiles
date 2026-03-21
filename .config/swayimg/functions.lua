@@ -24,4 +24,14 @@ function M.delete()
     end
 end
 
+function M.qrscan()
+    local image = swayimg.viewer.get_image()
+    if not image or not image.path then return end
+
+    local escaped_path = "'" .. image.path:gsub("'", "'\\''") .. "'"
+    local cmd = string.format("qrtool decode %s | wl-copy", escaped_path)
+    os.execute(cmd)
+    os.execute(string.format("notify-send -t 1100 -u low -r 3301 'swayimg' 'QR code copied to clipboard'"))
+end
+
 return M
