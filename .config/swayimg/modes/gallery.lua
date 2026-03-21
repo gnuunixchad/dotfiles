@@ -32,17 +32,6 @@ swayimg.gallery.set_text("bottomright", {
 })
 
 
-local is_animation_running = true
-local function toggle_animation()
-    if is_animation_running then
-        swayimg.gallery.animation_stop()
-        is_animation_running = false
-    else
-        swayimg.gallery.animation_resume()
-        is_animation_running = true
-    end
-end
-
 local is_antialiasing = true
 local function toggle_antialiasing()
     if is_antialiasing then
