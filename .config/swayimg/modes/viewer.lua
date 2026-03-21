@@ -30,14 +30,14 @@ swayimg.viewer.set_text("bottomright", {
 })
 
 
-local is_animation_running = true
-local function toggle_animation()
-    if is_animation_running then
+is_viewer_animation_running = true
+local function toggle_viewer_animation()
+    if is_viewer_animation_running then
         swayimg.viewer.animation_stop()
-        is_animation_running = false
+        is_viewer_animation_running = false
     else
         swayimg.viewer.animation_resume()
-        is_animation_running = true
+        is_viewer_animation_running = true
     end
 end
 
@@ -76,6 +76,8 @@ swayimg.viewer.on_key("return", function()
     swayimg.set_mode("gallery")
 end)
 swayimg.viewer.on_key("s", function()
+    is_slideshow_animation_running = true
+    is_viewer_animation_running = true
     swayimg.set_mode("slideshow")
 end)
 swayimg.viewer.on_key("m", toggle_text)
@@ -155,7 +157,7 @@ end)
 swayimg.viewer.on_key("period", function()
     swayimg.viewer.next_frame()
 end)
-swayimg.viewer.on_key("space", toggle_animation)
+swayimg.viewer.on_key("space", toggle_viewer_animation)
 swayimg.viewer.on_key("Shift+r", function()
     swayimg.viewer.rotate(270)
 end)

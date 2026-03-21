@@ -28,6 +28,17 @@ swayimg.slideshow.on_key("q", function()
     swayimg.exit(0)
 end)
 
+is_slideshow_animation_running = true
+local function toggle_slideshow_animation()
+    if is_slideshow_animation_running then
+        swayimg.slideshow.animation_stop()
+        is_slideshow_animation_running = false
+    else
+        swayimg.slideshow.animation_resume()
+        is_slideshow_animation_running = true
+    end
+end
+
 local is_antialiasing = true
 local function toggle_antialiasing()
     if is_antialiasing then
@@ -69,6 +80,8 @@ swayimg.slideshow.on_key("return", function()
     swayimg.set_mode("gallery")
 end)
 swayimg.slideshow.on_key("s", function()
+    is_viewer_animation_running = true
+    is_slideshow_animation_running = true
     swayimg.set_mode("viewer")
 end)
 swayimg.slideshow.on_key("m", toggle_text)
@@ -148,7 +161,7 @@ end)
 swayimg.slideshow.on_key("period", function()
     swayimg.slideshow.next_frame()
 end)
-swayimg.slideshow.on_key("space", toggle_animation)
+swayimg.slideshow.on_key("space", toggle_slideshow_animation)
 swayimg.slideshow.on_key("Shift+r", function()
     swayimg.slideshow.rotate(270)
 end)
