@@ -45,4 +45,13 @@ function M.setwall()
     os.execute(string.format("notify-send -r 107 -u low 'swayimg' '%s has been set as wallpaper'", filename))
 end
 
+function M.invert()
+    local image = swayimg.viewer.get_image()
+    if not image or not image.path then return end
+
+    local escaped_path = "'" .. image.path:gsub("'", "'\\''") .. "'"
+    local cmd = string.format("convert %s -channel RGB -negate - | swayimg -", escaped_path)
+    os.execute(cmd)
+end
+
 return M
