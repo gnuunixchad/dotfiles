@@ -1,11 +1,11 @@
--- swayimg/functions.lua
+-- swayimg/modes/slideshow/functions.lua
 -- @author nate zhou
 -- @since 2026
 
 local M = {}
 
 function M.delete()
-    local image = swayimg.viewer.get_image()
+    local image = swayimg.slideshow.get_image()
     if not image or not image.path then return end
 
     local reply = os.tmpname()
@@ -25,7 +25,7 @@ function M.delete()
 end
 
 function M.qrscan()
-    local image = swayimg.viewer.get_image()
+    local image = swayimg.slideshow.get_image()
     if not image or not image.path then return end
 
     local escaped_path = "'" .. image.path:gsub("'", "'\\''") .. "'"
@@ -35,7 +35,7 @@ function M.qrscan()
 end
 
 function M.setwall()
-    local image = swayimg.viewer.get_image()
+    local image = swayimg.slideshow.get_image()
     if not image or not image.path then return end
 
     local escaped_path = "'" .. image.path:gsub("'", "'\\''") .. "'"
@@ -46,7 +46,7 @@ function M.setwall()
 end
 
 function M.invert()
-    local image = swayimg.viewer.get_image()
+    local image = swayimg.slideshow.get_image()
     if not image or not image.path then return end
 
     local escaped_path = "'" .. image.path:gsub("'", "'\\''") .. "'"

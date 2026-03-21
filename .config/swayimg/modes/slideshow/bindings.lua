@@ -1,28 +1,10 @@
--- swayimg/modes/slideshow.lua
+-- swayimg/modes/slideshow/bindings.lua
 -- @author nate zhou
 -- @since 2026
 
 swayimg.slideshow.bind_reset()
 
-swayimg.slideshow.set_text("topleft", {
-  "{name}",
-  "{format}",
-  "{sizehr}",
-  "{time}",
-  "{meta.Exif.Photo.DateTimeOriginal}",
-  "{meta.Exif.Image.Model}"
-})
-swayimg.slideshow.set_text("topright", {
-    "{list.index}/{list.total}",
-})
-swayimg.slideshow.set_text("bottomleft", {
-    "{frame.index}/{frame.total}",
-    "{frame.width}x{frame.height}",
-    "{scale}"
-})
-swayimg.slideshow.set_text("bottomright", {
-    "{path}"
-})
+local functions = require("modes/slideshow/functions")
 
 swayimg.slideshow.on_key("q", function()
     swayimg.exit(0)
@@ -175,3 +157,20 @@ swayimg.slideshow.on_key("v", function()
     swayimg.slideshow.flip_vertical()
 end)
 swayimg.slideshow.on_key("a", toggle_antialiasing)
+swayimg.slideshow.on_key("w", function()
+    swayimg.slideshow.set_fix_scale("width")
+end)
+swayimg.slideshow.on_key("e", function()
+    swayimg.slideshow.set_fix_scale("height")
+end)
+swayimg.slideshow.on_key("Shift+e", function()
+    swayimg.slideshow.set_fix_scale("fit")
+end)
+swayimg.slideshow.on_key("Shift+f", function()
+    swayimg.slideshow.set_fix_scale("fill")
+end)
+
+swayimg.slideshow.on_key("Shift+d", functions.delete)
+swayimg.slideshow.on_key("Shift+s", functions.qrscan)
+swayimg.slideshow.on_key("Shift+w", functions.setwall)
+swayimg.slideshow.on_key("Shift+i", functions.invert)

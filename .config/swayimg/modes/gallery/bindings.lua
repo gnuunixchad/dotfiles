@@ -1,36 +1,10 @@
--- swayimg/modes/gallery.lua
+-- swayimg/modes/gallery/bindings.lua
 -- @author nate zhou
 -- @since 2026
 
 swayimg.gallery.bind_reset()
 
-swayimg.gallery.set_selected_scale(1.2)
-
-swayimg.gallery.set_aspect("keep")
-
-swayimg.gallery.set_thumb_size(200)
-swayimg.gallery.set_border_size(1)
-swayimg.gallery.set_border_color(0xffeeeeee)
-
-swayimg.gallery.set_window_color(0xff111111)
-
-swayimg.gallery.enable_preload(true)
-
-swayimg.gallery.set_text("topleft", {
-  "{name}",
-  "{format}",
-  "{sizehr}",
-  "{time}",
-})
-swayimg.gallery.set_text("topright", {
-    "{list.index}/{list.total}",
-})
-swayimg.gallery.set_text("bottomleft", {
-})
-swayimg.gallery.set_text("bottomright", {
-    "{dir}"
-})
-
+local functions = require("modes/gallery/functions")
 
 local is_antialiasing = true
 local function toggle_antialiasing()
@@ -115,3 +89,8 @@ swayimg.gallery.on_key("z", function()
     swayimg.gallery.set_thumb_size(200)
 end)
 swayimg.gallery.on_key("a", toggle_antialiasing)
+
+swayimg.gallery.on_key("Shift+d", functions.delete)
+swayimg.gallery.on_key("Shift+s", functions.qrscan)
+swayimg.gallery.on_key("Shift+w", functions.setwall)
+swayimg.gallery.on_key("Shift+i", functions.invert)

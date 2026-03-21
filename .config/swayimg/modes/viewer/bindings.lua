@@ -1,36 +1,10 @@
--- swayimg/modes/viewer.lua
+-- swayimg/modes/viewer/bindings.lua
 -- @author nate zhou
 -- @since 2026
 
-local functions = require("functions")
-
 swayimg.viewer.bind_reset()
 
-swayimg.viewer.set_default_scale(1.0)
-
-swayimg.viewer.set_window_background(0xff111111)
-swayimg.viewer.set_image_chessboard(20, 0xff333333, 0xff4c4c4c)
-
-swayimg.viewer.set_text("topleft", {
-  "{name}",
-  "{format}",
-  "{sizehr}",
-  "{time}",
-  "{meta.Exif.Photo.DateTimeOriginal}",
-  "{meta.Exif.Image.Model}"
-})
-swayimg.viewer.set_text("topright", {
-    "{list.index}/{list.total}"
-})
-swayimg.viewer.set_text("bottomleft", {
-    "{frame.index}/{frame.total}",
-    "{frame.width}x{frame.height}",
-    "{scale}"
-})
-swayimg.viewer.set_text("bottomright", {
-    "{path}"
-})
-
+local functions = require("modes/viewer/functions")
 
 is_viewer_animation_running = true
 local function toggle_viewer_animation()
