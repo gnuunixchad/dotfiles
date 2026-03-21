@@ -34,4 +34,15 @@ function M.qrscan()
     os.execute(string.format("notify-send -t 1100 -u low -r 3301 'swayimg' 'QR code copied to clipboard'"))
 end
 
+function M.setwall()
+    local image = swayimg.viewer.get_image()
+    if not image or not image.path then return end
+
+    local escaped_path = "'" .. image.path:gsub("'", "'\\''") .. "'"
+    local filename = image.path:match("([^/]+)$") or image.path
+
+    os.execute(string.format("~/.local/bin/setwall %s", escaped_path))
+    os.execute(string.format("notify-send -r 107 -u low 'swayimg' '%s has been set as wallpaper'", filename))
+end
+
 return M
