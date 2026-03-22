@@ -7,6 +7,7 @@ map="riverctl map"
 mod=Mod4    # Mod1=Alt, Mod4=Super
 term="footclient"
 menu="${HOME}/.local/bin/wmenu-run-color"
+# https://codeberg.org/unixchad/riverdeck
 command -v riverdeck >/dev/null 2>&1 && tiler="riverdeck" || tiler="rivertile"
 
 $map normal ${mod}+Shift r                  spawn "${HOME}/.config/river-classic/init"
@@ -106,10 +107,13 @@ $map normal $mod comma                      focus-output previous
 $map normal ${mod}+Shift period             send-to-output next
 $map normal ${mod}+Shift comma              send-to-output previous
 
+# https://codeberg.org/unixchad/river-shifttags
 $map normal $mod apostrophe                 spawn "river-shifttags --occupied"
-$map normal $mod semicolon                  spawn "river-shifttags --shift -1 --occupied"
+$map normal $mod semicolon                  spawn "river-shifttags --occupied --shift -1"
 $map normal ${mod}+Shift apostrophe         spawn "river-shifttags"
 $map normal ${mod}+Shift semicolon          spawn "river-shifttags --shift -1"
+$map normal ${mod}+Control apostrophe       spawn "river-shifttags --unoccupied"
+$map normal ${mod}+Control semicolon        spawn "river-shifttags --unoccupied --shift -1"
 
 $map normal ${mod}+Control h                focus-view left
 $map normal ${mod}+Control j                focus-view down
