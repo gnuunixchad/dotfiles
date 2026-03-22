@@ -8,10 +8,10 @@ add="riverctl rule-add"
 $add -app-id "*" ssd   # draw boarders for every window
 
 $add -title "Floating_Term" float
-$add -title "Floating_Term" dimensions 1200 800
+$add -title "Floating_Term" dimensions 956 717
 
 $add -app-id "Floating_IMG" float
-$add -app-id "Floating_IMG" dimensions 1200 800
+$add -app-id "Floating_IMG" dimensions 956 717
 
 # GIMP
 $add -app-id "file-*" float # file import/export
