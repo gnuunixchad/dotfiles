@@ -5,11 +5,11 @@
 
 for_window [title="Floating_Term"] \
     floating enable, \
-    resize set width 1200 px, resize set height 800 px
+    resize set width 956 px, resize set height 717 px
 
 for_window [app_id="Floating_IMG"] \
     floating enable, \
-    resize set width 1200 px, resize set height 800 px
+    resize set width 956 px, resize set height 717 px
 
 # GIMP
 for_window [app_id="file-*"] floating enable
