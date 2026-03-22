@@ -145,7 +145,6 @@ package-list
 !.config/fzf/
 !.config/fzf/*
 !.config/GIMP/
-!.config/GIMP/*.*/
 !.config/GIMP/*.*/shortcutsrc.example
 !.config/git/
 !.config/git/config
