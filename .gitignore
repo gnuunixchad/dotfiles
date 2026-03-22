@@ -126,6 +126,7 @@ package-list
 !.config/fcitx5/config
 !.config/fcitx5/conf
 !.config/fcitx5/conf/classicui.conf
+!.config/fcitx5/conf/clipboard.conf
 !.config/fcitx5/conf/keyboard.conf
 !.config/fcitx5/conf/punctuation.conf
 !.config/fcitx5/conf/wayland.conf
