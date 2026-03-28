@@ -15,8 +15,8 @@ prefix_cmd_src_meson="$prefix_cmd_default"
 linux="linux"
 
 wlroots_dwl="wlroots0.19"
-wlroots_river_classic="wlroots0.19"
-wlroots_river="wlroots0.19"
+wlroots_river_classic="wlroots0.20"
+wlroots_river="wlroots0.20"
 
 usage() {
     cat << _EOF_
