@@ -21,7 +21,7 @@ Plug('neoclide/coc.nvim', { ['branch'] = 'release' })
 
 Plug('lukas-reineke/indent-blankline.nvim')
 
-Plug('MeanderingProgrammer/render-markdown.nvim', { ['tag'] = 'v8.11.0' })
+Plug('MeanderingProgrammer/render-markdown.nvim')
 
 Plug('tpope/vim-fugitive')
 
