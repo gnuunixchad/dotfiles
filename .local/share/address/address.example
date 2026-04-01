@@ -63,8 +63,6 @@ git codeberg dam|https://codeberg.org/unixchad/dam
 git github dam|https://github.com/gnuunixchad/dam
 git codeberg mew|https://codeberg.org/unixchad/mew
 git github mew|https://github.com/gnuunixchad/mew
-git codeberg swayimg|https://codeberg.org/unixchad/swayimg
-git github swayimg|https://github.com/gnuunixchad/swayimg
 git codeberg nsxiv|https://codeberg.org/unixchad/nsxiv
 git github nsxiv|https://github.com/gnuunixchad/nsxiv
 git codeberg dwm|https://codeberg.org/unixchad/dwm
@@ -91,6 +89,7 @@ git linux river|https://codeberg.org/river/river
 git lunux river-classic|https://codeberg.org/river/river-classic
 git linux river|https://codeberg.org/river/wiki
 git linux river|https://github.com/kewuaa/kwm
+git linux river|https://github.com/kewuaa/kwim
 git linux river dam|https://codeberg.org/sewn/dam
 git linux wayland menu|https://codeberg.org/sewn/mew
 git linux river rivercarro|https://sr.ht/~novakane/rivercarro/
