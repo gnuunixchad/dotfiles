@@ -78,8 +78,9 @@ mv ${HOME}/.bash_profile{,~} 2>/dev/null
 [ -d ${HOME}/pkg/yay ] && [ ! -L ${HOME}/.cache/yay ] \
     && ln -s ${HOME}/pkg/yay ${HOME}/.cache/yay
 
-[ -d ${HOME}/pkg/zig ] && [ ! -L ${HOME}/.cache/zig ] \
-    && ln -s ${HOME}/pkg/zig ${HOME}/.cache/zig
+mkdir -p ${HOME}/.cache/zig
+[ -d ${HOME}/pkg/zig/p ] && [ ! -L ${HOME}/.cache/zig/p ] \
+    && ln -s ${HOME}/pkg/zig/p ${HOME}/.cache/zig/p
 
 [ -d /data/virt ] \
     && (ln -sf /data/virt ${HOME}/virt
