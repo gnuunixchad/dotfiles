@@ -181,7 +181,7 @@ complete -F _muttauth muttauth
 _reload() {
     local options modules used remaining
     options=("--cronjobs" "--damblocks-fifo" "--damblocks-xsetroot" \
-             "--module" "--help")
+             "--module" "--kwm" "--help")
     modules=($(lsmod | cut -d' ' -f1))
     used=("${COMP_WORDS[@]:1:COMP_CWORD-1}")
     remaining=()

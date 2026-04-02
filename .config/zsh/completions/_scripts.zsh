@@ -154,7 +154,7 @@ compdef _muttauth muttauth
 _reload() {
     local options modules
     options=("--cronjobs" "--damblocks-fifo" "--damblocks-xsetroot" \
-             "--module" "--help")
+             "--module" "--kwm" "--help")
     modules=($(lsmod | cut -d' ' -f1))
     used=(${words[2,-1]})
     remaining=(${options:|used})

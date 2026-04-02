@@ -18,6 +18,7 @@ OPTIONS
                         reload damblocks (xsetroot)
         -m,--module [module]...
                         reload kernel modules
+        -k,--kwm        reload kwm under river
         -h,--help       print this usage manual
 _EOF_
     exit 0
@@ -81,6 +82,10 @@ reload_module() {
     sudo modprobe -r $@ && sudo modprobe $@
 }
 
+reload_kwm() {
+    pkill -x kwm && nohup kwm >/dev/null &
+}
+
 [ -z "$1" ] && reload_cronjobs
 
 while [ -n "$1" ]; do
@@ -97,6 +102,9 @@ while [ -n "$1" ]; do
         -m|--module)
             shift
             reload_module $@
+            ;;
+        -k|--kwm)
+            reload_kwm
             ;;
         -h|--help)
             usage
