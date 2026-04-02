@@ -188,6 +188,7 @@ alias gcl="git clone"
 
 alias zbr="zig build -Doptimize=ReleaseSafe"
 alias zbd="zig build -Doptimize=Debug"
+alias zil="test -d zig-out && sudo rsync -av --no-perms --no-owner --no-group zig-out/ /usr/local"
 
 alias jvi="vim /usr/lib/jvm/default/lib/src.zip"
 
