@@ -1,0 +1,17 @@
+#!/usr/bin/sh
+# @author nate zhou
+# @since 2023,2026
+
+. ${HOME}/.local/sbin/prox.env
+
+export http_proxy="$PROX"
+
+export https_proxy="$PROX"
+
+export HTTP_PROXY="$PROX"
+
+export HTTPS_PROXY="$PROX"
+
+export all_proxy="$PROX"
+
+export GIT_SSH_COMMAND="ssh -o ProxyCommand=\"nc -X 5 -x $PROX %h %p\""

@@ -119,7 +119,7 @@ alias ollamastow='stow -S --adopt -d "${HOME}/pkg/ollama" -t "$HOME" . && echo "
 alias ollamarest='stow -R --adopt -d "${HOME}/pkg/ollama" -t "$HOME" . && echo "ollama is restowed"'
 alias ollamaunst='stow -D -d "${HOME}/pkg/ollama" -t "$HOME" . && echo "ollama is unstowed"'
 
-alias p="source $HOME/.local/sbin/prox"
+alias p="source $HOME/.local/bin/prox"
 alias P="getprox";
 
 alias hibernate="systemctl hibernate"

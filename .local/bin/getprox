@@ -1,6 +1,10 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2023,2025
+# @since 2023,2025,2026
 
-echo "http: $http_proxy";
-echo "https: $https_proxy";
+echo "http_proxy=$http_proxy"
+echo "https_proxy=$https_proxy"
+echo "HTTP_PROXY=$HTTP_PROXY"
+echo "HTTPS_PROXY=$HTTPS_PROXY"
+echo "all_proxy=$all_proxy"
+echo "GIT_SSH_COMMAND=$GIT_SSH_COMMAND"
