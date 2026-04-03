@@ -140,6 +140,7 @@ alias po="pacman -Qo"
 alias pd="pactree -d1"
 alias pv="pactree -rd1"
 alias pdep="sudo pacman -Syu --needed --asdeps"
+alias rmpd="sudo rm -i /var/lib/pacman/db.lck"
 
 alias gpl="gpg --list-keys"
 alias gpls="gpg --list-secret-keys"
