@@ -44,8 +44,8 @@ song_columns_list_format = (20)[]{a} (3f)[8]{NE:T} (40)[cyan]{t|f:Title} (5f)[8]
 current_item_prefix = $b$(8_15)
 current_item_suffix = $/b$(end)
 
-now_playing_prefix = $b$(1_15)
-now_playing_suffix = $/b$(end)
+now_playing_prefix = $(10)
+now_playing_suffix = $(end)
 
 current_item_inactive_column_prefix = $(8)$r
 selected_item_prefix = $4
