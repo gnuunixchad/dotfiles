@@ -21,10 +21,10 @@ def_key "b"
   seek_backward
 
 def_key "ctrl-n"
-    next
+  next
 
 def_key "ctrl-p"
-    previous
+  previous
 
 def_key "z"
   toggle_random
@@ -39,10 +39,10 @@ def_key "s"
   toggle_single
 
 def_key "+"
-    volume_up
+  volume_up
 
 def_key "="
-    volume_up
+  volume_up
 
 def_key "i"
   show_song_info
@@ -84,16 +84,16 @@ def_key "~"
   jump_to_media_library
 
 def_key "j"
-    scroll_down
+  scroll_down
 
 def_key "k"
-    scroll_up
+  scroll_up
 
 def_key "h"
-    previous_column
+  previous_column
 
 def_key "l"
-    next_column
+  next_column
 
 def_key "h"
   jump_to_parent_directory
@@ -108,14 +108,14 @@ def_key "l"
   play_item
 
 def_key "ctrl-p"
-    page_up
+  page_up
 def_key "ctrl-u"
-    page_up
+  page_up
 
 def_key "ctrl-n"
-    page_down
+  page_down
 def_key "ctrl-d"
-    page_down
+  page_down
 
 def_key "G"
   move_end
@@ -124,10 +124,10 @@ def_key "g"
   move_home
 
 def_key "n"
-    next_found_item
+  next_found_item
 
 def_key "N"
-    previous_found_item
+  previous_found_item
 
 def_key "M"
   show_media_library
