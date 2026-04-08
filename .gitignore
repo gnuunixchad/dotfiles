@@ -161,6 +161,7 @@ package-list
 !.config/gtk-4.0/gtk.css
 !.config/kanshi/
 !.config/kanshi/config
+!.config/kanshi/config-HiDPI
 !.config/isyncrc.example
 !.config/lesskey
 !.config/lf/
