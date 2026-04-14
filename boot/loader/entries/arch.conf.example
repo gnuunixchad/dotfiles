@@ -5,4 +5,4 @@
 title Arch Linux
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options rd.luks.name=275798bf-a33c-4cde-a489-625a3957899f=cryptlvm root=UUID=91e69c07-65c4-4fb9-b51e-448fe20564a3 modprobe.blacklist=pcspkr
+options rd.luks.name=275798bf-a33c-4cde-a489-625a3957899f=cryptlvm root=UUID=91e69c07-65c4-4fb9-b51e-448fe20564a3 modprobe.blacklist=pcspkr video=1366x768
