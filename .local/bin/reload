@@ -83,7 +83,8 @@ reload_module() {
 }
 
 reload_kwm() {
-    pkill -x kwm && nohup kwm >/dev/null &
+    pkill -x kwm
+    nohup kwm >/dev/null &
 }
 
 [ -z "$1" ] && reload_cronjobs
