@@ -89,6 +89,7 @@ swayimg.gallery.on_key("z", function()
     swayimg.gallery.set_thumb_size(200)
 end)
 swayimg.gallery.on_key("a", toggle_antialiasing)
+swayimg.gallery.on_key("t", swayimg.gallery.mark_image)
 
 swayimg.gallery.on_key("Shift+d", functions.delete)
 swayimg.gallery.on_key("Shift+s", functions.qrscan)

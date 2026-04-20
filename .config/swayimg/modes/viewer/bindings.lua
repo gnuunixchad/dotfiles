@@ -159,6 +159,7 @@ end)
 swayimg.viewer.on_key("Shift+f", function()
     swayimg.viewer.set_fix_scale("fill")
 end)
+swayimg.viewer.on_key("t", swayimg.viewer.mark_image)
 
 swayimg.viewer.on_key("Shift+d", functions.delete)
 swayimg.viewer.on_key("Shift+s", functions.qrscan)

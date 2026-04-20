@@ -169,6 +169,7 @@ end)
 swayimg.slideshow.on_key("Shift+f", function()
     swayimg.slideshow.set_fix_scale("fill")
 end)
+swayimg.slideshow.on_key("t", swayimg.slideshow.mark_image)
 
 swayimg.slideshow.on_key("Shift+d", functions.delete)
 swayimg.slideshow.on_key("Shift+s", functions.qrscan)
