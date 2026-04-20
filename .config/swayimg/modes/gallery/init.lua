@@ -15,4 +15,6 @@ swayimg.gallery.set_border_color(0xffeeeeee)
 
 swayimg.gallery.set_window_color(0xff111111)
 
+swayimg.gallery.set_mark_color(0xffffffff)
+
 swayimg.gallery.enable_preload(true)
