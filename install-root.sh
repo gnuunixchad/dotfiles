@@ -62,6 +62,7 @@ systemctl enable --now bluetooth.service 2>/dev/null
 systemctl enable --now tlp.service 2>/dev/null
 systemctl enable --now smb.service 2>/dev/null
 systemctl enable --now dictd.service 2>/dev/null
+systemctl enable --now cronie.service 2>/dev/null
 
 pacman -Qi libvirt >/dev/null 2>&1 && lscpu | grep -q 'Hypervisor vendor:' \
     || (systemctl enable --now libvirtd \
