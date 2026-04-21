@@ -226,6 +226,7 @@ package-list
 !.config/nvim/lua/plugins/render-markdown.lua
 !.config/nvim/lua/plugins/vim-floaterm.lua
 !.config/nvim/lua/plugins/lf.lua
+!.config/nvim/lua/plugins/image.lua
 !.config/nvim/init.lua
 !.config/nvim/coc-settings.json
 !.config/picom/

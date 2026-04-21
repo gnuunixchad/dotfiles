@@ -30,6 +30,8 @@ Plug('ptzz/lf.vim')
 
 Plug('h-hg/fcitx.nvim')
 
+Plug('3rd/image.nvim')
+
 vim.call('plug#end')
 
 require('plugins.nvim-colorizer')
@@ -39,3 +41,4 @@ require('plugins.indent-blankline')
 require('plugins.render-markdown')
 require('plugins.vim-floaterm')
 require('plugins.lf')
+require('plugins.image')
