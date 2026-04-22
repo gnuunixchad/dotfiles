@@ -12,6 +12,7 @@
     {{.Size | humanize | printf " %5s" -}}
     {{.ModTime | printf " %s" -}}
     {{with .Target}} -> {{.}}{{end -}}
+    {{with .CustomInfo}} {{.}}{{end -}}
 {{end -}}
 {{.SPACER -}}
 {{with .Keys}}{{.}}{{end -}}
