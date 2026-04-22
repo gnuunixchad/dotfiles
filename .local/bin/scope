@@ -47,6 +47,7 @@ case "$(file -Lb --mime-type -- "$1")" in
         show_img "${CACHE}.jpg" "$2" "$3"
         ;;
     audio/*)
+        mediainfo --Output="General;Bit rate: %BitRate/String%\nDuration: %Duration/String%" "$1"
         mid3v2 -l "$1"
         ;;
     application/epub+zip)
