@@ -1,6 +1,6 @@
 {{/* lf/ruler.go */ -}}
 {{/* @author nate zhou */ -}}
-{{/* @since 2025 */ -}}
+{{/* @since 2025,2026 */ -}}
 
 {{with .Message -}}
     {{. -}}
@@ -11,6 +11,7 @@
     {{with .Group}} {{.}}{{end -}}
     {{.Size | humanize | printf " %5s" -}}
     {{.ModTime | printf " %s" -}}
+	{{with $.UserOptions.on_select}} {{.}}{{end -}}
     {{with .Target}} -> {{.}}{{end -}}
 {{end -}}
 {{.SPACER -}}
