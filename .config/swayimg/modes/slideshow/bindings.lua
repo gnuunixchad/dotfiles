@@ -32,6 +32,17 @@ local function toggle_antialiasing()
     end
 end
 
+local is_slideshow_chessboard = false
+local function toggle_slideshow_chessboard()
+    if is_slideshow_chessboard then
+        swayimg.slideshow.set_image_background(0xff111111)
+        is_slideshow_chessboard = false
+    else
+        swayimg.slideshow.set_image_chessboard(8,0xff666666,0xff999999)
+        is_slideshow_chessboard = true
+    end
+end
+
 local function toggle_text()
     if swayimg.text.visible() then
         swayimg.text.hide()
@@ -157,6 +168,7 @@ swayimg.slideshow.on_key("v", function()
     swayimg.slideshow.flip_vertical()
 end)
 swayimg.slideshow.on_key("a", toggle_antialiasing)
+swayimg.slideshow.on_key("Shift+a", toggle_slideshow_chessboard)
 swayimg.slideshow.on_key("w", function()
     swayimg.slideshow.set_fix_scale("width")
 end)

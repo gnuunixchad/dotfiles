@@ -28,6 +28,17 @@ local function toggle_antialiasing()
     end
 end
 
+local is_viewer_chessboard = false
+local function toggle_viewer_chessboard()
+    if is_viewer_chessboard then
+        swayimg.viewer.set_image_background(0xff111111)
+        is_viewer_chessboard = false
+    else
+        swayimg.viewer.set_image_chessboard(8,0xff666666,0xff999999)
+        is_viewer_chessboard = true
+    end
+end
+
 local function toggle_text()
     if swayimg.text.visible() then
         swayimg.text.hide()
@@ -147,6 +158,7 @@ swayimg.viewer.on_key("v", function()
     swayimg.viewer.flip_vertical()
 end)
 swayimg.viewer.on_key("a", toggle_antialiasing)
+swayimg.viewer.on_key("Shift+a", toggle_viewer_chessboard)
 swayimg.viewer.on_key("w", function()
     swayimg.viewer.set_fix_scale("width")
 end)
