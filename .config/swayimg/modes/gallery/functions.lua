@@ -20,6 +20,7 @@ function M.delete()
     if choice == "yes" then
         os.remove(image.path)
         os.execute(string.format("notify-send -t 1100 -u low -r 3301 'swayimg' 'Deleted %s'", image.path))
+        swayimg.gallery.reload()
     end
 end
 
