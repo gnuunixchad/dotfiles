@@ -4,7 +4,10 @@
 # since 2025,2026
 
 source ~/.config/lf/rifle.conf
-source ~/.config/lf/commands.conf
+# https://github.com/gokcehan/lf/issues/2551#issuecomment-4322938866
+cmd on-init &{{
+	lf -remote "send $id source $XDG_CONFIG_HOME/lf/commands.conf"
+}}
 source ~/.config/lf/bindings.conf
 source ~/.config/lf/teleport.conf
 source ~/.config/lf/local.conf
