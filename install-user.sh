@@ -82,7 +82,7 @@ mkdir -p ${HOME}/.cache/zig
 [ -d ${HOME}/pkg/zig/p ] && [ ! -L ${HOME}/.cache/zig/p ] \
     && ln -s ${HOME}/pkg/zig/p ${HOME}/.cache/zig/p
 
-[ -d /data/virt ] \
+[ -d /data/virt ] && [ ! -L ${HOME}/virt ] \
     && (ln -sf /data/virt ${HOME}/virt
         chmod 750 /data/virt
         setfacl -m u:libvirt-qemu:x /data/virt
