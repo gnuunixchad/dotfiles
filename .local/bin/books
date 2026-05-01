@@ -1,9 +1,9 @@
 #!/usr/bin/sh
 # @author nate zhou
 # @since 2024,2025,2026
-# open ebooks with zathura with dynamic menu
+# open books with zathura with dynamic menu
 
-SEARCH_PATH="$HOME/doc/ebook"
+SEARCH_PATH="$HOME/doc/books"
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     menu=${HOME}/.local/bin/wmenu-color
