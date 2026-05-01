@@ -44,7 +44,8 @@ chmod -f 700 ${HOME}/pkg/{.*,*}
 chmod -f 750 ${HOME}/pkg/fdroid
 chmod -f 705 ${HOME}/pkg/{iso,pacman}
 
-[ -d ${HOME}/doc/note ] && ln -sf ${HOME}/doc/note ${HOME}/note
+[ -d ${HOME}/doc/note ] && [ ! -L ${HOME}/note ] \
+    && ln -sf ${HOME}/doc/note ${HOME}/note
 
 mkdir -p ${HOME}/.{cache/mpd,config/'Code - OSS',local/{share,state/nvim}}
 
