@@ -10,18 +10,9 @@ ls -t $(find $HOME/pic/ -type f ) \
     | grep -v \
            -e .gpg/ \
            -e .nsfw/ \
-           -e camera/life-events \
-           -e camera/life-living \
-           -e camera/life-medical \
-           -e camera/life-selfie \
-           -e camera/life-etc \
-           -e icon/ \
            -e kirei/ \
-           -e memes/ \
            -e misc/ \
-           -e people/ \
-           -e screen/ \
-           -e screen-web/ \
+           -e screenshots/ \
            -e unixchad/ \
     | shuf \
     > "$LIST"
