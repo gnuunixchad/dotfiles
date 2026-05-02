@@ -466,6 +466,7 @@ add_bluetooth() {
 }
 
 add_extra() {
+    pkg="$pkg android-tools"
     pkg="$pkg android-file-transfer"
     pkg="$pkg qrtool"
 
