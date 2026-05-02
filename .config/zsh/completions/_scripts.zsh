@@ -230,3 +230,12 @@ _ala() {
     fi
 }
 compdef _ala ala
+
+_sync-apk() {
+    local options
+    options=("-l" "--list" "-w" "--write" "-e" "--edit" "-h" "--help")
+    if [ "$CURRENT" -eq 2 ]; then
+        _describe 'options' options
+    fi
+}
+compdef _sync-apk sync-apk

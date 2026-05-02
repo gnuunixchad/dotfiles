@@ -269,3 +269,13 @@ _ala() {
     fi
 }
 complete -F _ala ala
+
+_sync-apk() {
+    local options
+    local current_word="${COMP_WORDS[COMP_CWORD]}"
+    options="-l --list -w --write -e --edit -h --help"
+    if [ "$COMP_CWORD" -eq 1 ]; then
+        COMPREPLY=($(compgen -W "${options}" -- ${current_word}))
+    fi
+}
+complete -F _sync-apk sync-apk
