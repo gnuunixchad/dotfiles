@@ -7,7 +7,7 @@
 song_window_title_format = ncmpcpp
 
 ncmpcpp_directory = ~/.config/ncmpcpp
-lyrics_directory = ~/mus/.lyrics
+lyrics_directory = ""
 store_lyrics_in_song_dir = yes
 mpd_host = localhost
 mpd_port = 6600
