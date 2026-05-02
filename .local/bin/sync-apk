@@ -44,21 +44,36 @@ get_path() {
     adb shell pm path $1
 }
 
+is_existing() {
+    ls "${apk_dir}/${name}" >/dev/null 2>&1
+}
+
+clear_old_packages() {
+    # keep the 3 most recent backup for each package, remove the older
+    ls -t ${apk_dir}/${pkg}-*.apk | tail -n +4 | xargs -r rm --
+}
+
+pull_package() {
+    adb pull "$path" "${apk_dir}/${name}"
+}
+
 sync_packages() {
     read -p "Continue? (y/n): " choice
     if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
         local pkgs=$(cat ${HOME}/.local/sbin/sync-apk.env)
-        echo $pkgs
 
         mkdir -p "$apk_dir"
 
         for pkg in $pkgs; do
             path="$(get_path $pkg  | sed 's/^package://')"
             name="$(echo $path | sed 's|.*==/\(.*\)==/.*|\1|').apk"
-            echo $name
-            adb pull "$path" "${apk_dir}/${name}"
+
+            is_existing || pull_package
+
+            clear_old_packages
         done
     fi
+
 
     exit 0
 }
