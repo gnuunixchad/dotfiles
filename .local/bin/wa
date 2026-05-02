@@ -26,8 +26,10 @@ connect() {
 [ -z "$1" ] && usage
 
 case "$1" in
-    -H,--hidden)
+    -H|--hidden)
         is_hidden=yes
+        ;;
+    -h|--help) usage
         ;;
 esac
 
