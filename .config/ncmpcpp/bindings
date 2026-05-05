@@ -9,7 +9,7 @@ def_key "space"
   pause
 
 def_key "p"
-  pause
+  show_playlist
 
 def_key "Y"
   toggle_replay_gain_mode
@@ -50,12 +50,11 @@ def_key "i"
 def_key "I"
   show_artist_info
 
-def_key "L"
+def_key "l"
   show_lyrics
 
-def_key ";"
+def_key "L"
   toggle_screen_lock
-  show_lyrics
 
 # playlist
 def_key "D"
@@ -104,7 +103,16 @@ def_key "l"
 def_key "l"
   run_action
 
-def_key "l"
+def_key "enter"
+  enter_directory
+
+def_key "enter"
+  toggle_output
+
+def_key "enter"
+  run_action
+
+def_key "enter"
   play_item
 
 def_key "ctrl-u"
@@ -149,12 +157,9 @@ def_key "S"
 def_key "P"
   show_playlist_editor
 
-def_key "H"
-  show_playlist
-
 # master/slave screen
 def_key "o"
-  toggle_screen_lock
+  show_outputs
 
 def_key "ctrl-h"
   master_screen
