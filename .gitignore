@@ -182,6 +182,7 @@ package-list
 !.config/libvirt/libvirt.conf
 !.config/mpd/
 !.config/mpd/mpd.conf
+!.config/mpd/outputs.conf
 !.config/mpv/
 !.config/mpv/input.conf
 !.config/mpv/mpv.conf
