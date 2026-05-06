@@ -50,7 +50,8 @@ command -v ufw > /dev/null \
 && (ufw allow from 192.168.0.0/16 to any app SSH
     ufw allow from 192.168.0.0/16 to any app CIFS
     ufw allow in on virbr0 from any to any
-    ufw allow from 192.168.0.0/16 to any port 8080
+    ufw allow from 192.168.0.0/16 to any port 8000 comment "mpd http stream"
+    ufw allow from 192.168.0.0/16 to any port 8080 comment "sharepkg http"
     ufw enable
     systemctl enable --now ufw.service)
 
