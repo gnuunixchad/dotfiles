@@ -24,7 +24,8 @@ pacman --noconfirm -Sy && pacman -S --noconfirm --needed archlinux-keyring
 [ -f "$ARCH_LIST" ] && pacman -S --needed $(cat "$ARCH_LIST") \
     || print_err "package list not found, no packages installed"
 
-pacman -Qi samba >/dev/null 2>&1 && [ -z "$(pdbedit -Lv)" ] && smbpasswd -a "$sudoer"
+pacman -Qi samba >/dev/null 2>&1 && [ -z "$(pdbedit -Lv)" ] \
+    && smbpasswd -a "$sudoer"
 
 grep -q '^kvm:' /etc/group && usermod "$sudoer" -aG kvm
 grep -q '^libvirt:' /etc/group && usermod "$sudoer" -aG libvirt
@@ -49,8 +50,11 @@ systemctl enable --now systemd-timesyncd.service
 command -v ufw > /dev/null \
 && (ufw allow from 192.168.0.0/16 to any app SSH
     ufw allow from 192.168.0.0/16 to any app CIFS
-    ufw allow in on virbr0 from any to any
-    ufw allow from 192.168.0.0/16 to any port 8000 comment "mpd http stream"
+    pacman -Qi libvirt >/dev/null 2>&1 \
+        && ufw allow in on virbr0 from any to any
+    command -v mpd > /dev/null \
+        && ufw allow from 192.168.0.0/16 to any port 8000 \
+               comment "mpd http stream"
     ufw allow from 192.168.0.0/16 to any port 8080 comment "sharepkg http"
     ufw enable
     systemctl enable --now ufw.service)
