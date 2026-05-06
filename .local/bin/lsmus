@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # list current playing music with mpc
 
 ARTIST="󰠃"
@@ -12,14 +12,16 @@ if [ $(mpc status '%state%') != "playing" ]; then
     icon="󰝛"
 fi
 
+outputs=$(mpc outputs | grep 'is enabled$' | sed -n 's/.*(\([^)]*\)).*/󰓃 \1/p')
+
 msg=$(mpc --format="$ARTIST %artist%\n$TITLE %title%\n$ALBUM %album% (%date%)" \
-          current)
+    current)
 state="[$icon $(mpc status %state%)]"
 
 if [ -n "$msg" ]; then
     echo "$msg"
     if [ "$XDG_SESSION_TYPE" != "tty" ]; then
         [ -z "$msg" ] && title=""
-        notify-send -u low -r 188 -t 5000 "$state" "$msg"
+        notify-send -u low -r 188 -t 5000 "$state" "$msg\n$outputs"
     fi
 fi
