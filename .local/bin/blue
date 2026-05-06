@@ -4,7 +4,7 @@
 # blue - interactively toggle bluetooth devices
 # @depends wmenu dmenu(xorg) fzf bluez-utils
 
-prompt="[$(basename $0)]"
+prompt="$(basename $0)"
 menu=""
 
 notify() {
