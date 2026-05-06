@@ -34,7 +34,7 @@ list_tracked_files() {
 
 menu() {
     if [ -n "$menu" ]; then
-        $menu -p "$${HOME}/.local/bin/wmenu-colorpt" -i -l 6
+        $menu -p "heart" -i -l 6
     else
         fzf --prompt "$menu_prompt"
     fi
