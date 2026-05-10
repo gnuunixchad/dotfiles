@@ -29,7 +29,7 @@ case $(file --mime-type -Lb "$f") in
     image/x-xcf)
         gimp "$f"
         ;;
-    image/*)
+    image/*|font/ttf)
         open_img
         ;;
     video/*)
