@@ -49,6 +49,13 @@ case "$(file -Lb --mime-type -- "$1")" in
     audio/*)
         mid3v2 -l "$1"
         ;;
+    font/ttf)
+        CACHE="$HOME/.cache/lf/$(stat --printf '%s%n%Y' "$(readlink -f "$1")" \
+                               | shasum | cut -d' ' -f1)"
+        [ -f "${CACHE}.jpg" ] \
+            || /usr/bin/convert -background none -fill white "$1" "${CACHE}.jpg"
+        show_img "${CACHE}.jpg" "$2" "$3"
+        ;;
     application/epub+zip)
         CACHE="$HOME/.cache/lf/$(stat --printf '%s%n%Y' "$(readlink -f "$1")" \
                                | shasum | cut -d' ' -f1)"
