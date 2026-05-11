@@ -14,6 +14,10 @@ USAGE:
         Add title tags using the file name excluding the extension.
 OPTION:
         -n,--numeric    ignore the numeric prefix in the filename.
+        -p,--prefix PREFIX
+                        ignore the given prefix in the filename.
+EXAMPLES:
+        $(basename "$0") -p '[0-9]*_' *.mp3
 _EOF_
     exit 0
 }
@@ -41,12 +45,21 @@ write_title() {
     exit 0
 }
 
+[ -z "$1" ] && usage
+
 while [ -n "$1" ]; do
     case "$1" in
         -n|--numeric)
             shift
-            prompt="${prompt}, ignoring the numeric prefix in the filename"
             prefix='[0-9]*-'
+            prompt="${prompt}, ignoring the numeric prefix in the filename"
+            write_title "$@"
+            ;;
+        -p|--prefix)
+            shift 1
+            prefix=$1
+            prompt="${prompt}, ignoring the $prefix prefix in the filename"
+            shift
             write_title "$@"
             ;;
         -*)
