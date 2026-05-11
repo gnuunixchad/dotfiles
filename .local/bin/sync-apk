@@ -62,7 +62,7 @@ sync_packages() {
     if [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
         local pkgs=$(cat ${HOME}/.local/sbin/sync-apk.env)
 
-        mkdir -p "$apk_dir"
+        mkdir -m 750 -p "$apk_dir"
 
         for pkg in $pkgs; do
             path="$(get_path $pkg  | sed 's/^package://')"
