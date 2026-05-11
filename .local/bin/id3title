@@ -1,33 +1,60 @@
 #!/usr/bin/sh
 # @author nate zhou
-# @since 2024,2025
+# @since 2024,2025,2026
 # @depends python-mutagen
 # add title tags to audio files, using the file name except the extension
 
 
-cat << _EOF_
-USAGE: $(basename "$0") FILES...
-add title tags using the file name excluding the extension
-_EOF_
+prompt="Add title tags using the file name excluding the extension"
 
-read -p "continue?(y/n)" choice && [ $choice = 'y' ] || exit 0
+usage() {
+    cat << _EOF_
+USAGE:
+        $(basename "$0") [OPTION] FILES...
+        Add title tags using the file name excluding the extension.
+OPTION:
+        -n,--numeric    ignore the numeric prefix in the filename.
+_EOF_
+    exit 0
+}
 
 add_title() {
     file="$1"
 
     filename=$(basename "$file")
 
-    # bash's brace expansion (another example is `mkdir {2007..2009}-{01..12}`)
-    # remove the shortest suffix pattern that matches the pattern .* (i.e., any
-    # characters followed by a dot) from the value of the filename variable.
     title="${filename%.*}"
+
+    [ -n "$prefix" ] && title="${title#${prefix}}"
 
     mid3v2 -t "$title" "$file"
 }
 
-for file in "$@"; do
-    add_title "$file"
+write_title() {
+    echo "$prompt"
+    read -p "continue?(y/n)" choice && [ $choice = 'y' ] || exit 0
+
+    for file in "$@"; do
+        add_title "$file"
+    done
+
+    exit 0
+}
+
+while [ -n "$1" ]; do
+    case "$1" in
+        -n|--numeric)
+            shift
+            prompt="${prompt}, ignoring the numeric prefix in the filename"
+            prefix='[0-9]*-'
+            write_title "$@"
+            ;;
+        -*)
+            usage
+            ;;
+        *)
+            prefix=''
+            write_title "$@"
+            ;;
+    esac
 done
-
-
-
