@@ -11,6 +11,7 @@
 
 [core]
     pager = less -Ri
+    quotepath = false
 
 [commit]
     gpgsign = true
@@ -25,3 +26,4 @@
 
 [pull]
     rebase = true
+
