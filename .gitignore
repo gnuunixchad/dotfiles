@@ -163,6 +163,8 @@ package-list
 !.config/kanshi/config
 !.config/kwm/
 !.config/kwm/config.zon
+!.config/kwim/
+!.config/kwim/config.zon
 !.config/isyncrc.example
 !.config/lesskey
 !.config/lf/
