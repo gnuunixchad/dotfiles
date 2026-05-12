@@ -63,6 +63,9 @@ eclipse() {
 rotate() {
     gaze
     if [ $isDim -eq 0 ]; then
+        if ! pgrep -f "$(basename $LUCIA_COMMAND)" > /dev/null; then
+            eclipse
+        fi
         exit 0
     else
         local result="$(cat "$LUCIA_ROTATE_CONFIG" \
