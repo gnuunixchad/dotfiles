@@ -72,6 +72,7 @@ map('n', '<leader>tn', ':set relativenumber!<CR>')
 
 map('n', '<leader>f', ':FZF<CR>')
 
+map('v', '<leader>ds', [[:s/\s\+$//e | s/^\s\+$//e<CR>]])
 
 -- plugins
 -- nvim-colorizer
