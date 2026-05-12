@@ -66,3 +66,5 @@ nnoremap <leader>th :set hlsearch!<CR>
 nnoremap <leader>tn :set relativenumber!<CR>
 
 nnoremap <leader>f :FZF<CR>
+
+vnoremap <leader>ds :s/\s\+$//e <Bar> s/^\s\+$//e<CR>
