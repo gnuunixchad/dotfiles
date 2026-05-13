@@ -1,0 +1,16 @@
+# @author nate zhou
+# @since 2026
+
+include blacklist-gpg.local
+noblacklist ${HOME}/doc/gimp
+noblacklist ${HOME}/pic/*
+noblacklist ${HOME}/tmp
+noblacklist ${HOME}/dls
+# workaround for whitelist in /etc/firejail/inkscape.profile in 0.9.80
+whitelist ${HOME}/doc/gimp
+whitelist ${HOME}/pic/*
+whitelist ${HOME}/tmp
+whitelist ${HOME}/dls
+include blacklist-common.local
+
+net none
