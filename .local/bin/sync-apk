@@ -74,6 +74,7 @@ sync_packages() {
         done
     fi
 
+    chmod 750 "$apk_dir"
 
     exit 0
 }
