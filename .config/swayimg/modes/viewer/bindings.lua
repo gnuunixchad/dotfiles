@@ -118,16 +118,14 @@ swayimg.viewer.on_key("Right", function()
     swayimg.viewer.set_abs_position(math.floor(pos.x - wnd.width / 10), pos.y);
 end)
 swayimg.viewer.on_key("i", function()
-    local pos = swayimg.get_mouse_pos()
     local scale = swayimg.viewer.get_scale()
     scale = scale + scale / 10
-    swayimg.viewer.set_abs_scale(scale, pos.x, pos.y);
+    swayimg.viewer.set_abs_scale(scale);
 end)
 swayimg.viewer.on_key("o", function()
-    local pos = swayimg.get_mouse_pos()
     local scale = swayimg.viewer.get_scale()
     scale = scale - scale / 10
-    swayimg.viewer.set_abs_scale(scale, pos.x, pos.y);
+    swayimg.viewer.set_abs_scale(scale);
 end)
 swayimg.viewer.on_key("n", function()
     swayimg.viewer.switch_image("next")
