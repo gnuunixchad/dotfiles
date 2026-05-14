@@ -128,16 +128,14 @@ swayimg.slideshow.on_key("Right", function()
   swayimg.slideshow.set_abs_position(math.floor(pos.x - wnd.width / 10), pos.y);
 end)
 swayimg.slideshow.on_key("i", function()
-    local pos = swayimg.get_mouse_pos()
     local scale = swayimg.slideshow.get_scale()
     scale = scale + scale / 10
-    swayimg.slideshow.set_abs_scale(scale, pos.x, pos.y);
+    swayimg.slideshow.set_abs_scale(scale);
 end)
 swayimg.slideshow.on_key("o", function()
-    local pos = swayimg.get_mouse_pos()
     local scale = swayimg.slideshow.get_scale()
     scale = scale - scale / 10
-    swayimg.slideshow.set_abs_scale(scale, pos.x, pos.y);
+    swayimg.slideshow.set_abs_scale(scale);
 end)
 swayimg.slideshow.on_key("n", function()
     swayimg.slideshow.switch_image("next")
