@@ -5,9 +5,8 @@
 
 {
     "redhat.telemetry.enabled": false,
-    // use system keymap, fixing vscodevim not using the swapped ESC and CAPSLOCK on Linux
+    // fix vscodevim not using the swapped ESC and CAPSLOCK on Linux
     "keyboard.dispatch": "keyCode",
-    // always turn on word wrap
     "editor.wordWrap": "on",
     "editor.fontFamily": "Source Code Pro",
     "editor.fontSize": 13,
@@ -43,6 +42,7 @@
         "editor.background": "#111111"
 
     },
+
     "workbench.secondarySideBar.defaultVisibility": "hidden",
     "editor.autoClosingDelete": "never",
     "editor.autoClosingOvertype": "never",
