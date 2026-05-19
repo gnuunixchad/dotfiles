@@ -9,8 +9,8 @@
     "keyboard.dispatch": "keyCode",
     "editor.wordWrap": "on",
     "editor.fontFamily": "Source Code Pro",
-    "editor.fontSize": 15,
-    "window.zoomLevel": 1,
+    "editor.fontSize": 14,
+    "window.zoomLevel": 1.5,
     "window.zoomPerWindow": false,
     "editor.cursorBlinking": "solid",
     "editor.scrollbar.verticalScrollbarSize": 1,
@@ -23,12 +23,13 @@
     "extensions.autoCheckUpdates": false,
     "extensions.autoUpdate": false,
 
-    // vim extension
+    // extension
     "vim.neovimConfigPath": "~/.config/nvim/init.lua",
     "vim.neovimPath": "/usr/bin/nvim",
     "vim.neovimUseConfigFile": true,
     "vim.useSystemClipboard": true,
     "vim.foldfix": true,
+    "zoomer.zoomIncrement": 0.1,
 
     "explorer.confirmDelete": false,
     "workbench.startupEditor": "newUntitledFile",
@@ -52,6 +53,7 @@
     },
 
     "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "workbench.activityBar.location": "hidden",
     "editor.autoClosingDelete": "never",
     "editor.autoClosingOvertype": "never",
     "editor.autoClosingBrackets": "never",
@@ -59,7 +61,6 @@
     "editor.autoClosingQuotes": "never",
     "editor.autoSurround": "never",
     "editor.comments.insertSpace": false,
-    "workbench.activityBar.location": "hidden",
     "update.showReleaseNotes": false,
 
     // anti-feature
