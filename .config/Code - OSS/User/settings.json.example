@@ -40,8 +40,14 @@
     "workbench.iconTheme": "vs-minimal",
 
     "workbench.colorCustomizations":{
-        "editor.background": "#111111"
-
+        "editor.background": "#111111",
+        "editorGutter.background": "#111111",
+        "editorLineNumber.activeForeground": "#ffffff",
+        "editorLineNumber.foreground": "#444444",
+        "sideBar.background": "#111111",
+        "activityBar.background": "#111111",
+        "statusBar.background": "#427b58",
+        "statusBar.foreground": "#eeeeee"
     },
 
     "workbench.secondarySideBar.defaultVisibility": "hidden",
