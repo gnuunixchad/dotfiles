@@ -11,6 +11,7 @@
     "editor.fontFamily": "Source Code Pro",
     "editor.fontSize": 15,
     "window.zoomLevel": 1,
+    "window.zoomPerWindow": false,
     "editor.cursorBlinking": "solid",
     "editor.scrollbar.verticalScrollbarSize": 1,
     "editor.scrollbar.horizontalScrollbarSize": 1,
