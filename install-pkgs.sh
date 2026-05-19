@@ -396,7 +396,6 @@ add_media() {
 add_gui_editor() {
     pkg="$pkg kdenlive"
     pkg="$pkg gimp"
-    pkg="$pkg inkscape"
     pkg="$pkg libreoffice-still"
 }
 
